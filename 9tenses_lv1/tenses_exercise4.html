@@ -85,10 +85,10 @@ function getQuestionById(qid) {
   return questions.find(q => q.id == qid);
 }
 
-fetch('questions.json')
+fetch('questions2.json')
   .then(r => r.json())
   .then(qs => {
-    questions = shuffle(qs);
+    questions = qs;
     renderQuestions(questions);
     setupDragDropLogic();
   });
@@ -195,4 +195,4 @@ function setupDragDropLogic() {
 }
 </script>
 </body>
-</html>
+</html> 
