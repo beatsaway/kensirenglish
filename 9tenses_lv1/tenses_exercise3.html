@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>English Tenses Practice (for Cantonese speakers)</title>
+  <link rel="stylesheet" href="tenses_main.css">
+</head>
+<body>
+<div class="exercise-panel">
+  <button id="toggle-answers-btn">Show Answers</button>
+  <h2>English Tenses Practice (for Cantonese speakers)</h2>
+  <div class="notes">
+    <div style="margin-top:8px;">There are 12 tenses in English. (新手先練好9種常用時態) [Simple/Continuous/Perfect] x [Present/Past/Future]</div>
+    <b>新手溫習時態小貼士：</b><br>
+    <ul style="margin: 8px 0 0 18px;">
+      <li>一定先用present講/寫出來，決定好係simple、continuous定perfect tense</li>
+      <li>再決定有冇必要轉past或future</li>
+      <li>past就轉verb、future就前面加will</li>
+    </ul>
+  </div>
+  <div id="questions-root"></div>
+</div>
+<script>
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let questions = [];
+let answersShown = false;
+let selectedDraggable = null;
+let selectedSection = null;
+
+function renderQuestions(questions) {
+  const root = document.getElementById('questions-root');
+  root.innerHTML = '';
+  // Group by section, but do not show section titles
+  const grouped = {};
+  questions.forEach(q => {
+    if (!grouped[q.section]) grouped[q.section] = [];
+    grouped[q.section].push(q);
+  });
+  let idx = 0;
+  Object.values(grouped).forEach(sectionQuestions => {
+    sectionQuestions.forEach(q => {
+      const section = document.createElement('div');
+      section.className = 'section';
+      // Handle multiple blanks in a single question
+      let processedEnglish = q.english;
+      const blankCount = Array.isArray(q.answer) ? q.answer.length : 1;
+      for (let i = 0; i < blankCount; i++) {
+        const correctAnswer = Array.isArray(q.answer) ? q.answer[i] : q.answer;
+        processedEnglish = processedEnglish.replace(
+          '_____',
+          `<span class='blank' data-idx='${idx + i}' data-qid='${q.id}' data-bidx='${i}' data-answer='${correctAnswer}'><small>(${idx + i + 1})</small></span>`
+        );
+      }
+      section.innerHTML = `
+        <div class="sentence"><span class="cantonese">${q.cantonese}</span> ${processedEnglish}</div>
+        <div class="keywords-container"></div>
+      `;
+      // Add randomized wordbank
+      const kw = section.querySelector('.keywords-container');
+      const opts = shuffle([...q.options]);
+      opts.forEach((opt, i) => {
+        const d = document.createElement('div');
+        d.className = 'draggable';
+        d.setAttribute('draggable', 'true');
+        d.setAttribute('data-answer', opt);
+        d.innerHTML = `<span class="draggable-label">${String.fromCharCode(97+i)}</span>${opt}`;
+        kw.appendChild(d);
+      });
+      root.appendChild(section);
+      idx += blankCount;
+    });
+  });
+}
+
+// Helper to get question by id
+function getQuestionById(qid) {
+  return questions.find(q => q.id == qid);
+}
+
+fetch('questions.json')
+  .then(r => r.json())
+  .then(qs => {
+    questions = shuffle(qs);
+    renderQuestions(questions);
+    setupDragDropLogic();
+  });
+
+function setupDragDropLogic() {
+  let answersShown = false;
+  let selectedDraggable = null;
+  let selectedSection = null;
+  const toggleBtn = document.getElementById('toggle-answers-btn');
+  toggleBtn.addEventListener('click', () => {
+    answersShown = !answersShown;
+    toggleBtn.textContent = answersShown ? 'Hide Answers' : 'Show Answers';
+    clearSelection();
+    document.querySelectorAll('.blank').forEach(blank => {
+      const label = blank.querySelector('small');
+      blank.innerHTML = '';
+      blank.appendChild(label);
+      blank.classList.remove('filled', 'correct', 'incorrect');
+      if (answersShown) {
+        const correct = blank.getAttribute('data-answer');
+        const section = blank.closest('.section');
+        const draggables = section.querySelectorAll('.draggable');
+        const draggable = Array.from(draggables).find(d => d.textContent.trim().endsWith(correct));
+        if (draggable) {
+          const dragLabel = draggable.querySelector('.draggable-label');
+          if (dragLabel) {
+            blank.appendChild(dragLabel.cloneNode(true));
+          }
+        }
+        blank.appendChild(document.createTextNode(' ' + correct));
+        blank.classList.add('filled', 'correct');
+      }
+    });
+  });
+  function clearSelection() {
+    if (selectedDraggable) {
+      selectedDraggable.classList.remove('selected');
+    }
+    selectedDraggable = null;
+    selectedSection = null;
+  }
+  function selectDraggable(draggable, section) {
+    clearSelection();
+    selectedDraggable = draggable;
+    selectedSection = section;
+    draggable.classList.add('selected');
+  }
+  function fillBlank(blank, draggable) {
+    const answerText = draggable.textContent.replace(/^\s*\w\s*/, '').trim();
+    const correct = blank.getAttribute('data-answer');
+    const label = blank.querySelector('small');
+    blank.innerHTML = '';
+    blank.appendChild(label);
+    const dragLabel = draggable.querySelector('.draggable-label');
+    if (dragLabel) {
+      blank.appendChild(dragLabel.cloneNode(true));
+    }
+    blank.appendChild(document.createTextNode(' ' + answerText));
+    blank.classList.add('filled');
+    if (answerText === correct) {
+      blank.classList.add('correct');
+      blank.classList.remove('incorrect');
+    } else {
+      blank.classList.add('incorrect');
+      blank.classList.remove('correct');
+    }
+  }
+  document.querySelectorAll('.section').forEach(section => {
+    const draggables = section.querySelectorAll('.draggable');
+    const blanks = section.querySelectorAll('.blank');
+    draggables.forEach(draggable => {
+      draggable.addEventListener('dragstart', () => { draggable.classList.add('dragging'); });
+      draggable.addEventListener('dragend', () => { draggable.classList.remove('dragging'); });
+      draggable.addEventListener('click', (e) => { e.preventDefault(); if (selectedDraggable === draggable) { clearSelection(); } else { selectDraggable(draggable, section); } });
+      let touchStarted = false;
+      draggable.addEventListener('touchstart', (e) => { touchStarted = true; draggable.classList.add('dragging'); });
+      draggable.addEventListener('touchend', (e) => { if (touchStarted) { e.preventDefault(); const touch = e.changedTouches[0]; const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY); const targetBlank = elementBelow?.closest('.blank'); if (targetBlank && targetBlank.closest('.section') === section) { fillBlank(targetBlank, draggable); } draggable.classList.remove('dragging'); touchStarted = false; } });
+    });
+    blanks.forEach(blank => {
+      blank.addEventListener('dragover', e => e.preventDefault());
+      blank.addEventListener('drop', e => { e.preventDefault(); const dragging = section.querySelector('.dragging'); if (!dragging) return; fillBlank(blank, dragging); });
+      blank.addEventListener('click', () => { if (blank.classList.contains('filled')) { const label = blank.querySelector('small'); blank.innerHTML = ''; blank.appendChild(label); blank.classList.remove('filled', 'correct', 'incorrect'); } else if (selectedDraggable && selectedSection === section) { fillBlank(blank, selectedDraggable); clearSelection(); } });
+      blank.addEventListener('contextmenu', e => { 
+        e.preventDefault(); 
+        if (blank.classList.contains('filled')) return; 
+        const correct = blank.getAttribute('data-answer');
+        const label = blank.querySelector('small'); 
+        blank.innerHTML = ''; 
+        blank.appendChild(label); 
+        const draggables = section.querySelectorAll('.draggable'); 
+        const draggable = Array.from(draggables).find(d => d.textContent.trim().endsWith(correct)); 
+        if (draggable) { 
+          const dragLabel = draggable.querySelector('.draggable-label'); 
+          if (dragLabel) { 
+            blank.appendChild(dragLabel.cloneNode(true)); 
+          } 
+        } 
+        blank.appendChild(document.createTextNode(' ' + correct)); 
+        blank.classList.add('filled', 'correct'); 
+      });
+    });
+  });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.draggable') && !e.target.closest('.blank')) { clearSelection(); } });
+}
+</script>
+</body>
+</html>
