@@ -7,5 +7,5 @@
   {"cantonese": "我哋會同緊啲火星人一齊住", "english": "We _____ with Martians.", "answer": "will be living", "options": ["am living", "were living", "will be living", "will live", "have lived"]},
   {"cantonese": "我未試過一個人住", "english": "I _____ alone before.", "answer": "have never lived", "options": ["have never lived", "had never lived", "will never live", "am living", "lived"]},
   {"cantonese": "我之前未試過一個人住", "english": "I _____ alone before.", "answer": "had never lived", "options": ["have never lived", "had never lived", "will never live", "was living", "lived"]},
-  {"cantonese": "我就快會同我隻貓住埋一齊多過一年", "english": "I _____ with my cat for more than a year soon.", "answer": "will soon have lived", "options": ["will soon have lived", "have lived", "will have lived", "am living", "was living"]}
+  {"cantonese": "我就快會同我隻貓住埋一齊多過一年", "english": "Soon I _____ with my cat for more than a year.", "answer": "will have lived", "options": ["have lived", "will have lived", "am living", "was living"]}
 ] 
