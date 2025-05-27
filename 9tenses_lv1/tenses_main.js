@@ -19,6 +19,7 @@ function getQuestionsJson() {
   if (html.startsWith('tenses_exercise4c')) return 'questions4c.json';
   if (html.startsWith('tenses_exercise5a')) return 'questions5a.json';
   if (html.startsWith('tenses_exercise5b')) return 'questions5b.json';
+  if (html.startsWith('tenses_exercise6a')) return 'questions6a.json';
   // fallback: try to match tenses_exerciseN.html to questionsN.json
   const match = html.match(/tenses_exercise(\d+)\.html/);
   if (match) return `questions${match[1]}.json`;
