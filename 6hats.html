@@ -174,9 +174,12 @@
             return `<div class="question" data-hat="${question.hat}">\n    <span class="question-emoji">${question.emoji}</span> ${question.text}\n    <span class="revealed-hat hat-indicator ${question.hat}">${question.hatLabel}</span>\n</div>`;
         }
         function createSetHTML(set) {
-            // Shuffle questions before rendering
-            const shuffledQuestions = shuffleArray([...set.questions]);
-            return `<div class="set">\n    <h2>${set.title}</h2>\n    <div class="questions">\n        ${shuffledQuestions.map(createQuestionHTML).join('\n')}\n    </div>\n</div>`;
+            return `<div class="set">
+                <h2><a href="${set.link}" target="_blank" style="text-decoration: none; color: inherit;">${set.title}</a></h2>
+                <div class="questions">
+                    ${set.questions.map(createQuestionHTML).join('\n')}
+                </div>
+            </div>`;
         }
         document.addEventListener('DOMContentLoaded', function() {
             const root = document.getElementById('questions-root');
