@@ -1,6 +1,7 @@
 window.sixHatSets = [
   {
     title: "🏙️ Urban Development in Hong Kong",
+    link:'https://www.youtube.com/shorts/P6Xjis9h5dA',
     questions: [
       { emoji: "😊", text: "How do you feel about building more tall buildings in your neighborhood?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "💡", text: "What new ideas can we use to make public transport better?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -11,7 +12,8 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🏛️ Tourism Management in Hong Kong",
+    title: "🏛️ Tourism in Hong Kong",
+    link:'https://www.youtube.com/shorts/QcM0SbNBgG4',
     questions: [
       { emoji: "📋", text: "What should we do to make tourism better for the environment?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "📊", text: "How many tourists visit Hong Kong each year?", hat: "white-hat", hatLabel: "White Hat" },
@@ -23,6 +25,7 @@ window.sixHatSets = [
   },
   {
     title: "🎓 Education Reform in Hong Kong",
+    link:'https://www.youtube.com/watch?v=pLh4JNdCDvE',
     questions: [
       { emoji: "💡", text: "What can we do to make lessons more fun?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "⚠️", text: "What problems might happen when we try to change the education system?", hat: "black-hat", hatLabel: "Black Hat" },
@@ -34,6 +37,7 @@ window.sixHatSets = [
   },
   {
     title: "🌱 Environmental Sustainability in Hong Kong",
+    link:'https://www.youtube.com/watch?v=Xctpw2J481w',
     questions: [
       { emoji: "🌟", text: "Why is it a good idea to have more green spaces in urban areas?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new ideas can we use to reduce plastic waste?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -45,6 +49,7 @@ window.sixHatSets = [
   },
   {
     title: "🏥 Healthcare Access in Hong Kong",
+    link:'https://www.youtube.com/watch?v=Io8rg4BDBic',
     questions: [
       { emoji: "💡", text: "What new ideas can we use to help doctors work less but help more people?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "🌟", text: "Why is it good to have online doctor consultations?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -56,6 +61,7 @@ window.sixHatSets = [
   },
   {
     title: "🚇 Public Transport Improvement in Hong Kong",
+    link:'https://youtu.be/ELy9fOX8vtc?t=238',
     questions: [
       { emoji: "⚠️", text: "What problems might happen when we try to build more railways or highways?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "💡", text: "What new ideas can we use to make public transport better?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -67,6 +73,7 @@ window.sixHatSets = [
   },
   {
     title: "🍽️ Food Safety in Hong Kong",
+    link:'https://www.youtube.com/watch?v=pZhJ1WfMX2g',
     questions: [
       { emoji: "💡", text: "What new ideas can we use to make food safer?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "🌟", text: "Why is it important to maintain food safety standard?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -77,18 +84,20 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🏓 School Activities in Hong Kong",
+    title: "🏓 ECA in Hong Kong",
+    link:'https://www.youtube.com/watch?v=Sxk7HokNKEk',
     questions: [
-      { emoji: "📋", text: "What plans do we need to make for a successful table tennis club?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What new after-school activities can we suggest for your school?", hat: "green-hat", hatLabel: "Green Hat" },
-      { emoji: "📊", text: "What are the popular after-school activities in your school?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "🌟", text: "Why is it good for students to have more after-school activities?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "😊", text: "How do you feel about the after-school activities in your school?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📋", text: "What makes a successful table tennis club?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What new after-school activities would you suggest for your school?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "📊", text: "What are the popular ECA in your school?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "🌟", text: "Why is it good for students to have some after-school ECA?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "😊", text: "How do you feel about the extra curricular activities in your school?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "⚠️", text: "What problems might happen if there are too many after-school activities?", hat: "black-hat", hatLabel: "Black Hat" }
     ]
   },
   {
-    title: "🧹 Community Clean-Up in Hong Kong",
+    title: "🧹 Community Clean-Up",
+    link:'https://www.youtube.com/shorts/Byx3wK4ZRww',
     questions: [
       { emoji: "😊", text: "How do you feel about the cleanliness of your neighbourhood?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "💡", text: "What fun ideas can we think of to get people involved?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -100,6 +109,7 @@ window.sixHatSets = [
   },
   {
     title: "🎩 The Six Thinking Hats",
+    link:'https://youtu.be/Zt0BymHNj30?feature=shared&t=62',
     questions: [
       { emoji: "🌟", text: "Why is it good to use the Six Thinking Hats method?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "When can the Six Thinking Hats be useful?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -111,6 +121,7 @@ window.sixHatSets = [
   },
   {
     title: "💻 Digital Art",
+    link: 'https://www.youtube.com/shorts/plF08EJFzlI',
     questions: [
       { emoji: "🌟", text: "Why are more and more young people doing digital art?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new techniques can we explore in digital art?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -122,6 +133,7 @@ window.sixHatSets = [
   },
   {
     title: "🍥 Anime Shows",
+    link:'https://www.youtube.com/watch?v=9jH0wDp5GnQ',
     questions: [
       { emoji: "😊", text: "Which is your favorite anime?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What are the most popular anime shows this year?", hat: "white-hat", hatLabel: "White Hat" },
@@ -133,6 +145,7 @@ window.sixHatSets = [
   },
   {
     title: "🤓 Learning English as a Second Language",
+    link:'https://youtu.be/veA7lEuBoQI?feature=shared&t=60',
     questions: [
       { emoji: "⚠️", text: "What problems might students face when learning English?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "💡", text: "What would be the best way to learn English?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -144,6 +157,7 @@ window.sixHatSets = [
   },
   {
     title: "🎮 Video Games",
+    link:'https://www.youtube.com/shorts/1nLAoI4Uezs',
     questions: [
       { emoji: "💡", text: "What new ways can we use video games for learning?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "🌟", text: "Why is it good to play video games?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -155,6 +169,7 @@ window.sixHatSets = [
   },
   {
     title: "🤳 Mobile Phones",
+    link:'https://www.youtube.com/watch?v=bLq9gMddr10',
     questions: [
       { emoji: "🌟", text: "Why is it good to use mobile phones for learning?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new apps could we make for learning?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -166,6 +181,7 @@ window.sixHatSets = [
   },
   {
     title: "📱 Social Media",
+    link:'https://www.youtube.com/watch?v=ZGbYE_12ca4',
     questions: [
       { emoji: "😊", text: "How do you feel when you see posts from your friends on social media?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "💡", text: "What new ways can we use social media for learning?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -177,6 +193,7 @@ window.sixHatSets = [
   },
   {
     title: "▶️ YouTube",
+    link:'https://www.youtube.com/watch?v=HIYbCCjOpAA',
     questions: [
       { emoji: "⚠️", text: "What problems might YouTube cause for students?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "💡", text: "What fun videos could we make for learning?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -188,6 +205,7 @@ window.sixHatSets = [
   },
   {
     title: "🐶 Having Pets",
+    link:'https://www.youtube.com/watch?v=B9jjNQCdUAQ',
     questions: [
       { emoji: "💡", text: "What new ways can we use pets in school activities?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "🌟", text: "Why is it good for students to have pets?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -199,6 +217,7 @@ window.sixHatSets = [
   },
   {
     title: "🎽 School Uniform",
+    link:'https://www.youtube.com/watch?v=_CnVDDl9fpA',
     questions: [
       { emoji: "⚠️", text: "What problems might happen with strict school uniform rules?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "💡", text: "What new uniform rules could make students more comfortable?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -210,6 +229,7 @@ window.sixHatSets = [
   },
   {
     title: "🍲 Hong Kong Traditional Food",
+    link:'https://www.youtube.com/watch?v=6W2mx-Mq64I',
     questions: [
       { emoji: "😊", text: "How do you feel when you eat dim sum with your family?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What are the most popular traditional dishes in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
@@ -221,6 +241,7 @@ window.sixHatSets = [
   },
   {
     title: "🥾 Hong Kong Hiking Trails",
+    link:'https://www.youtube.com/watch?v=XujOJa3_O0g',
     questions: [
       { emoji: "🌟", text: "Why is it good for students to go hiking?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "What safety problems should we think about when hiking in Hong Kong?", hat: "black-hat", hatLabel: "Black Hat" },
@@ -232,6 +253,7 @@ window.sixHatSets = [
   },
   {
     title: "🛍️ Mongkok",
+    link:'https://www.youtube.com/shorts/u-haginyJR8',
     questions: [
       { emoji: "💡", text: "What new ideas can we use to make the shopping experience better in Mongkok?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "📊", text: "What are the most popular places in Mongkok?", hat: "white-hat", hatLabel: "White Hat" },
@@ -243,6 +265,7 @@ window.sixHatSets = [
   },
   {
     title: "🍡 Hong Kong Snacks",
+    link:'https://www.youtube.com/watch?v=JRmRn926wC0',
     questions: [
       { emoji: "⚠️", text: "What health problems might happen if you eat too many traditional Hong Kong snacks?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "😊", text: "How do you feel when you eat your favorite Hong Kong snack?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -254,6 +277,7 @@ window.sixHatSets = [
   },
   {
     title: "🎤 Hong Kong Pop Culture",
+    link:'https://youtu.be/ba7N7iokxbQ?feature=shared&t=4',
     questions: [
       { emoji: "📋", text: "What should we do to make Hong Kong's pop culture more popular around the world?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "🌟", text: "Why is it good for Hong Kong to have popular music and movies?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -265,6 +289,7 @@ window.sixHatSets = [
   },
   {
     title: "🔒 School Lockers",
+    link:'https://www.youtube.com/watch?v=y-vhojH4cgU',
     questions: [
       { emoji: "😊", text: "How do you feel about using school lockers?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "💡", text: "What new ideas can we use to make school lockers better?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -276,6 +301,7 @@ window.sixHatSets = [
   },
   {
     title: "🤖 Having a Robot Dog as a Pet",
+    link:'https://www.youtube.com/watch?v=UMrE2T_L0yo',
     questions: [
       { emoji: "🌟", text: "Why is it good to have a robot dog as a pet?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new things can we do with robot dogs?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -287,6 +313,7 @@ window.sixHatSets = [
   },
   {
     title: "🤖 Using ChatGPT for Learning",
+    link:'https://www.youtube.com/watch?v=wJsnlSiyH3Y',
     questions: [
       { emoji: "💡", text: "What new ways can we use ChatGPT to help with homework?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "⚠️", text: "What problems might happen if students use ChatGPT too much?", hat: "black-hat", hatLabel: "Black Hat" },
@@ -298,6 +325,7 @@ window.sixHatSets = [
   },
   {
     title: "📱 Using mobile devices",
+    link:'https://www.youtube.com/shorts/LxYxyny_zoo',
     questions: [
       { emoji: "😊", text: "How do you feel about letting young children using mobile devices?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What do toddlers do on their mobile devices?", hat: "white-hat", hatLabel: "White Hat" },
@@ -309,6 +337,7 @@ window.sixHatSets = [
   },
   {
     title: "🎲 Rummikub",
+    link:'https://www.youtube.com/watch?v=P9lThha3BLY',
     questions: [
       { emoji: "📊", text: "What are the basic rules of Rummikub?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel when you play Rummikub with your family?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -320,6 +349,7 @@ window.sixHatSets = [
   },
   {
     title: "🕹️ Roblox",
+    link:'https://www.youtube.com/shorts/euFMerXySAE',
     questions: [
       { emoji: "💡", text: "What new games could we create in Roblox?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "🌟", text: "Why is Roblox good for learning programming and game design?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
@@ -331,6 +361,7 @@ window.sixHatSets = [
   },
   {
     title: "👤 Designing Cartoon Characters",
+    link:'https://youtube.com/shorts/LllqRwhZPMY',
     questions: [
       { emoji: "📊", text: "What makes a cartoon character recognisable?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "💡", text: "What new ways can we design a unique character?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -342,6 +373,7 @@ window.sixHatSets = [
   },
   {
     title: "🖼️ Pop Art",
+    link:'https://www.youtube.com/watch?v=KnQzL8Cy_G4',
     questions: [
       { emoji: "😊", text: "How do you feel when you look at bright, colorful pop art?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What do you know about famous pop artists like Andy Warhol?", hat: "white-hat", hatLabel: "White Hat" },
@@ -353,6 +385,7 @@ window.sixHatSets = [
   },
   {
     title: "🌙 Surrealism",
+    link:'https://www.youtube.com/watch?v=bP2JS4vDvNc',
     questions: [
       { emoji: "💡", text: "Can you give me an idea of furniture design in surrealism?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "😊", text: "How do you feel when you look at surrealist paintings?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -364,6 +397,7 @@ window.sixHatSets = [
   },
   {
     title: "🎮 Esports and Online Gaming",
+    link: 'https://www.youtube.com/shorts/-wh4cequ4Fw',
     questions: [
       { emoji: "🌟", text: "Why are esports becoming so popular among young people?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new games would you like to see in esports competitions?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -375,6 +409,7 @@ window.sixHatSets = [
   },
   {
     title: "🎵 K-pop and International Music",
+    link:'https://youtu.be/UTAKCFPYdOo?feature=shared&t=56',
     questions: [
       { emoji: "🌟", text: "Why is K-pop so popular in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new music styles would you like to listen to?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -386,6 +421,7 @@ window.sixHatSets = [
   },
   {
     title: "👗 Sustainable Fashion",
+    link:'https://www.youtube.com/watch?v=sqbKM2clQD0',
     questions: [
       { emoji: "🌟", text: "Why is it good to wear clothes made from recycled materials?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new fashion trends would you like to see in your school?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -397,6 +433,7 @@ window.sixHatSets = [
   },
   {
     title: "🎉 Hong Kong Local Festivals",
+    link: 'https://youtu.be/MPAmeAQmmqM?feature=shared&t=35',
     questions: [
       { emoji: "🌟", text: "Why is it important to celebrate local festivals?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new ways can we celebrate festivals with our friends?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -408,6 +445,7 @@ window.sixHatSets = [
   },
   {
     title: "🤖 STEM and Robotics",
+    link: 'https://www.youtube.com/watch?v=pNz5pp95xOU',
     questions: [
       { emoji: "🌟", text: "Why is it good to learn about robots and coding?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new robots would you like to invent?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -419,6 +457,7 @@ window.sixHatSets = [
   },
   {
     title: "🏃 Sports and Fitness",
+    link: 'https://www.youtube.com/shorts/Tf5bOOaSpqo',
     questions: [
       { emoji: "🌟", text: "Why is it good to play sports regularly?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new sports would you like to try at school?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -430,6 +469,7 @@ window.sixHatSets = [
   },
   {
     title: "🌳 Environmental Protection in Hong Kong",
+    link: 'https://youtu.be/boUjxaB40ms?feature=shared&t=157',
     questions: [
       { emoji: "🌟", text: "Why is it important to protect Hong Kong’s beaches and parks?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new ideas can we use to reduce air pollution?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -441,6 +481,7 @@ window.sixHatSets = [
   },
   {
     title: "🏙️ Famous Hong Kong Landmarks",
+    link: 'https://www.youtube.com/shorts/S1VrdXVgPio',
     questions: [
       { emoji: "🌟", text: "What's cool about famous places in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new attractions would you like to see in the city?", hat: "green-hat", hatLabel: "Green Hat" },
@@ -448,6 +489,18 @@ window.sixHatSets = [
       { emoji: "📊", text: "What are the most popular landmarks in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "⚠️", text: "What problems might happen if too many people visit the same place?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "What should we do to protect our landmarks?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "💼 Career Aspirations",
+    link:'https://youtu.be/mOsGOzo0Mnk?feature=shared&t=687',
+    questions: [
+      { emoji: "🌟", text: "Why is it good to think about your future career early?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new jobs do you think will exist in the future?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you think about your dream job?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular career choices among your classmates?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might people face when choosing a career?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What steps should you take to learn more about different careers?", hat: "blue-hat", hatLabel: "Blue Hat" }
     ]
   }
 ]; 
