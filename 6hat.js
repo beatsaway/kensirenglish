@@ -377,7 +377,7 @@ window.sixHatSets = [
     title: "🎵 K-pop and International Music",
     questions: [
       { emoji: "🌟", text: "Why is K-pop so popular in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "💡", text: "What new music styles would you like to try?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "💡", text: "What new music styles would you like to listen to?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "😊", text: "How do you feel when you listen to your favorite K-pop group?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What are the most popular K-pop groups among your friends?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "⚠️", text: "What problems might happen if students focus too much on celebrities?", hat: "black-hat", hatLabel: "Black Hat" },
@@ -442,7 +442,7 @@ window.sixHatSets = [
   {
     title: "🏙️ Famous Hong Kong Landmarks",
     questions: [
-      { emoji: "🌟", text: "Why is it good to visit famous places in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "🌟", text: "What's cool about famous places in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "💡", text: "What new attractions would you like to see in the city?", hat: "green-hat", hatLabel: "Green Hat" },
       { emoji: "😊", text: "How do you feel when you visit Victoria Peak or Disneyland?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "📊", text: "What are the most popular landmarks in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
