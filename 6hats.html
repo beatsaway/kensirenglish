@@ -163,11 +163,20 @@
 
     <script src="6hat.js"></script>
     <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
         function createQuestionHTML(question) {
             return `<div class="question" data-hat="${question.hat}">\n    <span class="question-emoji">${question.emoji}</span> ${question.text}\n    <span class="revealed-hat hat-indicator ${question.hat}">${question.hatLabel}</span>\n</div>`;
         }
         function createSetHTML(set) {
-            return `<div class="set">\n    <h2>${set.title}</h2>\n    <div class="questions">\n        ${set.questions.map(createQuestionHTML).join('\n')}\n    </div>\n</div>`;
+            // Shuffle questions before rendering
+            const shuffledQuestions = shuffleArray([...set.questions]);
+            return `<div class="set">\n    <h2>${set.title}</h2>\n    <div class="questions">\n        ${shuffledQuestions.map(createQuestionHTML).join('\n')}\n    </div>\n</div>`;
         }
         document.addEventListener('DOMContentLoaded', function() {
             const root = document.getElementById('questions-root');
