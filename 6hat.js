@@ -361,5 +361,93 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "What problems might people have with surrealist art?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "What steps could a student take to create their first surrealist artwork?", hat: "blue-hat", hatLabel: "Blue Hat" }
     ]
+  },
+  {
+    title: "🎮 Esports and Online Gaming",
+    questions: [
+      { emoji: "🌟", text: "Why are esports becoming so popular among young people?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new games would you like to see in esports competitions?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you win or lose an online game?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular esports games in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if students spend too much time gaming?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to balance gaming and schoolwork?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🎵 K-pop and International Music",
+    questions: [
+      { emoji: "🌟", text: "Why is K-pop so popular in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new music styles would you like to try?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you listen to your favorite K-pop group?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular K-pop groups among your friends?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if students focus too much on celebrities?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to enjoy music safely and responsibly?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "👗 Sustainable Fashion",
+    questions: [
+      { emoji: "🌟", text: "Why is it good to wear clothes made from recycled materials?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new fashion trends would you like to see in your school?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel about wearing a school uniform every day?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular clothing brands among students?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if we buy too many new clothes?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to make fashion more eco-friendly?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🎉 Hong Kong Local Festivals",
+    questions: [
+      { emoji: "🌟", text: "Why is it important to celebrate local festivals?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new ways can we celebrate festivals with our friends?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel during Chinese New Year or Mid-Autumn Festival?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular local festivals in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen during big festival celebrations?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to keep our traditions alive?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🤖 STEM and Robotics",
+    questions: [
+      { emoji: "🌟", text: "Why is it good to learn about robots and coding?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new robots would you like to invent?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you build something in science class?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular STEM activities in your school?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if robots do all our work?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to get more students interested in STEM?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🏃 Sports and Fitness",
+    questions: [
+      { emoji: "🌟", text: "Why is it good to play sports regularly?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new sports would you like to try at school?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel after playing your favorite sport?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular sports among your classmates?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if students don’t exercise enough?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to encourage everyone to join sports?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🌳 Environmental Protection in Hong Kong",
+    questions: [
+      { emoji: "🌟", text: "Why is it important to protect Hong Kong’s beaches and parks?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new ideas can we use to reduce air pollution?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you see rubbish in nature?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most common environmental problems in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if we don’t take care of the environment?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to make Hong Kong greener?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
+  },
+  {
+    title: "🏙️ Famous Hong Kong Landmarks",
+    questions: [
+      { emoji: "🌟", text: "Why is it good to visit famous places in Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "💡", text: "What new attractions would you like to see in the city?", hat: "green-hat", hatLabel: "Green Hat" },
+      { emoji: "😊", text: "How do you feel when you visit Victoria Peak or Disneyland?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What are the most popular landmarks in Hong Kong?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "⚠️", text: "What problems might happen if too many people visit the same place?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should we do to protect our landmarks?", hat: "blue-hat", hatLabel: "Blue Hat" }
+    ]
   }
 ]; 
