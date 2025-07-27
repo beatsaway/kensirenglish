@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Questions - Six Thinking Hats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hats-guide {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2980b9;
+        }
+        .hats-guide h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        .hat-item {
+            margin: 8px 0;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        .hat-color {
+            font-weight: bold;
+            display: inline-block;
+            width: 80px;
+        }
+        .set {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+        }
+        .set h2 {
+            color: #2980b9;
+        }
+        .questions {
+            margin: 10px 0;
+        }
+        .question {
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+
+        .question.revealed {
+            border-left: 4px solid;
+        }
+        .question.revealed.white-hat { border-left-color: #ffffff; }
+        .question.revealed.red-hat { border-left-color: #ff6b6b; }
+        .question.revealed.black-hat { border-left-color: #95a5a6; }
+        .question.revealed.yellow-hat { border-left-color: #ffd93d; }
+        .question.revealed.green-hat { border-left-color: #6bcf7f; }
+        .question.revealed.blue-hat { border-left-color: #74b9ff; }
+        .hats {
+            font-weight: bold;
+            margin-top: 10px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hat-indicator {
+            display: inline-block;
+            margin: 2px 5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-size: 0.9em;
+        }
+        .white-hat { background-color: #ffffff; color: #333; border: 1px solid #ddd; }
+        .red-hat { background-color: #ff6b6b; }
+        .black-hat { background-color: #95a5a6; }
+        .yellow-hat { background-color: #ffd93d; }
+        .green-hat { background-color: #6bcf7f; }
+        .blue-hat { background-color: #74b9ff; }
+        .revealed-hat {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .question.revealed .revealed-hat {
+            opacity: 1;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discussion Questions - Six Thinking Hats</h1>
+
+        <div class="hats-guide">
+            <h3>The Six Thinking Hats:</h3>
+            <div class="hat-item">
+                <span class="hat-indicator white-hat">White Hat</span>
+                <span style="margin-left: 10px;">Facts, figures, and objective information</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator red-hat">Red Hat</span>
+                <span style="margin-left: 10px;">Emotions, feelings, and intuition</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator black-hat">Black Hat</span>
+                <span style="margin-left: 10px;">Caution, problems, and potential difficulties</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator yellow-hat">Yellow Hat</span>
+                <span style="margin-left: 10px;">Benefits, advantages, and positive aspects</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator green-hat">Green Hat</span>
+                <span style="margin-left: 10px;">Creativity, new ideas, and possibilities</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator blue-hat">Blue Hat</span>
+                <span style="margin-left: 10px;">Process control, planning, and next steps</span>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Urban Development in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel about building more tall buildings in your neighborhood?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to make public transport better?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How many people live in Hong Kong now compared to 10 years ago?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to ask people what they want in their neighborhood?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if we build too many buildings close together?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have more parks and playgrounds in the city?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Tourism Management in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="blue-hat">
+                    What should we do to make tourism better for the environment?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How many tourists visit Hong Kong each year?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What fun things can we create to make tourists want to visit Hong Kong?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when there are many tourists in your favorite places?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when too many tourists visit the same place?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for Hong Kong to have many tourists?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Education Reform in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What can we do to make lessons more fun?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when we try to change the education system?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have more flexible ways of learning?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How many years of education are provided for free by the Hong Kong government?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about the current education system?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to make the change to a new education system easier?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Environmental Sustainability in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="yellow-hat">
+                    Why is it a good idea to have more green spaces in urban areas?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to reduce plastic waste?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What is wrong with creating too much rubbish every day?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to get more people involved in protecting the environment?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about current recycling policies in Hong Kong?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when we try to make Hong Kong more environmentally friendly?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Healthcare Access in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to help doctors work less but help more people?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have online doctor consultations?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do you know about health disparities in different communities?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when we try to improve healthcare in Hong Kong?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to ask patients how we can make healthcare better?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    Are you satisfied with the medical service you received last time when you were sick?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Public Transport Improvement in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when we try to build more railways or highways?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to make public transport better?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have a new transport app?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How many people use public transport in Hong Kong every day?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about your daily travel experiences?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to tell people about changes in public transport?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Food Safety in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to make food safer?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it important to maintain food safety standard?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do you know about food safety?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might we have with food safety in school canteen?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about the school lunch in your school?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What would you do with a budget of 10,000 HKD to improve food safety in your school?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>School Activities in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="blue-hat">
+                    What plans do we need to make for a successful table tennis club?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new after-school activities can we suggest for your school?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the popular after-school activities in your school?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for students to have more after-school activities?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about the after-school activities in your school?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if there are too many after-school activities?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Community Clean-Up in Hong Kong</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel about the cleanliness of your neighbourhood?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What fun ideas can we think of to get people involved?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    What good things can come from cleaning up our community?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How much rubbish do people throw away in Hong Kong every day?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to organize a community clean-up day?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen during a community clean-up?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>The Six Thinking Hats</h2>
+            <div class="questions">
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to use the Six Thinking Hats method?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    When can the Six Thinking Hats be useful?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the six thinking hats?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    Which hat is your favourite?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to teach this method to new students?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen when using the hats in group discussions?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Learning English as a Second Language</h2>
+            <div class="questions">
+                <div class="question" data-hat="black-hat">
+                    What problems might students face when learning English?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What would be the best way to learn English?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to speak both English and Chinese?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What subjects are taught in English in your school?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about speaking English in front of your classmates?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should you do every day to improve your English?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Video Games</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ways can we use video games for learning?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to play video games?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you play your favorite video game?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the popular video games among your friends?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What rules should we set for healthy video game usage?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if you play too many video games?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Mobile Phones</h2>
+            <div class="questions">
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to use mobile phones for learning?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new apps could we make for learning?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if students use phones too much?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the mobile phone rules in your school?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you don't have your phone with you?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What rules should we make for using phones responsibly in school?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Social Media</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you see posts from your friends on social media?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ways can we use social media for learning?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    How much time do young people spend on social media every day?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to use social media?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might social media cause for students?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What rules should we make for safe social media use?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>YouTube</h2>
+            <div class="questions">
+                <div class="question" data-hat="black-hat">
+                    What problems might YouTube cause for students?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What fun videos could we make for learning?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to watch YouTube videos for learning?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What is YouTube?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about your favourite YouTube channel?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    How do we upload YouTube videos?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Having Pets</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ways can we use pets in school activities?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for students to have pets?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you spend time with animals?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do we know about how pets help children?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might families face when taking care of pets?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    How do we train our pets to use the toilet?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>School Uniform</h2>
+            <div class="questions">
+                <div class="question" data-hat="black-hat">
+                    What problems might happen with strict school uniform rules?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new uniform rules could make students more comfortable?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have school uniforms?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the school uniform rules in your school?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about following your school uniform rules?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to make better school uniform rules?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Hong Kong Traditional Food</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you eat dim sum with your family?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the most popular traditional dishes in Hong Kong?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ways can we make traditional Hong Kong food more modern?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might restaurants face when trying to keep traditional cooking methods?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to learn how to cook traditional Hong Kong dishes?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to keep Hong Kong's traditional food culture?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Hong Kong Hiking Trails</h2>
+            <div class="questions">
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for students to go hiking?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What safety problems should we think about when hiking in Hong Kong?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the most popular hiking trails in Hong Kong?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we prepare before going on a hike?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you reach the top of a mountain?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ways can we make hiking easier for everyone?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Mongkok</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to make the shopping experience better in Mongkok?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the most popular places in Mongkok?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you visit the busy streets of Mongkok?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to make Mongkok a better place for tourists?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why do people like to visit Mongkok?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What do some people dislike Mongkok?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Hong Kong Snacks</h2>
+            <div class="questions">
+                <div class="question" data-hat="black-hat">
+                    What health problems might happen if you eat too many traditional Hong Kong snacks?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel when you eat your favorite Hong Kong snack?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new snack combinations can we make using traditional ingredients?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the most popular traditional snacks in Hong Kong?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to learn how to make traditional Hong Kong snacks?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to keep traditional snack-making methods?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Hong Kong Pop Culture</h2>
+            <div class="questions">
+                <div class="question" data-hat="blue-hat">
+                    What should we do to make Hong Kong's pop culture more popular around the world?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for Hong Kong to have popular music and movies?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about Hong Kong's music and entertainment industry?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do you know about Hong Kong's film and music history?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might Hong Kong's pop culture face these days?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ways can we mix traditional and modern elements in Hong Kong pop culture?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>School Lockers</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel about using school lockers?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new ideas can we use to make school lockers better?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What are the rules about using lockers in your school?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have lockers in school?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen with school lockers?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to organize the locker system better?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Having a Robot Dog as a Pet</h2>
+            <div class="questions">
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good to have a robot dog as a pet?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new things can we do with robot dogs?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about having a robot dog instead of a real dog?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do you know about robot dogs?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen with robot dogs?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should we do to take care of a robot dog?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Using ChatGPT for Learning</h2>
+            <div class="questions">
+                <div class="question" data-hat="green-hat">
+                    What new ways can we use ChatGPT to help with homework?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if students use ChatGPT too much?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    When is it good to use ChatGPT for learning?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do you know about ChatGPT?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="red-hat">
+                    How do you feel about using ChatGPT for school work?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What rules should we make for using ChatGPT in school?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="set">
+            <h2>Using mobile devices</h2>
+            <div class="questions">
+                <div class="question" data-hat="red-hat">
+                    How do you feel about letting young children using mobile devices?
+                    <span class="revealed-hat hat-indicator red-hat">Red Hat</span>
+                </div>
+                <div class="question" data-hat="white-hat">
+                    What do toddlers do on their mobile devices?
+                    <span class="revealed-hat hat-indicator white-hat">White Hat</span>
+                </div>
+                <div class="question" data-hat="green-hat">
+                    What new apps could help babies learn?
+                    <span class="revealed-hat hat-indicator green-hat">Green Hat</span>
+                </div>
+                <div class="question" data-hat="yellow-hat">
+                    Why is it good for babies to use mobile devices sometimes?
+                    <span class="revealed-hat hat-indicator yellow-hat">Yellow Hat</span>
+                </div>
+                <div class="question" data-hat="black-hat">
+                    What problems might happen if young children use it too much?
+                    <span class="revealed-hat hat-indicator black-hat">Black Hat</span>
+                </div>
+                <div class="question" data-hat="blue-hat">
+                    What should parents do regarding the use of mobile devices by their children?
+                    <span class="revealed-hat hat-indicator blue-hat">Blue Hat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question');
+            
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const hatType = this.getAttribute('data-hat');
+                    this.classList.add('revealed', hatType);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
