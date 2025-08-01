@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather & Climate - Six Thinking Hats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hats-guide {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2980b9;
+        }
+        .hats-guide h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        .hat-item {
+            margin: 8px 0;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        .hat-color {
+            font-weight: bold;
+            display: inline-block;
+            width: 80px;
+        }
+        .set {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+        }
+        .set h2 {
+            color: #2980b9;
+        }
+        .questions {
+            margin: 10px 0;
+        }
+        .question {
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .question.revealed {
+            border-left: 4px solid;
+        }
+        .question.revealed.white-hat { border-left-color: #ffffff; }
+        .question.revealed.red-hat { border-left-color: #ff6b6b; }
+        .question.revealed.black-hat { border-left-color: #95a5a6; }
+        .question.revealed.yellow-hat { border-left-color: #ffd93d; }
+        .question.revealed.green-hat { border-left-color: #6bcf7f; }
+        .question.revealed.blue-hat { border-left-color: #74b9ff; }
+        .hats {
+            font-weight: bold;
+            margin-top: 12px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        .hat-indicator {
+            display: inline-block;
+            margin: 2px 5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-size: 0.9em;
+        }
+        .white-hat { background-color: #ffffff; color: #333; border: 1px solid #ddd; }
+        .red-hat { background-color: #ff6b6b; }
+        .black-hat { background-color: #95a5a6; }
+        .yellow-hat { background-color: #ffd93d; }
+        .green-hat { background-color: #6bcf7f; }
+        .blue-hat { background-color: #74b9ff; }
+        .revealed-hat {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .question.revealed .revealed-hat {
+            opacity: 1;
+        }
+        .question-emoji {
+            display: none;
+            margin-right: 6px;
+        }
+        .question.revealed .question-emoji {
+            display: inline;
+        }
+        .article-text {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #2980b9;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .article-text.show {
+            display: block;
+        }
+        .set h2 {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .set h2:hover {
+            color: #3498db;
+        }
+        .set h2::after {
+            content: " ▼";
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        .set h2.expanded::after {
+            content: " ▲";
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .set {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️ Weather & Climate - Six Thinking Hats</h1>
+
+        <div class="hats-guide">
+            <h3>The Six Thinking Hats:</h3>
+            <div class="hat-item">
+                <span class="hat-indicator white-hat">White Hat</span>
+                <span style="margin-left: 10px;">Facts, figures, and objective information</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator red-hat">Red Hat</span>
+                <span style="margin-left: 10px;">Emotions, feelings, and intuition</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator black-hat">Black Hat</span>
+                <span style="margin-left: 10px;">Caution, problems, and potential difficulties</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator yellow-hat">Yellow Hat</span>
+                <span style="margin-left: 10px;">Benefits, advantages, and positive aspects</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator green-hat">Green Hat</span>
+                <span style="margin-left: 10px;">Creativity, new ideas, and possibilities</span>
+            </div>
+            <div class="hat-item">
+                <span class="hat-indicator blue-hat">Blue Hat</span>
+                <span style="margin-left: 10px;">Process control, planning, and next steps</span>
+            </div>
+        </div>
+
+        <div id="questions-root"></div>
+    </div>
+
+    <script src="weather_questions.js"></script>
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        function createQuestionHTML(question) {
+            return `<div class="question" data-hat="${question.hat}">\n    <span class="question-emoji">${question.emoji}</span> ${question.text}\n    <span class="revealed-hat hat-indicator ${question.hat}">${question.hatLabel}</span>\n</div>`;
+        }
+        function createSetHTML(set) {
+            if (set.articleText) {
+                return `<div class="set">\n                    <h2 onclick="toggleArticle(this, '${set.title}')">${set.title}</h2>\n                    <div class="article-text" id="article-${set.title.replace(/[^a-zA-Z0-9]/g, '')}"></div>\n                    <div class="questions">\n                        ${set.questions.map(createQuestionHTML).join('\n')}\n                    </div>\n                </div>`;
+            } else if (set.link) {
+                return `<div class="set">\n                    <h2><a href="${set.link}" target="_blank" style="text-decoration: none; color: inherit;">${set.title}</a></h2>\n                    <div class="questions">\n                        ${set.questions.map(createQuestionHTML).join('\n')}\n                    </div>\n                </div>`;
+            }
+        }
+        function toggleArticle(element, title) {
+            const articleDiv = element.nextElementSibling;
+            const isExpanded = articleDiv.classList.contains('show');
+            
+            if (isExpanded) {
+                articleDiv.classList.remove('show');
+                element.classList.remove('expanded');
+                articleDiv.innerHTML = '';
+            } else {
+                articleDiv.classList.add('show');
+                element.classList.add('expanded');
+                // Find the article text from the data
+                const set = window.sixHatSets.find(s => s.title === title);
+                if (set && set.articleText) {
+                    articleDiv.innerHTML = set.articleText;
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const root = document.getElementById('questions-root');
+            if (typeof window.sixHatSets !== 'undefined') {
+                root.innerHTML = window.sixHatSets.map(createSetHTML).join('\n');
+            }
+            // click-to-reveal logic
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const hatType = this.getAttribute('data-hat');
+                    this.classList.add('revealed', hatType);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
