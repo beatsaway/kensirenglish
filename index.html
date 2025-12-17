@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px; --space-5: 40px;
+            --space-1: 6px; --space-2: 6px 10px 3px 10px; --space-3: 12px; --space-4: 12px; --space-5: 20px;
             --color-bg: #fafbfc; --color-surface: #ffffff; --color-text: #1a1a1a;
             --color-text-secondary: #6b7280; --color-accent: #2563eb;
             --color-accent-light: rgba(37, 99, 235, 0.08); --color-dse: #7c3aed;
@@ -22,6 +22,7 @@
             background: var(--color-bg); color: var(--color-text); line-height: 1.6;
             height: 100vh; display: flex; flex-direction: column;
             -webkit-font-smoothing: antialiased; font-size: 16px;
+            overflow-x: hidden;
         }
 
         header {
@@ -29,7 +30,8 @@
             border-bottom: 1px solid var(--border-color);
             padding: 0; 
             flex-shrink: 0; 
-            position: relative; 
+            position: sticky;
+            top: 0;
             z-index: 100;
         }
 
@@ -37,23 +39,26 @@
             max-width: var(--max-width);
             margin: 0 auto;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-4);
-            min-height: 64px;
+            flex-direction: column;
+            padding: var(--space-2);
+            min-height: auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .header-title-container { 
             display: flex; 
             flex-direction: column; 
-            padding: var(--space-2) 0;
+            align-items: center;
+            padding: var(--space-1) 0 3px 0;
+            width: 100%;
         }
         
         .header-title { 
             font-size: 19px; 
             font-weight: 700; 
             color: var(--color-text); 
-            line-height: 1.3; 
+            line-height: 1; 
         }
         
         .header-title .italic { 
@@ -64,76 +69,130 @@
         
         .header-subtitle { 
             font-size: 12px; 
-            color: var(--color-text-secondary); 
-            margin-top: 3px; 
+            color: var(--color-accent); 
+            margin-top: 2px; 
             letter-spacing: 0.3px; 
         }
 
         .navbar {
             display: flex;
             align-items: center;
-            gap: var(--space-1);
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .nav-item {
             position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 0;
         }
 
-        .nav-button {
-            background: transparent;
-            border: none;
-            padding: var(--space-2) var(--space-3);
+        .nav-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .nav-select-button {
+            width: 100%;
+            padding: var(--space-2);
+            padding-right: 28px;
             font-size: 0.875rem;
             font-weight: 400;
             color: var(--color-text);
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 4px;
             cursor: pointer;
-            transition: opacity 0.2s ease;
             font-family: inherit;
+            text-align: left;
+            transition: opacity 0.2s ease;
+            position: relative;
         }
 
-        .nav-button:hover {
-            opacity: 0.6;
+        .nav-select-button::after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            pointer-events: none;
         }
 
-        .dropdown-menu {
+        .nav-select-button:hover {
+            opacity: 0.7;
+        }
+
+        .nav-select-dropdown {
             position: absolute;
             top: 100%;
             left: 0;
+            right: 0;
+            margin-top: 4px;
             background: var(--color-surface);
             border: 1px solid var(--border-color);
-            min-width: 240px;
-            padding: var(--space-2);
-            margin-top: var(--space-1);
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-8px);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-md);
-            z-index: 1000;
+            transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                        visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            max-height: 300px;
+            overflow-y: auto;
         }
 
-        .nav-item:hover .dropdown-menu,
-        .nav-item.active .dropdown-menu {
+        .nav-item.active .nav-select-dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            pointer-events: auto;
         }
 
-        /* Disable hover on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            .nav-item:hover .dropdown-menu {
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-8px);
-            }
-            .nav-item.active .dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
+        .nav-select-option {
+            display: block;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            font-size: 0.875rem;
+            line-height: 1.4;
         }
 
-        main { flex: 1; overflow-y: auto; overflow-x: hidden; padding: var(--space-3) var(--space-4); }
+        .nav-select-option:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-select-option:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-select-option:hover {
+            background-color: var(--color-accent-light);
+        }
+
+        .nav-select-option-title {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .nav-select-option-subtitle {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        main { flex: 1; overflow-y: auto; overflow-x: hidden; padding: var(--space-2) var(--space-4); width: 100%; max-width: 100%; }
         .container { max-width: var(--max-width); margin: 0 auto; }
 
         .philosophy {
@@ -143,79 +202,62 @@
             margin: var(--space-4) auto;
             font-size: 1rem;
             line-height: 1.8;
-            text-decoration: none;
             color: inherit;
             display: block;
-            transition: opacity 0.2s ease;
-            cursor: pointer;
-        }
-        .philosophy:hover { 
-            opacity: 0.7;
         }
         .philosophy p { color: var(--color-text-secondary); margin: 0; }
-        .philosophy strong { color: var(--color-text); font-weight: 600; }
-
-        .dropdown-item {
-            display: block;
-            padding: var(--space-2);
+        .philosophy a {
             text-decoration: none;
             color: var(--color-text);
             transition: opacity 0.2s ease;
         }
-
-        .dropdown-item:hover {
-            opacity: 0.6;
-        }
-
-        .dropdown-item-icon {
-            font-size: 0.875rem;
-            margin-right: var(--space-1);
+        .philosophy a:hover {
             opacity: 0.7;
         }
+        .philosophy strong { color: var(--color-text); font-weight: 600; }
 
-        .dropdown-item-title {
-            font-size: 0.875rem;
-            font-weight: 400;
-            color: var(--color-text);
-            line-height: 1.4;
-            margin-bottom: 2px;
-        }
-
-        .dropdown-item-subtitle {
-            font-size: 0.75rem;
-            color: var(--color-text-secondary);
-            line-height: 1.4;
-            font-weight: 300;
-        }
 
         @media (max-width: 768px) {
-            main { padding: var(--space-2); }
-            .header-container { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                padding: var(--space-2);
-                min-height: auto;
+            html, body {
+                overflow-x: hidden;
+                max-width: 100vw;
             }
-            .header-title-container { padding: 0; }
+            main { 
+                padding: var(--space-2); 
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+            .header-container { 
+                padding: var(--space-2);
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+            .header-title-container { padding: var(--space-1) 0 3px 0; }
             .header-title { font-size: 16px; }
             .header-subtitle { font-size: 11px; }
             .navbar {
+                margin-top: 0;
                 width: 100%;
-                margin-top: var(--space-2);
-                flex-wrap: wrap;
-                gap: var(--space-1);
+                max-width: 100%;
+                box-sizing: border-box;
             }
-            .nav-button {
+            .nav-item {
+                max-width: 100%;
+                flex: 1;
+            }
+            .nav-select-button {
                 padding: var(--space-1) var(--space-2);
                 font-size: 0.8125rem;
+                padding-right: 24px;
             }
-            .dropdown-menu {
+            .nav-select-dropdown {
                 position: fixed;
-                left: var(--space-2);
-                right: var(--space-2);
-                width: auto;
-                max-width: calc(100vw - var(--space-4));
-                z-index: 1001;
+                left: var(--space-2) !important;
+                right: var(--space-2) !important;
+                width: auto !important;
+                max-width: calc(100vw - var(--space-4)) !important;
             }
             .philosophy { padding: var(--space-3); font-size: 0.9375rem; }
         }
@@ -226,72 +268,74 @@
         <div class="header-container">
             <div class="header-title-container">
                 <div class="header-title">🥢 Learning English <span class="italic">as Cantonese Speakers</span></div>
-                <div class="header-subtitle">廣東話人學英文 ©kensirenglish.com</div>
+                <div class="header-subtitle">用廣東話學英文 ©kensirenglish.com</div>
             </div>
             <nav class="navbar">
                 <div class="nav-item">
-                    <button class="nav-button">DSE</button>
-                    <div class="dropdown-menu">
-                        <a href="dse/connectives/connectives.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">🔗</span>
-                            <div class="dropdown-item-title">Connectives</div>
-                            <div class="dropdown-item-subtitle">連接詞</div>
-                        </a>
-                        <a href="dse/mock/dsep4_2025dec.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">📝</span>
-                            <div class="dropdown-item-title">DSE P4 Mock (Dec 2025)</div>
-                            <div class="dropdown-item-subtitle">DSE 卷四模擬試 (2025年12月)</div>
-                        </a>
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">DSE<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">文憑試</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="dse/mock/dsep4_2025dec.html" class="nav-select-option">
+                                <span class="nav-select-option-title">📝 Paper4 Mock 2025Dec</span><br>
+                                <span class="nav-select-option-subtitle">卷四模擬試 2025年12月</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <button class="nav-button">Grammar</button>
-                    <div class="dropdown-menu">
-                        <a href="grammar/tenses/a1a2tenses/index.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">⏰</span>
-                            <div class="dropdown-item-title">A1-A2 Tenses</div>
-                            <div class="dropdown-item-subtitle">A1-A2 時態練習</div>
-                        </a>
-                        <a href="grammar/tenses/a2b1general/index.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">📚</span>
-                            <div class="dropdown-item-title">A2-B1 General Grammar</div>
-                            <div class="dropdown-item-subtitle">A2-B1 綜合語法</div>
-                        </a>
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Vocab<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">詞彙</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="vocab/connectives/connectives.html" class="nav-select-option">
+                                <span class="nav-select-option-title">🔗 Connectives</span><br>
+                                <span class="nav-select-option-subtitle">連接詞</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <button class="nav-button">6 Hats</button>
-                    <div class="dropdown-menu">
-                        <a href="6hats/6hatsdiscussion/index.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">🎩</span>
-                            <div class="dropdown-item-title">6 Hats Discussion</div>
-                            <div class="dropdown-item-subtitle">六頂思考帽討論</div>
-                        </a>
-                        <a href="6hats/6hatsluckydraw.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">🎲</span>
-                            <div class="dropdown-item-title">6 Hats Lucky Draw</div>
-                            <div class="dropdown-item-subtitle">六頂思考帽抽籤</div>
-                        </a>
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Grammar<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">語法</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="grammar/a1a2tenses/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">⏰ Tenses</span><br>
+                                <span class="nav-select-option-subtitle">時態練習</span>
+                            </a>
+                            <a href="grammar/a2b1general/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">📚 General Grammar</span><br>
+                                <span class="nav-select-option-subtitle">綜合語法</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <button class="nav-button">Resources</button>
-                    <div class="dropdown-menu">
-                        <a href="resources/booklist/index.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">📖</span>
-                            <div class="dropdown-item-title">Book List</div>
-                            <div class="dropdown-item-subtitle">書單</div>
-                        </a>
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Topics<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">話題</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="6hats/6hatsdiscussion/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">🎩 6 Hats Discussion</span><br>
+                                <span class="nav-select-option-subtitle">六頂思考帽討論</span>
+                            </a>
+                            <a href="6hats/6hatsluckydraw.html" class="nav-select-option">
+                                <span class="nav-select-option-title">🎲 6 Hats Lucky Draw</span><br>
+                                <span class="nav-select-option-subtitle">六頂思考帽抽籤</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <button class="nav-button">Research</button>
-                    <div class="dropdown-menu">
-                        <a href="research/abswitching/abt_switching.html" class="dropdown-item">
-                            <span class="dropdown-item-icon">🔬</span>
-                            <div class="dropdown-item-title">Code Switching</div>
-                            <div class="dropdown-item-subtitle">語碼轉換研究</div>
-                        </a>
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Others<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">其他</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="resources/booklist/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">📖 Booklist</span><br>
+                                <span class="nav-select-option-subtitle">書單</span>
+                            </a>
+                            <a href="research/abswitching/abt_switching.html" class="nav-select-option">
+                                <span class="nav-select-option-title">🔬 Research</span><br>
+                                <span class="nav-select-option-subtitle">語碼轉換研究</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -300,85 +344,84 @@
 
     <main>
         <div class="container">
-            <a href="research/abswitching/abt_switching.html" class="philosophy">
-                <p><strong>想最快學好英文，竟然要多用廣東話？</strong> 中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！本網特意準備咗比較多有廣東話作輔助嘅學英文資源，希望幫到講廣東話嘅你！<br>Should one avoid using their mother tongue when learning English? Code-switching is actually an inevitable cognitive phenomenon, not something to avoid as many Hong Kongers believed! That's why many resources on this site include Cantonese support. Ken Sir has prepared more resources with Cantonese support for you. Hope you like it!</p>
-            </a>
+            <div class="philosophy">
+                <p><a href="research/abswitching/abt_switching.html"><strong>想最快學好英文，竟然要多用廣東話？</strong></a> 中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！本網特意準備咗比較多有廣東話作輔助嘅學英文資源，希望幫到講廣東話嘅你！<br><a href="research/abswitching/abt_switching.html"><strong>Should one avoid using their mother tongue when learning English?</strong></a> Code-switching is actually an inevitable cognitive phenomenon, not something to avoid as many Hong Kongers believed! That's why many resources on this site include Cantonese support. Ken Sir has prepared more resources with Cantonese support for you. Hope you like it!</p>
+            </div>
             
-            <a href="resources/booklist/index.html" class="philosophy">
-                <p><strong>📖 精選書單推薦</strong> 想提升英文水平，閱讀係最有效嘅方法之一！我哋精心挑選咗適合唔同程度嘅英文書籍，由初級到高級都有，每本書都附有詳細介紹同推薦理由，幫你搵到最適合自己嘅讀物。<br><strong>📖 Curated Book Recommendations</strong> Reading is one of the most effective ways to improve your English! We've carefully selected English books suitable for different levels, from beginner to advanced. Each book comes with detailed descriptions and recommendations to help you find the perfect read for your level.</p>
-            </a>
+            <div class="philosophy">
+                <p><a href="resources/booklist/index.html"><strong>精選書單推薦</strong></a> 精心挑選適合唔同程度嘅英文書籍，每本都有詳細介紹同推薦理由。<br><a href="resources/booklist/index.html"><strong>Curated Book Recommendations</strong></a> Carefully selected English books for all levels, each with detailed descriptions and recommendations.</p>
+            </div>
             
-            <a href="dse/connectives/connectives.html" class="philosophy">
-                <p><strong>🔗 DSE 連接詞練習</strong> 連接詞係DSE英文寫作同說話考試中非常重要！掌握各種連接詞嘅用法，可以令你嘅文章更加流暢，邏輯更清晰。呢度有豐富嘅連接詞練習同例子，幫你提升DSE英文成績。<br><strong>🔗 DSE Connectives Practice</strong> Connectives are crucial in DSE English writing and speaking exams! Mastering various connectives can make your writing more fluent and your logic clearer. Here you'll find comprehensive connective exercises and examples to help boost your DSE English scores.</p>
-            </a>
+            <div class="philosophy">
+                <p><a href="vocab/connectives/connectives.html"><strong>DSE 連接詞練習</strong></a> 掌握連接詞用法，令文章更流暢、邏輯更清晰。豐富練習同例子幫你提升DSE英文成績。<br><a href="vocab/connectives/connectives.html"><strong>DSE Connectives Practice</strong></a> Master connectives to make your writing more fluent and logical. Comprehensive exercises and examples to boost your DSE English scores.</p>
+            </div>
             
-            <a href="6hats/6hatsdiscussion/index.html" class="philosophy">
-                <p><strong>🎩 六頂思考帽討論</strong> 用Edward de Bono嘅六頂思考帽方法，從唔同角度思考同討論各種話題！呢個方法可以幫你培養批判性思維，提升英文表達能力，同時學習點樣有系統地分析問題。適合DSE口試練習同日常英文討論。<br><strong>🎩 Six Thinking Hats Discussion</strong> Use Edward de Bono's Six Thinking Hats method to think and discuss various topics from different perspectives! This method helps develop critical thinking, improve English expression, and learn how to systematically analyze issues. Perfect for DSE speaking exam practice and daily English discussions.</p>
-            </a>
+            <div class="philosophy">
+                <p><a href="6hats/6hatsdiscussion/index.html"><strong>六頂思考帽討論</strong></a> 用Edward de Bono嘅方法從唔同角度思考同討論話題，培養批判性思維，提升英文表達能力。適合DSE口試練習。<br><a href="6hats/6hatsdiscussion/index.html"><strong>Six Thinking Hats Discussion</strong></a> Use Edward de Bono's method to think and discuss topics from different perspectives, developing critical thinking and improving English expression. Perfect for DSE speaking exam practice.</p>
+            </div>
         </div>
     </main>
 
     <script>
-        // Handle dropdowns for both desktop (hover) and mobile (click/tap)
-        document.addEventListener('DOMContentLoaded', function() {
-            const navItems = document.querySelectorAll('.nav-item');
-            const navButtons = document.querySelectorAll('.nav-button');
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        (function() {
+            'use strict';
             
-            // Handle clicks on nav buttons (for mobile/touch devices)
+            const navItems = document.querySelectorAll('.nav-item');
+            const navButtons = document.querySelectorAll('.nav-select-button');
+            const isMobile = window.innerWidth <= 768;
+            
+            // Handle button clicks
             navButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     const navItem = this.closest('.nav-item');
-                    const dropdown = navItem.querySelector('.dropdown-menu');
                     const isActive = navItem.classList.contains('active');
                     
-                    // Close all dropdowns first
+                    // Close all other dropdowns
                     navItems.forEach(item => {
-                        item.classList.remove('active');
+                        if (item !== navItem) {
+                            item.classList.remove('active');
+                        }
                     });
                     
-                    // Toggle the clicked dropdown
-                    if (!isActive) {
+                    // Toggle current dropdown
+                    if (isActive) {
+                        navItem.classList.remove('active');
+                    } else {
                         navItem.classList.add('active');
                         
-                        // On mobile, position dropdown below the button
-                        if (isMobile && dropdown) {
-                            const rect = button.getBoundingClientRect();
-                            dropdown.style.top = (rect.bottom + 8) + 'px';
+                        // Position dropdown on mobile
+                        if (isMobile) {
+                            const dropdown = navItem.querySelector('.nav-select-dropdown');
+                            if (dropdown) {
+                                requestAnimationFrame(function() {
+                                    const rect = button.getBoundingClientRect();
+                                    dropdown.style.top = (rect.bottom + 8) + 'px';
+                                });
+                            }
                         }
                     }
                 });
             });
             
             // Close dropdowns when clicking outside
-            document.addEventListener('click', function(event) {
-                const clickedNavItem = event.target.closest('.nav-item');
-                const clickedNavButton = event.target.closest('.nav-button');
-                const clickedDropdownItem = event.target.closest('.dropdown-item');
-                
-                // Don't close if clicking on a nav button (handled above)
-                if (clickedNavButton) {
-                    return;
-                }
-                
-                // Close all dropdowns if clicking outside
-                navItems.forEach(item => {
-                    if (item !== clickedNavItem) {
-                        item.classList.remove('active');
-                    }
-                });
-                
-                // Close dropdown when clicking on a dropdown item (for better UX on mobile)
-                if (clickedDropdownItem && isMobile) {
-                    setTimeout(() => {
-                        clickedNavItem?.classList.remove('active');
-                    }, 100);
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item')) {
+                    navItems.forEach(item => item.classList.remove('active'));
                 }
             });
-        });
+            
+            // Handle option clicks
+            document.querySelectorAll('.nav-select-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    // Navigation will happen naturally via the href
+                    // Close dropdown after a short delay
+                    setTimeout(() => {
+                        navItems.forEach(item => item.classList.remove('active'));
+                    }, 100);
+                });
+            });
+        })();
     </script>
 </body>
 </html>
