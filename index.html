@@ -130,66 +130,73 @@
         }
 
         .nav-select-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin-top: 4px;
-            background: var(--color-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            display: none;
+        }
+
+        .sub-navbar {
+            width: 100%;
+            background: #f0f4f8;
+            padding: var(--space-3) var(--space-4);
+            display: none;
             opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                        visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-            max-height: 300px;
-            overflow-y: auto;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-item.active .nav-select-dropdown {
+        .sub-navbar.active {
+            display: flex;
             opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            pointer-events: auto;
+            max-height: 200px;
+            padding: var(--space-3) var(--space-4);
         }
 
-        .nav-select-option {
-            display: block;
-            padding: 10px 12px;
+        .sub-navbar-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .sub-nav-option {
+            display: inline-flex;
+            flex-direction: column;
+            padding: 8px 16px;
             text-decoration: none;
             color: var(--color-text);
             cursor: pointer;
-            transition: background-color 0.15s ease;
+            transition: background-color 0.15s ease, transform 0.1s ease;
             font-size: 0.875rem;
             line-height: 1.4;
+            border-radius: 6px;
+            white-space: nowrap;
+            min-width: fit-content;
         }
 
-        .nav-select-option:first-child {
-            border-radius: 8px 8px 0 0;
-        }
-
-        .nav-select-option:last-child {
-            border-radius: 0 0 8px 8px;
-        }
-
-        .nav-select-option:hover {
+        .sub-nav-option:hover {
             background-color: var(--color-accent-light);
+            transform: translateY(-1px);
         }
 
-        .nav-select-option-title {
+        .sub-nav-option-title {
             font-weight: 500;
             color: var(--color-text);
         }
 
-        .nav-select-option-subtitle {
+        .sub-nav-option-subtitle {
             font-size: 0.75rem;
             color: var(--color-text-secondary);
             font-weight: 400;
+        }
+
+        .nav-item.active .nav-select-button {
+            background-color: var(--color-accent-light);
         }
 
         main { flex: 1; overflow-y: auto; overflow-x: hidden; padding: var(--space-2) var(--space-4); width: 100%; max-width: 100%; }
@@ -252,12 +259,22 @@
                 font-size: 0.8125rem;
                 padding-right: 24px;
             }
-            .nav-select-dropdown {
-                position: fixed;
-                left: var(--space-2) !important;
-                right: var(--space-2) !important;
-                width: auto !important;
-                max-width: calc(100vw - var(--space-4)) !important;
+            .sub-navbar {
+                padding: var(--space-2);
+            }
+            .sub-navbar.active {
+                padding: var(--space-2);
+                max-height: 300px;
+            }
+            .sub-navbar-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--space-2);
+            }
+            .sub-nav-option {
+                width: 100%;
+                padding: 10px 12px;
+                text-align: left;
             }
             .philosophy { padding: var(--space-3); font-size: 0.9375rem; }
         }
@@ -286,7 +303,7 @@
                     <div class="nav-select-wrapper">
                         <button class="nav-select-button">Vocab<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">詞彙</span></button>
                         <div class="nav-select-dropdown">
-                            <a href="vocab/connectives/connectives.html" class="nav-select-option">
+                            <a href="dse/connectives/connectives.html" class="nav-select-option">
                                 <span class="nav-select-option-title">🔗 Connectives</span><br>
                                 <span class="nav-select-option-subtitle">連接詞</span>
                             </a>
@@ -339,6 +356,11 @@
                     </div>
                 </div>
             </nav>
+            <div class="sub-navbar" id="subNavbar">
+                <div class="sub-navbar-content" id="subNavbarContent">
+                    <!-- Options will be populated here by JavaScript -->
+                </div>
+            </div>
         </div>
     </header>
 
@@ -353,7 +375,7 @@
             </div>
             
             <div class="philosophy">
-                <p><a href="vocab/connectives/connectives.html"><strong>DSE 連接詞練習</strong></a> 掌握連接詞用法，令文章更流暢、邏輯更清晰。豐富練習同例子幫你提升DSE英文成績。<br><a href="vocab/connectives/connectives.html"><strong>DSE Connectives Practice</strong></a> Master connectives to make your writing more fluent and logical. Comprehensive exercises and examples to boost your DSE English scores.</p>
+                <p><a href="dse/connectives/connectives.html"><strong>DSE 連接詞練習</strong></a> 掌握連接詞用法，令文章更流暢、邏輯更清晰。豐富練習同例子幫你提升DSE英文成績。<br><a href="dse/connectives/connectives.html"><strong>DSE Connectives Practice</strong></a> Master connectives to make your writing more fluent and logical. Comprehensive exercises and examples to boost your DSE English scores.</p>
             </div>
             
             <div class="philosophy">
@@ -368,7 +390,8 @@
             
             const navItems = document.querySelectorAll('.nav-item');
             const navButtons = document.querySelectorAll('.nav-select-button');
-            const isMobile = window.innerWidth <= 768;
+            const subNavbar = document.getElementById('subNavbar');
+            const subNavbarContent = document.getElementById('subNavbarContent');
             
             // Handle button clicks
             navButtons.forEach(button => {
@@ -376,50 +399,83 @@
                     e.stopPropagation();
                     const navItem = this.closest('.nav-item');
                     const isActive = navItem.classList.contains('active');
+                    const dropdown = navItem.querySelector('.nav-select-dropdown');
+                    const options = dropdown ? dropdown.querySelectorAll('.nav-select-option') : [];
                     
-                    // Close all other dropdowns
+                    // Close all other nav items
                     navItems.forEach(item => {
                         if (item !== navItem) {
                             item.classList.remove('active');
                         }
                     });
                     
-                    // Toggle current dropdown
+                    // Toggle current nav item and sub-navbar
                     if (isActive) {
                         navItem.classList.remove('active');
+                        subNavbar.classList.remove('active');
+                        subNavbarContent.innerHTML = '';
                     } else {
                         navItem.classList.add('active');
                         
-                        // Position dropdown on mobile
-                        if (isMobile) {
-                            const dropdown = navItem.querySelector('.nav-select-dropdown');
-                            if (dropdown) {
-                                requestAnimationFrame(function() {
-                                    const rect = button.getBoundingClientRect();
-                                    dropdown.style.top = (rect.bottom + 8) + 'px';
-                                });
-                            }
+                        // Populate sub-navbar with options
+                        if (options.length > 0) {
+                            subNavbarContent.innerHTML = '';
+                            options.forEach(option => {
+                                const title = option.querySelector('.nav-select-option-title');
+                                const subtitle = option.querySelector('.nav-select-option-subtitle');
+                                const href = option.getAttribute('href');
+                                
+                                const subNavOption = document.createElement('a');
+                                subNavOption.href = href;
+                                subNavOption.className = 'sub-nav-option';
+                                
+                                if (title) {
+                                    const titleSpan = document.createElement('span');
+                                    titleSpan.className = 'sub-nav-option-title';
+                                    titleSpan.textContent = title.textContent;
+                                    subNavOption.appendChild(titleSpan);
+                                }
+                                
+                                if (subtitle) {
+                                    const subtitleSpan = document.createElement('span');
+                                    subtitleSpan.className = 'sub-nav-option-subtitle';
+                                    subtitleSpan.textContent = subtitle.textContent;
+                                    subNavOption.appendChild(subtitleSpan);
+                                }
+                                
+                                subNavbarContent.appendChild(subNavOption);
+                            });
+                            
+                            // Show sub-navbar
+                            subNavbar.classList.add('active');
+                        } else {
+                            subNavbar.classList.remove('active');
+                            subNavbarContent.innerHTML = '';
                         }
                     }
                 });
             });
             
-            // Close dropdowns when clicking outside
+            // Close sub-navbar when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav-item')) {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar')) {
                     navItems.forEach(item => item.classList.remove('active'));
+                    subNavbar.classList.remove('active');
+                    subNavbarContent.innerHTML = '';
                 }
             });
             
-            // Handle option clicks
-            document.querySelectorAll('.nav-select-option').forEach(option => {
-                option.addEventListener('click', function(e) {
+            // Handle sub-nav option clicks
+            subNavbarContent.addEventListener('click', function(e) {
+                if (e.target.closest('.sub-nav-option')) {
                     // Navigation will happen naturally via the href
-                    // Close dropdown after a short delay
+                    // Close sub-navbar after a short delay
                     setTimeout(() => {
                         navItems.forEach(item => item.classList.remove('active'));
+                        subNavbar.classList.remove('active');
+                        subNavbarContent.innerHTML = '';
                     }, 100);
-                });
+                }
             });
         })();
     </script>
