@@ -1,0 +1,617 @@
+// Connectives/Transitions Data for HKDSE English Writing
+// Each item includes: word, example_en (English example), example_zh_HK (Cantonese translation in Hong Kong style)
+
+function createConnective(word, example_en, example_zh_HK) {
+  return { word: word, example_en: example_en, example_zh_HK: example_zh_HK };
+}
+
+window.connectivesData = {
+  "順序 (Sequence)": {
+    "首先 (First)": [
+      createConnective("First", "First, we need to understand the root causes of social inequality.", "首先，我哋要理解社會不平等嘅根本原因。"),
+      createConnective("Firstly", "Firstly, let me address the issue of exam stress among students.", "首先，等我處理學生考試壓力嘅問題。"),
+      createConnective("First of all", "First of all, I would like to express my views on environmental protection.", "首先，我想表達我對環境保護嘅觀點。"),
+      createConnective("To begin with", "To begin with, we should consider the impact of social media on young people.", "一開始，我哋應該考慮社交媒體對年輕人嘅影響。"),
+      createConnective("Initially", "Initially, many students found the new curriculum challenging.", "最初，好多學生覺得新課程好有挑戰性。"),
+      createConnective("Primarily", "Primarily, this issue concerns educational inequality.", "主要係，呢個問題關於教育不平等。"),
+      createConnective("In the first instance", "In the first instance, we must examine the data on youth unemployment.", "首先，我哋必須檢查青年失業數據。"),
+      createConnective("In the first place", "In the first place, we should consider why this policy was necessary.", "首先，我哋應該考慮點解呢個政策係必要。"),
+      createConnective("To commence", "To commence, I shall outline the main arguments regarding climate change.", "開始之前，我會概述關於氣候變化嘅主要論點。"),
+      createConnective("At the outset", "At the outset, let me clarify the objectives of this proposal.", "一開始，等我澄清呢個建議嘅目標。"),
+      createConnective("First and foremost", "First and foremost, student wellbeing must be our priority.", "最重要係，學生福祉必須係我哋嘅優先考慮。"),
+      createConnective("In the initial stages", "In the initial stages of the programme, participation was low.", "計劃初期階段，參與率好低。")
+    ],
+    "其次 (Second)": [
+      createConnective("Second", "Second, we need to find effective solutions to reduce poverty.", "其次，我哋要搵有效方法減少貧窮。"),
+      createConnective("Secondly", "Secondly, we should discuss the impact of technology on education.", "其次，我哋應該討論科技對教育嘅影響。"),
+      createConnective("Next", "Next, we will examine the statistics on air pollution in Hong Kong.", "跟住，我哋會檢查香港空氣污染嘅統計數據。"),
+      createConnective("Then", "Then, we can make an informed decision about the proposal.", "然後，我哋就可以對建議做明智決定。"),
+      createConnective("Subsequently", "Subsequently, the government introduced measures to address the issue.", "之後，政府引入措施處理問題。"),
+      createConnective("Thereafter", "Thereafter, student performance improved significantly.", "之後，學生表現顯著改善。"),
+      createConnective("In the second place", "In the second place, we must consider the long-term consequences.", "第二，我哋必須考慮長期後果。"),
+      createConnective("Following this", "Following this, the school implemented new support programmes.", "跟住，學校實施咗新支援計劃。"),
+      createConnective("In the next instance", "In the next instance, we will address the issue of mental health.", "下一次，我哋會處理心理健康問題。"),
+      createConnective("Sequentially", "We need to tackle these social problems sequentially.", "我哋需要按順序處理呢啲社會問題。"),
+      createConnective("In succession", "In succession, three major environmental disasters occurred.", "連續地，發生咗三單重大環境災難。"),
+      createConnective("In turn", "In turn, each participant presented their views.", "輪流地，每個參與者發表意見。")
+    ],
+    "最後 (Finally)": [
+      createConnective("Finally", "Finally, we reached a consensus on the education reform.", "最後，我哋就教育改革達成共識。"),
+      createConnective("Lastly", "Lastly, I want to emphasize the importance of environmental awareness.", "最後，我想強調環保意識嘅重要性。"),
+      createConnective("Last but not least", "Last but not least, we must address the issue of youth unemployment.", "最後但同樣重要，我哋必須處理青年失業問題。"),
+      createConnective("In conclusion", "In conclusion, we must take immediate action to combat climate change.", "總括而言，我哋而家就要採取行動對抗氣候變化。"),
+      createConnective("Ultimately", "Ultimately, the responsibility lies with each individual.", "最終，責任在於每個人。"),
+      createConnective("In the final analysis", "In the final analysis, quality education benefits everyone.", "最終分析，優質教育對每個人都有好處。"),
+      createConnective("To conclude", "To conclude, social inequality requires urgent attention.", "總結，社會不平等需要迫切關注。"),
+      createConnective("To culminate", "To culminate, the discussion will result in a comprehensive action plan.", "為咗結束，討論會以全面行動計劃結束。"),
+      createConnective("In the final reckoning", "In the final reckoning, student wellbeing matters most.", "最終，學生福祉最重要。"),
+      createConnective("In the ultimate analysis", "In the ultimate analysis, we are all accountable for our environment.", "最終分析，我哋都對環境有責任。"),
+      createConnective("As a final point", "As a final point, let me emphasize the need for change.", "最後一點，等我強調改變嘅需要。"),
+      createConnective("To bring matters to a close", "To bring matters to a close, I'll summarise the key points.", "為咗結束，我會總結關鍵要點。")
+    ]
+  },
+  "遞進 (Addition)": {
+    "而且 (Moreover)": [
+      createConnective("Moreover", "Moreover, online learning offers flexibility for students.", "而且，網上學習為學生提供靈活性。"),
+      createConnective("Furthermore", "Furthermore, the proposal promotes social mobility.", "而且，建議促進社會流動。"),
+      createConnective("In addition", "In addition, we need to consider the mental health of students.", "另外，我哋需要考慮學生嘅心理健康。"),
+      createConnective("Additionally", "Additionally, there are environmental factors to consider.", "另外，有環境因素要考慮。"),
+      createConnective("What's more", "What's more, the programme is accessible to all students.", "而且，計劃所有學生都可以參與。"),
+      createConnective("What is more", "What is more, we have limited funding for this initiative.", "更重要係，我哋呢個計劃資金有限。"),
+      createConnective("Equally importantly", "Equally importantly, we need community engagement.", "同樣重要係，我哋需要社區參與。"),
+      createConnective("By the same token", "By the same token, we should respect cultural diversity.", "同樣地，我哋應該尊重文化多樣性。"),
+      createConnective("In the same vein", "In the same vein, we must address the digital divide.", "同樣地，我哋必須處理數碼鴻溝。"),
+      createConnective("Similarly", "Similarly, other schools face the same challenges.", "同樣地，其他學校都面對同樣挑戰。"),
+      createConnective("Correspondingly", "Correspondingly, student debt rose as tuition fees increased.", "相應地，學費上升時學生債務增加。"),
+      createConnective("In like manner", "In like manner, we should support underprivileged students.", "同樣地，我哋應該支持弱勢學生。"),
+      createConnective("Analogously", "Analogously, this situation reflects the broader social issue.", "類似地，呢個情況反映更廣泛嘅社會問題。"),
+      createConnective("In a similar fashion", "In a similar fashion, we can tackle youth unemployment.", "同樣地，我哋可以處理青年失業。"),
+      createConnective("Complementarily", "These two educational approaches work together complementarily and effectively.", "呢兩種教育方法互補地一齊有效運作。"),
+      createConnective("Augmenting this point", "Augmenting this point, we should also consider the generational impact.", "補充呢點，我哋都應該考慮跨代影響。")
+    ],
+    "另外 (Besides)": [
+      createConnective("Besides", "Besides academic subjects, students also need life skills training.", "除咗學術科目，學生都需要生活技能培訓。"),
+      createConnective("Also", "Also, I advocate for sustainable development.", "另外，我提倡可持續發展。"),
+      createConnective("As well as", "As well as critical thinking skills, students need practical knowledge.", "除咗批判性思維技能，學生需要實用知識。"),
+      createConnective("Not only...but also", "Not only does social media affect communication, but it also influences mental health.", "社交媒體唔單止影響溝通，而且影響心理健康。"),
+      createConnective("In conjunction with", "We work in conjunction with local NGOs to address poverty.", "我哋同本地非政府組織一齊合作處理貧窮。"),
+      createConnective("Coupled with", "Coupled with character development, academic excellence leads to success.", "加上品格發展，學術卓越就會成功。"),
+      createConnective("Together with", "Together with my classmates, I completed the community service project.", "同我同學一齊，我完成咗社區服務計劃。"),
+      createConnective("Alongside", "We work alongside experienced teachers to improve education.", "我哋同有經驗嘅老師一齊工作改善教育。"),
+      createConnective("In tandem with", "We must act in tandem with government policies.", "我哋必須同政府政策一齊行動。"),
+      createConnective("In parallel with", "We are developing this programme in parallel with other initiatives.", "我哋同其他計劃一齊發展呢個項目。"),
+      createConnective("Complemented by", "Complemented by extracurricular activities, the curriculum is comprehensive.", "配埋課外活動，課程係全面。"),
+      createConnective("Supplemented by", "Supplemented by hands-on experience, the theory becomes practical.", "配埋實踐經驗，理論變得實用。"),
+      createConnective("In concert with", "We must act in concert with the education sector.", "我哋必須同教育界一齊行動。")
+    ]
+  },
+  "對比 (Contrast)": {
+    "但是 (But)": [
+      createConnective("But", "But I had other commitments that prevented me from joining.", "但我有其他承諾阻止我參加。"),
+      createConnective("However", "The proposal seems promising. However, we need more evidence.", "建議似乎有希望。但係，我哋需要更多證據。"),
+      createConnective("Nevertheless", "The challenges were significant. Nevertheless, we succeeded.", "挑戰好大。但係，我哋成功咗。"),
+      createConnective("Nonetheless", "The funding was limited. Nonetheless, we proceeded with the project.", "資金有限。但係，我哋都繼續進行計劃。"),
+      createConnective("Yet", "Yet he didn't achieve the desired results despite studying hard.", "但係儘管好努力讀書，佢冇達到預期結果。"),
+      createConnective("Notwithstanding", "Notwithstanding the economic constraints, we persevered.", "儘管有經濟限制，我哋都堅持落去。"),
+      createConnective("Be that as it may", "Be that as it may, we must continue our efforts.", "無論如何，我哋都要繼續努力。"),
+      createConnective("Having said that", "The HKDSE is challenging. Having said that, it's not insurmountable.", "文憑試好有挑戰性。話雖如此，唔係無法克服。"),
+      createConnective("That said", "That said, we should still pursue our goals.", "話雖如此，我哋都應該追求目標。"),
+      createConnective("All the same", "All the same, I appreciate your contribution to the discussion.", "無論如何，我都多謝你對討論嘅貢獻。"),
+      createConnective("Even so", "Even so, we shouldn't abandon our principles.", "即使係咁，我哋都唔應該放棄原則。"),
+      createConnective("Still", "The solution is costly. Still, it's worth implementing.", "解決方法好貴。但係，值得實施。"),
+      createConnective("In spite of this", "In spite of this, we remain committed to change.", "儘管係咁，我哋仍然致力改變。"),
+      createConnective("For all that", "For all that, I still believe in the power of education.", "儘管係咁，我仍然相信教育嘅力量。"),
+      createConnective("At the same time", "At the same time, we must be mindful of the consequences.", "同時，我哋必須注意後果。"),
+      createConnective("On the flip side", "On the flip side, there are also positive outcomes.", "另一方面，都有正面結果。")
+    ],
+    "雖然 (Although)": [
+      createConnective("Although", "Although exam pressure is high, students should maintain balance.", "雖然考試壓力好大，但學生應該保持平衡。"),
+      createConnective("Though", "Though he's from a disadvantaged background, he's very determined.", "雖然佢來自弱勢背景，但好有決心。"),
+      createConnective("Even though", "Even though the task was demanding, I kept studying.", "即使任務好有挑戰性，我都繼續讀書。"),
+      createConnective("Despite", "Despite the economic downturn, we succeeded in our goals.", "儘管經濟低迷，我哋都成功達成目標。"),
+      createConnective("In spite of", "In spite of the criticism, the policy continued.", "儘管有批評，政策都繼續。"),
+      createConnective("Notwithstanding the fact that", "Notwithstanding the fact that it's challenging, we must try.", "儘管好有挑戰性，我哋都要試。"),
+      createConnective("Albeit", "Albeit resource-intensive, the programme is effective.", "雖然需要好多資源，計劃有效。"),
+      createConnective("Albeit that", "Albeit that he's new to the school, he's enthusiastic.", "雖然佢係新嚟學校，但好有熱誠。"),
+      createConnective("While", "While I agree with the principle, I have some concerns about implementation.", "雖然我同意原則，但我對實施有啲擔心。"),
+      createConnective("Whilst", "Whilst education reform is important, we can't ignore other social issues.", "雖然教育改革重要，但我哋唔可以忽略其他社會問題。"),
+      createConnective("Whereas", "Some students prefer online learning, whereas others favour traditional classrooms.", "有啲學生鍾意網上學習，但其他人鍾意傳統課堂。"),
+      createConnective("Much as", "Much as I'd like to support this, I have reservations.", "雖然我好想支持呢個，但我有保留。"),
+      createConnective("Granted that", "Granted that the solution is costly, it's still worthwhile.", "雖然解決方法好貴，但都值得。"),
+      createConnective("Admitting that", "Admitting that you're right, I still have concerns.", "雖然你啱，但我仍然有擔心。"),
+      createConnective("For all that", "For all that he's academically successful, he struggles with social skills.", "雖然佢學術成功，但社交技能有困難。")
+    ],
+    "相反 (On the contrary)": [
+      createConnective("On the contrary", "I'm not discouraged. On the contrary, I'm more motivated than ever.", "我唔氣餒。相反，我比以往更有動力。"),
+      createConnective("Conversely", "Conversely, some educators prefer traditional teaching methods.", "相反，有啲教育工作者鍾意傳統教學方法。"),
+      createConnective("In contrast", "In contrast, the new curriculum is more student-centred.", "相反，新課程更以學生為本。"),
+      createConnective("On the other hand", "On the other hand, there are drawbacks to consider.", "另一方面，都有缺點要考慮。"),
+      createConnective("By contrast", "By contrast, the previous cohort performed better.", "相反，上一屆表現更好。"),
+      createConnective("In contradistinction", "In contradistinction to popular belief, exam stress is manageable.", "同普遍想法相反，考試壓力係可以管理嘅。"),
+      createConnective("As opposed to", "I support comprehensive education as opposed to exam-focused learning.", "我支持全人教育，唔支持考試導向學習。"),
+      createConnective("In opposition to", "In opposition to his views, I think we should act immediately.", "同佢嘅觀點相反，我覺得應該立即行動。"),
+      createConnective("Inversely", "Inversely, when support increases, student stress decreases.", "相反，當支持增加，學生壓力下降。"),
+      createConnective("On the flip side", "On the flip side, there are also positive developments.", "另一方面，都有正面發展。"),
+      createConnective("Diametrically opposed", "Our views on education reform are diametrically opposed.", "我哋對教育改革嘅觀點完全相反。")
+    ]
+  },
+  "原因 (Cause)": {
+    "因為 (Because)": [
+      createConnective("Because", "Because many students lack adequate support, they struggle.", "因為好多學生缺乏足夠支持，佢哋掙扎。"),
+      createConnective("Since", "Since we're discussing education, let's address the exam system.", "既然我哋討論教育，我哋處理考試制度。"),
+      createConnective("As", "As environmental issues worsen, we must take action.", "因為環境問題惡化，我哋必須採取行動。"),
+      createConnective("Due to", "Due to the typhoon warning, the event was cancelled.", "因為颱風警告，活動被取消。"),
+      createConnective("Owing to", "Owing to his dedication, he achieved excellent results.", "因為佢嘅投入，佢取得優秀成績。"),
+      createConnective("By virtue of", "By virtue of her qualifications, she secured the position.", "因為佢有資格，佢得到職位。"),
+      createConnective("As a consequence of", "As a consequence of the policy change, student numbers increased.", "因為政策改變，學生人數增加。"),
+      createConnective("On account of", "On account of the pandemic, classes moved online.", "因為疫情，課堂轉為網上。"),
+      createConnective("In view of", "In view of the current situation, we should reconsider our approach.", "考慮到目前情況，我哋應該重新考慮方法。"),
+      createConnective("In light of", "In light of recent research, we need to update our methods.", "考慮到最近研究，我哋需要更新方法。"),
+      createConnective("Given that", "Given that inequality persists, we must take action.", "既然不平等持續，我哋必須採取行動。"),
+      createConnective("Seeing that", "Seeing that you're concerned, let me explain further.", "既然你擔心，等我進一步解釋。"),
+      createConnective("Inasmuch as", "Inasmuch as we share common goals, let's collaborate.", "既然我哋有共同目標，我哋合作。"),
+      createConnective("For the reason that", "For the reason that it affects students' wellbeing, we must address it.", "因為影響學生福祉，我哋必須處理。"),
+      createConnective("On the grounds that", "On the grounds that it's discriminatory, we object.", "因為係歧視性，我哋反對。"),
+      createConnective("Attributable to", "Attributable to better teaching methods, the improvement was significant.", "歸因於更好教學方法，改善好顯著。"),
+      createConnective("Stemming from", "The problem stems from inadequate funding for education.", "問題源於教育資金不足。"),
+      createConnective("Arising from", "Issues arising from social inequality must be addressed.", "社會不平等引起嘅問題必須處理。")
+    ],
+    "所以 (Therefore)": [
+      createConnective("Therefore", "Therefore, we should implement support programmes as student stress levels are rising.", "所以，因為學生壓力水平上升，我哋應該實施支援計劃。"),
+      createConnective("Hence", "Hence, he achieved excellent results through consistent study.", "所以，通過持續讀書，佢取得優秀成績。"),
+      createConnective("Thus", "Thus, educational outcomes improved after the policy was implemented.", "所以，政策實施後，教育成果改善。"),
+      createConnective("As a result", "As a result of regular practice, his skills improved significantly.", "結果，因為定期練習，佢技能顯著改善。"),
+      createConnective("Consequently", "Consequently, we had to scale back the programme due to reduced funding.", "結果，因為資金被削減，我哋要縮減計劃。"),
+      createConnective("Accordingly", "The curriculum changed. Accordingly, we must adapt our teaching methods.", "課程改咗。所以，我哋必須適應教學方法。"),
+      createConnective("It follows that", "If education is a right, it follows that it should be accessible to all.", "如果教育係權利，所以應該所有人都可以獲得。"),
+      createConnective("For this reason", "For this reason, we cannot support the current proposal.", "因為呢個原因，我哋唔可以支持目前建議。"),
+      createConnective("As a consequence", "As a consequence, many students struggled with the new system.", "結果，好多學生對新制度有困難。"),
+      createConnective("In consequence", "In consequence, the initiative was postponed.", "結果，計劃被延期。"),
+      createConnective("For that reason", "For that reason, I cannot agree with this approach.", "因為呢個原因，我唔可以同意呢個方法。"),
+      createConnective("This being the case", "This being the case, we need a comprehensive solution.", "既然係咁，我哋需要全面解決方法。"),
+      createConnective("In that case", "In that case, let's reconsider our strategy.", "既然係咁，我哋重新考慮策略。"),
+      createConnective("Under these circumstances", "Under these circumstances, we have limited options.", "喺呢啲情況下，我哋選擇有限。")
+    ]
+  },
+  "舉例 (Examples)": {
+    "例如 (For example)": [
+      createConnective("For example", "Many social issues affect students. For example, poverty and inequality.", "好多社會問題影響學生。例如，貧窮同不平等。"),
+      createConnective("For instance", "Some environmental problems are urgent. For instance, air pollution in Hong Kong.", "有啲環境問題好迫切。例如，香港空氣污染。"),
+      createConnective("Such as", "Students face various challenges, such as exam pressure and social media addiction.", "學生面對各種挑戰，例如考試壓力同社交媒體成癮。"),
+      createConnective("Like", "These activities, like volunteering and community service, are valuable.", "呢啲活動，例如義工服務同社區服務，好有價值。"),
+      createConnective("To cite an instance", "To cite an instance, educational inequality is a pressing concern.", "舉個例子，教育不平等係迫切關注。"),
+      createConnective("To exemplify", "To exemplify, let me share a case study from a local school.", "舉例說明，等我分享本地學校嘅個案研究。"),
+      createConnective("A case in point", "A case in point is the recent increase in student mental health issues.", "一個好例子係最近學生心理健康問題增加。"),
+      createConnective("To illustrate", "To illustrate, imagine a student struggling with exam anxiety.", "舉例說明，想像一個學生面對考試焦慮。"),
+      createConnective("By way of illustration", "By way of illustration, consider the impact of social media on teenagers.", "舉例說明，考慮社交媒體對青少年嘅影響。"),
+      createConnective("As an illustration", "As an illustration, here's what happened in a similar situation.", "舉例說明，呢度係類似情況發生咗咩事。"),
+      createConnective("To demonstrate", "To demonstrate, let me present the survey data.", "示範，等我展示調查數據。"),
+      createConnective("To show", "To show you what I mean, here's a relevant example.", "為咗示範我嘅意思，呢度有個相關例子。"),
+      createConnective("As evidence", "As evidence, here are the statistics on youth unemployment.", "作為證據，呢度有青年失業統計數據。"),
+      createConnective("To cite a case", "To cite a case, the recent policy change demonstrates this principle.", "舉個例子，最近政策改變示範呢個原則。"),
+      createConnective("As a demonstration", "As a demonstration, this programme shows effective results.", "作為示範，呢個計劃顯示有效結果。"),
+      createConnective("In exemplification", "In exemplification of this point, consider the following scenario.", "為咗說明呢點，考慮下以下情況。"),
+      createConnective("To adduce an example", "To adduce an example, the recent research study substantiates this claim.", "舉個例子，最近研究證實呢個說法。")
+    ],
+    "具體來說 (Specifically)": [
+      createConnective("Specifically", "Specifically, we should enhance student support systems to improve education.", "具體嚟講，我哋應該加強學生支援系統改善教育。"),
+      createConnective("In particular", "In particular, youth unemployment is a pressing social issue.", "特別係，青年失業係迫切社會問題。"),
+      createConnective("To illustrate", "To illustrate my point, let me explain the situation further.", "為咗說明我嘅觀點，等我進一步解釋情況。"),
+      createConnective("To elucidate", "To elucidate, I'll provide more details about the proposal.", "為咗說明，我會提供更多關於建議嘅細節。"),
+      createConnective("Namely", "Three core subjects are required, namely English, Chinese and Mathematics.", "需要三科核心科目，即係英文、中文同數學。"),
+      createConnective("That is to say", "We need more resources. That is to say, at least 20% more funding.", "我哋需要更多資源。即係話，至少多20%資金。"),
+      createConnective("To be precise", "To be precise, we need exactly 100 participants for the study.", "準確嚟講，我哋研究需要剛好100個參與者。"),
+      createConnective("To be exact", "To be exact, the programme starts in September 2024.", "準確嚟講，計劃2024年9月開始。"),
+      createConnective("In specific terms", "In specific terms, we need additional funding of $500,000.", "具體嚟講，我哋需要額外50萬資金。"),
+      createConnective("More precisely", "More precisely, we should focus on quality over quantity.", "更準確嚟講，我哋應該專注質素多過數量。"),
+      createConnective("More specifically", "More specifically, we need to improve our English writing skills.", "更具體嚟講，我哋需要改善英文寫作技能。"),
+      createConnective("In detail", "Let me explain the education reform in detail.", "等我詳細解釋教育改革。"),
+      createConnective("In particular detail", "We need to address each aspect of the problem in particular detail.", "我哋需要特別詳細處理問題嘅每個方面。"),
+      createConnective("To particularise", "To particularise, I'll list the specific requirements.", "具體化，我會列出具體要求。"),
+      createConnective("To specify", "To specify, we need three components: funding, training and support.", "具體嚟講，我哋需要三個部分：資金、培訓同支援。")
+    ]
+  },
+  "總結 (Summary)": {
+    "總括來說 (In summary)": [
+      createConnective("In summary", "In summary, we have three main arguments regarding education reform.", "總括而言，我哋有三個關於教育改革嘅主要論點。"),
+      createConnective("To sum up", "To sum up, addressing social inequality is crucial.", "總結，處理社會不平等係關鍵。"),
+      createConnective("In conclusion", "In conclusion, we must take immediate action to support students.", "總結，我哋必須立即採取行動支持學生。"),
+      createConnective("To conclude", "To conclude, let me thank everyone for their contributions.", "總結，等我多謝大家嘅貢獻。"),
+      createConnective("All in all", "All in all, it was a successful initiative to improve education.", "總括而言，係個成功改善教育嘅計劃。"),
+      createConnective("To recapitulate", "To recapitulate, the main issues are poverty, inequality and access to education.", "重述，主要問題係貧窮、不平等同教育機會。"),
+      createConnective("In summation", "In summation, we have achieved our educational objectives.", "總結，我哋達成咗教育目標。"),
+      createConnective("In essence", "In essence, we need more collaboration between stakeholders.", "本質上，我哋需要持份者之間更多合作。"),
+      createConnective("In brief", "In brief, the educational landscape is evolving.", "簡短嚟講，教育環境正在演變。"),
+      createConnective("In short", "In short, we need more comprehensive support for students.", "簡短嚟講，我哋需要為學生提供更全面支援。"),
+      createConnective("To summarise", "To summarise, three factors are crucial: funding, policy and community support.", "總結，三個因素好關鍵：資金、政策同社區支持。"),
+      createConnective("In a nutshell", "In a nutshell, we need better communication between schools and parents.", "簡單嚟講，我哋需要學校同家長之間更好溝通。"),
+      createConnective("To encapsulate", "To encapsulate, the key message is that education transforms lives.", "總結，關鍵信息係教育改變人生。"),
+      createConnective("In the final analysis", "In the final analysis, quality education benefits society as a whole.", "最終分析，優質教育對整個社會都有好處。"),
+      createConnective("In the main", "In the main, the education reform was successful.", "主要嚟講，教育改革成功。"),
+      createConnective("On the whole", "On the whole, the programme outcomes are positive.", "整體嚟講，計劃結果係正面。"),
+      createConnective("By and large", "By and large, students are satisfied with the new curriculum.", "大致上，學生對新課程滿意。"),
+      createConnective("In the aggregate", "In the aggregate, we have made significant educational progress.", "總體而言，我哋有顯著教育進步。"),
+      createConnective("Taken together", "Taken together, these factors explain the improvement in student performance.", "綜合而言，呢啲因素解釋學生表現改善。"),
+      createConnective("Collectively speaking", "Collectively speaking, we have achieved substantial improvements in education.", "整體而言，我哋在教育方面達成咗實質改善。")
+    ],
+    "重述 (Restatement)": [
+      createConnective("To reiterate", "To reiterate, student wellbeing must remain our top priority.", "重申，學生福祉必須保持我哋嘅最高優先。"),
+      createConnective("To restate", "To restate, the core issue is educational inequality.", "重述，核心問題係教育不平等。"),
+      createConnective("To recapitulate", "To recapitulate, we have three main concerns: funding, resources and support.", "重述，我哋有三個主要關注：資金、資源同支援。"),
+      createConnective("To review", "To review, let me recall the key points we discussed.", "回顧，等我回顧我哋討論過嘅關鍵要點。"),
+      createConnective("To recall", "To recall, we identified three major challenges facing students.", "回顧，我哋識別咗學生面對嘅三個主要挑戰。"),
+      createConnective("To revisit", "To revisit, the fundamental question is how to improve educational outcomes.", "重新審視，根本問題係點樣改善教育成果。"),
+      createConnective("To re-emphasize", "To re-emphasize, comprehensive support is essential for student success.", "重新強調，全面支援對學生成功係必需。"),
+      createConnective("To reinforce", "To reinforce this point, let me provide additional evidence.", "為咗加強呢點，等我提供額外證據。"),
+      createConnective("To underscore", "To underscore the importance, consider the long-term impact on students.", "為咗強調重要性，考慮對學生嘅長期影響。"),
+      createConnective("To stress again", "To stress again, immediate action is required to address this crisis.", "再次強調，需要立即行動處理呢個危機。"),
+      createConnective("To highlight once more", "To highlight once more, the statistics reveal a concerning trend.", "再次強調，統計數據揭示令人擔憂嘅趨勢。"),
+      createConnective("To bring back to mind", "To bring back to mind, we must remember the original objectives.", "提醒，我哋必須記住原本目標。"),
+      createConnective("To remind", "To remind you, the deadline for submissions is next Friday.", "提醒你，提交截止日期係下星期五。"),
+      createConnective("To refresh", "To refresh our memory, let's review the main arguments.", "為咗刷新記憶，我哋回顧主要論點。"),
+      createConnective("To re-examine", "To re-examine, we need to look at this issue from a different angle.", "重新檢視，我哋需要從不同角度睇呢個問題。")
+    ]
+  },
+  "條件 (Condition)": {
+    "如果 (If)": [
+      createConnective("If", "If we invest in education, society will benefit.", "如果我哋投資教育，社會會受益。"),
+      createConnective("Provided that", "You can participate, provided that you meet the requirements.", "你可以參與，只要你符合要求。"),
+      createConnective("As long as", "As long as you study consistently, you'll succeed in the HKDSE.", "只要你持續讀書，你就會喺文憑試成功。"),
+      createConnective("On condition that", "I'll support this on condition that you provide evidence.", "我會支持呢個，條件係你提供證據。"),
+      createConnective("In case", "Prepare thoroughly in case the exam is more difficult than expected.", "充分準備，以防考試比預期更難。"),
+      createConnective("Subject to", "Subject to approval, we can implement the programme.", "有待批准，我哋可以實施計劃。"),
+      createConnective("Contingent upon", "The success is contingent upon adequate funding.", "成功取決於足夠資金。"),
+      createConnective("Assuming that", "Assuming that you agree, we'll proceed with the proposal.", "假設你同意，我哋會繼續進行建議。"),
+      createConnective("Supposing that", "Supposing that the data is accurate, what should we do?", "假設數據準確，我哋應該點做？"),
+      createConnective("Given that", "Given that inequality is increasing, we must act now.", "既然不平等增加緊，我哋必須而家行動。"),
+      createConnective("In the event that", "In the event that you need assistance, contact the support team.", "如果你需要協助，聯絡支援團隊。"),
+      createConnective("Should", "Should you encounter difficulties, seek help immediately.", "如果你遇到困難，立即尋求幫助。"),
+      createConnective("Were...to", "Were you to reconsider, let me know your decision.", "如果你重新考慮，話我知你嘅決定。"),
+      createConnective("In the circumstance that", "In the circumstance that the plan fails, we have alternatives.", "如果計劃失敗，我哋有替代方案。"),
+      createConnective("On the assumption that", "On the assumption that the research is valid, we'll proceed.", "假設研究有效，我哋會繼續。"),
+      createConnective("With the proviso that", "With the proviso that you complete all assignments, you can join.", "條件係你完成所有作業，你可以參加。"),
+      createConnective("Conditional upon", "The scholarship is conditional upon maintaining good grades.", "獎學金取決於保持好成績。")
+    ],
+    "除非 (Unless)": [
+      createConnective("Unless", "Unless we address inequality, the problem will worsen.", "除非我哋處理不平等，否則問題會惡化。"),
+      createConnective("If not", "Submit your assignment on time. If not, you'll face penalties.", "準時交你嘅作業。如果唔係，你會面對處罰。"),
+      createConnective("Otherwise", "Study consistently. Otherwise, you'll struggle in the exam.", "持續讀書。否則，你考試會有困難。"),
+      createConnective("Failing which", "Complete the requirements by the deadline. Failing which, you'll be disqualified.", "截止日期前完成要求。否則，你會被取消資格。"),
+      createConnective("In the absence of", "In the absence of adequate funding, we cannot proceed with the programme.", "冇足夠資金，我哋唔可以繼續進行計劃。"),
+      createConnective("Barring", "Barring any unforeseen circumstances, we'll complete the project on schedule.", "除非有不可預見情況，否則我哋會按時完成計劃。"),
+      createConnective("Save for", "Save for a few dissenting voices, everyone supported the proposal.", "除咗幾個反對聲音，所有人都支持建議。"),
+      createConnective("Except if", "We'll proceed with the plan except if there are major objections.", "我哋會繼續進行計劃，除非有重大反對。"),
+      createConnective("But for", "But for your support, I would have struggled with the exam.", "如果唔係你支持，我會對考試有困難。"),
+      createConnective("Without", "Without proper guidance, students cannot achieve their potential.", "冇適當指導，學生無法發揮潛能。"),
+      createConnective("Lacking", "Lacking adequate resources, we cannot implement effective solutions.", "缺乏足夠資源，我哋無法實施有效解決方法。"),
+      createConnective("In default of", "In default of sufficient evidence, the proposal was rejected.", "如果冇足夠證據，建議被拒絕。"),
+      createConnective("In want of", "In want of concrete data, we cannot draw conclusions.", "缺乏具體數據，我哋無法得出結論。")
+    ]
+  },
+  "讓步 (Concession)": {
+    "即使 (Even if)": [
+      createConnective("Even if", "Even if the task is challenging, we should attempt it.", "即使任務好有挑戰性，我哋都應該嘗試。"),
+      createConnective("Even though", "Even though I'm stressed, I'll continue studying.", "即使我有壓力，我都會繼續讀書。"),
+      createConnective("Although", "Although the solution is costly, it's worth implementing.", "雖然解決方法好貴，但值得實施。"),
+      createConnective("Though", "Though he's from a disadvantaged background, he's very capable.", "雖然佢來自弱勢背景，但好有能力。"),
+      createConnective("Albeit", "The programme is effective, albeit requiring significant investment.", "計劃有效，雖然需要大量投資。"),
+      createConnective("Notwithstanding", "Notwithstanding the economic challenges, we succeeded.", "儘管有經濟挑戰，我哋都成功。"),
+      createConnective("Granted that", "Granted that it's demanding, we must still pursue excellence.", "雖然好有要求，但我哋都必須追求卓越。"),
+      createConnective("Admitting that", "Admitting that you're correct, I have reservations about the approach.", "雖然你啱，但我對方法有保留。"),
+      createConnective("Allowing that", "Allowing that it's feasible, it's still challenging.", "雖然可行，但仍然好有挑戰性。"),
+      createConnective("While", "While I understand your perspective, I cannot fully agree.", "雖然我理解你嘅觀點，但我唔可以完全同意。"),
+      createConnective("Whilst", "Whilst exam preparation is important, we can't ignore student wellbeing.", "雖然考試準備重要，但我哋唔可以忽略學生福祉。"),
+      createConnective("Much as", "Much as I'd like to support this, I have concerns about feasibility.", "雖然我好想支持呢個，但我對可行性有擔心。"),
+      createConnective("For all that", "For all that he's academically gifted, he still needs support.", "雖然佢學術有天賦，但仍然需要支持。"),
+      createConnective("Despite the fact that", "Despite the fact that resources are limited, we proceeded.", "儘管資源有限，我哋都繼續。"),
+      createConnective("In spite of the fact that", "In spite of the fact that it's demanding, we'll persevere.", "儘管好有要求，我哋都會堅持。"),
+      createConnective("Regardless of the fact that", "Regardless of the fact that it's controversial, we continued the discussion.", "儘管有爭議，我哋都繼續討論。")
+    ],
+    "儘管 (Despite)": [
+      createConnective("Despite", "Despite the challenges, students continued to excel.", "儘管有挑戰，學生繼續表現優秀。"),
+      createConnective("In spite of", "In spite of the economic downturn, we succeeded in our goals.", "儘管經濟低迷，我哋都成功達成目標。"),
+      createConnective("Regardless of", "Regardless of the obstacles, we'll pursue educational reform.", "無論有咩障礙，我哋都會追求教育改革。"),
+      createConnective("Irrespective of", "Irrespective of your views, we'll proceed with the initiative.", "無論你點諗，我哋都會繼續進行計劃。"),
+      createConnective("Notwithstanding", "Notwithstanding the constraints, we persevered with the project.", "儘管有約束，我哋都堅持進行計劃。"),
+      createConnective("In the face of", "In the face of adversity, students demonstrated resilience.", "面對逆境，學生展現韌性。"),
+      createConnective("Undeterred by", "Undeterred by setbacks, he continued his studies.", "不被挫折阻擋，佢繼續讀書。"),
+      createConnective("Unmindful of", "Unmindful of the challenges, they pursued their goals.", "唔理挑戰，佢哋追求目標。")
+    ]
+  },
+  "目的 (Purpose)": {
+    "為了 (In order to)": [
+      createConnective("In order to", "In order to succeed in the HKDSE, we must study systematically.", "為咗喺文憑試成功，我哋必須有系統地讀書。"),
+      createConnective("So as to", "So as to avoid exam stress, we started early.", "為咗避免考試壓力，我哋早開始。"),
+      createConnective("For the purpose of", "For the purpose of improving education, we conduct regular reviews.", "為咗改善教育，我哋定期檢討。"),
+      createConnective("With the aim of", "With the aim of reducing inequality, we implemented new policies.", "為咗減少不平等，我哋實施咗新政策。"),
+      createConnective("With a view to", "With a view to enhancing student wellbeing, we prepared comprehensive support.", "為咗提升學生福祉，我哋準備咗全面支援。"),
+      createConnective("With the intention of", "With the intention of helping disadvantaged students, I volunteered.", "為咗幫助弱勢學生，我自願參加。"),
+      createConnective("With the objective of", "With the objective of achieving excellence, we trained intensively.", "為咗達到卓越，我哋密集訓練。"),
+      createConnective("With the goal of", "With the goal of passing the HKDSE, I studied consistently.", "為咗通過文憑試，我持續讀書。"),
+      createConnective("For the sake of", "For the sake of student wellbeing, we must reduce exam pressure.", "為咗學生福祉，我哋必須減少考試壓力。"),
+      createConnective("To the end that", "To the end that we may achieve educational equity, we work diligently.", "為咗我哋可以達到教育公平，我哋努力。"),
+      createConnective("So that", "Study systematically so that you can excel in the exam.", "有系統地讀書，咁你先可以喺考試表現優秀。"),
+      createConnective("With a mind to", "With a mind to improving his English, he practices daily.", "為咗改善佢英文，佢每日練習。"),
+      createConnective("In the interest of", "In the interest of fairness, we should reconsider the admission criteria.", "為咗公平，我哋應該重新考慮入學標準。"),
+      createConnective("With the design of", "With the design of helping underprivileged students, she became a tutor.", "為咗幫助弱勢學生，佢做咗導師。")
+    ],
+    "以免 (Lest)": [
+      createConnective("Lest", "Study consistently lest you should struggle in the exam.", "持續讀書，以免考試有困難。"),
+      createConnective("So that...not", "We started early so that we would not face time pressure.", "我哋早開始，以免面對時間壓力。"),
+      createConnective("In case", "Prepare thoroughly in case the questions are more difficult than expected.", "充分準備，以防問題比預期更難。"),
+      createConnective("For fear that", "He studied diligently for fear that he might fail the exam.", "佢努力讀書，怕會考試失敗。"),
+      createConnective("To avoid", "To avoid student burnout, we implemented measures.", "為咗避免學生過度疲勞，我哋實施措施。"),
+      createConnective("To prevent", "To prevent educational inequality, we introduced policies.", "為咗防止教育不平等，我哋引入政策。"),
+      createConnective("To avert", "To avert a crisis in student mental health, we acted promptly.", "為咗避免學生心理健康危機，我哋快速行動。"),
+      createConnective("To forestall", "To forestall student difficulties, we prepared comprehensive support.", "為咗防止學生困難，我哋準備全面支援。"),
+      createConnective("To obviate", "To obviate potential problems, we took preventive measures.", "為咗避免潛在問題，我哋採取預防措施。"),
+      createConnective("To preclude", "To preclude misunderstandings, we established clear guidelines.", "為咗避免誤解，我哋建立清晰指引。"),
+      createConnective("To stave off", "To stave off educational decline, we increased funding.", "為咗避免教育衰退，我哋增加資金。"),
+      createConnective("To ward off", "To ward off student stress, we promoted healthy habits.", "為咗避免學生壓力，我哋推廣健康習慣。")
+    ]
+  },
+  "時間 (Time)": {
+    "當...時 (When)": [
+      createConnective("When", "When I arrived at the exam hall, the test had already begun.", "當我到達試場時，考試已經開始。"),
+      createConnective("While", "While I was studying for the HKDSE, I maintained a balanced lifestyle.", "當我準備文憑試時，我保持平衡生活。"),
+      createConnective("As", "As I was completing the assignment, I realised its importance.", "當我完成作業時，我意識到重要性。"),
+      createConnective("During", "During the exam period, students should maintain focus.", "考試期間，學生應該保持專注。"),
+      createConnective("Throughout", "Throughout the academic year, students face various challenges.", "整個學年，學生面對各種挑戰。"),
+      createConnective("In the course of", "In the course of the research, we discovered significant findings.", "研究期間，我哋發現重要發現。"),
+      createConnective("Whilst", "Whilst preparing for exams, students should also prioritise wellbeing.", "準備考試時，學生都應該優先考慮福祉。"),
+      createConnective("At the time when", "At the time when I applied, the requirements were different.", "我申請時，要求唔同。"),
+      createConnective("At the moment that", "At the moment that I received the results, I felt relieved.", "我收到結果嗰刻，我感到輕鬆。"),
+      createConnective("In the period when", "In the period when I was preparing for exams, I learned valuable skills.", "我準備考試期間，我學到有價值技能。"),
+      createConnective("Concurrently with", "This policy change happened concurrently with the curriculum reform.", "呢個政策改變同課程改革同時發生。"),
+      createConnective("Coincident with", "The exam period was coincident with the peak stress time.", "考試期間同壓力高峰期同時。"),
+      createConnective("Synchronously with", "We developed the programme synchronously with other initiatives.", "我哋同其他計劃同步發展項目。"),
+      createConnective("Simultaneously with", "The events occurred simultaneously with each other.", "事件同時發生。")
+    ],
+    "之後 (After)": [
+      createConnective("After", "After the HKDSE exam, students can finally relax.", "文憑試之後，學生終於可以放鬆。"),
+      createConnective("Following", "Following the policy announcement, schools implemented changes.", "政策公布之後，學校實施改變。"),
+      createConnective("Subsequently", "Subsequently, student performance improved significantly.", "之後，學生表現顯著改善。"),
+      createConnective("Afterwards", "We completed the research. Afterwards, we published our findings.", "我哋完成研究。之後，我哋發表發現。"),
+      createConnective("In the wake of", "In the wake of the pandemic, online learning became essential.", "疫情之後，網上學習變得必需。"),
+      createConnective("In the aftermath of", "In the aftermath of the exam results, new support measures were introduced.", "考試結果之後，引入咗新支援措施。"),
+      createConnective("Subsequent to", "Subsequent to the review, improvements were made.", "檢討之後，做咗改善。"),
+      createConnective("Following on from", "Following on from that, we need to take concrete action.", "跟住，我哋需要採取具體行動。"),
+      createConnective("Thereafter", "Thereafter, the programme continued successfully.", "之後，計劃繼續成功進行。"),
+      createConnective("Later", "I'll discuss this with you later.", "我遲啲同你討論。"),
+      createConnective("Later on", "Later on, we'll address the remaining issues.", "遲啲，我哋會處理剩餘問題。"),
+      createConnective("In due course", "In due course, you'll appreciate the value of this approach.", "適當時候，你會欣賞呢個方法嘅價值。"),
+      createConnective("Post", "Post examination, students can focus on other pursuits.", "考試後，學生可以專注其他追求。"),
+      createConnective("Following which", "We completed the programme, following which we evaluated its impact.", "我哋完成計劃，之後我哋評估影響。")
+    ],
+    "之前 (Before)": [
+      createConnective("Before", "Before the HKDSE exam, I studied systematically.", "文憑試之前，我系統地讀書。"),
+      createConnective("Prior to", "Prior to the exam, students should review thoroughly.", "考試之前，學生應該徹底溫習。"),
+      createConnective("Previously", "Previously, the education system focused mainly on exams.", "之前，教育制度主要專注考試。"),
+      createConnective("Antecedent to", "Antecedent to this policy change, there were extensive consultations.", "呢個政策改變之前，有廣泛諮詢。"),
+      createConnective("Preceding", "In the preceding section, we discussed the challenges.", "前一節，我哋討論過挑戰。"),
+      createConnective("Earlier", "Earlier this year, we introduced new support measures.", "今年早啲，我哋引入咗新支援措施。"),
+      createConnective("Earlier on", "Earlier on, we discussed the impact of social media.", "早啲，我哋討論過社交媒體嘅影響。"),
+      createConnective("In advance of", "In advance of the deadline, submit your assignment.", "截止日期之前，交你嘅作業。"),
+      createConnective("Ahead of", "Ahead of schedule, we completed the programme.", "提前，我哋完成咗計劃。"),
+      createConnective("Pre-", "Pre-exam anxiety is common among students.", "考試前焦慮係學生常見。"),
+      createConnective("Foregoing", "The foregoing arguments support our position.", "以上論點支持我哋嘅立場。"),
+      createConnective("Preceding which", "The developments preceding which were crucial.", "之前發生嘅發展好關鍵。"),
+      createConnective("Prior to which", "Prior to which, we had limited understanding of the issue.", "之前，我哋對問題理解有限。")
+    ],
+    "同時 (Meanwhile)": [
+      createConnective("Meanwhile", "I'll review the notes. Meanwhile, you can practice past papers.", "我會溫習筆記。同時，你可以練習歷屆試題。"),
+      createConnective("At the same time", "We can pursue academic excellence and personal development at the same time.", "我哋可以同時追求學術卓越同個人發展。"),
+      createConnective("Simultaneously", "Both educational reforms happened simultaneously.", "兩個教育改革同時發生。"),
+      createConnective("Concurrently", "We worked on multiple initiatives concurrently.", "我哋同時進行多個計劃。"),
+      createConnective("In parallel", "We developed these educational strategies in parallel.", "我哋同時發展呢啲教育策略。"),
+      createConnective("Coincidentally", "Coincidentally, we both chose the same research topic.", "巧合地，我哋都選擇同樣研究主題。"),
+      createConnective("Synchronously", "We implemented the changes synchronously across all schools.", "我哋同步喺所有學校實施改變。"),
+      createConnective("In tandem", "We worked in tandem with educational experts.", "我哋同教育專家互相配合工作。"),
+      createConnective("At once", "We need to address student mental health at once.", "我哋需要立即處理學生心理健康。"),
+      createConnective("All at once", "All at once, multiple challenges emerged.", "突然間，多個挑戰出現。"),
+      createConnective("In unison", "We responded in unison to the crisis.", "我哋一致回應危機。"),
+      createConnective("In concert", "We acted in concert with the education sector.", "我哋同教育界一齊行動。"),
+      createConnective("In synchrony", "The schools implemented changes in synchrony.", "學校同步實施改變。"),
+      createConnective("In parallel with", "We worked in parallel with other institutions.", "我哋同其他機構同時工作。"),
+      createConnective("At the same moment", "At the same moment, we both understood the significance.", "同一刻，我哋都明白重要性。")
+    ]
+  },
+  "強調 (Emphasis)": {
+    "確實 (Indeed)": [
+      createConnective("Indeed", "It was indeed a challenging academic year.", "確實係個有挑戰性嘅學年。"),
+      createConnective("In fact", "In fact, I agree with your analysis of the education system.", "其實，我同意你對教育制度嘅分析。"),
+      createConnective("Actually", "Actually, I was involved in that research project too.", "其實，我都參與咗個研究計劃。"),
+      createConnective("As a matter of fact", "As a matter of fact, I'm familiar with this issue.", "其實，我好熟悉呢個問題。"),
+      createConnective("In truth", "In truth, I was surprised by the exam results.", "其實，我對考試結果好驚訝。"),
+      createConnective("Truly", "Truly, this educational approach is transformative.", "真係，呢個教育方法係變革性。"),
+      createConnective("Genuinely", "I genuinely care about student wellbeing.", "我真係關心學生福祉。"),
+      createConnective("Undoubtedly", "Undoubtedly, this is the most effective approach.", "毫無疑問，呢個係最有效方法。"),
+      createConnective("Unquestionably", "Unquestionably, he is academically gifted.", "毫無疑問，佢學術有天賦。"),
+      createConnective("Indisputably", "Indisputably, education transforms lives.", "無可爭議，教育改變人生。"),
+      createConnective("Unarguably", "Unarguably, this policy is beneficial.", "無可爭議，呢個政策有益。"),
+      createConnective("In reality", "In reality, the situation is more complex than it appears.", "實際上，情況比表面更複雜。"),
+      createConnective("In actuality", "In actuality, we had limited options.", "實際上，我哋選擇有限。"),
+      createConnective("In point of fact", "In point of fact, I participated in the study.", "實際上，我參與咗研究。"),
+      createConnective("As it happens", "As it happens, I have experience with this issue.", "其實，我對呢個問題有經驗。"),
+      createConnective("In effect", "In effect, this means we've achieved our objectives.", "實際上，即係我哋達成咗目標。")
+    ],
+    "特別 (Especially)": [
+      createConnective("Especially", "I'm concerned about social issues, especially youth unemployment.", "我關心社會問題，特別係青年失業。"),
+      createConnective("Particularly", "This is particularly important for student development.", "呢個對學生發展特別重要。"),
+      createConnective("Specifically", "Specifically, we need to focus on improving English writing skills.", "具體嚟講，我哋需要專注改善英文寫作技能。"),
+      createConnective("Notably", "Notably, student performance improved after the intervention.", "特別係，干預後學生表現改善。"),
+      createConnective("Predominantly", "The programme participants are predominantly from disadvantaged backgrounds.", "計劃參與者主要來自弱勢背景。"),
+      createConnective("Above all", "Above all, we must prioritise student wellbeing.", "最重要係，我哋必須優先考慮學生福祉。"),
+      createConnective("Chiefly", "This improvement is chiefly due to better teaching methods.", "呢個改善主要因為更好教學方法。"),
+      createConnective("Primarily", "We're primarily concerned with educational equity.", "我哋主要關心教育公平。"),
+      createConnective("Mainly", "The problem is mainly related to inadequate funding.", "問題主要同資金不足有關。"),
+      createConnective("Principally", "Principally, we need more comprehensive support systems.", "主要係，我哋需要更全面支援系統。"),
+      createConnective("In particular", "In particular, curriculum reform interests me greatly.", "特別係，課程改革好吸引我。"),
+      createConnective("Most notably", "Most notably, we achieved significant improvements in student outcomes.", "最特別係，我哋喺學生成果方面達成顯著改善。"),
+      createConnective("Most importantly", "Most importantly, we must ensure equal opportunities for all students.", "最重要係，我哋必須確保所有學生有平等機會。"),
+      createConnective("Significantly", "Significantly, the new approach improved learning outcomes.", "顯著地，新方法改善學習成果。"),
+      createConnective("Markedly", "Markedly, the educational landscape has transformed.", "明顯地，教育環境已經轉變。"),
+      createConnective("Remarkably", "Remarkably, he succeeded despite facing numerous obstacles.", "令人驚訝地，佢儘管面對多個障礙都成功。"),
+      createConnective("Strikingly", "Strikingly, the difference in outcomes is evident.", "明顯地，成果分別好明顯。"),
+      createConnective("Conspicuously", "Conspicuously, student engagement increased after the changes.", "明顯地，改變後學生參與度增加。")
+    ]
+  },
+  "限定 (Limitation)": {
+    "然而 (However)": [
+      createConnective("However", "The proposal is promising. However, we need more evidence.", "建議有希望。但係，我哋需要更多證據。"),
+      createConnective("Nevertheless", "The challenges were significant. Nevertheless, we succeeded.", "挑戰好大。但係，我哋成功咗。"),
+      createConnective("Nonetheless", "The funding was limited. Nonetheless, we proceeded.", "資金有限。但係，我哋都繼續。"),
+      createConnective("Still", "The solution is costly. Still, it's worth implementing.", "解決方法好貴。但係，值得實施。"),
+      createConnective("Yet", "He studied diligently, yet he didn't achieve the desired grade.", "佢努力讀書，但係冇達到預期成績。"),
+      createConnective("Be that as it may", "Be that as it may, we must continue our efforts.", "無論如何，我哋都要繼續努力。"),
+      createConnective("Having said that", "The HKDSE is challenging. Having said that, it's achievable with preparation.", "文憑試好有挑戰性。話雖如此，有準備係可以達到。"),
+      createConnective("That said", "That said, we should still pursue excellence.", "話雖如此，我哋都應該追求卓越。"),
+      createConnective("All the same", "All the same, I appreciate your contribution to the discussion.", "無論如何，我都多謝你對討論嘅貢獻。"),
+      createConnective("Even so", "Even so, we shouldn't abandon our principles.", "即使係咁，我哋都唔應該放棄原則。"),
+      createConnective("In spite of this", "In spite of this, we remain committed to change.", "儘管係咁，我哋仍然致力改變。"),
+      createConnective("For all that", "For all that, I still believe in the power of education.", "儘管係咁，我仍然相信教育嘅力量。"),
+      createConnective("At the same time", "At the same time, we must be mindful of the consequences.", "同時，我哋必須注意後果。"),
+      createConnective("On the other hand", "On the other hand, there are also positive outcomes.", "另一方面，都有正面結果。"),
+      createConnective("But then again", "But then again, we might need to reconsider our approach.", "但係，我哋可能需要重新考慮方法。"),
+      createConnective("On the flip side", "On the flip side, there are clear advantages.", "另一方面，都有明顯優點。"),
+      createConnective("Conversely", "Conversely, some educators prefer alternative methods.", "相反，有啲教育工作者鍾意替代方法。"),
+      createConnective("In contrast", "In contrast, the new curriculum is more effective.", "相反，新課程更有效。")
+    ],
+    "不過 (But)": [
+      createConnective("But", "But I was too busy to attend.", "但我太忙無法出席。"),
+      createConnective("However", "The plan seems good. However, we need more details.", "計劃好似幾好。但係，我哋需要更多細節。"),
+      createConnective("Yet", "Yet he failed despite trying hard.", "但係儘管好努力，佢失敗咗。"),
+      createConnective("Still", "It's expensive. Still, it's worth buying.", "好貴。但係，值得買。"),
+      createConnective("On the other hand", "On the other hand, there are also benefits.", "另一方面，都有好處。"),
+      createConnective("Nevertheless", "It was difficult. Nevertheless, we succeeded.", "好困難。但係，我哋成功咗。"),
+      createConnective("Nonetheless", "The weather was bad. Nonetheless, we went out.", "天氣好差。但係，我哋都出咗去。"),
+      createConnective("All the same", "All the same, I appreciate your help.", "無論如何，我都多謝你嘅幫助。"),
+      createConnective("Even so", "Even so, we shouldn't give up.", "即使係咁，我哋都唔應該放棄。"),
+      createConnective("That said", "That said, we should still try our best.", "話雖如此，我哋都應該盡力。"),
+      createConnective("Having said that", "The exam is hard. Having said that, it's not impossible.", "考試好難。話雖如此，唔係冇可能。")
+    ]
+  },
+  "補充說明 (Clarification)": {
+    "換句話說 (In other words)": [
+      createConnective("In other words", "In other words, we need to act immediately given the critical situation.", "換句話說，考慮到危急情況，我哋而家就要行動。"),
+      createConnective("That is to say", "That is to say, we need at least 30% more funding.", "即係話，我哋需要至少多30%資金。"),
+      createConnective("To put it differently", "To put it differently, we must be more strategic in our approach.", "換句話說，我哋必須更策略性地處理。"),
+      createConnective("To rephrase", "To rephrase, the educational crisis requires urgent attention.", "重新講，教育危機需要迫切關注。"),
+      createConnective("To put it another way", "To put it another way, we're facing a shortage of time and resources.", "換個講法，我哋面對時間同資源短缺。"),
+      createConnective("To express it differently", "To express it differently, we need comprehensive support.", "換個表達方式，我哋需要全面支援。"),
+      createConnective("To state it otherwise", "To state it otherwise, the initiative did not achieve its objectives.", "換個講法，計劃冇達成目標。"),
+      createConnective("To phrase it differently", "To phrase it differently, we must reconsider our strategy.", "換個講法，我哋必須重新考慮策略。"),
+      createConnective("To articulate it differently", "To articulate it differently, the issue is multifaceted.", "換個講法，問題係多方面。"),
+      createConnective("To formulate it differently", "To formulate it differently, we need an innovative approach.", "換個講法，我哋需要創新方法。"),
+      createConnective("To couch it differently", "To couch it differently, the matter requires immediate action.", "換個講法，事情需要立即行動。")
+    ],
+    "即是 (That is)": [
+      createConnective("That is", "That is, we need three components: funding, training and support.", "即係，我哋需要三個部分：資金、培訓同支援。"),
+      createConnective("Namely", "Namely, three core subjects are required: English, Chinese and Mathematics.", "即係，需要三科核心科目：英文、中文同數學。"),
+      createConnective("i.e.", "i.e., we need essential resources: qualified teachers and adequate facilities.", "即係，我哋需要必需資源：合格老師同足夠設施。"),
+      createConnective("That is to say", "We need more comprehensive support. That is to say, at least 20% more funding.", "我哋需要更全面支援。即係話，至少多20%資金。"),
+      createConnective("In other words", "The situation is critical. In other words, we need to act now.", "情況好危急。換句話說，我哋而家就要行動。"),
+      createConnective("Specifically", "Specifically, we should enhance student support systems to improve education.", "具體嚟講，我哋應該加強學生支援系統改善教育。"),
+      createConnective("In particular", "In particular, educational inequality is a pressing social issue.", "特別係，教育不平等係迫切社會問題。"),
+      createConnective("To be specific", "To be specific, we need exactly 100 participants for the study.", "具體嚟講，我哋研究需要剛好100個參與者。"),
+      createConnective("To be precise", "To be precise, the programme starts in September 2024.", "準確嚟講，計劃2024年9月開始。"),
+      createConnective("More precisely", "More precisely, we should focus on quality over quantity.", "更準確嚟講，我哋應該專注質素多過數量。"),
+      createConnective("More specifically", "More specifically, we need to improve our English writing skills.", "更具體嚟講，我哋需要改善英文寫作技能。")
+    ]
+  },
+  "比較 (Comparison)": {
+    "相似 (Similarity)": [
+      createConnective("Similarly", "He values education. Similarly, I believe in its transformative power.", "佢重視教育。同樣地，我相信教育嘅變革力量。"),
+      createConnective("Likewise", "She advocates for student rights. Likewise, her colleague is committed to educational equity.", "佢提倡學生權利。同樣地，佢同事致力教育公平。"),
+      createConnective("In the same way", "In the same way, we should respect diverse learning styles.", "同樣地，我哋應該尊重不同學習風格。"),
+      createConnective("Equally", "Both educational approaches are equally valid.", "兩種教育方法同樣有效。"),
+      createConnective("In like manner", "In like manner, we can address this social issue.", "同樣地，我哋可以處理呢個社會問題。"),
+      createConnective("Correspondingly", "Student numbers increased. Correspondingly, resources were expanded.", "學生人數增加。相應地，資源擴展。"),
+      createConnective("By the same token", "By the same token, we should protect student wellbeing.", "同樣地，我哋應該保護學生福祉。"),
+      createConnective("In a similar vein", "In a similar vein, we must consider the long-term impact.", "同樣地，我哋必須考慮長期影響。"),
+      createConnective("Analogously", "Analogously, this situation reflects broader educational challenges.", "類似地，呢個情況反映更廣泛教育挑戰。"),
+      createConnective("In parallel", "In parallel, both initiatives achieved their objectives.", "同樣地，兩個計劃都達成目標。")
+    ],
+    "不同 (Difference)": [
+      createConnective("In comparison", "In comparison, the new curriculum is more student-centred.", "相比之下，新課程更以學生為本。"),
+      createConnective("Compared to", "Compared to last year, student performance has improved significantly.", "同上年比，學生表現顯著改善。"),
+      createConnective("Compared with", "Compared with other schools, this institution offers substantially more support.", "同其他學校比，呢間機構提供明顯更多支援。"),
+      createConnective("By comparison", "By comparison, this approach is more effective.", "相比之下，呢個方法更有效。"),
+      createConnective("Relative to", "Relative to the investment, the educational outcomes are substantial.", "相對投資，教育成果好大。"),
+      createConnective("In relation to", "In relation to the overall problem, this is a minor concern.", "相對整體問題，呢個係小關注。"),
+      createConnective("Vis-à-vis", "Vis-à-vis the traditional approach, this method is more engaging.", "相對傳統方法，呢個方法更吸引。")
+    ]
+  },
+  "選擇 (Choice)": {
+    "或者 (Either/Or)": [
+      createConnective("Either...or", "You can either pursue further studies or enter the workforce.", "你可以繼續升學或者進入職場。"),
+      createConnective("Or", "We can implement the changes now or wait until next semester.", "我哋可以而家實施改變或者等到下學期。"),
+      createConnective("Or else", "Study consistently, or else you'll struggle in the exam.", "持續讀書，否則你考試會有困難。"),
+      createConnective("Otherwise", "Complete your assignment on time. Otherwise, you'll face penalties.", "準時完成你嘅作業。否則，你會面對處罰。"),
+      createConnective("Alternatively", "We can use traditional methods. Alternatively, we can adopt digital approaches.", "我哋可以用傳統方法。或者，我哋可以採用數碼方法。"),
+      createConnective("If not", "Submit by the deadline. If not, you'll lose marks.", "截止日期前交。如果唔係，你會失分。")
+    ],
+    "代替 (Instead)": [
+      createConnective("Instead", "Don't just criticise. Instead, propose constructive solutions.", "唔好只係批評。相反，提出建設性解決方法。"),
+      createConnective("Instead of", "Instead of focusing solely on exams, we should promote holistic development.", "代替只專注考試，我哋應該促進全人發展。"),
+      createConnective("Rather than", "Rather than waiting for change, let's initiate it ourselves.", "代替等改變，我哋自己啟動。"),
+      createConnective("In place of", "In place of punitive measures, we should offer supportive guidance.", "代替懲罰措施，我哋應該提供支援性指導。"),
+      createConnective("As an alternative", "As an alternative, we could implement the programme in phases.", "作為替代，我哋可以分階段實施計劃。"),
+      createConnective("As a substitute", "As a substitute, we'll use online platforms for learning.", "作為替代，我哋會用網上平台學習。"),
+      createConnective("In lieu of", "In lieu of traditional exams, we could use continuous assessment.", "代替傳統考試，我哋可以用持續評估。")
+    ]
+  },
+  "程度 (Intensity)": {
+    "非常 (Extremely)": [
+      createConnective("Extremely", "The HKDSE exam is extremely challenging.", "文憑試非常困難。"),
+      createConnective("Very", "This educational issue is very important.", "呢個教育問題非常重要。"),
+      createConnective("Highly", "This approach is highly recommended for student development.", "呢個方法對學生發展強烈推薦。"),
+      createConnective("Exceedingly", "The task of addressing inequality is exceedingly complex.", "處理不平等任務極其複雜。"),
+      createConnective("Immensely", "I am immensely grateful for the educational opportunities.", "我對教育機會非常感激。"),
+      createConnective("Tremendously", "The support programme was tremendously helpful for students.", "支援計劃對學生非常有用。"),
+      createConnective("Exceptionally", "She performed exceptionally well in the exam.", "佢考試表現得非常好。"),
+      createConnective("Remarkably", "Remarkably, he succeeded despite facing numerous obstacles.", "令人驚訝地，佢儘管面對多個障礙都成功。")
+    ],
+    "相當 (Quite)": [
+      createConnective("Quite", "The exam results are quite satisfactory.", "考試結果相當滿意。"),
+      createConnective("Rather", "The solution is rather resource-intensive.", "解決方法相當需要資源。"),
+      createConnective("Fairly", "The programme outcomes are fairly positive.", "計劃結果相當正面。"),
+      createConnective("Reasonably", "The approach is reasonably effective.", "方法合理地有效。"),
+      createConnective("Moderately", "The difficulty level is moderately challenging.", "難度水平中等有挑戰性。"),
+      createConnective("Relatively", "Relatively speaking, this method is more accessible.", "相對嚟講，呢個方法更容易獲得。"),
+      createConnective("Comparatively", "Comparatively, this educational approach is more effective.", "比較地，呢個教育方法更有效。")
+    ],
+    "稍微 (Somewhat)": [
+      createConnective("Somewhat", "I'm somewhat concerned about the exam format.", "我對考試形式有啲擔心。"),
+      createConnective("Slightly", "Student stress levels increased slightly.", "學生壓力水平輕微上升。"),
+      createConnective("A bit", "The assignment is a bit challenging.", "作業有啲有挑戰性。"),
+      createConnective("A little", "I'm a little anxious about the results.", "我對結果有啲焦慮。"),
+      createConnective("To some extent", "To some extent, I agree with your assessment.", "某程度上，我同意你嘅評估。"),
+      createConnective("Partially", "The educational issue is partially addressed.", "教育問題部分處理。"),
+      createConnective("Moderately", "The impact is moderately significant for student outcomes.", "對學生成果影響中等重要。")
+    ]
+  },
+  "結果 (Result)": {
+    "結果 (As a result)": [
+      createConnective("As a result", "As a result of consistent study, he achieved excellent grades.", "結果，因為持續讀書，佢取得優秀成績。"),
+      createConnective("Therefore", "Therefore, we should implement support measures as student stress levels are rising.", "所以，因為學生壓力水平上升，我哋應該實施支援措施。"),
+      createConnective("Hence", "Hence, his skills improved significantly through regular practice.", "所以，通過定期練習，佢技能顯著改善。"),
+      createConnective("Thus", "Thus, educational outcomes improved after the policy was implemented.", "所以，政策實施後，教育成果改善。"),
+      createConnective("Accordingly", "The curriculum changed. Accordingly, we adapted our teaching methods.", "課程改咗。所以，我哋適應教學方法。"),
+      createConnective("For this reason", "For this reason, we cannot support the current proposal.", "因為呢個原因，我哋唔可以支持目前建議。"),
+      createConnective("As a consequence", "As a consequence, many students struggled with the transition.", "結果，好多學生對轉變有困難。"),
+      createConnective("In consequence", "In consequence, the initiative was postponed.", "結果，計劃被延期。"),
+      createConnective("It follows that", "If education is a fundamental right, it follows that it should be accessible to all.", "如果教育係基本權利，所以應該所有人都可以獲得。")
+    ],
+    "因此 (Consequently)": [
+      createConnective("Consequently", "Consequently, we took immediate action as the situation deteriorated.", "因此，因為情況惡化，我哋立即採取行動。"),
+      createConnective("As a result of", "As a result of the policy change, student participation increased significantly.", "因為政策改變，學生參與度顯著增加。"),
+      createConnective("Due to this", "Due to this, we must reconsider our approach.", "因為呢個，我哋必須重新考慮方法。"),
+      createConnective("Owing to this", "Owing to this, educational reforms were necessary.", "因為呢個，教育改革係必要。"),
+      createConnective("On account of this", "On account of this, we postponed the programme launch.", "因為呢個，我哋延期計劃啟動。"),
+      createConnective("In view of this", "In view of this, we need a comprehensive strategy.", "考慮到呢個，我哋需要全面策略。"),
+      createConnective("Given this", "Given this, we have limited alternatives.", "考慮到呢個，我哋替代方案有限。"),
+      createConnective("In light of this", "In light of this, we should act promptly.", "考慮到呢個，我哋應該快速行動。")
+    ]
+  }
+};

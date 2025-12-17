@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinglish Learning System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            
+            /* Accent colors */
+            --color-accent: #4a90e2;
+            --color-accent-hover: #357abd;
+            --color-success: #52c41a;
+            --color-warning: #faad14;
+            --color-error: #ff4d4f;
+            
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.3;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        .header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            min-height: 48px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0 var(--space-3);
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            line-height: 1.3;
+        }
+
+        .header-copyright {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-1);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-left: var(--space-3);
+        }
+
+        .menu-toggle span {
+            width: 20px;
+            height: 2px;
+            background: var(--color-text);
+            transition: all 0.2s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .dropdown-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            padding: var(--space-2) var(--space-3);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .dropdown-overlay.active {
+            transform: translateY(0);
+        }
+
+        .topic-selector-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .topic-selector-header label {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+        }
+
+        .topic-dropdown {
+            padding: 6px var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 13px;
+            min-width: 200px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .topic-dropdown:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(74, 144, 226, 0.05);
+        }
+
+        .topic-dropdown option {
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .exercise-area {
+            padding: var(--space-3) var(--space-4);
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .loading {
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .exercise-card {
+            background: var(--color-bg);
+            border-radius: 0;
+            padding: var(--space-2);
+            border: 1px solid var(--color-border);
+            border-left: 3px solid transparent;
+            margin-bottom: var(--space-2);
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+        
+        .exercise-card:hover {
+            border-left-color: var(--color-accent);
+            background: rgba(74, 144, 226, 0.02);
+        }
+
+        .exercise-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-1);
+            padding-bottom: var(--space-1);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .exercise-title {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .exercise-counter {
+            background: var(--color-surface);
+            color: var(--color-text);
+            padding: 1px var(--space-1);
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 400;
+            border: 1px solid var(--color-border);
+        }
+
+        .exercise-content {
+            margin-bottom: 10px;
+        }
+
+        .sentence {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            padding: var(--space-1) var(--space-2);
+            margin-bottom: var(--space-2);
+            font-size: 15px;
+            line-height: 1.3;
+            color: var(--color-text);
+        }
+
+        .sentence-label {
+            font-weight: 500;
+            color: var(--color-text);
+            margin-right: var(--space-1);
+        }
+
+        .chinese-translation {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            font-style: normal;
+            margin-top: var(--space-1);
+            padding-left: var(--space-2);
+            border-left: 2px solid var(--color-border);
+            font-weight: 400;
+        }
+
+        .sentence.incorrect {
+            background: var(--color-surface);
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        .sentence.correct {
+            background: var(--color-surface);
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: var(--space-1) var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            font-size: 14px;
+            transition: border-color 0.15s ease, background 0.15s ease;
+            margin-bottom: var(--space-2);
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(74, 144, 226, 0.05);
+        }
+
+        .mc-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+
+        .mc-option {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            padding: var(--space-2) var(--space-3);
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-text);
+        }
+
+        .mc-option:hover {
+            background: rgba(74, 144, 226, 0.1);
+            border-color: var(--color-accent);
+        }
+
+        .mc-option.selected {
+            background: rgba(74, 144, 226, 0.15);
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .mc-option.correct {
+            background: rgba(82, 196, 26, 0.1);
+            border-color: var(--color-success);
+            color: var(--color-text);
+        }
+
+        .mc-option.incorrect {
+            background: rgba(255, 77, 79, 0.1);
+            border-color: var(--color-error);
+            color: var(--color-text);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            padding: var(--space-1) var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 400;
+            transition: background 0.15s ease, color 0.15s ease;
+            flex: 1;
+            font-family: inherit;
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-primary:hover {
+            background: rgba(74, 144, 226, 0.1);
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-surface);
+            color: var(--color-text);
+        }
+
+        .btn-success {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-success:hover {
+            background: var(--color-surface);
+            color: var(--color-text);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .explanation {
+            background: var(--color-surface);
+            border-left: 3px solid var(--color-border);
+            padding: var(--space-1);
+            border-radius: 0;
+            margin-top: var(--space-1);
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation h4 {
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .explanation p {
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .topic-summary {
+            background: rgba(74, 144, 226, 0.05);
+            border-radius: 0;
+            padding: var(--space-2);
+            margin-bottom: var(--space-3);
+            text-align: left;
+            border: 1px solid var(--color-border);
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .topic-summary h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .topic-summary p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--color-border);
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: var(--space-3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-text);
+            transition: width 0.3s ease;
+        }
+
+        .welcome-screen {
+            text-align: left;
+            padding: var(--space-3) 0;
+        }
+
+        .welcome-screen h2 {
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .welcome-screen p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-bottom: var(--space-3);
+            font-weight: 400;
+        }
+
+        .start-btn {
+            background: transparent;
+            color: var(--color-text-secondary);
+            padding: var(--space-2) var(--space-4);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
+            font-family: inherit;
+        }
+
+        .start-btn:hover {
+            background: var(--color-surface);
+            color: var(--color-text);
+        }
+
+        .topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-top: var(--space-2);
+            width: 100%;
+        }
+
+        .topic-link {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            padding: var(--space-2);
+            cursor: pointer;
+            transition: background 0.15s ease;
+            text-align: left;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex: 0 0 400px;
+            max-width: 400px;
+        }
+
+        .topic-link:hover {
+            background: rgba(74, 144, 226, 0.05);
+            border-color: var(--color-accent);
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .topic-link h3 {
+            color: var(--color-text);
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .topic-link p {
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0;
+            white-space: pre-line;
+            font-weight: 400;
+        }
+
+        @media (max-width: 1200px) {
+            .topic-link {
+                flex: 0 0 calc(50% - var(--space-1));
+                max-width: calc(50% - var(--space-1));
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header-title-container {
+                padding: 0 var(--space-2);
+            }
+            
+            .header-title {
+                font-size: 16px;
+            }
+            
+            .topic-dropdown {
+                min-width: 160px;
+                font-size: 12px;
+            }
+            
+            .topic-link {
+                flex: 0 0 calc(50% - var(--space-1));
+                max-width: calc(50% - var(--space-1));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 6px 12px;
+            }
+
+            .header-title-container {
+                padding: 0 var(--space-2);
+            }
+
+            .header-title {
+                font-size: 15px;
+            }
+
+            .header-copyright {
+                font-size: 10px;
+            }
+
+            .dropdown-overlay {
+                padding: var(--space-2);
+            }
+            
+            .topic-selector-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--space-1);
+            }
+            
+            .topic-dropdown {
+                width: 100%;
+                font-size: 12px;
+                padding: 6px var(--space-2);
+            }
+
+            
+            .topics-list {
+                gap: 6px;
+                margin-top: var(--space-2);
+            }
+            
+            .topic-link {
+                flex: 0 0 calc(50% - 3px);
+                max-width: calc(50% - 3px);
+            }
+            
+            .topic-link {
+                padding: var(--space-2);
+                min-height: auto;
+            }
+            
+            .topic-link h3 {
+                font-size: 13px;
+                margin-bottom: 3px;
+            }
+            
+            .topic-link p {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            
+            .exercise-area {
+                padding: 8px;
+                max-height: calc(100vh - 100px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title-container {
+                padding: 0 var(--space-2);
+            }
+            
+            .header-title {
+                font-size: 15px;
+            }
+            
+            .header-copyright {
+                font-size: 10px;
+            }
+            
+            .topic-dropdown {
+                min-width: 120px;
+                font-size: 11px;
+                padding: 5px var(--space-2);
+            }
+            
+            .topics-list {
+                gap: 6px;
+                margin-top: var(--space-2);
+                padding: 0;
+            }
+            
+            .topic-link {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .topic-link {
+                padding: var(--space-2);
+                min-height: auto;
+            }
+            
+            .topic-link h3 {
+                font-size: 12px;
+                margin-bottom: 3px;
+            }
+            
+            .topic-link p {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            
+            .exercise-area {
+                padding: 6px;
+                max-height: calc(100vh - 80px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .exercise-card {
+                padding: 6px;
+            }
+            
+            .sentence {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+            
+            .answer-input {
+                font-size: 0.8rem;
+                padding: 4px 6px;
+            }
+            
+            .btn {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+
+            .mc-options {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .mc-option {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="menu-toggle" id="menuToggle" onclick="toggleDropdown()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="header-title-container">
+            <div class="header-title">Grammar Exercises for CEFR A2-B1 | 語法練習</div>
+            <div class="header-copyright">©kensirenglish.com</div>
+        </div>
+    </div>
+
+    <div class="dropdown-overlay" id="dropdownOverlay">
+        <div class="topic-selector-header">
+            <select id="topicSelect" class="topic-dropdown" onchange="loadTopicFromDropdown()">
+                <option value="">Select a grammar topic... | 選擇語法主題...</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="exercise-area" id="exerciseArea">
+            <div class="loading">
+                <p>Loading exercises...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/topics/articles.js"></script>
+    <script src="js/topics/prepositions.js"></script>
+    <script src="js/topics/tenses.js"></script>
+    <script src="js/topics/subject-verb-agreement.js"></script>
+    <script src="js/topics/countable-uncountable.js"></script>
+    <script src="js/topics/word-order.js"></script>
+    <script src="js/topics/comparatives.js"></script>
+    <script src="js/topics/modal-verbs.js"></script>
+    <script src="js/topics/gerunds-infinitives.js"></script>
+    <script src="js/topics/conditionals.js"></script>
+    <script src="js/topics/passive-voice.js"></script>
+    <script src="js/topics/reported-speech.js"></script>
+    <script src="js/topics/phrasal-verbs.js"></script>
+    <script src="js/topic-manager.js"></script>
+    <script>
+        let currentExercise = null;
+        let userAnswer = '';
+        let isAnswered = false;
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTopicList();
+            // Show welcome screen instead of auto-loading
+            showWelcomeScreen();
+            
+            // Close overlay when clicking outside
+            document.addEventListener('click', function(event) {
+                const overlay = document.getElementById('dropdownOverlay');
+                const toggle = document.getElementById('menuToggle');
+                if (overlay.classList.contains('active') && 
+                    !overlay.contains(event.target) && 
+                    !toggle.contains(event.target)) {
+                    toggleDropdown();
+                }
+            });
+        });
+
+        // Load topic list
+        function loadTopicList() {
+            const topicSelect = document.getElementById('topicSelect');
+            const topics = window.topicManager.getAvailableTopics();
+            
+            topicSelect.innerHTML = '<option value="">Select a grammar topic... | 選擇語法主題...</option>';
+            topics.forEach(topic => {
+                const option = document.createElement('option');
+                option.value = topic.id;
+                option.textContent = topic.name;
+                topicSelect.appendChild(option);
+            });
+        }
+
+
+        // Toggle dropdown overlay
+        function toggleDropdown() {
+            const overlay = document.getElementById('dropdownOverlay');
+            const toggle = document.getElementById('menuToggle');
+            overlay.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Load topic from dropdown
+        function loadTopicFromDropdown() {
+            const topicSelect = document.getElementById('topicSelect');
+            const selectedTopicId = topicSelect.value;
+            
+            if (selectedTopicId) {
+                loadTopic(selectedTopicId);
+                toggleDropdown(); // Close overlay after selection
+            }
+        }
+
+        // Show welcome screen
+        function showWelcomeScreen() {
+            const exerciseArea = document.getElementById('exerciseArea');
+            const topics = window.topicManager.getAvailableTopics();
+            
+            let topicsHTML = topics.map(topic => `
+                <div class="topic-link" onclick="loadTopic('${topic.id}')">
+                    <h3>${topic.name}</h3>
+                    <p>${topic.introduction.replace(/<br>/g, '\n')}</p>
+                </div>
+            `).join('');
+            
+            exerciseArea.innerHTML = `
+                <div class="welcome-screen">
+                    <div class="topics-list">
+                        ${topicsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show topic list (fallback)
+        function showTopicList() {
+            showWelcomeScreen();
+        }
+
+        // Load a specific topic
+        async function loadTopic(topicId) {
+            try {
+                // Update dropdown selection
+                const topicSelect = document.getElementById('topicSelect');
+                topicSelect.value = topicId;
+
+                // Show loading
+                showLoading();
+
+                // Load topic
+                await window.topicManager.loadTopic(topicId);
+                
+                // Load exercises
+                loadCurrentExercise();
+                
+            } catch (error) {
+                console.error('Error loading topic:', error);
+                showError('Failed to load topic. Please try again.');
+            }
+        }
+
+        // Show loading state
+        function showLoading() {
+            const exerciseArea = document.getElementById('exerciseArea');
+            exerciseArea.innerHTML = `
+                <div class="loading">
+                    <p>Loading exercises...</p>
+                </div>
+            `;
+        }
+
+        // Show error message
+        function showError(message) {
+            const exerciseArea = document.getElementById('exerciseArea');
+            exerciseArea.innerHTML = `
+                <div class="welcome-screen">
+                    <h2>Error</h2>
+                    <p>${message}</p>
+                    <button class="start-btn" onclick="showTopicList()">Try Again</button>
+                </div>
+            `;
+        }
+
+        // Load all exercises for current topic
+        function loadCurrentExercise() {
+            const topicInfo = window.topicManager.getCurrentTopicInfo();
+            if (!topicInfo) {
+                showError('No exercises available for this topic.');
+                return;
+            }
+
+            const exerciseArea = document.getElementById('exerciseArea');
+            const exercises = topicInfo.exercises;
+            
+            let exercisesHTML = `
+                <div class="topic-summary">
+                    <h3>${topicInfo.name}</h3>
+                    <p>${topicInfo.introduction}</p>
+                </div>
+            `;
+
+            exercises.forEach((exercise, index) => {
+                exercisesHTML += `
+                    <div class="exercise-card" id="exercise-${index}">
+                        <div class="exercise-header">
+                        </div>
+                        
+                        <div class="exercise-content">
+                            <div class="sentence">
+                                ${exercise.question}
+                                ${exercise.chineseTranslation ? `<div class="chinese-translation">${exercise.chineseTranslation}</div>` : ''}
+                            </div>
+                            
+                            <div class="mc-options" id="mcOptions-${index}">
+                                ${exercise.options.map((option, optionIndex) => `
+                                    <div class="mc-option" 
+                                         onclick="selectOption(${index}, ${optionIndex}, '${option}')"
+                                         data-option="${option}">
+                                        ${option}
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <div class="button-group">
+                                <button class="btn btn-primary" onclick="checkAnswer(${index})" id="checkBtn-${index}">
+                                    Check Answer
+                                </button>
+                            </div>
+                            
+                            <div class="explanation" id="explanation-${index}">
+                                <h4>Explanation:</h4>
+                                <p>${exercise.explanation}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            exerciseArea.innerHTML = exercisesHTML;
+        }
+
+        // Select an option
+        function selectOption(exerciseIndex, optionIndex, optionValue) {
+            const mcOptions = document.getElementById(`mcOptions-${exerciseIndex}`);
+            const options = mcOptions.querySelectorAll('.mc-option');
+            
+            // Remove previous selection
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Add selection to clicked option
+            options[optionIndex].classList.add('selected');
+            
+            // Store the selected answer
+            options[optionIndex].setAttribute('data-selected', 'true');
+        }
+
+        // Check user's answer
+        function checkAnswer(exerciseIndex) {
+            const mcOptions = document.getElementById(`mcOptions-${exerciseIndex}`);
+            const explanation = document.getElementById(`explanation-${exerciseIndex}`);
+            const checkBtn = document.getElementById(`checkBtn-${exerciseIndex}`);
+            const showBtn = document.getElementById(`showBtn-${exerciseIndex}`);
+            
+            // Check if already answered
+            if (checkBtn.disabled) return;
+            
+            // Get the topic info to access the exercise data
+            const topicInfo = window.topicManager.getCurrentTopicInfo();
+            const exercise = topicInfo.exercises[exerciseIndex];
+            
+            // Find selected option
+            const selectedOption = mcOptions.querySelector('.mc-option.selected');
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const userAnswer = selectedOption.getAttribute('data-option');
+            const correctAnswer = exercise.correctAnswers[0]; // For now, handle single correct answer
+            
+            const isCorrect = userAnswer === correctAnswer;
+            
+            // Show result
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                checkBtn.textContent = 'Correct! ✓';
+                checkBtn.className = 'btn btn-success';
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Also highlight the correct answer
+                const options = mcOptions.querySelectorAll('.mc-option');
+                options.forEach(option => {
+                    if (option.getAttribute('data-option') === correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+                checkBtn.textContent = 'Incorrect ✗';
+                checkBtn.className = 'btn btn-secondary';
+            }
+            
+            checkBtn.disabled = true;
+            explanation.classList.add('show');
+        }
+
+
+    </script>
+</body>
+</html>

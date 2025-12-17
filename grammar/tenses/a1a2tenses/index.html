@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A1 to A2 English Tenses Exercises</title>
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    :root {
+      /* 8px grid system */
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      
+      /* Colors - refined palette */
+      --color-bg: #ffffff;
+      --color-surface: #f8f8f8;
+      --color-text: #000000;
+      --color-text-secondary: #666666;
+      --color-text-tertiary: #999999;
+      --color-border: #e0e0e0;
+      
+      /* Accent colors */
+      --color-accent: #4a90e2;
+      --color-accent-hover: #357abd;
+      --color-success: #52c41a;
+      --color-warning: #faad14;
+      --color-error: #ff4d4f;
+      
+      --max-width: 1200px;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.3;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
+    }
+
+    header {
+      background: transparent;
+      color: var(--color-text);
+      padding: 0;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+      border-bottom: 1px solid var(--color-border);
+      z-index: 100;
+      min-height: 48px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-1);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-left: var(--space-3);
+    }
+
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+      background: var(--color-text);
+      transition: all 0.2s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .header-title-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 var(--space-3);
+    }
+
+    .header-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .header-copyright {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .dropdown-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .dropdown-overlay.active {
+      transform: translateY(0);
+    }
+
+    .exercise-filter {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .exercise-filter select {
+      padding: var(--space-1) var(--space-2);
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 14px;
+      min-width: 200px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .exercise-filter select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      background: rgba(74, 144, 226, 0.05);
+    }
+
+    main {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .main-title {
+      text-align: left;
+      color: var(--color-text);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      text-align: left;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: var(--space-4);
+    }
+    
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+    
+    .exercise-card {
+      background: var(--color-bg);
+      border-radius: 0;
+      padding: var(--space-3);
+      border-left: 3px solid var(--color-border);
+      transition: background 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+    
+    .exercise-card:hover {
+      background: rgba(74, 144, 226, 0.05);
+      border-left-color: var(--color-accent);
+    }
+    
+    .exercise-title {
+      color: var(--color-text);
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0;
+      text-align: left;
+      line-height: 1.4;
+    }
+    
+    .intro-section {
+      background: rgba(74, 144, 226, 0.05);
+      border-radius: 0;
+      padding: var(--space-3);
+      margin-bottom: var(--space-4);
+      border-left: 3px solid var(--color-accent);
+    }
+    
+    .intro-section h2 {
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .intro-section p {
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: var(--space-2);
+      font-size: 14px;
+      font-weight: 400;
+    }
+    
+    .intro-section p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .header-title-container {
+        padding: 0 var(--space-2);
+      }
+
+      .header-title {
+        font-size: 15px;
+      }
+
+      .header-copyright {
+        font-size: 10px;
+      }
+
+      .dropdown-overlay {
+        padding: var(--space-2);
+      }
+
+      .exercise-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-2);
+      }
+
+      .exercise-filter select {
+        width: 100%;
+        font-size: 0.875rem;
+      }
+
+      .exercise-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .exercise-card {
+        padding: var(--space-2);
+      }
+      
+      .main-title {
+        font-size: 18px;
+      }
+      
+      .subtitle {
+        font-size: 13px;
+      }
+      
+      .exercise-title {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleDropdown()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="header-title-container">
+      <div class="header-title">English Tenses Exercises • A1 to A2</div>
+      <div class="header-copyright">©kensirenglish.com</div>
+    </div>
+  </header>
+
+  <div class="dropdown-overlay" id="dropdownOverlay">
+    <div class="exercise-filter">
+      <select id="exerciseFilter" onchange="filterExercises()">
+        <option value="all">All Exercises | 所有練習</option>
+        <option value="1">Exercise 1 - KFC, Food & School Life</option>
+        <option value="2">Exercise 2 - School, Homework & Daily Life</option>
+        <option value="3a">Exercise 3A - KFC & Food</option>
+        <option value="3b">Exercise 3B - Teachers, Temperature & New Students</option>
+        <option value="4a">Exercise 4A - Minecraft, Weather & Snacks</option>
+        <option value="4b">Exercise 4B - Driving, News & Peppa Pig</option>
+        <option value="4c">Exercise 4C - Piano & Brushing Teeth</option>
+        <option value="5a">Exercise 5A - Living Somewhere</option>
+        <option value="5b">Exercise 5B - Daily Routines & Commands</option>
+        <option value="6a">Exercise 6A - Library, KFC & Promises</option>
+      </select>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <h1 class="main-title">English Tenses Exercises</h1>
+      <p class="subtitle">A1 to A2 General Level - 英語時態練習</p>
+      
+      <div class="intro-section">
+        <h2>Welcome to English Tenses Practice! 歡迎來到英語時態練習！</h2>
+        <p><strong>There are 12 tenses in English. (新手先練好9種常用時態) [Simple/Continuous/Perfect] x [Present/Past/Future]</strong></p>
+        <p><strong>新手溫習時態小貼士：</strong> 一定先用present講/寫出來，決定好係simple、continuous定perfect tense，再決定有冇必要轉past或future。past就轉verb、future就前面加will。</p>
+      </div>
+    
+      <div class="exercise-grid">
+        <a href="tenses_exercise.html" class="exercise-card">
+          <h3 class="exercise-title">🍗 Tenses Exercise 1<br>KFC, Food & School Life</h3>
+        </a>
+        
+        <a href="tenses_exercise2.html" class="exercise-card">
+          <h3 class="exercise-title">🏫 Tenses Exercise 2<br>School, Homework & Daily Life</h3>
+        </a>
+        
+        <a href="tenses_exercise3a.html" class="exercise-card">
+          <h3 class="exercise-title">🍗 Tenses Exercise 3A<br>KFC & Food</h3>
+        </a>
+        
+        <a href="tenses_exercise3b.html" class="exercise-card">
+          <h3 class="exercise-title">👩‍🏫 Tenses Exercise 3B<br>Teachers, Temperature & New Students</h3>
+        </a>
+        
+        <a href="tenses_exercise4a.html" class="exercise-card">
+          <h3 class="exercise-title">🌦️ Tenses Exercise 4A<br>Minecraft, Weather & Snacks</h3>
+        </a>
+        
+        <a href="tenses_exercise4b.html" class="exercise-card">
+          <h3 class="exercise-title">🐷 Tenses Exercise 4B<br>Driving, News & Peppa Pig</h3>
+        </a>
+        
+        <a href="tenses_exercise4c.html" class="exercise-card">
+          <h3 class="exercise-title">🎹 Tenses Exercise 4C<br>Piano & Brushing Teeth</h3>
+        </a>
+        
+        <a href="tenses_exercise5a.html" class="exercise-card">
+          <h3 class="exercise-title">🏠 Tenses Exercise 5A<br>Living Somewhere</h3>
+        </a>
+        
+        <a href="tenses_exercise5b.html" class="exercise-card">
+          <h3 class="exercise-title">🧼 Tenses Exercise 5B<br>Daily Routines & Commands</h3>
+        </a>
+        
+        <a href="tenses_exercise6a.html" class="exercise-card">
+          <h3 class="exercise-title">📚 Tenses Exercise 6A<br>Library, KFC & Promises</h3>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleDropdown() {
+      const overlay = document.getElementById('dropdownOverlay');
+      const toggle = document.getElementById('menuToggle');
+      overlay.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    function filterExercises() {
+      const filter = document.getElementById('exerciseFilter');
+      const value = filter.value;
+      const cards = document.querySelectorAll('.exercise-card');
+      
+      if (value === 'all') {
+        cards.forEach(card => card.style.display = 'block');
+      } else {
+        cards.forEach((card, index) => {
+          const exerciseMap = {
+            '1': 0, '2': 1, '3a': 2, '3b': 3, '4a': 4,
+            '4b': 5, '4c': 6, '5a': 7, '5b': 8, '6a': 9
+          };
+          if (exerciseMap[value] === index) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+      toggleDropdown(); // Close overlay after selection
+    }
+
+    // Close overlay when clicking outside
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(event) {
+        const overlay = document.getElementById('dropdownOverlay');
+        const toggle = document.getElementById('menuToggle');
+        if (overlay.classList.contains('active') && 
+            !overlay.contains(event.target) && 
+            !toggle.contains(event.target)) {
+          toggleDropdown();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

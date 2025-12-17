@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Hats Lucky Draw</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            
+            /* Hat colors */
+            --hat-white: #b0b0b0;
+            --hat-red: #ff5252;
+            --hat-black: #3a4a4b;
+            --hat-yellow: #ffcc00;
+            --hat-green: #4caf50;
+            --hat-blue: #42a5f5;
+            
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.3;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        h1 {
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: var(--space-3) var(--space-4) 0;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .left-section {
+            flex: 1;
+        }
+
+        .dice-container {
+            margin: 0 0 var(--space-3) 0;
+            display: none;
+        }
+
+        .dice-container.show {
+            display: block;
+        }
+
+        .hat-select-container {
+            margin-bottom: var(--space-2);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+        }
+
+        .hat-select-help-btn {
+            font-size: 1.2em;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            transition: transform 0.2s ease;
+            user-select: none;
+            line-height: 1;
+            display: none;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hat-select-help-btn.show {
+            display: block;
+        }
+
+        .hat-select-help-btn:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes buttonJump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hat-emoji-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border: 1px solid var(--color-border);
+            padding: 0;
+            line-height: 1;
+            user-select: none;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: buttonJump 1.2s ease-in-out infinite;
+        }
+
+        #diceEmoji {
+            animation: buttonJump 1.2s ease-in-out infinite;
+        }
+
+        .jump-delay-0 {
+            animation-delay: 0s;
+        }
+
+        .jump-delay-1 {
+            animation-delay: 0.15s;
+        }
+
+        .jump-delay-2 {
+            animation-delay: 0.3s;
+        }
+
+        .jump-delay-3 {
+            animation-delay: 0.45s;
+        }
+
+        .jump-delay-4 {
+            animation-delay: 0.6s;
+        }
+
+        .jump-delay-5 {
+            animation-delay: 0.75s;
+        }
+
+        .jump-delay-dice {
+            animation-delay: 0.9s;
+        }
+
+        .hat-emoji-btn:hover {
+            transform: translateY(-4px) scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .hat-emoji-btn.selected {
+            transform: scale(1.2);
+            border-width: 2px;
+            border-color: var(--color-text);
+            animation: buttonPulse 1.5s ease-in-out infinite;
+        }
+
+        #diceEmoji:hover {
+            animation-play-state: paused;
+        }
+
+        .hat-profile {
+            margin-top: var(--space-3);
+            text-align: center;
+        }
+
+        .dice {
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            display: inline-block;
+            user-select: none;
+            animation: breathe 2s ease-in-out infinite, colorCycle 6s ease-in-out infinite;
+            padding: var(--space-2) var(--space-3);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            min-width: 200px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .dice:hover {
+            animation: breathe 2s ease-in-out infinite, colorCycle 6s ease-in-out infinite;
+            transform: scale(1.05);
+        }
+
+        .dice.spinning {
+            animation: spin 0.1s infinite;
+        }
+
+        .dice.drawn {
+            animation: breathe 2s ease-in-out infinite;
+            border-width: 2px;
+            border-color: var(--color-text);
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spin {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes colorCycle {
+            0% { background-color: #ffffff; color: #000000; }
+            16.66% { background-color: #ff6b6b; color: #FFFFFF; }
+            33.33% { background-color: #ffd93d; color: #000000; }
+            50% { background-color: #95a5a6; color: #FFFFFF; }
+            66.66% { background-color: #6bcf7f; color: #000000; }
+            83.33% { background-color: #74b9ff; color: #FFFFFF; }
+            100% { background-color: #ffffff; color: #000000; }
+        }
+
+        .result {
+            margin-top: 0;
+            font-size: 15px;
+            color: var(--color-text);
+            min-height: 30px;
+        }
+
+        .initial-message {
+            font-size: 16px;
+            color: var(--color-text);
+            text-align: center;
+            padding: var(--space-4);
+            line-height: 1.5;
+        }
+
+        .instructions {
+            padding: var(--space-3) 0;
+            text-align: center;
+            color: var(--color-text);
+            line-height: 1.5;
+            margin-top: var(--space-3);
+        }
+
+        .instructions.hidden {
+            display: none;
+        }
+
+        .help-reset-btn {
+            font-size: 16px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: var(--space-1) var(--space-2);
+            margin-top: var(--space-3);
+            transition: opacity 0.2s ease;
+            user-select: none;
+            color: var(--color-text);
+        }
+
+        .help-reset-btn:hover {
+            opacity: 0.6;
+        }
+
+        .help-reset-btn.hidden {
+            display: none;
+        }
+
+        /* Modal popup styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-bg);
+            padding: var(--space-4);
+            border: 1px solid var(--color-border);
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: var(--space-3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-2);
+            right: var(--space-2);
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            padding: var(--space-1);
+            line-height: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-close:hover {
+            opacity: 0.6;
+        }
+
+        .modal-content h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            padding-right: var(--space-4);
+        }
+
+        .instructions h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .instructions p {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: var(--color-text);
+        }
+
+        .instructions-detail {
+            padding: var(--space-4) var(--space-3);
+            text-align: left;
+            color: var(--color-text);
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .instructions-detail h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .instructions-detail p {
+            margin-bottom: var(--space-2);
+            font-size: 15px;
+        }
+
+        .instructions-detail {
+            position: relative;
+        }
+
+        .instructions-detail .method {
+            margin-bottom: 20px;
+            padding-left: 8px;
+            display: none;
+        }
+
+        .instructions-detail .method.active {
+            display: block;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+
+        .carousel-arrow {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            padding: var(--space-1) var(--space-2);
+            transition: opacity 0.2s ease;
+            user-select: none;
+        }
+
+        .carousel-arrow:hover {
+            opacity: 0.6;
+        }
+
+        .carousel-arrow:disabled {
+            color: var(--color-text-tertiary);
+            cursor: not-allowed;
+            opacity: 0.3;
+        }
+
+        .carousel-indicator {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .instructions-detail .method-title {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+            font-size: 16px;
+        }
+
+        .instruction-balls {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 0.3em;
+            vertical-align: middle;
+        }
+
+        .instruction-ball {
+            display: inline-block;
+            width: 0.6em;
+            height: 0.6em;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .hat-label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: var(--space-2);
+            margin-bottom: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            display: inline-block;
+        }
+
+        .hat-description {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            margin-top: var(--space-2);
+            font-style: normal;
+        }
+
+        .sentence-starters {
+            margin-top: 0;
+            text-align: left;
+            padding: var(--space-3);
+        }
+
+        .right-section {
+            flex: 1;
+        }
+
+        .sentence-starters h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-1);
+            flex-wrap: nowrap;
+            font-weight: 600;
+        }
+
+        .sentence-starters-help-btn {
+            font-size: 14px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            transition: opacity 0.2s ease;
+            user-select: none;
+            line-height: 1;
+            color: var(--color-text-secondary);
+        }
+
+        .sentence-starters-help-btn:hover {
+            opacity: 0.6;
+        }
+
+
+        .sentence-starters ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .sentence-starters .starter-group {
+            display: none;
+        }
+
+        .sentence-starters .starter-group.active {
+            display: block;
+        }
+
+        .sentence-starters li {
+            padding: var(--space-1) 0;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .sentence-starters-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--space-2);
+            gap: 2px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+        }
+
+        .sentence-starters-arrow {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            padding: 0;
+            transition: opacity 0.2s ease;
+            user-select: none;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .sentence-starters-arrow:hover {
+            opacity: 0.6;
+        }
+
+        .sentence-starters-arrow:disabled {
+            color: var(--color-text-tertiary);
+            cursor: not-allowed;
+            opacity: 0.3;
+        }
+
+        .sentence-starters-indicator {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        .sentence-starters li:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 769px) and (max-width: 1023px) {
+            .content-wrapper {
+                padding: var(--space-4) var(--space-4) 0;
+            }
+
+            .sentence-starters {
+                margin-top: var(--space-3);
+            }
+        }
+
+        /* Header */
+        header {
+            background: transparent;
+            color: var(--color-text);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--space-2) var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--space-4);
+        }
+
+        .header-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .header-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+            margin: 0;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .header-title:hover {
+            opacity: 0.6;
+        }
+
+        /* Modal for Six Thinking Hats info */
+        .hats-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .hats-modal-overlay.active {
+            display: block;
+        }
+
+        .hats-modal {
+            background: var(--color-bg);
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            padding: var(--space-6);
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hats-modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .hats-modal-close:hover {
+            opacity: 0.6;
+        }
+
+        .hats-modal h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hats-modal h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .hats-modal p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+
+        .hats-modal .hats-intro {
+            margin-bottom: 0;
+        }
+
+        .hats-modal .hat-item {
+            padding: var(--space-2) var(--space-4);
+            margin-left: calc(-1 * var(--space-4));
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            font-size: 15px;
+            line-height: 1.5;
+            border-left: 3px solid transparent;
+        }
+
+        .hats-modal .hat-item.white-hat {
+            border-left-color: var(--hat-white);
+        }
+
+        .hats-modal .hat-item.red-hat {
+            border-left-color: var(--hat-red);
+        }
+
+        .hats-modal .hat-item.black-hat {
+            border-left-color: var(--hat-black);
+        }
+
+        .hats-modal .hat-item.yellow-hat {
+            border-left-color: var(--hat-yellow);
+        }
+
+        .hats-modal .hat-item.green-hat {
+            border-left-color: var(--hat-green);
+        }
+
+        .hats-modal .hat-item.blue-hat {
+            border-left-color: var(--hat-blue);
+        }
+
+        .hats-modal .hat-name {
+            font-weight: 600;
+            min-width: 100px;
+            color: var(--color-text);
+        }
+
+        .hats-modal .hat-name.white-hat {
+            color: var(--hat-white);
+        }
+
+        .hats-modal .hat-name.red-hat {
+            color: var(--hat-red);
+        }
+
+        .hats-modal .hat-name.black-hat {
+            color: var(--hat-black);
+        }
+
+        .hats-modal .hat-name.yellow-hat {
+            color: var(--hat-yellow);
+        }
+
+        .hats-modal .hat-name.green-hat {
+            color: var(--hat-green);
+        }
+
+        .hats-modal .hat-name.blue-hat {
+            color: var(--hat-blue);
+        }
+
+        .hats-modal .hat-description {
+            color: var(--color-text-secondary);
+            flex: 1;
+        }
+
+        .hats-modal .hat-description-line {
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .header-copyright {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: var(--space-2) var(--space-2) 0;
+            }
+
+            .dice {
+                font-size: 15px;
+                padding: var(--space-2) var(--space-3);
+                min-width: 150px;
+            }
+
+            .dice-container {
+                margin: 0 0 var(--space-3) 0;
+            }
+
+            .hat-select-container {
+                margin-bottom: var(--space-2);
+                gap: var(--space-1);
+            }
+
+            .hat-emoji-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1.3em;
+            }
+
+            .hat-emoji-btn.selected {
+                transform: scale(1.2);
+            }
+
+            .hat-profile {
+                margin-top: var(--space-2);
+            }
+
+            .hat-label {
+                font-size: 16px;
+            }
+
+            .sentence-starters {
+                padding: var(--space-2);
+                margin-top: var(--space-3);
+            }
+
+            .instructions {
+                padding: var(--space-2) 0;
+                margin-top: var(--space-2);
+            }
+
+            .instructions h3 {
+                font-size: 16px;
+            }
+
+            .instructions p {
+                font-size: 14px;
+            }
+
+            .instructions-detail {
+                padding: var(--space-3) var(--space-2);
+            }
+
+            .instructions-detail h3 {
+                font-size: 18px;
+            }
+
+            .instructions-detail p {
+                font-size: 14px;
+            }
+
+            .instructions-detail .method-title {
+                font-size: 15px;
+            }
+
+            .sentence-starters li {
+                font-size: 14px;
+                padding: var(--space-1) 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-wrapper {
+                padding: var(--space-2) var(--space-2) 0;
+            }
+
+            .dice {
+                font-size: 14px;
+                padding: var(--space-2);
+                min-width: 120px;
+            }
+
+            .dice-container {
+                margin: 0 0 var(--space-2) 0;
+            }
+
+            .hat-select-container {
+                margin-bottom: var(--space-2);
+                gap: var(--space-1);
+            }
+
+            .hat-emoji-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 1.1em;
+            }
+
+            .hat-emoji-btn.selected {
+                transform: scale(1.15);
+            }
+
+            .hat-profile {
+                margin-top: var(--space-2);
+            }
+
+            .hat-label {
+                font-size: 15px;
+                margin-bottom: var(--space-2);
+            }
+
+            .sentence-starters {
+                padding: var(--space-2);
+                margin-top: var(--space-2);
+            }
+
+            .instructions {
+                padding: var(--space-2) 0;
+                margin-top: var(--space-2);
+            }
+
+            .instructions h3 {
+                font-size: 15px;
+                margin-bottom: var(--space-1);
+            }
+
+            .instructions p {
+                font-size: 14px;
+            }
+
+            .instructions-detail {
+                padding: var(--space-2);
+            }
+
+            .instructions-detail h3 {
+                font-size: 18px;
+                margin-bottom: var(--space-2);
+            }
+
+            .instructions-detail p {
+                font-size: 14px;
+                margin-bottom: var(--space-2);
+            }
+
+            .instructions-detail .method {
+                margin-bottom: var(--space-2);
+            }
+
+            .instructions-detail .method-title {
+                font-size: 14px;
+                margin-bottom: var(--space-1);
+            }
+
+            .sentence-starters h3 {
+                font-size: 15px;
+                margin-bottom: var(--space-2);
+            }
+
+            .sentence-starters li {
+                font-size: 13px;
+                padding: var(--space-1) 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .content-wrapper {
+                padding: var(--space-4) var(--space-5) 0;
+                flex-direction: row;
+                gap: var(--space-5);
+                align-items: flex-start;
+            }
+
+            .left-section {
+                flex: 0 0 400px;
+                text-align: center;
+            }
+
+            .right-section {
+                flex: 1;
+            }
+
+            .dice-container {
+                margin: var(--space-3) 0;
+            }
+
+            .dice {
+                font-size: 16px;
+                padding: var(--space-2) var(--space-4);
+            }
+
+            .sentence-starters {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-title-wrapper">
+                <div class="header-title">Think with hats 帽思考</div>
+                <div class="header-copyright">©kensirenglish.com</div>
+            </div>
+        </div>
+    </header>
+    <div class="content-wrapper">
+            <div class="left-section">
+                <div class="hat-select-container" id="hatSelectContainer"></div>
+                <div class="dice-container">
+                    <div class="dice" id="dice">The 6 Thinking Hats<br>六頂思考帽 幸運抽<br>🎰Lucky Draw<br></div>
+                </div>
+                <div class="hat-profile" id="hatProfile"></div>
+                <div class="instructions" id="instructions">
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="result" id="result">
+                    <p class="initial-message">Try think about a topic with one of the hats!<br>上用其中一頂帽諗一個題目！</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hats Info Modal -->
+    <div class="hats-modal-overlay" id="hatsModalOverlay" onclick="closeHatsModal(event)">
+        <div class="hats-modal" onclick="event.stopPropagation()">
+            <button class="hats-modal-close" onclick="closeHatsModal(event)">×</button>
+            <h2>The Six Thinking Hats<br>六頂思考帽</h2>
+            <p>Developed by Edward de Bono. A framework that replaces reactive debate with structured, parallel thinking. All participants "wear the same hat" at the same time, focusing on one mode of thinking before moving to the next.<br>由愛德華·德·波諾開發。一個用結構化、平行思考取代反應式辯論的框架。所有參與者同時「戴上同一頂帽」，在轉到下一個思考模式之前，專注於一種思考模式。</p>
+            
+            <h3>The Six Hats:<br>六頂帽：</h3>
+            <div class="hats-intro">
+                <div class="hat-item white-hat">
+                    <span class="hat-name white-hat">White Hat<br>白帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Facts, figures, and objective information<br>事實、數據及客觀資訊</span>
+                    </span>
+                </div>
+                <div class="hat-item red-hat">
+                    <span class="hat-name red-hat">Red Hat<br>紅帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Emotions, feelings, and intuition<br>情感、感覺及直覺</span>
+                    </span>
+                </div>
+                <div class="hat-item yellow-hat">
+                    <span class="hat-name yellow-hat">Yellow Hat<br>黃帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Benefits, advantages, and positive aspects<br>好處、優勢及正面方面</span>
+                    </span>
+                </div>
+                <div class="hat-item black-hat">
+                    <span class="hat-name black-hat">Black Hat<br>黑帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Caution, problems, and potential difficulties<br>謹慎、問題及潛在困難</span>
+                    </span>
+                </div>
+                <div class="hat-item green-hat">
+                    <span class="hat-name green-hat">Green Hat<br>綠帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Creativity, new ideas, and possibilities<br>創意、新想法及可能性</span>
+                    </span>
+                </div>
+                <div class="hat-item blue-hat">
+                    <span class="hat-name blue-hat">Blue Hat<br>藍帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Process control, planning, and next steps<br>過程控制、規劃及下一步</span>
+                    </span>
+                </div>
+            </div>
+            
+            <h3>Key Benefits:<br>主要好處：</h3>
+            <p>Prevents unproductive dynamics by providing clear thinking steps. Ensures comprehensive analysis by examining all angles. Creates efficient communication through a shared language for thinking.<br>提供清晰嘅思考步驟，避免消耗雙方嘅討論。考慮所有角度，確保全面分析。共享思考語言，創造團隊高效溝通。</p>
+        </div>
+    </div>
+
+    <script>
+        const hats = [
+            { 
+                name: 'White Hat',
+                nameZh: '白帽',
+                bgColor: '#ffffff',
+                textColor: '#000000',
+                description: 'Facts, figures, and objective information',
+                descriptionZh: '事實、數據及客觀資訊',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: '... is/am/are ...', zh: '... 係 ...' },
+                    { en: 'Do you know that...?', zh: '你知唔知 ...？' },
+                    { en: 'Have you heard of...?', zh: '你有冇聽過 ...？' },
+                    { en: 'Everyone knows that...', zh: '個個都知 ...' },
+                    { en: 'I\'ve read/seen that...', zh: '我睇過 ...' },
+                    { en: 'From what I know, ...', zh: '據我所知 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: 'According to science, ...', zh: '根據科學，...' },
+                    { en: 'What has happened is that...', zh: '發生咗嘅事係 ...' },
+                    { en: 'In reality, ...', zh: '實際上 ...' },
+                    { en: 'The truth/fact/reality is that...', zh: '事實係 ...' },
+                    { en: 'Based on evidence, ...', zh: '根據證據 ...' },
+                    { en: 'There are statistics/studies showing that...', zh: '有統計/研究顯示 ...' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'It\'s significant/a fact/well known/certain/in no doubt/obvious that...', zh: '重要/事實/眾所周知/肯定/無疑/明顯 ...' },
+                    { en: 'The data indicates that...', zh: '數據顯示 ...' },
+                    { en: 'Research has found that...', zh: '研究發現 ...' },
+                    { en: 'There have been studies suggesting that...', zh: '有研究顯示 ...' },
+                    { en: 'It has been observed that...', zh: '觀察到 ...' },
+                    { en: 'The evidence confirms that...', zh: '證據證實 ...' }
+                ]
+            },
+            { 
+                name: 'Red Hat',
+                nameZh: '紅帽',
+                bgColor: '#ff6b6b',
+                textColor: '#FFFFFF',
+                description: 'Emotions, feelings, and intuition',
+                descriptionZh: '情感、感覺及直覺',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: 'I like/love/hate/want...', zh: '我鍾意/愛/憎/想要 ...' },
+                    { en: 'I think/believe/agree that...', zh: '我覺得/相信/同意 ...' },
+                    { en: 'I can\'t agree that..', zh: '我唔同意 ...' },
+                    { en: 'I\'m not sure ...', zh: '我唔肯定 ...' },
+                    { en: 'It\'s lovely/exciting/cool/awesome...', zh: '好可愛/刺激/型/正 ...' },
+                    { en: 'That\'s good/nice/the best/fantastic/a good one/wonderful/insane/sick...', zh: '好正/好/最好/超正/好嘢/精彩/癲/正 ...' },
+                    { en: 'That\'s stupid/lame/unfortunate/sad/disasterous/devastating/the worst...', zh: '好蠢/廢/不幸/傷心/災難性/毀滅性/最差 ...' },
+                    { en: 'I feel excited/worried/confused about...', zh: '我對 ... 感到興奮/擔心/困惑' },
+                    { en: 'It makes me feel...', zh: '令我覺得 ...' },
+                    { en: 'I prefer...', zh: '我寧願 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: 'What I believe/can say/hope is that...', zh: '我相信/可以講/希望係 ...' },
+                    { en: 'I don\'t know if it\'s true that...', zh: '我唔知係咪真係 ...' },
+                    { en: 'I find it funny/ridiculous/annoying/disgusting/confusing...', zh: '我覺得好搞笑/荒謬/煩/核突/混亂 ...' },
+                    { en: 'I have a feeling that...', zh: '我有個感覺係 ...' },
+                    { en: 'I\'m not comfortable with...', zh: '我對 ... 唔舒服' },
+                    { en: 'I sense that...', zh: '我感覺到 ...' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'My belief/understanding/theory/instinct is that...', zh: '我嘅信念/理解/理論/直覺係 ...' },
+                    { en: 'My gut feeling is that...', zh: '我嘅直覺係 ...' }
+                ]
+            },
+            { 
+                name: 'Yellow Hat',
+                nameZh: '黃帽',
+                bgColor: '#ffd93d',
+                textColor: '#000000',
+                description: 'Benefits, advantages, and positive aspects',
+                descriptionZh: '好處、優勢及正面方面',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: 'I like that...', zh: '我鍾意嘅係 ...' },
+                    { en: '... can ...', zh: '... 可以 ...' },
+                    { en: 'The good thing about... is that...', zh: '好處係 ...' },
+                    { en: 'This is due to/ because/because of ...', zh: '呢個係因為 ...' },
+                    { en: 'This will help/benefit...', zh: '呢個會幫到/有益於 ...' },
+                    { en: 'It\'s beneficial/useful because...', zh: '有用因為 ...' },
+                    { en: 'This makes... better/easier...', zh: '呢個令 ... 更好/更容易 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: '... is/am/are sufficient/good enough/doing well/up to standard/beyond our expectations.', zh: '... 足夠/夠好/做得幾好/達到標準/超出我哋預期。' },
+                    { en: 'The positive side is that...', zh: '正面嘅係 ...' },
+                    { en: 'What I appreciate about... is...', zh: '我欣賞 ... 嘅係 ...' },
+                    { en: 'This could result in...', zh: '呢個可能會導致 ...' },
+                    { en: 'The value of... is...', zh: '... 嘅價值係 ...' },
+                    { en: 'We\'ll gain...', zh: '我哋會得到 ...' },
+                    { en: 'The upside is...', zh: '好處係 ...' },
+                    { en: 'We can expect...', zh: '我哋可以預期 ...' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'One advantage/competitive feature/positive aspect/impressive quality/strength of... is that...', zh: '一個優勢係 ...' },
+                    { en: 'This offers the opportunity to...', zh: '呢個提供機會 ...' },
+                    { en: 'This has the potential to...', zh: '呢個有潛力 ...' }
+                ]
+            },
+            { 
+                name: 'Black Hat',
+                nameZh: '黑帽',
+                bgColor: '#95a5a6',
+                textColor: '#FFFFFF',
+                description: 'Caution, problems, and potential difficulties',
+                descriptionZh: '謹慎、問題及潛在困難',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: 'I don\'t like that...', zh: '我唔鍾意嘅係 ...' },
+                    { en: '... cannot ...', zh: '... 唔可以 ...' },
+                    { en: 'The problem with... is that...', zh: '問題係 ...' },
+                    { en: 'This is due to/ because/because of ...', zh: '呢個係因為 ...' },
+                    { en: 'We need to be careful because...', zh: '我哋要小心因為 ...' },
+                    { en: 'The downside is...', zh: '缺點係 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: '... is/am/are insufficient/not good enough/not up to standard/disappointing, since...', zh: '... 不足夠/唔夠好/未達標準/令人失望，因為 ...' },
+                    { en: 'One concern is that...', zh: '一個擔心係 ...' },
+                    { en: 'This might lead to...', zh: '呢個可能會導致 ...' },
+                    { en: 'The risk is that...', zh: '風險係 ...' },
+                    { en: 'This could cause...', zh: '呢個可能會造成 ...' },
+                    { en: 'This may not work because...', zh: '呢個可能唔得因為 ...' },
+                    { en: 'There\'s a possibility that...', zh: '有可能 ...' },
+                    { en: 'We should be cautious about...', zh: '我哋應該小心 ...' },
+                    { en: 'This could fail if...', zh: '如果 ... 可能會失敗' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'What needs to be addressed/fixed/improved is that....', zh: '需要處理/修復/改善嘅係 ...' },
+                    { en: 'There\'s concern/room for improvement/no going back/little time to fix it/something missing here. For example, ...', zh: '有擔心/改善空間/無回頭路/好少時間修復/有啲嘢缺失。例如，...' },
+                    { en: 'We might face challenges such as...', zh: '我哋可能會面對挑戰例如 ...' }
+                ]
+            },
+            { 
+                name: 'Green Hat',
+                nameZh: '綠帽',
+                bgColor: '#6bcf7f',
+                textColor: '#000000',
+                description: 'Creativity, new ideas, and possibilities',
+                descriptionZh: '創意、新想法及可能性',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: 'What if...?', zh: '如果 ... 會點？' },
+                    { en: 'My idea is that...', zh: '我嘅諗法係 ...' },
+                    { en: 'I just have this idea that...', zh: '我諗到 ...' },
+                    { en: 'What we can do is that...', zh: '我哋可以做 ...' },
+                    { en: 'Imagine that...', zh: '想像下 ...' },
+                    { en: 'What about ...?', zh: '... 點樣？' },
+                    { en: 'Maybe we could...', zh: '或者我哋可以 ...' },
+                    { en: 'How about we...', zh: '不如我哋 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: 'Wouldn\'t it be fun/great/nice if ...?', zh: '如果 ... 會唔會好有趣/好/正？' },
+                    { en: 'It\'s going to be so cool if...?', zh: '如果 ... 會好正？' },
+                    { en: 'We could experiment with/try...', zh: '我哋可以試下 ...' },
+                    { en: 'What if we tried...', zh: '如果我哋試下 ...' },
+                    { en: 'Another way to look at it is...', zh: '另一個角度係 ...' },
+                    { en: 'We could explore...', zh: '我哋可以探索 ...' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'Let\'s think outside the box/brainstorm...', zh: '等我哋跳出框框諗下/腦力激盪下 ...' },
+                    { en: 'An alternative approach would be...', zh: '另一個方法係 ...' },
+                    { en: 'What if we combined...', zh: '如果我哋結合 ... 會點？' },
+                    { en: 'Let\'s consider a different perspective...', zh: '等我哋考慮另一個角度 ...' }
+                ]
+            },
+            { 
+                name: 'Blue Hat',
+                nameZh: '藍帽',
+                bgColor: '#74b9ff',
+                textColor: '#FFFFFF',
+                description: 'Process control, planning, and next steps',
+                descriptionZh: '過程控制、規劃及下一步',
+                starters: [
+                    // A1/A2 - Beginner/Elementary
+                    { en: 'How do you ...?', zh: '你點樣 ...？' },
+                    { en: '... if ...', zh: '... 如果 ...' },
+                    { en: 'If you want to ..., ...', zh: '如果你想 ...，...' },
+                    { en: 'The first step is to...', zh: '第一步係 ...' },
+                    { en: 'Let me tell you how to... First,...', zh: '等我話你知點樣 ... 首先，...' },
+                    { en: 'It starts with ... Then... And then ...', zh: '由 ... 開始，然後 ... 再然後 ...' },
+                    { en: 'After that, we should...', zh: '之後，我哋應該 ...' },
+                    { en: 'Finally, we need to...', zh: '最後，我哋需要 ...' },
+                    // B1/B2 - Intermediate/Upper Intermediate
+                    { en: 'To ..., you could/need to/should...', zh: '要 ...，你可以/需要/應該 ...' },
+                    { en: 'We should start by...', zh: '我哋應該由 ... 開始' },
+                    { en: 'The next thing to do is...', zh: '下一步要做嘅係 ...' },
+                    { en: 'We need to plan/decide...', zh: '我哋需要計劃/決定 ...' },
+                    { en: 'We need to consider...', zh: '我哋需要考慮 ...' },
+                    { en: 'The key steps are...', zh: '關鍵步驟係 ...' },
+                    // C1/C2 - Advanced/Proficient
+                    { en: 'Let\'s organise this by...', zh: '等我哋按 ... 組織' },
+                    { en: 'Let\'s break this down into...', zh: '等我哋將呢個拆分成 ...' },
+                    { en: 'In order to..., we must...', zh: '為咗 ...，我哋必須 ...' },
+                    { en: 'The process involves...', zh: '過程包括 ...' }
+                ]
+            }
+        ];
+
+        const dice = document.getElementById('dice');
+        const result = document.getElementById('result');
+        const hatProfile = document.getElementById('hatProfile');
+        let isSpinning = false;
+
+        function displayHatLabel(hat) {
+            return `<span class="hat-label" style="background-color: ${hat.bgColor}; color: ${hat.textColor};">${hat.name}<br>${hat.nameZh}</span>`;
+        }
+
+        function displayHatProfile(hat) {
+            return `
+                <div class="hat-profile-content">
+                    <div class="hat-description">${hat.description}<br>${hat.descriptionZh}</div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function displaySentenceStarters(hat, selectedHatIndex = null) {
+            const starters = hat.starters.map((starter, index) => {
+                const enText = typeof starter === 'string' ? starter : (starter.en || '');
+                const zhText = typeof starter === 'string' ? '' : (starter.zh || '');
+                // Always show both languages together
+                const displayText = zhText && zhText.trim() !== '' 
+                    ? `${enText}<br>${zhText}` 
+                    : enText;
+                return `<li data-index="${index}">${displayText}</li>`;
+            });
+            
+            // Group starters into groups of 3
+            const groups = [];
+            for (let i = 0; i < starters.length; i += 3) {
+                groups.push(starters.slice(i, i + 3));
+            }
+            
+            const groupsHTML = groups.map((group, groupIndex) => {
+                const isActive = groupIndex === 0 ? 'active' : '';
+                return `<div class="starter-group ${isActive}" data-group="${groupIndex}"><ul>${group.join('')}</ul></div>`;
+            }).join('');
+            
+            const headingHTML = groups.length > 1 ? `
+                <h3 class="sentence-starters-nav">
+                    <button class="sentence-starters-arrow" data-starters-prev>&lt;</button>
+                    <span class="sentence-starters-indicator">Sentence Starters <span data-starters-current>1</span>/<span data-starters-total>${groups.length}</span></span>
+                    <button class="sentence-starters-arrow" data-starters-next>&gt;</button>
+                </h3>
+            ` : '<h3>Sentence Starters</h3>';
+            
+            return `
+                <div class="sentence-starters">
+                    ${headingHTML}
+                    ${groupsHTML}
+                </div>
+            `;
+        }
+
+        function displayHatSelect(selectedHatIndex = null) {
+            const hatSelectContainer = document.getElementById('hatSelectContainer');
+            if (!hatSelectContainer) return;
+            
+            // Create colored buttons matching hat colors
+            const emojiButtons = hats.map((h, index) => {
+                const selected = (selectedHatIndex !== null && index === selectedHatIndex) ? 'selected' : '';
+                const delayClass = `jump-delay-${index}`;
+                return `<button class="hat-emoji-btn ${selected} ${delayClass}" data-hat-index="${index}" title="${h.name} / ${h.nameZh}" aria-label="${h.name}" style="background-color: ${h.bgColor}; color: ${h.textColor};"></button>`;
+            }).join('');
+            
+            hatSelectContainer.innerHTML = emojiButtons + '<span id="diceEmoji" class="jump-delay-dice" style="font-size: 1.5em; margin-left: 10px; cursor: pointer; user-select: none;" title="Lucky Draw / 幸運抽">🎲</span>';
+            
+            // Add event listeners to emoji buttons
+            const emojiBtns = hatSelectContainer.querySelectorAll('.hat-emoji-btn');
+            emojiBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const hatIndex = parseInt(this.getAttribute('data-hat-index'));
+                    if (!isNaN(hatIndex)) {
+                        showHat(hatIndex);
+                    }
+                });
+            });
+            
+            // Add event listener to dice emoji - trigger dice click
+            const diceEmoji = document.getElementById('diceEmoji');
+            if (diceEmoji) {
+                diceEmoji.addEventListener('click', function() {
+                    const dice = document.getElementById('dice');
+                    if (dice) {
+                        dice.click();
+                    }
+                });
+            }
+        }
+
+        const startersCarouselState = { currentIndex: 0 };
+        
+        function initSentenceStartersCarousel(container) {
+            const startersContainer = container.querySelector('.sentence-starters');
+            if (!startersContainer) return;
+            
+            const groups = startersContainer.querySelectorAll('.starter-group');
+            let prevBtn = startersContainer.querySelector('[data-starters-prev]');
+            let nextBtn = startersContainer.querySelector('[data-starters-next]');
+            const currentSpan = startersContainer.querySelector('[data-starters-current]');
+            
+            if (groups.length <= 1) return; // No navigation needed if only one group
+            
+            // Reset to first group when initializing
+            startersCarouselState.currentIndex = 0;
+            
+            function updateStartersCarousel() {
+                groups.forEach((group, index) => {
+                    group.classList.toggle('active', index === startersCarouselState.currentIndex);
+                });
+                
+                if (currentSpan) currentSpan.textContent = startersCarouselState.currentIndex + 1;
+                // Re-query buttons in case they were replaced
+                const currentPrevBtn = startersContainer.querySelector('[data-starters-prev]');
+                const currentNextBtn = startersContainer.querySelector('[data-starters-next]');
+                if (currentPrevBtn) currentPrevBtn.disabled = startersCarouselState.currentIndex === 0;
+                if (currentNextBtn) currentNextBtn.disabled = startersCarouselState.currentIndex === groups.length - 1;
+            }
+            
+            // Remove old listeners by cloning buttons
+            if (prevBtn) {
+                const newPrevBtn = prevBtn.cloneNode(true);
+                prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+                prevBtn = newPrevBtn;
+                prevBtn.addEventListener('click', function() {
+                    if (startersCarouselState.currentIndex > 0) {
+                        startersCarouselState.currentIndex--;
+                        updateStartersCarousel();
+                    }
+                });
+            }
+            
+            if (nextBtn) {
+                const newNextBtn = nextBtn.cloneNode(true);
+                nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+                nextBtn = newNextBtn;
+                nextBtn.addEventListener('click', function() {
+                    if (startersCarouselState.currentIndex < groups.length - 1) {
+                        startersCarouselState.currentIndex++;
+                        updateStartersCarousel();
+                    }
+                });
+            }
+            
+            updateStartersCarousel();
+        }
+
+        function showHat(hatIndex) {
+            if (hatIndex === null || hatIndex === undefined || hatIndex === '') {
+                return;
+            }
+            const hat = hats[hatIndex];
+            if (!hat) return;
+            
+            // Update dice button to show selected hat
+            dice.innerHTML = `${hat.name}<br>${hat.nameZh}`;
+            dice.style.backgroundColor = hat.bgColor;
+            dice.style.color = hat.textColor;
+            dice.classList.remove('spinning');
+            dice.classList.add('drawn');
+            
+            // Update hat profile and sentence starters
+            hatProfile.innerHTML = displayHatProfile(hat);
+            result.innerHTML = displaySentenceStarters(hat, hatIndex);
+            
+            // Initialize sentence starters carousel
+            initSentenceStartersCarousel(result);
+            
+            // Show dice container
+            const diceContainer = document.querySelector('.dice-container');
+            if (diceContainer) {
+                diceContainer.classList.add('show');
+            }
+            
+            // Update dropdown to show selected hat
+            displayHatSelect(hatIndex);
+            
+            // Hide instructions
+            const instructions = document.getElementById('instructions');
+            if (instructions) instructions.classList.add('hidden');
+        }
+
+        function resetToInstructions() {
+            // Reset dice button
+            dice.innerHTML = 'The 6 Thinking Hats<br>六頂思考帽 幸運抽<br>🎰Lucky Draw<br>';
+            dice.style.backgroundColor = '';
+            dice.style.color = '';
+            dice.classList.remove('spinning', 'drawn');
+            
+            // Hide dice container (will show again when Game 2 is viewed)
+            const diceContainer = document.querySelector('.dice-container');
+            if (diceContainer) {
+                diceContainer.classList.remove('show');
+            }
+            
+            // Clear hat profile and result
+            hatProfile.textContent = '';
+            result.innerHTML = '';
+            
+            // Reset emoji buttons (no selection)
+            displayHatSelect(null);
+            
+        }
+
+        // Initialize emoji buttons on page load
+        displayHatSelect(null);
+
+        // Hats modal functions
+        function openHatsModal() {
+            const overlay = document.getElementById('hatsModalOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+            }
+        }
+
+        function closeHatsModal(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const overlay = document.getElementById('hatsModalOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+        }
+
+        // Add click handler to header title
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerTitle = document.querySelector('.header-title');
+            if (headerTitle) {
+                headerTitle.addEventListener('click', openHatsModal);
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeHatsModal();
+            }
+        });
+
+        // Carousel navigation functions
+        const carouselStates = {};
+        
+        function initCarousel(carouselId) {
+            const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+            if (!carousel) return;
+            
+            const methods = carousel.querySelectorAll('.method');
+            const prevBtn = carousel.querySelector(`[data-carousel-prev="${carouselId}"]`);
+            const nextBtn = carousel.querySelector(`[data-carousel-next="${carouselId}"]`);
+            const currentSpan = carousel.querySelector(`[data-carousel-current="${carouselId}"]`);
+            const totalSpan = carousel.querySelector(`[data-carousel-total="${carouselId}"]`);
+            
+            if (totalSpan) totalSpan.textContent = methods.length;
+            
+            // Initialize state if not exists
+            if (!carouselStates[carouselId]) {
+                carouselStates[carouselId] = { currentIndex: 0 };
+            }
+            
+            const state = carouselStates[carouselId];
+            
+            function updateCarousel() {
+                methods.forEach((method, index) => {
+                    method.classList.toggle('active', index === state.currentIndex);
+                });
+                
+                if (currentSpan) currentSpan.textContent = state.currentIndex + 1;
+                if (prevBtn) prevBtn.disabled = state.currentIndex === 0;
+                if (nextBtn) nextBtn.disabled = state.currentIndex === methods.length - 1;
+                
+                // Dice container is now only shown when user selects a hat or draws one
+                // No longer auto-shown when viewing instructions
+            }
+            
+            // Remove old listeners by replacing buttons
+            if (prevBtn && prevBtn.dataset.listenerAdded !== 'true') {
+                prevBtn.addEventListener('click', function() {
+                    if (state.currentIndex > 0) {
+                        state.currentIndex--;
+                        updateCarousel();
+                    }
+                });
+                prevBtn.dataset.listenerAdded = 'true';
+            }
+            
+            if (nextBtn && nextBtn.dataset.listenerAdded !== 'true') {
+                nextBtn.addEventListener('click', function() {
+                    if (state.currentIndex < methods.length - 1) {
+                        state.currentIndex++;
+                        updateCarousel();
+                    }
+                });
+                nextBtn.dataset.listenerAdded = 'true';
+            }
+            
+            updateCarousel();
+        }
+        
+
+        dice.addEventListener('click', function() {
+            if (isSpinning) return;
+            
+            // Show dice container immediately when dice is clicked
+            const diceContainer = document.querySelector('.dice-container');
+            if (diceContainer) {
+                diceContainer.classList.add('show');
+            }
+            
+            isSpinning = true;
+            dice.classList.add('spinning');
+            dice.classList.remove('drawn'); // Allow color cycle animation to resume
+            result.textContent = '';
+            hatProfile.textContent = '';
+            // Reset button text and remove inline styles to allow color cycle animation
+            dice.innerHTML = 'The 6 Thinking Hats<br>六頂思考帽 幸運抽<br>🎰Lucky Draw<br>';
+            dice.style.backgroundColor = '';
+            dice.style.color = '';
+            // Clear selected emoji
+            displayHatSelect(null);
+            
+            // Hide instructions
+            const instructions = document.getElementById('instructions');
+            if (instructions) instructions.classList.add('hidden');
+            
+            let spinCount = 0;
+            const maxSpins = 12; // Number of rapid changes
+            const spinInterval = 40; // Milliseconds between changes
+            
+            const spin = setInterval(() => {
+                const randomHat = hats[Math.floor(Math.random() * hats.length)];
+                dice.innerHTML = `${randomHat.name}<br>${randomHat.nameZh}`;
+                dice.style.backgroundColor = randomHat.bgColor;
+                dice.style.color = randomHat.textColor;
+                spinCount++;
+                
+                if (spinCount >= maxSpins) {
+                    clearInterval(spin);
+                    
+                    // Final random selection
+                    const finalHat = hats[Math.floor(Math.random() * hats.length)];
+                    dice.innerHTML = `${finalHat.name}<br>${finalHat.nameZh}`;
+                    dice.style.backgroundColor = finalHat.bgColor;
+                    dice.style.color = finalHat.textColor;
+                    dice.classList.remove('spinning');
+                    dice.classList.add('drawn'); // Stop color cycle animation
+                    
+                    // Show hat profile in left column and sentence starters in right column
+                    setTimeout(() => {
+                        const finalHatIndex = hats.findIndex(h => h.name === finalHat.name);
+                        hatProfile.innerHTML = displayHatProfile(finalHat);
+                        result.innerHTML = displaySentenceStarters(finalHat, finalHatIndex);
+                        
+                        // Initialize sentence starters carousel
+                        initSentenceStartersCarousel(result);
+                        
+                        // Show dice container
+                        const diceContainer = document.querySelector('.dice-container');
+                        if (diceContainer) {
+                            diceContainer.classList.add('show');
+                        }
+                        
+                        // Display and update emoji buttons
+                        displayHatSelect(finalHatIndex);
+                        
+                        isSpinning = false;
+                    }, 200);
+                }
+            }, spinInterval);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hong Kong Education Book Lists</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            /* Compact 4px grid system */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            
+            /* Colors - minimal palette */
+            --color-bg: #ffffff;
+            --color-surface: #fafafa;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #6b6b6b;
+            --color-text-tertiary: #9b9b9b;
+            --color-border: #e5e5e5;
+            
+            /* Accent colors */
+            --color-accent: #2563eb;
+            --color-accent-hover: #1d4ed8;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+            
+            --max-width: 1200px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.4;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 14px;
+        }
+        
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: transparent;
+            color: var(--color-text);
+            padding: var(--space-2) 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+            width: 100vw;
+            box-sizing: border-box;
+        }
+        
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: var(--space-2);
+            width: 100%;
+            padding: 0 var(--space-3) 0 var(--space-2);
+        }
+        
+        .header-main {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .filter-button {
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5px;
+            padding: 0;
+            line-height: 1;
+            flex-shrink: 0;
+            position: relative;
+            opacity: 0.7;
+            transition: opacity 0.15s ease;
+        }
+        
+        .filter-button:hover {
+            opacity: 1;
+        }
+        
+        .filter-button::before,
+        .filter-button::after,
+        .filter-button span {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 1.5px;
+            background: currentColor;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .filter-button span {
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .filter-button::before {
+            top: 50%;
+            transform: translate(-50%, calc(-50% - 4px));
+        }
+        
+        .filter-button::after {
+            top: 50%;
+            transform: translate(-50%, calc(-50% + 4px));
+        }
+        
+        .header h1 {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin: 0;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+            user-select: none;
+            line-height: 1.3;
+        }
+        
+        .header h1 .header-copyright {
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            cursor: default;
+            pointer-events: none;
+            font-size: 10px;
+        }
+        
+        .header h1:hover {
+            opacity: 0.7;
+        }
+        
+        .header h1:hover .header-copyright {
+            opacity: 1;
+        }
+        
+        .header-subtitle {
+            display: none;
+        }
+        
+        .source-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 400;
+            border-bottom: 1px solid var(--color-border);
+            transition: color 0.15s ease;
+        }
+        
+        .source-link:hover {
+            color: var(--color-text);
+        }
+        
+        /* Source popup modal */
+        
+        .source-popup-content {
+            background: var(--color-bg);
+            padding: var(--space-4);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .source-popup-content .source-link {
+            font-size: 13px;
+            display: inline-block;
+            margin-top: var(--space-2);
+        }
+        
+        .source-popup-close {
+            position: absolute;
+            top: var(--space-2);
+            right: var(--space-2);
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            padding: 0;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        
+        .source-popup-close:hover {
+            opacity: 1;
+            color: var(--color-text);
+        }
+        
+        /* Shared popup styles */
+        .source-popup,
+        .compact-filters,
+        .book-tags-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            overflow-y: auto;
+        }
+        
+        .source-popup.visible,
+        .book-tags-popup.visible {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            pointer-events: auto;
+            padding: var(--space-4);
+        }
+        
+        .compact-filters.visible {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            opacity: 1;
+            pointer-events: auto;
+            padding: var(--space-3) var(--space-2);
+        }
+        
+        .source-popup {
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+        }
+        
+        .compact-filters {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        
+        .book-tags-popup {
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+        }
+        
+        
+        .compact-filters-panel {
+            background: var(--color-bg);
+            width: 100%;
+            max-width: 1100px;
+            max-height: calc(100vh - var(--space-6));
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            margin-top: var(--space-2);
+        }
+        
+        .compact-filters-close {
+            background: transparent;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            padding: var(--space-2) var(--space-3);
+            line-height: 1;
+            flex-shrink: 0;
+            font-family: inherit;
+        }
+        
+        .compact-filters-close:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+        
+        .book-tags-popup-close {
+            position: absolute;
+            top: var(--space-2);
+            right: var(--space-2);
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            padding: 0;
+            line-height: 1;
+            z-index: 10;
+            opacity: 0.7;
+        }
+        
+        .book-tags-popup-close:hover {
+            opacity: 1;
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+        
+        .filter-actions-bar {
+            background: var(--color-bg);
+            border-top: 1px solid var(--color-border);
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 0;
+            flex-shrink: 0;
+        }
+        
+        .filter-actions-bar .compact-filters-close {
+            position: static;
+            height: 100%;
+            align-self: stretch;
+            border-left: 1px solid var(--color-border);
+            border-radius: 0;
+            flex: 1;
+        }
+        
+        .clear-filters {
+            margin: 0;
+            padding: var(--space-2);
+            border-radius: 0;
+            border-left: none;
+            flex: 1;
+        }
+        
+        .filter-actions-bar .clear-filters:first-child {
+            border-left: none;
+        }
+        
+        .apply-filters {
+            margin: 0;
+            padding: var(--space-2);
+            border-radius: 0;
+            border-left: 1px solid var(--color-border);
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        .filter-navbar {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg);
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0 var(--space-2);
+        }
+        
+        .filter-navbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-nav-tab {
+            flex: 1;
+            min-width: 100px;
+            padding: var(--space-3) var(--space-4);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            white-space: nowrap;
+            text-align: center;
+            position: relative;
+        }
+        
+        .filter-nav-tab:hover {
+            color: var(--color-text);
+        }
+        
+        .filter-nav-tab.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .filter-nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-accent);
+        }
+        
+        .filter-section {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-4);
+        }
+        
+        .filter-section.active {
+            display: block;
+        }
+        
+        
+        .compact-options {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            padding: var(--space-2) 0;
+        }
+        
+        .compact-checkbox {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-surface);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            border: 1.5px solid var(--color-border);
+            border-radius: 8px;
+            min-height: 44px;
+            gap: var(--space-3);
+        }
+        
+        .compact-checkbox:hover {
+            background: var(--color-bg);
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+        
+        .compact-checkbox input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .compact-checkbox::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--color-border);
+            border-radius: 4px;
+            background: var(--color-bg);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            display: block;
+            order: -1;
+        }
+        
+        .compact-checkbox:has(input[type="checkbox"]:checked)::before {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2 6l3 3 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 10px;
+        }
+        
+        .compact-checkbox-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .compact-checkbox span {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text);
+            pointer-events: none;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+        
+        .compact-checkbox-description {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+            pointer-events: none;
+            text-align: left;
+        }
+        
+        .compact-checkbox:has(input[type="checkbox"]:checked) {
+            background: rgba(37, 99, 235, 0.08);
+            border-color: var(--color-accent);
+        }
+        
+        .compact-checkbox:has(input[type="checkbox"]:checked) span {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .compact-checkbox:has(input[type="checkbox"]:checked) .compact-checkbox-description {
+            color: var(--color-text-secondary);
+        }
+        
+        .results {
+            padding: var(--space-3);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            width: 100%;
+            position: relative;
+        }
+        
+        
+        .clear-filters,
+        .apply-filters {
+            flex: 1;
+            margin: 0;
+            padding: var(--space-2) var(--space-3);
+            border-radius: 0;
+            border: none;
+            border-left: 1px solid var(--color-border);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.15s ease, color 0.15s ease;
+            font-family: inherit;
+        }
+        
+        .clear-filters:first-child {
+            border-left: none;
+        }
+        
+        .clear-filters {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+        
+        .clear-filters:hover {
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--color-error);
+        }
+        
+        .apply-filters {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+        
+        .apply-filters:hover {
+            background: var(--color-accent-hover);
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: var(--space-2);
+            flex: 1;
+            width: 100%;
+        }
+        
+        .book-card {
+            background: var(--color-bg);
+            border-radius: 4px;
+            padding: var(--space-3);
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        
+        .book-card:hover {
+            background: rgba(37, 99, 235, 0.02);
+            border-color: var(--color-border);
+        }
+        
+        
+        .book-tags-popup-content {
+            background: var(--color-bg);
+            padding: 0;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+        
+        
+        .book-tags-popup-header {
+            padding: var(--space-5);
+            padding-right: var(--space-6);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-surface);
+        }
+        
+        .book-tags-popup-header-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+        }
+        
+        .book-tags-popup-header-text {
+            flex: 1;
+            display: flex;
+            gap: var(--space-5);
+            align-items: flex-start;
+        }
+        
+        .book-tags-popup-header-left {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .book-tags-popup-header-right {
+            flex-shrink: 0;
+            text-align: right;
+        }
+        
+        .book-tags-popup-emoji {
+            font-size: 40px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        
+        .book-tags-popup-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            line-height: 1.4;
+        }
+        
+        .book-tags-popup-ctitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        
+        .book-tags-popup-info {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .book-tags-popup-empty {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            padding: var(--space-3) 0;
+            text-align: center;
+        }
+        
+        .book-tags-popup-body {
+            flex: 1;
+            padding: var(--space-5);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+        
+        .book-tags-popup-section {
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+        
+        .book-tags-popup-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .book-tags-popup-tags {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-2);
+        }
+        
+        .book-tags-popup-tag {
+            background: var(--color-surface);
+            color: var(--color-text);
+            padding: var(--space-2) var(--space-3);
+            font-size: 12px;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-2);
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+        }
+        
+        .book-tags-popup-tag-emoji {
+            font-size: 16px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        
+        .book-tags-popup-tag-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            gap: 1px;
+        }
+        
+        .book-tags-popup-tag-label {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.3;
+            color: var(--color-text);
+        }
+        
+        .book-tags-popup-tag-description {
+            font-size: 10px;
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+        
+        
+        .book-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text);
+            margin: 0 0 var(--space-1) 0;
+            line-height: 1.4;
+        }
+        
+        .book-ctitle {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin: 0 0 var(--space-1) 0;
+            line-height: 1.4;
+            font-style: normal;
+        }
+        
+        .book-author {
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            margin: 0 0 2px 0;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        .book-publisher {
+            color: var(--color-text-secondary);
+            font-size: 11px;
+            margin: 0 0 2px 0;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        .book-isbn {
+            color: var(--color-text-tertiary);
+            font-size: 10px;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        
+        .tag {
+            background: var(--color-surface);
+            color: var(--color-text);
+            padding: 1px 3px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 400;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            min-width: 18px;
+            text-align: center;
+        }
+        
+        
+        .no-results {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: nowrap;
+                padding: 0 var(--space-2) 0 var(--space-2);
+            }
+            
+            .header-main h1 {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            
+            .compact-filters {
+                padding: var(--space-2);
+            }
+            
+            .compact-filters-panel {
+                max-height: calc(100vh - var(--space-4));
+                max-width: 100%;
+            }
+            
+            .filter-navbar {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .filter-navbar::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .filter-nav-tab {
+                min-width: 80px;
+                font-size: 11px;
+                padding: var(--space-2);
+            }
+            
+            .filter-section {
+                padding: var(--space-3);
+            }
+            
+            .filter-actions-bar {
+                padding: var(--space-2);
+            }
+            
+            .clear-filters,
+            .apply-filters {
+                padding: var(--space-2) var(--space-3);
+                font-size: 12px;
+            }
+            
+            .book-tags-popup-content {
+                max-height: 100vh;
+                max-width: 100%;
+                width: 100%;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            
+            .book-tags-popup-header {
+                padding: var(--space-4);
+                padding-right: var(--space-5);
+            }
+            
+            .book-tags-popup-header-text {
+                flex-direction: column;
+                gap: var(--space-3);
+            }
+            
+            .book-tags-popup-header-right {
+                text-align: left;
+            }
+            
+            .book-tags-popup-emoji {
+                font-size: 36px;
+            }
+            
+            .book-tags-popup-title {
+                font-size: 16px;
+            }
+            
+            .book-tags-popup-body {
+                padding: var(--space-4);
+                gap: var(--space-4);
+            }
+            
+            .book-tags-popup-tags {
+                grid-template-columns: 1fr;
+            }
+            
+            .compact-options {
+                justify-content: flex-start;
+                gap: var(--space-2);
+            }
+            
+            .compact-checkbox {
+                min-width: auto;
+                flex: 1 1 calc(50% - var(--space-1));
+                max-width: none;
+                min-height: 48px;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results {
+                padding: var(--space-2);
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <button class="filter-button" onclick="toggleFilters()" title="Filter / 篩選"><span></span></button>
+                <div class="header-main">
+                    <h1 onclick="toggleSourcePopup(event)">跨課程書目 / Book Lists for Reading across the Curriculum <br><span class="header-copyright" onclick="event.stopPropagation()">©kensirenglish.com</span></h1>
+                    <p class="header-subtitle">
+                        <a href="https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/references-resources/RaC/RaCBooklists.html" 
+                           target="_blank" class="source-link">
+                            📖 香港教育局官方來源 / HK Education Bureau Official Source
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Source Popup Modal -->
+        <div class="source-popup" id="sourcePopup" onclick="closeSourcePopup(event)">
+            <div class="source-popup-content" onclick="event.stopPropagation()">
+                <button class="source-popup-close" onclick="closeSourcePopup(event)">×</button>
+                <a href="https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/references-resources/RaC/RaCBooklists.html" 
+                   target="_blank" class="source-link">
+                    📖 香港教育局官方來源 / HK Education Bureau Official Source
+                </a>
+            </div>
+        </div>
+        
+        <div class="results">
+            <div class="compact-filters" id="compactFilters" onclick="closeFiltersWithoutApply(event)">
+                <div class="compact-filters-panel" onclick="event.stopPropagation()">
+                    <div class="filter-navbar">
+                        <button class="filter-nav-tab active" onclick="switchFilterTab('stage')" data-tab="stage">階段 / Stage</button>
+                        <button class="filter-nav-tab" onclick="switchFilterTab('module')" data-tab="module">單元 / Modules</button>
+                        <button class="filter-nav-tab" onclick="switchFilterTab('klas')" data-tab="klas">學習領域 / KLAs</button>
+                        <button class="filter-nav-tab" onclick="switchFilterTab('aim')" data-tab="aim">目標 / Aims</button>
+                        <button class="filter-nav-tab" onclick="switchFilterTab('type')" data-tab="type">類型 / Type</button>
+                    </div>
+                    
+                    <div class="filter-section active" data-section="stage">
+                        <div class="compact-options">
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="stage" value="KS1">
+                                <div class="compact-checkbox-content">
+                                    <span>📕 KS1</span>
+                                    <span class="compact-checkbox-description">P1-P3 / 小一至小三</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="stage" value="KS2">
+                                <div class="compact-checkbox-content">
+                                    <span>📘 KS2</span>
+                                    <span class="compact-checkbox-description">P4-P6 / 小四至小六</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="stage" value="KS3">
+                                <div class="compact-checkbox-content">
+                                    <span>📒 KS3</span>
+                                    <span class="compact-checkbox-description">S1-S3 / 中一至中三</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="stage" value="KS4">
+                                <div class="compact-checkbox-content">
+                                    <span>📗 KS4</span>
+                                    <span class="compact-checkbox-description">S4-S6 / 中四至中六</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section" data-section="module">
+                        <div class="compact-options">
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="A">
+                                <div class="compact-checkbox-content">
+                                    <span>🤝 A</span>
+                                    <span class="compact-checkbox-description">Getting Along / 與他人相處</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="B">
+                                <div class="compact-checkbox-content">
+                                    <span>👦 B</span>
+                                    <span class="compact-checkbox-description">Teenage Life / 青少年生活</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="C">
+                                <div class="compact-checkbox-content">
+                                    <span>📚 C</span>
+                                    <span class="compact-checkbox-description">Study & Work / 學習、校園生活與工作</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="D">
+                                <div class="compact-checkbox-content">
+                                    <span>⚖️ D</span>
+                                    <span class="compact-checkbox-description">Rights & Duties / 權利與責任</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="E">
+                                <div class="compact-checkbox-content">
+                                    <span>🌍 E</span>
+                                    <span class="compact-checkbox-description">World Cultures / 世界文化</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="F">
+                                <div class="compact-checkbox-content">
+                                    <span>✨ F</span>
+                                    <span class="compact-checkbox-description">Wonderful Things / 奇妙事物</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="G">
+                                <div class="compact-checkbox-content">
+                                    <span>🌱 G</span>
+                                    <span class="compact-checkbox-description">Nature & Env / 自然與環境</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="H">
+                                <div class="compact-checkbox-content">
+                                    <span>💻 H</span>
+                                    <span class="compact-checkbox-description">Technology / 科技</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="I">
+                                <div class="compact-checkbox-content">
+                                    <span>🎮 I</span>
+                                    <span class="compact-checkbox-description">Leisure & Fun / 休閒與娛樂</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="module" value="J">
+                                <div class="compact-checkbox-content">
+                                    <span>📋 J</span>
+                                    <span class="compact-checkbox-description">Others / 其他</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section" data-section="klas">
+                        <div class="compact-options">
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="1">
+                                <div class="compact-checkbox-content">
+                                    <span>🈶 1</span>
+                                    <span class="compact-checkbox-description">Chinese / 中國語文教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="2">
+                                <div class="compact-checkbox-content">
+                                    <span>🔢 2</span>
+                                    <span class="compact-checkbox-description">Mathematics / 數學教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="3">
+                                <div class="compact-checkbox-content">
+                                    <span>🔬 3</span>
+                                    <span class="compact-checkbox-description">Science / 科學教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="4">
+                                <div class="compact-checkbox-content">
+                                    <span>⚙️ 4</span>
+                                    <span class="compact-checkbox-description">Technology / 科技教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="5">
+                                <div class="compact-checkbox-content">
+                                    <span>🏛️ 5</span>
+                                    <span class="compact-checkbox-description">PSHE / 個人、社會及人文教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="6">
+                                <div class="compact-checkbox-content">
+                                    <span>🎨 6</span>
+                                    <span class="compact-checkbox-description">Arts / 藝術教育</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="klas" value="7">
+                                <div class="compact-checkbox-content">
+                                    <span>🏃 7</span>
+                                    <span class="compact-checkbox-description">PE / 體育教育</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section" data-section="aim">
+                        <div class="compact-options">
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="a">
+                                <div class="compact-checkbox-content">
+                                    <span>🎯 a</span>
+                                    <span class="compact-checkbox-description">Arouse Interest / 激發學習興趣</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="b">
+                                <div class="compact-checkbox-content">
+                                    <span>📖 b</span>
+                                    <span class="compact-checkbox-description">Background Info / 提供背景資料</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="c">
+                                <div class="compact-checkbox-content">
+                                    <span>🌐 c</span>
+                                    <span class="compact-checkbox-description">World Knowledge / 豐富世界知識</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="d">
+                                <div class="compact-checkbox-content">
+                                    <span>🎭 d</span>
+                                    <span class="compact-checkbox-description">Art Appreciation / 培養藝術欣賞</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="e">
+                                <div class="compact-checkbox-content">
+                                    <span>🔗 e</span>
+                                    <span class="compact-checkbox-description">Daily Life / 聯繫日常生活</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="f">
+                                <div class="compact-checkbox-content">
+                                    <span>🏮 f</span>
+                                    <span class="compact-checkbox-description">Chinese Culture / 了解中華文化</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="aim" value="g">
+                                <div class="compact-checkbox-content">
+                                    <span>💎 g</span>
+                                    <span class="compact-checkbox-description">Positive Values / 強化正面價值觀</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section" data-section="type">
+                        <div class="compact-options">
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="category" value="Fiction">
+                                <div class="compact-checkbox-content">
+                                    <span>📚 Fiction</span>
+                                    <span class="compact-checkbox-description">小說</span>
+                                </div>
+                            </label>
+                            <label class="compact-checkbox">
+                                <input type="checkbox" name="category" value="Non-fiction">
+                                <div class="compact-checkbox-content">
+                                    <span>📖 Non-fiction</span>
+                                    <span class="compact-checkbox-description">非小說</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions-bar">
+                        <button class="clear-filters" onclick="clearAllFilters()">清除所有篩選 / Clear All</button>
+                        <button class="compact-filters-close" onclick="closeFiltersWithoutApply(event)">Cancel / 取消</button>
+                        <button class="apply-filters" onclick="applyFiltersButton()">Apply Filters / 套用篩選</button>
+                    </div>
+                </div>
+            </div>
+            <div class="books-grid" id="books-grid">
+                <!-- Books will be populated here -->
+            </div>
+        </div>
+        
+        <!-- Book Tags Popup -->
+        <div class="book-tags-popup" id="bookTagsPopup" onclick="closeBookTagsPopup(event)">
+            <div class="book-tags-popup-content" onclick="event.stopPropagation()">
+                <button class="book-tags-popup-close" onclick="closeBookTagsPopup(event)">×</button>
+                <div id="book-tags-popup-content">
+                    <!-- Content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="booksdata.js"></script>
+    <script>
+        // Constants - single source of truth
+        const STAGE_DATA = {
+            'KS1': { emoji: '📕', name: 'Key Stage 1 - P1-P3 / 小一至小三' },
+            'KS2': { emoji: '📘', name: 'Key Stage 2 - P4-P6 / 小四至小六' },
+            'KS3': { emoji: '📒', name: 'Key Stage 3 - S1-S3 / 中一至中三' },
+            'KS4': { emoji: '📗', name: 'Key Stage 4 - S4-S6 / 中四至中六' }
+        };
+
+        const MODULE_DATA = {
+            'A': { emoji: '🤝', name: 'Getting Along With Others / 與他人相處' },
+            'B': { emoji: '👦', name: 'Teenage Life / 青少年生活' },
+            'C': { emoji: '📚', name: 'Study, School Life and Work / 學習、校園生活與工作' },
+            'D': { emoji: '⚖️', name: 'Rights and Responsibilities / 權利與責任' },
+            'E': { emoji: '🌍', name: 'Cultures of the World / 世界文化' },
+            'F': { emoji: '✨', name: 'Wonderful Things / 奇妙事物' },
+            'G': { emoji: '🌱', name: 'Nature and Environment / 自然與環境' },
+            'H': { emoji: '💻', name: 'Technology / 科技' },
+            'I': { emoji: '🎮', name: 'Leisure and Entertainment / 休閒與娛樂' },
+            'J': { emoji: '📋', name: 'Others / 其他' }
+        };
+
+        const KLA_DATA = {
+            '1': { emoji: '🈶', name: 'Chinese Language Education / 中國語文教育' },
+            '2': { emoji: '🔢', name: 'Mathematics Education / 數學教育' },
+            '3': { emoji: '🔬', name: 'Science Education / 科學教育' },
+            '4': { emoji: '⚙️', name: 'Technology Education / 科技教育' },
+            '5': { emoji: '🏛️', name: 'Personal, Social, Humanities Education / 個人、社會及人文教育' },
+            '6': { emoji: '🎨', name: 'Arts Education / 藝術教育' },
+            '7': { emoji: '🏃', name: 'Physical Education / 體育教育' }
+        };
+
+        const AIM_DATA = {
+            'a': { emoji: '🎯', name: 'Arouse interest in studying / 激發學習興趣' },
+            'b': { emoji: '📖', name: 'Provide background information / 提供背景資料' },
+            'c': { emoji: '🌐', name: 'Enrich world knowledge / 豐富世界知識' },
+            'd': { emoji: '🎭', name: 'Develop appreciation towards art work / 培養藝術欣賞' },
+            'e': { emoji: '🔗', name: 'Relate school learning with daily life / 聯繫日常生活' },
+            'f': { emoji: '🏮', name: 'Develop understanding of Chinese culture / 了解中華文化' },
+            'g': { emoji: '💎', name: 'Strengthen positive values / 強化正面價值觀' }
+        };
+
+        const CATEGORY_DATA = {
+            'Fiction': { emoji: '📚', label: 'F', name: 'Fiction / 小說' },
+            'Non-fiction': { emoji: '📖', label: 'NF', name: 'Non-fiction / 非小說' }
+        };
+
+        const CHECKBOX_NAMES = {
+            'stage': 'stage',
+            'module': 'module',
+            'klas': 'klas',
+            'aim': 'aim',
+            'category': 'category'
+        };
+
+        // State
+        let currentBooks = [];
+        let filteredBooks = [];
+        let currentSortedBooks = [];
+        let originalCheckboxStates = {};
+
+        // Initialize the application
+        function init() {
+            loadBooks();
+            renderBooks();
+        }
+
+        // Load all books initially
+        function loadBooks() {
+            const seenISBNs = new Set();
+            currentBooks = allBooks.filter(book => {
+                if (seenISBNs.has(book.isbn)) return false;
+                seenISBNs.add(book.isbn);
+                return true;
+            });
+            filteredBooks = [...currentBooks];
+        }
+        
+        // Store/restore checkbox states
+        function storeCheckboxStates() {
+            originalCheckboxStates = {};
+            Object.values(CHECKBOX_NAMES).forEach(name => {
+                const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${name}"]`);
+                originalCheckboxStates[name] = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+            });
+        }
+        
+        function restoreCheckboxStates() {
+            Object.keys(originalCheckboxStates).forEach(name => {
+                const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${name}"]`);
+                const savedValues = originalCheckboxStates[name] || [];
+                checkboxes.forEach(cb => {
+                    cb.checked = savedValues.includes(cb.value);
+                });
+            });
+        }
+        
+        // Filter functions
+        function getSelectedFilters(type) {
+            const checkboxName = CHECKBOX_NAMES[type];
+            if (!checkboxName) return [];
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${checkboxName}"]:checked`);
+            return Array.from(checkboxes).map(cb => cb.value);
+        }
+        
+        function applyFilters() {
+            const filters = {
+                stage: getSelectedFilters('stage'),
+                module: getSelectedFilters('module'),
+                klas: getSelectedFilters('klas'),
+                aim: getSelectedFilters('aim'),
+                category: getSelectedFilters('category')
+            };
+
+            filteredBooks = currentBooks.filter(book => {
+                // If any filters are selected, book must match at least one in each category
+                if (filters.stage.length > 0 && !filters.stage.includes(book.stage)) return false;
+                if (filters.module.length > 0 && !filters.module.some(m => book.modules[m])) return false;
+                if (filters.klas.length > 0 && !filters.klas.some(k => book.klas[k])) return false;
+                if (filters.aim.length > 0 && !filters.aim.some(a => book.aims[a])) return false;
+                if (filters.category.length > 0 && !filters.category.includes(book.category)) return false;
+                return true;
+            });
+
+            renderBooks();
+        }
+        
+        function applyFiltersButton() {
+            applyFilters();
+            storeCheckboxStates();
+            toggleFilters();
+        }
+        
+        function closeFiltersWithoutApply(event) {
+            if (event) {
+                const isCloseButton = event.target.classList.contains('compact-filters-close') || 
+                                     event.target.closest('.compact-filters-close');
+                const isBackdrop = event.target.id === 'compactFilters';
+                
+                if (isCloseButton || isBackdrop) {
+                    if (isCloseButton) event.stopPropagation();
+                    restoreCheckboxStates();
+                    toggleFilters();
+                }
+                return;
+            }
+            restoreCheckboxStates();
+            toggleFilters();
+        }
+        
+        function clearAllFilters() {
+            Object.values(CHECKBOX_NAMES).forEach(name => {
+                const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${name}"]`);
+                checkboxes.forEach(cb => {
+                    cb.checked = false;
+                });
+            });
+        }
+
+        // Helper: Get active keys from object
+        function getActiveKeys(obj) {
+            return Object.entries(obj).filter(([_, value]) => value).map(([key]) => key);
+        }
+        
+        // Render books
+        function renderBooks() {
+            const grid = document.getElementById('books-grid');
+            
+            if (filteredBooks.length === 0) {
+                grid.innerHTML = '<div class="no-results">No books match the selected filters.</div>';
+                return;
+            }
+
+            currentSortedBooks = [...filteredBooks].sort((a, b) => 
+                a.title.localeCompare(b.title, 'en', { sensitivity: 'base' })
+            );
+
+            grid.innerHTML = currentSortedBooks.map((book, index) => {
+                const stage = STAGE_DATA[book.stage];
+                const category = CATEGORY_DATA[book.category];
+                
+                return `
+                <div class="book-card" onclick="showBookTagsPopupByIndex(${index})" data-book-index="${index}">
+                    <div class="book-title">${stage.emoji} ${book.title}</div>
+                    ${book.ctitle ? `<div class="book-ctitle">${book.ctitle}</div>` : ''}
+                    <div class="book-author">by ${book.author}</div>
+                    <div class="book-publisher">${book.publisher}</div>
+                    <div class="book-isbn">ISBN: ${book.isbn}</div>
+                </div>
+                `;
+            }).join('');
+        }
+
+
+        // Switch filter tab
+        function switchFilterTab(tabName) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.filter-nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab
+            const clickedTab = document.querySelector(`[data-tab="${tabName}"]`);
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+            
+            // Hide all filter sections
+            document.querySelectorAll('.filter-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected filter section
+            const selectedSection = document.querySelector(`[data-section="${tabName}"]`);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+        }
+
+        // Toggle filters visibility
+        function toggleFilters() {
+            const filters = document.getElementById('compactFilters');
+            
+            if (filters.classList.contains('visible')) {
+                // Closing filter panel - restore original states if filters weren't applied
+                restoreCheckboxStates();
+                filters.classList.remove('visible');
+            } else {
+                // Opening filter panel - store current checkbox states
+                storeCheckboxStates();
+                filters.classList.add('visible');
+                // Reset to first tab when opening
+                switchFilterTab('stage');
+            }
+        }
+
+        // Toggle source popup
+        function toggleSourcePopup(event) {
+            // Don't open popup if clicking on copyright
+            if (event && event.target.classList.contains('header-copyright')) {
+                return;
+            }
+            const popup = document.getElementById('sourcePopup');
+            if (popup) {
+                popup.classList.toggle('visible');
+            }
+        }
+        
+        // Close source popup
+        function closeSourcePopup(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const popup = document.getElementById('sourcePopup');
+            if (popup) {
+                popup.classList.remove('visible');
+            }
+        }
+        
+        // Popup functions
+        function showBookTagsPopupByIndex(index) {
+            if (currentSortedBooks[index]) {
+                showBookTagsPopup(currentSortedBooks[index]);
+            }
+        }
+        
+        function renderTagSection(title, items, data) {
+            if (items.length === 0) {
+                return '<div class="book-tags-popup-empty">—</div>';
+            }
+            return items.map(key => {
+                const item = data[key];
+                return `
+                    <div class="book-tags-popup-tag">
+                        <div class="book-tags-popup-tag-emoji">${item.emoji}</div>
+                        <div class="book-tags-popup-tag-content">
+                            <div class="book-tags-popup-tag-label">${key}</div>
+                            <div class="book-tags-popup-tag-description">${item.name}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function showBookTagsPopup(book) {
+            const popup = document.getElementById('bookTagsPopup');
+            const content = document.getElementById('book-tags-popup-content');
+            const stage = STAGE_DATA[book.stage];
+            const category = CATEGORY_DATA[book.category];
+            const activeModules = getActiveKeys(book.modules);
+            const activeKLAs = getActiveKeys(book.klas);
+            const activeAims = getActiveKeys(book.aims);
+            
+            content.innerHTML = `
+                <div class="book-tags-popup-header">
+                    <div class="book-tags-popup-header-inner">
+                        <div class="book-tags-popup-emoji">${stage.emoji}</div>
+                        <div class="book-tags-popup-header-text">
+                            <div class="book-tags-popup-header-left">
+                                <div class="book-tags-popup-title">${book.title}</div>
+                                ${book.ctitle ? `<div class="book-tags-popup-ctitle">${book.ctitle}</div>` : ''}
+                            </div>
+                            <div class="book-tags-popup-header-right">
+                                <div class="book-tags-popup-info">
+                                    <div>by ${book.author}</div>
+                                    <div>${book.publisher}</div>
+                                    <div>ISBN: ${book.isbn}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="book-tags-popup-body">
+                    <div class="book-tags-popup-section">
+                        <div class="book-tags-popup-section-title">階段 / Stage</div>
+                        <div class="book-tags-popup-tags">
+                            <div class="book-tags-popup-tag">
+                                <div class="book-tags-popup-tag-emoji">${stage.emoji}</div>
+                                <div class="book-tags-popup-tag-content">
+                                    <div class="book-tags-popup-tag-label">${book.stage}</div>
+                                    <div class="book-tags-popup-tag-description">${stage.name}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-tags-popup-section">
+                        <div class="book-tags-popup-section-title">類型 / Type</div>
+                        <div class="book-tags-popup-tags">
+                            <div class="book-tags-popup-tag">
+                                <div class="book-tags-popup-tag-emoji">${category.emoji}</div>
+                                <div class="book-tags-popup-tag-content">
+                                    <div class="book-tags-popup-tag-label">${category.label}</div>
+                                    <div class="book-tags-popup-tag-description">${category.name}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-tags-popup-section">
+                        <div class="book-tags-popup-section-title">單元 / Modules</div>
+                        <div class="book-tags-popup-tags">${renderTagSection('Modules', activeModules, MODULE_DATA)}</div>
+                    </div>
+                    
+                    <div class="book-tags-popup-section">
+                        <div class="book-tags-popup-section-title">學習領域 / KLAs</div>
+                        <div class="book-tags-popup-tags">${renderTagSection('KLAs', activeKLAs, KLA_DATA)}</div>
+                    </div>
+                    
+                    <div class="book-tags-popup-section">
+                        <div class="book-tags-popup-section-title">目標 / Aims</div>
+                        <div class="book-tags-popup-tags">${renderTagSection('Aims', activeAims, AIM_DATA)}</div>
+                    </div>
+                </div>
+            `;
+            
+            popup.classList.add('visible');
+        }
+        
+        // Close book tags popup
+        function closeBookTagsPopup(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const popup = document.getElementById('bookTagsPopup');
+            if (popup) {
+                popup.classList.remove('visible');
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

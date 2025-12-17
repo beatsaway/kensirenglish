@@ -1,0 +1,106 @@
+const questions6a = [
+  {
+    cantonese: "你有冇去過個新既圖書館？",
+    english: "_____ you visited the new library?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "有，我去過。我上星期五去。",
+    english: "Yes, I _____. I _____ there last Friday!",
+    answer: ["have", "was"],
+    options: ["have", "was", "had", "has"]
+  },
+  {
+    cantonese: "咁你有冇借到書？",
+    english: "_____ you borrowed any books?",
+    answer: "Had",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "我當時冇。但我啱啱喺網上借咗本。",
+    english: "I _____ not. But I _____ borrowed one online just now.",
+    answer: ["had", "have"],
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "你尋晚有冇去到KFC？",
+    english: "_____ you been to KFC last night?",
+    answer: "Had",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "我尋晚冇，但我今日下晝有。",
+    english: "No, I _____ not. But I _____ been there just this afternoon.",
+    answer: ["had", "have"],
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "咁你有冇試到新餐？",
+    english: "_____ you tried the new meal deal?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "我冇，但我有聽過。",
+    english: "I _____ not. But I _____ heard of it.",
+    answer: ["have", "have"],
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "你有冇見過新同學Tom未？",
+    english: "_____ you met our new classmate Tom?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "有呀，佢之前冇住過香港架。",
+    english: "Yes, I have. He _____ never lived in Hong Kong before.",
+    answer: "had",
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "佢叫我教佢廣東話。",
+    english: "He _____ asked me to teach him some Cantonese.",
+    answer: "has",
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "咁你有冇教到佢？",
+    english: "_____ you taught him any?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "冇，我之前應承咗佢，但我最近都忙。",
+    english: "Na! I _____ promised him I would but I _____ been busy.",
+    answer: ["had", "have"],
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "你仲未做唒你啲功課？",
+    english: "_____ you not done your homework yet?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "我尋晚做咗，但唔記得save。",
+    english: "I _____ done it last night but I _____ forgotten to save it.",
+    answer: ["had", "have"],
+    options: ["had", "have", "has"]
+  },
+  {
+    cantonese: "咁你有冇同老師講？",
+    english: "_____ you told our teacher what happened?",
+    answer: "Have",
+    options: ["Have", "Had", "Has"]
+  },
+  {
+    cantonese: "有。佢之前有罰過我留堂，但今次對我幾好。",
+    english: "I _____. She _____ given me detention before but she _____ been kind to me this time.",
+    answer: ["have", "had", "has"],
+    options: ["had", "have", "has"]
+  }
+];
+
+// Export removed - using as regular script
