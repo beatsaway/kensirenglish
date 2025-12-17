@@ -157,9 +157,18 @@
         .header h1 .header-copyright {
             font-weight: 400;
             color: var(--color-text-secondary);
-            cursor: default;
-            pointer-events: none;
+            cursor: pointer;
+            pointer-events: auto;
             font-size: 10px;
+        }
+
+        .header h1 .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header h1 .header-copyright a:hover {
+            opacity: 0.7;
         }
         
         .header h1:hover {
@@ -969,7 +978,7 @@
             <div class="header-content">
                 <button class="filter-button" onclick="toggleFilters()" title="Filter / 篩選"><span></span></button>
                 <div class="header-main">
-                    <h1 onclick="toggleSourcePopup(event)">跨課程書目 / Book Lists for Reading across the Curriculum <br><span class="header-copyright" onclick="event.stopPropagation()">©kensirenglish.com</span></h1>
+                    <h1 onclick="toggleSourcePopup(event)">跨課程書目 / Book Lists for Reading across the Curriculum <br><span class="header-copyright" onclick="event.stopPropagation()"><a href="../../index.html">©kensirenglish.com</a></span></h1>
                     <p class="header-subtitle">
                         <a href="https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/references-resources/RaC/RaCBooklists.html" 
                            target="_blank" class="source-link">
