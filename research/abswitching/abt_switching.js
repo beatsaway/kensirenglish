@@ -11,6 +11,7 @@ const translations = {
             hkResearch: { zh: '香港研究', en: 'HK Research' },
             theories: { zh: '理論發展', en: 'Theories' },
             papers: { zh: '論文分析', en: 'Papers' },
+            practical: { zh: '如何應用', en: 'Use' },
             references: { zh: '參考文獻', en: 'References' }
         }
     },
@@ -866,7 +867,7 @@ function updateLanguage(lang) {
     
     // Update navigation menu
     const navLinks = document.querySelectorAll('.nav-link');
-    const menuKeys = ['abstract', 'timeline', 'recent', 'hkResearch', 'theories', 'papers', 'references'];
+    const menuKeys = ['abstract', 'timeline', 'recent', 'hkResearch', 'theories', 'papers', 'practical', 'references'];
     navLinks.forEach((link, index) => {
         if (menuKeys[index]) {
             link.textContent = translations.nav.menu[menuKeys[index]][lang];
