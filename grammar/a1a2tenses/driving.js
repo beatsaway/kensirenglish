@@ -73,7 +73,7 @@ const questions4b = [
     cantonese: "你打俾我嗰陣我睇咗單新聞啦",
     english: "I _____ the news when you called me.",
     answer: "had watched",
-    options: ["watch", "am watching", "watched", "have watched", "will watch", "will have watched"],
+    options: ["watch", "am watching", "watched", "have watched", "had watched", "will watch", "will have watched"],
     section: ""
   },
   {
@@ -94,14 +94,14 @@ const questions4b = [
     cantonese: "我當時睇緊新聞",
     english: "I _____ the news.",
     answer: "was watching",
-    options: ["watch", "am watching", "watched", "have watched", "will watch", "will have watched"],
+    options: ["watch", "am watching", "was watching", "watched", "have watched", "will watch", "will be watching", "will have watched"],
     section: ""
   },
   {
     cantonese: "如果朝早8:30我會睇緊新聞",
     english: "I _____ the news if it's 8:30 am.",
     answer: "will be watching",
-    options: ["watch", "am watching", "watched", "have watched", "will watch", "will have watched"],
+    options: ["watch", "am watching", "was watching", "watched", "have watched", "will watch", "will be watching", "will have watched"],
     section: ""
   },
   {
@@ -136,14 +136,14 @@ const questions4b = [
     cantonese: "我尋晚睇緊Peppa Pig",
     english: "I _____ Peppa Pig last night.",
     answer: "was watching",
-    options: ["watch", "am watching", "watched", "have watched", "will watch", "will have watched"],
+    options: ["watch", "am watching", "was watching", "watched", "have watched", "will watch", "will be watching", "will have watched"],
     section: ""
   },
   {
     cantonese: "我聽朝會睇緊Peppa Pig",
     english: "I _____ Peppa Pig tomorrow morning.",
     answer: "will be watching",
-    options: ["watch", "am watching", "watched", "have watched", "will watch", "will have watched"],
+    options: ["watch", "am watching", "was watching", "watched", "have watched", "will watch", "will be watching", "will have watched"],
     section: ""
   },
   {

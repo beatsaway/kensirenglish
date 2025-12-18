@@ -38,28 +38,28 @@ const questions4c = [
     cantonese: "我聽朝你仲訓緊嗰陣我會刷緊牙",
     english: "I _____ my teeth tomorrow morning while you are still sleeping.",
     answer: "will be brushing",
-    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will have brushed"],
+    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will be brushing"],
     section: ""
   },
   {
     cantonese: "我刷咗牙洗埋面啦",
     english: "I _____ my teeth and washed my face.",
     answer: "have brushed",
-    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will have brushed"],
+    options: ["brushed", "have brushed", "had brushed","will brush", "will have brushed", "will be brushing"],
     section: ""
   },
   {
     cantonese: "我出門口前刷咗牙洗埋面",
     english: "I _____ my teeth and washed my face before leaving the house that day.",
     answer: "had brushed",
-    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will have brushed"],
+    options: ["brush", "am brushing", "brushed", "have brushed", "had brushed", "will brush", "will have brushed"],
     section: ""
   },
   {
     cantonese: "校巴到之前我會刷咗牙洗埋面",
     english: "I _____ my teeth and washed my face before the school bus arrives.",
     answer: "will have brushed",
-    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will have brushed"],
+    options: ["brush", "am brushing", "brushed", "have brushed", "will brush", "will have brushed", "will be brushing"],
     section: ""
   },
   {
@@ -85,23 +85,23 @@ const questions4c = [
   },
   {
     cantonese: "我練完琴啦",
-    english: "I _____ the piano already.",
-    answer: "have practiced",
-    options: ["practice", "practiced", "will practice", "am practicing", "was practicing", "will be practicing"],
+    english: "I _____ practicing the piano already.",
+    answer: "have finished",
+    options: ["finish", "finished", "will finish", "have finished", "had finished", "will have finished"],
     section: ""
   },
   {
     cantonese: "你打俾我嗰陣我練完琴啦",
-    english: "I _____ the piano when you called me.",
-    answer: "had practiced",
-    options: ["practice", "practiced", "will practice", "am practicing", "was practicing", "will be practicing"],
+    english: "I _____ practicing the piano when you called me.",
+    answer: "had finished",
+    options: ["finish", "finished", "will finish", "have finished", "had finished", "will have finished"],
     section: ""
   },
   {
     cantonese: "你食完早餐嗰陣我會練完琴啦",
-    english: "I _____ the piano by the time you finish breakfast.",
-    answer: "will have practiced",
-    options: ["practice", "practiced", "will practice", "am practicing", "was practicing", "will be practicing"],
+    english: "I _____ practicing the piano by the time you finish breakfast.",
+    answer: "will have finished",
+    options: ["finish", "finished", "will finish", "have finished", "had finished", "will have finished"],
     section: ""
   },
   {

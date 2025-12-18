@@ -43,7 +43,7 @@ class TopicManager {
       },
       { 
         id: 'comparatives', 
-        name: 'Comparatives | 比較級', 
+        name: 'Comparatives | 比較', 
         file: 'comparatives.js',
         introduction: 'Compare things and make choices<br>比較事物同做選擇'
       },
@@ -63,7 +63,7 @@ class TopicManager {
         id: 'conditionals', 
         name: 'Conditionals | 條件句', 
         file: 'conditionals.js',
-        introduction: 'Talk about possibilities and dreams<br>講可能性同夢想'
+        introduction: 'Talk about possibilities and dreams<br>講可能同夢想'
       },
       { 
         id: 'passive-voice', 

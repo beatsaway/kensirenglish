@@ -3,7 +3,7 @@ window.phrasalVerbsExercises = [
   {
     id: 1,
     category: "Phrasal Verbs",
-    question: "🚗 I will pick _____ you at 3pm.",
+    question: "🚗 I will pick you _____ at 3pm.",
     chineseTranslation: "我3點會接你",
     options: ["up", "out", "off", "on"],
     correctAnswers: ["up"],

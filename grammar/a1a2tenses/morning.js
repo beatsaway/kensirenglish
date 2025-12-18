@@ -188,27 +188,6 @@ const questions4a = [
     options: ["don't eat", "am not eating", "didn't eat", "haven't eaten", "won't eat", "will not be eating"],
     section: ""
   },
-  {
-    cantonese: "我日日揸車返工",
-    english: "I _____ to work every day.",
-    answer: "drive",
-    options: ["drive", "drove", "will drive", "am driving", "was driving", "will be driving"],
-    section: ""
-  },
-  {
-    cantonese: "我尋日揸車返工",
-    english: "I _____ to work yesterday.",
-    answer: "drove",
-    options: ["drive", "drove", "will drive", "am driving", "was driving", "will be driving"],
-    section: ""
-  },
-  {
-    cantonese: "我聽日如果遲起身會揸車返工",
-    english: "I _____ to work if I wake up late tomorrow.",
-    answer: "will drive",
-    options: ["drive", "drove", "will drive", "am driving", "was driving", "will be driving"],
-    section: ""
-  }
 ];
 
 // Export removed - using as regular script

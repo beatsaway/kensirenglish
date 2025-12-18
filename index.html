@@ -377,19 +377,19 @@
                 </div>
                 <div class="nav-item">
                     <div class="nav-select-wrapper">
-                        <button class="nav-select-button">Grammar<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">語法</span></button>
+                        <button class="nav-select-button">Grammar<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">文法</span></button>
                         <div class="nav-select-dropdown">
                             <a href="grammar/a1a2tenses/index.html" class="nav-select-option">
                                 <span class="nav-select-option-title">
                                     <span class="nav-select-option-emoji">⏰</span>
-                                    <span class="nav-select-option-cantonese">時態練習</span>
+                                    <span class="nav-select-option-cantonese">時式練習</span>
                                 </span><br>
                                 <span class="nav-select-option-subtitle">Tenses</span>
                             </a>
                             <a href="grammar/a2b1general/index.html" class="nav-select-option">
                                 <span class="nav-select-option-title">
                                     <span class="nav-select-option-emoji">📚</span>
-                                    <span class="nav-select-option-cantonese">綜合語法</span>
+                                    <span class="nav-select-option-cantonese">綜合文法</span>
                                 </span><br>
                                 <span class="nav-select-option-subtitle">General Grammar</span>
                             </a>
@@ -398,7 +398,7 @@
                 </div>
                 <div class="nav-item">
                     <div class="nav-select-wrapper">
-                        <button class="nav-select-button">Vocab<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">詞彙</span></button>
+                        <button class="nav-select-button">Vocab<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">生字</span></button>
                         <div class="nav-select-dropdown">
                             <a href="vocab/connectives/connectives.html" class="nav-select-option">
                                 <span class="nav-select-option-title">
@@ -475,7 +475,7 @@
             <div class="philosophy">
                 <p><span class="research-link" id="vocabToggle" style="cursor: pointer;"><strong>寫文成日都Last but not least?</strong></span> <span class="toggle-text" id="toggleText3">連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！</span>
                 <div class="toggle-reveal" id="toggleReveal3">
-                    <div class="toggle-reveal-content">Connectives are essential for  writing—mastering them helps you write logical, well-structured essays!</div>
+                    <div class="toggle-reveal-content"><span class="research-link" id="connectivesToggle" style="cursor: pointer;">Connectives</span> are essential for  writing—mastering them helps you write logical, well-structured essays!</div>
                 </div>
                 </p>
             </div>
@@ -583,7 +583,7 @@
             
             // Close sub-navbar when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar') && !e.target.closest('#sixHatsToggle') && !e.target.closest('#vocabToggle') && !e.target.closest('#learningHowToThinkToggle') && !e.target.closest('#researchToggle1') && !e.target.closest('#researchToggle2')) {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar') && !e.target.closest('#sixHatsToggle') && !e.target.closest('#vocabToggle') && !e.target.closest('#connectivesToggle') && !e.target.closest('#learningHowToThinkToggle') && !e.target.closest('#researchToggle1') && !e.target.closest('#researchToggle2')) {
                     navItems.forEach(item => item.classList.remove('active'));
                     subNavbar.classList.remove('active');
                     subNavbarContent.innerHTML = '';
@@ -636,6 +636,35 @@
             const vocabToggle = document.getElementById('vocabToggle');
             if (vocabToggle) {
                 vocabToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the third nav-item (Vocab, index 2) and toggle it
+                    const vocabNavItem = navItems[2];
+                    if (vocabNavItem) {
+                        const isActive = vocabNavItem.classList.contains('active');
+                        toggleNavItem(vocabNavItem);
+                        
+                        // If opening (not closing), add pulse animation to options
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                options.forEach(option => {
+                                    option.classList.add('pulse');
+                                    // Remove pulse class after animation completes
+                                    setTimeout(() => {
+                                        option.classList.remove('pulse');
+                                    }, 1500);
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            }
+            
+            // Handle Connectives toggle from toggle reveal
+            const connectivesToggle = document.getElementById('connectivesToggle');
+            if (connectivesToggle) {
+                connectivesToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     // Get the third nav-item (Vocab, index 2) and toggle it

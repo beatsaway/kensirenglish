@@ -3,297 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A1 to A2 English Tenses Exercises</title>
+  <title>Sequential Tenses Exercises - A1 to A2</title>
+  <link rel="stylesheet" href="tenses_main.css">
   <style>
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-    
-    :root {
-      /* 8px grid system */
-      --space-1: 8px;
-      --space-2: 16px;
-      --space-3: 24px;
-      --space-4: 32px;
-      --space-5: 40px;
-      --space-6: 48px;
-      
-      /* Colors - refined palette */
-      --color-bg: #ffffff;
-      --color-surface: #f8f8f8;
-      --color-text: #000000;
-      --color-text-secondary: #666666;
-      --color-text-tertiary: #999999;
-      --color-border: #e0e0e0;
-      
-      /* Accent colors */
-      --color-accent: #4a90e2;
-      --color-accent-hover: #357abd;
-      --color-success: #52c41a;
-      --color-warning: #faad14;
-      --color-error: #ff4d4f;
-      
-      --max-width: 1200px;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    /* Minimal modern navigation - header replacement */
+    .exercise-selector {
       background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.3;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      font-size: 16px;
-    }
-
-    header {
-      background: transparent;
-      color: var(--color-text);
       padding: 0;
-      flex-shrink: 0;
+      border-bottom: 1px solid var(--color-border);
       display: flex;
       align-items: center;
-      gap: 0;
-      position: relative;
-      border-bottom: 1px solid var(--color-border);
-      z-index: 100;
-      min-height: 48px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      gap: var(--space-2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    /* Remove default header styles */
+    header {
+      display: none;
     }
 
-    .menu-toggle {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: var(--space-1);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-left: var(--space-3);
-    }
 
-    .menu-toggle span {
-      width: 20px;
-      height: 2px;
-      background: var(--color-text);
-      transition: all 0.2s ease;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-
-    .header-title-container {
-      display: flex;
-      flex-direction: column;
-      padding: 0 var(--space-3);
-    }
-
-    .header-title {
-      font-size: 18px;
-      font-weight: 600;
+    .exercise-selector select {
+      width: auto;
+      max-width: 400px;
+      min-width: 200px;
+      padding: 8px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      background-color: var(--color-bg);
+      font-size: 14px;
+      font-family: inherit;
       color: var(--color-text);
-      line-height: 1.3;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin: 0;
     }
 
-    .header-copyright {
+    .exercise-selector select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+
+    .copyright-link {
+      margin: 0;
+      margin-left: auto;
+      margin-right: var(--space-2);
+      padding: 0;
       font-size: 11px;
       color: var(--color-text-secondary);
-      font-weight: 400;
-      margin-top: 2px;
+      white-space: nowrap;
     }
-
-    .header-copyright a {
+    
+    .copyright-link a {
       text-decoration: none;
       color: inherit;
+      transition: opacity 0.2s ease;
     }
-
-    .header-copyright a:hover {
+    
+    .copyright-link a:hover {
       opacity: 0.7;
     }
 
-    .dropdown-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--color-bg);
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      overflow-y: auto;
-      padding: var(--space-2) var(--space-4);
-    }
-
-    .dropdown-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .popup-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-3);
-      max-width: var(--max-width);
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .popup-close-btn {
+    .exercise-info {
       background: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 24px;
-      color: var(--color-text);
-      padding: var(--space-1);
-      line-height: 1;
-      transition: opacity 0.15s ease;
-      font-family: inherit;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .popup-close-btn:hover {
-      opacity: 0.6;
-    }
-
-    .popup-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .popup-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--color-text);
-      margin: 0;
-      text-align: left;
-    }
-
-    .popup-exercise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-2);
-    }
-
-    .popup-exercise-card {
-      background: var(--color-bg);
-      border-radius: 0;
-      padding: var(--space-3);
-      transition: background 0.15s ease;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-    }
-
-    .popup-exercise-card:hover {
-      background: rgba(74, 144, 226, 0.05);
-    }
-
-    .popup-exercise-title {
-      color: var(--color-text);
-      font-size: 15px;
-      font-weight: 500;
-      margin: 0;
-      text-align: left;
-      line-height: 1.4;
-    }
-
-    main {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      width: 100%;
-      padding: var(--space-3) var(--space-4);
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    
-    .main-title {
-      text-align: left;
-      color: var(--color-text);
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: var(--space-1);
-      letter-spacing: -0.02em;
-    }
-    
-    .subtitle {
-      text-align: left;
+      padding: var(--space-2) 0;
+      margin-bottom: var(--space-4);
+      font-size: 13px;
       color: var(--color-text-secondary);
-      font-size: 14px;
-      font-weight: 400;
-      margin-bottom: var(--space-4);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-3);
     }
-    
-    .exercise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-2);
-      margin-top: var(--space-3);
-    }
-    
-    .exercise-card {
-      background: var(--color-bg);
-      border-radius: 0;
-      padding: var(--space-3);
-      border-left: 3px solid var(--color-border);
-      transition: background 0.15s ease, border-color 0.15s ease;
-      text-decoration: none;
-      display: block;
-      cursor: pointer;
-    }
-    
-    .exercise-card:hover {
-      background: rgba(74, 144, 226, 0.05);
-      border-left-color: var(--color-accent);
-    }
-    
-    .exercise-title {
+
+    .exercise-info strong {
       color: var(--color-text);
-      font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline;
+    }
+
+    .exercise-info .step-header {
+      white-space: nowrap;
+      display: block;
+    }
+
+    .exercise-info .step-header strong {
+      display: inline;
+    }
+
+    .exercise-info .keyword {
+      color: var(--color-accent);
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent);
+      text-underline-offset: 2px;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      padding: 2px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .exercise-info .keyword:hover {
+      opacity: 0.7;
+    }
+
+    .exercise-info .keyword.active {
+      background-color: var(--color-accent-light);
+      font-weight: 600;
+    }
+
+    .exercise-info .keyword-reveal {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 0;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      padding-left: var(--space-2);
+    }
+
+    .exercise-info .keyword-reveal.active {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 4px;
+    }
+    
+    /* Override main margins */
+    main {
+      margin: 0 !important;
+      padding-top: var(--space-3);
+    }
+    
+    body {
       margin: 0;
-      text-align: left;
-      line-height: 1.4;
+      padding: 0;
     }
     
+    /* Intro section styles */
     .intro-section {
-      background: rgba(74, 144, 226, 0.05);
+      background: transparent;
       border-radius: 0;
-      padding: var(--space-3);
-      margin-bottom: var(--space-4);
+      padding: 0 var(--space-3) var(--space-3) var(--space-3);
+      margin-bottom: var(--space-2);
     }
-    
+
     .intro-section h2 {
       color: var(--color-text);
-      margin-bottom: var(--space-2);
+      margin-bottom: 4px;
       font-size: 15px;
       font-weight: 600;
     }
-    
+
     .intro-section p {
       color: var(--color-text-secondary);
       line-height: 1.5;
@@ -301,15 +173,11 @@
       font-size: 14px;
       font-weight: 400;
     }
-    
-    .intro-section p:last-child {
-      margin-bottom: 0;
-    }
 
     .tenses-table {
       width: 100%;
       border-collapse: collapse;
-      margin: var(--space-3) 0;
+      margin: 4px 0;
       font-size: 13px;
     }
 
@@ -349,15 +217,20 @@
     }
 
     .tips-section {
-      margin-top: var(--space-3);
-      padding-top: var(--space-3);
+      margin-top: 4px;
+      padding-top: 0;
     }
 
     .tips-section h3 {
       color: var(--color-text);
       font-size: 14px;
       font-weight: 600;
-      margin-bottom: var(--space-2);
+      margin-bottom: 4px;
+    }
+
+    .tips-section p {
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
 
     .tips-section ul {
@@ -404,6 +277,84 @@
       opacity: 0.7;
     }
 
+    .tips-section .keyword {
+      color: var(--color-accent);
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent);
+      text-underline-offset: 2px;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      padding: 2px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .tips-section .keyword:hover {
+      opacity: 0.7;
+    }
+
+    .tips-section .keyword.active {
+      background-color: var(--color-accent-light);
+      font-weight: 600;
+    }
+
+    .tips-section .keyword-reveal {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 0;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      padding-left: var(--space-3);
+      margin-bottom: 2px;
+    }
+
+    .tips-section .keyword-reveal.active {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 2px;
+    }
+
+    .nine-types-toggle {
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .nine-types-toggle:hover {
+      opacity: 0.7;
+    }
+
+    .nine-types-toggle.active {
+      background-color: var(--color-accent-light);
+      font-weight: 600;
+    }
+
+    .nine-types-reveal {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 0;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      padding-left: var(--space-3);
+      margin-bottom: 4px;
+    }
+
+    .nine-types-reveal.active {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 2px;
+    }
+
     .word-highlight {
       background: rgba(250, 173, 20, 0.4);
       padding: 2px 4px;
@@ -422,259 +373,637 @@
         background: transparent;
       }
     }
-    
-    /* Mobile responsiveness */
+
     @media (max-width: 768px) {
-      .header-title-container {
-        padding: 0 var(--space-2);
+      .exercise-selector {
+        flex-wrap: wrap;
+        padding: 0;
+        gap: var(--space-2);
+        margin: 0;
       }
 
-      .header-title {
-        font-size: 15px;
-      }
-
-      .header-copyright {
-        font-size: 10px;
-      }
-
-      .dropdown-overlay {
-        padding: var(--space-2);
-      }
-
-      .popup-header {
-        margin-bottom: var(--space-2);
-      }
-
-      .popup-title {
-        font-size: 18px;
-      }
-
-      .popup-close-btn {
-        font-size: 20px;
-        width: 28px;
-        height: 28px;
-      }
-
-      .popup-exercise-grid {
-        grid-template-columns: 1fr;
+      .exercise-selector select {
+        width: auto;
+        max-width: 400px;
+        min-width: 200px;
       }
       
-      .popup-exercise-card {
-        padding: var(--space-2);
-      }
-
-      .exercise-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .exercise-card {
-        padding: var(--space-2);
-      }
-      
-      .main-title {
-        font-size: 18px;
-      }
-      
-      .subtitle {
-        font-size: 13px;
-      }
-      
-      .exercise-title {
-        font-size: 14px;
-      }
-
-      .tenses-table {
-        font-size: 10px;
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .tenses-table thead,
-      .tenses-table tbody,
-      .tenses-table tr {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-      }
-
-      .tenses-table th,
-      .tenses-table td {
-        padding: 4px 4px;
-        word-wrap: break-word;
-      }
-
-      .tense-example {
-        font-size: 9px;
-        display: block;
-        margin-top: 2px;
-      }
-
-      .tips-section h3 {
-        font-size: 13px;
-      }
-
-      .tips-section li {
-        font-size: 12px;
+      .copyright-link {
+        width: auto;
+        text-align: left;
+        margin-left: auto;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <button class="menu-toggle" id="menuToggle" onclick="toggleDropdown()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="header-title-container">
-      <div class="header-title">English Tenses Exercises • A1 to A2</div>
-      <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
-    </div>
-  </header>
-
-  <div class="dropdown-overlay" id="dropdownOverlay">
-    <div class="popup-content">
-      <div class="popup-header">
-        <h2 class="popup-title">All Exercises | 所有練習</h2>
-        <button class="popup-close-btn" onclick="toggleDropdown()" aria-label="Close">×</button>
-      </div>
-      <div class="popup-exercise-grid">
-        <a href="tenses_exercise.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🍗 Tenses Exercise 1<br>KFC, Food & School Life</h3>
-        </a>
-        
-        <a href="tenses_exercise2.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🏫 Tenses Exercise 2<br>School, Homework & Daily Life</h3>
-        </a>
-        
-        <a href="tenses_exercise3a.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🍗 Tenses Exercise 3A<br>KFC & Food</h3>
-        </a>
-        
-        <a href="tenses_exercise3b.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">👩‍🏫 Tenses Exercise 3B<br>Teachers, Temperature & New Students</h3>
-        </a>
-        
-        <a href="tenses_exercise4a.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🌦️ Tenses Exercise 4A<br>Minecraft, Weather & Snacks</h3>
-        </a>
-        
-        <a href="tenses_exercise4b.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🐷 Tenses Exercise 4B<br>Driving, News & Peppa Pig</h3>
-        </a>
-        
-        <a href="tenses_exercise4c.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🎹 Tenses Exercise 4C<br>Piano & Brushing Teeth</h3>
-        </a>
-        
-        <a href="tenses_exercise5a.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🏠 Tenses Exercise 5A<br>Living Somewhere</h3>
-        </a>
-        
-        <a href="tenses_exercise5b.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">🧼 Tenses Exercise 5B<br>Daily Routines & Commands</h3>
-        </a>
-        
-        <a href="tenses_exercise6a.html" class="popup-exercise-card" onclick="toggleDropdown()">
-          <h3 class="popup-exercise-title">📚 Tenses Exercise 6A<br>Library, KFC & Promises</h3>
-        </a>
-      </div>
-    </div>
+  <div class="exercise-selector">
+    <select id="exercise-select">
+      <option value="intro">Intro to Tenses | 時式介紹</option>
+      <option value="questions3a">1. KFC & Food | 食物</option>
+      <option value="questions4a">2. Morning | 早晨</option>
+      <option value="questions5b">3. Home Routines | 屋企日常</option>
+      <option value="questions3b">4. School Scenarios | 學校情境</option>
+      <option value="questions4b">5. Driving | 揸車</option>
+      <option value="questions4c">6. Daily Activities | 日常活動</option>
+      <option value="questions5a">7. Living Places | 居住地方</option>
+      <option value="questions2">8. Daily Life | 日常生活</option>
+      <option value="questions6a">9. Conversations | 對話</option>
+    </select>
+    <p class="copyright-link"><a href="../../index.html">©kensirenglish.com</a></p>
   </div>
 
   <main>
-    <div class="container">
-      <div class="intro-section">
-        <h2>英文時式共12種</h2>
-        
-        <table class="tenses-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="basic-tense-header">Simple</th>
-              <th class="basic-tense-header">Continuous</th>
-              <th class="basic-tense-header">Perfect</th>
-              <th>Perfect Continuous</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Present</strong></td>
-              <td class="basic-tense">I eat<br><span class="tense-example">我食</span></td>
-              <td class="basic-tense">I am eating<br><span class="tense-example">我食緊</span></td>
-              <td class="basic-tense">I have eaten<br><span class="tense-example">我食咗</span></td>
-              <td>I have been eating<br><span class="tense-example">我一直食緊</span></td>
-            </tr>
-            <tr>
-              <td><strong>Past</strong></td>
-              <td class="basic-tense">I ate<br><span class="tense-example">當時我食</span></td>
-              <td class="basic-tense">I was eating<br><span class="tense-example">當時我食緊</span></td>
-              <td class="basic-tense">I had eaten<br><span class="tense-example">當時我食咗</span></td>
-              <td>I had been eating<br><span class="tense-example">當時我一直食緊</span></td>
-            </tr>
-            <tr>
-              <td><strong>Future</strong></td>
-              <td class="basic-tense">I will eat<br><span class="tense-example">到時我會食</span></td>
-              <td class="basic-tense">I will be eating<br><span class="tense-example">到時我會係食緊</span></td>
-              <td class="basic-tense">I will have eaten<br><span class="tense-example">到時我會食咗</span></td>
-              <td>I will have been eating<br><span class="tense-example">到時我會一直食緊</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p><strong>3X3你掌握好未：Present/Past/Future × Simple/Continuous/Perfect？</strong> 新手要先練好呢9種（表中淺藍色標示）。Perfect Continuous 可以之後先學。</p>
-
-        <div class="tips-section">
-          <h3>新手溫習時式小貼士：</h3>
-          <p style="margin-bottom: var(--space-2);"><strong>第一步：決定3式入面用邊式(Simple/Continuous/Perfect)</strong></p>
-          
-          <p style="margin-bottom: var(--space-2);">先用 Present Tense講/寫出來</p>
-          <ul>
-            <li><span class="highlight">Simple</span>：就咁用動詞，冇特別狀態。例如：<strong>eat</strong>（食）、<strong>go</strong>（去）、<strong>study</strong>（讀書）</li>
-            <li><span class="highlight">Continuous</span>：動作進行緊，有<span class="clickable" onclick="highlightContinuous()">「緊」</span>字感覺。例如：<strong>eating</strong>（食緊）、<strong>going</strong>（去緊）、<strong>studying</strong>（讀緊書）</li>
-            <li><span class="highlight">Perfect</span>：有完成感覺，有助語詞如<span class="clickable" onclick="highlightPerfect()">「咗、完、哂、夠、齊、盡、好、掂」</span>。例如：<strong>have eaten</strong>（食咗/食完）、<strong>have finished</strong>（做齊/做盡/做好）、<strong>have done</strong>（做掂）</li>
-          </ul>
-
-          <p style="margin-top: var(--space-2); margin-bottom: var(--space-2);"><strong>第二步：決定要唔要轉Past或Future</strong></p>
-          <ul>
-            <li><span class="highlight">Present</span>：保持原樣（I eat / I am eating / I have eaten）</li>
-            <li><span class="highlight clickable" onclick="highlightPast()">Past</span>：轉動詞過去式（I ate / I was eating / I had eaten）</li>
-            <li><span class="highlight clickable" onclick="highlightFuture()">Future</span>：前面加 <strong>will</strong>（I will eat / I will be eating / I will have eaten）<span class="footnote-ref">*</span></li>
-          </ul>
-          
-          <p class="footnote"><span class="footnote-ref">*</span> <strong>will</strong> 係 modal verb（助動詞），所以後面嘅動詞要用原形。<strong>been</strong> 變返 <strong>be</strong>（I will be eating）。</p>
-
-          <p style="margin-top: var(--space-2); color: var(--color-text-secondary); font-size: 12px;">
-            <strong>記住：</strong> 先決定 aspect（Simple/Continuous/Perfect），再決定時間（Present/Past/Future）！
-          </p>
-        </div>
+    <div class="exercise-panel">
+      <div id="exercise-info" class="exercise-info"></div>
+      <div id="exercise-content">
+        <!-- Content will be generated by JavaScript -->
       </div>
+      <button id="toggle-answers-btn">Show Answers</button>
     </div>
   </main>
 
+  <!-- Load all question files -->
+  <script src="kfc_food.js"></script>
+  <script src="morning.js"></script>
+  <script src="home_routines.js"></script>
+  <script src="school_scenarios.js"></script>
+  <script src="driving.js"></script>
+  <script src="daily_activities.js"></script>
+  <script src="living_places.js"></script>
+  <script src="daily_life.js"></script>
+  <script src="conversations.js"></script>
+  
+  <!-- Ensure variables are accessible globally -->
   <script>
-    function toggleDropdown() {
-      const overlay = document.getElementById('dropdownOverlay');
-      const toggle = document.getElementById('menuToggle');
-      overlay.classList.toggle('active');
-      toggle.classList.toggle('active');
+    // Make sure all question arrays are accessible
+    // Const variables at top level should already be global, but ensure they're on window too
+    if (typeof questions3a !== 'undefined') window.questions3a = questions3a;
+    if (typeof questions4a !== 'undefined') window.questions4a = questions4a;
+    if (typeof questions5b !== 'undefined') window.questions5b = questions5b;
+    if (typeof questions3b !== 'undefined') window.questions3b = questions3b;
+    if (typeof questions4b !== 'undefined') window.questions4b = questions4b;
+    if (typeof questions4c !== 'undefined') window.questions4c = questions4c;
+    if (typeof questions5a !== 'undefined') window.questions5a = questions5a;
+    if (typeof questions2 !== 'undefined') window.questions2 = questions2;
+    if (typeof questions6a !== 'undefined') window.questions6a = questions6a;
+  </script>
+
+  <script>
+    // Exercise configuration based on proposed sequence
+    const exerciseSequence = [
+      {
+        id: 'questions3a',
+        name: 'KFC & Food | 食物',
+        description: 'All 9 Basic Tenses: Present/Past/Future Simple, Continuous, Perfect | 全部9種基本時式：現在/過去/將來 簡單式、進行式、完成式',
+        tenses: 'Simple (Present/Past/Future), Continuous (Present/Past/Future), Perfect (Present/Past/Future)',
+        tensesCantonese: '簡單式（現在/過去/將來）、進行式（現在/過去/將來）、完成式（現在/過去/將來）',
+        context: 'Food & Eating | 食物同食嘢',
+        questionsVar: 'questions3a',
+        script: 'kfc_food.js'
+      },
+      {
+        id: 'questions4a',
+        name: 'Morning & School | 早晨同學校',
+        description: 'Simple, Continuous, Perfect Tenses (Present-focused) | 簡單式、進行式、完成式（側重現在）',
+        tenses: 'Present Simple, Present Continuous, Present Perfect, Past Simple, Future Simple',
+        tensesCantonese: '現在簡單式、現在進行式、現在完成式、過去簡單式、將來簡單式',
+        context: 'Morning routines, School, Daily activities | 早晨習慣、學校、日常活動',
+        questionsVar: 'questions4a',
+        script: 'morning.js'
+      },
+      {
+        id: 'questions5b',
+        name: 'Home Routines | 屋企日常',
+        description: 'Imperative, Present Continuous, Present Perfect | 祈使句、現在進行式、現在完成式',
+        tenses: 'Imperative, Present Continuous, Present Perfect',
+        tensesCantonese: '祈使句、現在進行式、現在完成式',
+        context: 'Home conversations, Daily chores | 屋企對話、日常家務',
+        questionsVar: 'questions5b',
+        script: 'home_routines.js'
+      },
+      {
+        id: 'questions3b',
+        name: 'School Scenarios | 學校情境',
+        description: 'All Tenses in school context with multi-blank questions | 全部時式（學校情境，多個空格）',
+        tenses: 'All tenses: Simple, Continuous, Perfect (Present/Past/Future)',
+        tensesCantonese: '全部時式：簡單式、進行式、完成式（現在/過去/將來）',
+        context: 'School, Teachers, Temperature checking | 學校、老師、檢查體溫',
+        questionsVar: 'questions3b',
+        script: 'school_scenarios.js'
+      },
+      {
+        id: 'questions4b',
+        name: 'Driving & News | 揸車同新聞',
+        description: 'Perfect Tenses focus: Present Perfect, Past Perfect, Future Perfect | 完成式重點：現在完成式、過去完成式、將來完成式',
+        tenses: 'All tenses with focus on Perfect: Present Perfect, Past Perfect, Future Perfect, Continuous forms',
+        tensesCantonese: '全部時式，重點完成式：現在完成式、過去完成式、將來完成式、進行式',
+        context: 'Driving, Watching news, Peppa Pig | 揸車、睇新聞、Peppa Pig',
+        questionsVar: 'questions4b',
+        script: 'driving.js'
+      },
+      {
+        id: 'questions4c',
+        name: 'Daily Activities | 日常活動',
+        description: 'Complex Time relationships with "while" clauses | 複雜時間關係（「當...時候」）',
+        tenses: 'All tenses with complex time clauses: Simple, Continuous, Perfect (all time frames)',
+        tensesCantonese: '全部時式配複雜時間：簡單式、進行式、完成式（全部時間）',
+        context: 'Brushing teeth, Piano practice | 刷牙、練琴',
+        questionsVar: 'questions4c',
+        script: 'daily_activities.js'
+      },
+      {
+        id: 'questions5a',
+        name: 'Living Places | 居住地方',
+        description: 'Stative Verbs: "live" in all tenses | 狀態動詞：「住」全部時式',
+        tenses: 'All tenses with stative verb "live": Simple, Continuous, Perfect (Present/Past/Future)',
+        tensesCantonese: '狀態動詞「住」全部時式：簡單式、進行式、完成式（現在/過去/將來）',
+        context: 'Living situations, Moving | 居住情況、搬屋',
+        questionsVar: 'questions5a',
+        script: 'living_places.js'
+      },
+      {
+        id: 'questions2',
+        name: 'Daily Life | 日常生活',
+        description: 'Comprehensive Review: All tenses and aspects | 綜合複習：全部時式同方面',
+        tenses: 'All tenses: Simple, Continuous, Perfect (Present/Past/Future) - comprehensive',
+        tensesCantonese: '全部時式：簡單式、進行式、完成式（現在/過去/將來）- 綜合',
+        context: 'Daily life, Various activities | 日常生活、各種活動',
+        questionsVar: 'questions2',
+        script: 'daily_life.js'
+      },
+      {
+        id: 'questions6a',
+        name: 'Conversations | 對話',
+        description: 'Question Forms: Have/Had/Has in questions | 疑問句形式：Have/Had/Has 疑問句',
+        tenses: 'Question forms with Perfect tenses: Have/Had/Has + past participle',
+        tensesCantonese: '完成式疑問句：Have/Had/Has + 過去分詞',
+        context: 'Library, KFC, Promises, School | 圖書館、KFC、承諾、學校',
+        questionsVar: 'questions6a',
+        script: 'conversations.js'
+      }
+    ];
+
+    let currentExerciseIndex = 0;
+    let currentQuestions = [];
+    let answersShown = false;
+
+    // Check if all question arrays are loaded
+    function checkAllLoaded() {
+      return exerciseSequence.every(ex => {
+        // Check window scope (should be set by the bridge script)
+        return typeof window[ex.questionsVar] !== 'undefined' && Array.isArray(window[ex.questionsVar]);
+      });
     }
 
+    // Initialize the app - scripts are loaded synchronously above
+    function initializeApp() {
+      // Wait for all scripts to be available
+      let attempts = 0;
+      const maxAttempts = 50; // 5 seconds max wait
+      
+      function tryInitialize() {
+        attempts++;
+        
+        if (checkAllLoaded()) {
+          // All loaded, proceed with initialization
+          const select = document.getElementById('exercise-select');
+          select.addEventListener('change', function() {
+            const selectedId = select.value;
+            if (selectedId === 'intro') {
+              showIntro();
+            } else {
+              const index = exerciseSequence.findIndex(ex => ex.id === selectedId);
+              if (index !== -1) {
+                currentExerciseIndex = index;
+                loadExercise(index);
+              }
+            }
+          });
 
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Close overlay when clicking outside
-      document.addEventListener('click', function(event) {
-        const overlay = document.getElementById('dropdownOverlay');
-        const toggle = document.getElementById('menuToggle');
-        if (overlay.classList.contains('active') && 
-            !overlay.contains(event.target) && 
-            !toggle.contains(event.target)) {
-          toggleDropdown();
+          // Load intro by default
+          showIntro();
+        } else if (attempts < maxAttempts) {
+          // Not all loaded yet, wait a bit more
+          setTimeout(tryInitialize, 100);
+        } else {
+          // Timeout - show error
+          const missing = exerciseSequence.filter(ex => {
+            return typeof window[ex.questionsVar] === 'undefined' || !Array.isArray(window[ex.questionsVar]);
+          });
+          console.error('Missing question arrays after timeout:', missing.map(m => m.questionsVar));
+          console.log('Available variables:', Object.keys(window).filter(k => k.startsWith('questions')));
+          document.getElementById('exercise-content').innerHTML = 
+            '<p style="color: var(--color-error); padding: var(--space-3);">Some exercises failed to load. Please refresh the page.</p>';
+        }
+      }
+      
+      tryInitialize();
+    }
+
+    // Initialize when DOM is ready and scripts have loaded
+    // Scripts are loaded synchronously before this script runs, so they should be available
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeApp);
+    } else {
+      // DOM already loaded, wait a moment for scripts to execute
+      setTimeout(initializeApp, 50);
+    }
+
+    function loadExercise(index) {
+      if (index < 0 || index >= exerciseSequence.length) return;
+
+      currentExerciseIndex = index;
+      const exercise = exerciseSequence[index];
+      
+      // Update selector
+      document.getElementById('exercise-select').value = exercise.id;
+      
+      // Show toggle answers button
+      const toggleBtn = document.getElementById('toggle-answers-btn');
+      if (toggleBtn) {
+        toggleBtn.style.display = '';
+      }
+      
+      // Show and update info panel
+      const infoPanel = document.getElementById('exercise-info');
+      if (infoPanel) {
+        infoPanel.style.display = '';
+        infoPanel.innerHTML = `
+        <div style="font-size: 12px; line-height: 1.5;">
+          <div class="step-header" style="margin-bottom: 6px;"><strong>第一步：先用 Present Tense決定3式</strong> (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</div>
+          <div class="keyword-reveal" id="reveal-simple">Simple就咁用動詞，冇特別狀態。例如：eat（食）、go（去）、study（讀書）</div>
+          <div class="keyword-reveal" id="reveal-continuous">Continuous動作進行緊，有「緊」字感覺。例如：eating（食緊）、going（去緊）、studying（讀緊書）</div>
+          <div class="keyword-reveal" id="reveal-perfect">Perfect有完成感覺，有助語詞如「咗、完、哂、夠、齊、盡、好、掂」。例如：have eaten（食咗/食完）、have finished（做齊/做盡/做好）、have done（做掂）</div>
+          <div class="step-header" style="margin-bottom: 6px;"><strong>第二步：決定時間</strong> (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</div>
+          <div class="keyword-reveal" id="reveal-present">Present保持原樣（I eat / I am eating / I have eaten）</div>
+          <div class="keyword-reveal" id="reveal-past">Past轉動詞過去式（I ate / I was eating / I had eaten）</div>
+          <div class="keyword-reveal" id="reveal-future">Future前面加 will（I will eat / I will be eating / I will have eaten）。will 係 modal verb（助動詞），所以後面嘅動詞要用原形。been 變返 be（I will be eating）。</div>
+        </div>
+      `;
+        // Setup keyword click handlers
+        setupKeywordToggles();
+      }
+
+      // Load questions from window (set by bridge script)
+      if (typeof window[exercise.questionsVar] !== 'undefined' && Array.isArray(window[exercise.questionsVar])) {
+        currentQuestions = window[exercise.questionsVar];
+        generateExercise();
+        setupEventListeners();
+        updateProgress();
+        updateNavButtons();
+      } else {
+        console.error(`Questions array '${exercise.questionsVar}' not found on window!`);
+        document.getElementById('exercise-content').innerHTML = 
+          '<p style="color: var(--color-error); padding: var(--space-3);">Questions not loaded. Please refresh the page.</p>';
+      }
+    }
+
+    function previousExercise() {
+      if (currentExerciseIndex > 0) {
+        loadExercise(currentExerciseIndex - 1);
+      }
+    }
+
+    function nextExercise() {
+      if (currentExerciseIndex < exerciseSequence.length - 1) {
+        loadExercise(currentExerciseIndex + 1);
+      }
+    }
+
+    function updateNavButtons() {
+      // Navigation buttons removed - no action needed
+    }
+
+    function updateProgress() {
+      // Progress indicator removed - no action needed
+    }
+
+    function generateExercise() {
+      const content = document.getElementById('exercise-content');
+      if (!content) return;
+      
+      // Reset answers shown state
+      answersShown = false;
+      const toggleBtn = document.getElementById('toggle-answers-btn');
+      if (toggleBtn) {
+        toggleBtn.textContent = 'Show Answers';
+      }
+      
+      // Group questions by section
+      const sections = {};
+      currentQuestions.forEach((question, index) => {
+        const section = question.section || 'General';
+        if (!sections[section]) {
+          sections[section] = [];
+        }
+        sections[section].push({...question, originalIndex: index});
+      });
+      
+      let html = '';
+      
+      // Generate sections
+      Object.keys(sections).forEach(sectionName => {
+        if (sectionName && sectionName !== 'General') {
+          html += `<div class="section">`;
+        }
+        
+        sections[sectionName].forEach(question => {
+          html += generateQuestionHTML(question);
+        });
+        
+        if (sectionName && sectionName !== 'General') {
+          html += `</div>`;
         }
       });
+      
+      content.innerHTML = html;
+    }
 
+    function generateQuestionHTML(question) {
+      const questionId = `q${question.originalIndex}`;
+      let html = `<div class="sentence">`;
+      
+      if (question.cantonese) {
+        html += `<div class="cantonese">${question.cantonese}</div>`;
+      }
+      
+      // Handle multiple blanks
+      const parts = question.english.split('_____');
+      const isMultipleAnswers = Array.isArray(question.answer);
+      
+      for (let i = 0; i < parts.length - 1; i++) {
+        html += parts[i];
+        
+        // Create dropdown for each blank
+        const blankId = `${questionId}_${i}`;
+        const answer = isMultipleAnswers ? question.answer[i] : question.answer;
+        
+        html += `<select class="answer-dropdown" data-question-id="${blankId}" data-answer="${answer}">`;
+        html += `<option value="">...</option>`;
+        
+        if (question.options) {
+          question.options.forEach(option => {
+            html += `<option value="${option}">${option}</option>`;
+          });
+        }
+        
+        html += `</select>`;
+      }
+      
+      // Add the last part if it exists
+      if (parts[parts.length - 1]) {
+        html += parts[parts.length - 1];
+      }
+      
+      html += `</div>`;
+      return html;
+    }
+
+    function setupEventListeners() {
+      // Toggle answers button
+      const toggleBtn = document.getElementById('toggle-answers-btn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleAnswers);
+      }
+      
+      // Dropdown change events
+      const dropdowns = document.querySelectorAll('.answer-dropdown');
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('change', handleDropdownChange);
+      });
+    }
+
+    function setupKeywordToggles() {
+      const keywords = document.querySelectorAll('.exercise-info .keyword');
+      const reveals = document.querySelectorAll('.exercise-info .keyword-reveal');
+      
+      keywords.forEach(keyword => {
+        keyword.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const keywordType = this.getAttribute('data-keyword');
+          const targetReveal = document.getElementById(`reveal-${keywordType}`);
+          const wasActive = targetReveal && targetReveal.classList.contains('active');
+          
+          // Remove active class from all keywords in exercise-info
+          document.querySelectorAll('.exercise-info .keyword').forEach(kw => kw.classList.remove('active'));
+          
+          // Close all reveals in exercise-info first
+          document.querySelectorAll('.exercise-info .keyword-reveal').forEach(reveal => {
+            reveal.classList.remove('active');
+          });
+          
+          // Toggle the clicked one
+          if (targetReveal && !wasActive) {
+            targetReveal.classList.add('active');
+            this.classList.add('active');
+          }
+        });
+      });
+    }
+
+    function setupIntroKeywordToggles() {
+      const keywords = document.querySelectorAll('.intro-section .keyword, .tips-section .keyword');
+      const reveals = document.querySelectorAll('.tips-section .keyword-reveal');
+      
+      keywords.forEach(keyword => {
+        keyword.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const keywordType = this.getAttribute('data-keyword');
+          const targetReveal = document.getElementById(`intro-reveal-${keywordType}`);
+          const wasActive = targetReveal && targetReveal.classList.contains('active');
+          
+          // Remove active class from all keywords in intro section
+          document.querySelectorAll('.intro-section .keyword, .tips-section .keyword').forEach(kw => kw.classList.remove('active'));
+          
+          // Close all reveals in tips-section first
+          document.querySelectorAll('.tips-section .keyword-reveal').forEach(reveal => {
+            reveal.classList.remove('active');
+          });
+          
+          // Close nine-types reveal
+          const nineTypesReveal = document.getElementById('nine-types-reveal');
+          const nineTypesToggle = document.querySelector('.nine-types-toggle');
+          if (nineTypesReveal) nineTypesReveal.classList.remove('active');
+          if (nineTypesToggle) nineTypesToggle.classList.remove('active');
+          
+          // Toggle the clicked one
+          if (targetReveal && !wasActive) {
+            targetReveal.classList.add('active');
+            this.classList.add('active');
+          }
+        });
+      });
+
+      // Handle nine-types toggle
+      const nineTypesToggle = document.querySelector('.nine-types-toggle');
+      const nineTypesReveal = document.getElementById('nine-types-reveal');
+      
+      if (nineTypesToggle && nineTypesReveal) {
+        nineTypesToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const wasActive = nineTypesReveal.classList.contains('active');
+          
+          // Remove active class from all keywords in intro section
+          document.querySelectorAll('.intro-section .keyword, .tips-section .keyword').forEach(kw => kw.classList.remove('active'));
+          
+          // Close all reveals in tips-section
+          document.querySelectorAll('.tips-section .keyword-reveal').forEach(reveal => {
+            reveal.classList.remove('active');
+          });
+          
+          // Toggle nine-types reveal
+          if (!wasActive) {
+            nineTypesReveal.classList.add('active');
+            nineTypesToggle.classList.add('active');
+          } else {
+            nineTypesReveal.classList.remove('active');
+            nineTypesToggle.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    function handleDropdownChange(e) {
+      const dropdown = e.target;
+      const selectedValue = dropdown.value;
+      const correctAnswer = dropdown.dataset.answer;
+      
+      // Remove previous feedback classes
+      dropdown.classList.remove('correct', 'incorrect');
+      
+      if (selectedValue === '') {
+        // No selection made
+        return;
+      }
+      
+      // Check if correct and apply styling
+      if (selectedValue === correctAnswer) {
+        dropdown.classList.add('correct');
+      } else {
+        dropdown.classList.add('incorrect');
+      }
+    }
+
+    function toggleAnswers() {
+      const dropdowns = document.querySelectorAll('.answer-dropdown');
+      const btn = document.getElementById('toggle-answers-btn');
+      
+      if (!answersShown) {
+        // Show answers
+        dropdowns.forEach(dropdown => {
+          const correctAnswer = dropdown.dataset.answer;
+          if (correctAnswer) {
+            dropdown.value = correctAnswer;
+            dropdown.classList.add('correct');
+          }
+        });
+        btn.textContent = 'Hide Answers';
+        answersShown = true;
+      } else {
+        // Hide answers
+        dropdowns.forEach(dropdown => {
+          dropdown.value = '';
+          dropdown.classList.remove('correct', 'incorrect');
+        });
+        btn.textContent = 'Show Answers';
+        answersShown = false;
+      }
+    }
+
+    function showIntro() {
+      // Update selector
+      document.getElementById('exercise-select').value = 'intro';
+      
+      // Hide exercise info div for intro
+      const infoPanel = document.getElementById('exercise-info');
+      if (infoPanel) {
+        infoPanel.style.display = 'none';
+      }
+      
+      // Hide toggle answers button for intro
+      const toggleBtn = document.getElementById('toggle-answers-btn');
+      if (toggleBtn) {
+        toggleBtn.style.display = 'none';
+      }
+      
+      // Generate intro content
+      const content = document.getElementById('exercise-content');
+      content.innerHTML = `
+        <div class="intro-section">
+          <h2><strong>英文時式共12種</strong> <span style="font-weight: normal;">新手要先練好<span class="nine-types-toggle" style="font-weight: normal; cursor: pointer; color: var(--color-accent); font-size: 1.2em; display: inline-block;">9️⃣</span>種(表中淺藍色標示) Perfect Continuous 可以之後先學。</span></h2>
+          <div class="nine-types-reveal" id="nine-types-reveal">9️⃣ = 3 x 3 = (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>) x (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</div>
+          
+          <table class="tenses-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="basic-tense-header">Simple</th>
+                <th class="basic-tense-header">Continuous</th>
+                <th class="basic-tense-header">Perfect</th>
+                <th>Perfect Continuous</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Present</strong></td>
+                <td class="basic-tense">I eat<br><span class="tense-example">我食</span></td>
+                <td class="basic-tense">I am eating<br><span class="tense-example">我食緊</span></td>
+                <td class="basic-tense">I have eaten<br><span class="tense-example">我食咗</span></td>
+                <td>I have been eating<br><span class="tense-example">我一直食緊</span></td>
+              </tr>
+              <tr>
+                <td><strong>Past</strong></td>
+                <td class="basic-tense">I ate<br><span class="tense-example">當時我食</span></td>
+                <td class="basic-tense">I was eating<br><span class="tense-example">當時我食緊</span></td>
+                <td class="basic-tense">I had eaten<br><span class="tense-example">當時我食咗</span></td>
+                <td>I had been eating<br><span class="tense-example">當時我一直食緊</span></td>
+              </tr>
+              <tr>
+                <td><strong>Future</strong></td>
+                <td class="basic-tense">I will eat<br><span class="tense-example">到時我會食</span></td>
+                <td class="basic-tense">I will be eating<br><span class="tense-example">到時我會係食緊</span></td>
+                <td class="basic-tense">I will have eaten<br><span class="tense-example">到時我會食咗</span></td>
+                <td>I will have been eating<br><span class="tense-example">到時我會一直食緊</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="tips-section">
+            <p style="margin-bottom: var(--space-2);"><strong>第一步：先用 Present Tense決定3式入面用邊式</strong> (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</p>
+            
+            <div class="keyword-reveal" id="intro-reveal-simple">Simple：就咁用動詞，冇特別狀態。例如：<strong>eat</strong>（食）、<strong>go</strong>（去）、<strong>study</strong>（讀書）</div>
+            <div class="keyword-reveal" id="intro-reveal-continuous">Continuous：動作進行緊，有<span class="clickable" onclick="highlightContinuous()">「緊」</span>字感覺。例如：<strong>eating</strong>（食緊）、<strong>going</strong>（去緊）、<strong>studying</strong>（讀緊書）</div>
+            <div class="keyword-reveal" id="intro-reveal-perfect">Perfect：有完成感覺，有助語詞如<span class="clickable" onclick="highlightPerfect()">「咗、完、哂、夠、齊、盡、好、掂」</span>。例如：<strong>have eaten</strong>（食咗/食完）、<strong>have finished</strong>（做齊/做盡/做好）、<strong>have done</strong>（做掂）</div>
+
+            <p style="margin-top: var(--space-2); margin-bottom: var(--space-2);"><strong>第二步：決定要唔要轉Past或Future</strong> (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</p>
+            <div class="keyword-reveal" id="intro-reveal-present">Present：保持原樣（I eat / I am eating / I have eaten）</div>
+            <div class="keyword-reveal" id="intro-reveal-past">Past：轉動詞過去式（I ate / I was eating / I had eaten）</div>
+            <div class="keyword-reveal" id="intro-reveal-future">Future：前面加 <strong>will</strong>（I will eat / I will be eating / I will have eaten）<span class="footnote-ref">*</span><br><span class="footnote-ref">*</span> <strong>will</strong> 係 modal verb（助動詞），所以後面嘅動詞要用原形。<strong>been</strong> 變返 <strong>be</strong>（I will be eating）。</div>
+
+            <p style="margin-top: var(--space-2); color: var(--color-text-secondary); font-size: 12px;">
+              <strong>記住：</strong> 先決定式（<span class="keyword" data-keyword="simple">Simple</span>/<span class="keyword" data-keyword="continuous">Continuous</span>/<span class="keyword" data-keyword="perfect">Perfect</span>），再決定時（<span class="keyword" data-keyword="present">Present</span>/<span class="keyword" data-keyword="past">Past</span>/<span class="keyword" data-keyword="future">Future</span>）！
+            </p>
+          </div>
+        </div>
+      `;
+      
+      // Initialize table highlighting functionality
+      initializeTableHighlights();
+      
+      // Setup keyword toggles for intro section
+      setupIntroKeywordToggles();
+    }
+
+    // Initialize table highlighting functionality
+    function initializeTableHighlights() {
       // Store original table content
       const table = document.querySelector('.tenses-table');
       if (table) {
@@ -683,14 +1012,14 @@
           cell.dataset.original = cell.innerHTML;
         });
       }
-    });
+    }
 
     // Reset table to original state (remove all highlights)
     function resetTableHighlights() {
       const table = document.querySelector('.tenses-table');
-      const cells = table.querySelectorAll('td');
+      if (!table) return;
       
-      // Store original content if not already stored
+      const cells = table.querySelectorAll('td');
       cells.forEach((cell, index) => {
         if (!cell.dataset.original) {
           cell.dataset.original = cell.innerHTML;
@@ -706,8 +1035,9 @@
     function highlightContinuous() {
       resetTableHighlights();
       const table = document.querySelector('.tenses-table');
-      const cells = table.querySelectorAll('td');
+      if (!table) return;
       
+      const cells = table.querySelectorAll('td');
       cells.forEach(cell => {
         let text = cell.innerHTML;
         // Highlight 緊 in Cantonese examples
@@ -720,6 +1050,8 @@
     function highlightPerfect() {
       resetTableHighlights();
       const table = document.querySelector('.tenses-table');
+      if (!table) return;
+      
       const cells = table.querySelectorAll('td');
       const perfectWords = ['咗', '完', '哂', '夠', '齊', '盡', '好', '掂'];
       
@@ -737,6 +1069,8 @@
     function highlightPast() {
       resetTableHighlights();
       const table = document.querySelector('.tenses-table');
+      if (!table) return;
+      
       const cells = table.querySelectorAll('td');
       const pastVerbs = ['ate', 'was', 'had'];
       
@@ -755,8 +1089,9 @@
     function highlightFuture() {
       resetTableHighlights();
       const table = document.querySelector('.tenses-table');
-      const cells = table.querySelectorAll('td');
+      if (!table) return;
       
+      const cells = table.querySelectorAll('td');
       cells.forEach(cell => {
         let text = cell.innerHTML;
         // Match "will" as whole word, case insensitive
@@ -765,7 +1100,7 @@
         cell.innerHTML = text;
       });
     }
-
   </script>
 </body>
 </html>
+

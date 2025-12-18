@@ -33,7 +33,7 @@ const questions5a = [
     cantonese: "我哋會同緊啲火星人一齊住",
     english: "We _____ with Martians.",
     answer: "will be living",
-    options: ["am living", "were living", "will be living", "will live", "have lived"]
+    options: ["are living", "were living", "will be living", "will live", "have lived"]
   },
   {
     cantonese: "我未試過一個人住",
