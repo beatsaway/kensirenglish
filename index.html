@@ -202,6 +202,19 @@
             font-weight: 400;
         }
 
+        .sub-nav-option.pulse {
+            animation: highlightFade 1.5s ease-in-out;
+        }
+
+        @keyframes highlightFade {
+            0%, 100% {
+                background-color: transparent;
+            }
+            50% {
+                background-color: rgba(37, 99, 235, 0.25);
+            }
+        }
+
         .nav-item.active .nav-select-button {
             background-color: var(--color-accent-light);
         }
@@ -425,9 +438,9 @@
                             <a href="research/abswitching/abt_switching.html" class="nav-select-option">
                                 <span class="nav-select-option-title">
                                     <span class="nav-select-option-emoji">🔬</span>
-                                    <span class="nav-select-option-cantonese">語碼轉換研究</span>
+                                    <span class="nav-select-option-cantonese">雙語學習研究</span>
                                 </span><br>
-                                <span class="nav-select-option-subtitle">Research</span>
+                                <span class="nav-select-option-subtitle">Research on Bilingual Learning</span>
                             </a>
                         </div>
                     </div>
@@ -444,9 +457,9 @@
     <main>
         <div class="container">
             <div class="philosophy">
-                <p><a href="research/abswitching/abt_switching.html" class="research-link"><strong>想學好英文，竟然要多用廣東話？</strong></a> <span class="toggle-text" id="toggleText">中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！</span>
+                <p><span class="research-link" id="researchToggle1" style="cursor: pointer;"><strong>想學好英文，竟然要多用廣東話？</strong></span> <span class="toggle-text" id="toggleText">中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！</span>
                 <div class="toggle-reveal" id="toggleReveal">
-                    <div class="toggle-reveal-content">Should we avoid thinking in our mother tongue when learning English? Absolutely not! <a href="research/abswitching/abt_switching.html" class="research-link">Code-switching</a> is actually an inevitable cognitive phenomenon, not something to avoid! </div>
+                    <div class="toggle-reveal-content">Should we avoid thinking in our mother tongue when learning English? Absolutely not! <span class="research-link" id="researchToggle2" style="cursor: pointer;">Code-switching</span> is actually an inevitable cognitive phenomenon, not something to avoid! </div>
                 </div>
                 </p>
             </div>
@@ -454,13 +467,13 @@
             <div class="philosophy">
                 <p><span class="research-link" id="sixHatsToggle" style="cursor: pointer;"><strong>個腦一片空白冇嘢講冇嘢寫?</strong></span> <span class="toggle-text" id="toggleText2">原來你唔係英文廢，而係轉廣東話個腦都係一片空白！想改善英文前，請先及早醫腦，學用思考帽！</span>
                 <div class="toggle-reveal" id="toggleReveal2">
-                    <div class="toggle-reveal-content">You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! <a href="6hats/6hatsdiscussion/index.html" class="research-link">Learning how to think</a> is just as important as learning English!</div>
+                    <div class="toggle-reveal-content">You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! <span class="research-link" id="learningHowToThinkToggle" style="cursor: pointer;">Learning how to think</span> is just as important as learning English!</div>
                 </div>
                 </p>
             </div>
             
             <div class="philosophy">
-                <p><a href="vocab/connectives/connectives.html" class="research-link"><strong>寫文成日都Last but not least?</strong></a> <span class="toggle-text" id="toggleText3">連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！</span>
+                <p><span class="research-link" id="vocabToggle" style="cursor: pointer;"><strong>寫文成日都Last but not least?</strong></span> <span class="toggle-text" id="toggleText3">連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！</span>
                 <div class="toggle-reveal" id="toggleReveal3">
                     <div class="toggle-reveal-content">Connectives are essential for  writing—mastering them helps you write logical, well-structured essays!</div>
                 </div>
@@ -570,7 +583,7 @@
             
             // Close sub-navbar when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar') && !e.target.closest('#sixHatsToggle')) {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar') && !e.target.closest('#sixHatsToggle') && !e.target.closest('#vocabToggle') && !e.target.closest('#learningHowToThinkToggle') && !e.target.closest('#researchToggle1') && !e.target.closest('#researchToggle2')) {
                     navItems.forEach(item => item.classList.remove('active'));
                     subNavbar.classList.remove('active');
                     subNavbarContent.innerHTML = '';
@@ -599,7 +612,146 @@
                     // Get the first nav-item (Six Hats) and toggle it
                     const firstNavItem = navItems[0];
                     if (firstNavItem) {
+                        const isActive = firstNavItem.classList.contains('active');
                         toggleNavItem(firstNavItem);
+                        
+                        // If opening (not closing), add pulse animation to options
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                options.forEach(option => {
+                                    option.classList.add('pulse');
+                                    // Remove pulse class after animation completes
+                                    setTimeout(() => {
+                                        option.classList.remove('pulse');
+                                    }, 1500);
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            }
+            
+            // Handle Vocab toggle from philosophy section
+            const vocabToggle = document.getElementById('vocabToggle');
+            if (vocabToggle) {
+                vocabToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the third nav-item (Vocab, index 2) and toggle it
+                    const vocabNavItem = navItems[2];
+                    if (vocabNavItem) {
+                        const isActive = vocabNavItem.classList.contains('active');
+                        toggleNavItem(vocabNavItem);
+                        
+                        // If opening (not closing), add pulse animation to options
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                options.forEach(option => {
+                                    option.classList.add('pulse');
+                                    // Remove pulse class after animation completes
+                                    setTimeout(() => {
+                                        option.classList.remove('pulse');
+                                    }, 1500);
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            }
+            
+            // Handle "Learning how to think" toggle from toggle reveal
+            const learningHowToThinkToggle = document.getElementById('learningHowToThinkToggle');
+            if (learningHowToThinkToggle) {
+                learningHowToThinkToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the first nav-item (Six Hats) and toggle it
+                    const firstNavItem = navItems[0];
+                    if (firstNavItem) {
+                        const isActive = firstNavItem.classList.contains('active');
+                        toggleNavItem(firstNavItem);
+                        
+                        // If opening (not closing), add pulse animation to options
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                options.forEach(option => {
+                                    option.classList.add('pulse');
+                                    // Remove pulse class after animation completes
+                                    setTimeout(() => {
+                                        option.classList.remove('pulse');
+                                    }, 1500);
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            }
+            
+            // Handle Research toggle 1 from philosophy section ("想學好英文，竟然要多用廣東話？")
+            const researchToggle1 = document.getElementById('researchToggle1');
+            if (researchToggle1) {
+                researchToggle1.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the fifth nav-item (Others, index 4) and toggle it
+                    const othersNavItem = navItems[4];
+                    if (othersNavItem) {
+                        const isActive = othersNavItem.classList.contains('active');
+                        toggleNavItem(othersNavItem);
+                        
+                        // If opening (not closing), add pulse animation to Research option only
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                // Find the Research option (has href with 'research' or 'abswitching')
+                                options.forEach(option => {
+                                    const href = option.getAttribute('href');
+                                    if (href && (href.includes('research') || href.includes('abswitching'))) {
+                                        option.classList.add('pulse');
+                                        // Remove pulse class after animation completes
+                                        setTimeout(() => {
+                                            option.classList.remove('pulse');
+                                        }, 1500);
+                                    }
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            }
+            
+            // Handle Research toggle 2 from toggle reveal ("Code-switching")
+            const researchToggle2 = document.getElementById('researchToggle2');
+            if (researchToggle2) {
+                researchToggle2.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the fifth nav-item (Others, index 4) and toggle it
+                    const othersNavItem = navItems[4];
+                    if (othersNavItem) {
+                        const isActive = othersNavItem.classList.contains('active');
+                        toggleNavItem(othersNavItem);
+                        
+                        // If opening (not closing), add pulse animation to Research option only
+                        if (!isActive) {
+                            setTimeout(() => {
+                                const options = subNavbarContent.querySelectorAll('.sub-nav-option');
+                                // Find the Research option (has href with 'research' or 'abswitching')
+                                options.forEach(option => {
+                                    const href = option.getAttribute('href');
+                                    if (href && (href.includes('research') || href.includes('abswitching'))) {
+                                        option.classList.add('pulse');
+                                        // Remove pulse class after animation completes
+                                        setTimeout(() => {
+                                            option.classList.remove('pulse');
+                                        }, 1500);
+                                    }
+                                });
+                            }, 100);
+                        }
                     }
                 });
             }
