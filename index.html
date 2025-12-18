@@ -228,8 +228,49 @@
         .philosophy a:hover {
             opacity: 0.7;
         }
+        .philosophy a.research-link {
+            color: #2563eb !important;
+        }
+        .philosophy a.research-link strong {
+            color: #2563eb !important;
+        }
+        .philosophy a.research-link:hover {
+            opacity: 0.8;
+        }
         .philosophy strong { color: var(--color-text); font-weight: 600; }
 
+        .toggle-text {
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.2s ease;
+            display: inline;
+        }
+
+        .toggle-text:hover {
+            opacity: 0.7;
+        }
+
+        .toggle-reveal {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0;
+        }
+
+        .toggle-reveal.active {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: var(--space-3);
+        }
+
+        .toggle-reveal-content {
+            color: var(--color-text-secondary);
+            font-style: italic;
+            padding: 0;
+        }
 
         @media (max-width: 768px) {
             html, body {
@@ -400,19 +441,31 @@
     <main>
         <div class="container">
             <div class="philosophy">
-                <p><a href="research/abswitching/abt_switching.html"><strong>想最快學好英文，竟然要多用廣東話？</strong></a> 中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！本網特意準備咗比較多有廣東話作輔助嘅學英文資源，希望幫到講廣東話嘅你！<br><a href="research/abswitching/abt_switching.html"><strong>Should one avoid using their mother tongue when learning English?</strong></a> Code-switching is actually an inevitable cognitive phenomenon, not something to avoid as many Hong Kongers believed! That's why many resources on this site include Cantonese support. Hope you like it!</p>
+                <p><a href="research/abswitching/abt_switching.html" class="research-link"><strong>想學好英文，竟然要多用廣東話？</strong></a> <span class="toggle-text" id="toggleText">中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！</span>
+                <div class="toggle-reveal" id="toggleReveal">
+                    <div class="toggle-reveal-content">Should we avoid thinking in our mother tongue when learning English? Absolutely not! <a href="research/abswitching/abt_switching.html" class="research-link">Code-switching</a> is actually an inevitable cognitive phenomenon, not something to avoid! </div>
+                </div>
+                </p>
             </div>
             
             <div class="philosophy">
-                <p><a href="6hats/6hatsdiscussion/index.html"><strong>帽討論</strong></a> / <a href="6hats/6hatsdiscussion/index.html"><strong>6 Hats Discussion</strong></a> 🎲 <a href="6hats/6hatsluckydraw.html"><strong>帽思考</strong></a></p>
+                <p><a href="6hats/6hatsdiscussion/index.html" class="research-link"><strong>個腦一片空白冇嘢講冇嘢寫?</strong></a> <span class="toggle-text" id="toggleText2">好多時唔係你英文廢，而係比你轉廣東話個腦都係一片空白！改善英文之前，請先及早醫腦，練習用思考帽思考！</span>
+                <div class="toggle-reveal" id="toggleReveal2">
+                    <div class="toggle-reveal-content">You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! <a href="6hats/6hatsdiscussion/index.html" class="research-link">Learning how to think</a> is just as important as learning English!</div>
+                </div>
+                </p>
             </div>
             
             <div class="philosophy">
-                <p><a href="vocab/connectives/connectives.html"><strong>DSE 作文連接詞大全</strong></a> / <a href="vocab/connectives/connectives.html"><strong>Collection of DSE P2 Connectives</strong></a></p>
+                <p><a href="vocab/connectives/connectives.html" class="research-link"><strong>寫文成日都Last but not least?</strong></a> <span class="toggle-text" id="toggleText3">連接詞係寫作嘅靈魂，識用連接詞先可以寫出有邏輯、有層次嘅文章！</span>
+                <div class="toggle-reveal" id="toggleReveal3">
+                    <div class="toggle-reveal-content">Connectives are the soul of writing—mastering them helps you write logical, well-structured essays!</div>
+                </div>
+                </p>
             </div>
             
             <div class="philosophy">
-                <p><a href="resources/booklist/index.html"><strong>精選書單推薦</strong></a> / <a href="resources/booklist/index.html"><strong>Curated Book Recommendations</strong></a></p>
+                <p><a href="resources/booklist/index.html"><strong>精選書單推薦</strong></a></p>
             </div>
         </div>
     </main>
@@ -528,6 +581,44 @@
                     }, 100);
                 }
             });
+        })();
+
+        // Toggle reveal functionality
+        (function() {
+            'use strict';
+            
+            // Handle first toggle
+            const toggleText = document.getElementById('toggleText');
+            const toggleReveal = document.getElementById('toggleReveal');
+            
+            if (toggleText && toggleReveal) {
+                toggleText.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleReveal.classList.toggle('active');
+                });
+            }
+            
+            // Handle second toggle
+            const toggleText2 = document.getElementById('toggleText2');
+            const toggleReveal2 = document.getElementById('toggleReveal2');
+            
+            if (toggleText2 && toggleReveal2) {
+                toggleText2.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleReveal2.classList.toggle('active');
+                });
+            }
+            
+            // Handle third toggle
+            const toggleText3 = document.getElementById('toggleText3');
+            const toggleReveal3 = document.getElementById('toggleReveal3');
+            
+            if (toggleText3 && toggleReveal3) {
+                toggleText3.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleReveal3.classList.toggle('active');
+                });
+            }
         })();
     </script>
 </body>
