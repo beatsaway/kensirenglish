@@ -130,57 +130,108 @@
             top: 0;
             left: 0;
             width: 100vw;
+            height: 100vh;
             background: var(--color-bg);
-            border-bottom: 1px solid var(--color-border);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            padding: var(--space-2) var(--space-3);
-            max-height: 85vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             overflow-y: auto;
+            padding: var(--space-2) var(--space-4);
         }
 
         .dropdown-overlay.active {
-            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
         }
 
-        .topic-selector-header {
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .popup-close-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--color-text);
+            padding: var(--space-1);
+            line-height: 1;
+            transition: opacity 0.15s ease;
+            font-family: inherit;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
-            gap: var(--space-1);
+            justify-content: center;
+        }
+
+        .popup-close-btn:hover {
+            opacity: 0.6;
+        }
+
+        .popup-content {
             max-width: var(--max-width);
             margin: 0 auto;
         }
 
-        .topic-selector-header label {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--color-text-secondary);
+        .popup-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
+            text-align: left;
         }
 
-        .topic-dropdown {
-            padding: 6px var(--space-2);
+        .popup-topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .popup-topic-link {
+            background: var(--color-bg);
             border: 1px solid var(--color-border);
             border-radius: 0;
-            background: var(--color-bg);
-            color: var(--color-text);
-            font-size: 13px;
-            min-width: 200px;
+            padding: var(--space-3);
             cursor: pointer;
-            font-family: inherit;
-            transition: border-color 0.15s ease, background 0.15s ease;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex: 0 0 calc(33.333% - var(--space-2));
+            max-width: calc(33.333% - var(--space-2));
         }
 
-        .topic-dropdown:focus {
-            outline: none;
-            border-color: var(--color-accent);
+        .popup-topic-link:hover {
             background: rgba(74, 144, 226, 0.05);
+            border-color: var(--color-accent);
+            border-left: 3px solid var(--color-accent);
         }
 
-        .topic-dropdown option {
-            background: var(--color-bg);
+        .popup-topic-link h3 {
             color: var(--color-text);
+            margin-bottom: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .popup-topic-link p {
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.4;
+            margin: 0;
+            white-space: pre-line;
+            font-weight: 400;
         }
 
 
@@ -570,6 +621,11 @@
                 flex: 0 0 calc(50% - var(--space-1));
                 max-width: calc(50% - var(--space-1));
             }
+            
+            .popup-topic-link {
+                flex: 0 0 calc(50% - var(--space-1));
+                max-width: calc(50% - var(--space-1));
+            }
         }
 
         @media (max-width: 1024px) {
@@ -581,9 +637,9 @@
                 font-size: 16px;
             }
             
-            .topic-dropdown {
-                min-width: 160px;
-                font-size: 12px;
+            .popup-topic-link {
+                flex: 0 0 calc(50% - var(--space-1));
+                max-width: calc(50% - var(--space-1));
             }
             
             .topic-link {
@@ -613,16 +669,38 @@
                 padding: var(--space-2);
             }
             
-            .topic-selector-header {
-                flex-direction: column;
-                align-items: stretch;
+            .popup-header {
+                margin-bottom: var(--space-2);
+            }
+            
+            .popup-title {
+                font-size: 18px;
+            }
+
+            .popup-close-btn {
+                font-size: 20px;
+                width: 28px;
+                height: 28px;
+            }
+            
+            .popup-topics-list {
                 gap: var(--space-1);
             }
             
-            .topic-dropdown {
-                width: 100%;
+            .popup-topic-link {
+                flex: 0 0 calc(50% - var(--space-1));
+                max-width: calc(50% - var(--space-1));
+                padding: var(--space-2);
+            }
+            
+            .popup-topic-link h3 {
+                font-size: 14px;
+                margin-bottom: 4px;
+            }
+            
+            .popup-topic-link p {
                 font-size: 12px;
-                padding: 6px var(--space-2);
+                line-height: 1.3;
             }
 
             
@@ -670,34 +748,25 @@
                 font-size: 10px;
             }
             
-            .topic-dropdown {
-                min-width: 120px;
-                font-size: 11px;
-                padding: 5px var(--space-2);
-            }
-            
-            .topics-list {
+            .popup-topics-list {
                 gap: 6px;
-                margin-top: var(--space-2);
-                padding: 0;
             }
             
-            .topic-link {
+            .popup-topic-link {
                 flex: 0 0 100%;
                 max-width: 100%;
             }
             
-            .topic-link {
+            .popup-topic-link {
                 padding: var(--space-2);
-                min-height: auto;
             }
             
-            .topic-link h3 {
-                font-size: 12px;
-                margin-bottom: 3px;
+            .popup-topic-link h3 {
+                font-size: 13px;
+                margin-bottom: 4px;
             }
             
-            .topic-link p {
+            .popup-topic-link p {
                 font-size: 11px;
                 line-height: 1.3;
             }
@@ -754,10 +823,14 @@
     </div>
 
     <div class="dropdown-overlay" id="dropdownOverlay">
-        <div class="topic-selector-header">
-            <select id="topicSelect" class="topic-dropdown" onchange="loadTopicFromDropdown()">
-                <option value="">Select a grammar topic... | 選擇語法主題...</option>
-            </select>
+        <div class="popup-content" id="popupContent">
+            <div class="popup-header">
+                <h2 class="popup-title">Select a grammar topic... | 選擇語法主題...</h2>
+                <button class="popup-close-btn" onclick="toggleDropdown()" aria-label="Close">×</button>
+            </div>
+            <div class="popup-topics-list" id="popupTopicsList">
+                <!-- Topics will be populated here -->
+            </div>
         </div>
     </div>
     
@@ -808,18 +881,24 @@
 
         // Load topic list
         function loadTopicList() {
-            const topicSelect = document.getElementById('topicSelect');
+            const popupTopicsList = document.getElementById('popupTopicsList');
             const topics = window.topicManager.getAvailableTopics();
             
-            topicSelect.innerHTML = '<option value="">Select a grammar topic... | 選擇語法主題...</option>';
+            popupTopicsList.innerHTML = '';
             topics.forEach(topic => {
-                const option = document.createElement('option');
-                option.value = topic.id;
-                option.textContent = topic.name;
-                topicSelect.appendChild(option);
+                const topicLink = document.createElement('div');
+                topicLink.className = 'popup-topic-link';
+                topicLink.onclick = function() {
+                    loadTopic(topic.id);
+                    toggleDropdown(); // Close overlay after selection
+                };
+                topicLink.innerHTML = `
+                    <h3>${topic.name}</h3>
+                    <p>${topic.introduction.replace(/<br>/g, '\n')}</p>
+                `;
+                popupTopicsList.appendChild(topicLink);
             });
         }
-
 
         // Toggle dropdown overlay
         function toggleDropdown() {
@@ -827,17 +906,6 @@
             const toggle = document.getElementById('menuToggle');
             overlay.classList.toggle('active');
             toggle.classList.toggle('active');
-        }
-
-        // Load topic from dropdown
-        function loadTopicFromDropdown() {
-            const topicSelect = document.getElementById('topicSelect');
-            const selectedTopicId = topicSelect.value;
-            
-            if (selectedTopicId) {
-                loadTopic(selectedTopicId);
-                toggleDropdown(); // Close overlay after selection
-            }
         }
 
         // Show welcome screen
@@ -869,10 +937,6 @@
         // Load a specific topic
         async function loadTopic(topicId) {
             try {
-                // Update dropdown selection
-                const topicSelect = document.getElementById('topicSelect');
-                topicSelect.value = topicId;
-
                 // Show loading
                 showLoading();
 
