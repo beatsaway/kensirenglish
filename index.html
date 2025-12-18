@@ -228,13 +228,16 @@
         .philosophy a:hover {
             opacity: 0.7;
         }
-        .philosophy a.research-link {
+        .philosophy a.research-link,
+        .philosophy span.research-link {
             color: #2563eb !important;
         }
-        .philosophy a.research-link strong {
+        .philosophy a.research-link strong,
+        .philosophy span.research-link strong {
             color: #2563eb !important;
         }
-        .philosophy a.research-link:hover {
+        .philosophy a.research-link:hover,
+        .philosophy span.research-link:hover {
             opacity: 0.8;
         }
         .philosophy strong { color: var(--color-text); font-weight: 600; }
@@ -449,7 +452,7 @@
             </div>
             
             <div class="philosophy">
-                <p><a href="6hats/6hatsdiscussion/index.html" class="research-link"><strong>個腦一片空白冇嘢講冇嘢寫?</strong></a> <span class="toggle-text" id="toggleText2">原來你唔係英文廢，而係轉廣東話個腦都係一片空白！想改善英文前，請先及早醫腦，學用思考帽！</span>
+                <p><span class="research-link" id="sixHatsToggle" style="cursor: pointer;"><strong>個腦一片空白冇嘢講冇嘢寫?</strong></span> <span class="toggle-text" id="toggleText2">原來你唔係英文廢，而係轉廣東話個腦都係一片空白！想改善英文前，請先及早醫腦，學用思考帽！</span>
                 <div class="toggle-reveal" id="toggleReveal2">
                     <div class="toggle-reveal-content">You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! <a href="6hats/6hatsdiscussion/index.html" class="research-link">Learning how to think</a> is just as important as learning English!</div>
                 </div>
@@ -479,90 +482,95 @@
             const subNavbar = document.getElementById('subNavbar');
             const subNavbarContent = document.getElementById('subNavbarContent');
             
+            // Function to toggle a nav item
+            function toggleNavItem(navItem) {
+                const isActive = navItem.classList.contains('active');
+                const dropdown = navItem.querySelector('.nav-select-dropdown');
+                const options = dropdown ? dropdown.querySelectorAll('.nav-select-option') : [];
+                
+                // Close all other nav items
+                navItems.forEach(item => {
+                    if (item !== navItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current nav item and sub-navbar
+                if (isActive) {
+                    navItem.classList.remove('active');
+                    subNavbar.classList.remove('active');
+                    subNavbarContent.innerHTML = '';
+                } else {
+                    navItem.classList.add('active');
+                    
+                    // Populate sub-navbar with options
+                    if (options.length > 0) {
+                        subNavbarContent.innerHTML = '';
+                        options.forEach(option => {
+                            const titleContainer = option.querySelector('.nav-select-option-title');
+                            const emoji = titleContainer ? titleContainer.querySelector('.nav-select-option-emoji') : null;
+                            const cantonese = titleContainer ? titleContainer.querySelector('.nav-select-option-cantonese') : null;
+                            const english = option.querySelector('.nav-select-option-subtitle');
+                            const href = option.getAttribute('href');
+                            
+                            const subNavOption = document.createElement('a');
+                            subNavOption.href = href;
+                            subNavOption.className = 'sub-nav-option';
+                            
+                            // Create top row: emoji + cantonese
+                            if (emoji || cantonese) {
+                                const topRow = document.createElement('span');
+                                topRow.className = 'sub-nav-option-top';
+                                
+                                if (emoji) {
+                                    const emojiSpan = document.createElement('span');
+                                    emojiSpan.className = 'sub-nav-option-emoji';
+                                    emojiSpan.textContent = emoji.textContent;
+                                    topRow.appendChild(emojiSpan);
+                                }
+                                
+                                if (cantonese) {
+                                    const cantoneseSpan = document.createElement('span');
+                                    cantoneseSpan.className = 'sub-nav-option-cantonese';
+                                    cantoneseSpan.textContent = cantonese.textContent;
+                                    topRow.appendChild(cantoneseSpan);
+                                }
+                                
+                                subNavOption.appendChild(topRow);
+                            }
+                            
+                            // Create bottom row: english
+                            if (english) {
+                                const englishSpan = document.createElement('span');
+                                englishSpan.className = 'sub-nav-option-english';
+                                englishSpan.textContent = english.textContent;
+                                subNavOption.appendChild(englishSpan);
+                            }
+                            
+                            subNavbarContent.appendChild(subNavOption);
+                        });
+                        
+                        // Show sub-navbar
+                        subNavbar.classList.add('active');
+                    } else {
+                        subNavbar.classList.remove('active');
+                        subNavbarContent.innerHTML = '';
+                    }
+                }
+            }
+            
             // Handle button clicks
             navButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const navItem = this.closest('.nav-item');
-                    const isActive = navItem.classList.contains('active');
-                    const dropdown = navItem.querySelector('.nav-select-dropdown');
-                    const options = dropdown ? dropdown.querySelectorAll('.nav-select-option') : [];
-                    
-                    // Close all other nav items
-                    navItems.forEach(item => {
-                        if (item !== navItem) {
-                            item.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current nav item and sub-navbar
-                    if (isActive) {
-                        navItem.classList.remove('active');
-                        subNavbar.classList.remove('active');
-                        subNavbarContent.innerHTML = '';
-                    } else {
-                        navItem.classList.add('active');
-                        
-                        // Populate sub-navbar with options
-                        if (options.length > 0) {
-                            subNavbarContent.innerHTML = '';
-                            options.forEach(option => {
-                                const titleContainer = option.querySelector('.nav-select-option-title');
-                                const emoji = titleContainer ? titleContainer.querySelector('.nav-select-option-emoji') : null;
-                                const cantonese = titleContainer ? titleContainer.querySelector('.nav-select-option-cantonese') : null;
-                                const english = option.querySelector('.nav-select-option-subtitle');
-                                const href = option.getAttribute('href');
-                                
-                                const subNavOption = document.createElement('a');
-                                subNavOption.href = href;
-                                subNavOption.className = 'sub-nav-option';
-                                
-                                // Create top row: emoji + cantonese
-                                if (emoji || cantonese) {
-                                    const topRow = document.createElement('span');
-                                    topRow.className = 'sub-nav-option-top';
-                                    
-                                    if (emoji) {
-                                        const emojiSpan = document.createElement('span');
-                                        emojiSpan.className = 'sub-nav-option-emoji';
-                                        emojiSpan.textContent = emoji.textContent;
-                                        topRow.appendChild(emojiSpan);
-                                    }
-                                    
-                                    if (cantonese) {
-                                        const cantoneseSpan = document.createElement('span');
-                                        cantoneseSpan.className = 'sub-nav-option-cantonese';
-                                        cantoneseSpan.textContent = cantonese.textContent;
-                                        topRow.appendChild(cantoneseSpan);
-                                    }
-                                    
-                                    subNavOption.appendChild(topRow);
-                                }
-                                
-                                // Create bottom row: english
-                                if (english) {
-                                    const englishSpan = document.createElement('span');
-                                    englishSpan.className = 'sub-nav-option-english';
-                                    englishSpan.textContent = english.textContent;
-                                    subNavOption.appendChild(englishSpan);
-                                }
-                                
-                                subNavbarContent.appendChild(subNavOption);
-                            });
-                            
-                            // Show sub-navbar
-                            subNavbar.classList.add('active');
-                        } else {
-                            subNavbar.classList.remove('active');
-                            subNavbarContent.innerHTML = '';
-                        }
-                    }
+                    toggleNavItem(navItem);
                 });
             });
             
             // Close sub-navbar when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar')) {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar') && !e.target.closest('#sixHatsToggle')) {
                     navItems.forEach(item => item.classList.remove('active'));
                     subNavbar.classList.remove('active');
                     subNavbarContent.innerHTML = '';
@@ -581,6 +589,20 @@
                     }, 100);
                 }
             });
+            
+            // Handle Six Hats toggle from philosophy section
+            const sixHatsToggle = document.getElementById('sixHatsToggle');
+            if (sixHatsToggle) {
+                sixHatsToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Get the first nav-item (Six Hats) and toggle it
+                    const firstNavItem = navItems[0];
+                    if (firstNavItem) {
+                        toggleNavItem(firstNavItem);
+                    }
+                });
+            }
         })();
 
         // Toggle reveal functionality
