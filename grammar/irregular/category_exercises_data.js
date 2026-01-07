@@ -1,6 +1,6 @@
 const categoryExercises = [
     {
-        theme: "「o」促音 😗",
+        theme: "😗",
         type: "Past Tense",
         title: "🌅 The Morning Adventure",
         keywords: [
@@ -56,7 +56,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「o」短音 😗",
+        theme: "😗",
         type: "Past Tense",
         title: "🏔️ The Mountain Trip",
         keywords: [
@@ -109,7 +109,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「O」長音 😮",
+        theme: "😮",
         type: "Past Tense",
         title: "🛒 Shopping Day",
         keywords: [
@@ -150,7 +150,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「ew」「el」音 😖",
+        theme: "😖",
         type: "Past Tense",
         title: "🎨 Art Class",
         keywords: [
@@ -187,7 +187,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「A」音 😆",
+        theme: "😆",
         type: "Past Tense",
         title: "🏊 Swimming Competition",
         keywords: [
@@ -230,7 +230,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「A」「Ah」音 😁",
+        theme: "😁",
         type: "Past Tense",
         title: "🎁 The Gift",
         keywords: [
@@ -266,7 +266,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-eft / -ept / -et 音",
+        theme: "😊",
         type: "Past Tense",
         title: "🏠 Moving House",
         keywords: [
@@ -298,7 +298,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-elt / -ent / -ilt 音",
+        theme: "😃",
         type: "Past Tense",
         title: "📚 School Day",
         keywords: [
@@ -342,7 +342,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-ed 音",
+        theme: "😌",
         type: "Past Tense",
         title: "📖 Reading Time",
         keywords: [
@@ -373,7 +373,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-ung / -uck / -ug 音",
+        theme: "😎",
         type: "Past Tense",
         title: "🌳 Garden Work",
         keywords: [
@@ -409,7 +409,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-it / -id 音",
+        theme: "😴",
         type: "Past Tense",
         title: "🌙 Night Adventure",
         keywords: [
@@ -434,7 +434,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "-eard / -erd 音",
+        theme: "👂",
         type: "Past Tense",
         title: "👂 The Sound",
         keywords: [
@@ -456,7 +456,7 @@ const categoryExercises = [
         ]
     },
     {
-        theme: "「不變」No Change",
+        theme: "➡️",
         type: "Past Tense",
         title: "🎪 Circus Show",
         keywords: [
