@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six Thinking Hats - All Topics</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            
+            /* Hat colors - preserved */
+            --hat-white: #b0b0b0;
+            --hat-red: #ff5252;
+            --hat-black: #3a4a4b;
+            --hat-yellow: #ffcc00;
+            --hat-green: #4caf50;
+            --hat-blue: #42a5f5;
+            
+            --max-width: 1200px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.3;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: stretch;
+            gap: var(--space-2);
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+        }
+
+        .header-search-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            margin: 0;
+            padding: 0;
+            align-self: stretch;
+        }
+
+        .header-search {
+            width: 100%;
+            padding: 0 var(--space-2);
+            margin: 0;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            color: var(--color-text);
+            font-size: 14px;
+            font-family: inherit;
+            line-height: 1.2;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .header-search::placeholder {
+            color: var(--color-text-secondary);
+        }
+
+        .header-search:focus {
+            outline: none;
+            border-color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        .header-search-dropdown {
+            position: absolute;
+            top: calc(100% + var(--space-1));
+            left: 0;
+            width: 100%;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .header-search-dropdown.active {
+            display: block;
+        }
+
+        .header-search-dropdown a {
+            display: block;
+            padding: var(--space-2);
+            background: var(--color-bg);
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+
+        .header-search-dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .header-search-dropdown a:hover {
+            background: var(--color-surface);
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+        }
+
+
+        main {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .topic {
+            margin-bottom: var(--space-4);
+        }
+
+        .topic-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.02em;
+        }
+
+        .questions {
+            margin-top: var(--space-2);
+        }
+
+        .question {
+            padding: var(--space-1) var(--space-2);
+            margin-bottom: 0;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            border-left: 3px solid transparent;
+            background: var(--color-bg);
+            position: relative;
+        }
+
+        .question:hover {
+            background: var(--color-surface);
+        }
+
+        .question.revealed {
+            border-left-width: 3px;
+        }
+
+        .question.revealed.white-hat {
+            border-left-color: var(--hat-white);
+            background: rgba(176, 176, 176, 0.12);
+        }
+
+        .question.revealed.red-hat {
+            border-left-color: var(--hat-red);
+            background: rgba(255, 82, 82, 0.18);
+        }
+
+        .question.revealed.black-hat {
+            border-left-color: var(--hat-black);
+            background: rgba(58, 74, 75, 0.25);
+        }
+
+        .question.revealed.yellow-hat {
+            border-left-color: var(--hat-yellow);
+            background: rgba(255, 204, 0, 0.18);
+        }
+
+        .question.revealed.green-hat {
+            border-left-color: var(--hat-green);
+            background: rgba(76, 175, 80, 0.18);
+        }
+
+        .question.revealed.blue-hat {
+            border-left-color: var(--hat-blue);
+            background: rgba(66, 165, 245, 0.18);
+        }
+
+        .question-label {
+            display: none;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-2);
+            font-weight: 600;
+        }
+
+        .question.revealed .question-label {
+            display: inline;
+        }
+
+        .question.revealed.white-hat .question-label {
+            color: var(--hat-white);
+        }
+
+        .question.revealed.red-hat .question-label {
+            color: var(--hat-red);
+        }
+
+        .question.revealed.black-hat .question-label {
+            color: var(--hat-black);
+        }
+
+        .question.revealed.yellow-hat .question-label {
+            color: var(--hat-yellow);
+        }
+
+        .question.revealed.green-hat .question-label {
+            color: var(--hat-green);
+        }
+
+        .question.revealed.blue-hat .question-label {
+            color: var(--hat-blue);
+        }
+
+        .question-text {
+            color: var(--color-text);
+            font-size: 16px;
+            line-height: 1.3;
+        }
+
+        .question-emoji {
+            display: none;
+            margin-right: var(--space-2);
+        }
+
+        .question.revealed .question-emoji {
+            display: inline;
+        }
+
+        .empty-state {
+            padding: 0;
+        }
+
+        .hats-intro {
+            margin-bottom: 0;
+        }
+
+        .hats-intro p {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+            margin-bottom: var(--space-2);
+        }
+
+        .empty-state-search {
+            margin-bottom: var(--space-4);
+            position: relative;
+        }
+
+        .empty-state-search input {
+            width: 100%;
+            max-width: 500px;
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            color: var(--color-text);
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+
+        .empty-state-search input::placeholder {
+            color: var(--color-text-secondary);
+        }
+
+        .empty-state-search input:focus {
+            outline: none;
+            border-color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        .empty-state-results {
+            position: absolute;
+            top: calc(100% + var(--space-1));
+            left: 0;
+            width: 100%;
+            max-width: 500px;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .empty-state-results.has-results {
+            display: block;
+        }
+
+        .empty-state-results a {
+            display: block;
+            padding: var(--space-2);
+            background: var(--color-bg);
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+
+        .empty-state-results a:last-child {
+            border-bottom: none;
+        }
+
+        .empty-state-results a:hover {
+            background: var(--color-surface);
+        }
+
+        .hats-intro h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hat-item {
+            padding: var(--space-2) var(--space-4);
+            margin-left: calc(-1 * var(--space-4));
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            font-size: 15px;
+            line-height: 1.3;
+            border-left: 3px solid transparent;
+        }
+
+        .hat-item.white-hat {
+            border-left-color: var(--hat-white);
+        }
+
+        .hat-item.red-hat {
+            border-left-color: var(--hat-red);
+        }
+
+        .hat-item.black-hat {
+            border-left-color: var(--hat-black);
+        }
+
+        .hat-item.yellow-hat {
+            border-left-color: var(--hat-yellow);
+        }
+
+        .hat-item.green-hat {
+            border-left-color: var(--hat-green);
+        }
+
+        .hat-item.blue-hat {
+            border-left-color: var(--hat-blue);
+        }
+
+        .hat-name {
+            font-weight: 600;
+            min-width: 100px;
+            color: var(--color-text);
+        }
+
+        .hat-name.white-hat {
+            color: var(--hat-white);
+        }
+
+        .hat-name.red-hat {
+            color: var(--hat-red);
+        }
+
+        .hat-name.black-hat {
+            color: var(--hat-black);
+        }
+
+        .hat-name.yellow-hat {
+            color: var(--hat-yellow);
+        }
+
+        .hat-name.green-hat {
+            color: var(--hat-green);
+        }
+
+        .hat-name.blue-hat {
+            color: var(--hat-blue);
+        }
+
+        .hat-description {
+            color: var(--color-text-secondary);
+            flex: 1;
+        }
+
+        .hat-description-line {
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: var(--space-6);
+            color: var(--color-text-secondary);
+            font-size: 15px;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5vw;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .main-topic-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: var(--space-4);
+            padding-right: var(--space-4);
+            letter-spacing: -0.03em;
+            position: relative;
+            display: block;
+            line-height: 1.2;
+            text-align: center;
+            width: 100vw;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .main-topic-title .topic-prefix {
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        #topicNameDisplay {
+            display: inline-block;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .loading-dots .dot {
+            display: inline-block;
+            animation: dotJump 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .loading-dots .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading-dots .dot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .loading-dots .dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes dotJump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .session-title {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+            animation: subtlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% {
+                opacity: 0.8;
+                color: var(--color-text-secondary);
+            }
+            50% {
+                opacity: 1;
+                color: var(--color-text);
+            }
+        }
+
+        .session-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+            margin-bottom: var(--space-2);
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: var(--space-4);
+            padding-right: var(--space-4);
+            position: relative;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+
+        .session-navigation .session-title {
+            margin: 0;
+            flex: 0 1 auto;
+        }
+
+        .session-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+
+        .session-dropdown {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--color-text);
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+            cursor: pointer;
+            padding: var(--space-1) var(--space-2);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease;
+            max-width: 100%;
+            width: auto;
+        }
+
+        .session-dropdown:hover {
+            border-color: var(--color-text);
+        }
+
+        .session-dropdown:focus {
+            border-color: var(--color-text);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        .topic-actions {
+            margin-top: var(--space-1);
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .article-toggle,
+        .video-link-emoji {
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0;
+            border: none;
+            border-bottom: 1px solid var(--color-text);
+            background: transparent;
+            color: var(--color-text);
+            transition: opacity 0.2s ease;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+        }
+
+        .article-toggle:hover,
+        .video-link-emoji:hover {
+            opacity: 0.6;
+        }
+
+        .article-text {
+            display: none;
+            margin-top: var(--space-2);
+            padding: var(--space-3);
+            background: var(--color-surface);
+            border-left: 3px solid var(--color-border);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        .article-text.show {
+            display: block;
+        }
+
+        .chinglish-mistake {
+            color: #ff5252;
+            cursor: pointer;
+            transition: color 0.15s ease;
+            border-bottom: 1px dotted #ff5252;
+        }
+
+        .chinglish-mistake:hover {
+            color: #d32f2f;
+        }
+
+        .chinglish-mistake.revealed {
+            color: #4caf50;
+            border-bottom-color: transparent;
+        }
+
+        .help-button {
+            position: fixed;
+            bottom: var(--space-2);
+            right: var(--space-2);
+            padding: var(--space-1) var(--space-2);
+            background: transparent;
+            color: var(--color-text-tertiary);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .help-button:hover {
+            color: var(--color-text);
+        }
+
+
+        .help-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .help-modal-overlay.active {
+            display: block;
+        }
+
+        .help-modal {
+            background: var(--color-bg);
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            padding: var(--space-6);
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .help-modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .help-modal-close:hover {
+            opacity: 0.6;
+        }
+
+        .help-modal h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .help-modal h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .help-modal p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+
+        .help-modal ul {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-4);
+        }
+
+        .help-modal li {
+            margin-bottom: var(--space-1);
+        }
+
+        .help-modal strong {
+            font-weight: 600;
+        }
+
+        .help-modal .hat-item {
+            margin-left: 0;
+        }
+
+        .vocab-list {
+            margin-top: var(--space-3);
+        }
+
+        .vocab-list-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: 0.02em;
+            margin-right: var(--space-2);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .vocab-list-title:hover {
+            opacity: 0.7;
+        }
+
+        .vocab-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .vocab-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 2px 6px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .vocab-item:hover {
+            background: var(--color-surface);
+        }
+
+        .vocab-emoji {
+            margin-right: 0;
+        }
+
+        .vocab-word {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .vocab-translation {
+            color: var(--color-text);
+            display: none;
+            margin-left: 2px;
+        }
+
+        .vocab-item.revealed .vocab-translation {
+            display: inline;
+        }
+
+        .vocab-exercise-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .vocab-exercise-overlay.active {
+            display: block;
+        }
+
+        .vocab-exercise-modal {
+            background: var(--color-bg);
+            width: 100%;
+            min-height: 100vh;
+            padding: var(--space-4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vocab-exercise-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .vocab-exercise-close:hover {
+            opacity: 0.6;
+        }
+
+        .vocab-exercise-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            letter-spacing: -0.02em;
+        }
+
+        .vocab-exercise-keyword {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .vocab-exercise-keyword:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .vocab-exercise-keyword.selected {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: var(--color-text);
+            border-width: 2px;
+        }
+
+        .vocab-exercise-text {
+            line-height: 1.6;
+            font-size: 16px;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+
+        .vocab-blank {
+            display: inline-block;
+            min-width: 80px;
+            min-height: 24px;
+            border: 1px solid var(--color-border);
+            margin: 0 2px;
+            padding: 2px 6px;
+            background: var(--color-bg);
+            position: relative;
+            vertical-align: baseline;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .vocab-blank:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .vocab-blank.filled {
+            border-color: var(--color-text-secondary);
+            cursor: pointer;
+        }
+
+        .vocab-blank.correct {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .vocab-blank.incorrect {
+            background: rgba(244, 67, 54, 0.15);
+            border-color: rgba(244, 67, 54, 0.5);
+        }
+
+        .vocab-blank-content {
+            display: inline-block;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="header-label">6 Hats Discussion<span class="separator">•🎩</span>帽討論</span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <div class="header-search-container">
+            <input type="text" class="header-search" id="headerSearch" placeholder="Search topics for discussion..." />
+            <div class="header-search-dropdown" id="headerSearchDropdown"></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="content">
+                <div class="empty-state">
+                    <div class="hats-intro">
+                        <p>Search for a topic above to begin a structured discussion using the Six Thinking Hats method.</p>
+                        <p>Click on questions to reveal their thinking hat type. Use the timer in the bottom left to track discussion time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Help Button -->
+    <button class="help-button" id="helpButton" onclick="toggleHelpModal()">Why thinking hats?</button>
+
+    <!-- Timer Container -->
+    <div class="timer-container">
+        <div class="timer-display" id="timerDisplay">
+            <span id="timerTime">00:00</span>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="help-modal-overlay" id="helpModalOverlay" onclick="closeHelpModal(event)">
+        <div class="help-modal" onclick="event.stopPropagation()">
+            <button class="help-modal-close" onclick="closeHelpModal(event)">×</button>
+            <h2>The Six Thinking Hats<br>六頂思考帽</h2>
+            <p>Developed by Edward de Bono. A framework that replaces reactive debate with structured, parallel thinking. All participants "wear the same hat" at the same time, focusing on one mode of thinking before moving to the next.<br>由愛德華·德·波諾開發。一個用結構化、平行思考取代反應式辯論的框架。所有參與者同時「戴上同一頂帽」，在轉到下一個思考模式之前，專注於一種思考模式。</p>
+            
+            <h3>The Six Hats:<br>六頂帽：</h3>
+            <div class="hats-intro">
+                <div class="hat-item white-hat">
+                    <span class="hat-name white-hat">White Hat<br>白帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Facts, figures, and objective information<br>事實、數據及客觀資訊</span>
+                    </span>
+                </div>
+                <div class="hat-item red-hat">
+                    <span class="hat-name red-hat">Red Hat<br>紅帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Emotions, feelings, and intuition<br>情感、感覺及直覺</span>
+                    </span>
+                </div>
+                <div class="hat-item yellow-hat">
+                    <span class="hat-name yellow-hat">Yellow Hat<br>黃帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Benefits, advantages, and positive aspects<br>好處、優勢及正面方面</span>
+                    </span>
+                </div>
+                <div class="hat-item black-hat">
+                    <span class="hat-name black-hat">Black Hat<br>黑帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Caution, problems, and potential difficulties<br>謹慎、問題及潛在困難</span>
+                    </span>
+                </div>
+                <div class="hat-item green-hat">
+                    <span class="hat-name green-hat">Green Hat<br>綠帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Creativity, new ideas, and possibilities<br>創意、新想法及可能性</span>
+                    </span>
+                </div>
+                <div class="hat-item blue-hat">
+                    <span class="hat-name blue-hat">Blue Hat<br>藍帽</span>
+                    <span class="hat-description">
+                        <span class="hat-description-line">Process control, planning, and next steps<br>過程控制、規劃及下一步</span>
+                    </span>
+                </div>
+            </div>
+            
+            <h3>Key Benefits:<br>主要好處：</h3>
+            <p>Prevents unproductive dynamics by providing clear thinking steps. Ensures comprehensive analysis by examining all angles. Creates efficient communication through a shared language for thinking.<br>提供清晰嘅思考步驟，避免消耗雙方嘅討論。考慮所有角度，確保全面分析。共享思考語言，創造團隊高效溝通。</p>
+        </div>
+    </div>
+
+    <!-- Vocab Exercise Modal -->
+    <div class="vocab-exercise-overlay" id="vocabExerciseOverlay">
+        <div class="vocab-exercise-modal">
+            <button class="vocab-exercise-close" onclick="closeVocabExercise()">×</button>
+            <div class="vocab-exercise-title" id="vocabExerciseTitle">Fill in the blanks</div>
+            <div class="vocab-exercise-text" id="vocabExerciseText"></div>
+        </div>
+    </div>
+
+    <script>
+        // Topic mapping: display name -> JS filename
+        const topics = [
+            { name: "2025 Tech Updates", file: "2025techupdate_6hats_questions.js" },
+            { name: "Antarctica", file: "antarctica_questions.js" },
+            { name: "Blue Lock", file: "blue_lock_6hats_questions.js" },
+            { name: "Cosmic Weather", file: "cosmicweather_questions.js" },
+            { name: "Domestic Workers", file: "domesticworkers_6hats_questions.js" },
+            { name: "Farming", file: "farming_questions.js" },
+            { name: "Food Safety", file: "food_safety_questions.js" },
+            { name: "Future Education", file: "futureeducation_6hats_questions.js" },
+            { name: "Homelessness", file: "homelessness_questions.js" },
+            { name: "Hong Kong's Rich & Poor", file: "hongkong_richpoor_6hats_questions.js" },
+            { name: "Hong Kong Transport", file: "hongkong_transport_6hats_questions.js" },
+            { name: "Money & Inequality", file: "money_inequality_6hats_questions.js" },
+            { name: "Music", file: "music_questions.js" },
+            { name: "Online Safety", file: "online_safety_6hats_questions.js" },
+            { name: "Piano Lessons", file: "pianolesson_6hats_questions.js" },
+            { name: "Pyramids", file: "pyramids_6hats_questions.js" },
+            { name: "Rich & Poor", file: "richpoor_6hats_questions.js" },
+            { name: "Santa", file: "santa_questions.js" },
+            { name: "Skyscrapers", file: "skyscrapers_questions.js" },
+            { name: "Sports Innovations", file: "sports_innovations_questions.js" },
+            { name: "Street Culture", file: "streetculture_questions.js" },
+            { name: "Taiwan", file: "taiwan_questions.js" },
+            { name: "Video Games", file: "videogames_questions.js" },
+            { name: "Weather", file: "weather_questions.js" }
+        ];
+
+        const headerSearch = document.getElementById('headerSearch');
+        const headerSearchDropdown = document.getElementById('headerSearchDropdown');
+        const content = document.getElementById('content');
+        let currentScript = null;
+        let currentSets = null;
+        let currentSessionIndex = 0;
+        let currentTopicName = null;
+        let isCyclingTopics = false;
+
+        // Header search functionality
+        function renderHeaderSearchResults(topicsToShow) {
+            headerSearchDropdown.innerHTML = '';
+            
+            if (topicsToShow.length > 0) {
+                headerSearchDropdown.classList.add('active');
+                topicsToShow.forEach(topic => {
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.textContent = topic.name;
+                    link.addEventListener('mousedown', (e) => {
+                        e.preventDefault();
+                        loadTopic(topic);
+                        headerSearch.value = '';
+                        headerSearchDropdown.classList.remove('active');
+                        headerSearchDropdown.innerHTML = '';
+                    });
+                    headerSearchDropdown.appendChild(link);
+                });
+            } else {
+                headerSearchDropdown.classList.remove('active');
+            }
+        }
+
+        headerSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (searchTerm.length === 0) {
+                renderHeaderSearchResults(topics);
+            } else {
+                const matchingTopics = topics.filter(topic => 
+                    topic.name.toLowerCase().includes(searchTerm)
+                );
+                renderHeaderSearchResults(matchingTopics);
+            }
+        });
+
+        headerSearch.addEventListener('focus', () => {
+            if (headerSearch.value.trim().length === 0) {
+                renderHeaderSearchResults(topics);
+            }
+        });
+
+        let isClickingDropdown = false;
+        
+        headerSearchDropdown.addEventListener('mousedown', () => {
+            isClickingDropdown = true;
+        });
+
+        headerSearch.addEventListener('blur', (e) => {
+            setTimeout(() => {
+                if (!isClickingDropdown) {
+                    headerSearchDropdown.classList.remove('active');
+                    headerSearchDropdown.innerHTML = '';
+                }
+                isClickingDropdown = false;
+            }, 200);
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            // Close header search dropdown when clicking outside
+            if (!e.target.closest('.header-search-container')) {
+                headerSearchDropdown.classList.remove('active');
+                headerSearchDropdown.innerHTML = '';
+            }
+        });
+
+        function loadTopic(topic) {
+            // Store current topic name
+            currentTopicName = topic.name;
+
+            // Show loading state
+            content.innerHTML = '<div class="loading">Loading...</div>';
+
+            // Remove previous script if exists
+            if (currentScript) {
+                currentScript.remove();
+                delete window.sixHatSets;
+            }
+
+            // Load new script
+            currentScript = document.createElement('script');
+            currentScript.src = topic.file;
+            currentScript.onload = () => {
+                if (typeof window.sixHatSets !== 'undefined') {
+                    currentSets = window.sixHatSets;
+                    currentSessionIndex = 0;
+                    renderContent(currentSets, 0);
+                } else {
+                    content.innerHTML = '<div class="empty-state">Error loading topic data</div>';
+                }
+            };
+            currentScript.onerror = () => {
+                content.innerHTML = '<div class="empty-state">Error loading topic file</div>';
+            };
+            document.head.appendChild(currentScript);
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getHatLabel(hatType) {
+            const labelMap = {
+                'white-hat': 'white hat • factual',
+                'red-hat': 'red hat • personal',
+                'yellow-hat': 'yellow hat • optimistic reasoning',
+                'black-hat': 'black hat • critical reasoning',
+                'green-hat': 'green hat • creative',
+                'blue-hat': 'blue hat • practical'
+            };
+            return labelMap[hatType] || '';
+        }
+
+
+
+        function renderContent(sets, sessionIndex = 0) {
+            if (!sets || sets.length === 0) {
+                content.innerHTML = '<div class="empty-state">No content available</div>';
+                return;
+            }
+
+            if (sessionIndex >= sets.length) {
+                sessionIndex = 0;
+            }
+
+            const set = sets[sessionIndex];
+            let html = '';
+            const setId = `set-${sessionIndex}-${set.title.replace(/[^a-zA-Z0-9]/g, '')}`;
+            const sessionMenuId = `session-menu-${sessionIndex}`;
+            html += `<div class="topic">`;
+            
+            // Main topic name (centered)
+            if (currentTopicName) {
+                html += `<div style="position: relative;">`;
+                html += `<h1 class="main-topic-title" id="mainTopicTitle"><span class="topic-prefix">Let's talk about </span><span id="topicNameDisplay">${currentTopicName}</span></h1>`;
+                html += `</div>`;
+            }
+            
+            // Session navigation with dropdown menu
+            if (sets.length > 1) {
+                html += `<div class="session-navigation">`;
+                html += `<div class="session-dropdown-wrapper">`;
+                html += `<select class="session-dropdown" onchange="selectSession(parseInt(this.value))">`;
+                sets.forEach((s, idx) => {
+                    const selected = idx === sessionIndex ? 'selected' : '';
+                    html += `<option value="${idx}" ${selected}>${s.title}</option>`;
+                });
+                html += `</select>`;
+                html += `</div>`;
+                html += `</div>`;
+            } else {
+                // Show session title without navigation if only one session
+                html += `<div class="topic-header">`;
+                html += `<h2 class="session-title">${set.title}</h2>`;
+                html += `</div>`;
+            }
+            
+            // Action labels row
+            html += `<div class="topic-actions">`;
+            
+            // Article toggle button
+            if (set.articleText || set.chinglishText) {
+                html += `<span class="article-toggle" onclick="toggleArticle('${setId}')" data-set-index="${sessionIndex}">Read text</span>`;
+            }
+            
+            // Video link
+            if (set.link) {
+                html += `<a href="${set.link}" target="_blank" class="video-link-emoji">Watch video</a>`;
+            }
+            
+            html += `</div>`;
+            
+            // Vocab list (displayed after video link)
+            if (set.vocablist && set.vocablist.length > 0) {
+                html += `<div class="vocab-list">`;
+                html += `<div class="vocab-items">`;
+                if (set.vocabex) {
+                    html += `<span class="vocab-list-title" onclick="openVocabExercise(${sessionIndex})" data-set-index="${sessionIndex}">Fill in blanks with</span>`;
+                } else {
+                    html += `<span class="vocab-list-title">Useful words</span>`;
+                }
+                set.vocablist.forEach((vocab, vocabIndex) => {
+                    const emoji = vocab.emoji || "📝";
+                    html += `<div class="vocab-item" data-vocab-index="${vocabIndex}">`;
+                    html += `<span class="vocab-emoji">${emoji}</span>`;
+                    html += `<span class="vocab-word">${vocab.word}</span>`;
+                    html += `<span class="vocab-translation">${vocab.translation}</span>`;
+                    html += `</div>`;
+                });
+                html += `</div>`;
+                html += `</div>`;
+            }
+            
+            // Article text (hidden by default)
+            if (set.articleText || set.chinglishText) {
+                html += `<div class="article-text" id="${setId}"></div>`;
+            }
+
+            // Questions
+            if (set.questions && set.questions.length > 0) {
+                html += `<div class="questions">`;
+                set.questions.forEach((question, qIndex) => {
+                    const hatLabel = getHatLabel(question.hat);
+                    html += `<div class="question" data-hat="${question.hat}" data-set="${sessionIndex}" data-question="${qIndex}">`;
+                    if (question.emoji) {
+                        html += `<span class="question-emoji">${question.emoji}</span>`;
+                    }
+                    html += `<span class="question-text">${question.text}</span>`;
+                    html += `<span class="question-label">${hatLabel}</span>`;
+                    html += `</div>`;
+                });
+                html += `</div>`;
+            }
+
+            html += `</div>`;
+
+            content.innerHTML = html;
+
+            // Add click handler for main topic title
+            const mainTopicTitle = document.getElementById('mainTopicTitle');
+            if (mainTopicTitle) {
+                mainTopicTitle.addEventListener('click', cycleThroughTopics);
+            }
+
+            // Add click handlers for questions
+            const questions = content.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const hat = question.getAttribute('data-hat');
+                    const isRevealed = question.classList.contains('revealed');
+                    
+                    // Remove all hat classes first
+                    question.classList.remove('white-hat', 'red-hat', 'black-hat', 'yellow-hat', 'green-hat', 'blue-hat');
+                    
+                    // Toggle revealed state
+                    question.classList.toggle('revealed');
+                    
+                    // Add the hat class if now revealed
+                    if (!isRevealed) {
+                        question.classList.add(hat);
+                    }
+                });
+            });
+
+            // Add click handlers for vocab items
+            const vocabItems = content.querySelectorAll('.vocab-item');
+            vocabItems.forEach(vocabItem => {
+                vocabItem.addEventListener('click', () => {
+                    vocabItem.classList.toggle('revealed');
+                });
+            });
+
+        }
+
+        function toggleArticle(setId) {
+            const articleDiv = document.getElementById(setId);
+            if (!articleDiv) return;
+
+            const isExpanded = articleDiv.classList.contains('show');
+            
+            // Find the toggle button by finding the topic container and then the button
+            const topicContainer = articleDiv.closest('.topic');
+            const toggleButton = topicContainer?.querySelector('.article-toggle');
+            const setIndex = parseInt(toggleButton?.getAttribute('data-set-index') || '0');
+            
+            if (isExpanded) {
+                articleDiv.classList.remove('show');
+                articleDiv.innerHTML = '';
+            } else {
+                articleDiv.classList.add('show');
+                
+                // Find the set data
+                const set = currentSets?.[setIndex];
+                
+                if (set) {
+                    // Prefer chinglishText if available, otherwise use articleText
+                    const textToShow = set.chinglishText || set.articleText;
+                    if (textToShow) {
+                        articleDiv.innerHTML = textToShow;
+                        
+                        // Add click handlers for chinglish mistakes
+                        const mistakes = articleDiv.querySelectorAll('.chinglish-mistake');
+                        mistakes.forEach(mistake => {
+                            const originalText = mistake.innerText;
+                            mistake.addEventListener('click', function(e) {
+                                e.stopPropagation();
+                                if (this.classList.contains('revealed')) {
+                                    this.innerText = originalText;
+                                    this.classList.remove('revealed');
+                                } else {
+                                    const correctText = this.getAttribute('data-correct');
+                                    if (correctText) {
+                                        this.innerText = correctText;
+                                        this.classList.add('revealed');
+                                    }
+                                }
+                            });
+                        });
+                    }
+                }
+            }
+        }
+
+        function extractVideoId(url) {
+            if (!url) return null;
+            
+            // Normalize URL - handle both http and https, with or without www
+            url = url.trim();
+            
+            // Handle YouTube Shorts (e.g., youtube.com/shorts/VIDEO_ID or youtu.be/shorts/VIDEO_ID)
+            const shortsPattern = /(?:youtube\.com|youtu\.be)\/shorts\/([a-zA-Z0-9_-]+)/i;
+            const shortsMatch = url.match(shortsPattern);
+            if (shortsMatch && shortsMatch[1]) {
+                return shortsMatch[1];
+            }
+            
+            // Handle youtu.be short URLs (e.g., youtu.be/VIDEO_ID)
+            const shortUrlPattern = /youtu\.be\/([a-zA-Z0-9_-]+)/i;
+            const shortUrlMatch = url.match(shortUrlPattern);
+            if (shortUrlMatch && shortUrlMatch[1]) {
+                return shortUrlMatch[1];
+            }
+            
+            // Handle youtube.com/watch?v=VIDEO_ID
+            const watchPattern = /(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/i;
+            const watchMatch = url.match(watchPattern);
+            if (watchMatch && watchMatch[1]) {
+                return watchMatch[1];
+            }
+            
+            return null;
+        }
+
+
+        function selectSession(index) {
+            currentSessionIndex = index;
+            renderContent(currentSets, index);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cycleThroughTopics() {
+            if (isCyclingTopics) return; // Prevent multiple simultaneous cycles
+            
+            const topicNameDisplay = document.getElementById('topicNameDisplay');
+            if (!topicNameDisplay) return;
+
+            isCyclingTopics = true;
+
+            // Select a random topic
+            const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+
+            // Step 1: Fade out and shrink current text
+            topicNameDisplay.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            topicNameDisplay.style.opacity = '0';
+            topicNameDisplay.style.transform = 'scale(0.8)';
+
+                // Step 2: Show loading dots after fade out
+            setTimeout(() => {
+                const loadingDots = document.createElement('span');
+                loadingDots.className = 'loading-dots';
+                topicNameDisplay.innerHTML = '';
+                topicNameDisplay.appendChild(loadingDots);
+                topicNameDisplay.style.opacity = '1';
+                topicNameDisplay.style.transform = 'scale(1)';
+
+                // Show all three dots and animate them jumping one by one
+                loadingDots.innerHTML = '';
+                for (let i = 0; i < 3; i++) {
+                    const dotSpan = document.createElement('span');
+                    dotSpan.className = 'dot';
+                    dotSpan.textContent = '.';
+                    loadingDots.appendChild(dotSpan);
+                    if (i < 2) {
+                        const space = document.createTextNode(' ');
+                        loadingDots.appendChild(space);
+                    }
+                }
+
+                // Step 3: After loading animation, show new topic text
+                setTimeout(() => {
+                    topicNameDisplay.innerHTML = randomTopic.name;
+                    topicNameDisplay.style.transition = '';
+                    topicNameDisplay.style.transform = '';
+                    isCyclingTopics = false;
+                    loadTopic(randomTopic);
+                }, 1200); // 1200ms loading dots animation
+            }, 300);
+        }
+
+        function toggleHelpModal() {
+            const overlay = document.getElementById('helpModalOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        function closeHelpModal(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const overlay = document.getElementById('helpModalOverlay');
+            overlay.classList.remove('active');
+        }
+
+        let selectedVocabWord = null;
+
+        function openVocabExercise(setIndex) {
+            if (!currentSets || !currentSets[setIndex] || !currentSets[setIndex].vocabex) {
+                return;
+            }
+
+            const set = currentSets[setIndex];
+            const overlay = document.getElementById('vocabExerciseOverlay');
+            const textContainer = document.getElementById('vocabExerciseText');
+
+            // Clear previous state
+            selectedVocabWord = null;
+            textContainer.innerHTML = '';
+
+            // Shuffle vocab words
+            const shuffledVocab = [...set.vocablist].sort(() => Math.random() - 0.5);
+
+            // Create keyword buttons and append directly to text container
+            shuffledVocab.forEach(vocab => {
+                const keywordEl = document.createElement('div');
+                keywordEl.className = 'vocab-exercise-keyword';
+                keywordEl.textContent = vocab.word;
+                keywordEl.dataset.word = vocab.word;
+                keywordEl.addEventListener('click', () => handleVocabKeywordClick(keywordEl));
+                textContainer.appendChild(keywordEl);
+            });
+
+            // Add a separator or spacing
+            const separator = document.createElement('div');
+            separator.style.marginTop = 'var(--space-3)';
+            separator.style.marginBottom = 'var(--space-3)';
+            textContainer.appendChild(separator);
+
+            // Set exercise text with blanks
+            const exerciseTextDiv = document.createElement('div');
+            exerciseTextDiv.innerHTML = set.vocabex;
+            textContainer.appendChild(exerciseTextDiv);
+
+            // Add click handlers to blanks
+            const blanks = textContainer.querySelectorAll('.vocab-blank');
+            blanks.forEach(blank => {
+                if (!blank.textContent.trim()) {
+                    blank.innerHTML = '&nbsp;';
+                }
+                blank.addEventListener('click', () => handleVocabBlankClick(blank));
+            });
+
+            overlay.classList.add('active');
+        }
+
+        function closeVocabExercise() {
+            const overlay = document.getElementById('vocabExerciseOverlay');
+            overlay.classList.remove('active');
+            selectedVocabWord = null;
+        }
+
+        function handleVocabKeywordClick(keywordEl) {
+            if (keywordEl.classList.contains('selected')) {
+                keywordEl.classList.remove('selected');
+                selectedVocabWord = null;
+            } else {
+                document.querySelectorAll('.vocab-exercise-keyword').forEach(k => k.classList.remove('selected'));
+                keywordEl.classList.add('selected');
+                selectedVocabWord = keywordEl.dataset.word;
+            }
+        }
+
+        function handleVocabBlankClick(blank) {
+            if (blank.classList.contains('filled')) {
+                blank.classList.remove('filled', 'correct', 'incorrect');
+                blank.innerHTML = '&nbsp;';
+                return;
+            }
+
+            if (!selectedVocabWord) {
+                return;
+            }
+
+            const answer = blank.dataset.answer;
+            blank.classList.add('filled');
+            blank.innerHTML = `<span class="vocab-blank-content">${selectedVocabWord}</span>`;
+
+            if (selectedVocabWord === answer) {
+                blank.classList.add('correct');
+                blank.classList.remove('incorrect');
+            } else {
+                blank.classList.add('incorrect');
+                blank.classList.remove('correct');
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeHelpModal();
+                closeVocabExercise();
+            }
+        });
+
+        // Load a random topic on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (topics.length > 0) {
+                const randomIndex = Math.floor(Math.random() * topics.length);
+                const randomTopic = topics[randomIndex];
+                loadTopic(randomTopic);
+            }
+        });
+    </script>
+    <script src="xstimer.js"></script>
+</body>
+</html>
+

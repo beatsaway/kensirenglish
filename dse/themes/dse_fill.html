@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill in Blanks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+        }
+
+        .header-dropdowns {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+
+        .header-dropdowns select {
+            flex: 1;
+            padding: 4px var(--space-2);
+            border: none;
+            border-right: 1px solid var(--color-border);
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 13px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            margin: 0;
+            font-family: inherit;
+        }
+
+        .header-dropdowns select:last-child {
+            border-right: none;
+        }
+
+        .header-dropdowns select:hover {
+            background: var(--color-surface);
+        }
+
+        .header-dropdowns select:focus {
+            outline: none;
+            background: var(--color-surface);
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: var(--space-3) var(--space-2);
+        }
+
+        .exercise-item {
+            margin-bottom: var(--space-2);
+            padding: 0;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .exercise-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .policy-title {
+            font-weight: 400;
+            color: #4682B4;
+            margin-bottom: var(--space-1);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .theme-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4682B4;
+            margin-bottom: var(--space-1);
+            display: inline-block;
+        }
+
+        .type-label {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            margin-left: var(--space-1);
+            padding: 2px 6px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+        }
+
+        .keywords-section {
+            margin-bottom: var(--space-1);
+            padding: var(--space-1);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+        }
+
+        .keywords-title {
+            font-weight: 400;
+            margin-bottom: var(--space-1);
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-bottom: var(--space-1);
+        }
+
+        .keyword {
+            padding: 4px 8px;
+            background: var(--color-bg);
+            color: #9370DB;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .keyword:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .keyword.selected {
+            background: var(--color-surface);
+            border-color: var(--color-text);
+            border-width: 2px;
+        }
+
+        .paragraph {
+            line-height: 1.5;
+            font-size: 15px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 60px;
+            min-height: 24px;
+            border: 1px solid var(--color-border);
+            margin: 0 2px;
+            padding: 2px 6px;
+            background: var(--color-bg);
+            position: relative;
+            vertical-align: baseline;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .blank:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .blank.filled {
+            border-color: var(--color-text-secondary);
+            cursor: pointer;
+        }
+
+        .blank.correct {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .blank.incorrect {
+            background: rgba(244, 67, 54, 0.15);
+            border-color: rgba(244, 67, 54, 0.5);
+        }
+
+        .blank-content {
+            display: inline-block;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+
+        .chinese-text {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-bottom: var(--space-1);
+            line-height: 1.5;
+        }
+
+        /* Mode-based visibility */
+        .mode-keyword-only .chinese-text,
+        .mode-keyword-only .paragraph {
+            display: none;
+        }
+
+        .mode-keyword-only .paragraph.revealed,
+        .mode-keyword-only .chinese-text.revealed {
+            display: block;
+        }
+
+        .mode-no-keywords .keywords-container {
+            display: none;
+        }
+
+        .blank.revealed {
+            background: rgba(33, 150, 243, 0.15);
+            border-color: rgba(33, 150, 243, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <span class="header-label">Theme-based Fill-in-Blanks<span class="separator">•✏️</span>主題填充練習</span>
+                <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+            </div>
+            <div class="header-dropdowns">
+                <select id="modeSelect">
+                    <option value="default">With Keywords</option>
+                    <option value="no-keywords">No Keywords</option>
+                    <option value="keyword-only">Keywords Only</option>
+                </select>
+                <select id="themeSelect">
+                    <option value="all">All Themes</option>
+                </select>
+            </div>
+        </div>
+        <div class="content" id="content"></div>
+    </div>
+
+    <script src="exercises_data.js"></script>
+    <script>
+
+        let selectedKeyword = null;
+        let currentTheme = 'all';
+        let currentMode = 'default';
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function init() {
+            setupModeFilter();
+            setupThemeFilter();
+            renderExercises();
+        }
+
+        function setupModeFilter() {
+            const modeSelect = document.getElementById('modeSelect');
+            modeSelect.addEventListener('change', (e) => {
+                currentMode = e.target.value;
+                selectedKeyword = null; // Reset selection when mode changes
+                document.querySelectorAll('.keyword').forEach(k => k.classList.remove('selected'));
+                renderExercises();
+            });
+        }
+
+        function setupThemeFilter() {
+            const themeSelect = document.getElementById('themeSelect');
+            const themes = [...new Set(exercises.map(ex => ex.theme))];
+            themes.forEach(theme => {
+                const option = document.createElement('option');
+                option.value = theme;
+                option.textContent = theme;
+                themeSelect.appendChild(option);
+            });
+
+            themeSelect.addEventListener('change', (e) => {
+                currentTheme = e.target.value;
+                renderExercises();
+            });
+        }
+
+        function renderExercises() {
+            const content = document.getElementById('content');
+            content.innerHTML = '';
+
+            // Apply mode class to content container
+            content.className = `content mode-${currentMode}`;
+
+            const filteredExercises = currentTheme === 'all' 
+                ? exercises 
+                : exercises.filter(ex => ex.theme === currentTheme);
+
+            filteredExercises.forEach((exercise) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-item';
+
+                const themeLabel = document.createElement('div');
+                themeLabel.className = 'theme-label';
+                themeLabel.textContent = exercise.theme;
+                const typeLabel = document.createElement('span');
+                typeLabel.className = 'type-label';
+                typeLabel.textContent = exercise.type;
+                themeLabel.appendChild(typeLabel);
+                exerciseDiv.appendChild(themeLabel);
+
+                const policyTitle = document.createElement('div');
+                policyTitle.className = 'policy-title';
+                policyTitle.appendChild(document.createTextNode(exercise.title));
+                policyTitle.appendChild(document.createElement('br'));
+                const titleEnSpan = document.createElement('span');
+                titleEnSpan.style.cssText = "color: #4682B4; font-size: 14px;";
+                titleEnSpan.textContent = exercise.titleEn;
+                policyTitle.appendChild(titleEnSpan);
+                exerciseDiv.appendChild(policyTitle);
+
+                const keywordsContainer = document.createElement('div');
+                keywordsContainer.className = 'keywords-container';
+                // Randomize keywords order
+                const shuffledKeywords = shuffleArray(exercise.keywords);
+                shuffledKeywords.forEach((keyword) => {
+                    const keywordEl = document.createElement('div');
+                    keywordEl.className = 'keyword';
+                    keywordEl.textContent = keyword;
+                    keywordEl.dataset.keyword = keyword;
+                    keywordEl.addEventListener('click', () => handleKeywordClick(keywordEl));
+                    keywordsContainer.appendChild(keywordEl);
+                });
+                exerciseDiv.appendChild(keywordsContainer);
+
+                exercise.paragraphs.forEach((para, paraIndex) => {
+                    const chineseDiv = document.createElement('div');
+                    chineseDiv.className = 'chinese-text';
+                    chineseDiv.textContent = para.chinese;
+                    exerciseDiv.appendChild(chineseDiv);
+
+                    const paraDiv = document.createElement('div');
+                    paraDiv.className = 'paragraph';
+                    paraDiv.innerHTML = para.english;
+                    exerciseDiv.appendChild(paraDiv);
+
+                    const blanks = paraDiv.querySelectorAll('.blank');
+                    blanks.forEach(blank => {
+                        blank.addEventListener('click', () => handleBlankClick(blank));
+                    });
+                });
+
+                content.appendChild(exerciseDiv);
+            });
+        }
+
+        function handleKeywordClick(keywordEl) {
+            // Handle keywords only mode - reveal paragraphs with answers
+            if (currentMode === 'keyword-only') {
+                // Find the parent exercise item
+                const exerciseItem = keywordEl.closest('.exercise-item');
+                if (!exerciseItem) return;
+
+                // Get all paragraphs and chinese text in this exercise
+                const paragraphs = exerciseItem.querySelectorAll('.paragraph');
+                const chineseTexts = exerciseItem.querySelectorAll('.chinese-text');
+
+                // Toggle reveal state
+                const isRevealed = paragraphs.length > 0 && paragraphs[0].classList.contains('revealed');
+
+                paragraphs.forEach(para => {
+                    if (isRevealed) {
+                        para.classList.remove('revealed');
+                    } else {
+                        para.classList.add('revealed');
+                        // Fill all blanks with correct answers
+                        const blanks = para.querySelectorAll('.blank');
+                        blanks.forEach(blank => {
+                            const answer = blank.dataset.answer;
+                            blank.classList.add('filled', 'correct');
+                            blank.innerHTML = `<span class="blank-content">${answer}</span>`;
+                        });
+                    }
+                });
+
+                chineseTexts.forEach(chinese => {
+                    if (isRevealed) {
+                        chinese.classList.remove('revealed');
+                    } else {
+                        chinese.classList.add('revealed');
+                    }
+                });
+
+                return;
+            }
+
+            // Default and no-keywords modes
+            // Toggle selection
+            if (keywordEl.classList.contains('selected')) {
+                keywordEl.classList.remove('selected');
+                selectedKeyword = null;
+            } else {
+                // Deselect all other keywords
+                document.querySelectorAll('.keyword').forEach(k => k.classList.remove('selected'));
+                keywordEl.classList.add('selected');
+                selectedKeyword = keywordEl.dataset.keyword;
+            }
+        }
+
+        function handleBlankClick(blank) {
+            // Handle "no keywords" mode - reveal answer on click
+            if (currentMode === 'no-keywords') {
+                if (blank.classList.contains('revealed')) {
+                    blank.classList.remove('revealed');
+                    blank.innerHTML = '';
+                } else {
+                    const answer = blank.dataset.answer;
+                    blank.classList.add('revealed');
+                    blank.innerHTML = `<span class="blank-content">${answer}</span>`;
+                }
+                return;
+            }
+
+            // Keywords only mode: paragraphs are hidden, so this shouldn't be called
+            // But if it is, do nothing
+            if (currentMode === 'keyword-only') {
+                return;
+            }
+
+            // Default mode
+            // If blank is filled, empty it
+            if (blank.classList.contains('filled')) {
+                blank.classList.remove('filled', 'correct', 'incorrect');
+                blank.innerHTML = '';
+                return;
+            }
+
+            // If no keyword is selected, do nothing
+            if (!selectedKeyword) {
+                return;
+            }
+
+            // Fill the blank with selected keyword
+            const answer = blank.dataset.answer;
+            blank.classList.add('filled');
+            blank.innerHTML = `<span class="blank-content">${selectedKeyword}</span>`;
+
+            // Check if correct
+            if (selectedKeyword === answer) {
+                blank.classList.add('correct');
+                blank.classList.remove('incorrect');
+            } else {
+                blank.classList.add('incorrect');
+                blank.classList.remove('correct');
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs by Category - Fill in Blanks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            background: transparent;
+            color: var(--color-text);
+            padding: var(--space-1) var(--space-2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .toolbar {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            flex-shrink: 0;
+        }
+
+        .toolbar:empty {
+            display: none;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-1);
+            user-select: none;
+        }
+
+        .nav-logo span {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text);
+            line-height: 1;
+        }
+
+        .nav-logo .nav-copyright {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-logo .nav-copyright:hover {
+            opacity: 0.7;
+        }
+
+        .nav-link {
+            margin-left: var(--space-2);
+            padding: 4px var(--space-1);
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .toolbar select {
+            width: 100%;
+            padding: 2px var(--space-1);
+            border: none;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 12px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            margin: 0;
+        }
+
+        .toolbar select:hover {
+            background: var(--color-surface);
+        }
+
+        .fixed-info {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 10;
+            padding: var(--space-1) var(--space-2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .fixed-info-content {
+            max-width: 100%;
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: var(--space-3) var(--space-2);
+        }
+
+        .exercise-item {
+            margin-bottom: var(--space-2);
+            padding: 0;
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .exercise-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .theme-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4682B4;
+            margin-bottom: var(--space-1);
+            display: inline-block;
+        }
+
+        .fixed-info .theme-label {
+            margin-bottom: var(--space-1);
+        }
+
+
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-bottom: var(--space-1);
+        }
+
+        .fixed-info .keywords-container {
+            margin-bottom: 0;
+            gap: 4px;
+        }
+
+        .keyword {
+            padding: 4px 8px;
+            background: var(--color-bg);
+            color: #9370DB;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .fixed-info .keyword {
+            padding: 2px 6px;
+            font-size: 13px;
+        }
+
+        .keyword:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .keyword.selected {
+            background: var(--color-surface);
+            border-color: var(--color-text);
+            border-width: 2px;
+        }
+
+        .paragraph {
+            line-height: 1.5;
+            font-size: 15px;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 60px;
+            min-height: 24px;
+            border: 1px solid var(--color-border);
+            margin: 0 2px;
+            padding: 2px 6px;
+            background: var(--color-bg);
+            position: relative;
+            vertical-align: baseline;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .blank:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .blank.filled {
+            border-color: var(--color-text-secondary);
+            cursor: pointer;
+        }
+
+        .blank.correct {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .blank.incorrect {
+            background: rgba(244, 67, 54, 0.15);
+            border-color: rgba(244, 67, 54, 0.5);
+        }
+
+        .blank-content {
+            display: inline-block;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+
+        .chinese-text {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-bottom: 2px;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-logo">
+                <span>Irregular Verbs by Category - Fill in Blanks</span>
+                <a href="../../index.html" class="nav-copyright">©kensirenglish.com</a>
+                <a href="irregular-verbs.html" class="nav-link">View by Sound Categories</a>
+            </div>
+        </div>
+        <div class="toolbar">
+            <select id="exerciseSelect">
+            </select>
+        </div>
+        <div class="fixed-info" id="fixedInfo" style="display: none;">
+            <div class="fixed-info-content">
+                <div class="keywords-container" id="fixedKeywordsContainer"></div>
+            </div>
+        </div>
+        <div class="content" id="content"></div>
+    </div>
+
+    <script src="category_exercises_data.js"></script>
+    <script>
+        let selectedKeyword = null;
+        let currentExercise = null;
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function init() {
+            // Randomly select an exercise on page load
+            const randomIndex = Math.floor(Math.random() * categoryExercises.length);
+            currentExercise = randomIndex.toString();
+            
+            setupExerciseFilter();
+            renderExercises();
+        }
+
+        function setupExerciseFilter() {
+            const exerciseSelect = document.getElementById('exerciseSelect');
+            
+            // Create array with index and title, then sort alphabetically
+            const exercisesWithIndex = categoryExercises.map((exercise, index) => ({
+                index: index,
+                title: exercise.title + ' - ' + exercise.theme
+            })).sort((a, b) => a.title.localeCompare(b.title));
+            
+            exercisesWithIndex.forEach(({ index, title }) => {
+                const option = document.createElement('option');
+                option.value = index.toString();
+                option.textContent = title;
+                exerciseSelect.appendChild(option);
+            });
+
+            // Set the selected option to the current exercise
+            exerciseSelect.value = currentExercise;
+
+            exerciseSelect.addEventListener('change', (e) => {
+                currentExercise = e.target.value;
+                renderExercises();
+            });
+        }
+
+        function renderExercises() {
+            const content = document.getElementById('content');
+            const fixedInfo = document.getElementById('fixedInfo');
+            const fixedKeywordsContainer = document.getElementById('fixedKeywordsContainer');
+            
+            content.innerHTML = '';
+            fixedKeywordsContainer.innerHTML = '';
+
+            const filteredExercises = categoryExercises[parseInt(currentExercise)] ? [categoryExercises[parseInt(currentExercise)]] : [];
+
+            if (filteredExercises.length > 0) {
+                const exercise = filteredExercises[0];
+                
+                // Populate fixed info section
+                const shuffledKeywords = shuffleArray(exercise.keywords);
+                shuffledKeywords.forEach((keywordObj) => {
+                    const keywordEl = document.createElement('div');
+                    keywordEl.className = 'keyword';
+                    keywordEl.textContent = keywordObj.present;
+                    keywordEl.dataset.present = keywordObj.present;
+                    keywordEl.dataset.past = keywordObj.past;
+                    keywordEl.addEventListener('click', () => handleKeywordClick(keywordEl));
+                    fixedKeywordsContainer.appendChild(keywordEl);
+                });
+                fixedInfo.style.display = 'block';
+            } else {
+                fixedInfo.style.display = 'none';
+                content.style.paddingTop = 'var(--space-3)';
+            }
+
+            filteredExercises.forEach((exercise) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-item';
+
+                exercise.paragraphs.forEach((para) => {
+                    const chineseDiv = document.createElement('div');
+                    chineseDiv.className = 'chinese-text';
+                    chineseDiv.textContent = para.chinese;
+                    exerciseDiv.appendChild(chineseDiv);
+
+                    const paraDiv = document.createElement('div');
+                    paraDiv.className = 'paragraph';
+                    paraDiv.innerHTML = para.english;
+                    exerciseDiv.appendChild(paraDiv);
+
+                    const blanks = paraDiv.querySelectorAll('.blank');
+                    blanks.forEach(blank => {
+                        if (!blank.textContent.trim()) {
+                            blank.innerHTML = '&nbsp;';
+                        }
+                        blank.addEventListener('click', () => handleBlankClick(blank));
+                    });
+                });
+
+                content.appendChild(exerciseDiv);
+            });
+        }
+
+        function handleKeywordClick(keywordEl) {
+            if (keywordEl.classList.contains('selected')) {
+                keywordEl.classList.remove('selected');
+                selectedKeyword = null;
+            } else {
+                document.querySelectorAll('.keyword').forEach(k => k.classList.remove('selected'));
+                keywordEl.classList.add('selected');
+                selectedKeyword = {
+                    present: keywordEl.dataset.present,
+                    past: keywordEl.dataset.past
+                };
+            }
+        }
+
+        function handleBlankClick(blank) {
+            if (blank.classList.contains('filled')) {
+                blank.classList.remove('filled', 'correct', 'incorrect');
+                blank.innerHTML = '&nbsp;';
+                return;
+            }
+
+            if (!selectedKeyword) {
+                return;
+            }
+
+            const answer = blank.dataset.answer;
+            blank.classList.add('filled');
+            blank.innerHTML = `<span class="blank-content">${selectedKeyword.past}</span>`;
+
+            if (selectedKeyword.past === answer) {
+                blank.classList.add('correct');
+                blank.classList.remove('incorrect');
+            } else {
+                blank.classList.add('incorrect');
+                blank.classList.remove('correct');
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
+

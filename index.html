@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning English as Cantonese Speakers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --space-1: 6px; --space-2: 6px 10px 3px 10px; --space-3: 12px; --space-4: 12px; --space-5: 20px; --space-6: 24px;
+            --color-bg: #fafbfc; --color-surface: #ffffff; --color-text: #1a1a1a;
+            --color-text-secondary: #6b7280; --color-accent: #2563eb;
+            --color-accent-light: rgba(37, 99, 235, 0.08); --color-dse: #7c3aed;
+            --color-dse-light: rgba(124, 58, 237, 0.1); --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05); --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1); --max-width: 1400px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', system-ui, sans-serif;
+            background: var(--color-bg); color: var(--color-text); line-height: 1.6;
+            height: 100vh; display: flex; flex-direction: column;
+            -webkit-font-smoothing: antialiased; font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0; 
+            flex-shrink: 0; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding: var(--space-2);
+            min-height: auto;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .header-title-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            padding: var(--space-1) 0 3px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .header-title-container:hover {
+            opacity: 0.7;
+        }
+        
+        .header-title { 
+            font-size: 19px; 
+            font-weight: 700; 
+            color: var(--color-text); 
+            line-height: 1; 
+        }
+        
+        .header-title .italic { 
+            font-style: italic; 
+            font-weight: 500; 
+            color: var(--color-accent); 
+        }
+        
+        .header-subtitle { 
+            font-size: 12px; 
+            color: var(--color-accent); 
+            margin-top: 2px; 
+            letter-spacing: 0.3px; 
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .nav-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .nav-select-button {
+            width: 100%;
+            padding: var(--space-2);
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--color-text);
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            transition: opacity 0.2s ease;
+            position: relative;
+        }
+
+        .nav-select-button:hover {
+            opacity: 0.7;
+        }
+
+        .nav-select-dropdown {
+            display: none;
+        }
+
+        .sub-navbar {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -50vw;
+            width: 100vw;
+            background: var(--color-surface);
+            padding: var(--space-3) var(--space-4);
+            display: none;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 101;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sub-navbar.active {
+            display: flex;
+            opacity: 1;
+            max-height: 200px;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .sub-navbar-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+        }
+
+        .sub-nav-option {
+            display: inline-flex;
+            flex-direction: column;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: background-color 0.15s ease, transform 0.1s ease;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            border-radius: 6px;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .sub-nav-option:hover {
+            background-color: var(--color-accent-light);
+            transform: translateY(-1px);
+        }
+
+        .sub-nav-option-top {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .sub-nav-option-emoji {
+            font-size: 1rem;
+        }
+
+        .sub-nav-option-cantonese {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .sub-nav-option-english {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        .sub-nav-option.pulse {
+            animation: highlightFade 1.5s ease-in-out;
+        }
+
+        @keyframes highlightFade {
+            0%, 100% {
+                background-color: transparent;
+            }
+            50% {
+                background-color: rgba(37, 99, 235, 0.25);
+            }
+        }
+
+        .nav-item.active .nav-select-button {
+            background-color: var(--color-accent-light);
+        }
+
+        main { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 0 var(--space-4) var(--space-2) var(--space-4); width: 100%; max-width: 100%; }
+        .container { max-width: var(--max-width); margin: 0 auto; width: 100%; }
+
+        .philosophy-carousel {
+            position: relative;
+            margin: 0 var(--space-4) var(--space-4) var(--space-4);
+            overflow: hidden;
+            width: calc(100% - calc(var(--space-4) * 2));
+            border-radius: 16px;
+            background: var(--color-bg);
+            background-image: radial-gradient(circle at center, var(--color-bg) 0%, var(--color-bg) 100%);
+            transition: background-image 1s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 400px;
+        }
+        
+        .philosophy-carousel-container {
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+        
+        
+        .philosophy-emoji {
+            font-size: 3rem;
+            display: inline-block;
+            margin-right: var(--space-2);
+            margin-top: 0;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            vertical-align: middle;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        
+        .philosophy {
+            background: transparent;
+            border-bottom: none;
+            padding: var(--space-4);
+            margin: 0;
+            font-size: 2.5rem;
+            line-height: 1.6;
+            color: inherit;
+            display: none;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            min-height: 100%;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        
+        .philosophy.active {
+            display: flex;
+        }
+        
+        .philosophy a,
+        .philosophy .toggle-text,
+        .philosophy .research-link {
+            position: relative;
+            z-index: 100;
+        }
+        
+        .philosophy p {
+            position: relative;
+            z-index: 100;
+        }
+        
+        .philosophy-link-container {
+            margin-top: auto;
+            padding-top: var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            z-index: 200;
+            pointer-events: auto;
+            flex-shrink: 0;
+        }
+        
+        .philosophy-link-container a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        
+        .philosophy-link-container a:hover {
+            opacity: 0.7;
+        }
+        
+        .philosophy-link-container .link-separator {
+            color: var(--color-text-secondary);
+            margin: 0 var(--space-1);
+            opacity: 0.6;
+        }
+        
+        .philosophy-link-container .link-cantonese {
+            color: var(--color-text-secondary);
+        }
+        
+        @keyframes pulseEmoji {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+        
+        .philosophy-content {
+            flex: 1;
+            min-height: 0;
+        }
+        
+        .philosophy .toggle-text {
+            cursor: text;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .philosophy .toggle-text.showing-english {
+            opacity: 1;
+        }
+        
+        .philosophy .toggle-text:active {
+            cursor: text;
+        }
+        
+        .philosophy .philosophy-title {
+            font-size: 2.5rem;
+            display: inline-flex;
+            margin-bottom: 0;
+            text-align: left;
+        }
+        
+        .philosophy .philosophy-title strong {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: left;
+            display: inline;
+        }
+        
+        .philosophy .philosophy-description {
+            font-size: 1.8rem;
+            display: block;
+            color: var(--color-text-secondary);
+            text-align: left;
+            max-width: 800px;
+        }
+        
+        .philosophy .research-link {
+            font-size: 2.5rem;
+        }
+        
+        /* Make text selectable */
+        .philosophy p, 
+        .philosophy .toggle-text, 
+        .philosophy .philosophy-title, 
+        .philosophy .philosophy-description {
+            pointer-events: auto;
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            cursor: text;
+        }
+        
+        .philosophy p strong {
+            pointer-events: auto;
+        }
+        
+        .philosophy .toggle-text:hover {
+            cursor: text;
+        }
+        
+        .philosophy.active {
+            display: flex;
+            opacity: 1;
+            position: relative;
+            animation: fadeInZoomIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes fadeInZoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .philosophy.active .philosophy-content {
+            animation: slowZoom 8s ease-out forwards;
+            transform-origin: center;
+        }
+        
+        .philosophy.active .philosophy-link-container {
+            animation: none;
+            transform: scale(1) !important;
+        }
+        
+        @keyframes slowZoom {
+            from {
+                transform: scale(0.95);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .philosophy-link-container,
+        .philosophy-link-container * {
+            animation: none !important;
+        }
+        
+        .philosophy-link-container {
+            transform: translateX(-50%) !important;
+        }
+        
+        .philosophy p { 
+            color: var(--color-text-secondary); 
+            margin: 0;
+            margin-top: 0;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+            max-width: 100%;
+            display: block;
+        }
+        
+        .philosophy-title-row {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+            margin-top: 0;
+        }
+        
+        .philosophy-title-row .toggle-text.philosophy-title {
+            width: 100%;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        
+        .philosophy p strong {
+            font-size: 4rem;
+            color: var(--color-text);
+            display: block;
+            margin-bottom: var(--space-3);
+            width: 100%;
+        }
+        
+        .philosophy .toggle-text {
+            font-size: 2.5rem;
+            display: block;
+            margin-top: var(--space-2);
+            width: 100%;
+        }
+        
+        .philosophy .toggle-text.philosophy-title {
+            text-align: left;
+        }
+        
+        .philosophy .toggle-text.philosophy-title strong {
+            text-align: left;
+        }
+        
+        .philosophy .toggle-text.philosophy-description {
+            text-align: left;
+        }
+        
+        .philosophy .research-link {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        
+        
+        .philosophy a strong {
+            font-size: 2.5rem;
+            color: var(--color-text);
+            display: block;
+            margin-bottom: var(--space-3);
+        }
+        .philosophy a {
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.2s ease;
+        }
+        .philosophy a:hover {
+            opacity: 0.7;
+        }
+        .philosophy a.research-link,
+        .philosophy span.research-link {
+            color: #2563eb !important;
+        }
+        .philosophy a.research-link strong,
+        .philosophy span.research-link strong {
+            color: #2563eb !important;
+        }
+        .philosophy a.research-link:hover,
+        .philosophy span.research-link:hover {
+            opacity: 0.8;
+        }
+        .philosophy strong { color: var(--color-text); font-weight: 600; }
+        
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-top: var(--space-4);
+            padding: var(--space-2);
+        }
+        
+        .carousel-nav {
+            background: var(--color-surface);
+            border: 1px solid var(--border-color);
+            color: var(--color-text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            flex-shrink: 0;
+            padding: 0;
+            opacity: 0.8;
+            line-height: 1;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .carousel-nav:hover {
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            border-color: var(--color-accent);
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .carousel-nav:active {
+            transform: scale(0.95);
+            opacity: 0.9;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: auto;
+            margin: 0 var(--space-2);
+        }
+        
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            background: var(--color-text);
+            width: 30px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .philosophy-carousel {
+                margin: 0 var(--space-2) var(--space-2) var(--space-2);
+                width: calc(100% - calc(var(--space-2) * 2));
+                overflow: hidden;
+                position: relative;
+                border-radius: 12px;
+                min-height: 300px;
+            }
+            
+            .philosophy-carousel-container {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .philosophy {
+                font-size: 1.5rem;
+                padding: var(--space-3);
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+            
+            .philosophy-link-container {
+                padding-top: var(--space-3);
+            }
+            
+            .philosophy .philosophy-title {
+                font-size: 2rem;
+            }
+            
+            .philosophy .philosophy-title strong {
+                font-size: 2rem;
+            }
+            
+            .philosophy .philosophy-description {
+                font-size: 1.5rem;
+            }
+            
+            .philosophy-emoji {
+                font-size: 3rem;
+                margin-right: var(--space-2);
+                margin-top: 0;
+                line-height: 1;
+                vertical-align: middle;
+            }
+            
+            .philosophy-link-container {
+                font-size: 0.875rem;
+            }
+            
+            .philosophy p {
+                width: 100%;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            .philosophy p strong {
+                font-size: 3rem;
+            }
+            
+            .philosophy .toggle-text {
+                font-size: 1.2rem;
+            }
+            
+            .carousel-controls {
+                gap: var(--space-2);
+                margin-top: var(--space-3);
+            }
+            
+            .carousel-nav {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+            
+        }
+
+        .toggle-text {
+            cursor: pointer;
+            user-select: none;
+            display: inline;
+            opacity: 1;
+        }
+
+        .toggle-text:hover {
+            opacity: 0.7;
+        }
+        
+        .toggle-text.fade-out {
+            opacity: 0;
+        }
+        
+        .toggle-text.fade-in {
+            opacity: 1;
+        }
+
+        .toggle-reveal {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0;
+        }
+
+        .toggle-reveal.active {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: var(--space-3);
+        }
+
+        .toggle-reveal-content {
+            color: var(--color-text-secondary);
+            font-style: italic;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden;
+                max-width: 100vw;
+            }
+            main { 
+                padding: 0 var(--space-2) var(--space-2) var(--space-2); 
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+            .header-container { 
+                padding: var(--space-2);
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+            .header-title-container { padding: var(--space-1) 0 3px 0; }
+            .header-title { font-size: 16px; }
+            .header-subtitle { font-size: 11px; }
+            .navbar {
+                margin-top: 0;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .nav-item {
+                max-width: 100%;
+                flex: 1;
+            }
+            .nav-select-button {
+                padding: var(--space-1) var(--space-2);
+                font-size: 0.8125rem;
+            }
+            .sub-navbar {
+                padding: var(--space-2);
+                left: 50%;
+                margin-left: -50vw;
+                width: 100vw;
+            }
+            .sub-navbar.active {
+                padding: var(--space-2);
+                max-height: 300px;
+            }
+            .sub-navbar-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--space-2);
+            }
+            .sub-nav-option {
+                width: 100%;
+                padding: 10px 12px;
+                text-align: left;
+            }
+            .philosophy { padding: var(--space-3); font-size: 0.9375rem; }
+        }
+        
+        /* Developer popup styles */
+        .developer-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+        
+        .developer-popup-overlay.visible {
+            display: block;
+        }
+        
+        .developer-popup-content {
+            background: var(--color-bg);
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            padding: var(--space-6);
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .developer-popup-header {
+            padding: 0 0 var(--space-3) 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            margin-bottom: var(--space-4);
+        }
+        
+        .developer-popup-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+        }
+        
+        .developer-popup-body {
+            padding: 0;
+            overflow-y: visible;
+            flex: 1;
+        }
+        
+        
+        .developer-popup-intro {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--color-text);
+        }
+        
+        .developer-popup-paragraph {
+            display: block;
+            margin-bottom: var(--space-5);
+            animation: fadeInParagraph 0.4s ease;
+        }
+        
+        .developer-popup-paragraph:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        @keyframes fadeInParagraph {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .developer-popup-paragraph p {
+            margin-bottom: 0;
+            text-align: left;
+            hyphens: auto;
+        }
+        
+        .developer-popup-paragraph .cantonese-text {
+            margin-bottom: var(--space-3);
+        }
+        
+        .developer-popup-paragraph .english-text {
+            margin-bottom: 0;
+        }
+        
+        .bilingual-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        
+        .developer-popup-contact {
+            margin-top: var(--space-5);
+        }
+        
+        .cantonese-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+        
+        .english-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+        
+        .developer-popup-intro a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            padding-bottom: 1px;
+        }
+        
+        .developer-popup-intro a:hover {
+            border-bottom-color: var(--color-accent);
+            opacity: 0.85;
+        }
+        
+        .developer-popup-navigation {
+            display: none;
+        }
+        
+        .developer-popup-nav-button {
+            background: var(--color-surface);
+            border: 1.5px solid var(--border-color);
+            color: var(--color-text);
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            height: 44px;
+            line-height: 1;
+        }
+        
+        .developer-popup-nav-button:hover:not(:disabled) {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .developer-popup-nav-button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        
+        .developer-popup-nav-button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            background: var(--color-bg);
+        }
+        
+        .developer-popup-nav-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 var(--space-3);
+        }
+        
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .nav-dot:hover {
+            background: var(--color-text-secondary);
+            transform: scale(1.2);
+        }
+        
+        .nav-dot.active {
+            background: var(--color-accent);
+            width: 10px;
+            height: 10px;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        
+        .developer-popup-contact-title {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            line-height: 1.5;
+        }
+        
+        .developer-contact-item {
+            margin-bottom: var(--space-2);
+            font-size: 15px;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+        
+        .developer-contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .developer-contact-item a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        
+        .developer-contact-item a:hover {
+            opacity: 0.7;
+        }
+        
+        .developer-popup-close-button {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+            font-family: inherit;
+            line-height: 1;
+            z-index: 1;
+        }
+        
+        .developer-popup-close-button:hover {
+            opacity: 0.6;
+        }
+        
+        
+        @media (max-width: 768px) {
+            .developer-popup-content {
+                padding: var(--space-4);
+            }
+            
+            .developer-popup-header {
+                margin-bottom: var(--space-3);
+            }
+            
+            .developer-popup-title {
+                font-size: 18px;
+            }
+            
+            .developer-popup-close-button {
+                top: var(--space-2);
+                right: var(--space-2);
+                width: 32px;
+                height: 32px;
+                font-size: 24px;
+            }
+            
+            .developer-popup-intro {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+            
+            .cantonese-text,
+            .english-text {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-title-container" id="headerTitleContainer">
+                <div class="header-title">🥢 Learning English <span class="italic">as Cantonese Speakers</span></div>
+                <div class="header-subtitle">用廣東話學英文 ©kensirenglish.com</div>
+            </div>
+            <nav class="navbar">
+                <div class="nav-item">
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Six Hats<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">帽思維</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="6hats/6hatsdiscussion/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🎩</span>
+                                    <span class="nav-select-option-cantonese">帽討論</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">6 Hats Discussion</span>
+                            </a>
+                            <a href="6hats/6hatsluckydraw.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🎲</span>
+                                    <span class="nav-select-option-cantonese">帽思考</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">6 Hats Lucky Draw</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Grammar<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">文法</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="grammar/a1a2tenses/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">⏰</span>
+                                    <span class="nav-select-option-cantonese">九隻時式</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">The 9 Tenses</span>
+                            </a>
+                            <a href="grammar/a2b1general/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">📚</span>
+                                    <span class="nav-select-option-cantonese">綜合文法</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">General Grammar</span>
+                            </a>
+                            <a href="grammar/irregular/irregular-verbs.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🔤</span>
+                                    <span class="nav-select-option-cantonese">不規則動詞</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Irregular Verbs</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">DSE<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">文憑試</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="dse/mock/dsep4_2025dec.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">📝</span>
+                                    <span class="nav-select-option-cantonese">卷四模擬試 2025年12月</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Paper4 Mock 2025Dec</span>
+                            </a>
+                            <a href="dse/themes/dse_fill.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">✏️</span>
+                                    <span class="nav-select-option-cantonese">主題填充練習</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Theme-based Fill-in-Blanks</span>
+                            </a>
+                            <a href="dse/connectives/connectives.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🔗</span>
+                                    <span class="nav-select-option-cantonese">連接詞</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Connectives</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-select-wrapper">
+                        <button class="nav-select-button">Others<br><span style="font-size: 0.7rem; color: var(--color-text-secondary);">其他</span></button>
+                        <div class="nav-select-dropdown">
+                            <a href="resources/codeswitch/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🤸</span>
+                                    <span class="nav-select-option-cantonese">反轉中英</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">CodeSwitch</span>
+                            </a>
+                            <a href="research/abswitching/abt_switching.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">🔬</span>
+                                    <span class="nav-select-option-cantonese">雙語學習研究</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Bilingual Studies</span>
+                            </a>
+                            <a href="resources/booklist/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">📖</span>
+                                    <span class="nav-select-option-cantonese">書單</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Booklist</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="sub-navbar" id="subNavbar">
+                <div class="sub-navbar-content" id="subNavbarContent">
+                    <!-- Options will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="philosophy-carousel">
+                <div class="philosophy-carousel-container">
+                    <div class="philosophy active" data-index="0" data-lang="zh" data-bg-color="#e0f2fe">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="學英文必定要練中英轉換？" data-text-en="Is it okay to keep switching between Cantonese and English?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="當然！如果你母語係中文，又想學好英文，中英轉換效率絕對係最核心一關鍵！" data-text-en="Absolutely! If that's your mother tongue, switching between that and English is key to success!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="resources/codeswitch/index.html">🤸</span><a href="resources/codeswitch/index.html">CodeSwitch<span class="link-separator">•</span><span class="link-cantonese">反轉中英</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="1" data-lang="zh" data-bg-color="#f3e8ff">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="想學好英文，竟然要多用廣東話？" data-text-en="Want to learn English well? Use more Cantonese?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！" data-text-en="Should we avoid thinking in our mother tongue when learning English? Absolutely not! Code-switching is an inevitable part of learning, not something to avoid!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="2" data-lang="zh" data-bg-color="#fef3c7">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="Past定Perfect？Continuous定Future？" data-text-en="Past or Perfect? Continuous or Future?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="小學學咗6年Tenses都係一片混亂？其實只要學2步用廣東話轉，已經可以搞掂9隻!" data-text-en="Struggled with tenses for 6 years? Master all 9 tenses with just 2 simple steps using Cantonese!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="grammar/a1a2tenses/index.html">⏰</span><a href="grammar/a1a2tenses/index.html">The 9 Tenses<span class="link-separator">•</span><span class="link-cantonese">九隻時式</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="3" data-lang="zh" data-bg-color="#dbeafe">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白冇嘢講冇嘢寫?" data-text-en="Mind blank? Nothing to say or write?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="原來你唔係英文廢，而係轉咗用廣東話都係空白！想改善英文前，請先及早醫腦，學用思考帽！" data-text-en="You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! Learning how to think is just as important as learning English!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="4" data-lang="zh" data-bg-color="#d1fae5">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都Last but not least?" data-text-en="Always writing 'Last but not least'?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！" data-text-en="Connectives are essential for writing—mastering them helps you write logical, well-structured essays!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/connectives/connectives.html">🔗</span><a href="dse/connectives/connectives.html">Connectives<span class="link-separator">•</span><span class="link-cantonese">連接詞</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="5" data-lang="zh" data-bg-color="#fce7f3">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都I agree that？" data-text-en="Always writing 'I agree that'?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="主題填充練習教你用更impressive嘅方式表達同意，用廣東話思維轉換成地道英文！" data-text-en="Theme-based fill-in-blanks exercises teach you more sophisticated ways to express agreement, transforming your Cantonese thinking into authentic English!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/themes/dse_fill.html">✏️</span><a href="dse/themes/dse_fill.html">Theme-based Fill-in-Blanks<span class="link-separator">•</span><span class="link-cantonese">主題填充練習</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="6" data-bg-color="#e0e7ff">
+                        <p><a href="resources/booklist/index.html"><strong>精選書單推薦</strong></a></p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-indicators" id="carouselIndicators"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Developer popup -->
+    <div class="developer-popup-overlay" id="developerPopup">
+        <div class="developer-popup-content">
+            <button class="developer-popup-close-button" id="developerPopupClose">×</button>
+            <div class="developer-popup-header">
+                <div class="developer-popup-title">About 關於</div>
+            </div>
+            <div class="developer-popup-body">
+                <div class="developer-popup-intro">
+                    <div class="developer-popup-paragraph">
+                        <div class="cantonese-text">本站作者 Kenneth Wong 為居英十年港人，於英國中學任教及擔任班主任其間，指導過百名英語為非母語學童，活用其母語去掌握好英文。事實上，用母語去掌握外語，唔只成效極快，而且係所有外語者學英文必經之路！</div>
+                        <div class="english-text">The author, Kenneth Wong, is a Hong Kong native who's lived in the UK for a decade. While teaching and serving as form tutor in British secondary schools, he's helped over a hundred EAL students actively use their mother tongue as a bridge to learn English. Turns out, using your first language to learn a second isn't just highly effective—it's the inevitable path for all language learners.</div>
+                    </div>
+                    
+                    <div class="developer-popup-paragraph">
+                        <div class="cantonese-text">本站整合最新<a href="research/abswitching/abt_switching.html" target="_blank">雙語學習研究</a>及實踐經驗，提供全新設計練習及教學資源，鼓勵香港英語學生多以廣東話英文互相轉換—先準後快為目標，發展出真正雙語思維及表達能力。</div>
+                        <div class="english-text">This site integrates the latest <a href="research/abswitching/abt_switching.html" target="_blank">bilingual learning research</a> and practical experience, offering newly designed exercises and teaching resources. We encourage Hong Kong English learners to aim for accuracy first, speed second when switching between Cantonese and English, developing genuine bilingual thinking and expression.</div>
+                    </div>
+                </div>
+                
+                <div class="developer-popup-contact">
+                    <div class="developer-popup-contact-title">Feedback & Enquiry 建議及查詢</div>
+                    <div class="developer-contact-item">WhatsApp(UK): <a href="https://wa.me/447361820123" target="_blank">+44 7361 820123</a></div>
+                    <div class="developer-contact-item">WhatsApp(HK): <a href="https://wa.me/85260935413" target="_blank">+852 6093 5413</a></div>
+                    <div class="developer-contact-item">Email: <a href="mailto:englishkensir@gmail.com">englishkensir@gmail.com</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+            
+            const navItems = document.querySelectorAll('.nav-item');
+            const navButtons = document.querySelectorAll('.nav-select-button');
+            const subNavbar = document.getElementById('subNavbar');
+            const subNavbarContent = document.getElementById('subNavbarContent');
+            
+            // Function to toggle a nav item
+            function toggleNavItem(navItem) {
+                const isActive = navItem.classList.contains('active');
+                const dropdown = navItem.querySelector('.nav-select-dropdown');
+                const options = dropdown ? dropdown.querySelectorAll('.nav-select-option') : [];
+                
+                // Close all other nav items
+                navItems.forEach(item => {
+                    if (item !== navItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current nav item and sub-navbar
+                if (isActive) {
+                    navItem.classList.remove('active');
+                    subNavbar.classList.remove('active');
+                    subNavbarContent.innerHTML = '';
+                } else {
+                    navItem.classList.add('active');
+                    
+                    // Populate sub-navbar with options
+                    if (options.length > 0) {
+                        subNavbarContent.innerHTML = '';
+                        options.forEach(option => {
+                            const titleContainer = option.querySelector('.nav-select-option-title');
+                            const emoji = titleContainer ? titleContainer.querySelector('.nav-select-option-emoji') : null;
+                            const cantonese = titleContainer ? titleContainer.querySelector('.nav-select-option-cantonese') : null;
+                            const english = option.querySelector('.nav-select-option-subtitle');
+                            const href = option.getAttribute('href');
+                            
+                            const subNavOption = document.createElement('a');
+                            subNavOption.href = href;
+                            subNavOption.className = 'sub-nav-option';
+                            
+                            // Create top row: emoji + cantonese
+                            if (emoji || cantonese) {
+                                const topRow = document.createElement('span');
+                                topRow.className = 'sub-nav-option-top';
+                                
+                                if (emoji) {
+                                    const emojiSpan = document.createElement('span');
+                                    emojiSpan.className = 'sub-nav-option-emoji';
+                                    emojiSpan.textContent = emoji.textContent;
+                                    topRow.appendChild(emojiSpan);
+                                }
+                                
+                                if (cantonese) {
+                                    const cantoneseSpan = document.createElement('span');
+                                    cantoneseSpan.className = 'sub-nav-option-cantonese';
+                                    cantoneseSpan.textContent = cantonese.textContent;
+                                    topRow.appendChild(cantoneseSpan);
+                                }
+                                
+                                subNavOption.appendChild(topRow);
+                            }
+                            
+                            // Create bottom row: english
+                            if (english) {
+                                const englishSpan = document.createElement('span');
+                                englishSpan.className = 'sub-nav-option-english';
+                                englishSpan.textContent = english.textContent;
+                                subNavOption.appendChild(englishSpan);
+                            }
+                            
+                            subNavbarContent.appendChild(subNavOption);
+                        });
+                        
+                        // Show sub-navbar
+                        subNavbar.classList.add('active');
+                    } else {
+                        subNavbar.classList.remove('active');
+                        subNavbarContent.innerHTML = '';
+                    }
+                }
+            }
+            
+            // Handle button clicks
+            navButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const navItem = this.closest('.nav-item');
+                    toggleNavItem(navItem);
+                });
+            });
+            
+            // Close sub-navbar when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item') && !e.target.closest('.sub-navbar')) {
+                    navItems.forEach(item => item.classList.remove('active'));
+                    subNavbar.classList.remove('active');
+                    subNavbarContent.innerHTML = '';
+                }
+            });
+            
+            // Handle sub-nav option clicks
+            subNavbarContent.addEventListener('click', function(e) {
+                if (e.target.closest('.sub-nav-option')) {
+                    // Navigation will happen naturally via the href
+                    // Close sub-navbar after a short delay
+                    setTimeout(() => {
+                        navItems.forEach(item => item.classList.remove('active'));
+                        subNavbar.classList.remove('active');
+                        subNavbarContent.innerHTML = '';
+                    }, 100);
+                }
+            });
+            
+        })();
+
+        // Emoji click handlers for navigation
+        (function() {
+            'use strict';
+            
+            // Add click handlers to emoji elements to navigate
+            document.querySelectorAll('.philosophy-emoji').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const href = this.getAttribute('data-href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        })();
+        
+        // Carousel functionality
+        (function() {
+            'use strict';
+            
+            const philosophyItems = document.querySelectorAll('.philosophy');
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            let currentIndex = 0;
+            let isTransitioning = false;
+            let autoSlideTimeout;
+            
+            // Create indicators
+            philosophyItems.forEach((item, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            function resetToCantonese(philosophy) {
+                const toggleTexts = philosophy.querySelectorAll('.toggle-text');
+                
+                toggleTexts.forEach(toggleText => {
+                    const zhText = toggleText.getAttribute('data-text-zh');
+                    if (!zhText) return;
+                    
+                    // Check if it's a title (has strong tag)
+                    const strongTag = toggleText.querySelector('strong');
+                    if (strongTag) {
+                        // Update title - just put the text directly
+                        if (zhText) {
+                            strongTag.textContent = zhText;
+                        }
+                    } else {
+                        // Update description - use innerHTML to preserve <br> tags
+                        if (zhText) {
+                            toggleText.innerHTML = zhText;
+                        }
+                    }
+                });
+                
+                philosophy.setAttribute('data-lang', 'zh');
+            }
+            
+            function showSlide(index, direction = 'next') {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                // Clear any existing auto-slide timeouts
+                clearTimeout(autoSlideTimeout);
+                
+                // Get current and new items
+                const currentItem = philosophyItems[currentIndex];
+                const newItem = philosophyItems[index];
+                
+                if (!currentItem || !newItem) {
+                    isTransitioning = false;
+                    return;
+                }
+                
+                // Update carousel background gradient
+                const carousel = document.querySelector('.philosophy-carousel');
+                const bgColor = newItem.getAttribute('data-bg-color');
+                if (carousel && bgColor) {
+                    // Create radial gradient from center to edge
+                    carousel.style.backgroundImage = `radial-gradient(circle at center, ${bgColor} 0%, ${bgColor} 40%, rgba(250, 251, 252, 0.8) 70%, var(--color-bg) 100%)`;
+                }
+                
+                // Update indicators
+                const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+                if (indicators[currentIndex]) {
+                    indicators[currentIndex].classList.remove('active');
+                }
+                if (indicators[index]) {
+                    indicators[index].classList.add('active');
+                }
+                
+                // Hide current item
+                currentItem.classList.remove('active');
+                currentItem.style.display = 'none';
+                currentItem.style.opacity = '0';
+                currentItem.style.transform = '';
+                
+                // Reset to Cantonese for new item
+                resetToCantonese(newItem);
+                
+                // Wrap content in philosophy-content div for zoom animation if not already wrapped (exclude link container)
+                let contentWrapper = newItem.querySelector('.philosophy-content');
+                if (!contentWrapper) {
+                    const p = newItem.querySelector('p');
+                    const linkContainer = newItem.querySelector('.philosophy-link-container');
+                    if (p) {
+                        contentWrapper = document.createElement('div');
+                        contentWrapper.className = 'philosophy-content';
+                        p.parentNode.insertBefore(contentWrapper, p);
+                        contentWrapper.appendChild(p);
+                        // Ensure link container stays outside the wrapper
+                        if (linkContainer && linkContainer.parentNode !== newItem) {
+                            newItem.appendChild(linkContainer);
+                        }
+                    }
+                }
+                
+                // Show new item - animation will be handled by CSS
+                newItem.style.display = 'block';
+                newItem.style.opacity = '0';
+                newItem.style.transform = 'scale(0.5)';
+                
+                // Force reflow to ensure initial state is applied
+                newItem.offsetHeight;
+                
+                // Add active class to trigger fade-in and zoom-in animation
+                newItem.classList.add('active');
+                
+                // Reset inline styles after animation starts so CSS animation takes over
+                setTimeout(() => {
+                    newItem.style.opacity = '';
+                    newItem.style.transform = '';
+                }, 10);
+                
+                // After 8 seconds, auto-advance to next slide
+                autoSlideTimeout = setTimeout(() => {
+                    nextSlide();
+                }, 8000);
+                
+                currentIndex = index;
+                isTransitioning = false;
+            }
+            
+            function goToSlide(index, direction) {
+                if (index < 0) {
+                    index = philosophyItems.length - 1;
+                    direction = 'prev';
+                } else if (index >= philosophyItems.length) {
+                    index = 0;
+                    direction = 'next';
+                } else if (!direction) {
+                    // Determine direction based on index
+                    direction = index > currentIndex ? 'next' : 'prev';
+                }
+                showSlide(index, direction);
+            }
+            
+            function nextSlide() {
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= philosophyItems.length) {
+                    nextIndex = 0;
+                }
+                showSlide(nextIndex, 'next');
+            }
+            
+            function prevSlide() {
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) {
+                    prevIndex = philosophyItems.length - 1;
+                }
+                showSlide(prevIndex, 'prev');
+            }
+            
+            // Initialize all slides
+            philosophyItems.forEach((item, index) => {
+                // Reset to Cantonese
+                resetToCantonese(item);
+                
+                // Wrap title in a row container (emoji is now below in link container)
+                const p = item.querySelector('p');
+                if (p) {
+                    const title = p.querySelector('.toggle-text.philosophy-title');
+                    
+                    if (title && !p.querySelector('.philosophy-title-row')) {
+                        const titleRow = document.createElement('div');
+                        titleRow.className = 'philosophy-title-row';
+                        title.parentNode.insertBefore(titleRow, title);
+                        titleRow.appendChild(title);
+                    }
+                }
+                
+                // Wrap content in philosophy-content div for zoom animation (but exclude link container)
+                if (p && !item.querySelector('.philosophy-content')) {
+                    const linkContainer = item.querySelector('.philosophy-link-container');
+                    const contentWrapper = document.createElement('div');
+                    contentWrapper.className = 'philosophy-content';
+                    p.parentNode.insertBefore(contentWrapper, p);
+                    contentWrapper.appendChild(p);
+                    // Make sure link container stays outside the wrapper
+                    if (linkContainer && linkContainer.parentNode === item) {
+                        // Link container is already outside, good
+                    } else if (linkContainer) {
+                        // Move link container outside if it's inside
+                        item.appendChild(linkContainer);
+                    }
+                }
+                
+                // Hide all slides except the first one
+                if (index !== 0) {
+                    item.style.display = 'none';
+                }
+            });
+            
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Set initial background gradient for first slide
+            const carousel = document.querySelector('.philosophy-carousel');
+            const firstItem = philosophyItems[0];
+            if (carousel && firstItem) {
+                const initialBgColor = firstItem.getAttribute('data-bg-color');
+                if (initialBgColor) {
+                    // Create radial gradient from center to edge
+                    carousel.style.backgroundImage = `radial-gradient(circle at center, ${initialBgColor} 0%, ${initialBgColor} 40%, rgba(250, 251, 252, 0.8) 70%, var(--color-bg) 100%)`;
+                }
+            }
+            
+            // Initialize first slide - show Cantonese for 8 seconds, then auto-advance
+            autoSlideTimeout = setTimeout(() => {
+                nextSlide();
+            }, 8000);
+        })();
+        
+        // Developer popup functionality
+        (function() {
+            'use strict';
+            
+            const headerTitleContainer = document.getElementById('headerTitleContainer');
+            const developerPopup = document.getElementById('developerPopup');
+            
+            // Open popup when clicking on header title
+            if (headerTitleContainer) {
+                headerTitleContainer.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (developerPopup) {
+                        developerPopup.classList.add('visible');
+                        // Scroll to top when opening
+                        window.scrollTo(0, 0);
+                    }
+                });
+            }
+            
+            // Close popup when clicking close button
+            const developerPopupClose = document.getElementById('developerPopupClose');
+            if (developerPopupClose) {
+                developerPopupClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (developerPopup) {
+                        developerPopup.classList.remove('visible');
+                    }
+                });
+            }
+            
+            // Close popup when clicking overlay (but not the content)
+            if (developerPopup) {
+                developerPopup.addEventListener('click', function(e) {
+                    if (e.target === developerPopup) {
+                        developerPopup.classList.remove('visible');
+                    }
+                });
+            }
+            
+            // Prevent content clicks from closing popup
+            const developerPopupContent = developerPopup ? developerPopup.querySelector('.developer-popup-content') : null;
+            if (developerPopupContent) {
+                developerPopupContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+            
+            // Close popup on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && developerPopup && developerPopup.classList.contains('visible')) {
+                    developerPopup.classList.remove('visible');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+

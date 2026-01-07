@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs by Sound Categories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+        }
+
+        .header-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .content-wrapper {
+            padding: var(--space-2) var(--space-2);
+        }
+
+        .nav-link {
+            padding: 4px var(--space-1);
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .category {
+            background: var(--color-bg);
+            padding: var(--space-2);
+            margin-bottom: var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .category:last-child {
+            border-bottom: none;
+        }
+
+        .category-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4682B4;
+            margin-bottom: var(--space-1);
+            display: inline-block;
+        }
+
+        .category-ipa {
+            font-size: 13px;
+            color: #4682B4;
+            font-weight: 500;
+            margin-left: var(--space-1);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min-content, 1fr));
+            gap: 4px;
+        }
+
+        .verb-item {
+            background: var(--color-bg);
+            padding: 6px var(--space-1);
+            border: 1px solid var(--color-border);
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .verb-item:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .verb-present {
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 15px;
+            cursor: pointer;
+            user-select: none;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+
+        .verb-present:hover {
+            background: var(--color-surface);
+        }
+
+        .verb-arrow {
+            color: var(--color-text-secondary);
+            margin: 0 4px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .verb-past {
+            color: #9370DB;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            user-select: none;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+
+        .verb-past:hover {
+            background: var(--color-surface);
+        }
+
+        .no-change {
+            display: inline-block;
+            background: var(--color-bg);
+            padding: 6px var(--space-1);
+            margin: 2px;
+            border: 1px solid var(--color-border);
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 15px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+
+        .no-change:hover {
+            background: var(--color-surface);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <span class="header-label">Irregular Verbs<span class="separator">•🔤</span>不規則動詞</span>
+                <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+            </div>
+            <div class="header-actions">
+                <a href="categoryexercises.html" class="nav-link">Practice Exercises</a>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+        <!-- Category 1a: 「o」促音 (1) - Short "o" sounds (Part 1) -->
+        <div class="category">
+            <div class="category-title">「o」促音 😗 <span class="category-ipa">/əʊ/ /ʊ/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">wake</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">woke</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">wake up</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">woke up</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">break</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">broke</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">speak</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">spoke</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">write</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">wrote</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">drive</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">drove</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">weave</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">wove</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">take</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">took</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">shake</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">shook</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">tell</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">told</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sell</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sold</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">steal</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">stole</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">freeze</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">froze</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">choose</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">chose</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">ride</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">rode</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 1b: 「o」促音 (2) - Short "o" sounds (Part 2) -->
+        <div class="category">
+            <div class="category-title">「o」短音 😗 <span class="category-ipa">/ɔː/ /aʊ/ /ɒ/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">wear</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">wore</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">tear</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">tore</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">bear</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bore</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">swear</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">swore</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">find</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">found</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">bind</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bound</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">grind</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">ground</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">wind</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">wound</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">lose</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">lost</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">shine</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">shone</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">get</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">got</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">shoot</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">shot</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 2: 「O」長音 -->
+        <div class="category">
+            <div class="category-title">「O」長音 😮 <span class="category-ipa">/ɔː/ /ɑː/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">bring</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">brought</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">buy</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bought</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">catch</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">caught</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">think</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">thought</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">teach</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">taught</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">fight</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">fought</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">seek</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sought</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">see</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">saw</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3: 「ew」「el」音 -->
+        <div class="category">
+            <div class="category-title">「ew」「el」音 😖 <span class="category-ipa">/uː/ /e/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">blow</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">blew</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">draw</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">drew</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">fly</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">flew</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">grow</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">grew</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">throw</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">threw</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">know</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">knew</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">hold</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">held</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">fall</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">fell</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4a: 「A」音 (1) -->
+        <div class="category">
+            <div class="category-title">「A」音 😆 <span class="category-ipa">/æ/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">begin</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">began</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">drink</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">drank</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">swim</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">swam</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sing</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sang</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">ring</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">rang</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sink</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sank</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">stink</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">stank</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">run</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">ran</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sit</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sat</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">spit</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">spat</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4b: 「A」「Ah」音 (2) -->
+        <div class="category">
+            <div class="category-title">「A」「Ah」音 😁 <span class="category-ipa">/eɪ/ /ʌ/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">come</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">came</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">give</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">gave</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">eat</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">ate</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">make</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">made</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">go</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">went</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">win</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">won</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">be</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">was/were</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 5a: -eft/-ept/-et 音 -->
+        <div class="category">
+            <div class="category-title">-eft / -ept / -et 音 <span class="category-ipa">/eft/ /ept/ /et/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">leave</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">left</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">keep</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">kept</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sleep</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">slept</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">creep</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">crept</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">weep</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">wept</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sweep</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">swept</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">meet</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">met</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 5b: -elt/-ent/-ilt 音 -->
+        <div class="category">
+            <div class="category-title">-elt / -ent / -ilt 音 <span class="category-ipa">/elt/ /ent/ /ɪlt/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">feel</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">felt</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">kneel</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">knelt</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">deal</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">dealt</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">mean</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">meant</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">learn</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">learnt</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">burn</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">burnt</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">build</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">built</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">lend</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">lent</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">send</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sent</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">spend</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">spent</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">bend</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bent</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 6: -ed sound -->
+        <div class="category">
+            <div class="category-title">-ed 音 <span class="category-ipa">/ed/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">say</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">said</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">lead</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">led</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">feed</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">fed</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">bleed</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bled</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">speed</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">sped</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">read</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">read</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 7: -ung / -uck / -ug sound -->
+        <div class="category">
+            <div class="category-title">-ung / -uck / -ug 音 <span class="category-ipa">/ʌŋ/ /ʌk/ /ʌɡ/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">stick</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">stuck</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">strike</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">struck</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">dig</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">dug</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">hang</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">hung</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">sting</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">stung</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">swing</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">swung</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">spin</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">spun</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 8: -it / -id 音 -->
+        <div class="category">
+            <div class="category-title">-it / -id 音 <span class="category-ipa">/ɪt/ /ɪd/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">bite</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">bit</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">hide</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">hid</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">slide</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">slid</span>
+                </div>
+                <div class="verb-item">
+                    <span class="verb-present">light</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">lit</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 9: -eard / -erd 音 -->
+        <div class="category">
+            <div class="category-title">-eard / -erd 音 <span class="category-ipa">/ɜːd/</span></div>
+            <div class="verbs-grid">
+                <div class="verb-item">
+                    <span class="verb-present">hear</span>
+                    <span class="verb-arrow">→</span>
+                    <span class="verb-past">heard</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 10: 「不變」No Change -->
+        <div class="category">
+            <div class="category-title">「不變」No Change <span class="category-ipa">—</span></div>
+            <div style="padding: var(--space-1) 0;">
+                <span class="no-change">cut</span>
+                <span class="no-change">put</span>
+                <span class="no-change">shut</span>
+                <span class="no-change">let</span>
+                <span class="no-change">set</span>
+                <span class="no-change">bet</span>
+                <span class="no-change">hit</span>
+                <span class="no-change">fit</span>
+                <span class="no-change">hurt</span>
+                <span class="no-change">burst</span>
+                <span class="no-change">cost</span>
+                <span class="no-change">spread</span>
+                <span class="no-change">shed</span>
+                <span class="no-change">rid</span>
+                <span class="no-change">split</span>
+                <span class="no-change">quit</span>
+                <span class="no-change">beat</span>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to speak text using Web Speech API
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                window.speechSynthesis.speak(utterance);
+                return true;
+            }
+            return false;
+        }
+
+        // Initialize click-to-speak for verb items
+        document.addEventListener('DOMContentLoaded', function() {
+            const verbPresentElements = document.querySelectorAll('.verb-present');
+            const verbPastElements = document.querySelectorAll('.verb-past');
+            
+            // Add click handlers to present tense verbs
+            verbPresentElements.forEach(element => {
+                const verbText = element.textContent.trim();
+                
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    if (!speakText(verbText)) {
+                        alert('Pronunciation: ' + verbText);
+                    }
+                    
+                    // Visual feedback
+                    const originalBg = element.style.background;
+                    element.style.background = '#d0e0f0';
+                    setTimeout(() => {
+                        element.style.background = originalBg;
+                    }, 300);
+                });
+
+                // Add title attribute for hover hint
+                element.title = 'Click to hear pronunciation: ' + verbText;
+            });
+
+            // Add click handlers to past tense verbs
+            verbPastElements.forEach(element => {
+                const verbText = element.textContent.trim();
+                
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    if (!speakText(verbText)) {
+                        alert('Pronunciation: ' + verbText);
+                    }
+                    
+                    // Visual feedback
+                    const originalBg = element.style.background;
+                    element.style.background = '#e8d0f0';
+                    setTimeout(() => {
+                        element.style.background = originalBg;
+                    }, 300);
+                });
+
+                // Add title attribute for hover hint
+                element.title = 'Click to hear pronunciation: ' + verbText;
+            });
+
+            // Add click handlers to "No Change" verbs
+            const noChangeElements = document.querySelectorAll('.no-change');
+            
+            noChangeElements.forEach(element => {
+                const verbText = element.textContent.trim();
+                
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    if (!speakText(verbText)) {
+                        alert('Pronunciation: ' + verbText);
+                    }
+                    
+                    // Visual feedback
+                    const originalBg = element.style.background;
+                    element.style.background = '#d0e0f0';
+                    setTimeout(() => {
+                        element.style.background = originalBg;
+                    }, 300);
+                });
+
+                // Add title attribute for hover hint
+                element.title = 'Click to hear pronunciation: ' + verbText;
+            });
+        });
+    </script>
+</body>
+</html>
+

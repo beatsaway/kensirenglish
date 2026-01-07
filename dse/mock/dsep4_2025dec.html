@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Paper 4 Speaking</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            
+            --max-width: 1200px;
+            
+            /* Question type colors */
+            --color-creative: #4caf50;
+            --color-practical: #42a5f5;
+            --color-personal: #ff5252;
+            --color-positive: #ffcc00;
+            --color-negative: #3a4a4b;
+            --color-factual: #b0b0b0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.3;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+        }
+
+        nav {
+            background: transparent;
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+            flex-shrink: 0;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-button {
+            width: 100%;
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-bg);
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            color: var(--color-text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+            font-weight: 400;
+        }
+
+        .dropdown-button:hover {
+            background: var(--color-surface);
+        }
+
+        .dropdown-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--color-text-secondary);
+            transition: transform 0.2s ease;
+            margin-left: var(--space-2);
+        }
+
+        .dropdown-button.active::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-top: none;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: var(--space-2);
+            text-decoration: none;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+            transition: background 0.15s ease;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu a.active {
+            background: var(--color-surface);
+        }
+
+        main {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        article {
+            margin-bottom: var(--space-4);
+        }
+
+        article:last-child {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .article-content {
+            margin-bottom: var(--space-2);
+        }
+
+        .article-content p {
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--space-2);
+            font-size: 15px;
+        }
+
+        .article-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .keyword {
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            position: relative;
+            transition: color 0.15s ease;
+            display: inline-block;
+            border-bottom: 1px dotted transparent;
+        }
+
+        .article-content.revealed .keyword {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .keyword:hover {
+            color: var(--color-text);
+            border-bottom-color: var(--color-text-secondary);
+        }
+
+        .keyword-cantonese {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + var(--space-1));
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-text);
+            color: var(--color-bg);
+            padding: var(--space-1) var(--space-2);
+            font-size: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            z-index: 10;
+            pointer-events: none;
+            border-radius: 0;
+        }
+
+        .keyword-cantonese::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: var(--color-text);
+        }
+
+        .keyword-cantonese.revealed {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: var(--space-2);
+        }
+
+        ul li {
+            padding: var(--space-1) 0;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        .sentence-starter {
+            display: none;
+            margin-top: var(--space-1);
+            padding: var(--space-1) 0;
+        }
+
+        .sentence-starter.visible {
+            display: block;
+        }
+
+        .sentence-starter-row {
+            display: flex;
+            gap: var(--space-2);
+            align-items: baseline;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+        }
+
+        .sentence-starter-cantonese,
+        .vocab-item {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .sentence-starter-cantonese:hover,
+        .vocab-item:hover {
+            opacity: 0.6;
+        }
+
+        .vocab-item {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .sentence-starter-english {
+            display: none;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            font-style: normal;
+            margin-top: var(--space-1);
+            font-weight: 400;
+        }
+
+        .sentence-starter-english.revealed {
+            display: block;
+        }
+
+        .vocab-english {
+            display: none;
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            font-style: normal;
+            margin-left: var(--space-1);
+            font-weight: 400;
+        }
+
+        .vocab-english.revealed {
+            display: inline;
+        }
+
+        .questions {
+            margin-top: var(--space-2);
+        }
+
+        .question-text {
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        .guiding-text {
+            margin: var(--space-3) 0 var(--space-2) 0;
+            font-weight: 400;
+            color: var(--color-text);
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        .guiding-text strong {
+            font-weight: 600;
+        }
+
+        .question {
+            padding: var(--space-1) var(--space-2);
+            margin-bottom: 0;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            border-left: 3px solid transparent;
+            background: var(--color-bg);
+            position: relative;
+        }
+
+        .question:hover {
+            background: var(--color-surface);
+        }
+
+        .question.fact {
+            border-left-color: var(--color-factual);
+            background: rgba(176, 176, 176, 0.12);
+        }
+
+        .question.personal {
+            border-left-color: var(--color-personal);
+            background: rgba(255, 82, 82, 0.18);
+        }
+
+        .question.positive {
+            border-left-color: var(--color-positive);
+            background: rgba(255, 204, 0, 0.18);
+        }
+
+        .question.negative {
+            border-left-color: var(--color-negative);
+            background: rgba(58, 74, 75, 0.25);
+        }
+
+        .question.creative {
+            border-left-color: var(--color-creative);
+            background: rgba(76, 175, 80, 0.18);
+        }
+
+        .question.practical {
+            border-left-color: var(--color-practical);
+            background: rgba(66, 165, 245, 0.18);
+        }
+
+        .question-label {
+            display: none;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-2);
+            font-weight: 600;
+        }
+
+        .question.fact .question-label {
+            display: inline;
+            color: var(--color-factual);
+        }
+
+        .question.personal .question-label {
+            display: inline;
+            color: var(--color-personal);
+        }
+
+        .question.positive .question-label {
+            display: inline;
+            color: var(--color-positive);
+        }
+
+        .question.negative .question-label {
+            display: inline;
+            color: var(--color-negative);
+        }
+
+        .question.creative .question-label {
+            display: inline;
+            color: var(--color-creative);
+        }
+
+        .question.practical .question-label {
+            display: inline;
+            color: var(--color-practical);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="header-label">DSE Paper4<span class="separator">•📝</span>卷四模擬試 2025年12月</span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="dropdown">
+            <button class="dropdown-button" id="dropdownButton">Artificial Intelligence in Education / 人工智能在教育</button>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="#" data-set="1" class="active" data-title="Artificial Intelligence in Education">Artificial Intelligence in Education / 人工智能在教育</a>
+                <a href="#" data-set="2" data-title="Social Media and Mental Health Among Teenagers">Social Media and Mental Health Among Teenagers / 社交媒體與青少年心理健康</a>
+                <a href="#" data-set="3" data-title="Individual Action Against Climate Change">Individual Action Against Climate Change / 個人對抗氣候變化行動</a>
+                <a href="#" data-set="4" data-title="The Future of Remote Work">The Future of Remote Work / 遙距工作嘅未來</a>
+                <a href="#" data-set="5" data-title="Fast Fashion Versus Sustainable Clothing">Fast Fashion Versus Sustainable Clothing / 快時尚與可持續時裝</a>
+                <a href="#" data-set="6" data-title="Digital Privacy in the Age of Social Media">Digital Privacy in the Age of Social Media / 社交媒體時代嘅數碼私隱</a>
+                <a href="#" data-set="7" data-title="Urban Farming and Food Security">Urban Farming and Food Security / 城市農業與食物安全</a>
+                <a href="#" data-set="8" data-title="Volunteer Tourism: Help or Harm?">Volunteer Tourism: Help or Harm? / 義工旅遊：幫助定傷害？</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+        <!-- Set 1 -->
+        <section id="set1" class="active">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>Hong Kong's <span class="keyword" data-cantonese="教育局">Education Bureau</span> has recently announced a <span class="keyword" data-cantonese="試點計劃">pilot programme</span> to introduce <span class="keyword" data-cantonese="人工智能工具">artificial intelligence tools</span> into secondary schools across the territory. The initiative, set to begin in the 2025-2026 academic year, will provide <span class="keyword" data-cantonese="AI輔導系統">AI-powered tutoring systems</span>, <span class="keyword" data-cantonese="自動評分軟件">automated essay grading software</span>, and <span class="keyword" data-cantonese="個人化學習平台">personalized learning platforms</span> to selected schools.</p>
+                    <p>Proponents of the programme argue that AI can <span class="keyword" data-cantonese="革新">revolutionize</span> education by providing <span class="keyword" data-cantonese="即時回饋">instant feedback</span> to students, identifying <span class="keyword" data-cantonese="學習差距">learning gaps</span>, and allowing teachers to focus on more meaningful interactions with their students. 'AI doesn't replace teachers,' says Dr. Sarah Lee, an <span class="keyword" data-cantonese="教育科技專家">education technology expert</span>, 'it empowers them to do what they do best—inspire and guide students.'</p>
+                    <p>However, critics have raised concerns about <span class="keyword" data-cantonese="過度依賴">over-reliance</span> on technology, the potential for <span class="keyword" data-cantonese="作弊">cheating</span>, and the loss of <span class="keyword" data-cantonese="批判性思維">critical thinking skills</span>. Some parents worry that students might become too dependent on <span class="keyword" data-cantonese="AI協助">AI assistance</span> and fail to develop <span class="keyword" data-cantonese="獨立解決問題能力">independent problem-solving abilities</span>. There are also questions about <span class="keyword" data-cantonese="數據私隱">data privacy</span> and whether AI systems might <span class="keyword" data-cantonese="延續偏見">perpetuate biases</span> in their recommendations.</p>
+                    <p>The debate has sparked intense discussion among <span class="keyword" data-cantonese="教育工作者">educators</span>, parents, and students. While some schools are eager to embrace the technology, others prefer a more <span class="keyword" data-cantonese="謹慎">cautious</span> approach, waiting to see the results of the pilot programme before making any commitments.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your school is considering whether to join the AI in education pilot programme. Your group has been asked to discuss this topic and prepare a recommendation. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>The potential benefits of using AI in education</li>
+                    <li>The possible drawbacks or concerns about AI in schools</li>
+                    <li>Whether AI should be used for all subjects or only certain ones</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我試過用AI工具幫我溫書..." data-starter-english="In my experience, I've used AI tools to help with my studies..." data-vocab-cantonese="ChatGPT, 溫習, 功課, 學習, 研究, 寫作" data-vocab-english="ChatGPT / AI chatbot / AI assistant, revision / study / review, homework / assignments / tasks, learning / studying / education, research / investigation / inquiry, writing / composition / essay"><span class="question-text">Have you ever used AI tools to help with your studies?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得AI可以..." data-starter-english="I believe that AI can..." data-vocab-cantonese="準確, 評分, 批改, 客觀, 一致, 效率" data-vocab-english="accurate / correct / precise, grading / marking / scoring, marking / correcting / checking, objective / fair / unbiased, consistent / same / uniform, efficient / quick / fast"><span class="question-text">Do you think AI can accurately grade essays and assignments?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="AI可以幫助學生..." data-starter-english="AI could help students..." data-vocab-cantonese="個人化, 即時回饋, 學習進度, 適應, 支援, 提升" data-vocab-english="personalized / custom / tailored, instant feedback / quick response / immediate reply, learning progress / improvement / advancement, adapt / adjust / change, support / help / assist, enhance / improve / boost"><span class="question-text">How could AI help students learn more effectively?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="主要風險係..." data-starter-english="The main risk is..." data-vocab-cantonese="依賴, 缺乏思考, 作弊, 被動, 能力下降, 過度依賴" data-vocab-english="dependence / reliance / need, lack of thinking / no thinking / not thinking, cheating / copying / dishonesty, passive / inactive / not active, declining abilities / weaker skills / less able, over-reliance / too dependent / excessive dependence"><span class="question-text">What are the risks of students becoming too dependent on AI?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="我認為應該..." data-starter-english="I think there should be..." data-vocab-cantonese="限制, 規矩, 監管, 指引, 監督, 規範" data-vocab-english="limits / restrictions / rules, rules / regulations / guidelines, regulation / control / management, guidelines / instructions / directions, supervision / monitoring / watching, standards / norms / rules"><span class="question-text">Should there be limits on how students can use AI for homework?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="理想嘅AI課室會..." data-starter-english="An ideal AI-powered classroom would..." data-vocab-cantonese="互動, 智能, 創新, 自動化, 協作, 先進" data-vocab-english="interactive / engaging / two-way, intelligent / smart / clever, innovative / new / creative, automated / automatic / self-operating, collaborative / working together / cooperative, advanced / modern / cutting-edge"><span class="question-text">What would an ideal AI-powered classroom look like?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我認為AI唔會..." data-starter-english="I don't think AI will..." data-vocab-cantonese="取代, 老師, 人性化, 情感, 關懷, 啟發" data-vocab-english="replace / take over / substitute, teachers / educators / instructors, human touch / personal touch / warmth, emotion / feeling / sentiment, care / concern / attention, inspiration / motivation / encouragement"><span class="question-text">Do you think AI will replace teachers in the future?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="學校可以..." data-starter-english="Schools can ensure..." data-vocab-cantonese="負責任, 培訓, 指引, 教育, 監控, 評估" data-vocab-english="responsible / careful / proper, training / teaching / instruction, guidelines / rules / instructions, education / teaching / learning, monitoring / watching / checking, evaluation / assessment / review"><span class="question-text">How can schools ensure that AI tools are used responsibly?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 2 -->
+        <section id="set2">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>A recent <span class="keyword" data-cantonese="研究">study</span> conducted by the University of Hong Kong has revealed alarming <span class="keyword" data-cantonese="統計數據">statistics</span> about the <span class="keyword" data-cantonese="心理健康">mental health</span> of teenagers in the city. The research, which surveyed over 3,000 secondary school students, found that 45% of respondents reported symptoms of <span class="keyword" data-cantonese="焦慮">anxiety</span>, while 38% showed signs of <span class="keyword" data-cantonese="抑鬱">depression</span>. Perhaps most concerning, the study linked <span class="keyword" data-cantonese="過度使用">excessive</span> social media use to these mental health issues.</p>
+                    <p>Dr. Michael Chan, the <span class="keyword" data-cantonese="首席研究員">lead researcher</span>, explains that teenagers who spend more than three hours per day on social media platforms are significantly more likely to experience <span class="keyword" data-cantonese="低自尊">low self-esteem</span>, <span class="keyword" data-cantonese="睡眠問題">sleep problems</span>, and feelings of <span class="keyword" data-cantonese="孤立">isolation</span>. 'The constant <span class="keyword" data-cantonese="比較">comparison</span> with others' curated lives, the <span class="keyword" data-cantonese="錯失恐懼">fear of missing out</span>, and the pressure to maintain a perfect online image are taking a toll on our young people,' he says.</p>
+                    <p>However, not all social media use is negative. The study also found that students who use social media to connect with friends and family, share <span class="keyword" data-cantonese="創意作品">creative work</span>, or join <span class="keyword" data-cantonese="支援社群">supportive communities</span> actually report better <span class="keyword" data-cantonese="心理健康">mental wellbeing</span> than those who don't use social media at all.</p>
+                    <p>Some schools have responded by implementing '<span class="keyword" data-cantonese="數碼排毒">digital detox</span>' programmes and teaching students about <span class="keyword" data-cantonese="健康習慣">healthy social media habits</span>. Parents and educators are calling for more <span class="keyword" data-cantonese="全面">comprehensive</span> mental health support in schools and greater <span class="keyword" data-cantonese="意識">awareness</span> of the impact of social media on young people's lives.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your school's student council is organizing a mental health awareness week. Your group is discussing how to address the issue of social media and mental health. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>How social media affects teenagers' mental health</li>
+                    <li>Ways to promote healthy social media use</li>
+                    <li>What support schools should provide for students struggling with mental health</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我每日用..." data-starter-english="I spend about... hours on social media each day" data-vocab-cantonese="Instagram, 幾小時, 習慣, 平台, 應用, 瀏覽" data-vocab-english="Instagram / social media / apps, several hours / a few hours / many hours, habit / routine / custom, platform / website / site, app / application / program, browsing / scrolling / looking"><span class="question-text">How much time do you spend on social media each day?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="有時會..." data-starter-english="Sometimes social media makes me feel..." data-vocab-cantonese="焦慮, 沮喪, 壓力, 不安, 孤獨, 自卑" data-vocab-english="anxious / worried / nervous, depressed / sad / down, stressed / pressured / tense, uneasy / uncomfortable / worried, lonely / alone / isolated, inferior / less confident / not good enough"><span class="question-text">Has social media ever made you feel anxious or depressed?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得會..." data-starter-english="I think social media does create..." data-vocab-cantonese="不切實際, 比較, 完美形象, 壓力, 誤導, 假象" data-vocab-english="unrealistic / not real / impossible, comparison / comparing / compete, perfect image / ideal / flawless, pressure / stress / expectation, misleading / wrong / false, illusion / fake / not real"><span class="question-text">Do you think social media creates unrealistic expectations for young people?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="好處包括..." data-starter-english="The positive aspects include..." data-vocab-cantonese="聯繫, 分享, 學習, 交流, 創意, 社群" data-vocab-english="connection / link / contact, sharing / showing / posting, learning / studying / education, communication / talking / chatting, creativity / ideas / imagination, community / group / network"><span class="question-text">What are the positive aspects of social media for teenagers?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="可以..." data-starter-english="Teenagers can use social media more healthily by..." data-vocab-cantonese="限制時間, 真實內容, 休息, 過濾, 平衡, 自律" data-vocab-english="limit time / control time / set time, authentic content / real content / honest posts, breaks / rest / stop, filter / choose / select, balance / equal / moderate, self-discipline / self-control / control"><span class="question-text">How can teenagers use social media in a healthier way?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="負面影響包括..." data-starter-english="The negative effects include..." data-vocab-cantonese="孤立, 睡眠問題, 自尊心, 成癮, 分心, 焦慮" data-vocab-english="isolation / alone / separated, sleep problems / bad sleep / insomnia, self-esteem / confidence / self-worth, addiction / dependence / habit, distraction / not focused / off-task, anxiety / worry / stress"><span class="question-text">What negative effects has social media had on your generation?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="我認為應該..." data-starter-english="I think schools should..." data-vocab-cantonese="教育, 風險, 意識, 課程, 指導, 預防" data-vocab-english="education / teaching / learning, risks / dangers / problems, awareness / knowledge / understanding, curriculum / course / program, guidance / help / advice, prevention / stop / avoid"><span class="question-text">Should schools teach students about the risks of social media?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="如果可以改..." data-starter-english="If I could change one thing, I would..." data-vocab-cantonese="減少廣告, 隱私, 真實性, 透明度, 控制, 選擇" data-vocab-english="less ads / fewer ads / no ads, privacy / private / personal, authenticity / real / honest, transparency / open / clear, control / manage / choose, choice / option / decision"><span class="question-text">If you could change one thing about social media, what would it be?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 3 -->
+        <section id="set3">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>As <span class="keyword" data-cantonese="氣候變化">climate change</span> continues to threaten our planet, a growing movement of young people in Hong Kong is taking <span class="keyword" data-cantonese="個人行動">individual action</span> to reduce their <span class="keyword" data-cantonese="碳足跡">carbon footprint</span>. From organizing school <span class="keyword" data-cantonese="回收計劃">recycling programmes</span> to choosing <span class="keyword" data-cantonese="植物性餐食">plant-based meals</span>, students are finding creative ways to make a difference.</p>
+                    <p>However, a recent <span class="keyword" data-cantonese="評論文章">opinion piece</span> in a local newspaper questioned whether individual actions really matter. The author argued that while personal choices like using <span class="keyword" data-cantonese="可重用">reusable</span> water bottles or taking <span class="keyword" data-cantonese="公共交通">public transport</span> are commendable, they pale in comparison to the environmental impact of <span class="keyword" data-cantonese="大企業">large corporations</span> and <span class="keyword" data-cantonese="工業活動">industrial activities</span>. 'Why should individuals feel guilty about their carbon footprint,' the article asks, 'when just 100 companies are responsible for 71% of <span class="keyword" data-cantonese="全球排放">global emissions</span>?'</p>
+                    <p><span class="keyword" data-cantonese="環保活動家">Environmental activists</span> have responded by pointing out that individual actions can create <span class="keyword" data-cantonese="集體改變">collective change</span>. When enough people demand <span class="keyword" data-cantonese="可持續產品">sustainable products</span>, companies respond. When students organize and <span class="keyword" data-cantonese="抗議">protest</span>, governments listen. Moreover, individual actions help build a culture of <span class="keyword" data-cantonese="環境責任">environmental responsibility</span> that can influence <span class="keyword" data-cantonese="政策">policy</span> and <span class="keyword" data-cantonese="企業行為">corporate behavior</span>.</p>
+                    <p>The debate raises important questions about <span class="keyword" data-cantonese="責任">responsibility</span>, <span class="keyword" data-cantonese="有效性">effectiveness</span>, and the role of individuals versus <span class="keyword" data-cantonese="機構">institutions</span> in addressing climate change. While there's no simple answer, many young people feel that doing something is better than doing nothing, and that every action counts.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your environmental club is planning a campaign to encourage more individual action against climate change. Your group is discussing what to include in the campaign. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>What individual actions students can take to help the environment</li>
+                    <li>Whether individual actions are effective in fighting climate change</li>
+                    <li>How to encourage more people to take action</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我平時會..." data-starter-english="I try to... in my daily life" data-vocab-cantonese="回收, 節能, 減少浪費, 重用, 環保, 可持續" data-vocab-english="recycling / reuse / recycle, energy saving / save energy / use less, reduce waste / less waste / cut waste, reuse / use again / use twice, eco-friendly / green / environmental, sustainable / lasting / long-term"><span class="question-text">What do you do in your daily life to help the environment?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我認為..." data-starter-english="I believe that individual actions..." data-vocab-cantonese="集體行動, 影響, 改變, 累積, 示範, 推動" data-vocab-english="collective action / group action / together, impact / effect / influence, change / difference / transformation, accumulate / add up / build up, demonstrate / show / set example, drive / push / motivate"><span class="question-text">Do you think individual actions can make a real difference in fighting climate change?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="有時會覺得..." data-starter-english="Sometimes I do feel that..." data-vocab-cantonese="渺小, 無力, 企業責任, 微不足道, 有限, 系統性" data-vocab-english="small / tiny / little, powerless / weak / helpless, corporate responsibility / company duty / business role, insignificant / not important / minor, limited / small / restricted, systemic / whole system / big picture"><span class="question-text">Do you ever feel that your individual efforts are too small to matter?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="最有效係..." data-starter-english="The most effective thing would be to..." data-vocab-cantonese="碳足跡, 公共交通, 素食, 節約, 綠色能源, 減少消費" data-vocab-english="carbon footprint / pollution / emissions, public transport / buses / trains, vegetarian / no meat / plant-based, conserve / save / use less, green energy / clean energy / renewable, reduce consumption / buy less / consume less"><span class="question-text">What is the most effective thing an individual can do to reduce their carbon footprint?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="年輕人可以..." data-starter-english="Young people can influence... by..." data-vocab-cantonese="抗議, 投票, 消費選擇, 倡議, 組織, 發聲" data-vocab-english="protest / demonstrate / speak out, voting / vote / elections, consumer choices / buying choices / what we buy, advocacy / support / promote, organize / arrange / set up, speak out / voice / express"><span class="question-text">How can young people influence companies and governments to take climate action?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="學校可以..." data-starter-english="Schools could reduce their impact by..." data-vocab-cantonese="太陽能, 節能燈, 環保活動, 綠色建築, 廢物管理, 教育" data-vocab-english="solar power / sun energy / solar panels, energy-efficient lights / LED / save energy, eco activities / green activities / environmental, green building / eco building / sustainable, waste management / recycling / trash, education / teaching / learning"><span class="question-text">What creative ways can schools reduce their environmental impact?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="政府應該..." data-starter-english="Governments should..." data-vocab-cantonese="政策, 補貼, 基礎設施, 法規, 獎勵, 投資" data-vocab-english="policies / rules / plans, subsidies / help / support, infrastructure / facilities / systems, regulations / rules / laws, incentives / rewards / benefits, investment / money / funding"><span class="question-text">Should governments do more to make sustainable choices easier for individuals?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得香港..." data-starter-english="I think Hong Kong..." data-vocab-cantonese="足夠, 不足, 改善空間, 進展, 挑戰, 需要" data-vocab-english="enough / sufficient / adequate, insufficient / not enough / lacking, room for improvement / can improve / needs work, progress / advancement / steps, challenges / problems / difficulties, need / require / must"><span class="question-text">Do you think Hong Kong is doing enough to address climate change?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 4 -->
+        <section id="set4">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>The COVID-19 <span class="keyword" data-cantonese="疫情">pandemic</span> fundamentally changed the way many people work, with <span class="keyword" data-cantonese="遙距工作">remote work</span> becoming the norm for millions of employees worldwide. Now, as we move into 2025, companies and workers are grappling with what the <span class="keyword" data-cantonese="工作未來">future of work</span> should look like.</p>
+                    <p>Many employees have discovered that working from home offers greater <span class="keyword" data-cantonese="靈活性">flexibility</span>, better <span class="keyword" data-cantonese="工作生活平衡">work-life balance</span>, and the elimination of long <span class="keyword" data-cantonese="通勤">commutes</span>. Studies show that remote workers often report higher <span class="keyword" data-cantonese="工作滿意度">job satisfaction</span> and <span class="keyword" data-cantonese="生產力">productivity</span>. However, some companies are pushing for a return to the office, citing concerns about <span class="keyword" data-cantonese="協作">collaboration</span>, <span class="keyword" data-cantonese="公司文化">company culture</span>, and <span class="keyword" data-cantonese="員工參與">employee engagement</span>.</p>
+                    <p>Hong Kong's unique situation—with its high <span class="keyword" data-cantonese="人口密度">population density</span>, expensive <span class="keyword" data-cantonese="辦公室空間">office space</span>, and long <span class="keyword" data-cantonese="工作時間">working hours</span>—makes the remote work debate particularly relevant. Some argue that remote work could help address the city's <span class="keyword" data-cantonese="房屋危機">housing crisis</span> by allowing people to live further from the city center. Others worry about the impact on Hong Kong's status as a <span class="keyword" data-cantonese="全球商業中心">global business hub</span> if <span class="keyword" data-cantonese="面對面互動">face-to-face interactions</span> become less common.</p>
+                    <p>Young people entering the <span class="keyword" data-cantonese="勞動力">workforce</span> are particularly interested in this discussion, as their <span class="keyword" data-cantonese="職業選擇">career choices</span> may be shaped by whether companies offer remote work options. The question of what <span class="keyword" data-cantonese="技能">skills</span> will be most valuable in a remote or <span class="keyword" data-cantonese="混合">hybrid</span> work environment is also on many students' minds.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your career guidance teacher has asked your group to discuss the future of work and how it might affect your career choices. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>The advantages and disadvantages of remote work</li>
+                    <li>Whether you would prefer to work remotely or in an office</li>
+                    <li>What skills will be important for future careers</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我會選擇..." data-starter-english="I would prefer to work... because..." data-vocab-cantonese="在家工作, 辦公室, 靈活性, 環境, 效率, 偏好" data-vocab-english="work from home / home office / remote, office / workplace / company, flexibility / freedom / choice, environment / place / setting, efficiency / productivity / speed, preference / choice / like"><span class="question-text">Would you prefer to work from home or in an office?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="好處包括..." data-starter-english="The benefits include..." data-vocab-cantonese="平衡, 節省時間, 舒適, 自主, 成本, 生產力" data-vocab-english="balance / work-life / equal, save time / less time / quicker, comfort / relaxed / easy, autonomy / freedom / control, cost / money / expenses, productivity / work done / output"><span class="question-text">What are the benefits of remote work for employees?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="缺點係..." data-starter-english="The drawbacks include..." data-vocab-cantonese="孤立, 分心, 溝通困難, 界限模糊, 技術問題, 團隊合作" data-vocab-english="isolation / alone / separated, distractions / not focused / interruptions, communication difficulties / hard to talk / problems, blurred boundaries / no clear line / mixed, technical issues / problems / glitches, teamwork / working together / collaboration"><span class="question-text">What are the drawbacks of working from home?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="需要..." data-starter-english="You need skills like..." data-vocab-cantonese="自律, 時間管理, 溝通, 組織, 適應, 獨立" data-vocab-english="self-discipline / self-control / control, time management / organize time / plan, communication / talking / connecting, organization / planning / structure, adaptability / flexible / adjust, independence / alone / self-reliant"><span class="question-text">What skills do you need to work effectively from home?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我認為會..." data-starter-english="I think remote work will..." data-vocab-cantonese="更常見, 趨勢, 未來, 標準, 轉變, 常態" data-vocab-english="more common / usual / normal, trend / direction / pattern, future / coming / ahead, standard / normal / usual, shift / change / move, norm / normal / standard"><span class="question-text">Do you think remote work will become more common in the future?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="理想嘅工作安排會..." data-starter-english="My ideal work arrangement would..." data-vocab-cantonese="混合模式, 彈性, 選擇, 平衡, 自主, 協作" data-vocab-english="hybrid model / mix / both, flexibility / freedom / choice, choice / option / decision, balance / equal / moderate, autonomy / freedom / control, collaboration / working together / team"><span class="question-text">What would your ideal work arrangement look like?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="可能會..." data-starter-english="Remote work might change... by..." data-vocab-cantonese="居住選擇, 城市, 郊區, 遷移, 分散, 重新思考" data-vocab-english="living choices / where to live / location, city / urban / downtown, suburbs / outside / residential, migration / move / relocate, decentralization / spread out / not central, rethink / reconsider / change mind"><span class="question-text">How might remote work change the way people choose where to live?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得..." data-starter-english="I think remote work... Hong Kong's economy" data-vocab-cantonese="影響, 商業中心, 經濟, 挑戰, 機會, 轉型" data-vocab-english="impact / effect / influence, business hub / center / place, economy / money / business, challenges / problems / difficulties, opportunities / chances / possibilities, transformation / change / shift"><span class="question-text">Do you think remote work could harm Hong Kong's economy?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 5 -->
+        <section id="set5">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>The <span class="keyword" data-cantonese="時尚業">fashion industry</span> is one of the world's largest <span class="keyword" data-cantonese="污染源">polluters</span>, responsible for approximately 10% of global <span class="keyword" data-cantonese="碳排放">carbon emissions</span> and consuming vast amounts of water. In recent years, a growing movement has emerged promoting <span class="keyword" data-cantonese="可持續時尚">sustainable fashion</span> as an alternative to <span class="keyword" data-cantonese="快時尚">fast fashion</span>—cheap, trendy clothing produced quickly and often discarded after just a few wears.</p>
+                    <p>Fast fashion brands have made stylish clothing accessible to millions, allowing people to follow <span class="keyword" data-cantonese="潮流">trends</span> without breaking the bank. However, this comes at a significant <span class="keyword" data-cantonese="環境成本">environmental cost</span>. The production of <span class="keyword" data-cantonese="合成纖維">synthetic fabrics</span> releases <span class="keyword" data-cantonese="微塑膠">microplastics</span> into the ocean, while the cultivation of <span class="keyword" data-cantonese="棉花">cotton</span> requires enormous amounts of water and <span class="keyword" data-cantonese="農藥">pesticides</span>. Moreover, the industry is notorious for poor <span class="keyword" data-cantonese="工作條件">working conditions</span> in factories, particularly in <span class="keyword" data-cantonese="發展中國家">developing countries</span>.</p>
+                    <p><span class="keyword" data-cantonese="可持續時尚倡導者">Sustainable fashion advocates</span> promote buying fewer, <span class="keyword" data-cantonese="高品質">higher-quality</span> items, choosing <span class="keyword" data-cantonese="二手">second-hand</span> clothing, and supporting brands that use <span class="keyword" data-cantonese="環保材料">eco-friendly materials</span> and <span class="keyword" data-cantonese="道德勞工實踐">ethical labor practices</span>. However, sustainable fashion is often more expensive, making it less accessible to students and young people with <span class="keyword" data-cantonese="有限預算">limited budgets</span>.</p>
+                    <p>The question of how to balance <span class="keyword" data-cantonese="環境責任">environmental responsibility</span> with <span class="keyword" data-cantonese="可負擔性">affordability</span> and style is particularly relevant for young people, who are both major <span class="keyword" data-cantonese="消費者">consumers</span> of fast fashion and the generation that will inherit the environmental consequences of current <span class="keyword" data-cantonese="消費模式">consumption patterns</span>.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your school's environmental club is organizing a sustainable fashion awareness event. Your group is discussing what to include. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>The environmental impact of fast fashion</li>
+                    <li>Ways to make fashion more sustainable</li>
+                    <li>Whether sustainable fashion is accessible to students</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我通常..." data-starter-english="I usually buy new clothes..." data-vocab-cantonese="每月, 季節, 需要, 頻率, 場合, 預算" data-vocab-english="monthly / every month / once a month, season / time of year / weather, need / want / require, frequency / how often / times, occasion / event / situation, budget / money / cost"><span class="question-text">How often do you buy new clothes?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得係..." data-starter-english="I think fast fashion is..." data-vocab-cantonese="嚴重, 污染, 浪費, 不可持續, 有害, 問題" data-vocab-english="serious / big / major, pollution / dirty / waste, waste / throw away / not used, unsustainable / can't last / bad, harmful / dangerous / bad, problem / issue / trouble"><span class="question-text">Do you think fast fashion is a serious environmental problem?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="可以..." data-starter-english="Individuals can... by..." data-vocab-cantonese="二手, 品質, 少買, 重用, 修補, 選擇" data-vocab-english="second-hand / used / old, quality / good / lasting, buy less / fewer / not many, reuse / use again / use twice, repair / fix / mend, choose / pick / select"><span class="question-text">What can individuals do to make their fashion choices more sustainable?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="因為..." data-starter-english="People continue to buy fast fashion because..." data-vocab-cantonese="便宜, 潮流, 方便, 可負擔, 選擇多, 快速" data-vocab-english="cheap / low price / inexpensive, trendy / fashionable / popular, convenient / easy / simple, affordable / can buy / reasonable, variety / many / lots, quick / fast / quick to get"><span class="question-text">Why do you think people continue to buy fast fashion despite knowing its impact?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="可以幫助..." data-starter-english="Second-hand shopping can help by..." data-vocab-cantonese="重用, 減少浪費, 環保, 循環, 節省, 延長" data-vocab-english="reuse / use again / use twice, reduce waste / less waste / cut waste, eco-friendly / green / environmental, recycle / reuse / cycle, save / keep money / cheaper, extend / make last / longer"><span class="question-text">How can second-hand shopping help reduce fashion waste?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="可持續時尚會..." data-starter-english="A sustainable fashion industry would..." data-vocab-cantonese="環保材料, 公平貿易, 耐用, 透明, 責任, 創新" data-vocab-english="eco materials / green materials / sustainable, fair trade / fair / equal, durable / lasting / strong, transparent / open / clear, responsible / careful / good, innovative / new / creative"><span class="question-text">What would a sustainable fashion industry look like?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="政府應該..." data-starter-english="Governments should..." data-vocab-cantonese="監管, 標準, 鼓勵, 法規, 獎勵, 推動" data-vocab-english="regulate / control / manage, standards / rules / levels, encourage / support / help, regulations / rules / laws, incentives / rewards / benefits, promote / push / support"><span class="question-text">Should governments regulate the fashion industry to make it more sustainable?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我會..." data-starter-english="I would/wouldn't be willing to... because..." data-vocab-cantonese="願意, 預算, 價值, 品質, 理念, 負擔" data-vocab-english="willing / ready / happy, budget / money / cost, value / worth / importance, quality / good / standard, principle / belief / idea, afford / can pay / manage"><span class="question-text">Would you be willing to pay more for sustainable clothing?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 6 -->
+        <section id="set6">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>In an age where <span class="keyword" data-cantonese="社交媒體平台">social media platforms</span>, apps, and online services collect vast amounts of <span class="keyword" data-cantonese="個人數據">personal data</span>, <span class="keyword" data-cantonese="數碼私隱">digital privacy</span> has become a pressing concern, especially for young people who have grown up sharing their lives online.</p>
+                    <p>A recent <span class="keyword" data-cantonese="調查">survey</span> found that 78% of Hong Kong teenagers are concerned about their <span class="keyword" data-cantonese="網上私隱">online privacy</span>, yet many continue to share <span class="keyword" data-cantonese="個人資料">personal information</span> on social media platforms. The <span class="keyword" data-cantonese="矛盾">paradox</span> is clear: while young people value their privacy, they also want to connect with others and participate in <span class="keyword" data-cantonese="數碼社群">digital communities</span>.</p>
+                    <p><span class="keyword" data-cantonese="科技公司">Tech companies</span> argue that <span class="keyword" data-cantonese="數據收集">data collection</span> enables them to provide free services and <span class="keyword" data-cantonese="個人化體驗">personalized experiences</span>. However, <span class="keyword" data-cantonese="私隱倡導者">privacy advocates</span> warn that this data can be used for <span class="keyword" data-cantonese="針對性廣告">targeted advertising</span>, <span class="keyword" data-cantonese="操縱">manipulation</span>, or even sold to <span class="keyword" data-cantonese="第三方">third parties</span> without users' full understanding or <span class="keyword" data-cantonese="同意">consent</span>. There are also concerns about <span class="keyword" data-cantonese="數據洩露">data breaches</span>, <span class="keyword" data-cantonese="身份盜用">identity theft</span>, and the long-term consequences of having a permanent <span class="keyword" data-cantonese="數碼足跡">digital footprint</span>.</p>
+                    <p>Some countries have implemented strict <span class="keyword" data-cantonese="數據保護法">data protection laws</span>, such as the European Union's <span class="keyword" data-cantonese="通用數據保護條例">General Data Protection Regulation</span>. Hong Kong has its own <span class="keyword" data-cantonese="個人資料私隱條例">Personal Data Privacy Ordinance</span>, but critics argue it may not be sufficient to protect users in the age of <span class="keyword" data-cantonese="大數據">big data</span> and <span class="keyword" data-cantonese="人工智能">artificial intelligence</span>.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your IT teacher has asked your group to prepare a presentation on digital privacy for younger students. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>What personal information people share online and why it matters</li>
+                    <li>How to protect your digital privacy</li>
+                    <li>Whether privacy is still possible in the digital age</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我會分享..." data-starter-english="I share... on social media" data-vocab-cantonese="個人資料, 照片, 位置, 興趣, 活動, 聯絡" data-vocab-english="personal info / details / information, photos / pictures / images, location / place / where, interests / hobbies / likes, activities / things / events, contact / phone / email"><span class="question-text">How much personal information do you share on social media?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得..." data-starter-english="I think privacy in the digital age is..." data-vocab-cantonese="可能, 困難, 挑戰, 複雜, 有限, 重要" data-vocab-english="possible / can / maybe, difficult / hard / tough, challenging / hard / difficult, complex / complicated / not simple, limited / small / not much, important / significant / key"><span class="question-text">Do you think it's possible to have privacy in the digital age?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="風險包括..." data-starter-english="The risks include..." data-vocab-cantonese="身份盜用, 數據洩露, 追蹤, 詐騙, 騷擾, 濫用" data-vocab-english="identity theft / stolen identity / fake, data breach / leak / stolen, tracking / following / watching, fraud / scam / trick, harassment / trouble / bother, misuse / wrong use / abuse"><span class="question-text">What are the risks of sharing too much information online?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="我會..." data-starter-english="To protect my privacy, I..." data-vocab-cantonese="設定, 密碼, 限制, 過濾, 審查, 謹慎" data-vocab-english="settings / options / controls, passwords / codes / keys, limits / restrictions / rules, filter / choose / select, review / check / look, cautious / careful / safe"><span class="question-text">What steps do you take to protect your online privacy?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我..." data-starter-english="I do/don't read privacy policies because..." data-vocab-cantonese="條款, 複雜, 時間, 長篇, 技術性, 必要" data-vocab-english="terms / rules / conditions, complex / complicated / hard, time / long / takes time, lengthy / long / many words, technical / difficult / hard, necessary / needed / must"><span class="question-text">Do you read the privacy policies of apps and websites before using them?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="應該..." data-starter-english="Schools should..." data-vocab-cantonese="教育, 意識, 課程, 培訓, 指導, 預防" data-vocab-english="education / teaching / learning, awareness / knowledge / understanding, curriculum / course / program, training / teaching / practice, guidance / help / advice, prevention / stop / avoid"><span class="question-text">Should schools teach students more about digital privacy?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="可以..." data-starter-english="Technology could be designed to..." data-vocab-cantonese="加密, 匿名, 控制, 透明, 選擇, 保護" data-vocab-english="encryption / code / secure, anonymity / anonymous / hidden, control / manage / choose, transparency / open / clear, choice / option / decision, protection / safety / security"><span class="question-text">How could technology be designed to better protect user privacy?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我會擔心..." data-starter-english="I do worry about... because..." data-vocab-cantonese="數據使用, 廣告, 出售, 濫用, 追蹤, 控制" data-vocab-english="data usage / how used / what happens, advertising / ads / marketing, selling / sold / give away, misuse / wrong use / abuse, tracking / following / watching, control / manage / use"><span class="question-text">Do you worry about how companies use your personal data?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 7 -->
+        <section id="set7">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p>As Hong Kong faces increasing challenges with <span class="keyword" data-cantonese="食物安全">food security</span> and <span class="keyword" data-cantonese="環境可持續性">environmental sustainability</span>, <span class="keyword" data-cantonese="城市農業">urban farming</span> has emerged as a potential solution. <span class="keyword" data-cantonese="天台花園">Rooftop gardens</span>, <span class="keyword" data-cantonese="垂直農場">vertical farms</span>, and <span class="keyword" data-cantonese="社區農地">community plots</span> are springing up across the city, transforming unused spaces into productive <span class="keyword" data-cantonese="農業區">agricultural areas</span>.</p>
+                    <p>Proponents of urban farming argue that it can reduce the city's reliance on <span class="keyword" data-cantonese="進口食物">imported food</span>, lower <span class="keyword" data-cantonese="碳排放">carbon emissions</span> from transportation, and provide fresh, <span class="keyword" data-cantonese="本地種植">locally grown</span> produce. Community gardens also bring people together and create <span class="keyword" data-cantonese="綠色空間">green spaces</span> in an otherwise concrete-dominated landscape. Some schools have even started their own gardens as <span class="keyword" data-cantonese="教育項目">educational projects</span>, teaching students about <span class="keyword" data-cantonese="生物學">biology</span>, <span class="keyword" data-cantonese="營養">nutrition</span>, and <span class="keyword" data-cantonese="環境管理">environmental stewardship</span>.</p>
+                    <p>However, critics point out that Hong Kong's <span class="keyword" data-cantonese="有限空間">limited space</span>, high <span class="keyword" data-cantonese="土地成本">land costs</span>, and <span class="keyword" data-cantonese="密集城市環境">dense urban environment</span> make <span class="keyword" data-cantonese="大規模">large-scale</span> urban farming challenging. The amount of food that can be produced in small urban plots is minimal compared to the city's <span class="keyword" data-cantonese="消費需求">consumption needs</span>. There are also concerns about <span class="keyword" data-cantonese="土壤污染">soil contamination</span>, <span class="keyword" data-cantonese="用水">water usage</span>, and whether urban farming is <span class="keyword" data-cantonese="經濟可行">economically viable</span>.</p>
+                    <p>Despite these challenges, many young people are enthusiastic about urban farming, seeing it as a way to connect with <span class="keyword" data-cantonese="大自然">nature</span>, learn <span class="keyword" data-cantonese="實用技能">practical skills</span>, and contribute to a more <span class="keyword" data-cantonese="可持續未來">sustainable future</span>. The question is whether urban farming can <span class="keyword" data-cantonese="擴大規模">scale up</span> to make a meaningful impact on Hong Kong's food security.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your school is considering starting a rooftop garden project. Your group is discussing whether this is a good idea and what it should include. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>The benefits of urban farming for schools and communities</li>
+                    <li>The challenges of growing food in an urban environment</li>
+                    <li>What a school garden project could teach students</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我有/未試過..." data-starter-english="I have/haven't... because..." data-vocab-cantonese="種植, 花園, 經驗, 蔬菜, 興趣, 機會" data-vocab-english="growing / planting / farming, garden / farm / plot, experience / done / tried, vegetables / plants / food, interest / like / enjoy, opportunity / chance / time"><span class="question-text">Have you ever grown your own food or helped in a garden?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="好處包括..." data-starter-english="The benefits include..." data-vocab-cantonese="本地食物, 減少運輸, 新鮮, 環保, 社區, 教育" data-vocab-english="local food / nearby / close, reduce transport / less travel / shorter, fresh / new / just picked, eco-friendly / green / environmental, community / people / group, education / learning / teaching"><span class="question-text">What are the benefits of urban farming for cities like Hong Kong?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="限制包括..." data-starter-english="The limitations include..." data-vocab-cantonese="空間, 成本, 產量, 土地, 資源, 規模" data-vocab-english="space / room / area, cost / money / price, yield / amount / production, land / ground / space, resources / materials / things, scale / size / amount"><span class="question-text">What are the limitations of urban farming in a dense city?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="學校可以..." data-starter-english="Schools could use gardens to..." data-vocab-cantonese="教育, 生物, 營養, 實踐, 責任, 技能" data-vocab-english="education / teaching / learning, biology / science / nature, nutrition / food / health, hands-on / practical / real, responsibility / duty / care, skills / abilities / knowledge"><span class="question-text">How could schools use gardens as educational tools?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得..." data-starter-english="I think urban farming... Hong Kong's food security" data-vocab-cantonese="食物安全, 自給自足, 貢獻, 補充, 多樣化, 穩定" data-vocab-english="food security / enough food / food supply, self-sufficiency / own food / independent, contribution / help / part, supplement / add / extra, diversity / variety / different, stability / steady / reliable"><span class="question-text">Do you think urban farming could help Hong Kong become more food-secure?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="可以..." data-starter-english="Hong Kong could use... for urban farming" data-vocab-cantonese="天台, 垂直農場, 社區, 牆壁, 廢棄, 創新" data-vocab-english="rooftops / roofs / top floors, vertical farms / up / tall, community / shared / public, walls / sides / vertical, abandoned / empty / unused, innovative / new / creative"><span class="question-text">What creative ways could Hong Kong use space for urban farming?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="政府應該..." data-starter-english="The government should..." data-vocab-cantonese="支持, 資助, 政策, 鼓勵, 規劃, 推廣" data-vocab-english="support / help / back, funding / money / financial, policies / rules / plans, encourage / support / help, planning / organize / arrange, promote / push / advertise"><span class="question-text">Should the government support more urban farming projects?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我會..." data-starter-english="I would/wouldn't be interested because..." data-vocab-cantonese="有興趣, 學習, 參與, 時間, 技能, 價值" data-vocab-english="interested / keen / want, learn / study / know, participate / join / take part, time / hours / schedule, skills / abilities / knowledge, value / worth / benefit"><span class="question-text">Would you be interested in participating in a school garden project?</span></div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Set 8 -->
+        <section id="set8">
+            <article>
+                <h3>Part A: Group Interaction</h3>
+                <div class="article-content">
+                    <p><span class="keyword" data-cantonese="義工旅遊">Volunteer tourism</span>, or 'voluntourism,' has become increasingly popular among young people seeking <span class="keyword" data-cantonese="有意義">meaningful</span> travel experiences. These trips combine <span class="keyword" data-cantonese="旅遊">tourism</span> with <span class="keyword" data-cantonese="義工工作">volunteer work</span>, often in <span class="keyword" data-cantonese="發展中國家">developing countries</span>, where participants might teach English, build schools, or work on <span class="keyword" data-cantonese="保育項目">conservation projects</span>.</p>
+                    <p>Supporters of voluntourism argue that it provides much-needed help to <span class="keyword" data-cantonese="有需要社群">communities in need</span> while giving volunteers valuable <span class="keyword" data-cantonese="跨文化體驗">cross-cultural experiences</span> and a sense of <span class="keyword" data-cantonese="目的">purpose</span>. Many participants return home with a greater <span class="keyword" data-cantonese="欣賞">appreciation</span> for different cultures and a deeper understanding of <span class="keyword" data-cantonese="全球議題">global issues</span>. The experience can also look impressive on <span class="keyword" data-cantonese="大學申請">university applications</span> and <span class="keyword" data-cantonese="履歷">resumes</span>.</p>
+                    <p>However, critics have raised serious concerns about the <span class="keyword" data-cantonese="義工旅遊業">voluntourism industry</span>. Some argue that <span class="keyword" data-cantonese="短期義工">short-term volunteers</span> often lack the necessary <span class="keyword" data-cantonese="技能">skills</span> and <span class="keyword" data-cantonese="培訓">training</span>, potentially doing more harm than good. There are also <span class="keyword" data-cantonese="道德關注">ethical concerns</span> about '<span class="keyword" data-cantonese="孤兒院旅遊">orphanage tourism</span>,' where children become <span class="keyword" data-cantonese="旅遊景點">tourist attractions</span>, and questions about whether the money spent on these trips would be better used as <span class="keyword" data-cantonese="直接捐款">direct donations</span> to local organizations.</p>
+                    <p>Moreover, some voluntourism programs have been accused of creating <span class="keyword" data-cantonese="依賴">dependency</span>, disrupting <span class="keyword" data-cantonese="本地經濟">local economies</span>, and prioritizing the volunteer's experience over the actual <span class="keyword" data-cantonese="社區需要">needs of the community</span>. The question of whether voluntourism is a form of helpful <span class="keyword" data-cantonese="服務">service</span> or harmful <span class="keyword" data-cantonese="剝削">exploitation</span> is hotly debated.</p>
+                </div>
+
+                <p class="guiding-text"><strong>Your school is organizing a service trip abroad. Your group is discussing whether this is a good idea and how to ensure it's ethical and beneficial. You may want to talk about:</strong></p>
+
+                <ul>
+                    <li>The potential benefits and drawbacks of volunteer tourism</li>
+                    <li>How to ensure volunteer work is actually helpful to communities</li>
+                    <li>Whether there are better alternatives to voluntourism</li>
+                    <li>Anything else you think is important</li>
+                </ul>
+
+            </article>
+
+            <article>
+                <h3>Part B: Individual Response</h3>
+                <div class="questions">
+                    <div class="question" data-color="personal" data-starter-cantonese="我有/未試過..." data-starter-english="I have/haven't participated in... because..." data-vocab-cantonese="義工, 服務, 經驗, 機會, 時間, 興趣" data-vocab-english="volunteer / helper / unpaid, service / help / work, experience / done / tried, opportunity / chance / time, time / hours / schedule, interest / like / want"><span class="question-text">Have you ever participated in volunteer work or service trips?</span></div>
+                    <div class="question" data-color="positive" data-starter-cantonese="好處包括..." data-starter-english="The benefits for volunteers include... and for communities..." data-vocab-cantonese="文化交流, 幫助, 學習, 成長, 支援, 發展" data-vocab-english="cultural exchange / different cultures / learn, help / support / assist, learning / education / knowledge, growth / improve / develop, support / help / aid, development / progress / improvement"><span class="question-text">What are the benefits of volunteer tourism for both volunteers and communities?</span></div>
+                    <div class="question" data-color="negative" data-starter-cantonese="問題包括..." data-starter-english="The problems include..." data-vocab-cantonese="技能不足, 依賴, 剝削, 短期, 無效, 傷害" data-vocab-english="lack of skills / no skills / not skilled, dependency / rely / need, exploitation / use / take advantage, short-term / brief / quick, ineffective / not work / useless, harm / hurt / damage"><span class="question-text">What are the potential problems with volunteer tourism?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="可以..." data-starter-english="Volunteers can ensure their work is helpful by..." data-vocab-cantonese="培訓, 長期, 需求, 了解, 尊重, 合作" data-vocab-english="training / teaching / learning, long-term / lasting / extended, needs / wants / requirements, understand / know / learn, respect / honor / value, collaborate / work together / cooperate"><span class="question-text">How can volunteers ensure their work is actually helpful?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我覺得..." data-starter-english="I think short-term volunteers... because..." data-vocab-cantonese="短期, 意義, 影響, 有限, 表面, 深度" data-vocab-english="short-term / brief / quick, meaningful / important / valuable, impact / effect / influence, limited / small / not much, superficial / surface / not deep, depth / deep / thorough"><span class="question-text">Do you think short-term volunteers can make a meaningful difference?</span></div>
+                    <div class="question" data-color="creative" data-starter-cantonese="理想嘅計劃會..." data-starter-english="An ideal program would..." data-vocab-cantonese="可持續, 尊重, 合作, 透明, 有效, 平等" data-vocab-english="sustainable / lasting / long-term, respectful / polite / considerate, collaborative / working together / team, transparent / open / clear, effective / work / successful, equal / fair / same"><span class="question-text">What would an ideal volunteer tourism program look like?</span></div>
+                    <div class="question" data-color="practical" data-starter-cantonese="應該..." data-starter-english="There should be regulations to..." data-vocab-cantonese="監管, 標準, 保護, 確保, 規範, 監督" data-vocab-english="regulation / control / management, standards / rules / levels, protection / safety / security, ensure / make sure / guarantee, guidelines / rules / standards, oversight / watching / monitoring"><span class="question-text">Should there be regulations on volunteer tourism programs?</span></div>
+                    <div class="question" data-color="personal" data-starter-cantonese="我會..." data-starter-english="I would/wouldn't be interested because..." data-vocab-cantonese="有興趣, 機會, 考慮, 成本, 時間, 價值" data-vocab-english="interested / keen / want, opportunity / chance / time, consider / think / decide, cost / money / price, time / hours / schedule, value / worth / benefit"><span class="question-text">Would you be interested in participating in a volunteer trip abroad?</span></div>
+                </div>
+            </article>
+        </section>
+        </div>
+    </main>
+
+    <!-- Timer Container -->
+    <div class="timer-container">
+        <button class="timer-reset" id="timerReset" onclick="resetTimer(event)">reset ↺</button>
+        <div class="timer-display" id="timerDisplay" onclick="toggleTimerState()">
+            <span id="timerTime">00:00</span>
+        </div>
+    </div>
+
+    <script>
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const menuLinks = dropdownMenu.querySelectorAll('a');
+        const sections = document.querySelectorAll('section');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+            dropdownButton.classList.toggle('active');
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSet = link.getAttribute('data-set');
+                
+                menuLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                link.classList.add('active');
+                document.getElementById(`set${targetSet}`).classList.add('active');
+                dropdownButton.textContent = link.textContent;
+                dropdownMenu.classList.remove('active');
+                dropdownButton.classList.remove('active');
+                
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdownMenu.classList.remove('active');
+                dropdownButton.classList.remove('active');
+            }
+        });
+
+        // Article content click to reveal keywords
+        const articleContents = document.querySelectorAll('.article-content');
+        articleContents.forEach(articleContent => {
+            articleContent.addEventListener('click', (e) => {
+                // Don't toggle if clicking on a keyword
+                if (e.target.closest('.keyword')) {
+                    return;
+                }
+                articleContent.classList.toggle('revealed');
+            });
+        });
+
+        // Keyword click functionality for Part A
+        const keywords = document.querySelectorAll('.keyword[data-cantonese]');
+        keywords.forEach(keyword => {
+            const cantonese = keyword.getAttribute('data-cantonese');
+            if (cantonese) {
+                const cantoneseText = document.createElement('span');
+                cantoneseText.className = 'keyword-cantonese';
+                cantoneseText.textContent = cantonese;
+                keyword.style.position = 'relative';
+                keyword.appendChild(cantoneseText);
+                
+                keyword.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cantoneseText.classList.toggle('revealed');
+                });
+            }
+        });
+
+        // Question color reveal functionality
+        const colorLabels = {
+            'fact': 'fact',
+            'personal': 'personal',
+            'positive': 'positive',
+            'negative': 'negative',
+            'creative': 'creative',
+            'practical': 'practical'
+        };
+
+        const questions = document.querySelectorAll('.question[data-color]');
+        questions.forEach(question => {
+            // Create label element
+            const label = document.createElement('span');
+            label.className = 'question-label';
+            question.appendChild(label);
+
+            // Create sentence starter element
+            const cantonese = question.getAttribute('data-starter-cantonese');
+            const english = question.getAttribute('data-starter-english');
+            const vocabCantonese = question.getAttribute('data-vocab-cantonese');
+            const vocabEnglish = question.getAttribute('data-vocab-english');
+            
+            if (cantonese && english) {
+                const sentenceStarter = document.createElement('div');
+                sentenceStarter.className = 'sentence-starter';
+                
+                const row = document.createElement('div');
+                row.className = 'sentence-starter-row';
+                
+                const cantoneseText = document.createElement('span');
+                cantoneseText.className = 'sentence-starter-cantonese';
+                cantoneseText.textContent = cantonese;
+                row.appendChild(cantoneseText);
+                
+                // Add vocab items if available
+                if (vocabCantonese && vocabEnglish) {
+                    const vocabCantoneseArray = vocabCantonese.split(', ');
+                    const vocabEnglishArray = vocabEnglish.split(', ');
+                    
+                    vocabCantoneseArray.forEach((vocab, index) => {
+                        const vocabContainer = document.createElement('span');
+                        vocabContainer.style.display = 'inline-flex';
+                        vocabContainer.style.alignItems = 'baseline';
+                        
+                        const vocabItem = document.createElement('span');
+                        vocabItem.className = 'vocab-item';
+                        vocabItem.textContent = vocab;
+                        
+                        const vocabEnglishText = document.createElement('span');
+                        vocabEnglishText.className = 'vocab-english';
+                        vocabEnglishText.textContent = ` (${vocabEnglishArray[index] || ''})`;
+                        
+                        vocabContainer.appendChild(vocabItem);
+                        vocabContainer.appendChild(vocabEnglishText);
+                        
+                        vocabItem.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            vocabEnglishText.classList.toggle('revealed');
+                        });
+                        
+                        row.appendChild(vocabContainer);
+                    });
+                }
+                
+                const englishText = document.createElement('div');
+                englishText.className = 'sentence-starter-english';
+                englishText.textContent = english;
+                
+                sentenceStarter.appendChild(row);
+                sentenceStarter.appendChild(englishText);
+                
+                // Toggle English when clicking the sentence starter row
+                cantoneseText.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    englishText.classList.toggle('revealed');
+                });
+                
+                question.appendChild(sentenceStarter);
+            }
+
+            question.addEventListener('click', (e) => {
+                // Don't toggle if clicking on sentence starter
+                if (e.target.closest('.sentence-starter')) {
+                    return;
+                }
+                
+                const color = question.getAttribute('data-color');
+                const sentenceStarter = question.querySelector('.sentence-starter');
+                
+                // Toggle: if already has the color class, remove it; otherwise add it
+                if (question.classList.contains(color)) {
+                    question.classList.remove(color);
+                    label.textContent = '';
+                    // Hide sentence starter
+                    if (sentenceStarter) {
+                        sentenceStarter.classList.remove('visible');
+                        // Reset English visibility
+                        const englishText = sentenceStarter.querySelector('.sentence-starter-english');
+                        if (englishText) {
+                            englishText.classList.remove('revealed');
+                        }
+                    }
+                } else {
+                    // Remove all color classes first
+                    question.classList.remove('fact', 'personal', 'positive', 'negative', 'creative', 'practical');
+                    // Add the selected color
+                    question.classList.add(color);
+                    // Update label text
+                    label.textContent = colorLabels[color] || '';
+                    // Show sentence starter
+                    if (sentenceStarter) {
+                        sentenceStarter.classList.add('visible');
+                    }
+                }
+            });
+        });
+
+    </script>
+    <script src="xstimer.js"></script>
+</body>
+</html>
