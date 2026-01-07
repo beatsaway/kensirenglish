@@ -258,6 +258,16 @@
             vertical-align: middle;
             line-height: 1;
             flex-shrink: 0;
+            animation: emojiPulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes emojiPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.8);
+            }
         }
         
         .philosophy {
@@ -312,7 +322,7 @@
         }
         
         .philosophy-link-container a {
-            color: var(--color-accent);
+            color: #2563eb !important;
             text-decoration: none;
             transition: opacity 0.2s ease;
         }
@@ -322,13 +332,13 @@
         }
         
         .philosophy-link-container .link-separator {
-            color: var(--color-text-secondary);
+            color: #2563eb !important;
             margin: 0 var(--space-1);
             opacity: 0.6;
         }
         
         .philosophy-link-container .link-cantonese {
-            color: var(--color-text-secondary);
+            color: #2563eb !important;
         }
         
         @keyframes pulseEmoji {
@@ -441,9 +451,16 @@
             }
         }
         
-        .philosophy-link-container,
+        .philosophy-link-container {
+            animation: none !important;
+        }
+        
         .philosophy-link-container * {
             animation: none !important;
+        }
+        
+        .philosophy-link-container .philosophy-emoji {
+            animation: emojiPulse 1s ease-in-out infinite !important;
         }
         
         .philosophy-link-container {
@@ -599,7 +616,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: var(--border-color);
+            background: #9ca3af;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -1209,38 +1226,38 @@
         <div class="container">
             <div class="philosophy-carousel">
                 <div class="philosophy-carousel-container">
-                    <div class="philosophy active" data-index="0" data-lang="zh" data-bg-color="#e0f2fe">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="學英文必定要練中英轉換？" data-text-en="Is it okay to keep switching between Cantonese and English?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="當然！如果你母語係中文，又想學好英文，中英轉換效率絕對係最核心一關鍵！" data-text-en="Absolutely! If that's your mother tongue, switching between that and English is key to success!"></span></p>
-                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="resources/codeswitch/index.html">🤸</span><a href="resources/codeswitch/index.html">CodeSwitch<span class="link-separator">•</span><span class="link-cantonese">反轉中英</span></a></span>
-                    </div>
-                    
-                    <div class="philosophy" data-index="1" data-lang="zh" data-bg-color="#f3e8ff">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="想學好英文，竟然要多用廣東話？" data-text-en="Want to learn English well? Use more Cantonese?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！" data-text-en="Should we avoid thinking in our mother tongue when learning English? Absolutely not! Code-switching is an inevitable part of learning, not something to avoid!"></span></p>
-                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
-                    </div>
-                    
-                    <div class="philosophy" data-index="2" data-lang="zh" data-bg-color="#fef3c7">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="Past定Perfect？Continuous定Future？" data-text-en="Past or Perfect? Continuous or Future?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="小學學咗6年Tenses都係一片混亂？其實只要學2步用廣東話轉，已經可以搞掂9隻!" data-text-en="Struggled with tenses for 6 years? Master all 9 tenses with just 2 simple steps using Cantonese!"></span></p>
-                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="grammar/a1a2tenses/index.html">⏰</span><a href="grammar/a1a2tenses/index.html">The 9 Tenses<span class="link-separator">•</span><span class="link-cantonese">九隻時式</span></a></span>
-                    </div>
-                    
-                    <div class="philosophy" data-index="3" data-lang="zh" data-bg-color="#dbeafe">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白冇嘢講冇嘢寫?" data-text-en="Mind blank? Nothing to say or write?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="原來你唔係英文廢，而係轉咗用廣東話都係空白！想改善英文前，請先及早醫腦，學用思考帽！" data-text-en="You can't think of anything to say or write—which could still be the case even when switching back to your mother tongue! Learning how to think is just as important as learning English!"></span></p>
+                    <div class="philosophy active" data-index="0" data-lang="zh" data-bg-color="#dbeafe">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白冇嘢講冇嘢寫?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="以為係自己英文廢？實情係中文都腦閉塞！想英文好？先及早醫腦，學用思考帽！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
                     </div>
                     
+                    
+                    <div class="philosophy" data-index="2" data-lang="zh" data-bg-color="#f3e8ff">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="想英文勁，必須善用<em>廣東話</em>？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
+                    </div>
+                    <div class="philosophy" data-index="1" data-lang="zh" data-bg-color="#e0f2fe">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="學英文必定要練<em>中英轉換</em>？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="絕對係！如果你母語係中文，又想學好英文，中英轉換訓練絕對係最核心一關鍵！"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="resources/codeswitch/index.html">🤸</span><a href="resources/codeswitch/index.html">CodeSwitch<span class="link-separator">•</span><span class="link-cantonese">反轉中英</span></a></span>
+                    </div>
+                    
+                    <div class="philosophy" data-index="3" data-lang="zh" data-bg-color="#fef3c7">
+                        <p><span class="toggle-text philosophy-title" data-text-zh="<strong>Past定Perfect</strong>？Continuous定Future？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="小學學咗6年Tenses都係一片混亂？其實只要學2步用廣東話轉，已經可以搞掂9隻!"></span></p>
+                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="grammar/a1a2tenses/index.html">⏰</span><a href="grammar/a1a2tenses/index.html">The 9 Tenses<span class="link-separator">•</span><span class="link-cantonese">九隻時式</span></a></span>
+                    </div>
+                    
                     <div class="philosophy" data-index="4" data-lang="zh" data-bg-color="#d1fae5">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都Last but not least?" data-text-en="Always writing 'Last but not least'?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！" data-text-en="Connectives are essential for writing—mastering them helps you write logical, well-structured essays!"></span></p>
+                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都Last but not least?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/connectives/connectives.html">🔗</span><a href="dse/connectives/connectives.html">Connectives<span class="link-separator">•</span><span class="link-cantonese">連接詞</span></a></span>
                     </div>
                     
                     <div class="philosophy" data-index="5" data-lang="zh" data-bg-color="#fce7f3">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都I agree that？" data-text-en="Always writing 'I agree that'?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="主題填充練習教你用更impressive嘅方式表達同意，用廣東話思維轉換成地道英文！" data-text-en="Theme-based fill-in-blanks exercises teach you more sophisticated ways to express agreement, transforming your Cantonese thinking into authentic English!"></span></p>
+                        <p><span class="toggle-text philosophy-title" data-text-zh="寫文成日都I agree that？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="主題填充練習教你用更impressive嘅方式表達同意，用廣東話思維轉換成地道英文！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/themes/dse_fill.html">✏️</span><a href="dse/themes/dse_fill.html">Theme-based Fill-in-Blanks<span class="link-separator">•</span><span class="link-cantonese">主題填充練習</span></a></span>
                     </div>
                     
                     <div class="philosophy" data-index="6" data-bg-color="#e0e7ff">
-                        <p><a href="resources/booklist/index.html"><strong>精選書單推薦</strong></a></p>
+                        <p><a href="resources/booklist/index.html"><strong>教育局推薦書單整合</strong></a></p>
                     </div>
                 </div>
                 <div class="carousel-controls">
@@ -1445,9 +1462,9 @@
                     // Check if it's a title (has strong tag)
                     const strongTag = toggleText.querySelector('strong');
                     if (strongTag) {
-                        // Update title - just put the text directly
+                        // Update title - use innerHTML to preserve <em> and <strong> tags
                         if (zhText) {
-                            strongTag.textContent = zhText;
+                            strongTag.innerHTML = zhText;
                         }
                     } else {
                         // Update description - use innerHTML to preserve <br> tags
