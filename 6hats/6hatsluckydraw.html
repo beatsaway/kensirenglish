@@ -517,6 +517,153 @@
             opacity: 0.6;
         }
 
+        .sentence-starters-dice-btn {
+            font-size: 1.2em;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0 0 0 var(--space-1);
+            transition: transform 0.2s ease;
+            user-select: none;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .sentence-starters-dice-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .sentence-starters-dice-btn.rolling {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            z-index: 2000;
+            animation: diceRollToCenter 0.75s ease-out forwards;
+            pointer-events: none;
+            font-size: 2em;
+        }
+
+        @keyframes diceRollToCenter {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                font-size: 1.2em;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(3) rotate(180deg);
+                font-size: 3em;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(4) rotate(360deg);
+                font-size: 4em;
+            }
+        }
+
+        /* Random starters popup */
+        .random-starters-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .random-starters-overlay.show {
+            display: flex;
+        }
+
+        .random-starters-content {
+            background: var(--color-bg);
+            padding: var(--space-4) var(--space-4) var(--space-4) var(--space-4);
+            border: 1px solid var(--color-border);
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: var(--space-3);
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .random-starters-close {
+            position: absolute;
+            top: var(--space-2);
+            right: var(--space-2);
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            padding: var(--space-1);
+            line-height: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        .random-starters-close:hover {
+            opacity: 0.6;
+        }
+
+        .random-starters-emoji {
+            font-size: 80px;
+            text-align: center;
+            margin: 0 auto var(--space-2) auto;
+            line-height: 1;
+            animation: emojiPulse 2s ease-in-out infinite;
+            display: block;
+            width: fit-content;
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.85);
+            }
+        }
+
+        .random-starters-content h3 {
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            margin-top: 0;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 400;
+            padding-right: var(--space-5);
+            padding-left: var(--space-1);
+        }
+
+        .random-starters-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: var(--space-1);
+        }
+
+        .random-starters-list li {
+            padding: var(--space-2) var(--space-1);
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-size: 15px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-1);
+        }
+
+        .random-starters-list li span:last-child {
+            flex: 1;
+        }
+
+        .random-starters-list li:last-child {
+            border-bottom: none;
+        }
+
 
         .sentence-starters ul {
             list-style: none;
@@ -1011,7 +1158,7 @@
 <body>
     <header>
         <div class="header-left">
-            <span class="header-label">6 Hats Lucky Draw<span class="separator">•🎩</span>帽抽籤</span>
+            <span class="header-label">🎲帽思考</span>
             <div class="header-copyright"><a href="../index.html">©kensirenglish.com</a></div>
         </div>
     </header>
@@ -1081,6 +1228,16 @@
             
             <h3>Key Benefits:<br>主要好處：</h3>
             <p>Prevents unproductive dynamics by providing clear thinking steps. Ensures comprehensive analysis by examining all angles. Creates efficient communication through a shared language for thinking.<br>提供清晰嘅思考步驟，避免消耗雙方嘅討論。考慮所有角度，確保全面分析。共享思考語言，創造團隊高效溝通。</p>
+        </div>
+    </div>
+
+    <!-- Random Starters Popup -->
+    <div class="random-starters-overlay" id="randomStartersOverlay" onclick="closeRandomStarters(event)">
+        <div class="random-starters-content" onclick="event.stopPropagation()">
+            <button class="random-starters-close" onclick="closeRandomStarters(event)">×</button>
+            <div class="random-starters-emoji" id="randomStartersEmoji"></div>
+            <h3>Congrat! You've got these three.<br>掂掂掂! 你抽到以下三個:</h3>
+            <ul class="random-starters-list" id="randomStartersList"></ul>
         </div>
     </div>
 
@@ -1274,10 +1431,19 @@
             }
         ];
 
+        const emojilist = [ "😃","😎","🤩","❤️","💙","💚","💛","🧡","💜","💗","💥","💫","✨","🌟","💢","🔥","🌈","💦","💨","🌀","🍓","🍒","🍊","🍉","🍇","🍌","🍍","🍎","🍏","🍑","🍔","🍟","🍕","🍭","🍬","🍩","🍪","🍿","🥤","🍸","🍹","🍺","🍷","💋","👄","👅","💄","💅","💎","💍","👑","🎩","🕶️","📺","📻","📼","💾","💿","📀","🎥","🎞️","📷","📸","🎨","🎉","🎊","🎈","💡","🎀","🏵️","🎗️","🎯","🚀","✈️","🛸","🧨","💣","🗯️","💭","💬","❗","❕","❓","💖","💘","💞","💝","💓","🎵","🎶","🎼","🎤","🎧","🎸","🥁","🎷","🦄","🐣","🐸","🦋","🍨","🍦","🧁","🎂","🍰","🍫","🎆","🎇","🌌","🔆","🔅","🎹","🎻","🎮","🕹️","👾","🛹","🛼","📱","☎️","🖌️","🖍️","📝","👜","👠","👡","◻️","◼️","🔺","🔴","🔵","🟢","🟡","🟣","🟠","🔳","🔲","🖼️","🎭","🎬","🎺","📹","💽","🧩","🎲","🃏","🎳","🎱","🚗","🚕","🚙","🚌","🚎","🏎️","🚓","🚑","🚒","🚐","🚚","🚛","🚜","🛵","🚲","🛴","🏍️","🛺","🚂","🚆","🚇","🚊","🚉","🛩️","🛫","🛬","🚁","🛥️","⛵","🚤","🛳️","⛴️","🛶","🚢","⚓","🚧","🚦","🚥","🏗️","🏭","🏢","🏬","🏣","🏤","🏥","🏦","🏨","🏪","🏫","🏩","💒","🏰","🏯","🏟️","🎡","🎢","🎠","⛲","🎪","🌆","🌇","🌃","🌉","🗽","🗼","🏙️","🌁","🏞️","🏜️","🏕️","🛤️","🛰️","🦸‍♂️","🦸‍♀️","🦹‍♂️","🦹‍♀️","🤖","🎃","👹","👺","💀","☠️","👻","👽","🤡","🧟‍♂️","🧟‍♀️","🧞‍♂️","🧞‍♀️","🧜‍♂️","🧜‍♀️","🧚‍♂️","🧚‍♀️","🧙‍♂️","🧙‍♀️","🧛‍♂️","🧛‍♀️","🧝‍♂️","🧝‍♀️","🐉","🐲","🦕","🦖","🦈","🐬","🐳","🐋","🦩","🦚","🦢","🦜","🐦","🐧","🐥","🐤","🦅","🦆","🦉","💐","🌸","🌺","🌼","🌻","🌹","🌷","🌱","🌿","☘️","🍀","🍁","🍂","🍃","🍄","🌰","🌵","🎄","🌲","🌳","🌴","🍋","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶️","🥕","🌽","🍠","🥔","🍞","🥐","🥖","🥨","🥯","🥞","🧀","🍗","🍖","🍤","🍳","🥚","🌭","🥪","🌮","🌯","🥗","🥘","🍝","🍜","🍲","🍛","🍣","🍱","🥟","🍙","🍚","🍘","🍥","🥠","🥡","🍢","🍡","🍧","🥧","🍮","🥜","🍯","🥛","🍼","☕","🍵","🍶","🍻","🥂","🥃","🧉","🧃","🧋","🍾","🥄","🍴","🍽️","🥢","🔪","🏺","🗿","🛍️","🛒","🎁","🎎","🎏","🎐","🎑","🧧","🎍","🎋","🎓","🎒","🧳","📚","📖","📓","📔","📕","📗","📘","📙","📜","📃","📄","📑","📰","🗞️","📥","📤","📦","📫","📪","📬","📭","📮","📯","📢","📣","📡","🔔","🔕","🎙️","🎚️","🎛️","📲","📞","📟","📠","🔋","🔌","💻","🖥️","🖨️","⌨️","🖱️","🖲️","📽️","🎰","🦇","🧸","🪀","👓","🕺","💃","🕴️","🚴‍♂️","🚴‍♀️","🏇","🏂","⛷️","🏄‍♂️","🏄‍♀️","🏊‍♂️","🏊‍♀️","🤽‍♂️","🤽‍♀️","🤾‍♂️","🤾‍♀️","🥋","🥊","🥅","⛳","🪁","🏓","🏸","🥍","🏏","🏑","🏒","🎣","🤿","🥽","🥼","🦺","👕","👖","👗","👘","👙","👚","👛","👝","🥾","🥿","👢","👞","👟","🧢","⛑️","📿","💼","👔","👒","🧥","🔮","🧿","🔗","🧷","🧹","🧺","🧻","🧼","🧽","🛁","🛀","🧴","🧲","🪥","🪒","🧤","🧣","🧦","🧵","🧶","🪡","🪢"
+        ];
+
         const dice = document.getElementById('dice');
         const result = document.getElementById('result');
         const hatProfile = document.getElementById('hatProfile');
         let isSpinning = false;
+        let currentHatIndex = null;
+        let isRollingStarters = false;
+
+        function getRandomEmoji() {
+            return emojilist[Math.floor(Math.random() * emojilist.length)];
+        }
 
         function displayHatLabel(hat) {
             return `<span class="hat-label" style="background-color: ${hat.bgColor}; color: ${hat.textColor};">${hat.name}<br>${hat.nameZh}</span>`;
@@ -1330,8 +1496,9 @@
                     <button class="sentence-starters-arrow" data-starters-prev>&lt;</button>
                     <span class="sentence-starters-indicator">Sentence Starters <span data-starters-current>1</span>/<span data-starters-total>${groups.length}</span></span>
                     <button class="sentence-starters-arrow" data-starters-next>&gt;</button>
+                    <button id="sentenceStartersDiceBtn" class="sentence-starters-dice-btn" onclick="showRandomStarters()" title="Roll for 3 random starters / 抽3個隨機句子開頭">🎲</button>
                 </h3>
-            ` : '<h3>Sentence Starters</h3>';
+            ` : '<h3>Sentence Starters<button id="sentenceStartersDiceBtn" class="sentence-starters-dice-btn" onclick="showRandomStarters()" title="Roll for 3 random starters / 抽3個隨機句子開頭">🎲</button></h3>';
             
             return `
                 <div class="sentence-starters">
@@ -1441,6 +1608,9 @@
             const hat = hats[hatIndex];
             if (!hat) return;
             
+            // Store current hat index
+            currentHatIndex = hatIndex;
+            
             // Update dice button to show selected hat
             dice.innerHTML = `${hat.name}<br>${hat.nameZh}`;
             dice.style.backgroundColor = hat.bgColor;
@@ -1467,6 +1637,109 @@
             // Hide instructions
             const instructions = document.getElementById('instructions');
             if (instructions) instructions.classList.add('hidden');
+        }
+
+        function showRandomStarters() {
+            if (isRollingStarters) return;
+            
+            if (currentHatIndex === null || currentHatIndex === undefined) {
+                return;
+            }
+            
+            const hat = hats[currentHatIndex];
+            if (!hat || !hat.starters || hat.starters.length === 0) {
+                return;
+            }
+            
+            isRollingStarters = true;
+            const diceBtn = document.getElementById('sentenceStartersDiceBtn');
+            if (!diceBtn) {
+                isRollingStarters = false;
+                return;
+            }
+            
+            // Store original properties
+            const originalEmoji = diceBtn.textContent;
+            const originalRect = diceBtn.getBoundingClientRect();
+            const originalPosition = diceBtn.style.position;
+            const originalTop = diceBtn.style.top;
+            const originalLeft = diceBtn.style.left;
+            const originalTransform = diceBtn.style.transform;
+            const originalZIndex = diceBtn.style.zIndex;
+            const originalFontSize = diceBtn.style.fontSize;
+            
+            // Add rolling class for animation
+            diceBtn.classList.add('rolling');
+            
+            // Roll animation - flash random emojis
+            let rollCount = 0;
+            const maxRolls = 15; // Number of emoji changes
+            const rollInterval = 50; // Milliseconds between changes
+            
+            const rollAnimation = setInterval(() => {
+                diceBtn.textContent = getRandomEmoji();
+                rollCount++;
+                
+                if (rollCount >= maxRolls) {
+                    clearInterval(rollAnimation);
+                    
+                    // Wait for animation to complete, then restore and show popup
+                    setTimeout(() => {
+                        // Remove rolling class and restore all original properties
+                        diceBtn.classList.remove('rolling');
+                        diceBtn.textContent = originalEmoji;
+                        diceBtn.style.position = originalPosition;
+                        diceBtn.style.top = originalTop;
+                        diceBtn.style.left = originalLeft;
+                        diceBtn.style.transform = originalTransform;
+                        diceBtn.style.zIndex = originalZIndex;
+                        diceBtn.style.fontSize = originalFontSize;
+                    
+                        // Now show the popup with results
+                        // Set a random emoji for the popup
+                        const emojiDiv = document.getElementById('randomStartersEmoji');
+                        if (emojiDiv) {
+                            emojiDiv.textContent = getRandomEmoji();
+                        }
+                        
+                        // Get 3 random starters
+                        const shuffled = [...hat.starters].sort(() => 0.5 - Math.random());
+                        const randomStarters = shuffled.slice(0, 3);
+                        
+                        // Display them in the popup
+                        const list = document.getElementById('randomStartersList');
+                        if (list) {
+                            list.innerHTML = randomStarters.map(starter => {
+                                const enText = typeof starter === 'string' ? starter : (starter.en || '');
+                                const zhText = typeof starter === 'string' ? '' : (starter.zh || '');
+                                const displayText = zhText && zhText.trim() !== '' 
+                                    ? `${enText}<br>${zhText}` 
+                                    : enText;
+                                const randomEmoji = getRandomEmoji();
+                                return `<li><span style="font-size: 1.3em; line-height: 1;">${randomEmoji}</span> <span>${displayText}</span></li>`;
+                            }).join('');
+                        }
+                        
+                        // Show the popup
+                        const overlay = document.getElementById('randomStartersOverlay');
+                        if (overlay) {
+                            overlay.classList.add('show');
+                        }
+                        
+                        isRollingStarters = false;
+                    }, 750); // Match animation duration
+                }
+            }, rollInterval);
+        }
+
+        function closeRandomStarters(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const overlay = document.getElementById('randomStartersOverlay');
+            if (overlay) {
+                overlay.classList.remove('show');
+            }
         }
 
         function resetToInstructions() {
@@ -1525,6 +1798,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeHatsModal();
+                closeRandomStarters();
             }
         });
 
@@ -1638,6 +1912,9 @@
                     // Show hat profile in left column and sentence starters in right column
                     setTimeout(() => {
                         const finalHatIndex = hats.findIndex(h => h.name === finalHat.name);
+                        // Store current hat index
+                        currentHatIndex = finalHatIndex;
+                        
                         hatProfile.innerHTML = displayHatProfile(finalHat);
                         result.innerHTML = displaySentenceStarters(finalHat, finalHatIndex);
                         

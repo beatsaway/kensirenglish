@@ -1098,15 +1098,21 @@
             
             .developer-popup-header {
                 margin-bottom: var(--space-3);
+                padding-right: 44px;
+                padding-top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
             
             .developer-popup-title {
                 font-size: 18px;
+                line-height: 32px;
             }
             
             .developer-popup-close-button {
-                top: var(--space-2);
-                right: var(--space-2);
+                top: var(--space-4);
+                right: var(--space-4);
                 width: 32px;
                 height: 32px;
                 font-size: 24px;
@@ -1252,7 +1258,10 @@
                 <div class="philosophy-carousel-container">
                     <div class="philosophy active" data-index="0" data-lang="zh" data-bg-color="#dbeafe">
                         <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白冇嘢講冇嘢寫?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="以為係自己英文廢？實情係中文都腦閉塞！想英文好？先及早醫腦，學用思考帽！"></span></p>
-                        <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
+                        <div class="philosophy-links-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-top: auto; padding-top: var(--space-4);">
+                            <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
+                            <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsluckydraw.html">🎲</span><a href="6hats/6hatsluckydraw.html">6 Hats Lucky Draw<span class="link-separator">•</span><span class="link-cantonese">帽思考</span></a></span>
+                        </div>
                     </div>
                     
                     
@@ -1261,7 +1270,7 @@
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
                     </div>
                     <div class="philosophy" data-index="1" data-lang="zh" data-bg-color="#e0f2fe">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="學英文必定要練<em>中英轉換</em>？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="絕對係！如果你母語係中文，又想學好英文，中英轉換訓練絕對係最核心一關鍵！"></span></p>
+                        <p><span class="toggle-text philosophy-title" data-text-zh="學英文必定要練<em>中英轉換</em>？"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="絕對係！如果你母語係中文，又想學好英文，中英轉換訓練絕對係最核心關鍵！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="resources/codeswitch/index.html">🤸</span><a href="resources/codeswitch/index.html">CodeSwitch<span class="link-separator">•</span><span class="link-cantonese">反轉中英</span></a></span>
                     </div>
                     
@@ -1548,13 +1557,16 @@
                 if (!contentWrapper) {
                     const p = newItem.querySelector('p');
                     const linkContainer = newItem.querySelector('.philosophy-link-container');
+                    const linksWrapper = newItem.querySelector('.philosophy-links-wrapper');
                     if (p) {
                         contentWrapper = document.createElement('div');
                         contentWrapper.className = 'philosophy-content';
                         p.parentNode.insertBefore(contentWrapper, p);
                         contentWrapper.appendChild(p);
-                        // Ensure link container stays outside the wrapper
-                        if (linkContainer && linkContainer.parentNode !== newItem) {
+                        // Ensure link container or links wrapper stays outside the wrapper
+                        if (linksWrapper && linksWrapper.parentNode !== newItem) {
+                            newItem.appendChild(linksWrapper);
+                        } else if (linkContainer && linkContainer.parentNode !== newItem) {
                             newItem.appendChild(linkContainer);
                         }
                     }
@@ -1637,12 +1649,18 @@
                 // Wrap content in philosophy-content div for zoom animation (but exclude link container)
                 if (p && !item.querySelector('.philosophy-content')) {
                     const linkContainer = item.querySelector('.philosophy-link-container');
+                    const linksWrapper = item.querySelector('.philosophy-links-wrapper');
                     const contentWrapper = document.createElement('div');
                     contentWrapper.className = 'philosophy-content';
                     p.parentNode.insertBefore(contentWrapper, p);
                     contentWrapper.appendChild(p);
-                    // Make sure link container stays outside the wrapper
-                    if (linkContainer && linkContainer.parentNode === item) {
+                    // Make sure link container or links wrapper stays outside the wrapper
+                    if (linksWrapper && linksWrapper.parentNode === item) {
+                        // Links wrapper is already outside, good
+                    } else if (linksWrapper) {
+                        // Move links wrapper outside if it's inside
+                        item.appendChild(linksWrapper);
+                    } else if (linkContainer && linkContainer.parentNode === item) {
                         // Link container is already outside, good
                     } else if (linkContainer) {
                         // Move link container outside if it's inside
