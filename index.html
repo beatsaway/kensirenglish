@@ -80,6 +80,10 @@
             margin-top: 2px; 
             letter-spacing: 0.3px; 
         }
+        
+        .header-subtitle-black {
+            color: var(--color-text);
+        }
 
         .navbar {
             display: flex;
@@ -373,6 +377,26 @@
             display: inline-flex;
             margin-bottom: 0;
             text-align: left;
+        }
+        
+        .philosophy .philosophy-title .letter {
+            display: inline-block;
+            animation: subtleJump 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes subtleJump {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-1.5px) rotate(-0.5deg);
+            }
+            50% {
+                transform: translateY(-2px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-1px) rotate(0.5deg);
+            }
         }
         
         .philosophy .philosophy-title strong {
@@ -1105,7 +1129,7 @@
         <div class="header-container">
             <div class="header-title-container" id="headerTitleContainer">
                 <div class="header-title">🥢 Learning English <span class="italic">as Cantonese Speakers</span></div>
-                <div class="header-subtitle">用廣東話學英文 ©kensirenglish.com</div>
+                <div class="header-subtitle">用廣東話<span class="header-subtitle-black">學英文</span> ©kensirenglish.com</div>
             </div>
             <nav class="navbar">
                 <div class="nav-item">
@@ -1277,8 +1301,8 @@
             <div class="developer-popup-body">
                 <div class="developer-popup-intro">
                     <div class="developer-popup-paragraph">
-                        <div class="cantonese-text">本站作者 Kenneth Wong 為居英十年港人，於英國中學任教及擔任班主任其間，指導過百名英語為非母語學童，活用其母語去掌握好英文。事實上，用母語去掌握外語，唔只成效極快，而且係所有外語者學英文必經之路！</div>
-                        <div class="english-text">The author, Kenneth Wong, is a Hong Kong native who's lived in the UK for a decade. While teaching and serving as form tutor in British secondary schools, he's helped over a hundred EAL students actively use their mother tongue as a bridge to learn English. Turns out, using your first language to learn a second isn't just highly effective—it's the inevitable path for all language learners.</div>
+                        <div class="cantonese-text">本站作者 Kenneth Wong 為居英十年港人，於英國中學任教及擔任班主任其間，指導過百名英語為非母語學童，活用其母語去掌握好英文。原來，用母語去掌握外語，唔只成效極快，而且係所有外語者學英文必經之路！</div>
+                        <div class="english-text">The author, Kenneth Wong, is a Hong Kong native who's lived in the UK for a decade. While teaching and serving as form tutor in British secondary schools, he's helped over hundreds of EAL students actively use their mother tongue as a bridge to learn English. Turns out, using your first language to learn a second isn't just highly effective—it's the inevitable path for all language learners.</div>
                     </div>
                     
                     <div class="developer-popup-paragraph">
@@ -1714,6 +1738,128 @@
                     developerPopup.classList.remove('visible');
                 }
             });
+        })();
+        
+        // Letter-by-letter animation for philosophy titles
+        (function() {
+            'use strict';
+            
+            // Function to split text into characters, preserving emojis
+            function splitText(text) {
+                return Array.from(text);
+            }
+            
+            function animatePhilosophyTitle(titleElement) {
+                if (!titleElement) return;
+                
+                // Find the strong tag inside the title
+                const strongTag = titleElement.querySelector('strong');
+                if (!strongTag) return;
+                
+                // Get the current text content (which may include HTML tags like <em>)
+                const text = strongTag.innerHTML;
+                if (!text) return;
+                
+                // Create a temporary element to parse HTML tags
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = text;
+                
+                // Process the text node by node
+                function processNode(node, parent, charIndex) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const chars = splitText(node.textContent);
+                        chars.forEach(char => {
+                            if (char === ' ') {
+                                parent.appendChild(document.createTextNode(' '));
+                            } else {
+                                const span = document.createElement('span');
+                                span.className = 'letter';
+                                span.textContent = char;
+                                span.style.animationDelay = `${charIndex * 0.05}s`;
+                                parent.appendChild(span);
+                                charIndex++;
+                            }
+                        });
+                        return charIndex;
+                    } else if (node.nodeType === Node.ELEMENT_NODE) {
+                        const newElement = node.cloneNode(false);
+                        let currentIndex = charIndex;
+                        Array.from(node.childNodes).forEach(child => {
+                            currentIndex = processNode(child, newElement, currentIndex);
+                        });
+                        parent.appendChild(newElement);
+                        return currentIndex;
+                    }
+                    return charIndex;
+                }
+                
+                // Clear and rebuild the strong tag with animated letters
+                strongTag.innerHTML = '';
+                let charIndex = 0;
+                Array.from(tempDiv.childNodes).forEach(node => {
+                    charIndex = processNode(node, strongTag, charIndex);
+                });
+            }
+            
+            function initPhilosophyTitlesAnimation() {
+                const philosophyTitles = document.querySelectorAll('.philosophy-title');
+                philosophyTitles.forEach(title => {
+                    animatePhilosophyTitle(title);
+                });
+            }
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initPhilosophyTitlesAnimation);
+            } else {
+                // Wait a bit for the carousel to initialize
+                setTimeout(initPhilosophyTitlesAnimation, 100);
+            }
+            
+            // Re-animate when carousel changes slides (titles get updated)
+            const carouselContainer = document.querySelector('.philosophy-carousel-container');
+            if (carouselContainer) {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                            mutation.target.querySelectorAll && mutation.target.querySelectorAll('.philosophy-title').forEach(title => {
+                                const strongTag = title.querySelector('strong');
+                                if (strongTag && !strongTag.querySelector('.letter')) {
+                                    animatePhilosophyTitle(title);
+                                }
+                            });
+                        }
+                    });
+                });
+                
+                observer.observe(carouselContainer, { 
+                    childList: true, 
+                    subtree: true,
+                    characterData: true
+                });
+            }
+            
+            // Also hook into the carousel's showSlide function if possible
+            // This will re-animate titles when slides change
+            setTimeout(function() {
+                const philosophyItems = document.querySelectorAll('.philosophy');
+                philosophyItems.forEach(item => {
+                    const title = item.querySelector('.philosophy-title');
+                    if (title) {
+                        // Re-animate when item becomes active
+                        const observer = new MutationObserver(function(mutations) {
+                            mutations.forEach(function(mutation) {
+                                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                    if (item.classList.contains('active')) {
+                                        setTimeout(() => animatePhilosophyTitle(title), 50);
+                                    }
+                                }
+                            });
+                        });
+                        observer.observe(item, { attributes: true });
+                    }
+                });
+            }, 500);
         })();
     </script>
 </body>
