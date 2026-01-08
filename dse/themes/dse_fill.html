@@ -31,7 +31,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: var(--color-bg);
             color: var(--color-text);
-            line-height: 1.5;
+            line-height: 1.3;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -53,8 +53,9 @@
             padding: 4px var(--space-4) 4px var(--space-2);
             flex-shrink: 0;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             gap: var(--space-2);
+            position: relative;
             border-bottom: 1px solid var(--color-border);
         }
 
@@ -63,6 +64,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: center;
             margin-right: var(--space-1);
         }
 
@@ -100,14 +102,40 @@
             opacity: 0.7;
         }
 
-        .header-dropdowns {
-            flex: 1;
+        .header-right {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .randomize-checkbox {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            font-size: 12px;
+            color: var(--color-text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .randomize-checkbox input[type="checkbox"] {
+            cursor: pointer;
+            width: 14px;
+            height: 14px;
+        }
+
+        .filter-bar {
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-1) var(--space-4);
             display: flex;
             align-items: stretch;
             gap: 0;
+            flex-shrink: 0;
         }
 
-        .header-dropdowns select {
+        .filter-bar select {
             flex: 1;
             padding: 4px var(--space-2);
             border: none;
@@ -122,53 +150,200 @@
             font-family: inherit;
         }
 
-        .header-dropdowns select:last-child {
+        .filter-bar select:last-child {
             border-right: none;
         }
 
-        .header-dropdowns select:hover {
-            background: var(--color-surface);
-        }
-
-        .header-dropdowns select:focus {
+        .filter-bar select:focus {
             outline: none;
-            background: var(--color-surface);
         }
 
         .content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            min-height: 0;
+        }
+
+        main {
+            flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: var(--space-3) var(--space-2);
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .exercise-item {
-            margin-bottom: var(--space-2);
+            width: 100%;
             padding: 0;
             background: var(--color-bg);
-            border-bottom: 1px solid var(--color-border);
+            display: none;
         }
 
-        .exercise-item:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
+        .exercise-item.active {
+            display: block;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+            flex-shrink: 0;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            color: var(--color-text-secondary);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 400;
+            transition: color 0.15s ease;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            color: var(--color-text);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .nav-slider-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            max-width: 300px;
+            min-width: 0;
+        }
+
+        .nav-slider {
+            flex: 1;
+            height: 2px;
+            background: var(--color-border);
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .nav-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--color-text);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .nav-slider::-webkit-slider-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+
+        .nav-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: var(--color-text);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            transition: background 0.15s ease;
+        }
+
+        .nav-slider::-moz-range-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+
+        .exercise-counter {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            padding: 0 var(--space-1);
+            font-weight: 400;
+            flex-shrink: 0;
+            min-width: 45px;
+            text-align: center;
         }
 
         .policy-title {
-            font-weight: 400;
-            color: #4682B4;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+            font-size: 28px;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+
+        .policy-title-chinese {
+            font-weight: 600;
+            color: var(--color-text);
+            display: block;
             margin-bottom: var(--space-1);
-            font-size: 15px;
-            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .policy-title-english {
+            font-weight: 400;
+            color: var(--color-text);
+            font-size: 20px;
+            display: block;
+            opacity: 0.85;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: var(--space-3) var(--space-2);
+            }
+            
+            .policy-title {
+                font-size: 24px;
+            }
+            
+            .policy-title-chinese {
+                font-size: 24px;
+            }
+            
+            .policy-title-english {
+                font-size: 18px;
+            }
         }
 
         .theme-label {
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #4682B4;
-            margin-bottom: var(--space-1);
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
             display: inline-block;
+            font-weight: 500;
         }
 
         .type-label {
@@ -181,6 +356,7 @@
             padding: 2px 6px;
             border: 1px solid var(--color-border);
             background: var(--color-surface);
+            font-weight: 500;
         }
 
         .keywords-section {
@@ -202,20 +378,33 @@
         .keywords-container {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--space-1);
-            margin-bottom: var(--space-1);
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+
+        .keywords-container-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+            flex-shrink: 0;
+            min-height: 0;
+            justify-content: center;
         }
 
         .keyword {
-            padding: 4px 8px;
+            padding: 6px 12px;
             background: var(--color-bg);
-            color: #9370DB;
+            color: var(--color-text);
             border: 1px solid var(--color-border);
             cursor: pointer;
             user-select: none;
             font-size: 14px;
             font-weight: 400;
             transition: background 0.15s ease, border-color 0.15s ease;
+            border-radius: 4px;
         }
 
         .keyword:hover {
@@ -229,11 +418,20 @@
             border-width: 2px;
         }
 
+        .paragraph-group {
+            margin-bottom: var(--space-3);
+        }
+
+        .paragraph-group:last-child {
+            margin-bottom: 0;
+        }
+
         .paragraph {
             line-height: 1.5;
-            font-size: 15px;
+            font-size: 16px;
             color: var(--color-text);
-            margin-bottom: var(--space-1);
+            margin-bottom: var(--space-2);
+            font-weight: 400;
         }
 
         .blank {
@@ -248,6 +446,8 @@
             vertical-align: baseline;
             cursor: pointer;
             transition: background 0.15s ease, border-color 0.15s ease;
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .blank:hover {
@@ -274,14 +474,14 @@
         .blank-content {
             display: inline-block;
             color: var(--color-text);
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .chinese-text {
             color: var(--color-text-secondary);
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: var(--space-1);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Mode-based visibility */
@@ -295,7 +495,7 @@
             display: block;
         }
 
-        .mode-no-keywords .keywords-container {
+        .mode-no-keywords .keywords-container-bottom {
             display: none;
         }
 
@@ -309,21 +509,42 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <span class="header-label">Theme-based Fill-in-Blanks<span class="separator">•✏️</span>主題填充練習</span>
+                <span class="header-label">Fill in blanks by themes<span class="separator">•✏️</span>主題填充</span>
                 <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
             </div>
-            <div class="header-dropdowns">
-                <select id="modeSelect">
-                    <option value="default">With Keywords</option>
-                    <option value="no-keywords">No Keywords</option>
-                    <option value="keyword-only">Keywords Only</option>
-                </select>
-                <select id="themeSelect">
-                    <option value="all">All Themes</option>
-                </select>
+            <div class="header-right">
+                <label class="randomize-checkbox">
+                    <input type="checkbox" id="randomizeCheckbox">
+                    <span>Random Order 隨機次序</span>
+                </label>
             </div>
         </div>
-        <div class="content" id="content"></div>
+        <div class="filter-bar">
+            <select id="modeSelect">
+                <option value="default">With Keywords</option>
+                <option value="no-keywords">No Keywords</option>
+                <option value="keyword-only">Keywords Only</option>
+            </select>
+            <select id="themeSelect">
+                <option value="all">All Themes</option>
+            </select>
+        </div>
+        <div class="content">
+            <main>
+                <div class="content-wrapper">
+                    <div id="carouselWrapper"></div>
+                </div>
+            </main>
+            <div class="keywords-container-bottom" id="keywordsContainerBottom"></div>
+            <div class="nav-controls">
+                <button class="nav-button" id="prevButton" aria-label="Previous">‹</button>
+                <div class="nav-slider-container">
+                    <input type="range" class="nav-slider" id="navSlider" min="1" max="1" value="1" aria-label="Navigate exercises">
+                </div>
+                <div class="exercise-counter" id="exerciseCounter">1 / 1</div>
+                <button class="nav-button" id="nextButton" aria-label="Next">›</button>
+            </div>
+        </div>
     </div>
 
     <script src="exercises_data.js"></script>
@@ -332,6 +553,9 @@
         let selectedKeyword = null;
         let currentTheme = 'all';
         let currentMode = 'default';
+        let shuffledExercises = [];
+        let currentIndex = 0;
+        let randomizeEnabled = false;
 
         function shuffleArray(array) {
             const shuffled = [...array];
@@ -345,7 +569,47 @@
         function init() {
             setupModeFilter();
             setupThemeFilter();
+            setupRandomizeCheckbox();
+            setupNavigation();
             renderExercises();
+        }
+
+        function setupRandomizeCheckbox() {
+            const randomizeCheckbox = document.getElementById('randomizeCheckbox');
+            randomizeCheckbox.addEventListener('change', (e) => {
+                randomizeEnabled = e.target.checked;
+                // Force re-render to apply randomization
+                currentIndex = 0;
+                renderExercises();
+            });
+        }
+
+        function setupNavigation() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const navSlider = document.getElementById('navSlider');
+
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateDisplay();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < shuffledExercises.length - 1) {
+                    currentIndex++;
+                    updateDisplay();
+                }
+            });
+
+            navSlider.addEventListener('input', (e) => {
+                const newIndex = parseInt(e.target.value) - 1;
+                if (newIndex !== currentIndex && newIndex >= 0 && newIndex < shuffledExercises.length) {
+                    currentIndex = newIndex;
+                    updateDisplay();
+                }
+            });
         }
 
         function setupModeFilter() {
@@ -375,19 +639,31 @@
         }
 
         function renderExercises() {
-            const content = document.getElementById('content');
-            content.innerHTML = '';
+            const carouselWrapper = document.getElementById('carouselWrapper');
+            carouselWrapper.innerHTML = '';
 
             // Apply mode class to content container
+            const content = document.querySelector('.content');
             content.className = `content mode-${currentMode}`;
 
-            const filteredExercises = currentTheme === 'all' 
-                ? exercises 
+            // Filter exercises
+            let filteredExercises = currentTheme === 'all' 
+                ? [...exercises] 
                 : exercises.filter(ex => ex.theme === currentTheme);
+            
+            // Shuffle only if randomize is enabled
+            if (randomizeEnabled) {
+                shuffledExercises = shuffleArray(filteredExercises);
+            } else {
+                // Use original order (create a new array to avoid reference issues)
+                shuffledExercises = [...filteredExercises];
+            }
+            currentIndex = 0;
 
-            filteredExercises.forEach((exercise) => {
+            // Create exercise items
+            shuffledExercises.forEach((exercise, index) => {
                 const exerciseDiv = document.createElement('div');
-                exerciseDiv.className = 'exercise-item';
+                exerciseDiv.className = `exercise-item ${index === 0 ? 'active' : ''}`;
 
                 const themeLabel = document.createElement('div');
                 themeLabel.className = 'theme-label';
@@ -400,38 +676,29 @@
 
                 const policyTitle = document.createElement('div');
                 policyTitle.className = 'policy-title';
-                policyTitle.appendChild(document.createTextNode(exercise.title));
-                policyTitle.appendChild(document.createElement('br'));
+                const titleChineseSpan = document.createElement('span');
+                titleChineseSpan.className = 'policy-title-chinese';
+                titleChineseSpan.textContent = exercise.title;
+                policyTitle.appendChild(titleChineseSpan);
                 const titleEnSpan = document.createElement('span');
-                titleEnSpan.style.cssText = "color: #4682B4; font-size: 14px;";
+                titleEnSpan.className = 'policy-title-english';
                 titleEnSpan.textContent = exercise.titleEn;
                 policyTitle.appendChild(titleEnSpan);
                 exerciseDiv.appendChild(policyTitle);
 
-                const keywordsContainer = document.createElement('div');
-                keywordsContainer.className = 'keywords-container';
-                // Randomize keywords order
-                const shuffledKeywords = shuffleArray(exercise.keywords);
-                shuffledKeywords.forEach((keyword) => {
-                    const keywordEl = document.createElement('div');
-                    keywordEl.className = 'keyword';
-                    keywordEl.textContent = keyword;
-                    keywordEl.dataset.keyword = keyword;
-                    keywordEl.addEventListener('click', () => handleKeywordClick(keywordEl));
-                    keywordsContainer.appendChild(keywordEl);
-                });
-                exerciseDiv.appendChild(keywordsContainer);
-
                 exercise.paragraphs.forEach((para, paraIndex) => {
+                    const paragraphGroup = document.createElement('div');
+                    paragraphGroup.className = 'paragraph-group';
+                    
                     const chineseDiv = document.createElement('div');
                     chineseDiv.className = 'chinese-text';
                     chineseDiv.textContent = para.chinese;
-                    exerciseDiv.appendChild(chineseDiv);
+                    paragraphGroup.appendChild(chineseDiv);
 
                     const paraDiv = document.createElement('div');
                     paraDiv.className = 'paragraph';
                     paraDiv.innerHTML = para.english;
-                    exerciseDiv.appendChild(paraDiv);
+                    paragraphGroup.appendChild(paraDiv);
 
                     const blanks = paraDiv.querySelectorAll('.blank');
                     blanks.forEach(blank => {
@@ -440,17 +707,85 @@
                         }
                         blank.addEventListener('click', () => handleBlankClick(blank));
                     });
+                    
+                    exerciseDiv.appendChild(paragraphGroup);
                 });
 
-                content.appendChild(exerciseDiv);
+                carouselWrapper.appendChild(exerciseDiv);
             });
+
+            updateNavigation();
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            // Update active exercise
+            const exerciseItems = document.querySelectorAll('.exercise-item');
+            exerciseItems.forEach((item, index) => {
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update keywords container for current exercise
+            updateKeywordsContainer();
+
+            // Reset keyword selection when changing exercises
+            selectedKeyword = null;
+
+            updateNavigation();
+        }
+
+        function updateKeywordsContainer() {
+            const keywordsContainerBottom = document.getElementById('keywordsContainerBottom');
+            keywordsContainerBottom.innerHTML = '';
+
+            if (shuffledExercises.length === 0 || currentIndex >= shuffledExercises.length) {
+                return;
+            }
+
+            const currentExercise = shuffledExercises[currentIndex];
+            if (!currentExercise || !currentExercise.keywords) {
+                return;
+            }
+
+            // Randomize keywords order
+            const shuffledKeywords = shuffleArray(currentExercise.keywords);
+            shuffledKeywords.forEach((keyword) => {
+                const keywordEl = document.createElement('div');
+                keywordEl.className = 'keyword';
+                keywordEl.textContent = keyword;
+                keywordEl.dataset.keyword = keyword;
+                keywordEl.addEventListener('click', () => handleKeywordClick(keywordEl));
+                keywordsContainerBottom.appendChild(keywordEl);
+            });
+        }
+
+        function updateNavigation() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const navSlider = document.getElementById('navSlider');
+            const exerciseCounter = document.getElementById('exerciseCounter');
+
+            // Update buttons
+            prevButton.disabled = currentIndex === 0;
+            nextButton.disabled = currentIndex === shuffledExercises.length - 1;
+
+            // Update slider
+            navSlider.max = shuffledExercises.length;
+            navSlider.value = currentIndex + 1;
+
+            // Update counter
+            exerciseCounter.textContent = `${currentIndex + 1} / ${shuffledExercises.length}`;
         }
 
         function handleKeywordClick(keywordEl) {
             // Handle keywords only mode - reveal paragraphs with answers
             if (currentMode === 'keyword-only') {
-                // Find the parent exercise item
-                const exerciseItem = keywordEl.closest('.exercise-item');
+                // Find the active exercise item
+                const exerciseItem = document.querySelector('.exercise-item.active');
                 if (!exerciseItem) return;
 
                 // Get all paragraphs and chinese text in this exercise
