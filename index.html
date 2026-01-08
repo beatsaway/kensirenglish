@@ -1549,8 +1549,8 @@
                 const carouselContainer = document.querySelector('.philosophy-carousel-container');
                 const bgColor = newItem.getAttribute('data-bg-color');
                 if (carouselContainer && bgColor) {
-                    // Create radial gradient from center to edge
-                    carouselContainer.style.backgroundImage = `radial-gradient(circle at center, ${bgColor} 0%, ${bgColor} 40%, rgba(250, 251, 252, 0.8) 70%, var(--color-bg) 100%)`;
+                    // Create radial gradient from white center to colored edges
+                    carouselContainer.style.backgroundImage = `radial-gradient(circle at center, var(--color-bg) 0%, rgba(250, 251, 252, 0.8) 30%, ${bgColor} 60%, ${bgColor} 100%)`;
                 }
                 
                 // Update indicators
@@ -1709,8 +1709,8 @@
             if (carouselContainer && firstItem) {
                 const initialBgColor = firstItem.getAttribute('data-bg-color');
                 if (initialBgColor) {
-                    // Create radial gradient from center to edge
-                    carouselContainer.style.backgroundImage = `radial-gradient(circle at center, ${initialBgColor} 0%, ${initialBgColor} 40%, rgba(250, 251, 252, 0.8) 70%, var(--color-bg) 100%)`;
+                    // Create radial gradient from white center to colored edges
+                    carouselContainer.style.backgroundImage = `radial-gradient(circle at center, var(--color-bg) 0%, rgba(250, 251, 252, 0.8) 30%, ${initialBgColor} 60%, ${initialBgColor} 100%)`;
                 }
             }
             
