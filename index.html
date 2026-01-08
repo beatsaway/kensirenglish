@@ -26,7 +26,7 @@
         }
 
         header {
-            background: var(--color-surface);
+
             padding: 0; 
             flex-shrink: 0; 
             position: sticky;
@@ -159,7 +159,7 @@
             left: 50%;
             margin-left: -50vw;
             width: 100vw;
-            background: var(--color-surface);
+
             padding: var(--space-3) var(--space-4);
             display: none;
             opacity: 0;
@@ -293,7 +293,7 @@
             flex: 1;
             min-height: 400px;
             border-radius: 16px;
-            background: var(--color-bg);
+
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -374,7 +374,7 @@
         }
         
         .philosophy-link-container a {
-            color: #2563eb !important;
+            color: var(--color-text);
             text-decoration: none;
             transition: opacity 0.2s ease;
         }
@@ -419,7 +419,7 @@
         }
         
         .philosophy .ptitle .chinese-char {
-            font-family: "LXGW WenKai TC", sans-serif;
+            font-family: inherit;
         }
         
         /* Remove LXGW font from descriptions */
@@ -446,22 +446,8 @@
         
         .philosophy .ptitle .letter {
             display: inline-block;
-            animation: subtleJump 2.5s ease-in-out infinite;
-        }
-        
-        @keyframes subtleJump {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-1.5px) rotate(-0.5deg);
-            }
-            50% {
-                transform: translateY(-2px) rotate(0deg);
-            }
-            75% {
-                transform: translateY(-1px) rotate(0.5deg);
-            }
+            opacity: 0;
+            animation: charPopup 0.3s ease-out forwards;
         }
         
         .philosophy .ptitle strong {
@@ -1704,13 +1690,24 @@
                         const wrapped = wrapChineseChars(zhText);
                         pdescription.innerHTML = '';
                         Array.from(wrapped.childNodes).forEach(n => pdescription.appendChild(n));
-                        // Animate description characters after content is set
+                        // Animate title first, then description after title finishes
                         setTimeout(() => {
-                            if (typeof window.animatePhilosophyDescription === 'function') {
+                            if (typeof window.animatePhilosophyTitle === 'function' && ptitle) {
+                                const charCount = window.animatePhilosophyTitle(ptitle);
+                                const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                                if (typeof window.animatePhilosophyDescription === 'function') {
+                                    window.animatePhilosophyDescription(pdescription, titleDuration);
+                                }
+                            } else if (typeof window.animatePhilosophyDescription === 'function') {
                                 window.animatePhilosophyDescription(pdescription);
                             }
                         }, 100);
                     }
+                } else if (ptitle && typeof window.animatePhilosophyTitle === 'function') {
+                    // If no description, just animate title
+                    setTimeout(() => {
+                        window.animatePhilosophyTitle(ptitle);
+                    }, 100);
                 }
                 
                 philosophy.setAttribute('data-lang', 'zh');
@@ -1982,7 +1979,7 @@
         (function() {
             'use strict';
             
-            window.animatePhilosophyDescription = function(descriptionElement) {
+            window.animatePhilosophyDescription = function(descriptionElement, delayMs = 0) {
                 if (!descriptionElement) return;
                 
                 // Get the current HTML content (preserve any existing structure)
@@ -2017,7 +2014,9 @@
                                 const span = document.createElement('span');
                                 span.className = 'char';
                                 span.textContent = char;
-                                span.style.animationDelay = `${charIndex * 0.2}s`;
+                                // Add the delay to each character's animation delay
+                                const baseDelay = delayMs / 1000; // Convert ms to seconds
+                                span.style.animationDelay = `${baseDelay + charIndex * 0.2}s`;
                                 parent.appendChild(span);
                                 charIndex++;
                             }
@@ -2043,12 +2042,9 @@
                 });
             }
             
-            // Initialize descriptions animation
+            // Initialize descriptions animation (now handled by title animation init)
             function initPhilosophyDescriptionsAnimation() {
-                const descriptions = document.querySelectorAll('.pdescription');
-                descriptions.forEach(desc => {
-                    window.animatePhilosophyDescription(desc);
-                });
+                // Descriptions are now animated after titles, so this is handled in title init
             }
             
             // Initialize when DOM is ready
@@ -2066,7 +2062,17 @@
                         if (mutation.type === 'childList' || mutation.type === 'characterData') {
                             mutation.target.querySelectorAll && mutation.target.querySelectorAll('.pdescription').forEach(desc => {
                                 if (!desc.querySelector('.char')) {
-                                    window.animatePhilosophyDescription(desc);
+                                    const philosophy = desc.closest('.philosophy');
+                                    if (philosophy) {
+                                        const title = philosophy.querySelector('.ptitle');
+                                        if (title && typeof window.animatePhilosophyTitle === 'function') {
+                                            const charCount = window.animatePhilosophyTitle(title);
+                                            const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                                            window.animatePhilosophyDescription(desc, titleDuration);
+                                        } else {
+                                            window.animatePhilosophyDescription(desc);
+                                        }
+                                    }
                                 }
                             });
                         }
@@ -2090,7 +2096,14 @@
                             mutations.forEach(function(mutation) {
                                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                                     if (item.classList.contains('active')) {
-                                        setTimeout(() => window.animatePhilosophyDescription(desc), 50);
+                                        const title = item.querySelector('.ptitle');
+                                        if (title && typeof window.animatePhilosophyTitle === 'function') {
+                                            const charCount = window.animatePhilosophyTitle(title);
+                                            const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                                            setTimeout(() => window.animatePhilosophyDescription(desc, titleDuration), 50);
+                                        } else {
+                                            setTimeout(() => window.animatePhilosophyDescription(desc), 50);
+                                        }
                                     }
                                 }
                             });
@@ -2110,16 +2123,16 @@
                 return Array.from(text);
             }
             
-            function animatePhilosophyTitle(titleElement) {
-                if (!titleElement) return;
+            window.animatePhilosophyTitle = function(titleElement) {
+                if (!titleElement) return 0;
                 
                 // Find the strong tag inside the title
                 const strongTag = titleElement.querySelector('strong');
-                if (!strongTag) return;
+                if (!strongTag) return 0;
                 
                 // Get the current text content (which may include HTML tags like <em>)
                 const text = strongTag.innerHTML;
-                if (!text) return;
+                if (!text) return 0;
                 
                 // Create a temporary element to parse HTML tags
                 const tempDiv = document.createElement('div');
@@ -2136,7 +2149,7 @@
                                 const span = document.createElement('span');
                                 span.className = 'letter';
                                 span.textContent = char;
-                                span.style.animationDelay = `${charIndex * 0.05}s`;
+                                span.style.animationDelay = `${charIndex * 0.02}s`;
                                 parent.appendChild(span);
                                 charIndex++;
                             }
@@ -2160,12 +2173,25 @@
                 Array.from(tempDiv.childNodes).forEach(node => {
                     charIndex = processNode(node, strongTag, charIndex);
                 });
+                
+                // Return the number of characters for duration calculation
+                return charIndex;
             }
             
             function initPhilosophyTitlesAnimation() {
                 const philosophyTitles = document.querySelectorAll('.ptitle');
                 philosophyTitles.forEach(title => {
-                    animatePhilosophyTitle(title);
+                    const charCount = window.animatePhilosophyTitle(title);
+                    // Animate description after title finishes
+                    const philosophy = title.closest('.philosophy');
+                    if (philosophy) {
+                        const desc = philosophy.querySelector('.pdescription');
+                        if (desc && typeof window.animatePhilosophyDescription === 'function') {
+                            // Calculate title animation duration: (charCount - 1) * 20ms + 300ms (animation duration)
+                            const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                            window.animatePhilosophyDescription(desc, titleDuration);
+                        }
+                    }
                 });
             }
             
@@ -2186,7 +2212,16 @@
                             mutation.target.querySelectorAll && mutation.target.querySelectorAll('.ptitle').forEach(title => {
                                 const strongTag = title.querySelector('strong');
                                 if (strongTag && !strongTag.querySelector('.letter')) {
-                                    animatePhilosophyTitle(title);
+                                    const charCount = window.animatePhilosophyTitle(title);
+                                    // Animate description after title finishes
+                                    const philosophy = title.closest('.philosophy');
+                                    if (philosophy) {
+                                        const desc = philosophy.querySelector('.pdescription');
+                                        if (desc && typeof window.animatePhilosophyDescription === 'function') {
+                                            const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                                            window.animatePhilosophyDescription(desc, titleDuration);
+                                        }
+                                    }
                                 }
                             });
                         }
@@ -2212,7 +2247,15 @@
                             mutations.forEach(function(mutation) {
                                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                                     if (item.classList.contains('active')) {
-                                        setTimeout(() => animatePhilosophyTitle(title), 50);
+                                        setTimeout(() => {
+                                            const charCount = window.animatePhilosophyTitle(title);
+                                            // Animate description after title finishes
+                                            const desc = item.querySelector('.pdescription');
+                                            if (desc && typeof window.animatePhilosophyDescription === 'function') {
+                                                const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
+                                                window.animatePhilosophyDescription(desc, titleDuration);
+                                            }
+                                        }, 50);
                                     }
                                 }
                             });
