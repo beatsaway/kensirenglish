@@ -26,12 +26,12 @@
         }
 
         header {
-
             padding: 0; 
             flex-shrink: 0; 
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            background: var(--color-bg);
         }
 
         .header-container {
@@ -159,7 +159,7 @@
             left: 50%;
             margin-left: -50vw;
             width: 100vw;
-
+            background: var(--color-surface);
             padding: var(--space-3) var(--space-4);
             display: none;
             opacity: 0;
@@ -167,7 +167,7 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border-bottom: 1px solid var(--border-color);
-            z-index: 101;
+            z-index: 1000;
             transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                         max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                         padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -306,7 +306,7 @@
             margin-top: 0;
             cursor: pointer;
             position: relative;
-            z-index: 100;
+            z-index: 1;
             vertical-align: middle;
             line-height: 1;
             flex-shrink: 0;
@@ -337,7 +337,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 10;
+            z-index: 1;
             min-height: 100%;
             box-sizing: border-box;
             flex-direction: column;
@@ -351,12 +351,12 @@
         .philosophy .toggle-text,
         .philosophy .research-link {
             position: relative;
-            z-index: 100;
+            z-index: 1;
         }
         
         .philosophy p {
             position: relative;
-            z-index: 100;
+            z-index: 1;
         }
         
         .philosophy-link-container {
@@ -368,7 +368,7 @@
             gap: var(--space-2);
             font-size: 1rem;
             color: var(--color-text-secondary);
-            z-index: 200;
+            z-index: 1;
             pointer-events: auto;
             flex-shrink: 0;
         }
