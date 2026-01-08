@@ -107,6 +107,14 @@
         .header-subtitle-black {
             color: var(--color-text);
         }
+        
+        .header-title .header-char,
+        .header-subtitle .header-char,
+        .nav-select-button .header-char {
+            display: inline-block;
+            opacity: 0;
+            animation: charPopup 0.3s ease-out forwards;
+        }
 
         .navbar {
             display: flex;
@@ -280,10 +288,14 @@
             border-radius: 16px;
             background: transparent;
             min-height: 400px;
-            display: flex;
+            display: none;
             flex-direction: column;
             box-sizing: border-box;
             align-self: center;
+        }
+        
+        .philosophy-carousel.visible {
+            display: flex;
         }
         
         .philosophy-carousel-container {
@@ -1348,12 +1360,12 @@
             <div class="philosophy-carousel">
                 <div class="philosophy-carousel-container">
                     <div class="philosophy active" data-index="1" data-lang="zh" data-bg-color="#fef3c7">
-                        <p><span class="ptitle" data-text-zh="I did it定I have done it？<br>I'm going定I'll go？ "><strong></strong></span> <span class="pdescription" data-text-zh="小學學咗6年Tenses都係一片混亂？其實只要學2步用廣東話轉，已經可以搞掂9隻!"></span></p>
+                        <p><span class="ptitle" data-text-zh="係I did it定係I have done it？<br>I'm going定I'll go？ "><strong></strong></span> <span class="pdescription" data-text-zh="小學學咗6年Tenses都係唔清唔楚？其實只要學2步用廣東話轉，已經可以搞掂9隻!"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="grammar/a1a2tenses/index.html">⏰</span><a href="grammar/a1a2tenses/index.html">The 9 Tenses<span class="link-separator">•</span><span class="link-cantonese">九隻時式</span></a></span>
                     </div>
                     
                     <div class="philosophy" data-index="0" data-lang="zh" data-bg-color="#dbeafe">
-                        <p><span class="ptitle" data-text-zh="個腦一片空白<em>冇嘢講冇嘢寫? </em>"><strong></strong></span> <span class="pdescription" data-text-zh="好多時唔關英文差事，而係用中文都冇嘢諗倒！想英文好？先及早醫腦，學用思考帽！"></span></p>
+                        <p><span class="ptitle" data-text-zh="個腦完全空白<em>冇嘢講冇嘢寫? </em>"><strong></strong></span> <span class="pdescription" data-text-zh="如果你用中文都諗唔倒嘢講，唔好講英文住！盡快及早醫腦，用<em>思考帽</em>啦！"></span></p>
                         <div class="philosophy-links-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-top: auto; padding-top: var(--space-4);">
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsluckydraw.html">🎲</span><a href="6hats/6hatsluckydraw.html">6 Hats Lucky Draw<span class="link-separator">•</span><span class="link-cantonese">帽思考</span></a></span>
@@ -1361,7 +1373,7 @@
                     </div>
                     
                     <div class="philosophy" data-index="2" data-lang="zh" data-bg-color="#f3e8ff">
-                        <p><span class="ptitle" data-text-zh="想英文勁，必須善用<em>廣東話</em>？"><strong></strong></span> <span class="pdescription" data-text-zh="中英思維轉換係學習必經之路，而唔係好多港人誤信以為要避免！"></span></p>
+                        <p><span class="ptitle" data-text-zh="想英文勁，要停用<em>中文</em>諗嘢？"><strong></strong></span> <span class="pdescription" data-text-zh="大錯特錯！中英思維轉換係學習必經之高速公路，愈避免用母語轉英文會學得愈慢！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
                     </div>
                     <div class="philosophy" data-index="3" data-lang="zh" data-bg-color="#e0f2fe">
@@ -1370,12 +1382,12 @@
                     </div>
                     
                     <div class="philosophy" data-index="4" data-lang="zh" data-bg-color="#d1fae5">
-                        <p><span class="ptitle" data-text-zh="寫文成日都<br>Last but not least?"><strong></strong></span> <span class="pdescription" data-text-zh="連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！"></span></p>
+                        <p><span class="ptitle" data-text-zh="寫文經常都<br>Last but not least?"><strong></strong></span> <span class="pdescription" data-text-zh="連接詞係寫作嘅必備元素，識用連接詞先可以寫出有邏輯、有層次嘅文章！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/connectives/connectives.html">🔗</span><a href="dse/connectives/connectives.html">Connectives<span class="link-separator">•</span><span class="link-cantonese">連接詞</span></a></span>
                     </div>
                     
                     <div class="philosophy" data-index="5" data-lang="zh" data-bg-color="#fce7f3">
-                        <p><span class="ptitle" data-text-zh="寫文成日都<br>I agree that？"><strong></strong></span> <span class="pdescription" data-text-zh="主題填充教你用更impressive嘅方式表達同意，用廣東話思維轉換成地道英文！"></span></p>
+                        <p><span class="ptitle" data-text-zh="寫文經常都<br>I agree that？"><strong></strong></span> <span class="pdescription" data-text-zh="主題填充教你用更impressive嘅方式表達同意，用廣東話思維轉換成地道英文！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="dse/themes/dse_fill.html">✏️</span><a href="dse/themes/dse_fill.html">Fill in blanks by themes<span class="link-separator">•</span><span class="link-cantonese">主題填充</span></a></span>
                     </div>
                     
@@ -1449,6 +1461,176 @@
         // Update immediately and then every second
         updateDateTime();
         setInterval(updateDateTime, 1000);
+        
+        // Header character animation function
+        function animateHeaderText(element, delayMs = 0) {
+            if (!element) return;
+            
+            // Get the current HTML content
+            const html = element.innerHTML;
+            if (!html) return;
+            
+            // Create a temporary element to parse HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            
+            // Process nodes and wrap characters
+            function processNode(node, parent, charIndex) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    const chars = Array.from(text);
+                    chars.forEach(char => {
+                        if (char === ' ') {
+                            parent.appendChild(document.createTextNode(' '));
+                        } else if (char === '\n') {
+                            parent.appendChild(document.createElement('br'));
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'header-char';
+                            span.textContent = char;
+                            const baseDelay = delayMs / 1000; // Convert ms to seconds
+                            span.style.animationDelay = `${baseDelay + charIndex * 0.02}s`;
+                            parent.appendChild(span);
+                            charIndex++;
+                        }
+                    });
+                    return charIndex;
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const newElement = node.cloneNode(false);
+                    let currentIndex = charIndex;
+                    Array.from(node.childNodes).forEach(child => {
+                        currentIndex = processNode(child, newElement, currentIndex);
+                    });
+                    parent.appendChild(newElement);
+                    return currentIndex;
+                }
+                return charIndex;
+            }
+            
+            // Clear and rebuild with animated characters
+            element.innerHTML = '';
+            let charIndex = 0;
+            Array.from(tempDiv.childNodes).forEach(node => {
+                charIndex = processNode(node, element, charIndex);
+            });
+        }
+        
+        // Animate header elements on page load
+        function initHeaderAnimations() {
+            // Animate title
+            const headerTitle = document.querySelector('.header-title');
+            let titleCharCount = 0;
+            if (headerTitle) {
+                animateHeaderText(headerTitle, 0);
+                const titleText = headerTitle.textContent || '';
+                titleCharCount = Array.from(titleText).filter(c => c !== ' ' && c !== '\n').length;
+            }
+            
+            // Animate subtitle after title
+            const headerSubtitle = document.querySelector('.header-subtitle');
+            let subtitleCharCount = 0;
+            let titleDelay = 0;
+            if (headerSubtitle && headerTitle) {
+                // Calculate delay: title characters * 20ms + some buffer
+                titleDelay = titleCharCount * 20 + 100; // 20ms per char + 100ms buffer
+                animateHeaderText(headerSubtitle, titleDelay);
+                
+                const subtitleText = headerSubtitle.textContent || '';
+                subtitleCharCount = Array.from(subtitleText).filter(c => c !== ' ' && c !== '\n').length;
+            }
+            
+            // Animate nav buttons sequentially after subtitle
+            const navButtons = document.querySelectorAll('.nav-select-button');
+            let finalAnimationTime = 0;
+            
+            if (navButtons.length > 0 && headerSubtitle) {
+                let navDelay = titleCharCount * 20 + subtitleCharCount * 20 + 200; // Previous animations + buffer
+                
+                navButtons.forEach((button, index) => {
+                    const originalHTML = button.innerHTML;
+                    
+                    // Process the button's text nodes
+                    function processButtonNode(node, parent, charIndex) {
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            const text = node.textContent;
+                            const chars = Array.from(text);
+                            chars.forEach(char => {
+                                if (char === ' ') {
+                                    parent.appendChild(document.createTextNode(' '));
+                                } else if (char === '\n') {
+                                    parent.appendChild(document.createElement('br'));
+                                } else {
+                                    const span = document.createElement('span');
+                                    span.className = 'header-char';
+                                    span.textContent = char;
+                                    const baseDelay = navDelay / 1000;
+                                    span.style.animationDelay = `${baseDelay + charIndex * 0.02}s`;
+                                    parent.appendChild(span);
+                                    charIndex++;
+                                }
+                            });
+                            return charIndex;
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            const newElement = node.cloneNode(false);
+                            let currentIndex = charIndex;
+                            Array.from(node.childNodes).forEach(child => {
+                                currentIndex = processButtonNode(child, newElement, currentIndex);
+                            });
+                            parent.appendChild(newElement);
+                            return currentIndex;
+                        }
+                        return charIndex;
+                    }
+                    
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = originalHTML;
+                    button.innerHTML = '';
+                    let charIndex = 0;
+                    Array.from(tempDiv.childNodes).forEach(node => {
+                        charIndex = processButtonNode(node, button, charIndex);
+                    });
+                    
+                    // Calculate delay for next button
+                    const buttonText = button.textContent || '';
+                    const buttonCharCount = Array.from(buttonText).filter(c => c !== ' ' && c !== '\n').length;
+                    
+                    // Calculate when this button's last character finishes (delay + chars * 20ms + animation duration 300ms)
+                    const buttonEndTime = navDelay + buttonCharCount * 20 + 300;
+                    finalAnimationTime = buttonEndTime;
+                    
+                    navDelay += buttonCharCount * 20 + 50; // 20ms per char + 50ms between buttons
+                });
+            } else {
+                // If no nav buttons, use subtitle end time
+                finalAnimationTime = titleDelay + subtitleCharCount * 20 + 300;
+            }
+            
+            // Initialize carousel after all header animations complete
+            setTimeout(() => {
+                // Show the carousel
+                const carousel = document.querySelector('.philosophy-carousel');
+                if (carousel) {
+                    carousel.classList.add('visible');
+                }
+                
+                // Initialize philosophy title and description animations
+                if (window.initPhilosophyTitlesAnimation) {
+                    window.initPhilosophyTitlesAnimation();
+                }
+                
+                // Start carousel auto-slide
+                if (window.startCarouselAnimation) {
+                    window.startCarouselAnimation();
+                }
+            }, finalAnimationTime);
+        }
+        
+        // Initialize header animations when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeaderAnimations);
+        } else {
+            setTimeout(initHeaderAnimations, 100);
+        }
         
         (function() {
             'use strict';
@@ -1690,24 +1872,8 @@
                         const wrapped = wrapChineseChars(zhText);
                         pdescription.innerHTML = '';
                         Array.from(wrapped.childNodes).forEach(n => pdescription.appendChild(n));
-                        // Animate title first, then description after title finishes
-                        setTimeout(() => {
-                            if (typeof window.animatePhilosophyTitle === 'function' && ptitle) {
-                                const charCount = window.animatePhilosophyTitle(ptitle);
-                                const titleDuration = (charCount > 0 ? (charCount - 1) * 20 : 0) + 300;
-                                if (typeof window.animatePhilosophyDescription === 'function') {
-                                    window.animatePhilosophyDescription(pdescription, titleDuration);
-                                }
-                            } else if (typeof window.animatePhilosophyDescription === 'function') {
-                                window.animatePhilosophyDescription(pdescription);
-                            }
-                        }, 100);
+                        // Don't animate here - animations will be triggered when carousel becomes visible
                     }
-                } else if (ptitle && typeof window.animatePhilosophyTitle === 'function') {
-                    // If no description, just animate title
-                    setTimeout(() => {
-                        window.animatePhilosophyTitle(ptitle);
-                    }, 100);
                 }
                 
                 philosophy.setAttribute('data-lang', 'zh');
@@ -1894,24 +2060,29 @@
                 }
             });
             
-            // Initialize first slide - calculate delay based on description
-            const firstItem = philosophyItems[0];
-            let initialDelay = 3000; // Base delay of 3 seconds
-            
-            if (firstItem) {
-                const description = firstItem.querySelector('.pdescription');
-                if (description) {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = description.getAttribute('data-text-zh') || '';
-                    const textLength = tempDiv.textContent.length;
-                    const animationTime = (textLength * 200) + 300;
-                    initialDelay = animationTime + 3000; // Animation time + 3 seconds
+            // Start carousel animation - called after header animations complete
+            function startCarousel() {
+                const firstItem = philosophyItems[0];
+                let initialDelay = 3000; // Base delay of 3 seconds
+                
+                if (firstItem) {
+                    const description = firstItem.querySelector('.pdescription');
+                    if (description) {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = description.getAttribute('data-text-zh') || '';
+                        const textLength = tempDiv.textContent.length;
+                        const animationTime = (textLength * 200) + 300;
+                        initialDelay = animationTime + 3000; // Animation time + 3 seconds
+                    }
                 }
+                
+                autoSlideTimeout = setTimeout(() => {
+                    nextSlide();
+                }, initialDelay);
             }
             
-            autoSlideTimeout = setTimeout(() => {
-                nextSlide();
-            }, initialDelay);
+            // Expose function to be called by header animation completion
+            window.startCarouselAnimation = startCarousel;
         })();
         
         // Developer popup functionality
@@ -2047,12 +2218,8 @@
                 // Descriptions are now animated after titles, so this is handled in title init
             }
             
-            // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initPhilosophyDescriptionsAnimation);
-            } else {
-                setTimeout(initPhilosophyDescriptionsAnimation, 100);
-            }
+            // Expose function to be called after header animations complete
+            window.initPhilosophyDescriptionsAnimation = initPhilosophyDescriptionsAnimation;
             
             // Re-animate when carousel changes slides
             const carouselContainer = document.querySelector('.philosophy-carousel-container');
@@ -2195,13 +2362,8 @@
                 });
             }
             
-            // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initPhilosophyTitlesAnimation);
-            } else {
-                // Wait a bit for the carousel to initialize
-                setTimeout(initPhilosophyTitlesAnimation, 100);
-            }
+            // Expose function to be called after header animations complete
+            window.initPhilosophyTitlesAnimation = initPhilosophyTitlesAnimation;
             
             // Re-animate when carousel changes slides (titles get updated)
             const carouselContainer = document.querySelector('.philosophy-carousel-container');
