@@ -238,7 +238,7 @@
 
         .blank {
             display: inline-block;
-            min-width: 60px;
+            min-width: 80px;
             min-height: 24px;
             border: 1px solid var(--color-border);
             margin: 0 2px;
@@ -258,6 +258,7 @@
         .blank.filled {
             border-color: var(--color-text-secondary);
             cursor: pointer;
+            min-width: 0;
         }
 
         .blank.correct {
@@ -434,6 +435,9 @@
 
                     const blanks = paraDiv.querySelectorAll('.blank');
                     blanks.forEach(blank => {
+                        if (!blank.textContent.trim()) {
+                            blank.innerHTML = '&nbsp;';
+                        }
                         blank.addEventListener('click', () => handleBlankClick(blank));
                     });
                 });
@@ -500,7 +504,7 @@
             if (currentMode === 'no-keywords') {
                 if (blank.classList.contains('revealed')) {
                     blank.classList.remove('revealed');
-                    blank.innerHTML = '';
+                    blank.innerHTML = '&nbsp;';
                 } else {
                     const answer = blank.dataset.answer;
                     blank.classList.add('revealed');
@@ -519,7 +523,7 @@
             // If blank is filled, empty it
             if (blank.classList.contains('filled')) {
                 blank.classList.remove('filled', 'correct', 'incorrect');
-                blank.innerHTML = '';
+                blank.innerHTML = '&nbsp;';
                 return;
             }
 
