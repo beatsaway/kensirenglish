@@ -66,6 +66,7 @@
         }
         
         .header-title { 
+
             font-size: 24px; 
             font-weight: 700; 
             color: var(--color-text); 
@@ -75,13 +76,15 @@
         }
         
         .header-title:hover {
+            
             opacity: 0.7;
         }
         
         .header-title .italic { 
-            font-style: italic; 
-            font-weight: 500; 
-            color: var(--color-accent); 
+            font-family: "Princess Sofia", cursive;
+            font-weight: 500;
+            font-style: normal;
+            color: var(--color-accent);
         }
         
         .header-subtitle { 
@@ -95,6 +98,10 @@
         
         .header-subtitle:hover {
             opacity: 0.7;
+        }
+        
+        .header-subtitle-chinese {
+            font-family: "LXGW WenKai TC", sans-serif;
         }
         
         .header-subtitle-black {
@@ -386,6 +393,7 @@
         
         .philosophy-link-container .link-cantonese {
             color: #2563eb !important;
+            font-family: "LXGW WenKai TC", sans-serif;
         }
         
         @keyframes pulseEmoji {
@@ -405,6 +413,10 @@
         .philosophy .toggle-text {
             cursor: text;
             transition: opacity 0.8s ease-in-out;
+        }
+        
+        .philosophy .toggle-text .chinese-char {
+            font-family: "LXGW WenKai TC", sans-serif;
         }
         
         .philosophy .toggle-text.showing-english {
@@ -1171,7 +1183,31 @@
                 font-size: 14px;
             }
         }
+        
+        footer {
+            background: var(--color-surface);
+            padding: var(--space-3) var(--space-4);
+            text-align: center;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            flex-shrink: 0;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            opacity: 0.7;
+        }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Princess+Sofia&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -1179,7 +1215,7 @@
             <div class="header-title-container" id="headerTitleContainer">
                 <div class="header-date-time" id="headerDateTime"></div><br>
                 <div class="header-title">🥢 Learning English <span class="italic">as Cantonese Speakers</span></div>
-                <div class="header-subtitle">用廣東話<span class="header-subtitle-black">學英文</span> ©kensirenglish.com</div><br>
+                <div class="header-subtitle"><span class="header-subtitle-chinese">用廣東話</span><span class="header-subtitle-black">學英文</span></div><br>
             </div>
             <nav class="navbar">
                 <div class="nav-item">
@@ -1306,7 +1342,7 @@
                     </div>
                     
                     <div class="philosophy" data-index="0" data-lang="zh" data-bg-color="#dbeafe">
-                        <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白冇嘢講冇嘢寫?"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="好多時唔關英文差事，而係用中文都冇嘢諗倒！想英文好？先及早醫腦，學用思考帽！"></span></p>
+                        <p><span class="toggle-text philosophy-title" data-text-zh="個腦一片空白<em>冇嘢講冇嘢寫? </em>"><strong></strong></span> <span class="toggle-text philosophy-description" data-text-zh="好多時唔關英文差事，而係用中文都冇嘢諗倒！想英文好？先及早醫腦，學用思考帽！"></span></p>
                         <div class="philosophy-links-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-top: auto; padding-top: var(--space-4);">
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsluckydraw.html">🎲</span><a href="6hats/6hatsluckydraw.html">6 Hats Lucky Draw<span class="link-separator">•</span><span class="link-cantonese">帽思考</span></a></span>
@@ -1557,6 +1593,70 @@
                 indicatorsContainer.appendChild(indicator);
             });
             
+            // Function to wrap Chinese characters in spans within HTML
+            function wrapChineseChars(htmlString) {
+                const temp = document.createElement('div');
+                temp.innerHTML = htmlString;
+                
+                function processNode(node) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const text = node.textContent;
+                        const chineseRegex = /([\u4e00-\u9fff]+)/g;
+                        const parts = [];
+                        let lastIndex = 0;
+                        let match;
+                        
+                        while ((match = chineseRegex.exec(text)) !== null) {
+                            if (match.index > lastIndex) {
+                                parts.push({ text: text.substring(lastIndex, match.index), isChinese: false });
+                            }
+                            parts.push({ text: match[0], isChinese: true });
+                            lastIndex = match.index + match[0].length;
+                        }
+                        if (lastIndex < text.length) {
+                            parts.push({ text: text.substring(lastIndex), isChinese: false });
+                        }
+                        
+                        const fragment = document.createDocumentFragment();
+                        parts.forEach(part => {
+                            if (part.isChinese) {
+                                const span = document.createElement('span');
+                                span.className = 'chinese-char';
+                                span.textContent = part.text;
+                                fragment.appendChild(span);
+                            } else {
+                                fragment.appendChild(document.createTextNode(part.text));
+                            }
+                        });
+                        return fragment;
+                    } else if (node.nodeType === Node.ELEMENT_NODE) {
+                        const newElement = node.cloneNode(false);
+                        Array.from(node.childNodes).forEach(child => {
+                            const processed = processNode(child);
+                            if (processed && processed.childNodes) {
+                                Array.from(processed.childNodes).forEach(n => newElement.appendChild(n));
+                            }
+                        });
+                        return newElement;
+                    }
+                    return null;
+                }
+                
+                const result = document.createDocumentFragment();
+                Array.from(temp.childNodes).forEach(node => {
+                    const processed = processNode(node);
+                    if (processed) {
+                        if (processed.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+                            Array.from(processed.childNodes).forEach(n => result.appendChild(n));
+                        } else {
+                            result.appendChild(processed);
+                        }
+                    }
+                });
+                
+                return result;
+            }
+            
             function resetToCantonese(philosophy) {
                 const toggleTexts = philosophy.querySelectorAll('.toggle-text');
                 
@@ -1567,14 +1667,18 @@
                     // Check if it's a title (has strong tag)
                     const strongTag = toggleText.querySelector('strong');
                     if (strongTag) {
-                        // Update title - use innerHTML to preserve <em> and <strong> tags
+                        // Update title - wrap Chinese characters
                         if (zhText) {
-                            strongTag.innerHTML = zhText;
+                            const wrapped = wrapChineseChars(zhText);
+                            strongTag.innerHTML = '';
+                            Array.from(wrapped.childNodes).forEach(n => strongTag.appendChild(n));
                         }
                     } else {
-                        // Update description - use innerHTML to preserve <br> tags
+                        // Update description - wrap Chinese characters
                         if (zhText) {
-                            toggleText.innerHTML = zhText;
+                            const wrapped = wrapChineseChars(zhText);
+                            toggleText.innerHTML = '';
+                            Array.from(wrapped.childNodes).forEach(n => toggleText.appendChild(n));
                         }
                     }
                 });
@@ -1955,7 +2059,27 @@
                 });
             }, 500);
         })();
+        
+        // Footer click handler for about popup
+        (function() {
+            'use strict';
+            
+            const footerLink = document.getElementById('footerLink');
+            const developerPopup = document.getElementById('developerPopup');
+            
+            if (footerLink && developerPopup) {
+                footerLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    developerPopup.classList.add('visible');
+                    window.scrollTo(0, 0);
+                });
+            }
+        })();
     </script>
+    <footer>
+        <a href="#" class="footer-link" id="footerLink">kensirenglish.com © 2025</a>
+    </footer>
 </body>
 </html>
 
