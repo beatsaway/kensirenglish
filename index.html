@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning English as Cantonese Speakers</title>
+    <title>Learn English with Cantonese</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --space-1: 6px; --space-2: 6px 10px 3px 10px; --space-3: 12px; --space-4: 12px; --space-5: 20px; --space-6: 24px;
             --color-bg: #fafbfc; --color-surface: #ffffff; --color-text: #1a1a1a;
-            --color-text-secondary: #6b7280; --color-accent: #2563eb;
-            --color-accent-light: rgba(37, 99, 235, 0.08); --color-dse: #7c3aed;
+            --color-text-secondary: #6b7280; --color-accent: #395E7D;
+            --color-accent-light: rgba(57, 94, 125, 0.08); --color-dse: #7c3aed;
             --color-dse-light: rgba(124, 58, 237, 0.1); --border-color: #e5e7eb;
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05); --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1); --max-width: 1400px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', system-ui, sans-serif;
             line-height: 1.2;
             height: 100vh; display: flex; flex-direction: column;
             -webkit-font-smoothing: antialiased; font-size: 16px;
             overflow-x: hidden;
+            background: #FFFFFC;
         }
 
         header {
@@ -67,7 +67,7 @@
         
         .header-title { 
 
-            font-size: 24px; 
+            font-size: 32px; 
             font-weight: 700; 
             color: var(--color-text); 
             line-height: 1;
@@ -80,15 +80,25 @@
             opacity: 0.7;
         }
         
-        .header-title .italic { 
-            font-family: "Princess Sofia", cursive;
-            font-weight: 500;
-            font-style: normal;
+        .header-title .playfair {
+            font-weight: 400;
+        }
+        
+        .header-title .italic,
+        .header-title-container .header-title .italic,
+        .header-title span.italic,
+        body .header-title-container .header-title span.italic,
+        .header-title .italic .header-char,
+        .header-title span.italic .header-char,
+        .header-title-container .header-title .italic .header-char { 
+            font-family: "Princess Sofia", cursive !important;
+            font-weight: 500 !important;
+            font-style: normal !important;
             color: var(--color-accent);
         }
         
         .header-subtitle { 
-            font-size: 15px; 
+            font-size: 18px; 
             color: var(--color-accent); 
             margin-top: 8px; 
             letter-spacing: 0.3px;
@@ -151,6 +161,15 @@
             text-align: left;
             transition: opacity 0.2s ease;
             position: relative;
+        }
+        
+        .nav-select-button span {
+            font-family: "LXGW WenKai TC", sans-serif;
+        }
+        
+        .nav-select-option-cantonese {
+            font-family: "LXGW WenKai TC", sans-serif;
+            color: #395E7D;
         }
 
         .nav-select-button:hover {
@@ -232,8 +251,9 @@
         }
 
         .sub-nav-option-cantonese {
+            font-family: "LXGW WenKai TC", sans-serif;
             font-weight: 500;
-            color: var(--color-text);
+            color: #395E7D;
         }
 
         .sub-nav-option-english {
@@ -263,7 +283,8 @@
             flex: 1; 
             overflow-y: auto; 
             overflow-x: hidden; 
-            padding: 0 var(--space-4) var(--space-2) var(--space-4); 
+            padding: 0 var(--space-4) var(--space-2) var(--space-4);
+            background: #FFFFFC; 
             width: 100%; 
             max-width: 100%; 
             display: flex;
@@ -396,13 +417,13 @@
         }
         
         .philosophy-link-container .link-separator {
-            color: #2563eb !important;
+            color: #395E7D !important;
             margin: 0 var(--space-1);
             opacity: 0.6;
         }
         
         .philosophy-link-container .link-cantonese {
-            color: #2563eb !important;
+            color: #395E7D !important;
             font-family: "LXGW WenKai TC", sans-serif;
         }
         
@@ -464,7 +485,7 @@
         
         .philosophy .ptitle strong {
             font-size: 2.5rem;
-            font-weight: 600;
+            font-weight: 400;
             text-align: center;
             display: inline;
         }
@@ -646,11 +667,11 @@
         }
         .philosophy a.research-link,
         .philosophy span.research-link {
-            color: #2563eb !important;
+            color: #395E7D !important;
         }
         .philosophy a.research-link strong,
         .philosophy span.research-link strong {
-            color: #2563eb !important;
+            color: #395E7D !important;
         }
         .philosophy a.research-link:hover,
         .philosophy span.research-link:hover {
@@ -883,9 +904,9 @@
                 box-sizing: border-box;
             }
             .header-title-container { padding: var(--space-1) 0 3px 0; }
-            .header-title { font-size: 20px; }
+            .header-title { font-size: 26px; }
             .header-subtitle { 
-                font-size: 13px; 
+                font-size: 16px; 
                 margin-top: 8px;
             }
             .navbar {
@@ -1074,7 +1095,7 @@
             color: white;
             border-color: var(--color-accent);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 12px rgba(57, 94, 125, 0.2);
         }
         
         .developer-popup-nav-button:active:not(:disabled) {
@@ -1112,7 +1133,7 @@
             background: var(--color-accent);
             width: 10px;
             height: 10px;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 0 0 3px rgba(57, 94, 125, 0.15);
         }
         
         .developer-popup-contact-title {
@@ -1231,14 +1252,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Princess+Sofia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="header-title-container" id="headerTitleContainer">
                 <div class="header-date-time" id="headerDateTime"></div><br>
-                <div class="header-title">🥢 Learning English <span class="italic">as Cantonese Speakers</span></div>
-                <div class="header-subtitle"><span class="header-subtitle-chinese">用廣東話</span><span class="header-subtitle-black">學英文</span></div><br>
+                <div class="header-title"><span class="playfair">Learn English🍵</span><span class="italic">with Cantonese</span></div>
+                <div class="header-subtitle">🥢<span class="header-subtitle-chinese">用廣東話</span><span class="header-subtitle-black">學英文</span>&nbsp;© kensirenglish.com</div><br>
             </div>
             <nav class="navbar">
                 <div class="nav-item">
@@ -1354,7 +1376,6 @@
             </div>
         </div>
     </header>
-<br>
     <main>
         <div class="container">
             <div class="philosophy-carousel">
@@ -1365,7 +1386,7 @@
                     </div>
                     
                     <div class="philosophy" data-index="0" data-lang="zh" data-bg-color="#dbeafe">
-                        <p><span class="ptitle" data-text-zh="個腦完全空白<em>冇嘢講冇嘢寫? </em>"><strong></strong></span> <span class="pdescription" data-text-zh="如果你用中文都諗唔倒嘢講，唔好講英文住！盡快及早醫腦，用<em>思考帽</em>啦！"></span></p>
+                        <p><span class="ptitle" data-text-zh="個腦完全空白冇嘢講冇嘢寫? "><strong></strong></span> <span class="pdescription" data-text-zh="如果你用中文都諗唔倒嘢講，唔好講英文住！盡快及早醫腦，學用思考帽啦！"></span></p>
                         <div class="philosophy-links-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-top: auto; padding-top: var(--space-4);">
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsdiscussion/index.html">🎩</span><a href="6hats/6hatsdiscussion/index.html">6 Hats Discussion<span class="link-separator">•</span><span class="link-cantonese">帽討論</span></a></span>
                             <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="6hats/6hatsluckydraw.html">🎲</span><a href="6hats/6hatsluckydraw.html">6 Hats Lucky Draw<span class="link-separator">•</span><span class="link-cantonese">帽思考</span></a></span>
@@ -1373,11 +1394,11 @@
                     </div>
                     
                     <div class="philosophy" data-index="2" data-lang="zh" data-bg-color="#f3e8ff">
-                        <p><span class="ptitle" data-text-zh="想英文勁，要停用<em>中文</em>諗嘢？"><strong></strong></span> <span class="pdescription" data-text-zh="大錯特錯！中英思維轉換係學習必經之高速公路，愈避免用母語轉英文會學得愈慢！"></span></p>
+                        <p><span class="ptitle" data-text-zh="想英文勁，要停用中文諗嘢？"><strong></strong></span> <span class="pdescription" data-text-zh="大錯特錯！中英思維轉換係大腦學習必經過程，愈避用中文轉英文會學得愈慢！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="research/abswitching/abt_switching.html">🔬</span><a href="research/abswitching/abt_switching.html">Bilingual Studies<span class="link-separator">•</span><span class="link-cantonese">雙語學習研究</span></a></span>
                     </div>
                     <div class="philosophy" data-index="3" data-lang="zh" data-bg-color="#e0f2fe">
-                        <p><span class="ptitle" data-text-zh="學英文必定要練<em>中英轉換</em>？"><strong></strong></span> <span class="pdescription" data-text-zh="絕對係！如果你母語係中文，又想學好英文，中英轉換訓練絕對係最核心關鍵！"></span></p>
+                        <p><span class="ptitle" data-text-zh="學英文必定要練中英轉換？"><strong></strong></span> <span class="pdescription" data-text-zh="絕對係！如果你母語係中文，又想學好英文，中英轉換訓練絕對係最核心關鍵！"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="resources/codeswitch/index.html">🤸</span><a href="resources/codeswitch/index.html">CodeSwitch<span class="link-separator">•</span><span class="link-cantonese">反轉中英</span></a></span>
                     </div>
                     
@@ -1433,19 +1454,39 @@
     </div>
 
     <script>
+        // Convert Arabic number to Chinese numeral
+        function toChineseNumeral(num) {
+            const chineseDigits = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+            if (num === 0) return '〇';
+            if (num < 10) return chineseDigits[num];
+            
+            // For numbers 10 and above, convert each digit
+            return String(num).split('').map(digit => chineseDigits[parseInt(digit)]).join('');
+        }
+        
+        // Convert year to Chinese numerals
+        function yearToChinese(year) {
+            const chineseDigits = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+            return String(year).split('').map(digit => chineseDigits[parseInt(digit)]).join('');
+        }
+        
         // Update date and time display
         function updateDateTime() {
             const dateTimeElement = document.getElementById('headerDateTime');
             if (!dateTimeElement) return;
             
             const now = new Date();
-            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
             
             const day = days[now.getDay()];
             const date = now.getDate();
             const month = months[now.getMonth()];
             const year = now.getFullYear();
+            
+            // Convert to Chinese numerals
+            const yearChinese = yearToChinese(year);
+            const dateChinese = toChineseNumeral(date);
             
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -1455,7 +1496,8 @@
             hours = hours ? hours : 12;
             const time = `${hours}:${minutes}:${seconds} ${ampm}`;
             
-            dateTimeElement.textContent = `${day}, ${date} ${month} ${year}, ${time}`;
+            // Format: XXXX年X月X日 星期X, time (all Chinese numerals for date)
+            dateTimeElement.innerHTML = `<span style="font-family: 'LXGW WenKai TC', sans-serif;">${yearChinese}年${month}${dateChinese}日 ${day}</span> ${time}`;
         }
         
         // Update immediately and then every second
@@ -2089,16 +2131,26 @@
         (function() {
             'use strict';
             
-            const headerTitleContainer = document.getElementById('headerTitleContainer');
+            const headerTitle = document.querySelector('.header-title');
+            const headerSubtitle = document.querySelector('.header-subtitle');
             const developerPopup = document.getElementById('developerPopup');
             
-            // Open popup when clicking on header title (but not date/time)
-            if (headerTitleContainer) {
-                headerTitleContainer.addEventListener('click', function(e) {
-                    // Don't open popup if clicking on date/time
-                    if (e.target.id === 'headerDateTime' || e.target.closest('#headerDateTime')) {
-                        return;
+            // Open popup when clicking on header title text only
+            if (headerTitle) {
+                headerTitle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (developerPopup) {
+                        developerPopup.classList.add('visible');
+                        // Scroll to top when opening
+                        window.scrollTo(0, 0);
                     }
+                });
+            }
+            
+            // Open popup when clicking on header subtitle text only
+            if (headerSubtitle) {
+                headerSubtitle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     if (developerPopup) {
