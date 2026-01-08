@@ -1574,7 +1574,7 @@
             let titleDelay = 0;
             if (headerSubtitle && headerTitle) {
                 // Calculate delay: title characters * 20ms + some buffer
-                titleDelay = titleCharCount * 20 + 100; // 20ms per char + 100ms buffer
+                titleDelay = titleCharCount * 10 + 100; // 20ms per char + 100ms buffer
                 animateHeaderText(headerSubtitle, titleDelay);
                 
                 const subtitleText = headerSubtitle.textContent || '';

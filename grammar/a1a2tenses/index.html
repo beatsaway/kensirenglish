@@ -673,11 +673,11 @@
         infoPanel.style.display = '';
         infoPanel.innerHTML = `
         <div style="font-size: 12px; line-height: 1.5;">
-          <div class="step-header" style="margin-bottom: 6px;"><strong>第一步：先用 Present Tense決定3式</strong> (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</div>
+          <div class="step-header" style="margin-bottom: 6px;">第一步：先用 Present Tense決定3式 (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</div>
           <div class="keyword-reveal" id="reveal-simple">Simple就咁用動詞，冇特別狀態。例如：eat（食）、go（去）、study（讀書）</div>
           <div class="keyword-reveal" id="reveal-continuous">Continuous動作進行緊，有「緊」字感覺。例如：am eating（食緊）、is going（去緊）、are studying（讀緊書）</div>
           <div class="keyword-reveal" id="reveal-perfect">Perfect有完成感覺，有助語詞如「咗、完、哂、夠、齊、盡、好、掂」。例如：have eaten（食咗/食完）、have finished（做齊/做盡/做好）、have done（做掂）</div>
-          <div class="step-header" style="margin-bottom: 6px;"><strong>第二步：決定時間</strong> (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</div>
+          <div class="step-header" style="margin-bottom: 6px;">第二步：決定時間 (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</div>
           <div class="keyword-reveal" id="reveal-present">Present保持原樣（I eat / I am eating / I have eaten）</div>
           <div class="keyword-reveal" id="reveal-past">Past轉動詞過去式（I ate / I was eating / I had eaten）</div>
           <div class="keyword-reveal" id="reveal-future">Future前面加 will（I will eat / I will be eating / I will have eaten）。will 係 modal verb（助動詞），所以後面嘅動詞要用原形。am 變返 be（I will be eating）。</div>
@@ -979,7 +979,7 @@
       const content = document.getElementById('exercise-content');
       content.innerHTML = `
         <div class="intro-section">
-          <h2><strong>英文時式共12種</strong> <span style="font-weight: normal;">新手要先練好<span class="nine-types-toggle" style="font-weight: normal; cursor: pointer; color: var(--color-accent); font-size: 1.2em; display: inline-block;">9️⃣</span>種(表中淺藍色標示)</span></h2>
+          <h2>英文時式共12種 <span style="font-weight: normal;">新手要先練好<span class="nine-types-toggle" style="font-weight: normal; cursor: pointer; color: var(--color-accent); font-size: 1.2em; display: inline-block;">9️⃣</span>種(表中淺藍色標示)</span></h2>
           <div class="nine-types-reveal" id="nine-types-reveal">9️⃣ = 3 x 3 = (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>) x (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</div>
           
           <table class="tenses-table">
@@ -1019,19 +1019,19 @@
 
 
           <div class="tips-section">
-            <p style="margin-bottom: var(--space-2);"><strong>第一步：先用 Present Tense決定3式入面用邊式</strong> (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</p>
+            <p style="margin-bottom: var(--space-2);">第一步：先用 Present Tense決定3式入面用邊式 (<span class="keyword" data-keyword="simple">Simple</span>, <span class="keyword" data-keyword="continuous">Continuous</span>, <span class="keyword" data-keyword="perfect">Perfect</span>)</p>
             
             <div class="keyword-reveal" id="intro-reveal-simple">Simple：就咁用動詞，冇特別狀態。例如：<strong>eat</strong>（食）、<strong>go</strong>（去）、<strong>study</strong>（讀書）</div>
             <div class="keyword-reveal" id="intro-reveal-continuous">Continuous：動作進行緊，有<span class="clickable" onclick="highlightContinuous()">「緊」</span>字感覺。例如：<strong>am eating</strong>（食緊）、<strong>is going</strong>（去緊）、<strong>are studying</strong>（讀緊書）</div>
             <div class="keyword-reveal" id="intro-reveal-perfect">Perfect：有完成感覺，有助語詞如<span class="clickable" onclick="highlightPerfect()">「咗、完、哂、夠、齊、盡、好、掂」</span>。例如：<strong>have eaten</strong>（食咗/食完）、<strong>have finished</strong>（做齊/做盡/做好）、<strong>have done</strong>（做掂）</div>
 
-            <p style="margin-top: var(--space-2); margin-bottom: var(--space-2);"><strong>第二步：決定要唔要轉Past或Future</strong> (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</p>
+            <p style="margin-top: var(--space-2); margin-bottom: var(--space-2);">第二步：決定要唔要轉Past或Future (<span class="keyword" data-keyword="present">Present</span>, <span class="keyword" data-keyword="past">Past</span>, <span class="keyword" data-keyword="future">Future</span>)</p>
             <div class="keyword-reveal" id="intro-reveal-present">Present：保持原樣（I eat / I am eating / I have eaten）</div>
             <div class="keyword-reveal" id="intro-reveal-past">Past：轉動詞過去式（I ate / I was eating / I had eaten）</div>
             <div class="keyword-reveal" id="intro-reveal-future">Future：前面加 <strong>will</strong>（I will eat / I will be eating / I will have eaten）<span class="footnote-ref">*</span><br><span class="footnote-ref">*</span> <strong>will</strong> 係 modal verb（助動詞），所以後面嘅動詞要用原形。<strong>am</strong> 變返 <strong>be</strong>（I will be eating）。</div>
 
             <p style="margin-top: var(--space-2); color: var(--color-text-secondary); font-size: 12px;">
-              <strong>記住：</strong> 先決定式（<span class="keyword" data-keyword="simple">Simple</span>/<span class="keyword" data-keyword="continuous">Continuous</span>/<span class="keyword" data-keyword="perfect">Perfect</span>），再決定時（<span class="keyword" data-keyword="present">Present</span>/<span class="keyword" data-keyword="past">Past</span>/<span class="keyword" data-keyword="future">Future</span>）！
+              記住： 先決定式（<span class="keyword" data-keyword="simple">Simple</span>/<span class="keyword" data-keyword="continuous">Continuous</span>/<span class="keyword" data-keyword="perfect">Perfect</span>），再決定時（<span class="keyword" data-keyword="present">Present</span>/<span class="keyword" data-keyword="past">Past</span>/<span class="keyword" data-keyword="future">Future</span>）！
             </p>
           </div>
         </div>
