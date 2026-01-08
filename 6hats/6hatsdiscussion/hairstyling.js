@@ -63,13 +63,13 @@ window.sixHatSets = [
     title: "🧬 Asian Hair and the EDAR Gene",
     link: "https://www.youtube.com/shorts/m941-x9sfvU",
     vocablist: [
-      { word: "strand", translation: "髮絲", emoji: "🧵" },
+      { word: "strands", translation: "髮絲", emoji: "🧵" },
       { word: "texture", translation: "質地", emoji: "👆" },
       { word: "gene", translation: "基因", emoji: "🧬" },
       { word: "curl", translation: "捲曲", emoji: "🌀" },
-      { word: "straight", translation: "直的", emoji: "📏" }
+      { word: "straight", translation: "直", emoji: "📏" }
     ],
-    vocabex: "Asian hair <span class='vocab-blank' data-answer='strands'></span> are thicker and stronger, making their hair <span class='vocab-blank' data-answer='texture'></span> different. The EDAR <span class='vocab-blank' data-answer='gene'></span> affects whether hair is <span class='vocab-blank' data-answer='straight'></span> or has a natural <span class='vocab-blank' data-answer='curl'></span>.",
+    vocabex: "Asian hair <span class='vocab-blank' data-answer='strands'></span> are thicker and stronger, making their hair <span class='vocab-blank' data-answer='texture'></span> different. Their EDAR <span class='vocab-blank' data-answer='gene'></span> is making their hair <span class='vocab-blank' data-answer='straight'></span> instead of having a natural <span class='vocab-blank' data-answer='curl'></span>.",
     questions: [
       { emoji: "📊", text: "What's special about Asian hair strands?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you know anyone with unusual hair texture?", hat: "red-hat", hatLabel: "Red Hat" },
