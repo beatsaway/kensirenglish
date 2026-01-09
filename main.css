@@ -51,7 +51,7 @@ header,
         hsl(var(--hue), 10%, 95%) 94%, 
         #fff 100%
     ) !important;
-    animation: hueRotate 96s linear infinite;
+    animation: hueRotate 960s linear infinite;
 border: 0; !important;
 }
 
