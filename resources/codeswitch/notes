@@ -58,8 +58,7 @@ ENGLISH TEXT REQUIREMENTS
 7. VOCABULARY CONSISTENCY:
    - Use consistent terminology throughout
    - Match the vocabulary style (e.g., "Hair clay" not "Hair wax" if that's what's used)
-   - Keep technical terms consistent (e.g., "Fade", "Taper", "Side Part")
-
+   - Keep technical terms consistent (e.g., "Fade", "Taper", "Side Part")   
 CHINESE TEXT REQUIREMENTS
 --------------------------
 
@@ -69,20 +68,65 @@ CHINESE TEXT REQUIREMENTS
    - Natural, conversational tone
    - Mix of traditional Chinese characters and English loanwords where appropriate
 
+CTEXT CONTENT CREATION
+----------------------
+
+9. HONG KONG CONTEXT:
+   - ctext should reflect authentic Hong Kong situations and conversations
+   - Can be local-to-local chat (most common) - these are translated to London English in etext
+   - Can include interactions with foreigners, but not necessary
+   - Focus on everyday Hong Kong life experiences
+   - Natural code-switching between Cantonese and English terms (e.g., "Fade", "Style", "Classic")
+
+10. ROLES AND CONTEXTS:
+    - Consider different roles when creating scenarios:
+      * Student (學生) - school settings, rules, peer interactions
+      * Teacher (老師) - educational contexts, guidance
+      * Parent (家長/阿爸/阿媽) - family advice, generational perspectives
+      * Government (政府) - official communications, policies
+      * Business (商業) - workplace, professional settings
+      * Charity (慈善) - community service, social causes
+    - Mix of roles creates variety and realistic scenarios
+    - Example: "學校規定[Fringe:0]唔可以過眉！" (student context)
+
+11. DEMOGRAPHIC CONSIDERATIONS:
+    - Age: Vary between younger (後生時, 學生) and older (我阿爸剪咗幾十年) perspectives
+    - Gender: Can reflect different experiences (though not always explicitly stated)
+    - Generational differences add authenticity (e.g., dad's classic style vs. student's trendy choices)
+
+12. LOCATION/DISTRICTS:
+    - Can reference specific Hong Kong districts to add local flavour:
+      * Yuen Long (元朗)
+      * Tsuen Wan (荃灣)
+      * Mong Kok (旺角)
+      * Kennedy Town (堅尼地城)
+      * Causeway Bay (銅鑼灣)
+      * Kwun Tong (觀塘)
+      * And other districts as appropriate
+    - District references help ground conversations in real Hong Kong contexts
+    - Not required for every entry, but useful for variety
+
+13. CONVERSATIONAL STYLE:
+    - Use natural, everyday Cantonese dialogue
+    - Include direct speech/quotes (「...」) for authenticity
+    - Personal anecdotes and first-person narratives work well
+    - Casual, relatable situations (e.g., salon conversations, school rules, family advice)
+    - Mix of monologue and dialogue formats
+
 DATA STRUCTURE
 --------------
 
-9. REQUIRED FIELDS FOR EACH ENTRY:
-   - ctitle: Chinese title (string)
-   - ctext: Chinese text with blanks (string, uses \n for line breaks)
-   - cvocab: Comma-separated vocabulary list (string)
-   - cbracketstuff: Comma-separated list of words that appear in brackets in ctext (string)
-   - etitle: English title (string)
-   - etext: English text with blanks (string, uses \n for line breaks)
-   - evocab: Comma-separated vocabulary list (string)
-   - edef: Definitions separated by | (string, format: "Term: definition | Term2: definition2")
+14. REQUIRED FIELDS FOR EACH ENTRY:
+    - ctitle: Chinese title (string)
+    - ctext: Chinese text with blanks (string, uses \n for line breaks)
+    - cvocab: Comma-separated vocabulary list (string)
+    - cbracketstuff: Comma-separated list of words that appear in brackets in ctext (string)
+    - etitle: English title (string)
+    - etext: English text with blanks (string, uses \n for line breaks)
+    - evocab: Comma-separated vocabulary list (string)
+    - edef: Definitions separated by | (string, format: "Term: definition | Term2: definition2")
 
-10. VOCABULARY ALIGNMENT:
+15. VOCABULARY ALIGNMENT:
     - cvocab and evocab must have the same number of items
     - Items at the same index should be translations/equivalents
     - Index numbers in blanks must match vocab positions
