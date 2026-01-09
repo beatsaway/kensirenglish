@@ -15,6 +15,17 @@ const HairStyling = [
     edef: "Trim: cut hair shorter | Shape: overall form | Fade: gradual length change | Taper: gradual thinning | Sharp: clean & stylish | Fresh: energetic look"
   },
   {
+    ctitle: "經典永不過時",
+    ctext: "我阿爸剪咗幾十年同一個髮型：[Side Part:0]，[二八界:1]，用少少[髮油:2]。佢話：「使咩追潮流，企理、[斯文:3]、易梳，就係最好。」果然，[經典:4]之所以係經典，就係因為永不出錯。",
+    cvocab: "側分界, A specific side part, Hair pomade/oil, Neat and gentlemanly, Classic",
+    cbracketstuff: "Side Part, 二八界, 髮油, 斯文, 經典",
+    
+    etitle: "Timeless Style",
+    etext: "My dad's had the same cut for decades: a [side part:0], a proper [80/20 split:1], bit of [pomade:2].\nHe says, \"Why chase trends? [Smart:3], tidy, easy to comb. That's all you need.\"\nHe's right. A [classic:4] is a classic because it never gets it wrong.",
+    evocab: "Side Part, 80/20 (part), Pomade, Smart / Tidy, Classic",
+    edef: "Side Part: hair parted sideways | 80/20: part ratio | Pomade: styling wax | Smart: neat appearance | Classic: timeless style"
+  },
+  {
     ctitle: "髮型師台詞",
     ctext: "我個髮型師好鍾意問：「今日想點[Style:0]啊？」我次次都係話：「[易打理:1]就得喇！」但佢總會畀啲建議：「不如試下[Side Part:2]？好[Classic:3]㗎。」溝通真係好緊要，講清楚先唔會「驚喜」變驚嚇。",
     cvocab: "造型/款式, Easy to manage, 側分界, 經典款式",
@@ -90,16 +101,5 @@ const HairStyling = [
     etext: "My standard salon line is: \"Just a [trim:0], please. Take the [split ends:1] off but keep this [length:2].\"\nIf it's feeling heavy, I'll add, \"Maybe some light [layers:3]? Just to take the weight out.\"\nSafe, simple, they always get it. No drama.",
     evocab: "Trim, Split ends, Length, Layers",
     edef: "Trim: small cut | Split ends: damaged tips | Length: hair size | Layers: different lengths"
-  },
-  {
-    ctitle: "經典永不過時",
-    ctext: "我阿爸剪咗幾十年同一個髮型：[Side Part:0]，[二八界:1]，用少少[髮油:2]。佢話：「使咩追潮流，企理、[斯文:3]、易梳，就係最好。」果然，[經典:4]之所以係經典，就係因為永不出錯。",
-    cvocab: "側分界, A specific side part, Hair pomade/oil, Neat and gentlemanly, Classic",
-    cbracketstuff: "Side Part, 二八界, 髮油, 斯文, 經典",
-    
-    etitle: "Timeless Style",
-    etext: "My dad's had the same cut for decades: a [side part:0], a proper [80/20 split:1], bit of [pomade:2].\nHe says, \"Why chase trends? [Smart:3], tidy, easy to comb. That's all you need.\"\nHe's right. A [classic:4] is a classic because it never gets it wrong.",
-    evocab: "Side Part, 80/20 (part), Pomade, Smart / Tidy, Classic",
-    edef: "Side Part: hair parted sideways | 80/20: part ratio | Pomade: styling wax | Smart: neat appearance | Classic: timeless style"
   }
 ];
