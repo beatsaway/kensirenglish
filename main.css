@@ -48,7 +48,7 @@ header,
 .fixed-nav {
     background: linear-gradient(180deg, 
     hsl(var(--hue), 55%, 88%)  0%, 
-        hsl(var(--hue), 10%, 95%) 94%, 
+        hsl(var(--hue), 10%, 95%) 96%, 
         #fff 100%
     ) !important;
     animation: hueRotate 960s linear infinite;
