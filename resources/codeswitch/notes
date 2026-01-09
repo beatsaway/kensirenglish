@@ -1,0 +1,118 @@
+LANGUAGE REQUIREMENTS FOR CODESWITCH TOPICS
+============================================
+
+This document outlines the language requirements for creating new topic files (e.g., HairStyling.js) for the codeswitch HTML page.
+
+BASIC RULES
+-----------
+
+1. LANGUAGE SWITCHING RULE:
+   - If cvocab word is English → blank in ctext must be Cantonese
+   - If cvocab word is Cantonese → blank in ctext must be English
+   - Vice versa for evocab/etext
+   - Example: If cvocab has "Style" (English), then ctext blank should be Cantonese like "[Style:0]"
+   - Example: If cvocab has "易打理" (Cantonese), then ctext blank should be English like "[易打理:1]"
+
+2. BLANK COMPLETENESS RULE:
+   - Every word in evocab must have a corresponding blank [word:index] in etext
+   - Every word in cvocab must have a corresponding blank in ctext
+   - Index numbers must match the position in the vocab list (0-based)
+
+TEXT FORMATTING
+---------------
+
+3. LINE BREAKS:
+   - Both ctext and etext MUST use \n for line breaks
+   - Each line should represent a logical paragraph or sentence
+   - Chinese and English should have matching line structures (same number of lines)
+   - This enables the toggle functionality to show corresponding lines
+
+4. BLANK MARKUP SYNTAX:
+   - Format: [text:index] where:
+     - text = the word/phrase to display (in the opposite language from vocab)
+     - index = the vocabulary index (0-based, matching cvocab/evocab position)
+   - Example: [Style:0] means vocab item at index 0
+   - Example: [易打理:1] means vocab item at index 1
+
+ENGLISH TEXT REQUIREMENTS
+--------------------------
+
+5. MODERN STANDARD LONDON ENGLISH:
+   - All etext must be in modern standard London English
+   - Use natural, conversational British English
+   - Avoid Americanisms (e.g., "color" → "colour", "gotten" → "got")
+   - Use British slang appropriately (e.g., "mate", "bloke", "proper")
+
+6. GRAMMATICAL COMPLETENESS:
+   - ALL sentences MUST have subjects
+   - No sentence fragments or missing subjects
+   - Examples of CORRECT usage:
+     ✓ "I decided I needed a short cut."
+     ✓ "I came out looking sharp."
+     ✓ "He got a 'special invitation'."
+   - Examples of INCORRECT usage:
+     ✗ "Decided I needed a short cut." (missing "I")
+     ✗ "Came out looking sharp." (missing "I")
+     ✗ "Got a 'special invitation'." (missing subject)
+
+7. VOCABULARY CONSISTENCY:
+   - Use consistent terminology throughout
+   - Match the vocabulary style (e.g., "Hair clay" not "Hair wax" if that's what's used)
+   - Keep technical terms consistent (e.g., "Fade", "Taper", "Side Part")
+
+CHINESE TEXT REQUIREMENTS
+--------------------------
+
+8. CANTONESE (HONG KONG):
+   - Use Hong Kong Cantonese
+   - Use appropriate terms for Hong Kong context (e.g., "髮泥" not "髮蠟" for modern hair clay)
+   - Natural, conversational tone
+   - Mix of traditional Chinese characters and English loanwords where appropriate
+
+DATA STRUCTURE
+--------------
+
+9. REQUIRED FIELDS FOR EACH ENTRY:
+   - ctitle: Chinese title (string)
+   - ctext: Chinese text with blanks (string, uses \n for line breaks)
+   - cvocab: Comma-separated vocabulary list (string)
+   - cbracketstuff: Comma-separated list of words that appear in brackets in ctext (string)
+   - etitle: English title (string)
+   - etext: English text with blanks (string, uses \n for line breaks)
+   - evocab: Comma-separated vocabulary list (string)
+   - edef: Definitions separated by | (string, format: "Term: definition | Term2: definition2")
+
+10. VOCABULARY ALIGNMENT:
+    - cvocab and evocab must have the same number of items
+    - Items at the same index should be translations/equivalents
+    - Index numbers in blanks must match vocab positions
+
+EXAMPLE STRUCTURE
+-----------------
+
+{
+  ctitle: "標題",
+  ctext: "第一行中文[詞彙:0]。\n第二行中文[詞彙:1]。",
+  cvocab: "English word, 中文詞彙",
+  cbracketstuff: "詞彙, 詞彙",
+  
+  etitle: "Title",
+  etext: "First line in English with [word:0].\nSecond line in English with [word:1].",
+  evocab: "Word, Word",
+  edef: "Word: definition | Word: definition"
+}
+
+CHECKLIST FOR NEW TOPICS
+------------------------
+
+Before submitting a new topic file, verify:
+[ ] All sentences have subjects (especially in etext)
+[ ] All etext is in modern standard London English
+[ ] All blanks use correct [text:index] format
+[ ] All vocab items have corresponding blanks
+[ ] Line breaks (\n) match between ctext and etext
+[ ] Index numbers match vocab positions (0-based)
+[ ] Language switching rule is followed (English vocab → Cantonese blank, etc.)
+[ ] Vocabulary terms are consistent throughout
+[ ] Definitions (edef) are clear and helpful
+

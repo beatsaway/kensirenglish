@@ -181,7 +181,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             width: 100%;
-            padding: var(--space-3) var(--space-4);
+            padding: var(--space-1) var(--space-4) var(--space-3) var(--space-4);
         }
 
         .container {
@@ -191,14 +191,18 @@
 
         .page-title {
             text-align: center;
-            margin-bottom: var(--space-3);
+            margin-top: 0;
+            margin-bottom: var(--space-1);
         }
 
         .page-title h1 {
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--color-text);
+            margin-top: 0;
             margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
             letter-spacing: -0.02em;
         }
 
@@ -220,8 +224,8 @@
             background: var(--color-bg);
             border: 1px solid var(--color-border);
             cursor: pointer;
-            padding: var(--space-1) var(--space-2);
-            font-size: 15px;
+            padding: calc(var(--space-1) * 0.75) var(--space-1);
+            font-size: 14px;
             font-weight: 400;
             color: var(--color-text);
             letter-spacing: 0.02em;
@@ -241,7 +245,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            gap: var(--space-2);
+            gap: var(--space-1);
             align-items: center;
         }
 
@@ -273,7 +277,7 @@
             right: 0;
             background: var(--color-bg);
             border: 1px solid var(--color-border);
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
             z-index: 1000;
             display: none;
@@ -285,14 +289,15 @@
         }
 
         .item-dropdown-option {
-            padding: var(--space-2);
+            padding: calc(var(--space-1) * 0.75) var(--space-1);
             cursor: pointer;
             border-bottom: 1px solid var(--color-border);
             display: flex;
             justify-content: space-between;
-            gap: var(--space-2);
+            gap: var(--space-1);
             align-items: center;
             transition: background 0.15s ease;
+            font-size: 14px;
         }
 
         .item-dropdown-option:last-child {
@@ -388,8 +393,10 @@
             font-size: 1.5rem;
             font-weight: 400;
             color: var(--color-text);
-            margin-bottom: var(--space-3);
-            padding-bottom: var(--space-2);
+            margin-top: 0;
+            margin-bottom: var(--space-1);
+            padding-top: 0;
+            padding-bottom: var(--space-1);
             border-bottom: 1px solid var(--color-border);
             letter-spacing: -0.02em;
             cursor: pointer;
@@ -839,7 +846,7 @@
             if (currentLanguage === 'cantonese') {
                 // Show Cantonese content
                 cardTitle.textContent = item.ctitle;
-                cardText.innerHTML = formatTextWithMatches(item.ctext, item.cbracketstuff);
+                cardText.innerHTML = formatTextWithMatches(item.ctext, item.cbracketstuff, item.etext);
                 cardVocab.innerHTML = formatVocab(item.cvocab, 'cantonese');
                 cardDef.classList.remove('show');
                 cardDef.textContent = '';
@@ -847,10 +854,11 @@
                 // Add event listeners
                 setupVocabListeners(item);
                 setupTextWordListeners(item);
+                setupEtextToggles();
             } else {
                 // Show English content
                 cardTitle.textContent = item.etitle;
-                cardText.innerHTML = formatTextWithBlanks(item.etext, item.evocab);
+                cardText.innerHTML = formatTextWithBlanks(item.etext, item.evocab, item.ctext);
                 cardVocab.innerHTML = formatVocab(item.evocab, 'english');
                 cardDef.classList.remove('show');
                 cardDef.textContent = '';
@@ -858,6 +866,7 @@
                 // Add event listeners
                 setupEnglishVocabListeners(item);
                 setupBlankListeners(item);
+                setupCtextToggles();
             }
         }
 
@@ -1127,6 +1136,54 @@
             });
         }
 
+        function setupEtextToggles() {
+            const toggles = document.querySelectorAll('.etext-toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const lineId = this.getAttribute('data-line-id');
+                    const reveal = document.getElementById(lineId);
+                    
+                    if (reveal) {
+                        const isVisible = reveal.style.display !== 'none';
+                        if (isVisible) {
+                            reveal.style.display = 'none';
+                            this.textContent = '▸';
+                        } else {
+                            reveal.style.display = 'block';
+                            this.textContent = '▾';
+                        }
+                    }
+                });
+            });
+        }
+
+        function setupCtextToggles() {
+            const toggles = document.querySelectorAll('.ctext-toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const lineId = this.getAttribute('data-line-id');
+                    const reveal = document.getElementById(lineId);
+                    
+                    if (reveal) {
+                        const isVisible = reveal.style.display !== 'none';
+                        if (isVisible) {
+                            reveal.style.display = 'none';
+                            this.textContent = '▸';
+                        } else {
+                            reveal.style.display = 'block';
+                            this.textContent = '▾';
+                        }
+                    }
+                });
+            });
+        }
+
         function formatText(text) {
             // Replace line breaks with paragraphs
             return text.split('\n').map(line => {
@@ -1137,33 +1194,40 @@
             }).join('');
         }
 
-        function formatTextWithBlanks(text, evocab) {
+        function formatTextWithBlanks(text, evocab, ctext = null) {
             if (!text) return '';
+            
+            // Split both etext and ctext by newlines
+            const etextLines = text.split('\n');
+            const ctextLines = ctext ? fillBlanksInCtext(ctext).split('\n') : [];
             
             // Pattern for blanks: [answer:index] where answer is the correct text to display
             const blankPattern = /\[([^\]]+):(\d+)\]/g;
             
-            // Split text by newlines and process each line
-            return text.split('\n').map(line => {
+            // Process each line with line index
+            return etextLines.map((line, lineIndex) => {
                 if (!line.trim()) return '';
                 
+                const lineId = `etext-line-${lineIndex}`;
+                const ctextLine = ctextLines[lineIndex] || '';
+                const hasCtext = ctextLine.trim() !== '';
+                
                 // Check if line contains blank markup
+                let processed;
                 if (blankPattern.test(line)) {
                     // Reset regex
                     blankPattern.lastIndex = 0;
                     
                     // Replace blanks with clickable spans
-                    const processed = line.replace(blankPattern, (match, answerText, vocabIndex) => {
+                    processed = line.replace(blankPattern, (match, answerText, vocabIndex) => {
                         return `<span class="blank" data-vocab-index="${vocabIndex}" data-answer-text="${answerText}">&nbsp;</span>`;
                     });
-                    
-                    return `<p>${processed}</p>`;
                 } else {
                     // No blanks, but check if we need to auto-detect vocab words in text
                     // This handles cases where words appear in different forms (e.g., "faded" vs "fade")
                     if (evocab) {
                         const evocabItems = evocab.split(',').map(item => item.trim());
-                        let processed = line;
+                        processed = line;
                         
                         // Try to match each vocab word (case-insensitive, handle variations)
                         evocabItems.forEach((vocab, index) => {
@@ -1178,12 +1242,24 @@
                                 // This is just for reference, we'll keep the original text as-is
                             }
                         });
-                        
-                        return `<p>${processed}</p>`;
+                    } else {
+                        processed = line;
                     }
-                    // No blanks, return as normal text
-                    return `<p>${line}</p>`;
                 }
+                
+                // Add "▸" button and ctext reveal if ctext is available
+                let html = '';
+                if (hasCtext) {
+                    html += `<p class="etext-line-wrapper">
+                        <span class="ctext-toggle" data-line-id="${lineId}" style="cursor: pointer; margin-right: 8px; color: var(--color-text-secondary); user-select: none; font-size: inherit;">▸</span>
+                        <span class="etext-line">${processed}</span>
+                        <div class="ctext-reveal" id="${lineId}" style="display: none; font-size: 0.85em; color: var(--color-text-secondary); margin-top: 4px; margin-left: 20px; font-style: italic;">${ctextLine}</div>
+                    </p>`;
+                } else {
+                    html = `<p>${processed}</p>`;
+                }
+                
+                return html;
             }).join('');
         }
 
@@ -1214,55 +1290,95 @@
             return `<div class="vocab-list">${shuffled.map(item => item.html).join('')}</div>`;
         }
 
-        function formatTextWithMatches(text, cbracketstuff) {
+        // Helper function to fill blanks in etext (replace [word:index] with word)
+        function fillBlanksInEtext(etext) {
+            if (!etext) return '';
+            const blankPattern = /\[([^\]]+):(\d+)\]/g;
+            return etext.replace(blankPattern, (match, answerText, vocabIndex) => {
+                return answerText;
+            });
+        }
+
+        // Helper function to fill blanks in ctext (replace [word:index] with word)
+        function fillBlanksInCtext(ctext) {
+            if (!ctext) return '';
+            const blankPattern = /\[([^\]]+):(\d+)\]/g;
+            return ctext.replace(blankPattern, (match, textContent, vocabIndex) => {
+                return textContent;
+            });
+        }
+
+        function formatTextWithMatches(text, cbracketstuff, etext = null) {
             if (!text) return '';
+            
+            // Split both ctext and etext by newlines
+            const ctextLines = text.split('\n');
+            const etextLines = etext ? fillBlanksInEtext(etext).split('\n') : [];
             
             // Check if text uses markup syntax [text:index]
             // Pattern: [text content:vocab index]
             const markupPattern = /\[([^\]]+):(\d+)\]/g;
             
-            // Split text by newlines and process each line
-            return text.split('\n').map(line => {
+            // Process each line with line index
+            return ctextLines.map((line, lineIndex) => {
                 if (!line.trim()) return '';
                 
+                const lineId = `ctext-line-${lineIndex}`;
+                const etextLine = etextLines[lineIndex] || '';
+                const hasEtext = etextLine.trim() !== '';
+                
                 // Check if line contains markup
+                let processed;
                 if (markupPattern.test(line)) {
                     // Reset regex
                     markupPattern.lastIndex = 0;
                     
                     // Replace markup with clickable spans
                     // vocabIndex from markup is the label ID
-                    const processed = line.replace(markupPattern, (match, textContent, vocabIndex) => {
+                    processed = line.replace(markupPattern, (match, textContent, vocabIndex) => {
                         return `<span class="text-word" data-vocab-index="${vocabIndex}" data-label-id="${vocabIndex}" data-match-text="${textContent}">${textContent}</span>`;
                     });
-                    
-                    return `<p>${processed}</p>`;
                 } else {
                     // No markup - use old method for backward compatibility
-                    if (!cbracketstuff) return `<p>${line}</p>`;
-                    
-                    // Get all possible matches from cbracketstuff
-                    const matches = cbracketstuff.split(',').map(item => item.trim()).filter(item => item);
-                    
-                    // Create a regex pattern to match any of these words/phrases
-                    // Sort by length (longest first) to match longer phrases first
-                    const sortedMatches = matches.sort((a, b) => b.length - a.length);
-                    const pattern = sortedMatches.map(match => {
-                        // Escape special regex characters
-                        return match.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                    }).join('|');
-                    
-                    if (!pattern) return `<p>${line}</p>`;
-                    
-                    const regex = new RegExp(`(${pattern})`, 'gi');
-                    
-                    // Replace matches with clickable spans (without vocab index)
-                    const processed = line.replace(regex, (match) => {
-                        return `<span class="text-word" data-match-text="${match}">${match}</span>`;
-                    });
-                    
-                    return `<p>${processed}</p>`;
+                    if (!cbracketstuff) {
+                        processed = line;
+                    } else {
+                        // Get all possible matches from cbracketstuff
+                        const matches = cbracketstuff.split(',').map(item => item.trim()).filter(item => item);
+                        
+                        // Create a regex pattern to match any of these words/phrases
+                        // Sort by length (longest first) to match longer phrases first
+                        const sortedMatches = matches.sort((a, b) => b.length - a.length);
+                        const pattern = sortedMatches.map(match => {
+                            // Escape special regex characters
+                            return match.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                        }).join('|');
+                        
+                        if (pattern) {
+                            const regex = new RegExp(`(${pattern})`, 'gi');
+                            // Replace matches with clickable spans (without vocab index)
+                            processed = line.replace(regex, (match) => {
+                                return `<span class="text-word" data-match-text="${match}">${match}</span>`;
+                            });
+                        } else {
+                            processed = line;
+                        }
+                    }
                 }
+                
+                // Add "▸" button and etext reveal if etext is available
+                let html = '';
+                if (hasEtext) {
+                    html += `<p class="ctext-line-wrapper">
+                        <span class="etext-toggle" data-line-id="${lineId}" style="cursor: pointer; margin-right: 8px; color: var(--color-text-secondary); user-select: none; font-size: inherit;">▸</span>
+                        <span class="ctext-line">${processed}</span>
+                        <div class="etext-reveal" id="${lineId}" style="display: none; font-size: 0.85em; color: var(--color-text-secondary); margin-top: 4px; margin-left: 20px; font-style: italic;">${etextLine}</div>
+                    </p>`;
+                } else {
+                    html = `<p>${processed}</p>`;
+                }
+                
+                return html;
             }).join('');
         }
 
