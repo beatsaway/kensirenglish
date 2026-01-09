@@ -206,6 +206,9 @@
             this.highJumpWithRotation = false; // 30% chance to rotate during high jump
             this.highJumpRotation = 0; // Current rotation angle during high jump
             
+            // Speed boost properties (for tap interaction)
+            this.speedBoost = 1.0; // Speed multiplier (1.0 = normal, 8.0 = 8x speed)
+            
             // Spawn animation properties (bouncy pop-up)
             this.isSpawning = true;
             this.spawnCounter = 0;
@@ -283,9 +286,19 @@
                 const highJumpDuration = 2000; // 2 seconds for high jump
                 const jumpProgress = Math.min(this.highJumpCounter / highJumpDuration, 1);
                 
-                // Very very very high jump curve (parabolic arc, much higher)
+                // Very very very high jump curve with stronger gravity (asymmetric: slow up, fast down)
                 const highJumpHeight = config.jumpHeight * 8; // 8x higher than normal jump (very very very high)
-                const jumpOffset = Math.sin(jumpProgress * Math.PI) * highJumpHeight;
+                let jumpOffset;
+                if (jumpProgress < 0.4) {
+                    // Ascent: slower (40% of time to reach peak)
+                    const ascentProgress = jumpProgress / 0.4;
+                    jumpOffset = Math.sin(ascentProgress * Math.PI / 2) * highJumpHeight;
+                } else {
+                    // Descent: faster with stronger gravity (60% of time to fall)
+                    const descentProgress = (jumpProgress - 0.4) / 0.6;
+                    // Use quadratic curve for faster fall (stronger gravity)
+                    jumpOffset = highJumpHeight * (1 - descentProgress * descentProgress);
+                }
                 this.jumpY = -jumpOffset;
                 
                 // 30% chance: self-rotate during jump (one full rotation)
@@ -307,8 +320,18 @@
                 this.jumpCounter += deltaTime;
                 const jumpProgress = Math.min(this.jumpCounter / config.jumpDuration, 1);
                 
-                // Jump curve (parabolic arc)
-                const jumpOffset = Math.sin(jumpProgress * Math.PI) * config.jumpHeight;
+                // Jump curve with stronger gravity (asymmetric: slow up, fast down)
+                let jumpOffset;
+                if (jumpProgress < 0.4) {
+                    // Ascent: slower (40% of time to reach peak)
+                    const ascentProgress = jumpProgress / 0.4;
+                    jumpOffset = Math.sin(ascentProgress * Math.PI / 2) * config.jumpHeight;
+                } else {
+                    // Descent: faster with stronger gravity (60% of time to fall)
+                    const descentProgress = (jumpProgress - 0.4) / 0.6;
+                    // Use quadratic curve for faster fall (stronger gravity)
+                    jumpOffset = config.jumpHeight * (1 - descentProgress * descentProgress);
+                }
                 this.jumpY = -jumpOffset;
                 
                 // End jump
@@ -322,12 +345,14 @@
             }
             
             // Wiggle animation while walking (rotation back and forth)
-            this.wigglePhase += this.wiggleSpeed;
+            // Apply speed boost to wiggle speed (8x speed = 8x wiggle)
+            this.wigglePhase += this.wiggleSpeed * this.speedBoost;
             this.wiggleRotation = Math.sin(this.wigglePhase) * this.wiggleAmount;
             
             // Move horizontally (only after spawn animation completes)
+            // Apply speed boost if active
             if (!this.isSpawning) {
-                this.x += this.speed * this.direction;
+                this.x += this.speed * this.direction * this.speedBoost;
             }
             
             // Check if animal is out of bounds (completely off-screen)
@@ -391,6 +416,10 @@
             if (Math.random() < 0.66) {
                 // Flip direction and jump a bit to make it look natural
                 this.direction *= -1;
+                // 33% chance to speed up 8 times when flipping
+                if (Math.random() < 0.33) {
+                    this.speedBoost = 8.0; // 8x speed boost
+                }
                 // Trigger a normal jump to make the flip look more natural
                 if (!this.isJumping && !this.isHighJumping) {
                     this.jump();
