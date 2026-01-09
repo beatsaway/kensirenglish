@@ -859,11 +859,8 @@ function updateLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-HK';
     
-    // Update logo
-    const logoText = document.querySelector('.nav-logo span:first-child');
-    if (logoText) {
-        logoText.textContent = translations.nav.logo[lang];
-    }
+    // Update header label (no need to update text, it's already in both languages)
+    // The header label shows both languages simultaneously
     
     // Update navigation menu
     const navLinks = document.querySelectorAll('.nav-link');
@@ -1953,33 +1950,29 @@ function updateLanguage(lang) {
     localStorage.setItem('pageLanguage', lang);
 }
 
-// Make logo clickable to toggle between Chinese and English
-const navLogo = document.querySelector('.nav-logo');
-if (navLogo) {
-    navLogo.addEventListener('click', () => {
-        const newLang = currentLanguage === 'zh' ? 'en' : 'zh';
-        updateLanguage(newLang);
+// Make header label parts clickable to switch languages
+const headerLabelEn = document.getElementById('headerLabelEn');
+const headerLabelZh = document.getElementById('headerLabelZh');
+
+if (headerLabelEn) {
+    headerLabelEn.addEventListener('click', () => {
+        updateLanguage('en');
+    });
+}
+
+if (headerLabelZh) {
+    headerLabelZh.addEventListener('click', () => {
+        updateLanguage('zh');
     });
 }
 
 // Always default to Chinese on page load
 // The HTML content should be in Chinese by default
 // Only switch to English if user explicitly toggles
-const logoText = document.querySelector('.nav-logo span:first-child');
-const isCurrentlyChinese = logoText && logoText.textContent === '雙語學習研究';
-
+currentLanguage = 'zh';
 // Force Chinese as default - don't load from localStorage on initial page load
 // This ensures the page always starts in Chinese
-if (!isCurrentlyChinese) {
-    // Page content is not in Chinese, set it to Chinese
-    updateLanguage('zh');
-} else {
-    // Page is already in Chinese (correct default state)
-    currentLanguage = 'zh';
-    // Clear any saved English preference to ensure fresh start
-    // User can toggle to English if they want
-    // localStorage.removeItem('pageLanguage'); // Uncomment if you want to always start fresh
-}
+updateLanguage('zh');
 
 // Mobile navigation toggle
 const navToggle = document.getElementById('navToggle');

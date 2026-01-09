@@ -504,8 +504,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        /* Fixed Navigation Bar */
-        .fixed-nav {
+        /* Header styling to match standard format */
+        header {
             position: fixed;
             top: 0;
             left: 0;
@@ -514,50 +514,63 @@
             border-bottom: 1px solid var(--color-border);
             z-index: 1000;
             transition: all 0.2s ease;
-        }
-
-        .nav-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: var(--space-1) var(--space-4);
+            padding: 4px var(--space-4) 4px var(--space-2);
             display: flex;
             justify-content: space-between;
             align-items: center;
             min-height: 60px;
         }
 
-        .nav-logo {
+        .header-left {
+            flex: 0 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-label-en,
+        .header-label-zh {
             cursor: pointer;
-            user-select: none;
             transition: opacity 0.2s ease;
         }
 
-        .nav-logo:hover {
+        .header-label-en:hover,
+        .header-label-zh:hover {
             opacity: 0.7;
         }
 
-        .nav-logo span {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .nav-logo .nav-copyright {
-            font-size: 11px;
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
             color: var(--color-text-secondary);
             font-weight: 400;
-            letter-spacing: 0.5px;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
         }
 
-        .nav-logo .nav-copyright a {
+        .header-copyright a {
             text-decoration: none;
             color: inherit;
         }
 
-        .nav-logo .nav-copyright a:hover {
+        .header-copyright a:hover {
             opacity: 0.7;
         }
 
@@ -567,6 +580,14 @@
             gap: var(--space-4);
             margin: 0;
             padding: 0;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
         }
 
         .nav-link {
@@ -590,24 +611,66 @@
 
         .nav-toggle {
             display: none;
-            flex-direction: column;
+            width: 20px;
+            height: 20px;
+            position: relative;
             cursor: pointer;
-            gap: 4px;
+            opacity: 0.7;
+            transition: opacity 0.15s ease;
+        }
+
+        .nav-toggle:hover {
+            opacity: 1;
+        }
+
+        .nav-toggle::before,
+        .nav-toggle::after,
+        .nav-toggle span {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 1.5px;
+            background: currentColor;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--color-text);
-            transition: all 0.2s ease;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-toggle::before {
+            top: 50%;
+            transform: translate(-50%, calc(-50% - 4px));
+        }
+
+        .nav-toggle::after {
+            top: 50%;
+            transform: translate(-50%, calc(-50% + 4px));
         }
 
         /* Mobile Navigation */
         @media (max-width: 768px) {
+            header {
+                flex-wrap: nowrap;
+                padding: 4px var(--space-2);
+            }
+
+            .header-left {
+                flex: 1;
+                min-width: 0;
+            }
+
             .nav-menu {
+                display: none;
+            }
+
+            .nav-menu.active {
                 position: fixed;
                 top: 60px;
-                left: -100%;
+                left: 0;
                 width: 100%;
                 height: calc(100vh - 60px);
                 background: var(--color-bg);
@@ -617,27 +680,30 @@
                 align-items: center;
                 padding-top: var(--space-6);
                 gap: var(--space-3);
-                transition: left 0.2s ease;
-            }
-
-            .nav-menu.active {
-                left: 0;
+                display: flex;
+                z-index: 999;
             }
 
             .nav-toggle {
                 display: flex;
             }
 
-            .nav-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+            .header-actions {
+                flex-shrink: 0;
             }
 
-            .nav-toggle.active span:nth-child(2) {
+            .nav-toggle.active span {
                 opacity: 0;
             }
 
-            .nav-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
+            .nav-toggle.active::before {
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            .nav-toggle.active::after {
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
             }
         }
     </style>
@@ -646,30 +712,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     </head>
 <body>
-    <!-- Fixed Navigation Bar -->
-    <nav class="fixed-nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>雙語學習研究</span>
-                <span class="nav-copyright"><a href="../../index.html">©kensirenglish.com</a></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#abstract" class="nav-link">摘要</a></li>
-                <li><a href="#timeline" class="nav-link">歷史發展</a></li>
-                <li><a href="#recent" class="nav-link">最新研究</a></li>
-                <li><a href="#hk-research" class="nav-link">香港研究</a></li>
-                <li><a href="#theories" class="nav-link">理論發展</a></li>
-                <li><a href="#papers" class="nav-link">論文分析</a></li>
-                <li><a href="#practical" class="nav-link">如何應用</a></li>
-                <li><a href="#references" class="nav-link">參考文獻</a></li>
-            </ul>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-left">
+            <span class="header-label">
+                <span class="header-label-en" id="headerLabelEn">Bilingual Studies</span><span class="separator">•📚</span><span class="header-label-zh" id="headerLabelZh">雙語學習研究</span>
+            </span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#abstract" class="nav-link">摘要</a></li>
+            <li><a href="#timeline" class="nav-link">歷史發展</a></li>
+            <li><a href="#recent" class="nav-link">最新研究</a></li>
+            <li><a href="#hk-research" class="nav-link">香港研究</a></li>
+            <li><a href="#theories" class="nav-link">理論發展</a></li>
+            <li><a href="#papers" class="nav-link">論文分析</a></li>
+            <li><a href="#practical" class="nav-link">如何應用</a></li>
+            <li><a href="#references" class="nav-link">參考文獻</a></li>
+        </ul>
+        <div class="header-actions">
             <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
                 <span></span>
             </div>
         </div>
-    </nav>
+    </header>
 
     <div class="container">
         <div class="abstract" id="abstract">
