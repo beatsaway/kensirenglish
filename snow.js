@@ -250,8 +250,15 @@
     // Animation loop
     let lastTime = performance.now();
     let animationFrameId;
+    let isPaused = false;
     
     function animate(currentTime) {
+        // Skip animation if paused (page hidden)
+        if (isPaused) {
+            animationFrameId = requestAnimationFrame(animate);
+            return;
+        }
+        
         const deltaTime = currentTime - lastTime;
         lastTime = currentTime;
         
@@ -266,12 +273,9 @@
         animationFrameId = requestAnimationFrame(animate);
     }
     
-    // Start animation
-    animate(performance.now());
-    
     // Handle window resize
     let resizeTimeout;
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             // Reset snowflakes that are out of bounds
@@ -281,17 +285,47 @@
                 }
             });
         }, 250);
-    });
+    };
+    window.addEventListener('resize', handleResize);
+    
+    // Pause animation when page is hidden to save CPU/RAM
+    const handleVisibilityChange = () => {
+        isPaused = document.hidden;
+        if (!isPaused) {
+            // Resume animation - reset timing to prevent jumps
+            lastTime = performance.now();
+        }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Start animation
+    animate(performance.now());
     
     // Cleanup function (optional, for if you need to stop the snow)
     window.stopSnow = function() {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
+        // Remove event listeners
+        window.removeEventListener('resize', handleResize);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        // Clear timeout
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        // Remove snowflakes
         snowflakes.forEach(flake => flake.remove());
+        snowflakes.length = 0;
+        // Remove container
         if (snowContainer && snowContainer.parentNode) {
             snowContainer.parentNode.removeChild(snowContainer);
         }
     };
+    
+    // Cleanup on page unload to prevent memory leaks
+    window.addEventListener('beforeunload', () => {
+        window.stopSnow();
+    });
 })();
 
