@@ -1380,7 +1380,7 @@
         <div class="container">
             <div class="philosophy-carousel"><br><br><br>
                 <div class="philosophy-carousel-container">
-                    <div class="philosophy active" data-index="1" data-lang="zh" data-bg-color="#fef3c7">
+                    <div class="philosophy" data-index="1" data-lang="zh" data-bg-color="#fef3c7">
                         <p><span class="ptitle" data-text-zh="係I did it定係I've done it？<br>I'm going定I'll go？ "><strong></strong></span> <span class="pdescription" data-text-zh="小學學咗6年Tenses都係唔清唔楚？其實只要學2步用廣東話轉，已經可以搞掂9隻!"></span></p>
                         <span class="philosophy-link-container"><span class="philosophy-emoji" data-href="grammar/a1a2tenses/index.html">⏰</span><a href="grammar/a1a2tenses/index.html">The 9 Tenses<span class="link-separator">•</span><span class="link-cantonese">九隻時式</span></a></span>
                     </div>
@@ -1434,7 +1434,7 @@
                 <div class="developer-popup-intro">
                     <div class="developer-popup-paragraph">
                         <div class="cantonese-text">本站作者 Kenneth Wong 為居英十年港人，於英國中學任教及擔任班主任其間，指導過百名英語為非母語EAL學童，實證活用學生嘅母語（烏克蘭語﹑俄羅斯語﹑阿拉伯語﹑波斯語﹑普什圖語﹑羅馬尼亞語﹑及馬來語）可幫佢哋快速掌握英文。最新研究亦清楚顯示：用母語去掌握外語，唔只有效，而且係所有外語者學英文必經之路！</div>
-                        <div class="english-text">Kenneth Wong, the author, is a Hong Konger who's been living in the UK for ten years. During his time teaching and working as a form tutor in British secondary schools, he's helped hundreds of EAL students use their first languages(Ukrainian, Russian, Arabic, Farsi, Pashto, Romanian, and Malay) to get better at English quickly. Recent research clearly shows: using your mother tongue to pick up a second language isn't just effective—it's the only way forward for any EAL learner.</div>
+                        <div class="english-text">Kenneth Wong, the author, is a Hong Konger who's been living in the UK for ten years. During his time teaching and working as a form tutor in British secondary schools, he's helped hundreds of EAL students use their first languages(Ukrainian, Russian, Arabic, Farsi, Pashto, Romanian, and Malay) to get better at English quickly. Recent research clearly shows: using your mother tongue to pick up a second language isn't just more effective—it's the only way forward for any EAL learner.</div>
                     </div>
                     
                     <div class="developer-popup-paragraph">
@@ -1815,7 +1815,8 @@
             
             const philosophyItems = document.querySelectorAll('.philosophy');
             const indicatorsContainer = document.getElementById('carouselIndicators');
-            let currentIndex = 0;
+            // Generate random starting index
+            let currentIndex = Math.floor(Math.random() * philosophyItems.length);
             let isTransitioning = false;
             let autoSlideTimeout;
             
@@ -1823,7 +1824,7 @@
             philosophyItems.forEach((item, index) => {
                 const indicator = document.createElement('div');
                 indicator.className = 'carousel-indicator';
-                if (index === 0) indicator.classList.add('active');
+                if (index === currentIndex) indicator.classList.add('active');
                 indicator.addEventListener('click', () => goToSlide(index));
                 indicatorsContainer.appendChild(indicator);
             });
@@ -2086,9 +2087,13 @@
                     }
                 }
                 
-                // Hide all slides except the first one
-                if (index !== 0) {
+                // Hide all slides except the randomly selected one
+                if (index !== currentIndex) {
                     item.style.display = 'none';
+                } else {
+                    // Show and activate the random starting slide
+                    item.style.display = 'block';
+                    item.classList.add('active');
                 }
             });
             
@@ -2104,11 +2109,11 @@
             
             // Start carousel animation - called after header animations complete
             function startCarousel() {
-                const firstItem = philosophyItems[0];
+                const currentItem = philosophyItems[currentIndex];
                 let initialDelay = 3000; // Base delay of 3 seconds
                 
-                if (firstItem) {
-                    const description = firstItem.querySelector('.pdescription');
+                if (currentItem) {
+                    const description = currentItem.querySelector('.pdescription');
                     if (description) {
                         const tempDiv = document.createElement('div');
                         tempDiv.innerHTML = description.getAttribute('data-text-zh') || '';
