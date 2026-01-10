@@ -231,7 +231,7 @@
             // Container height = 60px
             const containerHeight = 60;
             // For emoji, we'll position them at the bottom of the container
-            this.y = containerHeight - this.size * 0.7; // Adjust this factor for different emoji "feet" position
+            this.y = containerHeight - this.size * 1.35; // Adjust this factor for different emoji "feet" position (increased from 0.7 to make them higher)
         }
         
         update(deltaTime) {
