@@ -59,7 +59,7 @@
     // Configuration
     const config = {
         minAnimalCount: 1, // Minimum number of animals on screen
-        maxAnimalCount: 3, // Maximum number of animals on screen
+        maxAnimalCount: 4, // Maximum number of animals on screen
         baseSpeedMultiplier: 0.1, // Base speed multiplier (will be multiplied by animal's speed value)
         speedVariation: 0.2, // Variation factor (20% variation from base speed)
         minSpawnDelay: 300, // Minimum time between spawns (ms) - much faster
@@ -141,6 +141,10 @@
                 font-size: ${this.size}px;
                 line-height: 1;
                 user-select: none;
+                
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
                 pointer-events: auto;
                 cursor: pointer;
                 will-change: transform, left, top;
