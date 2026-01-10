@@ -236,9 +236,10 @@
             const TOUCH_COOLDOWN = 300; // ms to prevent double-firing
             
             animal.addEventListener('click', (e) => {
-                // Prevent click if it was from a recent touch event (mobile double-firing)
+                // Only prevent click if it was from a recent touch event (mobile double-firing)
+                // If lastTouchTime is 0 or very old, this is a mouse click - allow it
                 const timeSinceTouch = Date.now() - lastTouchTime;
-                if (timeSinceTouch > TOUCH_COOLDOWN) {
+                if (lastTouchTime === 0 || timeSinceTouch > TOUCH_COOLDOWN) {
                     this.handleClick();
                 }
             });
