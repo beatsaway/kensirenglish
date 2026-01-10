@@ -6,54 +6,132 @@
     // Speed: base speed multiplier (will be varied slightly per animal instance)
     // Wiggle: wiggle rate (rotation speed) - higher = faster wiggle
     const sideViewAnimals = [
-        { emoji: "🐘", scale: 1.5, speed: 0.3, wiggle: 0.02 }, // Elephant - reduced from 2.5
-        { emoji: "🦒", scale: 1.6, speed: 0.4, wiggle: 0.025 }, // Giraffe - reduced from 2.8
-        { emoji: "🦘", scale: 1.3, speed: 1.2, wiggle: 0.08 }, // Kangaroo - reduced from 1.8
-        { emoji: "🐫", scale: 1.4, speed: 0.5, wiggle: 0.03 }, // Two-hump camel - reduced from 2.0
-        { emoji: "🐪", scale: 1.4, speed: 0.5, wiggle: 0.03 }, // One-hump camel - reduced from 2.0
-        { emoji: "🦏", scale: 1.5, speed: 0.4, wiggle: 0.02 }, // Rhinoceros - reduced from 2.3
-        { emoji: "🐎", scale: 1.3, speed: 1.5, wiggle: 0.1 }, // Horse - reduced from 1.8
-        { emoji: "🐖", scale: 1.1, speed: 0.6, wiggle: 0.04 }, // Pig - kept similar
-        { emoji: "🦛", scale: 1.5, speed: 0.3, wiggle: 0.015 }, // Hippopotamus - reduced from 2.2
-        { emoji: "🐗", scale: 1.1, speed: 0.7, wiggle: 0.05 }, // Boar - kept similar
-        { emoji: "🐃", scale: 1.3, speed: 0.5, wiggle: 0.03 }, // Water buffalo - reduced from 1.8
-        { emoji: "🦌", scale: 1.2, speed: 1.0, wiggle: 0.07 }, // Deer - reduced from 1.5
-        { emoji: "🦙", scale: 1.2, speed: 0.6, wiggle: 0.04 }, // Llama - reduced from 1.6
-        { emoji: "🐕‍🦺", scale: 1.0, speed: 0.8, wiggle: 0.06 }, // Service dog - kept
-        { emoji: "🐧", scale: 0.95, speed: 0.4, wiggle: 0.025 }, // Penguin - increased from 0.8
-        { emoji: "🦩", scale: 1.1, speed: 0.5, wiggle: 0.03 }, // Flamingo - kept
-        { emoji: "🦤", scale: 1.0, speed: 0.3, wiggle: 0.015 }, // Dodo - kept
-        { emoji: "🦃", scale: 1.0, speed: 0.5, wiggle: 0.03 }, // Turkey - increased from 0.9
-        { emoji: "🦚", scale: 1.0, speed: 0.4, wiggle: 0.025 }, // Peacock - kept
-        { emoji: "🐋", scale: 1.6, speed: 0.6, wiggle: 0.03 }, // Whale - reduced from 3.0
-        { emoji: "🐬", scale: 1.2, speed: 1.3, wiggle: 0.09 }, // Dolphin - reduced from 1.5
-        { emoji: "🦭", scale: 1.15, speed: 0.7, wiggle: 0.05 }, // Seal - reduced from 1.3
-        { emoji: "🐟", scale: 0.8, speed: 0.9, wiggle: 0.07 }, // Fish - increased from 0.5
-        { emoji: "🐠", scale: 0.75, speed: 0.8, wiggle: 0.06 }, // Tropical fish - increased from 0.4
-        { emoji: "🐡", scale: 0.85, speed: 0.5, wiggle: 0.03 }, // Blowfish - increased from 0.6
-        { emoji: "🦈", scale: 1.3, speed: 1.4, wiggle: 0.08 }, // Shark - reduced from 1.8
-        { emoji: "🐙", scale: 1.0, speed: 0.6, wiggle: 0.05 }, // Octopus - kept
-        { emoji: "🦑", scale: 1.1, speed: 0.8, wiggle: 0.06 }, // Squid - reduced from 1.2
-        { emoji: "🐊", scale: 1.4, speed: 0.5, wiggle: 0.03 }, // Crocodile - reduced from 2.0
-        { emoji: "🐍", scale: 1.0, speed: 0.7, wiggle: 0.04 }, // Snake - increased from 0.9
-        { emoji: "🦎", scale: 0.85, speed: 0.8, wiggle: 0.06 }, // Lizard - increased from 0.6
-        { emoji: "🐢", scale: 0.9, speed: 0.2, wiggle: 0.01 }, // Turtle - increased from 0.7
-        { emoji: "🦋", scale: 0.7, speed: 1.0, wiggle: 0.12 }, // Butterfly - increased from 0.3
-        { emoji: "🐞", scale: 0.65, speed: 0.6, wiggle: 0.04 }, // Ladybug - increased from 0.2
-        { emoji: "🐜", scale: 0.65, speed: 0.7, wiggle: 0.05 }, // Ant - increased from 0.2
-        { emoji: "🪲", scale: 0.7, speed: 0.5, wiggle: 0.03 }, // Beetle - increased from 0.3
-        { emoji: "🦗", scale: 0.65, speed: 0.9, wiggle: 0.08 }, // Cricket - increased from 0.2
-        { emoji: "🐕", scale: 1.0, speed: 0.9, wiggle: 0.07 }, // Dog - kept
-        { emoji: "🐩", scale: 0.95, speed: 0.7, wiggle: 0.05 }, // Poodle - increased from 0.8
-        { emoji: "🦮", scale: 1.0, speed: 0.8, wiggle: 0.06 }, // Guide dog - kept
-        { emoji: "🐈", scale: 0.9, speed: 0.9, wiggle: 0.07 }, // Cat - increased from 0.7
-        { emoji: "🐈‍⬛", scale: 0.9, speed: 0.9, wiggle: 0.07 }, // Black cat - increased from 0.7
-        { emoji: "🐇", scale: 0.85, speed: 1.1, wiggle: 0.09 }, // Rabbit - increased from 0.6
-        { emoji: "🐿️", scale: 0.75, speed: 1.0, wiggle: 0.08 }, // Chipmunk - increased from 0.4
-        { emoji: "🐁", scale: 0.7, speed: 0.8, wiggle: 0.06 }, // Mouse - increased from 0.3
-        { emoji: "🐀", scale: 0.75, speed: 0.8, wiggle: 0.06 }, // Rat - increased from 0.4
-        { emoji: "🐑", scale: 1.1, speed: 0.6, wiggle: 0.04 }, // Sheep - kept
-        { emoji: "🐏", scale: 1.15, speed: 0.7, wiggle: 0.05 }  // Ram - reduced from 1.2
+        { emoji: "🐘", scale: 1.5, speed: 0.9, wiggle: 0.02 }, // Elephant - reduced from 2.5
+        { emoji: "🦒", scale: 1.6, speed: 1.2, wiggle: 0.025 }, // Giraffe - reduced from 2.8
+        { emoji: "🦘", scale: 1.3, speed: 3.6, wiggle: 0.08 }, // Kangaroo - reduced from 1.8
+        { emoji: "🐫", scale: 1.4, speed: 1.5, wiggle: 0.03 }, // Two-hump camel - reduced from 2.0
+        { emoji: "🐪", scale: 1.4, speed: 1.5, wiggle: 0.03 }, // One-hump camel - reduced from 2.0
+        { emoji: "🦏", scale: 1.5, speed: 1.2, wiggle: 0.02 }, // Rhinoceros - reduced from 2.3
+        { emoji: "🐎", scale: 1.3, speed: 4.5, wiggle: 0.1 }, // Horse - reduced from 1.8
+        { emoji: "🐖", scale: 1.1, speed: 1.8, wiggle: 0.04 }, // Pig - kept similar
+        { emoji: "🦛", scale: 1.5, speed: 0.9, wiggle: 0.015 }, // Hippopotamus - reduced from 2.2
+        { emoji: "🐗", scale: 1.1, speed: 2.1, wiggle: 0.05 }, // Boar - kept similar
+        { emoji: "🐽", scale: 1.1, speed: 2.1, wiggle: 0.05 }, // Pig nose - kept similar
+        { emoji: "🐃", scale: 1.3, speed: 1.5, wiggle: 0.03 }, // Water buffalo - reduced from 1.8
+        { emoji: "🦌", scale: 1.2, speed: 3.0, wiggle: 0.07 }, // Deer - reduced from 1.5
+        { emoji: "🦙", scale: 1.2, speed: 1.8, wiggle: 0.04 }, // Llama - reduced from 1.6
+        { emoji: "🐕‍🦺", scale: 1.0, speed: 2.4, wiggle: 0.06 }, // Service dog - kept
+        { emoji: "🐧", scale: 0.95, speed: 1.2, wiggle: 0.025 }, // Penguin - increased from 0.8
+        { emoji: "🦩", scale: 1.1, speed: 1.5, wiggle: 0.03 }, // Flamingo - kept
+        { emoji: "🦤", scale: 1.0, speed: 0.9, wiggle: 0.015 }, // Dodo - kept
+        { emoji: "🦃", scale: 1.0, speed: 1.5, wiggle: 0.03 }, // Turkey - increased from 0.9
+        { emoji: "🦚", scale: 1.0, speed: 1.2, wiggle: 0.025 }, // Peacock - kept
+        { emoji: "🐋", scale: 1.6, speed: 1.8, wiggle: 0.03 }, // Whale - reduced from 3.0
+        { emoji: "🐬", scale: 1.2, speed: 3.9, wiggle: 0.09 }, // Dolphin - reduced from 1.5
+        { emoji: "🦭", scale: 1.15, speed: 2.1, wiggle: 0.05 }, // Seal - reduced from 1.3
+        { emoji: "🐟", scale: 0.8, speed: 2.7, wiggle: 0.07 }, // Fish - increased from 0.5
+        { emoji: "🐠", scale: 0.75, speed: 2.4, wiggle: 0.06 }, // Tropical fish - increased from 0.4
+        { emoji: "🐡", scale: 0.85, speed: 1.5, wiggle: 0.03 }, // Blowfish - increased from 0.6
+        { emoji: "🦈", scale: 1.3, speed: 4.2, wiggle: 0.08 }, // Shark - reduced from 1.8
+        { emoji: "🐙", scale: 1.0, speed: 1.8, wiggle: 0.05 }, // Octopus - kept
+        { emoji: "🦑", scale: 1.1, speed: 2.4, wiggle: 0.06 }, // Squid - reduced from 1.2
+        { emoji: "🐊", scale: 1.4, speed: 1.5, wiggle: 0.03 }, // Crocodile - reduced from 2.0
+        { emoji: "🐍", scale: 1.0, speed: 2.1, wiggle: 0.04 }, // Snake - increased from 0.9
+        { emoji: "🦎", scale: 0.85, speed: 2.4, wiggle: 0.06 }, // Lizard - increased from 0.6
+        { emoji: "🐢", scale: 0.9, speed: 0.6, wiggle: 0.01 }, // Turtle - increased from 0.7
+        { emoji: "🦋", scale: 0.7, speed: 3.0, wiggle: 0.12 }, // Butterfly - increased from 0.3
+        { emoji: "🐞", scale: 0.65, speed: 1.8, wiggle: 0.04 }, // Ladybug - increased from 0.2
+        { emoji: "🐜", scale: 0.65, speed: 2.1, wiggle: 0.05 }, // Ant - increased from 0.2
+        { emoji: "🪲", scale: 0.7, speed: 4.5, wiggle: 0.03 }, // Beetle - increased from 0.3
+        { emoji: "🦗", scale: 0.65, speed: 2.7, wiggle: 0.08 }, // Cricket - increased from 0.2
+        { emoji: "🐕", scale: 1.0, speed: 2.7, wiggle: 0.07 }, // Dog - kept
+        { emoji: "🐩", scale: 0.95, speed: 2.1, wiggle: 0.05 }, // Poodle - increased from 0.8
+        { emoji: "🦮", scale: 1.0, speed: 2.4, wiggle: 0.06 }, // Guide dog - kept
+        { emoji: "🐈", scale: 0.9, speed: 2.7, wiggle: 0.07 }, // Cat - increased from 0.7
+        { emoji: "🐈‍⬛", scale: 0.9, speed: 2.7, wiggle: 0.07 }, // Black cat - increased from 0.7
+        { emoji: "🐇", scale: 0.85, speed: 3.3, wiggle: 0.09 }, // Rabbit - increased from 0.6
+        { emoji: "🐿️", scale: 0.75, speed: 3.0, wiggle: 0.08 }, // Chipmunk - increased from 0.4
+        { emoji: "🐁", scale: 0.7, speed: 2.4, wiggle: 0.06 }, // Mouse - increased from 0.3
+        { emoji: "🐀", scale: 0.75, speed: 2.4, wiggle: 0.06 }, // Rat - increased from 0.4
+        { emoji: "🐑", scale: 1.1, speed: 1.8, wiggle: 0.04 }, // Sheep - kept
+        { emoji: "🐏", scale: 1.15, speed: 2.1, wiggle: 0.05 }, // Ram - reduced from 1.2
+        // Primates
+        { emoji: "🐵", scale: 1.0, speed: 2.4, wiggle: 0.06 }, // Monkey face
+        { emoji: "🐒", scale: 1.0, speed: 2.7, wiggle: 0.07 }, // Monkey
+        { emoji: "🦍", scale: 1.4, speed: 1.5, wiggle: 0.03 }, // Gorilla
+        { emoji: "🦧", scale: 1.3, speed: 1.8, wiggle: 0.04 }, // Orangutan
+        // Canines
+        { emoji: "🐶", scale: 1.0, speed: 2.7, wiggle: 0.07 }, // Dog face
+        { emoji: "🐺", scale: 1.1, speed: 3.0, wiggle: 0.08 }, // Wolf
+        { emoji: "🦊", scale: 0.9, speed: 2.7, wiggle: 0.07 }, // Fox
+        { emoji: "🦝", scale: 0.85, speed: 2.4, wiggle: 0.06 }, // Raccoon
+        // Felines
+        { emoji: "🐱", scale: 0.9, speed: 2.7, wiggle: 0.07 }, // Cat face
+        { emoji: "🦁", scale: 1.3, speed: 2.1, wiggle: 0.05 }, // Lion
+        { emoji: "🐯", scale: 1.2, speed: 2.4, wiggle: 0.06 }, // Tiger face
+        { emoji: "🐅", scale: 1.3, speed: 3.0, wiggle: 0.07 }, // Tiger
+        { emoji: "🐆", scale: 1.2, speed: 3.3, wiggle: 0.08 }, // Leopard
+        // Equines
+        { emoji: "🐴", scale: 1.3, speed: 4.2, wiggle: 0.09 }, // Horse face
+        { emoji: "🫎", scale: 1.4, speed: 1.8, wiggle: 0.04 }, // Moose
+        { emoji: "🫏", scale: 1.2, speed: 2.1, wiggle: 0.05 }, // Donkey
+        { emoji: "🦄", scale: 1.2, speed: 3.6, wiggle: 0.08 }, // Unicorn
+        { emoji: "🦓", scale: 1.2, speed: 3.3, wiggle: 0.07 }, // Zebra
+        // Bovines
+        { emoji: "🦬", scale: 1.4, speed: 1.5, wiggle: 0.03 }, // Bison
+        { emoji: "🐮", scale: 1.2, speed: 1.5, wiggle: 0.03 }, // Cow face
+        { emoji: "🐂", scale: 1.3, speed: 1.5, wiggle: 0.03 }, // Ox
+        { emoji: "🐄", scale: 1.2, speed: 1.5, wiggle: 0.03 }, // Cow
+        // Porcines
+        { emoji: "🐷", scale: 1.1, speed: 1.8, wiggle: 0.04 }, // Pig face
+        // Caprines
+        { emoji: "🐐", scale: 1.0, speed: 2.1, wiggle: 0.05 }, // Goat
+        // Large mammals
+        { emoji: "🦣", scale: 1.6, speed: 0.9, wiggle: 0.02 }, // Mammoth
+        // Small mammals
+        { emoji: "🐭", scale: 0.7, speed: 2.4, wiggle: 0.06 }, // Mouse face
+        { emoji: "🐹", scale: 0.75, speed: 2.1, wiggle: 0.05 }, // Hamster
+        { emoji: "🐰", scale: 0.85, speed: 3.3, wiggle: 0.09 }, // Rabbit face
+        { emoji: "🦫", scale: 1.0, speed: 1.8, wiggle: 0.04 }, // Beaver
+        { emoji: "🦔", scale: 0.8, speed: 1.5, wiggle: 0.03 }, // Hedgehog
+        { emoji: "🦇", scale: 0.8, speed: 3.0, wiggle: 0.1 }, // Bat
+        // Bears
+        { emoji: "🐻", scale: 1.2, speed: 1.8, wiggle: 0.04 }, // Bear
+        { emoji: "🐻‍❄️", scale: 1.3, speed: 1.5, wiggle: 0.03 }, // Polar bear
+        { emoji: "🐨", scale: 1.0, speed: 0.9, wiggle: 0.02 }, // Koala
+        { emoji: "🐼", scale: 1.1, speed: 1.2, wiggle: 0.025 }, // Panda
+        { emoji: "🦥", scale: 1.0, speed: 0.6, wiggle: 0.01 }, // Sloth
+        { emoji: "🦦", scale: 1.0, speed: 2.7, wiggle: 0.07 }, // Otter
+        { emoji: "🦨", scale: 0.9, speed: 2.1, wiggle: 0.05 }, // Skunk
+        { emoji: "🦡", scale: 0.85, speed: 2.4, wiggle: 0.06 }, // Badger
+        // Mollusks
+        { emoji: "🐌", scale: 0.7, speed: 0.6, wiggle: 0.01 }, // Snail
+        // Birds
+        { emoji: "🐔", scale: 1.0, speed: 1.8, wiggle: 0.04 }, // Chicken
+        { emoji: "🐓", scale: 1.0, speed: 1.8, wiggle: 0.04 }, // Rooster
+        { emoji: "🐣", scale: 0.8, speed: 1.5, wiggle: 0.03 }, // Hatching chick
+        { emoji: "🐤", scale: 0.85, speed: 1.5, wiggle: 0.03 }, // Baby chick
+        { emoji: "🐥", scale: 0.85, speed: 1.5, wiggle: 0.03 }, // Front-facing baby chick
+        { emoji: "🐦", scale: 0.9, speed: 2.4, wiggle: 0.06 }, // Bird
+        { emoji: "🕊️", scale: 0.9, speed: 2.1, wiggle: 0.05 }, // Dove
+        { emoji: "🦅", scale: 1.1, speed: 3.6, wiggle: 0.08 }, // Eagle
+        { emoji: "🦆", scale: 1.0, speed: 2.1, wiggle: 0.05 }, // Duck
+        { emoji: "🦢", scale: 1.1, speed: 1.8, wiggle: 0.04 }, // Swan
+        { emoji: "🦉", scale: 1.0, speed: 1.2, wiggle: 0.025 }, // Owl
+        { emoji: "🪶", scale: 0.7, speed: 1.5, wiggle: 0.04 }, // Feather
+        { emoji: "🦜", scale: 1.0, speed: 1.8, wiggle: 0.04 }, // Parrot
+        { emoji: "🐦‍⬛", scale: 0.9, speed: 2.4, wiggle: 0.06 }, // Black bird
+        { emoji: "🪿", scale: 1.0, speed: 1.8, wiggle: 0.04 }, // Goose
+        { emoji: "🐦‍🔥", scale: 1.2, speed: 3.0, wiggle: 0.07 }, // Phoenix
+        // Amphibians
+        { emoji: "🐸", scale: 0.9, speed: 2.1, wiggle: 0.05 }, // Frog
+        // Mythical/Reptiles
+        { emoji: "🐲", scale: 1.3, speed: 1.8, wiggle: 0.04 }, // Dragon face
+        { emoji: "🐉", scale: 1.5, speed: 1.5, wiggle: 0.03 }, // Dragon
+        { emoji: "🦕", scale: 1.5, speed: 1.2, wiggle: 0.02 }, // Sauropod
+        { emoji: "🦖", scale: 1.4, speed: 1.8, wiggle: 0.03 }, // T-Rex
+        // Marine mammals
+        { emoji: "🐳", scale: 1.6, speed: 1.5, wiggle: 0.03 }  // Spouting whale
     ];
     
     // Configuration
@@ -154,11 +232,35 @@
             animal.textContent = this.emoji;
             
             // Add click/tap event listener
-            animal.addEventListener('click', () => this.handleClick());
-            animal.addEventListener('touchstart', (e) => {
-                e.preventDefault(); // Prevent double-tap zoom
-                this.handleClick();
+            let lastTouchTime = 0;
+            const TOUCH_COOLDOWN = 300; // ms to prevent double-firing
+            
+            animal.addEventListener('click', (e) => {
+                // Prevent click if it was from a recent touch event (mobile double-firing)
+                const timeSinceTouch = Date.now() - lastTouchTime;
+                if (timeSinceTouch > TOUCH_COOLDOWN) {
+                    this.handleClick();
+                }
             });
+            
+            // Handle touch events for mobile
+            animal.addEventListener('touchstart', (e) => {
+                e.preventDefault(); // Prevent double-tap zoom and scrolling
+                e.stopPropagation(); // Prevent event bubbling
+                lastTouchTime = Date.now();
+                this.handleClick();
+            }, { passive: false });
+            
+            // Backup touchend handler for better mobile reliability
+            animal.addEventListener('touchend', (e) => {
+                const timeSinceTouch = Date.now() - lastTouchTime;
+                // Only trigger if touchstart was very recent (within 100ms) and didn't already fire
+                if (timeSinceTouch < 100 && timeSinceTouch > 10) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Don't call handleClick again, touchstart already did
+                }
+            }, { passive: false });
             
             return animal;
         }
@@ -211,6 +313,11 @@
             this.highJumpRotation = 0; // Current rotation angle during high jump
             
             // Speed boost properties (for tap interaction)
+            // Clear any existing speed boost timeout
+            if (this.speedBoostTimeout) {
+                clearTimeout(this.speedBoostTimeout);
+                this.speedBoostTimeout = null;
+            }
             this.speedBoost = 1.0; // Speed multiplier (1.0 = normal, 8.0 = 8x speed)
             
             // Spawn animation properties (bouncy pop-up)
@@ -420,7 +527,16 @@
                 this.direction *= -1;
                 // 33% chance to speed up 8 times when flipping
                 if (Math.random() < 0.33) {
+                    // Clear any existing speed boost timeout
+                    if (this.speedBoostTimeout) {
+                        clearTimeout(this.speedBoostTimeout);
+                    }
                     this.speedBoost = 8.0; // 8x speed boost
+                    // Reset speed boost after 3 seconds
+                    this.speedBoostTimeout = setTimeout(() => {
+                        this.speedBoost = 1.0;
+                        this.speedBoostTimeout = null;
+                    }, 3000);
                 }
                 // Trigger a normal jump to make the flip look more natural
                 if (!this.isJumping && !this.isHighJumping) {

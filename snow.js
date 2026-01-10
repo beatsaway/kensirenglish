@@ -3,9 +3,9 @@
     
     // Configuration
     const config = {
-        snowflakeCount: 80,
-        minSize: 1,
-        maxSize: 3,
+        snowflakeCount: 20,
+        minSize: 3,
+        maxSize: 9,
         minSpeed: 0.3,
         maxSpeed: 1.2,
         minRotationSpeed: 0.5,
