@@ -88,7 +88,7 @@ window.sixHatSets = [
     link: "https://www.youtube.com/shorts/a1G7u0rs9EQ",
     vocablist: [
       { word: "barren", translation: "貧瘠的", emoji: "🏜️" },
-      { word: "obligated", translation: "有義務的", emoji: "⚖️" },
+      { word: "obligated", translation: "必須做的", emoji: "⚖️" },
       { word: "pursue", translation: "追捕", emoji: "🏃" },
       { word: "so as not to", translation: "以免", emoji: "🚫" },
       { word: "attempt", translation: "嘗試", emoji: "🎯" },
