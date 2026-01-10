@@ -98,7 +98,7 @@ const HairStyling = [
     cbracketstuff: "修剪, 開叉, 長度, 層次",
     
     etitle: "The Reliable Salon Request",
-    etext: "My standard salon line is: \"Just a [trim:0], please. Take the [split ends:1] off but keep this [length:2].\"\nIf it's feeling heavy, I'll add, \"Maybe some light [layers:3]? Just to take the weight out.\"\nSafe, simple, they always get it. No drama.",
+    etext: "My standard salon line is: \"Just a [trim:0], please. Take the [split ends:1] off but keep this [length:2].\"\nIf it's feeling heavy, I'll add, \"Maybe some light [layers:3]? Just to take the weight out.\"\nKeep it precise for the stylist to get it right. Safe and sound.",
     evocab: "Trim, Split ends, Length, Layers",
     edef: "Trim: small cut | Split ends: damaged tips | Length: hair size | Layers: different lengths"
   }
