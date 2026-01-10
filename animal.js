@@ -90,14 +90,14 @@
         height: 60px;
         pointer-events: none;
         overflow: visible;
-        z-index: 200;
+        z-index: 1;
     `;
     
-    // Function to update container position (exactly on top of footer)
+    // Function to update container position (above footer)
     const updateContainerPosition = () => {
         const footerRect = footer.getBoundingClientRect();
         const scrollY = window.scrollY || window.pageYOffset;
-        // Position container so its bottom edge aligns with footer top (no gap)
+        // Position container above footer (60px height for animals)
         animalContainer.style.top = `${footerRect.top + scrollY - 60}px`;
     };
     
@@ -227,12 +227,10 @@
         }
         
         updateYPosition() {
-            // Calculate the "foot" position of the emoji
-            // For emoji, the visual bottom is roughly at the bottom of the font bounding box
-            // We position the element so its bottom aligns with container bottom
+            // Position animals at the bottom of the container (which is above footer)
             // Container height = 60px
             const containerHeight = 60;
-            // For emoji, we'll position them slightly above the bottom to give them "ground"
+            // For emoji, we'll position them at the bottom of the container
             this.y = containerHeight - this.size * 0.7; // Adjust this factor for different emoji "feet" position
         }
         

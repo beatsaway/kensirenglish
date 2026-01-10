@@ -1230,13 +1230,22 @@
         }
         
         footer {
-            background: var(--color-surface);
+            background: #f5f5dc;
             padding: var(--space-3) var(--space-4);
             text-align: center;
             font-size: 13px;
             color: var(--color-text-secondary);
             flex-shrink: 0;
             border-top: 1px solid var(--border-color);
+        }
+        
+        footer .header-date-time {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            cursor: default;
+            pointer-events: none;
         }
         
         .footer-link {
@@ -1259,7 +1268,6 @@
     <header>
         <div class="header-container">
             <div class="header-title-container" id="headerTitleContainer">
-                <div class="header-date-time" id="headerDateTime"></div><br>
                 <div class="header-title"><span class="playfair"><em>Learn English</em>🍵</span><span class="italic">with Cantonese</span></div>
                 <div class="header-subtitle">🥢<span class="header-subtitle-chinese">用廣東話</span><span class="header-subtitle-black">學英文</span>&nbsp;© kensirenglish.com</div><br>
             </div>
@@ -1465,6 +1473,52 @@
             return String(num).split('').map(digit => chineseDigits[parseInt(digit)]).join('');
         }
         
+        // Convert date (1-31) to Chinese numerals with proper date notation
+        function dateToChinese(date) {
+            const chineseDigits = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+            
+            if (date < 1 || date > 31) return chineseDigits[date] || '〇';
+            
+            // Single digits (1-9)
+            if (date < 10) {
+                return chineseDigits[date];
+            }
+            
+            // 10
+            if (date === 10) {
+                return '十';
+            }
+            
+            // 11-19: 十 + digit
+            if (date < 20) {
+                const ones = date % 10;
+                return '十' + chineseDigits[ones];
+            }
+            
+            // 20
+            if (date === 20) {
+                return '廿';
+            }
+            
+            // 21-29: 廿 + digit
+            if (date < 30) {
+                const ones = date % 10;
+                return '廿' + chineseDigits[ones];
+            }
+            
+            // 30
+            if (date === 30) {
+                return '卅';
+            }
+            
+            // 31: 卅一
+            if (date === 31) {
+                return '卅一';
+            }
+            
+            return chineseDigits[date] || '〇';
+        }
+        
         // Convert year to Chinese numerals
         function yearToChinese(year) {
             const chineseDigits = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
@@ -1473,7 +1527,7 @@
         
         // Update date and time display
         function updateDateTime() {
-            const dateTimeElement = document.getElementById('headerDateTime');
+            const dateTimeElement = document.getElementById('footerDateTime');
             if (!dateTimeElement) return;
             
             const now = new Date();
@@ -1487,7 +1541,7 @@
             
             // Convert to Chinese numerals
             const yearChinese = yearToChinese(year);
-            const dateChinese = toChineseNumeral(date);
+            const dateChinese = dateToChinese(date);
             
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -2487,18 +2541,21 @@
         })();
     </script>
     <footer>
-        <a href="#" class="footer-link" id="footerLink">kensirenglish.com © 2025</a>
+        <div class="header-date-time" id="footerDateTime"></div>
+        <a href="#" class="footer-link" id="footerLink" style="display: none;"></a>
     </footer>
     <script>
-        // Footer click handler for about popup
+            // Footer click handler for about popup (clicking on date/time)
         (function() {
             'use strict';
             
-            const footerLink = document.getElementById('footerLink');
+            const footerDateTime = document.getElementById('footerDateTime');
             const developerPopup = document.getElementById('developerPopup');
             
-            if (footerLink && developerPopup) {
-                footerLink.addEventListener('click', function(e) {
+            if (footerDateTime && developerPopup) {
+                footerDateTime.style.cursor = 'pointer';
+                footerDateTime.style.pointerEvents = 'auto';
+                footerDateTime.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     developerPopup.classList.add('visible');
