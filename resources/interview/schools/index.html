@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Interview - Fill in the Blanks</title>
+    <link rel="stylesheet" href="../../../main.css">
+    <style>
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --color-bg: #ffffff;
+            --color-surface: #f6f6f6;
+            --color-text: #111111;
+            --color-text-secondary: #666666;
+            --color-border: #dddddd;
+            --max-width: 960px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 6px var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .header-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header-copyright {
+            font-size: 10px;
+            color: var(--color-text-secondary);
+        }
+
+        .header-copyright a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .header-select {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .header-select label {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .header-select select {
+            padding: 6px 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            font-size: 13px;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .content-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-3);
+        }
+
+        .exercise {
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            padding: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .exercise-item {
+            display: none;
+        }
+
+        .exercise-item.active {
+            display: block;
+        }
+
+        .exercise h2 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .exercise p {
+            margin-bottom: var(--space-2);
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 80px;
+            min-height: 24px;
+            border: 1px solid var(--color-border);
+            padding: 2px 6px;
+            margin: 0 2px;
+            font-size: 0.95rem;
+            background: var(--color-bg);
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .blank.filled {
+            border-color: var(--color-text-secondary);
+            min-width: 0;
+        }
+
+        .blank.correct {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        .blank.wrong {
+            background: rgba(244, 67, 54, 0.15);
+            border-color: rgba(244, 67, 54, 0.5);
+        }
+
+        .cantonese-text {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-1);
+            line-height: 1.6;
+        }
+
+        .keywords-container-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: var(--space-2) var(--space-4);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+            justify-content: center;
+        }
+
+        .keyword {
+            padding: 6px 12px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .keyword:hover {
+            background: var(--color-surface);
+            border-color: var(--color-text-secondary);
+        }
+
+        .keyword.selected {
+            background: var(--color-surface);
+            border-color: var(--color-text);
+            border-width: 2px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            color: var(--color-text-secondary);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 400;
+            transition: color 0.15s ease;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            color: var(--color-text);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .nav-slider-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            max-width: 300px;
+            min-width: 0;
+        }
+
+        .nav-slider {
+            flex: 1;
+            height: 2px;
+            background: var(--color-border);
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .nav-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--color-text);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .nav-slider::-webkit-slider-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+
+        .nav-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: var(--color-text);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            transition: background 0.15s ease;
+        }
+
+        .nav-slider::-moz-range-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+
+        .exercise-counter {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            padding: 0 var(--space-1);
+            font-weight: 400;
+            flex-shrink: 0;
+            min-width: 45px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="header-label">Interview • Schools</div>
+            <div class="header-copyright"><a href="../../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <div class="header-select">
+            <label for="schoolSelect">School</label>
+            <select id="schoolSelect"></select>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-wrap">
+            <h1 id="pageTitle">School Exercises</h1>
+            <div id="exerciseList"></div>
+        </div>
+    </main>
+    <div class="keywords-container-bottom" id="keywordsContainerBottom"></div>
+    <div class="nav-controls">
+        <button class="nav-button" id="prevButton" aria-label="Previous">‹</button>
+        <div class="nav-slider-container">
+            <input type="range" class="nav-slider" id="navSlider" min="1" max="1" value="1" aria-label="Navigate exercises">
+        </div>
+        <div class="exercise-counter" id="exerciseCounter">1 / 1</div>
+        <button class="nav-button" id="nextButton" aria-label="Next">›</button>
+    </div>
+
+    <script>
+        const schoolFiles = [
+            { name: "Yuen Long Lutheran Secondary School (YLLSS)", file: "yllss.js", varName: "YLLSS" }
+        ];
+
+        const schoolSelect = document.getElementById('schoolSelect');
+        const pageTitle = document.getElementById('pageTitle');
+        const exerciseList = document.getElementById('exerciseList');
+        const keywordsContainerBottom = document.getElementById('keywordsContainerBottom');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const navSlider = document.getElementById('navSlider');
+        const exerciseCounter = document.getElementById('exerciseCounter');
+        let currentScript = null;
+        let currentExercises = [];
+        let exerciseAnswers = [];
+        let exerciseVocabCn = [];
+        let currentIndex = 0;
+        let selectedWord = null;
+
+        function escapeHtml(text) {
+            return text.replace(/[&<>"]/g, (char) => {
+                const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
+                return map[char] || char;
+            });
+        }
+
+        function escapeHtmlAttr(text) {
+            return text.replace(/[&<>"]/g, (char) => {
+                const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
+                return map[char] || char;
+            });
+        }
+
+        function renderTextWithBlanks(text) {
+            const pattern = /\[\[([^\]]+)\]\]/g;
+            let lastIndex = 0;
+            let match;
+            const parts = [];
+            const answers = [];
+
+            while ((match = pattern.exec(text)) !== null) {
+                parts.push(escapeHtml(text.slice(lastIndex, match.index)));
+                const answer = match[1].trim();
+                answers.push(answer);
+                parts.push(`<span class="blank" data-answer="${escapeHtmlAttr(answer)}" aria-label="blank">&nbsp;</span>`);
+                lastIndex = match.index + match[0].length;
+            }
+
+            parts.push(escapeHtml(text.slice(lastIndex)));
+            return {
+                html: parts.join('').replace(/\n/g, '<br>'),
+                answers
+            };
+        }
+
+        function shuffleArray(items) {
+            const copy = [...items];
+            for (let i = copy.length - 1; i > 0; i -= 1) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function renderExercises(data) {
+            pageTitle.textContent = data.schoolName;
+            exerciseList.innerHTML = '';
+            currentExercises = data.exercises || [];
+            exerciseAnswers = [];
+            exerciseVocabCn = [];
+            currentIndex = 0;
+
+            currentExercises.forEach((exercise, index) => {
+                const wrapper = document.createElement('section');
+                wrapper.className = `exercise exercise-item${index === 0 ? ' active' : ''}`;
+                const rendered = renderTextWithBlanks(exercise.etext);
+                exerciseAnswers[index] = rendered.answers;
+                exerciseVocabCn[index] = exercise.vocabCn || {};
+                wrapper.innerHTML = `
+                    <h2>${escapeHtml(exercise.title)}</h2>
+                    <div class="cantonese-text">${escapeHtml(exercise.ctext || '')}</div>
+                    <p>${rendered.html}</p>
+                `;
+
+                setupExerciseInteractions(wrapper);
+                exerciseList.appendChild(wrapper);
+            });
+
+            setupNavigation();
+            updateDisplay();
+        }
+
+        function setupExerciseInteractions(wrapper) {
+            const blanks = wrapper.querySelectorAll('.blank');
+
+            blanks.forEach((blank) => {
+                blank.addEventListener('click', () => {
+                    if (blank.classList.contains('filled')) {
+                        blank.innerHTML = '&nbsp;';
+                        blank.classList.remove('filled', 'correct', 'wrong');
+                        return;
+                    }
+
+                    if (!selectedWord) {
+                        return;
+                    }
+                    const expected = (blank.dataset.answer || '').trim().toLowerCase();
+                    const chosen = selectedWord.trim();
+                    blank.classList.add('filled');
+                    blank.textContent = chosen;
+                    blank.classList.toggle('correct', chosen.toLowerCase() === expected);
+                    blank.classList.toggle('wrong', chosen.toLowerCase() !== expected);
+                });
+
+                blank.addEventListener('dblclick', (event) => {
+                    event.preventDefault();
+                    blank.innerHTML = '&nbsp;';
+                    blank.classList.remove('filled', 'correct', 'wrong');
+                });
+            });
+        }
+
+        function setupNavigation() {
+            prevButton.onclick = () => {
+                if (currentIndex > 0) {
+                    currentIndex -= 1;
+                    updateDisplay();
+                }
+            };
+
+            nextButton.onclick = () => {
+                if (currentIndex < currentExercises.length - 1) {
+                    currentIndex += 1;
+                    updateDisplay();
+                }
+            };
+
+            navSlider.oninput = (event) => {
+                const newIndex = parseInt(event.target.value, 10) - 1;
+                if (!Number.isNaN(newIndex)) {
+                    currentIndex = Math.min(Math.max(newIndex, 0), currentExercises.length - 1);
+                    updateDisplay();
+                }
+            };
+        }
+
+        function updateDisplay() {
+            const exerciseItems = document.querySelectorAll('.exercise-item');
+            exerciseItems.forEach((item, index) => {
+                item.classList.toggle('active', index === currentIndex);
+            });
+
+            selectedWord = null;
+            updateKeywordsContainer();
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            const total = currentExercises.length;
+            prevButton.disabled = currentIndex === 0;
+            nextButton.disabled = currentIndex >= total - 1;
+            navSlider.max = total || 1;
+            navSlider.value = total ? currentIndex + 1 : 1;
+            exerciseCounter.textContent = `${total ? currentIndex + 1 : 0} / ${total}`;
+        }
+
+        function updateKeywordsContainer() {
+            keywordsContainerBottom.innerHTML = '';
+            const answers = exerciseAnswers[currentIndex] || [];
+            const vocabCn = exerciseVocabCn[currentIndex] || {};
+            const unique = Array.from(new Set(answers.map(answer => answer.trim()))).filter(Boolean);
+            const shuffled = shuffleArray(unique);
+
+            shuffled.forEach((word) => {
+                const keywordEl = document.createElement('div');
+                keywordEl.className = 'keyword';
+                keywordEl.textContent = word;
+                keywordEl.dataset.word = word;
+                keywordEl.dataset.hint = vocabCn[word] || '';
+                keywordEl.addEventListener('click', () => handleKeywordClick(keywordEl));
+                keywordsContainerBottom.appendChild(keywordEl);
+            });
+        }
+
+        function handleKeywordClick(keywordEl) {
+            const keywords = keywordsContainerBottom.querySelectorAll('.keyword');
+            const isSelected = keywordEl.classList.contains('selected');
+
+            keywords.forEach((item) => {
+                item.classList.remove('selected');
+                item.textContent = item.dataset.word;
+            });
+
+            if (isSelected) {
+                selectedWord = null;
+                return;
+            }
+
+            keywordEl.classList.add('selected');
+            selectedWord = keywordEl.dataset.word;
+            const hint = keywordEl.dataset.hint;
+            keywordEl.textContent = hint ? `${selectedWord} ${hint}` : selectedWord;
+        }
+
+        function loadSchool(school) {
+            if (currentScript) {
+                currentScript.remove();
+            }
+
+            currentScript = document.createElement('script');
+            currentScript.src = school.file;
+            currentScript.onload = () => {
+                const data = window[school.varName];
+                if (data && data.exercises) {
+                    renderExercises(data);
+                } else {
+                    exerciseList.innerHTML = '<p>Unable to load exercises.</p>';
+                }
+            };
+            currentScript.onerror = () => {
+                exerciseList.innerHTML = '<p>Unable to load exercises.</p>';
+            };
+            document.head.appendChild(currentScript);
+        }
+
+        schoolFiles.forEach((school, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = school.name;
+            schoolSelect.appendChild(option);
+        });
+
+        schoolSelect.addEventListener('change', (event) => {
+            const school = schoolFiles[parseInt(event.target.value, 10)];
+            if (school) {
+                loadSchool(school);
+            }
+        });
+
+        if (schoolFiles.length > 0) {
+            schoolSelect.value = 0;
+            loadSchool(schoolFiles[0]);
+        }
+    </script>
+</body>
+</html>

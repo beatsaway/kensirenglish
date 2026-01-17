@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Resources</title>
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --color-bg: #ffffff;
+            --color-surface: #f6f6f6;
+            --color-text: #111111;
+            --color-text-secondary: #666666;
+            --color-border: #dddddd;
+            --max-width: 960px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 6px var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .header-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header-copyright {
+            font-size: 10px;
+            color: var(--color-text-secondary);
+        }
+
+        .header-copyright a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .content-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-3);
+        }
+
+        .option-list {
+            display: grid;
+            gap: var(--space-2);
+        }
+
+        .option-card {
+            display: block;
+            padding: var(--space-3);
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            color: var(--color-text);
+            text-decoration: none;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .option-card:hover {
+            background: var(--color-bg);
+            border-color: var(--color-text-secondary);
+        }
+
+        .option-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+        }
+
+        .option-desc {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="header-label">Interview</div>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-wrap">
+
+            <div class="option-list">
+                <a class="option-card" href="schools/index.html">
+                    <div class="option-title">Schools</div>
+                    <div class="option-desc">School interview fill-in exercises.</div>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
