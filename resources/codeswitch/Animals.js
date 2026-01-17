@@ -60,18 +60,18 @@ window.Animals = [
   },
   {
     ctitle: "動物Cosplay",
-    ctext: "我買咗件[公仔衫:1]畀隻狗仔玩[扮嘢:0]。\n件衫仲係[手持刀:2]嗰款，隔籬隻大狗即刻[嚇到飛起:3]。\n我先知原來Cosplay都要揀對象。",
+    ctext: "我買咗件[公仔衫:1]畀隻狗仔玩[扮嘢:0]。\n件衫係有對假手[持刀:2]嗰款，隔籬隻大狗即刻[嚇到飛起:3]。\n我先知原來Cosplay可以咁刺激。",
     cvocab: "Cosplay, Costume, Holding a knife, Scared stiff",
     cbracketstuff: "扮嘢, 公仔衫, 手持刀, 嚇到飛起",
     
     etitle: "Animal Cosplay",
-    etext: "I bought a [costume:1] for my pup to do a bit of [cosplay:0].\nIt was the '[holding a knife:2]' kind, and the big dog next door went [scared stiff:3].\nTurns out even cosplay needs the right audience.",
+    etext: "I bought a [costume:1] for my pup to do a bit of [cosplay:0].\nIt was the kind with a pair of fake hands '[holding a knife:2]', and the big dog next door went [scared stiff:3].\nI didn't know cosplay could be this thrilling.",
     evocab: "Cosplay, Costume, Holding a knife, Scared stiff",
     edef: "Cosplay: dressing as a character | Costume: outfit | Holding a knife: carrying a knife | Scared stiff: frozen with fear"
   },
   {
     ctitle: "加速龜",
-    ctext: "因為[上網:1]見到好玩，我學人幫隻龜裝[滑板:0]。\n而家佢爬得勁快，成日[中意撞:2]隻貓。\n隻貓個樣好[無奈:3]，我都唔知點算。",
+    ctext: "因為[上網:1]見到好玩，我學人幫隻龜裝[滑板:0]。\n而家佢爬得勁快，[成日撞:2]隻貓。\n隻貓個樣好[無奈:3]，我都唔知點算。",
     cvocab: "Skateboard, Online, Keeps crashing into, Helpless",
     cbracketstuff: "滑板, 上網, 中意撞, 無奈",
     
