@@ -123,6 +123,16 @@
         border-bottom: 1px solid var(--color-border, #e2e8f0);
         width: 100%;
       }
+      #header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: var(--progress, 0%);
+        background: #1d4ed8;
+        transition: width 0.2s ease;
+      }
       .header-left {
         flex: 0 0 auto;
         display: flex;
