@@ -1,0 +1,306 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* 8px grid system */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  
+  /* Colors - refined palette */
+  --color-bg: #ffffff;
+  --color-surface: #f8f8f8;
+  --color-text: #000000;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-border: #e0e0e0;
+  
+  /* Accent colors */
+  --color-accent: #4a90e2;
+  --color-accent-hover: #357abd;
+  --color-success: #52c41a;
+  --color-warning: #faad14;
+  --color-error: #ff4d4f;
+}
+
+body {
+  font-family: "Lexend", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  /* background: var(--color-bg); - removed, controlled by main.css */
+  color: var(--color-text);
+  line-height: 1.3;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+header {
+  background: transparent;
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-4);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+header p {
+  font-size: 11px;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+header p a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header p a:hover {
+  opacity: 0.7;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+}
+
+.exercise-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h2 {
+  text-align: left;
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.notes {
+  background: rgba(74, 144, 226, 0.05);
+  border-radius: 0;
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  border-left: 3px solid var(--color-accent);
+  font-weight: 400;
+}
+
+.notes ul {
+  margin: var(--space-1) 0 0 var(--space-3);
+  padding-left: 0;
+}
+
+.notes li {
+  margin-bottom: var(--space-1);
+}
+
+.section {
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sentence {
+  margin: var(--space-2) 0;
+  font-size: 15px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  text-align: left;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.answer-dropdown {
+  display: inline-block;
+  min-width: 120px;
+  margin: 0 var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background-color: var(--color-bg);
+  font-size: 14px;
+  vertical-align: middle;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  font-family: inherit;
+  color: var(--color-text);
+}
+
+.answer-dropdown:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.answer-dropdown.correct {
+  border-color: var(--color-success);
+  background-color: rgba(82, 196, 26, 0.08);
+  color: var(--color-text);
+}
+
+.answer-dropdown.incorrect {
+  border-color: var(--color-error);
+  background-color: rgba(255, 77, 79, 0.08);
+  color: var(--color-text);
+}
+
+.cantonese {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  margin-right: var(--space-1);
+  display: block;
+  margin-bottom: var(--space-1);
+  text-align: left;
+  font-weight: 400;
+}
+
+#toggle-answers-btn {
+  float: right;
+  margin-bottom: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  font-size: 13px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-accent);
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 400;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+}
+
+#toggle-answers-btn:hover {
+  background: rgba(74, 144, 226, 0.1);
+  color: var(--color-accent);
+  border-color: var(--color-accent-hover);
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .exercise-panel {
+    padding: 0;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .notes {
+    font-size: 14px;
+    padding: var(--space-2);
+  }
+  .sentence {
+    font-size: 15px;
+  }
+  .cantonese {
+    font-size: 15px;
+  }
+  .answer-dropdown {
+    min-width: 110px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-2);
+  }
+  h2 {
+    font-size: 17px;
+    margin: 0 0 var(--space-2) 0;
+  }
+  .notes {
+    font-size: 14px;
+    padding: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .sentence {
+    font-size: 14px;
+    margin: var(--space-2) 0;
+    line-height: 1.4;
+  }
+  .cantonese {
+    font-size: 14px;
+    margin-bottom: var(--space-1);
+  }
+  .answer-dropdown {
+    min-width: 90px;
+    font-size: 13px;
+    padding: var(--space-1);
+    margin: 0 2px;
+  }
+  #toggle-answers-btn {
+    font-size: 12px;
+    padding: var(--space-1) var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  main {
+    padding: var(--space-2);
+  }
+  h2 {
+    font-size: 16px;
+    margin: 0 0 var(--space-2) 0;
+  }
+  .notes {
+    font-size: 13px;
+    padding: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+  .sentence {
+    font-size: 13px;
+    margin: var(--space-1) 0;
+  }
+  .cantonese {
+    font-size: 14px;
+  }
+  .answer-dropdown {
+    min-width: 80px;
+    font-size: 12px;
+    padding: var(--space-1);
+  }
+  #toggle-answers-btn {
+    font-size: 11px;
+    padding: var(--space-1) var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+}

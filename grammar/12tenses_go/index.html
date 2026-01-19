@@ -1,0 +1,1318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verb Go - Turn Based Cards</title>
+    <link rel="stylesheet" href="../../main.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--color-bg, #f8fafc);
+        color: var(--color-text, #0f172a);
+        font-size: clamp(16px, 1.2vw + 12px, 20px);
+        line-height: 1.4;
+      }
+      .intro-modal {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        z-index: 20;
+      }
+      .intro-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.5);
+      }
+      .intro-card {
+        position: relative;
+        width: min(640px, 92vw);
+        background: #fff;
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
+        padding: clamp(16px, 2.6vw, 24px);
+        display: grid;
+        gap: 12px;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.2);
+        z-index: 1;
+        font-size: 0.9em;
+      }
+      .intro-card h2 {
+        margin: 0;
+        font-size: clamp(18px, 1.8vw + 12px, 28px);
+      }
+      .intro-lead {
+        margin: 0;
+        color: #475467;
+        font-size: 0.9em;
+      }
+      .intro-points {
+        margin: 0;
+        padding-left: 18px;
+        color: #334155;
+        display: grid;
+        gap: 6px;
+      }
+      .intro-hk {
+        display: block;
+        font-family: "LXGW WenKai TC", "Noto Sans TC", sans-serif;
+        color: #475467;
+        font-size: 0.95em;
+      }
+      .intro-footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .intro-cta,
+      .intro-close {
+        border: 1px solid #1d4ed8;
+        background: #1d4ed8;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+      .intro-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        border: none;
+        background: #fff;
+        color: #475467;
+        padding: 2px 8px;
+      }
+      .intro-close:hover,
+      .intro-cta:hover {
+        opacity: 0.85;
+      }
+      .app {
+        width: 100%;
+        min-height: 100vh;
+        background: #fff;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      #header {
+        background: transparent;
+        color: var(--color-text, #0f172a);
+        padding: 4px var(--space-4, 16px);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--space-2, 12px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--color-border, #e2e8f0);
+        width: 100%;
+      }
+      .header-left {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-right: 8px;
+      }
+      .header-label {
+        font-size: 14px;
+        color: var(--color-text, #0f172a);
+        font-weight: 500;
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+        padding: 2px 0;
+        line-height: 1.2;
+      }
+      .header-label .separator {
+        color: var(--color-text-secondary, #64748b);
+        margin: 0 2px;
+      }
+      .header-copyright {
+        font-size: 9px;
+        color: var(--color-text-secondary, #64748b);
+        font-weight: 400;
+        white-space: nowrap;
+        line-height: 1.2;
+        margin-top: 1px;
+      }
+      .header-copyright a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .header-copyright a:hover {
+        opacity: 0.7;
+      }
+      #headerTitle {
+        margin-left: auto;
+        font-weight: 600;
+        color: var(--color-text, #0f172a);
+        font-size: clamp(16px, 1.6vw + 10px, 22px);
+      }
+      #mapToggle {
+        margin-left: 6px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      #stageTip {
+        margin-top: 12px;
+        padding: clamp(10px, 1.6vw, 16px);
+        border-radius: 12px;
+        background: var(--color-surface, #f8fafc);
+        border: 1px solid var(--color-border, #e2e8f0);
+        font-size: clamp(16px, 1.6vw + 10px, 22px);
+        color: var(--color-text, #334155);
+        align-self: stretch;
+      }
+      #stageTip .hint-wrong {
+        color: inherit;
+        font-weight: 400;
+      }
+      #mapModal {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        z-index: 10;
+      }
+      #mapBackdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.35);
+      }
+      #mapContent {
+        position: relative;
+        width: min(1120px, 96vw);
+        max-height: 90dvh;
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        padding: clamp(12px, 2.4vw, 20px);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(10px, 2vw, 16px);
+        z-index: 1;
+      }
+      #mapContent .map-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      #mapTabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+      }
+      #mapTabs span {
+        padding: 2px 4px;
+        border-radius: 5px;
+        font-size: 0.8em;
+        border: 1px solid #cbd5e1;
+        cursor: pointer;
+        user-select: none;
+      }
+      #mapTabs span[aria-pressed="true"] {
+        border-color: #1d4ed8;
+        color: #1d4ed8;
+        background: #e0edff;
+      }
+      #mapBody {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(6px, 1.4vw, 10px);
+        align-items: stretch;
+      }
+      #mapStageList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        text-align: center;
+      }
+      #mapStageList span {
+        background: transparent;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-size: clamp(1.6em, 2.2vw, 2.2em);
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        user-select: none;
+        filter: grayscale(1);
+        opacity: 0.45;
+        transition: filter 0.15s ease, opacity 0.15s ease;
+      }
+      #mapStageList span[aria-pressed="true"] {
+        filter: none;
+        opacity: 1;
+      }
+      #mapInfo {
+        padding: clamp(6px, 1.4vw, 10px);
+        font-size: clamp(0.95em, 1.1vw, 1.1em);
+        color: #334155;
+        display: grid;
+        gap: 4px;
+        width: 100%;
+      }
+      #mapHighScore {
+        font-weight: 600;
+        text-align: center;
+        color: #b45309;
+      }
+      #mapInfoText {
+        font-weight: 600;
+      }
+      #mapScore {
+        font-size: 1.2em;
+        text-align: center;
+      }
+      .tense-table {
+        width: 100%;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+      .tense-table td {
+        border: 1px solid #000;
+        padding: 6px 4px;
+        text-align: center;
+        font-size: 0.85em;
+        color: #334155;
+      }
+      .tense-table .tense-header {
+        background: #D8D8D8;
+        font-weight: 600;
+      }
+      #card {
+        border: 0;
+        padding: clamp(16px, 2.6vw, 24px);
+        background: #fff;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: min(1120px, 100%);
+      }
+      #stageTitle {
+        display: none;
+      }
+      #promptText {
+        font-size: clamp(28px, 3.6vw + 12px, 52px);
+        margin: 12px 0 8px;
+        line-height: 1.2;
+      }
+      #promptTextHk {
+        font-size: clamp(28px, 3.4vw + 12px, 48px);
+        margin: 0 0 8px;
+        letter-spacing: 0.22em;
+        color: #475467;
+      }
+      #blankBox {
+        display: inline-flex;
+        min-width: 6ch;
+        min-height: 1.2em;
+        padding: 0.06em 0.4em;
+        border: 2px solid #cbd5e1;
+        border-radius: 10px;
+        font: inherit;
+        line-height: 1;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        vertical-align: 0;
+        background: #f8fafc;
+      }
+      button {
+        font: inherit;
+        padding: 8px 12px;
+        background: #fff;
+        color: #0f172a;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #mapToggle {
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        user-select: none;
+      }
+      #mapClose {
+        border: 0;
+        background: transparent;
+        color: #0f172a;
+        font-size: 20px;
+        line-height: 1;
+        padding: 4px 6px;
+      }
+      #mapEnter {
+        border: 0;
+      }
+      .map-enter-text {
+        display: inline-block;
+        transform-origin: center;
+        animation: mapEnterPulse 1.4s ease-in-out infinite;
+      }
+      @keyframes mapEnterPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0.92);
+        }
+      }
+      #answerOptions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 5px;
+        justify-content: center;
+      }
+      #answerOptions button {
+        border-color: #1d4ed8;
+        border-radius: 10px;
+        color: #1d4ed8;
+        font-weight: 600;
+        font-size: clamp(20px, 2.4vw + 10px, 30px);
+        padding: clamp(12px, 1.8vw, 18px) clamp(18px, 2.4vw, 26px);
+      }
+      #answerOptions button[data-state="correct"] {
+        background: #fff;
+        border-color: #1d4ed8;
+        color: #1d4ed8;
+      }
+      #answerOptions button[data-state="wrong"] {
+        background: #fff;
+        border-color: #1d4ed8;
+        color: #1d4ed8;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      #log {
+        margin-top: 12px;
+        min-height: 24px;
+        color: #1f2937;
+        cursor: pointer;
+        font-size: clamp(20px, 2vw + 10px, 28px);
+        text-align: center;
+      }
+      @media (max-width: 720px) {
+        #mapStageList {
+          gap: 6px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header id="header">
+        <div class="header-left">
+          <span class="header-label">12 Tenses<span class="separator">•🧭</span>十二時式</span>
+          <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <span id="headerTitle">Loading...</span>
+        <span id="mapToggle" role="button" aria-label="Stage map">🗺️</span>
+      </header>
+      <div id="selectors" hidden>
+        <label>
+          World
+          <select id="worldSelect"></select>
+        </label>
+        <label>
+          Stage
+          <select id="stageSelect"></select>
+        </label>
+      </div>
+      <div id="mapModal" hidden>
+        <div id="mapBackdrop"></div>
+        <div id="mapContent">
+          <div class="map-header">
+            <button id="mapClose" type="button" aria-label="Close">✕</button>
+          </div>
+          <div id="mapTabs"></div>
+          <div id="mapBody">
+            <div id="mapStageList"></div>
+            <button id="mapEnter" type="button">
+              <span id="mapEnterLabel" class="map-enter-text">Go to Level</span>
+            </button>
+            <div id="mapInfo">
+              <div id="mapHighScore" hidden></div>
+              <div id="mapScore" hidden></div>
+              <div id="mapInfoText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tensesIntro" class="intro-modal" hidden>
+        <div class="intro-backdrop" data-intro-close></div>
+        <div class="intro-card" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+          <button class="intro-close" type="button" data-intro-close aria-label="Close">✕</button>
+          <h2 id="introTitle">
+            The 12 Tenses
+            <span class="intro-hk">十二時式</span>
+          </h2>
+          <p class="intro-lead">
+            You've learnt the 9 tenses. Perfect Continuous Tenses are the last 3.
+            <span class="intro-hk">你已學過9隻時式，英文12隻最後嘅3隻係Perfect Continuous。</span>
+          </p>
+          <table class="tense-table" aria-label="12 tenses overview">
+            <thead>
+              <tr>
+                <td class="tense-header"></td>
+                <td class="tense-header">Simple<br><span class="intro-hk">簡單式</span></td>
+                <td class="tense-header">Continuous<br><span class="intro-hk">進行式</span></td>
+                <td class="tense-header">Perfect<br><span class="intro-hk">完成式</span></td>
+                <td class="tense-header">Perfect Continuous<br><span class="intro-hk">完成進行式</span></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tense-header">Present<br><span class="intro-hk">現在</span></td>
+                <td>I eat<br><span class="intro-hk">我食</span></td>
+                <td>I am eating<br><span class="intro-hk">我食緊</span></td>
+                <td>I have eaten<br><span class="intro-hk">我食咗</span></td>
+                <td>I have been eating<br><span class="intro-hk">我一直食緊</span></td>
+              </tr>
+              <tr>
+                <td class="tense-header">Past<br><span class="intro-hk">過去</span></td>
+                <td>I ate<br><span class="intro-hk">(當時)我食</span></td>
+                <td>I was eating<br><span class="intro-hk">(當時)我食緊</span></td>
+                <td>I had eaten<br><span class="intro-hk">(當時)我食咗</span></td>
+                <td>I had been eating<br><span class="intro-hk">(當時)我一直食緊</span></td>
+              </tr>
+              <tr>
+                <td class="tense-header">Future<br><span class="intro-hk">將來</span></td>
+                <td>I will eat<br><span class="intro-hk">(到時)我會食</span></td>
+                <td>I will be eating<br><span class="intro-hk">(到時)我會係食緊</span></td>
+                <td>I will have eaten<br><span class="intro-hk">(到時)我會食咗</span></td>
+                <td>I will have been eating<br><span class="intro-hk">(到時)我會一直食緊</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="intro-lead">
+            Perfect Continuous Tenses describe actions that last for a period of time into the past/present/future.
+            <span class="intro-hk">完成進行式:強調<strong>一直做緊</strong>嘅嘢維持到 過去/現在/未來 某個時間點。</span>
+          </p>
+          <div class="intro-footer">
+            <button class="intro-cta" type="button" data-intro-close>Got it</button>
+          </div>
+        </div>
+      </div>
+
+      <section id="card">
+        <div id="stageTitle">Loading...</div>
+        <div id="promptText">Loading...</div>
+        <div id="promptTextHk"></div>
+        <div id="answerOptions"></div>
+        <div id="log"></div>
+        <div id="stageTip" hidden></div>
+      </section>
+    </div>
+
+    <script src="./verb_go.js"></script>
+    <script src="./verb_go_hk.js"></script>
+    <script src="./hints.js"></script>
+    <script>
+      const VERB_PHRASES = [
+        "will have been going",
+        "will have gone",
+        "will be going",
+        "will go",
+        "had been going",
+        "has been going",
+        "have been going",
+        "had gone",
+        "has gone",
+        "have gone",
+        "was going",
+        "were going",
+        "is going",
+        "am going",
+        "are going",
+        "went",
+        "goes",
+        "go"
+      ];
+
+      const WORLDS = ["simple", "continuous", "perfect", "perfectcontinuous"];
+      const SET_KEYS = ["A", "BP", "BF", "C"];
+
+      const WORLD_LABELS = {
+        simple: "Simple",
+        continuous: "Continuous",
+        perfect: "Perfect",
+        perfectcontinuous: "Perfect Continuous",
+        boss: "Bosses"
+      };
+
+      const SET_GROUPS = {
+        A: ["A"],
+        BP: ["A", "P"],
+        BF: ["A", "F"],
+        C: ["A", "P", "F"]
+      };
+
+      const STAGE_NAMES = {
+        "simple.A": "01",
+        "simple.BP": "02",
+        "simple.BF": "03",
+        "simple.C": "04",
+        "continuous.A": "05",
+        "continuous.BP": "06",
+        "continuous.BF": "07",
+        "continuous.C": "08",
+        "perfect.A": "09",
+        "perfect.BP": "10",
+        "perfect.BF": "11",
+        "perfect.C": "12",
+        "perfectcontinuous.A": "13",
+        "perfectcontinuous.BP": "14",
+        "perfectcontinuous.BF": "15",
+        "perfectcontinuous.C": "16",
+        MiniBoss0: "17",
+        MiniBoss1: "18",
+        MiniBoss2: "19",
+        MiniBoss3: "20",
+        MiniBoss4: "21",
+        MiniBoss5: "22",
+        MiniBoss6: "23",
+        MiniBoss7: "24",
+        MiniBoss8: "25",
+        MiniBoss9: "26"
+      };
+
+      const STAGE_EMOJIS = {
+        "simple.A": "🚋",
+        "simple.BP": "🛤️",
+        "simple.BF": "🌅",
+        "simple.C": "🚉",
+        "continuous.A": "🛼",
+        "continuous.BP": "🔊",
+        "continuous.BF": "🛸",
+        "continuous.C": "🌊",
+        "perfect.A": "🪙",
+        "perfect.BP": "🕶️",
+        "perfect.BF": "📜",
+        "perfect.C": "🏦",
+        "perfectcontinuous.A": "🌉",
+        "perfectcontinuous.BP": "⏳",
+        "perfectcontinuous.BF": "✨",
+        "perfectcontinuous.C": "♾️",
+        MiniBoss0: "⚓",
+        MiniBoss1: "🪞",
+        MiniBoss2: "🧭",
+        MiniBoss3: "🪟",
+        MiniBoss4: "🔺",
+        MiniBoss5: "🧩",
+        MiniBoss6: "🌩️",
+        MiniBoss7: "🌌",
+        MiniBoss8: "🧿",
+        MiniBoss9: "🏁"
+      };
+
+      // Tips and tense hints live in hints.js
+
+      const escapeHtml = (value) =>
+        value
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+
+      const buildPrompt = (sentence) => {
+        for (const phrase of VERB_PHRASES) {
+          if (sentence.includes(phrase)) {
+            const escapedSentence = escapeHtml(sentence);
+            const escapedPhrase = escapeHtml(phrase);
+            return {
+              prompt: escapedSentence.replace(
+                escapedPhrase,
+                '<span id="blankBox">&nbsp;</span>'
+              ),
+              answer: phrase
+            };
+          }
+        }
+        return { prompt: escapeHtml(sentence), answer: "" };
+      };
+
+      const shuffle = (items) => {
+        const copy = [...items];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      };
+
+      const stageEntry = (worldKey, setKey) => {
+        const id = `${worldKey}.${setKey}`;
+        return {
+          id,
+          type: "stage",
+          world: worldKey,
+          set: setKey,
+          displayName: STAGE_NAMES[id] || `${WORLD_LABELS[worldKey]} ${setKey}`,
+          codeLabel: setKey,
+          title: `${STAGE_NAMES[id] || WORLD_LABELS[worldKey]} - ${setKey}`,
+          sentences: WORLD_SETS[worldKey][setKey]
+        };
+      };
+
+      const bossEntry = (boss) => ({
+        id: boss.id,
+        type: "boss",
+        sets: boss.sets,
+        displayName: STAGE_NAMES[boss.id] || boss.id,
+        codeLabel: "Boss",
+        title: STAGE_NAMES[boss.id] || boss.id,
+        sentences: boss.sentences
+      });
+
+      const STAGES = [
+        ...WORLDS.flatMap((world) => SET_KEYS.map((setKey) => stageEntry(world, setKey))),
+        ...MINI_BOSS_SETS.map((boss) => bossEntry(boss))
+      ];
+
+      const STAGE_INDEX = new Map(STAGES.map((stage) => [stage.id, stage]));
+
+      const worldSelect = document.getElementById("worldSelect");
+      const stageSelect = document.getElementById("stageSelect");
+      const mapToggle = document.getElementById("mapToggle");
+      const mapModal = document.getElementById("mapModal");
+      const mapBackdrop = document.getElementById("mapBackdrop");
+      const mapContent = document.getElementById("mapContent");
+      const mapClose = document.getElementById("mapClose");
+      const mapTabs = document.getElementById("mapTabs");
+      const mapStageList = document.getElementById("mapStageList");
+      const mapInfo = document.getElementById("mapInfo");
+      const mapInfoText = document.getElementById("mapInfoText");
+      const mapEnter = document.getElementById("mapEnter");
+      const mapEnterLabel = document.getElementById("mapEnterLabel");
+      const stageTipEl = document.getElementById("stageTip");
+      const stageTitleEl = document.getElementById("stageTitle");
+      const headerTitleEl = document.getElementById("headerTitle");
+      const mapScoreEl = document.getElementById("mapScore");
+      const mapHighScoreEl = document.getElementById("mapHighScore");
+      const headerEl = document.getElementById("header");
+      const promptTextEl = document.getElementById("promptText");
+      const promptTextHkEl = document.getElementById("promptTextHk");
+      const answerOptionsEl = document.getElementById("answerOptions");
+      const logEl = document.getElementById("log");
+      const introModal = document.getElementById("tensesIntro");
+      const introCloseEls = introModal
+        ? introModal.querySelectorAll("[data-intro-close]")
+        : [];
+
+      const openIntro = () => {
+        if (!introModal) return;
+        introModal.removeAttribute("hidden");
+      };
+
+      const closeIntro = () => {
+        if (!introModal) return;
+        introModal.setAttribute("hidden", "");
+      };
+
+      let cards = [];
+      let currentCardIndex = 0;
+      let currentStage = null;
+      let hasAnswered = false;
+      let isStageComplete = false;
+      let activeMapWorld = "simple";
+      let selectedStage = null;
+      let selectedStageEl = null;
+      let wrongAttempts = 0;
+      let scoreConsentGranted = false;
+      let stageScoreCache = {};
+
+      const SCORE_CONSENT_KEY = "verbGoScoreConsent";
+      const SCORE_STORE_KEY = "verbGoStageScores";
+
+      const buildStageTip = (setRefs) => {
+        const tenseSet = new Set();
+        const hkSet = new Set();
+        setRefs.forEach(({ world, label }) => {
+          const timeHints = HINT_PARTS?.time?.[label];
+          const aspectHints = HINT_PARTS?.aspect?.[world];
+          [timeHints, aspectHints].forEach((hints) => {
+            if (!hints) return;
+            hints.tenses?.forEach((tense) => tenseSet.add(tense));
+            hints.hk?.forEach((hint) => hkSet.add(hint));
+          });
+        });
+        const tenseText = Array.from(tenseSet).join(" + ");
+        const hkText = Array.from(hkSet).join("<br>");
+        if (!hkText) {
+          return tenseText ? `Is this: ${tenseText}?` : "";
+        }
+        return `${hkText}.`;
+      };
+
+      const classifyTense = (phrase) => {
+        const text = phrase.toLowerCase();
+        let timeKey = "A";
+        if (text.includes("will")) {
+          timeKey = "F";
+        } else if (
+          text.includes("had ") ||
+          text.includes("was ") ||
+          text.includes("were ") ||
+          text === "went"
+        ) {
+          timeKey = "P";
+        }
+        let aspectKey = "simple";
+        if (text.includes("been") && text.includes("going")) {
+          aspectKey = "perfectcontinuous";
+        } else if (
+          text.includes("have ") ||
+          text.includes("has ") ||
+          text.includes("had ")
+        ) {
+          aspectKey = "perfect";
+        } else if (
+          text.includes("going") &&
+          (text.includes("am ") ||
+            text.includes("is ") ||
+            text.includes("are ") ||
+            text.includes("was ") ||
+            text.includes("were ") ||
+            text.includes("will be"))
+        ) {
+          aspectKey = "continuous";
+        }
+        return { timeKey, aspectKey };
+      };
+
+      const buildHintHtml = (tense) => {
+        if (!tense) return "";
+        const parts = [];
+        const timeHints = HINT_PARTS?.time?.[tense.timeKey];
+        const aspectHints = HINT_PARTS?.aspect?.[tense.aspectKey];
+        if (timeHints?.hk?.length) parts.push(...timeHints.hk);
+        if (aspectHints?.hk?.length) parts.push(...aspectHints.hk);
+        if (tense.timeKey === "A" && aspectHints?.hkPresentOnly?.length) {
+          parts.push(...aspectHints.hkPresentOnly);
+        }
+        if (
+          tense.timeKey === "P" &&
+          tense.aspectKey === "continuous" &&
+          aspectHints?.hkPastOnly?.length
+        ) {
+          parts.push(...aspectHints.hkPastOnly);
+        }
+        return parts.join("<br>");
+      };
+
+      const renderAnswerHints = (selected, correct) => {
+        if (selected.toLowerCase() === correct.toLowerCase()) {
+          stageTipEl.innerHTML = "";
+          stageTipEl.setAttribute("hidden", "");
+          return;
+        }
+        const correctHtml = buildHintHtml(classifyTense(correct));
+        stageTipEl.innerHTML = correctHtml || "";
+        if (stageTipEl.innerHTML) {
+          stageTipEl.removeAttribute("hidden");
+        } else {
+          stageTipEl.setAttribute("hidden", "");
+        }
+      };
+
+      const buildStageTenseTable = (answerOptions, scoreValue) => {
+        const tenseCells = new Set();
+        answerOptions.forEach((option) => {
+          if (!option) return;
+          const { timeKey, aspectKey } = classifyTense(option);
+          tenseCells.add(`${timeKey}.${aspectKey}`);
+        });
+
+        const labels = {
+          2: "simple 簡單",
+          3: "continuous 進行",
+          4: "perfect 完成",
+          5: "perfect continuous 完成進行",
+          6: "present 現在",
+          11: "past 過去",
+          16: "future 未來"
+        };
+
+        const rows = [
+          [1, 2, 3, 4, 5],
+          [6, 7, 8, 9, 10],
+          [11, 12, 13, 14, 15],
+          [16, 17, 18, 19, 20]
+        ];
+
+        const rowKeyByIndex = ["", "A", "P", "F"];
+        const colKeyByIndex = ["", "simple", "continuous", "perfect", "perfectcontinuous"];
+
+        const body = rows
+          .map((row, rowIndex) => {
+            const cells = row
+              .map((cellNumber, colIndex) => {
+                const isCorner = rowIndex === 0 && colIndex === 0;
+                const label = isCorner ? "&nbsp;" : labels[cellNumber] || "&nbsp;";
+                const isHeader = isCorner || Boolean(labels[cellNumber]);
+                const rowKey = rowKeyByIndex[rowIndex];
+                const colKey = colKeyByIndex[colIndex];
+                const isMatch = rowKey && colKey && tenseCells.has(`${rowKey}.${colKey}`);
+                const content = isHeader ? label : isMatch ? "●" : "&nbsp;";
+                const classes = [isHeader ? "tense-header" : ""]
+                  .filter(Boolean)
+                  .join(" ");
+                return `<td class="${classes}">${content}</td>`;
+              })
+              .join("");
+            return `<tr>${cells}</tr>`;
+          })
+          .join("");
+
+        return `<table class="tense-table" aria-label="Stage tenses"><tbody>${body}</tbody></table>`;
+      };
+
+      const getStageSetRefs = (stage) => {
+        const unique = new Set();
+        const refs = [];
+        stage.sentences.forEach((entry) => {
+          if (!entry?.world || !entry?.label) return;
+          const key = `${entry.world}.${entry.label}`;
+          if (unique.has(key)) return;
+          unique.add(key);
+          refs.push({ world: entry.world, label: entry.label });
+        });
+        return refs;
+      };
+
+      const getAnswerOptionsForStage = (stage) => {
+        const collect = (world, label) => {
+          const options = ANSWER_OPTIONS_BY_WORLD_LABEL[world]?.[label] || [];
+          options.forEach((option) => optionSet.add(option));
+        };
+        const optionSet = new Set();
+        if (stage.type === "boss") {
+          stage.sets.forEach((entry) => {
+            const [world, setKey] = entry.split(".");
+            const labels = SET_GROUPS[setKey] || [setKey];
+            labels.forEach((label) => collect(world, label));
+          });
+          return Array.from(optionSet);
+        }
+        SET_GROUPS[stage.set].forEach((label) => collect(stage.world, label));
+        return Array.from(optionSet);
+      };
+
+      const renderOptions = (options) => {
+        answerOptionsEl.innerHTML = "";
+        options.forEach((option) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = option;
+          button.addEventListener("click", () => handleAnswer(option));
+          answerOptionsEl.appendChild(button);
+        });
+      };
+
+      const clearStageTip = () => {
+        stageTipEl.innerHTML = "";
+        stageTipEl.setAttribute("hidden", "");
+      };
+
+      const updateMapToggle = (stage) => {
+        if (!stage) return;
+        mapToggle.textContent = STAGE_EMOJIS[stage.id] || "🗺️";
+      };
+
+      const setProgress = (percent) => {
+        const safePercent = Math.max(0, Math.min(100, percent));
+        headerEl.style.setProperty("--progress", `${safePercent}%`);
+      };
+
+      const getScoreDiamonds = (scoreValue) => {
+        if (!Number.isFinite(scoreValue)) return "";
+        if (scoreValue >= 100) return "⭐️⭐️⭐️⭐️⭐️";
+        if (scoreValue >= 80) return "⭐️⭐️⭐️⭐️";
+        if (scoreValue >= 60) return "⭐️⭐️⭐️";
+        if (scoreValue >= 40) return "⭐️⭐️";
+        if (scoreValue >= 20) return "⭐️";
+        return "";
+      };
+
+      const updateMapScore = (stage) => {
+        if (!stage) return;
+        const scoreValue = stageScoreCache[stage.id];
+        const stars = getScoreDiamonds(scoreValue);
+        if (!stars) {
+          mapScoreEl.textContent = "";
+          mapScoreEl.setAttribute("hidden", "");
+          mapHighScoreEl.textContent = "";
+          mapHighScoreEl.setAttribute("hidden", "");
+          return;
+        }
+        mapHighScoreEl.textContent = `Highest score: ${scoreValue}%`;
+        mapHighScoreEl.removeAttribute("hidden");
+        mapScoreEl.textContent = stars;
+        mapScoreEl.removeAttribute("hidden");
+      };
+
+      const startStage = (stage) => {
+        currentStage = stage;
+        const titleText = `Level ${stage.displayName}`;
+        stageTitleEl.textContent = titleText;
+        headerTitleEl.textContent = titleText;
+        updateMapToggle(stage);
+        clearStageTip();
+        setProgress(0);
+        cards = shuffle(stage.sentences).map((item) => {
+          const { prompt, answer } = buildPrompt(item.sentence);
+          return { ...item, prompt, answer };
+        });
+        currentCardIndex = 0;
+        wrongAttempts = 0;
+        logEl.textContent = "";
+        isStageComplete = false;
+        showCard();
+      };
+
+      const getNextStage = () => {
+        if (!currentStage) return null;
+        const currentIndex = STAGES.findIndex((stage) => stage.id === currentStage.id);
+        if (currentIndex < 0 || currentIndex >= STAGES.length - 1) return null;
+        return STAGES[currentIndex + 1];
+      };
+
+      const showCompletion = () => {
+        const nextStage = getNextStage();
+        const totalQuestions = cards.length || 1;
+        const scorePercent = Math.max(
+          0,
+          Math.round(((totalQuestions - wrongAttempts) / totalQuestions) * 100)
+        );
+        setProgress(100);
+        if (currentStage && scoreConsentGranted) {
+          const previousScore = stageScoreCache[currentStage.id];
+          if (!Number.isFinite(previousScore) || scorePercent > previousScore) {
+            stageScoreCache[currentStage.id] = scorePercent;
+            localStorage.setItem(SCORE_STORE_KEY, JSON.stringify(stageScoreCache));
+            updateMapScore(currentStage);
+          }
+        }
+        promptTextEl.textContent = "Level Complete!";
+        promptTextHkEl.textContent = `Score: ${scorePercent}%`;
+        answerOptionsEl.innerHTML = "";
+        logEl.textContent = nextStage
+          ? `Go to Level ${nextStage.displayName}`
+          : "Go to Level map";
+        hasAnswered = false;
+        isStageComplete = true;
+      };
+
+      const showCard = () => {
+        if (currentCardIndex >= cards.length) {
+          showCompletion();
+          return;
+        }
+        const totalQuestions = cards.length || 1;
+        const progressPercent = Math.round((currentCardIndex / totalQuestions) * 100);
+        setProgress(progressPercent);
+        const card = cards[currentCardIndex];
+        promptTextEl.innerHTML = card.prompt;
+        promptTextHkEl.textContent = HK_SENTENCE_MAP[card.id] || "";
+        renderOptions(getAnswerOptionsForStage(currentStage));
+        const blankBox = document.getElementById("blankBox");
+        if (blankBox) {
+          blankBox.style.background = "#f8fafc";
+          blankBox.innerHTML = "&nbsp;";
+        }
+        logEl.textContent = "";
+        clearStageTip();
+        hasAnswered = false;
+        isStageComplete = false;
+      };
+
+      const markAnswerButtons = (correct, selected) => {
+        Array.from(answerOptionsEl.children).forEach((button) => {
+          button.dataset.state = "";
+          button.disabled = false;
+        });
+      };
+
+      const handleAnswer = (selected) => {
+        if (hasAnswered) return;
+        const card = cards[currentCardIndex];
+        const correct = card.answer;
+        const isCorrect = selected.toLowerCase() === correct.toLowerCase();
+        markAnswerButtons(correct, selected);
+        renderAnswerHints(selected, correct);
+        const blankBox = document.getElementById("blankBox");
+        if (blankBox) {
+          blankBox.textContent = selected;
+          blankBox.style.background = isCorrect ? "#dcfce7" : "#fee2e2";
+        }
+        logEl.textContent = isCorrect ? "Next" : "";
+        hasAnswered = isCorrect;
+        if (!isCorrect) {
+          wrongAttempts += 1;
+        }
+        if (isCorrect) {
+          Array.from(answerOptionsEl.children).forEach((button) => {
+            button.disabled = true;
+          });
+        }
+      };
+
+      const goNext = () => {
+        if (!currentStage) return;
+        if (currentCardIndex >= cards.length - 1) {
+          showCompletion();
+          return;
+        }
+        currentCardIndex += 1;
+        logEl.textContent = "";
+        showCard();
+      };
+
+      const setStageOptions = (worldKey) => {
+        stageSelect.innerHTML = "";
+        const stages = worldKey === "boss"
+          ? STAGES.filter((stage) => stage.type === "boss")
+          : STAGES.filter((stage) => stage.type === "stage" && stage.world === worldKey);
+        stages.forEach((stage) => {
+          const option = document.createElement("option");
+          option.value = stage.id;
+          option.textContent = `${stage.displayName} · ${stage.codeLabel}`;
+          stageSelect.appendChild(option);
+        });
+        if (stages.length > 0) {
+          stageSelect.value = stages[0].id;
+          startStage(stages[0]);
+        }
+      };
+
+      const renderMapTabs = () => {
+        mapTabs.innerHTML = "";
+        [...WORLDS, "boss"].forEach((world) => {
+          const tab = document.createElement("span");
+          tab.setAttribute("role", "button");
+          tab.setAttribute("tabindex", "0");
+          tab.setAttribute(
+            "aria-pressed",
+            activeMapWorld === world ? "true" : "false"
+          );
+          tab.textContent = WORLD_LABELS[world];
+          tab.addEventListener("click", () => {
+            activeMapWorld = world;
+            renderMapTabs();
+            selectedStage = null;
+            selectedStageEl = null;
+            renderMapStages();
+          });
+          tab.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              tab.click();
+            }
+          });
+          mapTabs.appendChild(tab);
+        });
+      };
+
+      const renderMapStages = () => {
+        mapStageList.innerHTML = "";
+        const stages = activeMapWorld === "boss"
+          ? STAGES.filter((stage) => stage.type === "boss")
+          : STAGES.filter((stage) => stage.type === "stage" && stage.world === activeMapWorld);
+        const stageItems = new Map();
+        const selectStage = (stage, item) => {
+          selectedStage = stage;
+          if (selectedStageEl) {
+            selectedStageEl.setAttribute("aria-pressed", "false");
+          }
+          item.setAttribute("aria-pressed", "true");
+          selectedStageEl = item;
+          const stageOptions = getAnswerOptionsForStage(stage);
+          const scoreValue = stageScoreCache[stage.id];
+          mapInfoText.innerHTML = buildStageTenseTable(stageOptions, scoreValue);
+          updateMapScore(stage);
+          mapEnterLabel.textContent = Number.isFinite(scoreValue)
+            ? `Go to Level ${stage.displayName} Again.`
+            : `Go to Level ${stage.displayName}`;
+          mapEnter.disabled = false;
+          mapInfo.removeAttribute("hidden");
+        };
+        stages.forEach((stage) => {
+          const item = document.createElement("span");
+          item.setAttribute("role", "button");
+          item.setAttribute("tabindex", "0");
+          item.setAttribute("aria-pressed", "false");
+          item.textContent = STAGE_EMOJIS[stage.id] || "🗺️";
+          stageItems.set(stage.id, item);
+          item.addEventListener("click", () => {
+            selectStage(stage, item);
+          });
+          item.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              item.click();
+            }
+          });
+          mapStageList.appendChild(item);
+        });
+        if (stages.length === 0) {
+          selectedStage = null;
+          selectedStageEl = null;
+          mapInfo.setAttribute("hidden", "");
+          mapEnterLabel.textContent = "Enter Level";
+          mapEnter.disabled = true;
+          return;
+        }
+        const desiredStage = stages.find((stage) => stage.id === selectedStage?.id) || stages[0];
+        const desiredItem = stageItems.get(desiredStage.id);
+        if (desiredItem) {
+          selectStage(desiredStage, desiredItem);
+        }
+      };
+
+      const renderMap = () => {
+        renderMapTabs();
+        renderMapStages();
+      };
+
+      worldSelect.addEventListener("change", () => {
+        setStageOptions(worldSelect.value);
+      });
+
+      stageSelect.addEventListener("change", () => {
+        const stage = STAGE_INDEX.get(stageSelect.value);
+        if (stage) startStage(stage);
+      });
+
+      const closeMap = () => {
+        mapModal.setAttribute("hidden", "");
+      };
+
+      mapToggle.addEventListener("click", () => {
+        if (mapModal.hasAttribute("hidden")) {
+          mapModal.removeAttribute("hidden");
+        } else {
+          closeMap();
+        }
+      });
+
+      mapBackdrop.addEventListener("click", closeMap);
+      mapContent.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+      mapClose.addEventListener("click", closeMap);
+      introCloseEls.forEach((el) => {
+        el.addEventListener("click", closeIntro);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMap();
+          closeIntro();
+        }
+      });
+
+      mapEnter.addEventListener("click", () => {
+        if (!selectedStage) return;
+        if (selectedStage.type === "boss") {
+          worldSelect.value = "boss";
+          setStageOptions("boss");
+        } else {
+          worldSelect.value = selectedStage.world;
+          setStageOptions(selectedStage.world);
+        }
+        stageSelect.value = selectedStage.id;
+        startStage(selectedStage);
+        closeMap();
+      });
+
+
+      logEl.addEventListener("click", () => {
+        if (isStageComplete) {
+          const nextStage = getNextStage();
+          if (nextStage) {
+            if (nextStage.type === "boss") {
+              worldSelect.value = "boss";
+              setStageOptions("boss");
+            } else {
+              worldSelect.value = nextStage.world;
+              setStageOptions(nextStage.world);
+            }
+            stageSelect.value = nextStage.id;
+            startStage(nextStage);
+          } else {
+            mapModal.removeAttribute("hidden");
+          }
+          return;
+        }
+        if (!hasAnswered) return;
+        goNext();
+      });
+
+      const init = () => {
+        worldSelect.innerHTML = "";
+        [...WORLDS, "boss"].forEach((world) => {
+          const option = document.createElement("option");
+          option.value = world;
+          option.textContent = WORLD_LABELS[world];
+          worldSelect.appendChild(option);
+        });
+        const storedConsent = localStorage.getItem(SCORE_CONSENT_KEY);
+        if (!storedConsent) {
+          const allowStorage = window.confirm(
+            "Allow saving your level scores on this device?"
+          );
+          scoreConsentGranted = allowStorage;
+          localStorage.setItem(
+            SCORE_CONSENT_KEY,
+            allowStorage ? "granted" : "denied"
+          );
+        } else {
+          scoreConsentGranted = storedConsent === "granted";
+        }
+        if (scoreConsentGranted) {
+          try {
+            stageScoreCache = JSON.parse(localStorage.getItem(SCORE_STORE_KEY)) || {};
+          } catch (error) {
+            stageScoreCache = {};
+          }
+        }
+        worldSelect.value = "simple";
+        setStageOptions("simple");
+        renderMap();
+        mapModal.setAttribute("hidden", "");
+        openIntro();
+      };
+
+      init();
+    </script>
+  </body>
+</html>
