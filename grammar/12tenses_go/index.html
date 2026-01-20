@@ -46,7 +46,7 @@
         gap: 12px;
         box-shadow: 0 18px 50px rgba(15, 23, 42, 0.2);
         z-index: 1;
-        font-size: 0.9em;
+        font-size: 0.84em;
       }
       .intro-card h2 {
         margin: 0;
@@ -55,7 +55,7 @@
       .intro-lead {
         margin: 0;
         color: #475467;
-        font-size: 0.9em;
+        font-size: 0.85em;
       }
       .intro-points {
         margin: 0;
@@ -68,7 +68,7 @@
         display: block;
         font-family: "LXGW WenKai TC", "Noto Sans TC", sans-serif;
         color: #475467;
-        font-size: 0.95em;
+        font-size: 0.9em;
       }
       .intro-footer {
         display: flex;
@@ -528,7 +528,7 @@
             <span class="intro-hk">完成進行式:強調<strong>一直做緊</strong>嘅嘢維持到 過去/現在/未來 某個時間點。</span>
           </p>
           <div class="intro-footer">
-            <button class="intro-cta" type="button" data-intro-close>Got it</button>
+            <button class="intro-cta" type="button" data-intro-cta>Got it</button>
           </div>
         </div>
       </div>
@@ -738,6 +738,9 @@
       const introCloseEls = introModal
         ? introModal.querySelectorAll("[data-intro-close]")
         : [];
+      const introCta = introModal
+        ? introModal.querySelector("[data-intro-cta]")
+        : null;
 
       const openIntro = () => {
         if (!introModal) return;
@@ -747,6 +750,12 @@
       const closeIntro = () => {
         if (!introModal) return;
         introModal.setAttribute("hidden", "");
+      };
+
+      const openMapAtWorld = (worldKey) => {
+        activeMapWorld = worldKey;
+        renderMap();
+        mapModal.removeAttribute("hidden");
       };
 
       let cards = [];
@@ -1243,6 +1252,12 @@
       introCloseEls.forEach((el) => {
         el.addEventListener("click", closeIntro);
       });
+      if (introCta) {
+        introCta.addEventListener("click", () => {
+          closeIntro();
+          openMapAtWorld("perfectcontinuous");
+        });
+      }
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
           closeMap();
