@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four-Panel Comic - Batch 1</title>
+    <link rel="stylesheet" href="../../../main.css">
+    <style>
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --color-bg: #ffffff;
+            --color-surface: #f6f6f6;
+            --color-text: #111111;
+            --color-text-secondary: #666666;
+            --color-border: #dddddd;
+            --max-width: 960px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 6px var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .dataset-select {
+            padding: 6px 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            font-size: 0.95rem;
+        }
+
+        .header-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header-copyright {
+            font-size: 10px;
+            color: var(--color-text-secondary);
+        }
+
+        .header-copyright a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .content-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .image-frame {
+            width: 100%;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-2);
+        }
+
+        .image-frame img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="header-label">Four-Panel Comic</div>
+            <div class="header-copyright"><a href="../../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <div class="header-controls">
+            <select id="imageSelect" class="dataset-select"></select>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-wrap">
+            <div class="image-frame">
+                <img id="batchImage" alt="Batch 1 writing prompt">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const imageSelect = document.getElementById('imageSelect');
+        const batchImage = document.getElementById('batchImage');
+        const images = [
+            { label: 'Burnt Cookies', file: 'burnt_cookies.jpg' },
+            { label: 'Cactus', file: 'cactus.jpg' },
+            { label: 'Crab Pinch', file: 'crab_pinch.jpg' },
+            { label: 'Fox Picnic', file: 'fox_picnic.jpg' },
+            { label: 'Gardening', file: 'gardening.jpg' },
+            { label: 'Kite', file: 'kite.jpg' },
+            { label: 'Lost and Found', file: 'lost_and_found.jpg' },
+            { label: 'Rain Puddles', file: 'rain_puddles.jpg' },
+            { label: 'Sabotage', file: 'sabotage.jpg' },
+            { label: 'Social Media Beef', file: 'social_media_beef.jpg' },
+            { label: 'Talking Dog', file: 'talking_dog.jpg' },
+            { label: 'Treasure Hunt', file: 'treasure_hunt.jpg' }
+        ];
+
+        function setImage({ label, file }) {
+            const src = `batch1/${file}`;
+            batchImage.src = src;
+            batchImage.alt = `${label} writing prompt`;
+        }
+
+        images.forEach((image) => {
+            const option = document.createElement('option');
+            option.value = image.file;
+            option.textContent = image.label;
+            imageSelect.appendChild(option);
+        });
+
+        imageSelect.addEventListener('change', (event) => {
+            const selected = images.find((image) => image.file === event.target.value);
+            if (selected) {
+                setImage(selected);
+            }
+        });
+
+        imageSelect.value = images[0].file;
+        setImage(images[0]);
+    </script>
+</body>
+</html>

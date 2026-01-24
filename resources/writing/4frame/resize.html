@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batch Resize and Crop</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0 20px;
+      color: #212529;
+      line-height: 1.5;
+      background: #ffffff;
+    }
+    .top-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0 20px;
+      padding: 10px 16px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e9ecef;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .top-toolbar .left-section,
+    .top-toolbar .right-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .top-toolbar h2 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    label {
+      font-size: 13px;
+      color: #495057;
+    }
+    input[type="number"],
+    input[type="text"],
+    select {
+      padding: 6px 10px;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    button {
+      padding: 6px 10px;
+      background-color: #e9ecef;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background-color: #dee2e6;
+    }
+    .primary {
+      background-color: #0d6efd;
+      color: #fff;
+      border: none;
+    }
+    .primary:hover {
+      background-color: #0b5ed7;
+    }
+    .drop-zone {
+      border: 2px dashed #dee2e6;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+      background-color: #f8f9fa;
+      margin: 10px 0 20px;
+      transition: all 0.2s ease;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .drop-zone.dragover {
+      border-color: #0d6efd;
+      background-color: #e7f1ff;
+    }
+    .drop-zone p {
+      margin: 0;
+      color: #6c757d;
+      font-size: 13px;
+    }
+    #imagesContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .imageWrapper {
+      position: relative;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      width: 270px;
+    }
+    .imageHeader {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: space-between;
+    }
+    .filename-input {
+      width: 140px;
+      font-size: 12px;
+    }
+    .removeBtn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 22px;
+    }
+    .removeBtn:hover {
+      background-color: #bb2d3b;
+    }
+    .canvas-frame {
+      margin-top: 8px;
+      background: #fff;
+      border: 1px solid #dee2e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .image-meta {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #6c757d;
+    }
+    .image-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .image-actions button {
+      font-size: 12px;
+    }
+    .note {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-toolbar">
+    <div class="left-section">
+      <h2>Resize + Crop (Batch)</h2>
+      <div class="control-group">
+        <label for="scaleInput">Resize %</label>
+        <input id="scaleInput" type="number" min="10" max="300" value="100">
+      </div>
+      <div class="control-group">
+        <label for="frameWidth">Frame W</label>
+        <input id="frameWidth" type="number" min="50" value="600">
+      </div>
+      <div class="control-group">
+        <label for="frameHeight">Frame H</label>
+        <input id="frameHeight" type="number" min="50" value="600">
+      </div>
+      <button id="applyAll" class="primary">Apply to All</button>
+      <button id="fitAll">Fit Frame for All</button>
+      <button id="resetPositions">Reset Positions</button>
+    </div>
+    <div class="right-section">
+      <div class="control-group">
+        <label for="formatSelect">Export</label>
+        <select id="formatSelect">
+          <option value="jpg" selected>JPG</option>
+          <option value="png">PNG</option>
+        </select>
+      </div>
+      <button id="downloadAll">Download All</button>
+    </div>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    <p>Drag & drop JPG/PNG files here (or click to select).</p>
+  </div>
+  <input id="fileInput" type="file" accept="image/*" multiple style="display:none;">
+  <div class="note">Drag inside each frame to adjust the crop position.</div>
+
+  <div id="imagesContainer"></div>
+
+  <script>
+    const imagesContainer = document.getElementById('imagesContainer');
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const scaleInput = document.getElementById('scaleInput');
+    const frameWidthInput = document.getElementById('frameWidth');
+    const frameHeightInput = document.getElementById('frameHeight');
+    const formatSelect = document.getElementById('formatSelect');
+    const applyAllBtn = document.getElementById('applyAll');
+    const fitAllBtn = document.getElementById('fitAll');
+    const resetPositionsBtn = document.getElementById('resetPositions');
+    const downloadAllBtn = document.getElementById('downloadAll');
+
+    const images = [];
+    const previewMax = 240;
+
+    function getSettings() {
+      return {
+        scale: Number(scaleInput.value) / 100,
+        frameWidth: Number(frameWidthInput.value),
+        frameHeight: Number(frameHeightInput.value)
+      };
+    }
+
+    function getImageSettings(imageObj) {
+      const master = getSettings();
+      return {
+        scale: Number.isFinite(imageObj.customScale) ? imageObj.customScale : master.scale,
+        frameWidth: Number.isFinite(imageObj.customFrameWidth) ? imageObj.customFrameWidth : master.frameWidth,
+        frameHeight: Number.isFinite(imageObj.customFrameHeight) ? imageObj.customFrameHeight : master.frameHeight
+      };
+    }
+
+    function getFitScale(imageObj, settings) {
+      return Math.min(
+        settings.frameWidth / imageObj.width,
+        settings.frameHeight / imageObj.height
+      );
+    }
+
+    function clamp(val, min, max) {
+      return Math.min(Math.max(val, min), max);
+    }
+
+    function getClampBounds(scaledWidth, scaledHeight, frameWidth, frameHeight) {
+      const minX = frameWidth - scaledWidth;
+      const minY = frameHeight - scaledHeight;
+      return {
+        minX: scaledWidth >= frameWidth ? minX : (frameWidth - scaledWidth) / 2,
+        maxX: scaledWidth >= frameWidth ? 0 : (frameWidth - scaledWidth) / 2,
+        minY: scaledHeight >= frameHeight ? minY : (frameHeight - scaledHeight) / 2,
+        maxY: scaledHeight >= frameHeight ? 0 : (frameHeight - scaledHeight) / 2
+      };
+    }
+
+    function centerOffsets(imageObj, settings) {
+      const scaledWidth = imageObj.width * settings.scale;
+      const scaledHeight = imageObj.height * settings.scale;
+      imageObj.offsetX = (settings.frameWidth - scaledWidth) / 2;
+      imageObj.offsetY = (settings.frameHeight - scaledHeight) / 2;
+    }
+
+    function updateCanvas(imageObj) {
+      const settings = getImageSettings(imageObj);
+      const { frameWidth, frameHeight, scale } = settings;
+      const canvas = imageObj.canvas;
+      const ctx = canvas.getContext('2d');
+      const scaledWidth = imageObj.width * scale;
+      const scaledHeight = imageObj.height * scale;
+
+      canvas.width = frameWidth;
+      canvas.height = frameHeight;
+
+      const displayScale = Math.min(1, previewMax / Math.max(frameWidth, frameHeight));
+      imageObj.displayScale = displayScale;
+      canvas.style.width = `${frameWidth * displayScale}px`;
+      canvas.style.height = `${frameHeight * displayScale}px`;
+
+      const bounds = getClampBounds(scaledWidth, scaledHeight, frameWidth, frameHeight);
+      imageObj.offsetX = clamp(imageObj.offsetX, bounds.minX, bounds.maxX);
+      imageObj.offsetY = clamp(imageObj.offsetY, bounds.minY, bounds.maxY);
+
+      ctx.clearRect(0, 0, frameWidth, frameHeight);
+      ctx.drawImage(
+        imageObj.img,
+        imageObj.offsetX,
+        imageObj.offsetY,
+        scaledWidth,
+        scaledHeight
+      );
+
+      imageObj.meta.textContent = `Original: ${imageObj.width}x${imageObj.height} | Scale: ${Math.round(scale * 100)}% | Frame: ${frameWidth}x${frameHeight}`;
+    }
+
+    function createImageCard(imageObj) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'imageWrapper';
+
+      const header = document.createElement('div');
+      header.className = 'imageHeader';
+
+      const filenameInput = document.createElement('input');
+      filenameInput.className = 'filename-input';
+      filenameInput.type = 'text';
+      filenameInput.value = imageObj.filename;
+      filenameInput.addEventListener('change', (e) => {
+        imageObj.filename = e.target.value.trim() || imageObj.filename;
+      });
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'removeBtn';
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', () => {
+        const idx = images.indexOf(imageObj);
+        if (idx >= 0) images.splice(idx, 1);
+        wrapper.remove();
+      });
+
+      header.appendChild(filenameInput);
+      header.appendChild(removeBtn);
+
+      const overrides = document.createElement('div');
+      overrides.className = 'image-actions';
+
+      const scaleOverride = document.createElement('input');
+      scaleOverride.type = 'number';
+      scaleOverride.min = '10';
+      scaleOverride.max = '300';
+      scaleOverride.value = Math.round(getSettings().scale * 100);
+      scaleOverride.title = 'Resize %';
+      scaleOverride.style.width = '60px';
+      scaleOverride.addEventListener('input', (e) => {
+        imageObj.customScale = Number(e.target.value) / 100;
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+
+      const frameWOverride = document.createElement('input');
+      frameWOverride.type = 'number';
+      frameWOverride.min = '50';
+      frameWOverride.value = getSettings().frameWidth;
+      frameWOverride.title = 'Frame width';
+      frameWOverride.style.width = '60px';
+      frameWOverride.addEventListener('input', (e) => {
+        imageObj.customFrameWidth = Number(e.target.value);
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+
+      const frameHOverride = document.createElement('input');
+      frameHOverride.type = 'number';
+      frameHOverride.min = '50';
+      frameHOverride.value = getSettings().frameHeight;
+      frameHOverride.title = 'Frame height';
+      frameHOverride.style.width = '60px';
+      frameHOverride.addEventListener('input', (e) => {
+        imageObj.customFrameHeight = Number(e.target.value);
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+
+      overrides.appendChild(scaleOverride);
+      overrides.appendChild(frameWOverride);
+      overrides.appendChild(frameHOverride);
+      imageObj.scaleOverrideInput = scaleOverride;
+      imageObj.frameWOverrideInput = frameWOverride;
+      imageObj.frameHOverrideInput = frameHOverride;
+
+      const canvas = document.createElement('canvas');
+      canvas.className = 'canvas-frame';
+      imageObj.canvas = canvas;
+
+      const meta = document.createElement('div');
+      meta.className = 'image-meta';
+      imageObj.meta = meta;
+
+      const actions = document.createElement('div');
+      actions.className = 'image-actions';
+
+      const downloadBtn = document.createElement('button');
+      downloadBtn.textContent = 'Download';
+      downloadBtn.addEventListener('click', () => {
+        downloadImage(imageObj);
+      });
+
+      const fitBtn = document.createElement('button');
+      fitBtn.textContent = 'Fit Frame';
+      fitBtn.addEventListener('click', () => {
+        const settings = getImageSettings(imageObj);
+        const fitScale = getFitScale(imageObj, settings);
+        imageObj.customScale = fitScale;
+        scaleOverride.value = Math.round(fitScale * 100);
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+
+      const centerBtn = document.createElement('button');
+      centerBtn.textContent = 'Center';
+      centerBtn.addEventListener('click', () => {
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+
+      actions.appendChild(downloadBtn);
+      actions.appendChild(fitBtn);
+      actions.appendChild(centerBtn);
+
+      wrapper.appendChild(header);
+      wrapper.appendChild(overrides);
+      wrapper.appendChild(canvas);
+      wrapper.appendChild(meta);
+      wrapper.appendChild(actions);
+
+      enableDrag(imageObj, canvas);
+
+      imagesContainer.appendChild(wrapper);
+      updateCanvas(imageObj);
+    }
+
+    function enableDrag(imageObj, canvas) {
+      let isDragging = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      canvas.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        canvas.setPointerCapture(e.pointerId);
+      });
+      canvas.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = (e.clientX - lastX) / (imageObj.displayScale || 1);
+        const dy = (e.clientY - lastY) / (imageObj.displayScale || 1);
+        lastX = e.clientX;
+        lastY = e.clientY;
+        imageObj.offsetX += dx;
+        imageObj.offsetY += dy;
+        updateCanvas(imageObj);
+      });
+      canvas.addEventListener('pointerup', (e) => {
+        isDragging = false;
+        canvas.releasePointerCapture(e.pointerId);
+      });
+      canvas.addEventListener('pointerleave', () => {
+        isDragging = false;
+      });
+    }
+
+    function addFiles(files) {
+      [...files].forEach((file) => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const imageObj = {
+              img,
+              width: img.width,
+              height: img.height,
+              filename: file.name.replace(/\.[^/.]+$/, ''),
+              offsetX: 0,
+              offsetY: 0,
+              customScale: null,
+              customFrameWidth: null,
+              customFrameHeight: null,
+              displayScale: 1,
+              canvas: null,
+              meta: null
+            };
+            centerOffsets(imageObj, getImageSettings(imageObj));
+            images.push(imageObj);
+            createImageCard(imageObj);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function downloadImage(imageObj) {
+      const settings = getImageSettings(imageObj);
+      const exportCanvas = document.createElement('canvas');
+      exportCanvas.width = settings.frameWidth;
+      exportCanvas.height = settings.frameHeight;
+      const ctx = exportCanvas.getContext('2d');
+
+      const scaledWidth = imageObj.width * settings.scale;
+      const scaledHeight = imageObj.height * settings.scale;
+      const bounds = getClampBounds(scaledWidth, scaledHeight, settings.frameWidth, settings.frameHeight);
+      const offsetX = clamp(imageObj.offsetX, bounds.minX, bounds.maxX);
+      const offsetY = clamp(imageObj.offsetY, bounds.minY, bounds.maxY);
+
+      ctx.drawImage(imageObj.img, offsetX, offsetY, scaledWidth, scaledHeight);
+
+      const format = formatSelect.value;
+      const mimeType = format === 'jpg' ? 'image/jpeg' : 'image/png';
+      exportCanvas.toBlob((blob) => {
+        if (!blob) return;
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = `${imageObj.filename}.${format}`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }, mimeType, 0.92);
+    }
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => addFiles(e.target.files));
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'));
+    });
+    ['dragleave', 'drop'].forEach((eventName) => {
+      dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'));
+    });
+    dropZone.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
+
+    applyAllBtn.addEventListener('click', () => {
+      images.forEach((imageObj) => {
+        if (!Number.isFinite(imageObj.customScale)) {
+          const masterScale = getSettings().scale;
+          const overrideInput = imageObj.scaleOverrideInput;
+          if (overrideInput) {
+            overrideInput.value = Math.round(masterScale * 100);
+          }
+        }
+        if (!Number.isFinite(imageObj.customFrameWidth)) {
+          const overrideInput = imageObj.frameWOverrideInput;
+          if (overrideInput) {
+            overrideInput.value = getSettings().frameWidth;
+          }
+        }
+        if (!Number.isFinite(imageObj.customFrameHeight)) {
+          const overrideInput = imageObj.frameHOverrideInput;
+          if (overrideInput) {
+            overrideInput.value = getSettings().frameHeight;
+          }
+        }
+        updateCanvas(imageObj);
+      });
+    });
+
+    fitAllBtn.addEventListener('click', () => {
+      images.forEach((imageObj) => {
+        const settings = getImageSettings(imageObj);
+        const fitScale = getFitScale(imageObj, settings);
+        imageObj.customScale = fitScale;
+        if (imageObj.scaleOverrideInput) {
+          imageObj.scaleOverrideInput.value = Math.round(fitScale * 100);
+        }
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+    });
+
+    resetPositionsBtn.addEventListener('click', () => {
+      images.forEach((imageObj) => {
+        centerOffsets(imageObj, getImageSettings(imageObj));
+        updateCanvas(imageObj);
+      });
+    });
+
+    scaleInput.addEventListener('input', () => {
+      images.forEach((imageObj) => {
+        if (!Number.isFinite(imageObj.customScale)) {
+          if (imageObj.scaleOverrideInput) {
+            imageObj.scaleOverrideInput.value = Math.round(getSettings().scale * 100);
+          }
+        }
+        updateCanvas(imageObj);
+      });
+    });
+
+    frameWidthInput.addEventListener('input', () => {
+      images.forEach((imageObj) => {
+        if (!Number.isFinite(imageObj.customFrameWidth)) {
+          if (imageObj.frameWOverrideInput) {
+            imageObj.frameWOverrideInput.value = getSettings().frameWidth;
+          }
+        }
+        updateCanvas(imageObj);
+      });
+    });
+
+    frameHeightInput.addEventListener('input', () => {
+      images.forEach((imageObj) => {
+        if (!Number.isFinite(imageObj.customFrameHeight)) {
+          if (imageObj.frameHOverrideInput) {
+            imageObj.frameHOverrideInput.value = getSettings().frameHeight;
+          }
+        }
+        updateCanvas(imageObj);
+      });
+    });
+
+    downloadAllBtn.addEventListener('click', async () => {
+      if (images.length === 0) return;
+      const zip = new JSZip();
+      const format = formatSelect.value;
+      const mimeType = format === 'jpg' ? 'image/jpeg' : 'image/png';
+
+      const zipPromises = images.map((imageObj, index) => new Promise((resolve) => {
+        const settings = getImageSettings(imageObj);
+        const exportCanvas = document.createElement('canvas');
+        exportCanvas.width = settings.frameWidth;
+        exportCanvas.height = settings.frameHeight;
+        const ctx = exportCanvas.getContext('2d');
+
+        const scaledWidth = imageObj.width * settings.scale;
+        const scaledHeight = imageObj.height * settings.scale;
+        const bounds = getClampBounds(scaledWidth, scaledHeight, settings.frameWidth, settings.frameHeight);
+        const offsetX = clamp(imageObj.offsetX, bounds.minX, bounds.maxX);
+        const offsetY = clamp(imageObj.offsetY, bounds.minY, bounds.maxY);
+
+        ctx.drawImage(imageObj.img, offsetX, offsetY, scaledWidth, scaledHeight);
+        exportCanvas.toBlob((blob) => {
+          if (!blob) {
+            resolve();
+            return;
+          }
+          const safeName = (imageObj.filename || `image-${index + 1}`).replace(/[^a-z0-9_-]/gi, '_');
+          zip.file(`${safeName}.${format}`, blob);
+          resolve();
+        }, mimeType, 0.92);
+      }));
+
+      await Promise.all(zipPromises);
+      const content = await zip.generateAsync({ type: 'blob' });
+      saveAs(content, `resized_images_${Date.now()}.zip`);
+    });
+  </script>
+</body>
+</html>
