@@ -41,18 +41,18 @@ window.fourPanelBatch1 = {
         'sabotage.jpg': [
             { cn: '🏁Amy係藝術班入面最杰出嘅學生 佢嘅死對頭James決定咗要搞亂檔', en: '🏁Amy was the top student in art class, and her rival James decided to sabotage her.' },
             { cn: '🚀James靜雞雞掃咗一筆紅色落Amy張畫布度 Amy冇留意 隨便咁樣章紅色畫成一朵玫瑰花', en: '🚀James secretly brushed a red stain onto her canvas. Amy didn’t notice and casually turned it into a rose.' },
-            { cn: '🚀Amy去廁所冇幾耐 James劈咗一大劈黑色落Amy作品上面 Amy返到來冇留意 將佢畫成一隻企鵝', en: '🚀While Amy was away, James splashed on a big black stroke. When she returned, she turned it into a penguin.' },
+            { cn: '🚀Amy去廁所冇幾耐 James劈咗一大劈黑色落Amy作品上面 Amy返到來冇留意 將佢畫成一隻企鵝', en: '🚀While Amy was away, James splashed on a big black stroke. Amy didn\'t even notice. She just turned it into a penguin.' },
             { cn: '💥老師邀請Amy出去做畫畫示範 James忍無可忍 一嘢將十幾隻色潑落Amy幅嘢度', en: '💥The teacher invited Amy to demonstrate. James snapped. He splattered rainbows of paints onto her work.' },
             { cn: '🧐Amy返到位 以為自己加得太多水 啲顏色化咗 佢將佢轉化成一幅抽象畫 全班拍哂手掌', en: '🧐Amy thought she had used too much water so the colours ran all over the place. But she swiftly turned it into an abstract painting. The class applauded.' },
             { cn: '🙏James覺得好慚愧 佢話俾Amy知佢做咗啲乜之后Amy原諒佢 仲教埋佢點畫火影忍者 從此佢哋做咗好朋友!', en: '🙏James felt ashamed and confessed. Amy forgave him and helped him with his Naruto sketch. They became friends.' }
         ],
         'fox_picnic.jpg': [
-            { cn: '🏁我上個禮拜六早餐食得特別少 因為約咗Bobby去野餐', en: '🏁Last Saturday I ate very little breakfast because I was meeting Bobby for a picnic.' },
-            { cn: '🚀我正準備開餐 Bobby話佢冇帶到野食 只係得欖球同埋釣魚竿!', en: '🚀Just as I was about to eat, Bobby said he brought no food—only a rugby ball and a fishing rod!' },
-            { cn: '🚀Bobby話唔好意思建議一齊釣魚 之後可以去7仔微波爐叮來食', en: '🚀He apologised and suggested we fish, then heat something up at 7-Eleven.' },
-            { cn: '🚀雖然我好肚餓 但係都跟佢去 因為佢話有機會釣倒美人魚!', en: '🚀I was starving, but I went along because he said we might catch a mermaid!' },
-            { cn: '💥一隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥An uninvited fox invited its whole family to feast on our unguarded picnic.' },
-            { cn: '🧐我同Bobby一條魚都釣唔倒 返到來啲嘢食都比人食哂', en: '🧐Bobby and I caught no fish. As we returned, the picnic was no more.' },
+            { cn: '🏁我上個禮拜六早餐食得特別少 我好期待約咗Bobby嘅野餐', en: '🏁Last Saturday I ate little breakfast. I looked forward to my picnic with Bobby.' },
+            { cn: '🚀我正準備開餐 Bobby話佢冇帶到野食 只係得欖球同埋釣魚竿!', en: '🚀Just as I was about to eat, Bobby said he brought no food, but a rugby ball and a fishing rod!' },
+            { cn: '🚀Bobby話唔好意思 建議一齊釣魚 之後可以去7仔微波爐叮來食', en: '🚀He apologised and invited me to go fishing, then cook the fish up at 7-Eleven.' },
+            { cn: '🚀雖然我好肚餓 但係都跟佢去 因為佢話有機會釣倒美人魚!', en: '🚀I was starving, but I went along because he said we might be able to catch a mermaid!' },
+            { cn: '💥同時 有隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥Meanwhile, an uninvited fox invited its whole family to feast on our unattended picnic.' },
+            { cn: '🧐竟然一條魚都釣唔倒 我哋返到來 但嘢食都冇哂', en: '🧐Blimey! Not a single fish was caught. We returned, but the picnic was no more.' },
             { cn: '🙏為咗醫肚 特別係我個肚 我哋去咗譚仔叫麵加底', en: '🙏To fill our stomachs, especially mine, we went to TamJai and ordered extra noodles.' }
         ],
         'kite.jpg': [
