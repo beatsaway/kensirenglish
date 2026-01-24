@@ -68,7 +68,7 @@ window.fourPanelBatch1 = {
             { cn: '🏁Steve屋企好窮 佢去公共圖書館借咗本海盜故事書 發現一幅藏寶圖', en: '🏁Steve’s family was broke. He borrowed a pirate storybook from the library and found a treasure map.' },
             { cn: '🚀佢巧妙地搣咗塊藏寶圖落嚟 帶返屋企', en: '🚀He carefully tore out the map and took it home.' },
             { cn: '🚀翌日佢冇返學 佢孭住個背囊揦住個電筒去咗鑽石山尋寶', en: '🚀The next day he skipped school, grabbed a backpack and torch, and went to Diamond Hill for a treasure hunt.' },
-            { cn: '🚀就好似用Google map一樣 佢跟住地圖箭嘴一直直行', en: '🚀Like using Google Maps, he followed the arrow on the map straight ahead.' },
+            { cn: '🚀就好似用Google map一樣 佢跟住地圖箭嘴一直直行', en: '🚀Like using Google Maps, he followed the arrow on the map going straight ahead.' },
             { cn: '🚀行到又口渴又肚餓 佢用張地圖抹汗 係時候放棄喇差唔多', en: '🚀Poor Steve got thirsty and hungry and wiped his sweat with the map. He almost gave up.' },
             { cn: '💥佢再一次執起張地圖 發覺個箭嘴指住一間五金舖!無開門!', en: '💥He picked up the map again and saw the arrow pointing to a hardware shop. He wanted to get in but it was closed!' },
             { cn: '🧐佢週圍望發現樹下便有一個好舊寶箱 裝滿銀色的寶物', en: '🧐Looking around, he spotted an old chest under a tree, full of silver treasures.' },
