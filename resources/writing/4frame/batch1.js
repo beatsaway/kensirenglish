@@ -34,8 +34,8 @@ window.fourPanelBatch1 = {
             { cn: '🚀一邊記圓形嘅公式 一邊差做一塊塊圓形曲奇餅', en: '🚀He memorised circle formulas while shaping round cookies.' },
             { cn: '🚀一邊諗常識project題目 一邊放曲奇餅入焗爐', en: '🚀He thought about his General Studies project while putting the cookies into the oven.' },
             { cn: '🚀佢一邊等啲曲奇餅ready 一邊繼續睇通識教科書', en: '🚀While waiting for them to bake, he kept reading his General Studies textbook.' },
-            { cn: '💥哇!最後佢啲曲奇餅真係好似朱古力味咁黑', en: '💥Wow! Fresh off the oven, they looked more like dark chocolate than cookies.' },
-            { cn: '🧐但其實系冇朱古力嘅 只係因為太燶', en: '🧐There wasn\'t any chocolate. It was just that badly burnt.' },
+            { cn: '💥哇!新鮮出爐...似黑朱古力多過曲奇餅', en: '💥Wow! Fresh off the oven, they looked more like dark chocolate than cookies.' },
+            { cn: '🧐但其實系冇朱古力嘅 只係因為太過燶', en: '🧐There wasn\'t any chocolate. It was just that badly burnt.' },
             { cn: '🙏Chris自己食左幾塊 其他係佢細佬以為Oreo食哂', en: '🙏Chris ate a few, and his little brother finished the rest, thinking they were Oreos.' }
         ],
         'sabotage.jpg': [
