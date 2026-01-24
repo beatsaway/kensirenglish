@@ -51,6 +51,20 @@
             gap: 2px;
         }
 
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .dataset-select {
+            padding: 6px 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            font-size: 0.95rem;
+        }
+
         .header-label {
             font-size: 14px;
             font-weight: 600;
@@ -151,6 +165,10 @@
             <div class="header-label">Proofread</div>
             <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
         </div>
+        <div class="header-controls">
+            <label for="datasetSelect">Exercise</label>
+            <select id="datasetSelect" class="dataset-select"></select>
+        </div>
     </header>
 
     <main>
@@ -159,9 +177,15 @@
         </div>
     </main>
 
-    <script src="general.js"></script>
     <script>
         const exerciseList = document.getElementById('exerciseList');
+        const datasetSelect = document.getElementById('datasetSelect');
+
+        const datasets = [
+            { label: 'Barbecue', src: 'barbeque.js' },
+            { label: 'Lost and Found', src: 'lost_and_found.js' },
+            { label: 'Raina', src: 'raina.js' }
+        ];
 
         function renderExercises() {
             if (!window.GeneralProofread) {
@@ -216,7 +240,44 @@
             });
         }
 
-        renderExercises();
+        function loadDataset(src) {
+            return new Promise((resolve, reject) => {
+                const existingScript = document.getElementById('datasetScript');
+                if (existingScript) {
+                    existingScript.remove();
+                }
+                window.GeneralProofread = null;
+                const script = document.createElement('script');
+                script.id = 'datasetScript';
+                script.src = src;
+                script.onload = () => resolve();
+                script.onerror = () => reject();
+                document.body.appendChild(script);
+            });
+        }
+
+        function refreshExercises(src) {
+            exerciseList.innerHTML = '';
+            loadDataset(src)
+                .then(renderExercises)
+                .catch(() => {
+                    exerciseList.innerHTML = '<p>Unable to load exercises.</p>';
+                });
+        }
+
+        datasets.forEach((dataset) => {
+            const option = document.createElement('option');
+            option.value = dataset.src;
+            option.textContent = dataset.label;
+            datasetSelect.appendChild(option);
+        });
+
+        datasetSelect.addEventListener('change', (event) => {
+            refreshExercises(event.target.value);
+        });
+
+        datasetSelect.value = datasets[0].src;
+        refreshExercises(datasets[0].src);
     </script>
 </body>
 </html>

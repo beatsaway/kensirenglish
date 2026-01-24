@@ -48,6 +48,12 @@ class TopicManager {
         introduction: 'Compare things and make choices<br>比較事物同做選擇'
       },
       { 
+        id: 'comparatives-2', 
+        name: 'Comparatives 2 | 比較2', 
+        file: 'comparatives2.js',
+        introduction: 'Stories, adjectives, and comparisons<br>故事種類、形容詞同比較'
+      },
+      { 
         id: 'modal-verbs', 
         name: 'Modal Verbs | 情態動詞', 
         file: 'modal-verbs.js',
@@ -70,6 +76,12 @@ class TopicManager {
         name: 'Active/Passive Voice | 主動/被動語態', 
         file: 'passive-voice.js',
         introduction: 'Choose between active and passive voice<br>選擇主動語態定被動語態'
+      },
+      { 
+        id: 'passive-voice-2', 
+        name: 'Active/Passive Voice 2 | 主動/被動語態2', 
+        file: 'passive-voice2.js',
+        introduction: 'Active, passive, and -ed/-ing adjectives<br>主動被動同形容詞'
       },
       { 
         id: 'reported-speech', 
@@ -130,10 +142,12 @@ class TopicManager {
       'countable-uncountable': 'countableUncountableExercises',
       'word-order': 'wordOrderExercises',
       'comparatives': 'comparativesExercises',
+      'comparatives-2': 'comparatives2Exercises',
       'modal-verbs': 'modalVerbsExercises',
       'gerunds-infinitives': 'gerundsInfinitivesExercises',
       'conditionals': 'conditionalsExercises',
       'passive-voice': 'passiveVoiceExercises',
+      'passive-voice-2': 'passiveVoice2Exercises',
       'reported-speech': 'reportedSpeechExercises',
       'phrasal-verbs': 'phrasalVerbsExercises'
     };

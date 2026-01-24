@@ -1,4 +1,4 @@
-const GeneralProofread = [
+window.GeneralProofread = [
     {
         prompt: "A month ago, Emma finished her ____.",
         choices: ["exam", "exams", "examination", "examines"],
@@ -70,5 +70,3 @@ const GeneralProofread = [
         creason: "被動語態要用過去分詞；講傷口用 treated 比 cured 更自然。"
     }
 ];
-
-window.GeneralProofread = GeneralProofread;
