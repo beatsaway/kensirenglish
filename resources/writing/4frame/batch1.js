@@ -8,7 +8,7 @@ window.fourPanelBatch1 = {
         { label: 'Kite', file: 'kite.jpg' },
         { label: 'Treasure Hunt', file: 'treasure_hunt.jpg' },
         { label: 'Rain Puddles', file: 'rain_puddles.jpg' },
-        { label: 'Talking Dog', file: 'talking_dog.jpg' }
+        { label: 'Clever Dog', file: 'clever_dog.jpg' }
     ],
     storyMap: {
         'lost_and_found.jpg': [
@@ -60,7 +60,7 @@ window.fourPanelBatch1 = {
             { cn: '🚀Kate綁隻風箏喺㗎單車上面 佢一路踩單車 隻風箏一路上升', en: '🚀She tied it to her bike and rode off as the kite climbed higher.' },
             { cn: '🚀隻風箏好快已經高過佢個頭...高過盞街燈...', en: '🚀Soon it was higher than her head… higher than the streetlamp…' },
             { cn: '🚀Wow!已經高過棵巨型聖誕樹...仲高過ICC!', en: '🚀Wow! It was higher than a giant Christmas tree… even higher than the ICC!' },
-            { cn: '💥Oh no!原來係斷咗條線 Kate好傷心', en: '💥Oh no! The string snapped, and Kate was heartbroken.' },
+            { cn: '💥Oh no!原來係斷咗條線 Kate好傷心', en: '💥Oh no! The line snapped, and Kate was heartbroken.' },
             { cn: '🧐佢只好兩手空空繼續踩單車去Joe嘅生日party', en: '🧐She went to Joe’s party empty-handed.' },
             { cn: '🙏Joe話唔緊要啦 風箏係屬於天空㗎嘛!應該隨風而去!', en: '🙏Joe reassured her that the kite had gone with the wind to where it belonged.' }
         ],
@@ -81,9 +81,9 @@ window.fourPanelBatch1 = {
             { cn: '🚀佢輕快咁踏入一個大啲嘅水氹 好開心 頂住聽住濺水嘅聲音', en: '🚀She stepped into a bigger puddle happily, listening to the splashes.' },
             { cn: '💥佢狠狠咁跳入一個巨型水氹 好刺激 好似中咗水彈咁全身濕哂!', en: '💥She jumped hard into a huge puddle—exciting, like being hit by water balloons, and got soaked!' },
             { cn: '🧐靜雞雞出完街之后 Hanna 用腳尖行入屋 俾佢阿哥發現咗!', en: '🧐After sneaking out, Hanna tiptoed home but her brother spotted her!' },
-            { cn: '🙏個廳變咗一個小型嘅海 混雜咗好多泥沙 希望大人返嚟之前清潔好啦', en: '🙏The living room became a little ocean full of mud. God knows if they could clean up the mess before the grown-ups returned.' }
+            { cn: '🙏個廳變咗一個小型嘅海 混雜咗好多泥沙 希望大人返嚟之前清潔好啦', en: '🙏The living room became a little ocean mixed with mud and sand. God knows if they could clean up the mess before the grown-ups returned.' }
         ],
-        'talking_dog.jpg': [
+        'clever_dog.jpg': [
             { cn: '🏁Amy新買返嚟嘅狗Bobby係一個零食小偷 佢24小時戒備', en: '🏁Amy’s new dog, Bobby, is a snack thief who is on alert 24/7.' },
             { cn: '🚀Amy一路食佢最愛嘅朱古力曲奇 Bobby一路擘大隻眼望住Amy...或者其實係啲曲奇', en: '🚀Amy was eating her favourite chocolate cookies while Bobby was staring wide-eyed at her… or maybe at the cookies more.' },
             { cn: '🚀Bobby Keep住跑跳吠 Amy扮睇唔到', en: '🚀Bobby kept running, jumping, and barking, and Amy pretended not to notice.' },
@@ -151,7 +151,7 @@ window.fourPanelBatch1 = {
         ],
         'kite.jpg': [
             { en: 'kite', cn: '風箏' },
-            { en: 'string', cn: '線' },
+            { en: 'line/string', cn: '線' },
             { en: 'rise', cn: '上升' },
             { en: 'streetlamp', cn: '街燈' },
             { en: 'heartbroken', cn: '好傷心' },
@@ -182,7 +182,7 @@ window.fourPanelBatch1 = {
             { en: 'drizzle', cn: '毛毛雨' },
             { en: 'adventure', cn: '冒險' }
         ],
-        'talking_dog.jpg': [
+        'clever_dog.jpg': [
             { en: 'snack', cn: '零食' },
             { en: 'stare', cn: '盯住' },
             { en: 'bark', cn: '吠' },
