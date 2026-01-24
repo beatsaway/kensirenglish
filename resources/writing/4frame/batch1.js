@@ -75,7 +75,7 @@ window.fourPanelBatch1 = {
             { cn: '🙏夜晚食飯大人教訓佢 話逃學係唔啱 但都多謝佢嘅寶物 用來整咗張新枱同新凳', en: '🙏At dinner, the grown-ups told him off for skipping school, but thanked him for the treasure, which they used to make a new table and chair.' }
         ],
         'rain_puddles.jpg': [
-            { cn: '🏁Hanna覺得好悶 因為落雨 學校嘅跳足球訓練取消咗', en: '🏁Hanna felt bored because it was raining and football training was cancelled.' },
+            { cn: '🏁Hanna覺得好悶 因為落雨 學校嘅足球訓練取消咗', en: '🏁Hanna felt bored because it was raining and football training was cancelled.' },
             { cn: '🚀Hanna決定離開間屋 穿起紅雨褸 帶把紅遮 落雨大冒險正式開始!', en: '🚀She left the house, put on a red raincoat, grabbed a red umbrella, and began her rainy adventure!' },
             { cn: '🚀佢隻鞋輕輕接觸一個小水氹 好有趣 睇住水波微微擴散', en: '🚀Her shoe gently touched a small puddle. It was fun watching the ripples spread.' },
             { cn: '🚀佢輕快咁踏入一個大啲嘅水氹 好開心 頂住聽住濺水嘅聲音', en: '🚀She stepped into a bigger puddle happily, listening to the splashes.' },
