@@ -14,14 +14,14 @@ window.GeneralProofread = [
         creason: "正確串法係 immediately。"
     },
     {
-        prompt: "Knowing their mom ____ sick, they bought her a present!",
+        prompt: "Knowing their mum ____ sick, they bought her a present!",
         choices: ["is", "was", "are", "be"],
         answer: "was",
         reason: "Keep the past tense consistent with the story.",
         creason: "成段係過去式，要用 was。"
     },
     {
-        prompt: "It got late, and Mom gave them a curfew of six o'clock, ____ they had to go home.",
+        prompt: "It got late, and Mum gave them a curfew of six o'clock, ____ they had to go home.",
         choices: ["so", "and", "because", "unless"],
         answer: "so",
         reason: "Use 'so' to show the consequence of the curfew.",
@@ -77,7 +77,7 @@ window.GeneralProofread = [
         creason: "過去式要用 took。"
     },
     {
-        prompt: "They went to the police station, hoping someone ____ get his wallet back.",
+        prompt: "They went to the police station, hoping someone ____ get their wallet back.",
         choices: ["can", "could", "will", "is"],
         answer: "could",
         reason: "Use past tense to match 'hoping' in the story.",
@@ -99,7 +99,7 @@ window.GeneralProofread = [
         creason: "講唔特定數量，用 a bunch of。"
     },
     {
-        prompt: "It turned out it was their mom, ____ was giving them a test.",
+        prompt: "It turned out the shadow was their mum, ____ was testing them.",
         choices: ["where", "who", "which", "what"],
         answer: "who",
         reason: "Use 'who' for a person.",
@@ -113,25 +113,25 @@ window.GeneralProofread = [
         creason: "去某個地方用 went to。"
     },
     {
-        prompt: "They went to buy colorful lights and ____.",
-        choices: ["more", "other things", "another", "others"],
-        answer: "other things",
-        reason: "Use 'other things' to mean additional items.",
-        creason: "講其他物品，用 other things 最自然。"
+        prompt: "They went ____ colorful lights and other things.",
+        choices: ["shopping for", "shop for", "shopping", "to shop"],
+        answer: "shopping for",
+        reason: "Use the correct phrase: 'went shopping for ...'.",
+        creason: "固定用法係 went shopping for。"
     },
     {
-        prompt: "Mom gave them a curfew ____ six o'clock.",
+        prompt: "Mum gave them a curfew ____ six o'clock.",
         choices: ["at", "in", "on", "to"],
         answer: "at",
         reason: "Use 'at' for clock times.",
         creason: "講時間用 at。"
     },
     {
-        prompt: "A toy shop caught Jack's eye, ____ he saw a toy robot in the window.",
-        choices: ["and", "but", "because", "so"],
-        answer: "and",
-        reason: "Use 'and' to link two related actions.",
-        creason: "兩個動作順序發生，用 and。"
+        prompt: "A toy shop caught Jack's eye, ____ he walked past the window.",
+        choices: ["as", "but", "because", "so"],
+        answer: "as",
+        reason: "Use 'as' to link two related actions.",
+        creason: "兩個動作順序發生，用 as。"
     },
     {
         prompt: "There was an ____ man walking slowly.",
@@ -148,7 +148,7 @@ window.GeneralProofread = [
         creason: "句首用副詞 Suddenly 最自然。"
     },
     {
-        prompt: "It ____ out it was their mom.",
+        prompt: "It ____ out it was their mum.",
         choices: ["turns", "turned", "turning", "turn"],
         answer: "turned",
         reason: "Use past tense to match the story.",
@@ -163,7 +163,7 @@ window.GeneralProofread = [
         creason: "修飾 recognisable 要用副詞 strangely。"
     },
     {
-        prompt: "____ Jack and John asked many questions, they went back home with a smile.",
+        prompt: "____ being asked many questions, they left the police station with a smile.",
         choices: ["After", "Before", "Until", "While"],
         answer: "After",
         reason: "Use 'After' to show the sequence of events.",
