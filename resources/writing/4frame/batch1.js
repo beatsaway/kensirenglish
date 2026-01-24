@@ -21,12 +21,12 @@ window.fourPanelBatch1 = {
             { cn: '🙏原來我一直攬住', en: '🙏Turns out I was hugging it the whole time.' }
         ],
         'crab_pinch.jpg': [
-            { cn: '🏁Amy喺海灘堆緊沙堡壘  Jack走過嚟話幫手 Amy驚佢搗亂 建議佢去游水', en: '🏁Amy was building a sandcastle. Jack offered to help, but she worried he would mess it up and told him to go swimming.' },
-            { cn: '🚀Jack喺海邊踢住水 用AirPod聽歌 跟住唱', en: '🚀Jack splashed in the water, listening to music on his AirPods and singing along.' },
-            { cn: '🚀佢之後一邊跳舞一邊拍片 \'真係好耐都冇試過咁好天氣!\' 佢話', en: '🚀He started dancing while filming a video. “The weather hasn’t been this good for ages!” he said.' },
-            { cn: '💥啊!Jack一支箭衝去搵Amy救命 原來有只蟹追住佢嚟鉗!', en: '💥“Ah!” Jack dashed to Amy for help—a crab was chasing him and trying to pinch him!' },
-            { cn: '🧐Amy一嘢推冧佢個沙堡壘 擊退隻蟹', en: '🧐Amy knocked over the sandcastle and scared the crab away.' },
-            { cn: '🙏為咗慶祝海灘戰役成功 佢哋去七仔買雪糕食', en: '🙏To celebrate their beach victory, they went to 7-Eleven for ice cream.' }
+            { cn: '🏁Jack想幫Amy堆沙堡壘 Amy驚佢搗亂叫佢去游水', en: '🏁Jack offered to help Amy build her sandcastle. Amy worried that he was going to sabotage it. So she just told him to go swimming.' },
+            { cn: '🚀Jack好開心喺海邊踢水 用AirPod聽歌 跟住唱', en: '🚀Jack was having fun, splashing in the water, listening to music on his AirPods and singing along.' },
+            { cn: '🚀佢仲開始拍埋TikTok跳舞片 單腳跳', en: '🚀He even started filming a TikTok dance video, jumping with one leg.' },
+            { cn: '💥啊!原來佢去緊搵Amy救命 有只蟹鉗緊佢隻腳!', en: '💥“Ah!” Turns out he was going to Amy for help. A crab was pinching his leg!' },
+            { cn: '🧐Amy英勇咁一嘢推冧佢個沙堡壘 擊退隻蟹', en: '🧐Amy heroically knocked over the sandcastle in the blink of an eye and scared the crab away.' },
+            { cn: '🙏為咗慶祝沙堡壘戰役成功 佢哋去七仔買雪糕食', en: '🙏To celebrate their victory in the sandcastle battle, they went to 7-Eleven for ice cream.' }
         ],
         'burnt_cookies.jpg': [
             { cn: '🏁Chris 溫習溫到有啲悶同埋肚餓 去廚房一路溫一路整曲奇餅', en: '🏁Chris got bored and hungry while revising, so he went to the kitchen to study and bake cookies at the same time.' },
@@ -34,16 +34,16 @@ window.fourPanelBatch1 = {
             { cn: '🚀一邊記圓形嘅公式 一邊差做一塊塊圓形曲奇餅', en: '🚀He memorised circle formulas while shaping round cookies.' },
             { cn: '🚀一邊諗常識project題目 一邊放曲奇餅入焗爐', en: '🚀He thought about his General Studies project while putting the cookies into the oven.' },
             { cn: '🚀佢一邊等啲曲奇餅ready 一邊繼續睇通識教科書', en: '🚀While waiting for them to bake, he kept reading his General Studies textbook.' },
-            { cn: '💥哇!最後佢啲曲奇餅真係好似朱古力味咁黑', en: '💥Wow! In the end, the cookies turned as black as chocolate.' },
-            { cn: '🧐但其實系冇朱古力嘅 只係因為太燶', en: '🧐But there was no chocolate—it was just burnt.' },
+            { cn: '💥哇!最後佢啲曲奇餅真係好似朱古力味咁黑', en: '💥Wow! Fresh off the oven, they looked more like dark chocolate than cookies.' },
+            { cn: '🧐但其實系冇朱古力嘅 只係因為太燶', en: '🧐There wasn\'t any chocolate. It was just that badly burnt.' },
             { cn: '🙏Chris自己食左幾塊 其他係佢細佬以為Oreo食哂', en: '🙏Chris ate a few, and his little brother finished the rest, thinking they were Oreos.' }
         ],
         'sabotage.jpg': [
             { cn: '🏁Amy係藝術班入面最杰出嘅學生 佢嘅死對頭James決定咗要搞亂檔', en: '🏁Amy was the top student in art class, and her rival James decided to sabotage her.' },
-            { cn: '🚀James靜雞雞掃咗一筆紅色落Amy張畫布度 Amy冇留意 隨便咁樣章紅色畫成一朵玫瑰花', en: '🚀James secretly brushed red paint onto her canvas. Amy didn’t notice and casually turned it into a rose.' },
+            { cn: '🚀James靜雞雞掃咗一筆紅色落Amy張畫布度 Amy冇留意 隨便咁樣章紅色畫成一朵玫瑰花', en: '🚀James secretly brushed a red stain onto her canvas. Amy didn’t notice and casually turned it into a rose.' },
             { cn: '🚀Amy去廁所冇幾耐 James劈咗一大劈黑色落Amy作品上面 Amy返到來冇留意 將佢畫成一隻企鵝', en: '🚀While Amy was away, James splashed on a big black stroke. When she returned, she turned it into a penguin.' },
             { cn: '💥老師邀請Amy出去做畫畫示範 James忍無可忍 一嘢將十幾隻色潑落Amy幅嘢度', en: '💥The teacher invited Amy to demonstrate. James snapped. He splattered rainbows of paints onto her work.' },
-            { cn: '🧐Amy返到位 以為自己加得太多水 啲顏色化咗 佢將佢轉化成一幅彩虹咁款嘅抽象畫 全班拍哂手掌', en: '🧐Amy thought she had added too much water and the colours ran, so she turned it into a rainbow-style abstract painting. The class applauded.' },
+            { cn: '🧐Amy返到位 以為自己加得太多水 啲顏色化咗 佢將佢轉化成一幅抽象畫 全班拍哂手掌', en: '🧐Amy thought she had used too much water so the colours ran all over the place. But she swiftly turned it into an abstract painting. The class applauded.' },
             { cn: '🙏James覺得好慚愧 佢話俾Amy知佢做咗啲乜之后Amy原諒佢 仲教埋佢點畫火影忍者 從此佢哋做咗好朋友!', en: '🙏James felt ashamed and confessed. Amy forgave him and helped him with his Naruto sketch. They became friends.' }
         ],
         'fox_picnic.jpg': [
@@ -51,8 +51,8 @@ window.fourPanelBatch1 = {
             { cn: '🚀我正準備開餐 Bobby話佢冇帶到野食 只係得欖球同埋釣魚竿!', en: '🚀Just as I was about to eat, Bobby said he brought no food—only a rugby ball and a fishing rod!' },
             { cn: '🚀Bobby話唔好意思建議一齊釣魚 之後可以去7仔微波爐叮來食', en: '🚀He apologised and suggested we fish, then heat something up at 7-Eleven.' },
             { cn: '🚀雖然我好肚餓 但係都跟佢去 因為佢話有機會釣倒美人魚!', en: '🚀I was starving, but I went along because he said we might catch a mermaid!' },
-            { cn: '💥一隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥A fox saw all the food and invited its whole family to feast.' },
-            { cn: '🧐我同Bobby一條魚都釣唔倒 返到來啲嘢食都比人食哂', en: '🧐Bobby and I caught no fish, and when we got back, all the food was gone.' },
+            { cn: '💥一隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥An uninvited fox invited its whole family to feast on our unguarded picnic.' },
+            { cn: '🧐我同Bobby一條魚都釣唔倒 返到來啲嘢食都比人食哂', en: '🧐Bobby and I caught no fish. As we returned, the picnic was no more.' },
             { cn: '🙏為咗醫肚 特別係我個肚 我哋去咗譚仔叫麵加底', en: '🙏To fill our stomachs, especially mine, we went to TamJai and ordered extra noodles.' }
         ],
         'kite.jpg': [
