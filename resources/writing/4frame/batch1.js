@@ -21,7 +21,7 @@ window.fourPanelBatch1 = {
             { cn: '🙏原來我一直攬住', en: '🙏Turns out I was hugging it the whole time.' }
         ],
         'crab_pinch.jpg': [
-            { cn: '🏁Jack想幫Amy堆沙堡壘 Amy驚佢搗亂叫佢去游水', en: '🏁Jack offered to help Amy build her sandcastle. Amy worried that he was going to sabotage it. So she just told him to go swimming.' },
+            { cn: '🏁喺海灘Jack想幫Amy堆沙堡壘 Amy驚佢搗亂叫佢去游水', en: '🏁At the beach, Jack offered to help Amy build her sandcastle. Amy worried that he was going to sabotage it. So she just told him to go swimming.' },
             { cn: '🚀Jack好開心喺海邊踢水 用AirPod聽歌 跟住唱', en: '🚀Jack was having fun, splashing in the water, listening to music on his AirPods and singing along.' },
             { cn: '🚀佢仲開始拍埋TikTok跳舞片 單腳跳', en: '🚀He even started filming a TikTok dance video, jumping with one leg.' },
             { cn: '💥啊!原來佢去緊搵Amy救命 有只蟹鉗緊佢隻腳!', en: '💥“Ah!” Turns out he was going to Amy for help. A crab was pinching his leg!' },
@@ -29,13 +29,13 @@ window.fourPanelBatch1 = {
             { cn: '🙏為咗慶祝沙堡壘戰役成功 佢哋去七仔買雪糕食', en: '🙏To celebrate their victory in the sandcastle battle, they went to 7-Eleven for ice cream.' }
         ],
         'burnt_cookies.jpg': [
-            { cn: '🏁Chris 溫習溫到有啲悶同埋肚餓 去廚房一路溫一路整曲奇餅', en: '🏁Chris got bored and hungry while revising, so he went to the kitchen to study and bake cookies at the same time.' },
-            { cn: '🚀佢一邊溫習英文默書 一邊搞勻啲面粉 糖同埋酵母', en: '🚀He revised his English dictation while mixing flour, sugar, and yeast.' },
+            { cn: '🏁Chris 溫習溫到有啲肚餓 去廚房一路溫一路整曲奇餅', en: '🏁Chris got hungry while revising, so he headed to the kitchen to study and bake cookies at the same time.' },
+            { cn: '🚀佢一邊溫習英文默書 一邊搞勻啲面粉 糖同埋酵母', en: '🚀He recited his English dictation while mixing flour, sugar, and yeast.' },
             { cn: '🚀一邊記圓形嘅公式 一邊差做一塊塊圓形曲奇餅', en: '🚀He memorised circle formulas while shaping round cookies.' },
-            { cn: '🚀一邊諗常識project題目 一邊放曲奇餅入焗爐', en: '🚀He thought about his General Studies project while putting the cookies into the oven.' },
-            { cn: '🚀佢一邊等啲曲奇餅ready 一邊繼續睇通識教科書', en: '🚀While waiting for them to bake, he kept reading his General Studies textbook.' },
+            { cn: '🚀一邊諗通識project題目 一邊放曲奇餅入焗爐', en: '🚀He thought about his General Studies project while putting the cookies into the oven.' },
+            { cn: '🚀佢一邊等啲曲奇餅ready 一邊練普通話拼音', en: '🚀While waiting for them to bake, he practised his Mandarin pinyin.' },
             { cn: '💥哇!新鮮出爐...似黑朱古力多過曲奇餅', en: '💥Wow! Fresh off the oven, they looked more like dark chocolate than cookies.' },
-            { cn: '🧐但其實系冇朱古力嘅 只係因為太過燶', en: '🧐There wasn\'t any chocolate. It was just that badly burnt.' },
+            { cn: '🧐但其實系冇朱古力嘅 只係因為太過燶', en: '🧐There wasn\'t any chocolate. It was just badly burnt.' },
             { cn: '🙏Chris自己食左幾塊 其他係佢細佬以為Oreo食哂', en: '🙏Chris ate a few, and his little brother finished the rest, thinking they were Oreos.' }
         ],
         'sabotage.jpg': [
