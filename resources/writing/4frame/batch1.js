@@ -42,9 +42,9 @@ window.fourPanelBatch1 = {
             { cn: '🏁Amy係藝術班入面最杰出嘅學生 佢嘅死對頭James決定咗要搞亂檔', en: '🏁Amy was the top student in art class, and her rival James decided to sabotage her.' },
             { cn: '🚀James靜雞雞掃咗一筆紅色落Amy張畫布度 Amy冇留意 隨便咁樣章紅色畫成一朵玫瑰花', en: '🚀James secretly brushed red paint onto her canvas. Amy didn’t notice and casually turned it into a rose.' },
             { cn: '🚀Amy去廁所冇幾耐 James劈咗一大劈黑色落Amy作品上面 Amy返到來冇留意 將佢畫成一隻企鵝', en: '🚀While Amy was away, James splashed on a big black stroke. When she returned, she turned it into a penguin.' },
-            { cn: '💥老師邀請Amy出去做畫畫示範 James忍無可忍 一嘢將十幾隻色潑落Amy幅嘢度', en: '💥The teacher invited Amy to demonstrate. James snapped and threw over a dozen colours onto her work.' },
+            { cn: '💥老師邀請Amy出去做畫畫示範 James忍無可忍 一嘢將十幾隻色潑落Amy幅嘢度', en: '💥The teacher invited Amy to demonstrate. James snapped. He splattered rainbows of paints onto her work.' },
             { cn: '🧐Amy返到位 以為自己加得太多水 啲顏色化咗 佢將佢轉化成一幅彩虹咁款嘅抽象畫 全班拍哂手掌', en: '🧐Amy thought she had added too much water and the colours ran, so she turned it into a rainbow-style abstract painting. The class applauded.' },
-            { cn: '🙏James覺得好慚愧 佢話俾Amy知佢做咗啲乜之后Amy原諒佢 仲教埋佢點畫火影忍者 從此佢哋做咗好朋友!', en: '🙏James felt ashamed and confessed. Amy forgave him and even taught him to draw Naruto. They became good friends.' }
+            { cn: '🙏James覺得好慚愧 佢話俾Amy知佢做咗啲乜之后Amy原諒佢 仲教埋佢點畫火影忍者 從此佢哋做咗好朋友!', en: '🙏James felt ashamed and confessed. Amy forgave him and helped him with his Naruto sketch. They became friends.' }
         ],
         'fox_picnic.jpg': [
             { cn: '🏁我上個禮拜六早餐食得特別少 因為約咗Bobby去野餐', en: '🏁Last Saturday I ate very little breakfast because I was meeting Bobby for a picnic.' },
@@ -53,7 +53,7 @@ window.fourPanelBatch1 = {
             { cn: '🚀雖然我好肚餓 但係都跟佢去 因為佢話有機會釣倒美人魚!', en: '🚀I was starving, but I went along because he said we might catch a mermaid!' },
             { cn: '💥一隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥A fox saw all the food and invited its whole family to feast.' },
             { cn: '🧐我同Bobby一條魚都釣唔倒 返到來啲嘢食都比人食哂', en: '🧐Bobby and I caught no fish, and when we got back, all the food was gone.' },
-            { cn: '🙏為咗醫肚 特別係我個肚 我哋去咗譚仔叫麵加底', en: '🙏To fill our stomachs—especially mine—we went to TamJai and ordered extra noodles.' }
+            { cn: '🙏為咗醫肚 特別係我個肚 我哋去咗譚仔叫麵加底', en: '🙏To fill our stomachs, especially mine, we went to TamJai and ordered extra noodles.' }
         ],
         'kite.jpg': [
             { cn: '🏁Kate親手整咗一只風箏比佢朋友Joe 作生日禮物', en: '🏁Kate made a kite by hand for her friend Joe as a birthday present.' },
@@ -62,36 +62,36 @@ window.fourPanelBatch1 = {
             { cn: '🚀Wow!已經高過棵巨型聖誕樹...仲高過ICC!', en: '🚀Wow! It was higher than a giant Christmas tree… even higher than the ICC!' },
             { cn: '💥Oh no!原來係斷咗條線 Kate好傷心', en: '💥Oh no! The string snapped, and Kate was heartbroken.' },
             { cn: '🧐佢只好兩手空空繼續踩單車去Joe嘅生日party', en: '🧐She went to Joe’s party empty-handed.' },
-            { cn: '🙏Joe話唔緊要啦 風箏係屬於天空㗎嘛!應該隨風而去!', en: '🙏Joe said it was fine—the kite belongs to the sky and should go with the wind.' }
+            { cn: '🙏Joe話唔緊要啦 風箏係屬於天空㗎嘛!應該隨風而去!', en: '🙏Joe reassured her that the kite had gone with the wind to where it belonged.' }
         ],
         'treasure_hunt.jpg': [
-            { cn: '🏁Steve屋企好窮 佢去公共圖書館借咗本海盜故事書 發現一幅藏寶圖', en: '🏁Steve’s family was poor. He borrowed a pirate storybook from the library and found a treasure map.' },
+            { cn: '🏁Steve屋企好窮 佢去公共圖書館借咗本海盜故事書 發現一幅藏寶圖', en: '🏁Steve’s family was broke. He borrowed a pirate storybook from the library and found a treasure map.' },
             { cn: '🚀佢巧妙地搣咗塊藏寶圖落嚟 帶返屋企', en: '🚀He carefully tore out the map and took it home.' },
-            { cn: '🚀翌日佢冇返學 佢孭住個背囊揦住個電筒去咗鑽石山尋寶', en: '🚀The next day he skipped school, grabbed a backpack and torch, and went to Diamond Hill to hunt for treasure.' },
-            { cn: '🚀就好似用Google map一樣 佢跟住地圖箭嘴一直直行', en: '🚀Like using Google Maps, he followed the arrow straight ahead.' },
-            { cn: '🚀行到又口渴又肚餓 佢用張地圖抹汗 係時候放棄喇差唔多', en: '🚀He got thirsty and hungry and wiped his sweat with the map. He almost gave up.' },
-            { cn: '💥佢再一次執起張地圖 發覺個箭嘴指住一間五金舖!無開門!', en: '💥He picked up the map again and saw the arrow pointing to a hardware shop—closed!' },
+            { cn: '🚀翌日佢冇返學 佢孭住個背囊揦住個電筒去咗鑽石山尋寶', en: '🚀The next day he skipped school, grabbed a backpack and torch, and went to Diamond Hill for a treasure hunt.' },
+            { cn: '🚀就好似用Google map一樣 佢跟住地圖箭嘴一直直行', en: '🚀Like using Google Maps, he followed the arrow on the map straight ahead.' },
+            { cn: '🚀行到又口渴又肚餓 佢用張地圖抹汗 係時候放棄喇差唔多', en: '🚀Poor Steve got thirsty and hungry and wiped his sweat with the map. He almost gave up.' },
+            { cn: '💥佢再一次執起張地圖 發覺個箭嘴指住一間五金舖!無開門!', en: '💥He picked up the map again and saw the arrow pointing to a hardware shop. He wanted to get in but it was closed!' },
             { cn: '🧐佢週圍望發現樹下便有一個好舊寶箱 裝滿銀色的寶物', en: '🧐Looking around, he spotted an old chest under a tree, full of silver treasures.' },
-            { cn: '🙏夜晚食飯大人教訓佢 話逃學係唔啱 但都多謝佢嘅寶物 用來整咗2張新枱同新凳', en: '🙏At dinner, the adults told him off for skipping school, but thanked him for the treasure, which bought two new tables and chairs.' }
+            { cn: '🙏夜晚食飯大人教訓佢 話逃學係唔啱 但都多謝佢嘅寶物 用來整咗張新枱同新凳', en: '🙏At dinner, the grown-ups told him off for skipping school, but thanked him for the treasure, which they used to make a new table and chair.' }
         ],
         'rain_puddles.jpg': [
             { cn: '🏁Hanna覺得好悶 因為落雨 學校嘅跳足球訓練取消咗', en: '🏁Hanna felt bored because it was raining and football training was cancelled.' },
-            { cn: '🚀Hanna決定離開間屋 穿起紅雨褸 帶把紅遮 落雨大冒險正式開始!', en: '🚀She left the house, put on a red raincoat, grabbed a red umbrella, and began her rainy-day adventure!' },
+            { cn: '🚀Hanna決定離開間屋 穿起紅雨褸 帶把紅遮 落雨大冒險正式開始!', en: '🚀She left the house, put on a red raincoat, grabbed a red umbrella, and began her rainy adventure!' },
             { cn: '🚀佢隻鞋輕輕接觸一個小水氹 好有趣 睇住水波微微擴散', en: '🚀Her shoe gently touched a small puddle. It was fun watching the ripples spread.' },
             { cn: '🚀佢輕快咁踏入一個大啲嘅水氹 好開心 頂住聽住濺水嘅聲音', en: '🚀She stepped into a bigger puddle happily, listening to the splashes.' },
             { cn: '💥佢狠狠咁跳入一個巨型水氹 好刺激 好似中咗水彈咁全身濕哂!', en: '💥She jumped hard into a huge puddle—exciting, like being hit by water balloons, and got soaked!' },
             { cn: '🧐靜雞雞出完街之后 Hanna 用腳尖行入屋 俾佢阿哥發現咗!', en: '🧐After sneaking out, Hanna tiptoed home but her brother spotted her!' },
-            { cn: '🙏個廳變咗一個小型嘅海 混雜咗好多泥沙 希望大人返嚟之前清潔好啦', en: '🙏The living room became a mini sea full of mud. Hopefully they can clean it up before the adults return.' }
+            { cn: '🙏個廳變咗一個小型嘅海 混雜咗好多泥沙 希望大人返嚟之前清潔好啦', en: '🙏The living room became a little ocean full of mud. God knows if they could clean up the mess before the grown-ups returned.' }
         ],
         'talking_dog.jpg': [
             { cn: '🏁Amy新買返嚟嘅狗Bobby係一個零食小偷 佢24小時戒備', en: '🏁Amy’s new dog, Bobby, is a snack thief who is on alert 24/7.' },
-            { cn: '🚀Amy一路食佢最愛嘅朱古力曲奇 Bobby一路擘大隻眼望住Amy...或者其實係啲曲奇', en: '🚀Amy ate her favourite chocolate cookies while Bobby stared wide-eyed at her… or maybe at the cookies.' },
+            { cn: '🚀Amy一路食佢最愛嘅朱古力曲奇 Bobby一路擘大隻眼望住Amy...或者其實係啲曲奇', en: '🚀Amy was eating her favourite chocolate cookies while Bobby was staring wide-eyed at her… or maybe at the cookies more.' },
             { cn: '🚀Bobby Keep住跑跳吠 Amy扮睇唔到', en: '🚀Bobby kept running, jumping, and barking, and Amy pretended not to notice.' },
-            { cn: '🚀Bobby兩腳企起身 做恭喜發財手勢 Amy好想笑但係忍住', en: '🚀Bobby stood on his back legs and made a New Year’s greeting gesture. Amy wanted to laugh but held it in.' },
-            { cn: '🚀Bobby入去Amy房咬碎佢啲功課 佢Show比Amy睇一張紙仔寫住Please', en: '🚀Bobby went into her room and shredded her homework, then showed her a note that said “Please”.' },
-            { cn: '💥Amy好震驚 原來隻狗識英文 話唔定佢可以幫我做功課 於是Amy俾佢任食曲奇餅!', en: '💥Amy was shocked—the dog knew English! Maybe he could do her homework, so she let him eat all the cookies.' },
-            { cn: '🧐食完一盒朱古力曲奇唔夠 要食第二盒第三盒 Amy可以同佢今個禮拜啲零用錢講拜拜', en: '🧐One box wasn’t enough. He wanted a second and third, and Amy had to say goodbye to her pocket money.' },
-            { cn: '🙏翌日放學功課都唔克得閒做 Amy要帶Bobby睇獸醫 佢一直肚屙屙到樓下鄰居都聞到', en: '🙏The next day Amy couldn’t do homework. She had to take Bobby to the vet because his tummy trouble was so bad the neighbours could smell it.' }
+            { cn: '🚀Bobby兩腳企起身 做恭喜發財手勢 Amy好想笑但係忍住', en: '🚀Bobby stood on his back legs and made a Chinese New Year’s greeting gesture. Amy was holding back her laugh.' },
+            { cn: '🚀Bobby入去Amy房咬碎佢啲功課 佢Show比Amy睇一張紙仔寫住Please', en: '🚀Bobby went into her room and shredded her homework, then showed her a piece of paper that said “Please”.' },
+            { cn: '💥Amy好震驚 原來隻狗識英文 話唔定佢可以幫我做功課 於是Amy俾佢任食曲奇餅!', en: '💥Amy was shocked—the dog knew English! Maybe he could do her homework! So she let him eat all the cookies.' },
+            { cn: '🧐食完一盒朱古力曲奇唔夠 要食第二盒第三盒 Amy可以同佢今個禮拜啲零用錢講拜拜', en: '🧐One box wasn’t enough. He wanted a second and third. Amy had to say goodbye to her pocket money this week.' },
+            { cn: '🙏翌日放學功課都唔克得閒做 Amy要帶Bobby睇獸醫 佢一直肚屙屙到樓下鄰居都聞到', en: '🙏The next day after school, Amy got no time to do her homework. She had to take Bobby to the vet because his tummy trouble was so bad that the neighbours could smell it.' }
         ]
     },
     vocabMap: {
@@ -103,7 +103,7 @@ window.fourPanelBatch1 = {
             { en: 'relieved', cn: '鬆一口氣' },
             { en: 'hugging', cn: '攬住' },
             { en: 'teddy bear', cn: '啤啤熊' },
-            { en: 'searched', cn: '搵過/搵緊' }
+            { en: 'searched', cn: '搵' }
         ],
         'crab_pinch.jpg': [
             { en: 'sandcastle', cn: '沙堡' },
@@ -114,7 +114,7 @@ window.fourPanelBatch1 = {
             { en: 'celebrate', cn: '慶祝' },
             { en: 'ice cream', cn: '雪糕' },
             { en: 'beach', cn: '海灘' },
-            { en: 'rescue', cn: '救命/救援' }
+            { en: 'rescue', cn: '拯救' }
         ],
         'burnt_cookies.jpg': [
             { en: 'revise', cn: '溫習' },
@@ -125,11 +125,11 @@ window.fourPanelBatch1 = {
             { en: 'recipe', cn: '食譜' },
             { en: 'hungry', cn: '肚餓' },
             { en: 'cookie', cn: '曲奇' },
-            { en: 'overcooked', cn: '焗過火' }
+            { en: 'overcooked', cn: '焗燶咗' }
         ],
         'sabotage.jpg': [
             { en: 'rival', cn: '死對頭' },
-            { en: 'sabotage', cn: '搗亂/破壞' },
+            { en: 'sabotage', cn: '搗亂搞破壞' },
             { en: 'canvas', cn: '畫布' },
             { en: 'splash', cn: '潑' },
             { en: 'abstract', cn: '抽象' },

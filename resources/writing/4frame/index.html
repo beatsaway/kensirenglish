@@ -236,7 +236,7 @@
                 lineEl.className = 'story-line';
                 lineEl.innerHTML = `
                     <div class="story-line-cn">${line.cn}</div>
-                    <div class="story-line-en">${line.en}</div>
+                    <div class="story-line-en">${line.en.replace(/^[^\p{L}\p{N}]+/u, '')}</div>
                 `;
                 lineEl.addEventListener('click', () => {
                     lineEl.classList.toggle('show-en');
@@ -286,8 +286,12 @@
             }
         });
 
-        imageSelect.value = images[0].file;
-        setImage(images[0]);
+        const initialIndex = images.length ? Math.floor(Math.random() * images.length) : 0;
+        const initialImage = images[initialIndex];
+        if (initialImage) {
+            imageSelect.value = initialImage.file;
+            setImage(initialImage);
+        }
     </script>
 </body>
 </html>
