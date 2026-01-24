@@ -57,7 +57,7 @@ window.GeneralProofread = [
         creason: "要配合過去式，用 had。"
     },
     {
-        prompt: "How I ____ myself to the story is how my mom used to play with me.",
+        prompt: "How I ____ myself to the story is thinking about how my mom used to play with me.",
         choices: ["connect", "connected", "connects", "connecting"],
         answer: "connect",
         reason: "Use present tense after 'How I'.",
