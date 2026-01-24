@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Practice | 閱讀練習</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            /* 8px grid system */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            
+            /* Colors - refined palette */
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            
+            /* Accent colors */
+            --color-accent: #4a90e2;
+            --color-accent-hover: #357abd;
+            --color-accent-light: rgba(74, 144, 226, 0.08);
+            --color-success: #52c41a;
+            --color-success-light: rgba(82, 196, 26, 0.12);
+            --color-error: #ff4d4f;
+            --color-error-light: rgba(255, 77, 79, 0.12);
+            
+            --max-width: 1200px;
+            --touch-target: 44px; /* Minimum touch target size */
+        }
+
+        body {
+            /* background: var(--color-bg); - removed, controlled by main.css */
+            color: var(--color-text);
+            line-height: 1.4;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        header {
+            background: transparent;
+            padding: 4px var(--space-4) 4px var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin-left: auto;
+        }
+
+        .dataset-select {
+            padding: 6px 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+            padding: var(--space-2) var(--space-3);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+
+        .reading-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-3);
+        }
+
+        .reading-card {
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            padding: var(--space-2);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .reading-title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .reading-author {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .reading-description {
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        .reading-quote {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            border-left: 3px solid var(--color-border);
+            padding-left: var(--space-1);
+            font-style: italic;
+        }
+
+        .reading-source {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+        }
+
+        .question-card {
+            background: var(--color-bg);
+            padding: var(--space-1);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .question-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2);
+            margin-bottom: var(--space-1);
+        }
+
+        .option {
+            padding: var(--space-2) var(--space-3);
+            border: none;
+            background: var(--color-bg);
+            cursor: pointer;
+            transition: background 0.15s ease;
+            font-size: 14px;
+            text-align: center;
+            min-height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option:hover {
+            background: var(--color-accent-light);
+        }
+
+        .option.selected {
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .option.correct {
+            background: var(--color-success-light);
+            color: var(--color-text);
+        }
+
+        .option.incorrect {
+            background: var(--color-error-light);
+            color: var(--color-text);
+        }
+
+        .btn-check {
+            align-self: flex-start;
+            background: transparent;
+            color: var(--color-text-secondary);
+            border: none;
+            padding: var(--space-1) var(--space-2);
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .btn-check:hover {
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+        }
+
+        .explanation {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            display: none;
+        }
+
+        .question-card.answered .explanation {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: var(--space-1) var(--space-2);
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+                gap: var(--space-1);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="header-label">Reading Practice<span class="separator">•📖</span>閱讀練習</span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <div class="header-controls">
+            <label for="datasetSelect">Exercise</label>
+            <select id="datasetSelect" class="dataset-select"></select>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <section>
+                <div id="readingBlocks" class="reading-grid"></div>
+            </section>
+
+            <section>
+                <div id="questionList"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const readingBlocks = document.getElementById('readingBlocks');
+        const questionList = document.getElementById('questionList');
+        const datasetSelect = document.getElementById('datasetSelect');
+
+        const datasets = [
+            { label: 'Films', src: 'reading_questions.js' },
+            { label: 'Festivals', src: 'reading_questions2.js' }
+        ];
+
+        function renderBlocks() {
+            if (!window.readingData) {
+                readingBlocks.innerHTML = '<p>Unable to load passages.</p>';
+                return;
+            }
+            readingBlocks.innerHTML = window.readingData.blocks.map(block => `
+                <div class="reading-card">
+                    <div class="reading-title">${block.title}</div>
+                    <div class="reading-author">${block.author}</div>
+                    <div class="reading-description">${block.description}</div>
+                    <div class="reading-quote">"${block.quote}"</div>
+                    <div class="reading-source">${block.source}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderQuestions() {
+            if (!window.readingData) {
+                questionList.innerHTML = '<p>Unable to load questions.</p>';
+                return;
+            }
+            questionList.innerHTML = window.readingData.questions.map((question, index) => `
+                <div class="question-card" data-index="${index}">
+                    <div class="question-text">${index + 1}. ${question.question}</div>
+                    <div class="options">
+                        ${question.options.map(option => `
+                            <div class="option" data-option="${option}">${option}</div>
+                        `).join('')}
+                    </div>
+                    <button class="btn-check" data-index="${index}">Check Answer</button>
+                    <div class="explanation">${question.explanation}</div>
+                </div>
+            `).join('');
+        }
+
+        function selectOption(optionEl) {
+            const card = optionEl.closest('.question-card');
+            if (card.classList.contains('answered')) {
+                return;
+            }
+            const options = card.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            optionEl.classList.add('selected');
+        }
+
+        function checkAnswer(card) {
+            if (card.classList.contains('answered')) {
+                return;
+            }
+            const index = Number(card.dataset.index);
+            const question = window.readingData.questions[index];
+            const selected = card.querySelector('.option.selected');
+            if (!selected) {
+                return;
+            }
+            const selectedValue = selected.dataset.option;
+            card.querySelectorAll('.option').forEach(option => {
+                if (option.dataset.option === question.answer) {
+                    option.classList.add('correct');
+                } else if (option.dataset.option === selectedValue) {
+                    option.classList.add('incorrect');
+                }
+            });
+            card.classList.add('answered');
+        }
+
+        function loadDataset(src) {
+            return new Promise((resolve, reject) => {
+                const existingScript = document.getElementById('datasetScript');
+                if (existingScript) {
+                    existingScript.remove();
+                }
+                window.readingData = null;
+                const script = document.createElement('script');
+                script.id = 'datasetScript';
+                script.src = src;
+                script.onload = () => resolve();
+                script.onerror = () => reject();
+                document.body.appendChild(script);
+            });
+        }
+
+        function refreshExercises(src) {
+            readingBlocks.innerHTML = '';
+            questionList.innerHTML = '';
+            loadDataset(src)
+                .then(() => {
+                    renderBlocks();
+                    renderQuestions();
+                })
+                .catch(() => {
+                    readingBlocks.innerHTML = '<p>Unable to load passages.</p>';
+                    questionList.innerHTML = '<p>Unable to load questions.</p>';
+                });
+        }
+
+        questionList.addEventListener('click', (event) => {
+            const option = event.target.closest('.option');
+            if (option) {
+                selectOption(option);
+                return;
+            }
+            const button = event.target.closest('.btn-check');
+            if (button) {
+                const card = button.closest('.question-card');
+                checkAnswer(card);
+            }
+        });
+
+        datasets.forEach((dataset) => {
+            const option = document.createElement('option');
+            option.value = dataset.src;
+            option.textContent = dataset.label;
+            datasetSelect.appendChild(option);
+        });
+
+        datasetSelect.addEventListener('change', (event) => {
+            refreshExercises(event.target.value);
+        });
+
+        datasetSelect.value = datasets[0].src;
+        refreshExercises(datasets[0].src);
+    </script>
+</body>
+</html>
