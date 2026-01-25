@@ -587,6 +587,10 @@
     <script src="js/topics/passive-voice2.js"></script>
     <script src="js/topics/reported-speech.js"></script>
     <script src="js/topics/phrasal-verbs.js"></script>
+    <script src="js/topics/collocations-verb-noun.js"></script>
+    <script src="js/topics/collocations-adjective-noun.js"></script>
+    <script src="js/topics/collocations-verb-preposition.js"></script>
+    <script src="js/topics/collocations-adverb-adjective.js"></script>
     <script src="js/topic-manager.js"></script>
     <script>
         let currentExercise = null;
@@ -719,7 +723,11 @@
             'passive-voice': '<strong>💡 Tips:</strong> Active = Subject does action (I eat an apple). Passive = Subject receives action (An apple is eaten by me). Use "be" + past participle.',
             'passive-voice-2': '<strong>💡 Tips:</strong> Active uses a doer. Passive uses "be" + past participle. -ed adjectives describe feelings (bored), -ing adjectives describe things (boring).',
             'reported-speech': '<strong>💡 Tips:</strong> Present → Past (say → said, is → was). Past → Past Perfect (went → had gone). "will" → "would". Change pronouns and time words too.',
-            'phrasal-verbs': '<strong>💡 Tips:</strong> Phrasal verbs = verb + preposition/adverb. Meaning can change completely (look = 睇, look after = 照顧). Learn them as complete phrases.'
+            'phrasal-verbs': '<strong>💡 Tips:</strong> Phrasal verbs = verb + preposition/adverb. Meaning can change completely (look = 睇, look after = 照顧). Learn them as complete phrases.',
+            'collocations-verb-noun': '<strong>💡 Tips:</strong> Verb + noun collocations are very common (take a risk, make progress). Learn them as chunks.',
+            'collocations-adjective-noun': '<strong>💡 Tips:</strong> Adjective + noun collocations sound natural (heavy traffic, strict rules).',
+            'collocations-verb-preposition': '<strong>💡 Tips:</strong> Many verbs need a specific preposition (depend on, insist on).',
+            'collocations-adverb-adjective': '<strong>💡 Tips:</strong> Adverbs often go with specific adjectives (highly recommended, deeply sorry).'
         };
 
         // Load all exercises for current topic
@@ -742,6 +750,7 @@
             `;
 
             exercises.forEach((exercise, index) => {
+                const shuffledOptions = shuffleArray([...exercise.options]);
                 exercisesHTML += `
                     <div class="exercise-card" id="exercise-${index}">
                         <div class="sentence">
@@ -750,7 +759,7 @@
                         </div>
                         
                         <div class="mc-options" id="mcOptions-${index}">
-                            ${exercise.options.map((option, optionIndex) => `
+                            ${shuffledOptions.map((option, optionIndex) => `
                                 <div class="mc-option" 
                                      onclick="selectOption(${index}, ${optionIndex}, '${option}')"
                                      data-option="${option}">
@@ -772,6 +781,15 @@
             });
 
             exerciseArea.innerHTML = exercisesHTML;
+        }
+
+        // Shuffle array in place (Fisher-Yates)
+        function shuffleArray(items) {
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+            return items;
         }
 
         // Select an option

@@ -94,6 +94,30 @@ class TopicManager {
         name: 'Phrasal Verbs | 短語動詞', 
         file: 'phrasal-verbs.js',
         introduction: 'Use common English expressions<br>用常用英文表達'
+      },
+      { 
+        id: 'collocations-verb-noun', 
+        name: 'Collocations: Verb + Noun | 動詞+名詞', 
+        file: 'collocations-verb-noun.js',
+        introduction: 'Common verb + noun pairs<br>常見動詞+名詞搭配'
+      },
+      { 
+        id: 'collocations-adjective-noun', 
+        name: 'Collocations: Adjective + Noun | 形容詞+名詞', 
+        file: 'collocations-adjective-noun.js',
+        introduction: 'Natural adjective + noun pairs<br>自然嘅形容詞+名詞搭配'
+      },
+      { 
+        id: 'collocations-verb-preposition', 
+        name: 'Collocations: Verb + Preposition | 動詞+介詞', 
+        file: 'collocations-verb-preposition.js',
+        introduction: 'Verb + preposition patterns<br>動詞+介詞固定搭配'
+      },
+      { 
+        id: 'collocations-adverb-adjective', 
+        name: 'Collocations: Adverb + Adjective | 副詞+形容詞', 
+        file: 'collocations-adverb-adjective.js',
+        introduction: 'Adverb + adjective pairs<br>副詞+形容詞搭配'
       }
     ];
   }
@@ -149,7 +173,11 @@ class TopicManager {
       'passive-voice': 'passiveVoiceExercises',
       'passive-voice-2': 'passiveVoice2Exercises',
       'reported-speech': 'reportedSpeechExercises',
-      'phrasal-verbs': 'phrasalVerbsExercises'
+      'phrasal-verbs': 'phrasalVerbsExercises',
+      'collocations-verb-noun': 'collocationsVerbNounExercises',
+      'collocations-adjective-noun': 'collocationsAdjectiveNounExercises',
+      'collocations-verb-preposition': 'collocationsVerbPrepositionExercises',
+      'collocations-adverb-adjective': 'collocationsAdverbAdjectiveExercises'
     };
     return mapping[topicId];
   }
