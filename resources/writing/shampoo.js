@@ -1,5 +1,5 @@
 const SHAMPOO_CONTENT = `
-<p>SHAMPOO refers to 7 types of figurative language that are useful in storytelling.<br>SHAMPOO 係一個易記嘅縮寫，代表七種寫作修辭，幫你寫故事更生動、更易記。</p>
+<p>SHAMPOO refers to 7 types of figurative language that could enhance your storytelling.<br>SHAMPOO 係一個縮寫，代表七種寫作修辭，幫你寫故事更生動。</p>
 
 <ul>
   <li><strong>S - Simile:</strong> Compares two different things using "like" or "as" (e.g., "As brave as a lion").<br><strong>🕯️明喻：</strong>用「像」或「如同」去比較兩樣唔同嘅嘢（例：「勇敢得像獅子」）。</li>
