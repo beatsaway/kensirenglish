@@ -59,7 +59,7 @@ window.fourPanelBatch1 = {
             { cn: '🏁Kate親手整咗一只風箏比佢朋友Joe 作生日禮物', en: '🏁Kate made a kite by hand for her friend Joe as a birthday present.' },
             { cn: '🚀Kate綁隻風箏喺㗎單車上面 佢一路踩單車 隻風箏一路上升', en: '🚀She tied it to her bike and rode off as the kite climbed higher.' },
             { cn: '🚀隻風箏好快已經高過佢個頭...高過盞街燈...', en: '🚀Soon it was higher than her head… higher than the streetlamp…' },
-            { cn: '🚀Wow!已經高過棵巨型聖誕樹...仲高過ICC!', en: '🚀Wow! It was higher than a giant Christmas tree… even higher than the ICC!' },
+            { cn: '🚀Wow!已經高過棵巨型聖誕樹...仲高過ICC!', en: '🚀Wow! It was higher than the giant Christmas tree… even higher than the ICC!' },
             { cn: '💥Oh no!原來係斷咗條線 Kate好傷心', en: '💥Oh no! The line snapped, and Kate was heartbroken.' },
             { cn: '🧐佢只好兩手空空繼續踩單車去Joe嘅生日party', en: '🧐She went to Joe’s party empty-handed.' },
             { cn: '🙏Joe話唔緊要啦 風箏係屬於天空㗎嘛!應該隨風而去!', en: '🙏Joe reassured her that the kite had gone with the wind to where it belonged.' }
@@ -75,7 +75,7 @@ window.fourPanelBatch1 = {
             { cn: '🙏夜晚食飯大人教訓佢 話逃學係唔啱 但都多謝佢嘅寶物 用來整咗張新枱同新凳', en: '🙏At dinner, the grown-ups told him off for skipping school, but thanked him for the treasure, which they used to make a new table and chair.' }
         ],
         'rain_puddles.jpg': [
-            { cn: '🏁Hanna覺得好悶 因為落雨 學校嘅足球訓練取消咗', en: '🏁Hanna felt bored because it was raining and football training was cancelled.' },
+            { cn: '🏁Hanna覺得好悶 因為落雨 學校嘅足球訓練取消咗', en: '🏁Hanna was bored. Her football training was cancelled due to the rain.' },
             { cn: '🚀Hanna決定離開間屋 穿起紅雨褸 帶把紅遮 落雨大冒險正式開始!', en: '🚀She left the house, put on a red raincoat, grabbed a red umbrella, and began her rainy adventure!' },
             { cn: '🚀佢隻鞋輕輕接觸一個小水氹 好有趣 睇住水波微微擴散', en: '🚀Her shoe gently touched a small puddle. It was fun watching the ripples spread.' },
             { cn: '🚀佢輕快咁踏入一個大啲嘅水氹 好開心 頂住聽住濺水嘅聲音', en: '🚀She stepped into a bigger puddle happily, listening to the splashes.' },
