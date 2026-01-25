@@ -118,6 +118,112 @@
             background: var(--color-surface);
             border-color: var(--color-text-secondary);
         }
+
+        .shampoo-trigger {
+            font-weight: 600;
+            color: inherit;
+            cursor: pointer;
+            border-bottom: 1px dotted var(--color-text-secondary);
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .shampoo-trigger:hover {
+            color: var(--color-text);
+            border-bottom-color: var(--color-text);
+        }
+
+        .shampoo-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .shampoo-modal-overlay.active {
+            display: block;
+        }
+
+        .shampoo-modal {
+            background: var(--color-bg);
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+            padding: var(--space-4);
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .shampoo-modal-close {
+            position: absolute;
+            top: var(--space-3);
+            right: var(--space-3);
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .shampoo-modal-close:hover {
+            opacity: 0.6;
+        }
+
+        .shampoo-modal h2 {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            line-height: 1.2;
+        }
+
+        .shampoo-modal h2::first-line {
+            font-weight: 600;
+        }
+
+        .shampoo-modal h3 {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--color-text);
+            margin-top: var(--space-3);
+            margin-bottom: var(--space-2);
+            line-height: 1.3;
+        }
+
+        .shampoo-modal h3::first-line {
+            font-weight: 600;
+        }
+
+        .shampoo-modal p,
+        .shampoo-modal ul {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+
+        .shampoo-modal ul {
+            padding-left: var(--space-4);
+        }
+
+        .shampoo-modal li {
+            margin-bottom: var(--space-1);
+        }
+
+        .shampoo-modal strong {
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -131,11 +237,20 @@
     <main>
         <div class="content-wrap">
             <section class="option-card">
-                <div class="option-title">Four-Panel Comic</div>
-                <div class="option-desc">Choose a 4-panel image set to plan and write a story.</div>
+                <div class="option-title">Four-frame storytelling<br>四格故事寫作</div>
+                <div class="option-desc">Choose a 4-frame set to write a story. You may use the vocabulary list to help you. The cantonese text is for your reference. But it's also a good practice to rewrite it in English, or use <span class="shampoo-trigger" id="shampooTrigger" role="button" tabindex="0" aria-haspopup="dialog">SHAMPOO</span> to enhance it.<br>揀一組四格圖寫故事。你可以用詞彙表幫手。有中文可作參考，但亦可以練習改寫成英文，或者用 <span class="shampoo-trigger" role="button" tabindex="0" aria-haspopup="dialog">SHAMPOO</span> 加強表達。</div>
                 <a class="option-link" href="4frame/index.html">Open</a>
             </section>
         </div>
     </main>
+
+    <div class="shampoo-modal-overlay" id="shampooModalOverlay" onclick="closeShampooModal(event)">
+        <div class="shampoo-modal" onclick="event.stopPropagation()">
+            <button class="shampoo-modal-close" onclick="closeShampooModal(event)">×</button>
+            <div class="shampoo-modal-content" id="shampooModalContent"></div>
+        </div>
+    </div>
+
+    <script src="shampoo.js"></script>
 </body>
 </html>
