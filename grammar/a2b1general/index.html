@@ -580,7 +580,10 @@
     <script src="js/topics/word-order.js"></script>
     <script src="js/topics/comparatives.js"></script>
     <script src="js/topics/comparatives2.js"></script>
-    <script src="js/topics/modal-verbs.js"></script>
+    <script src="js/topics/comparatives3.js"></script>
+    <script src="js/topics/modal-verbs-1.js"></script>
+    <script src="js/topics/modal-verbs-2.js"></script>
+    <script src="js/topics/modal-verbs-3.js"></script>
     <script src="js/topics/gerunds-infinitives.js"></script>
     <script src="js/topics/conditionals.js"></script>
     <script src="js/topics/passive-voice.js"></script>
@@ -715,9 +718,12 @@
             'subject-verb-agreement': '<strong>💡 Tips:</strong> Singular subject (he/she/it) → singular verb (is/has/goes). Plural subject (they/we) → plural verb (are/have/go).',
             'countable-uncountable': '<strong>💡 Tips:</strong> Countable = 可以數 (book/books), use "many/few". Uncountable = 唔可以數 (water/money), use "much/little".',
             'word-order': '<strong>💡 Tips:</strong> Basic order: Subject → Verb → Object. Adjectives before nouns. Adverbs can go before verbs or at the end.',
-            'comparatives': '<strong>💡 Tips:</strong> Short adjectives (1-2 syllables) → add "-er" (tall → taller). Long adjectives (3+ syllables) → use "more" (interesting → more interesting). Irregular: good → better, bad → worse.',
-            'comparatives-2': '<strong>💡 Tips:</strong> Story adjectives often use "more/the most" (more frightening, the most touching). Use "less/the least" to show smaller amounts of a quality.',
-            'modal-verbs': '<strong>💡 Tips:</strong> "can" = 能力, "should" = 建議, "must" = 必須, "may/might" = 可能. Modal verbs are followed by base verb (no "to", no "-s").',
+            'comparatives': '<strong>💡 Tips:</strong> Short adjectives use "-er" (tall → taller). Long adjectives use "more" (interesting → more interesting). Irregular: good → better, bad → worse.',
+            'comparatives-2': '<strong>💡 Tips:</strong> Superlatives use "-est" or "the most". Use "the least" for the lowest degree. "as ... as" shows equality.',
+            'comparatives-3': '<strong>💡 Tips:</strong> Adverbs can compare actions: fast → faster, carefully → more carefully. Superlative adverbs use "the most".',
+            'modal-verbs-1': '<strong>💡 Tips:</strong> Modals take base verbs (no "to", no "-s"). "can/could" show ability; "should" gives advice.',
+            'modal-verbs-2': '<strong>💡 Tips:</strong> "must/have to" = strong obligation, "mustn’t" =禁止, "can/may" = permission.',
+            'modal-verbs-3': '<strong>💡 Tips:</strong> "might/may/could" show possibility. "could/would" make requests more polite.',
             'gerunds-infinitives': '<strong>💡 Tips:</strong> Some verbs need "-ing" (enjoy doing, finish doing). Some need "to + verb" (want to do, decide to do). Some can use both with different meanings.',
             'conditionals': '<strong>💡 Tips:</strong> Type 1 (real): If + present → will + base verb. Type 2 (unreal): If + past → would + base verb. Type 3 (past): If + past perfect → would have + past participle.',
             'passive-voice': '<strong>💡 Tips:</strong> Active = Subject does action (I eat an apple). Passive = Subject receives action (An apple is eaten by me). Use "be" + past participle.',
@@ -761,7 +767,7 @@
                         <div class="mc-options" id="mcOptions-${index}">
                             ${shuffledOptions.map((option, optionIndex) => `
                                 <div class="mc-option" 
-                                     onclick="selectOption(${index}, ${optionIndex}, '${option}')"
+                                     onclick="selectOption(${index}, ${optionIndex})"
                                      data-option="${option}">
                                     ${option}
                                 </div>
@@ -793,7 +799,7 @@
         }
 
         // Select an option
-        function selectOption(exerciseIndex, optionIndex, optionValue) {
+        function selectOption(exerciseIndex, optionIndex) {
             const mcOptions = document.getElementById(`mcOptions-${exerciseIndex}`);
             const options = mcOptions.querySelectorAll('.mc-option');
             

@@ -54,10 +54,28 @@ class TopicManager {
         introduction: 'Stories, adjectives, and comparisons<br>故事種類、形容詞同比較'
       },
       { 
-        id: 'modal-verbs', 
-        name: 'Modal Verbs | 情態動詞', 
-        file: 'modal-verbs.js',
-        introduction: 'Express ability, advice, and possibility<br>表達能力、建議同可能性'
+        id: 'comparatives-3', 
+        name: 'Comparatives 3 | 比較3', 
+        file: 'comparatives3.js',
+        introduction: 'Adverbs and comparison of actions<br>副詞同動作比較'
+      },
+      { 
+        id: 'modal-verbs-1', 
+        name: 'Modal Verbs 1 | 情態動詞1', 
+        file: 'modal-verbs-1.js',
+        introduction: 'Ability and basic advice<br>能力同基本建議'
+      },
+      { 
+        id: 'modal-verbs-2', 
+        name: 'Modal Verbs 2 | 情態動詞2', 
+        file: 'modal-verbs-2.js',
+        introduction: 'Obligation and permission<br>責任同准許'
+      },
+      { 
+        id: 'modal-verbs-3', 
+        name: 'Modal Verbs 3 | 情態動詞3', 
+        file: 'modal-verbs-3.js',
+        introduction: 'Possibility and polite requests<br>可能性同禮貌請求'
       },
       { 
         id: 'gerunds-infinitives', 
@@ -167,7 +185,10 @@ class TopicManager {
       'word-order': 'wordOrderExercises',
       'comparatives': 'comparativesExercises',
       'comparatives-2': 'comparatives2Exercises',
-      'modal-verbs': 'modalVerbsExercises',
+      'comparatives-3': 'comparatives3Exercises',
+      'modal-verbs-1': 'modalVerbs1Exercises',
+      'modal-verbs-2': 'modalVerbs2Exercises',
+      'modal-verbs-3': 'modalVerbs3Exercises',
       'gerunds-infinitives': 'gerundsInfinitivesExercises',
       'conditionals': 'conditionalsExercises',
       'passive-voice': 'passiveVoiceExercises',
