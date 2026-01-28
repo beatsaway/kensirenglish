@@ -33,6 +33,7 @@ window.readingData = {
         "The floating stage",
         "The bridge ribbons"
       ],
+      blockIndex: 0,
       answer: "The Lantern River Festival",
       explanation: "The review is describing the festival."
     },
@@ -44,6 +45,7 @@ window.readingData = {
         "reviewer",
         "security team"
       ],
+      blockIndex: 1,
       answer: "reviewer",
       explanation: "Community Times provides the review quote."
     },
@@ -55,6 +57,7 @@ window.readingData = {
         "To sell expensive tickets",
         "To launch fireworks"
       ],
+      blockIndex: 1,
       answer: "To thank farmers after the season",
       explanation: "The description says it is to thank the farmers."
     },
@@ -66,6 +69,7 @@ window.readingData = {
         "A noisy street",
         "A closed restaurant"
       ],
+      blockIndex: 2,
       answer: "A place surrounded by a barrier",
       explanation: "A fenced zone is protected by a fence."
     },
@@ -77,6 +81,7 @@ window.readingData = {
         "The festival is only for children.",
         "The festival is a sports event."
       ],
+      blockIndex: 1,
       answer: "The festival feels energetic and lively.",
       explanation: "Keeping the beat suggests energy and rhythm."
     },
@@ -88,6 +93,7 @@ window.readingData = {
         "Skyfire Parade",
         "All of them"
       ],
+      blockIndex: 0,
       answer: "Lantern River Festival",
       explanation: "The river walk is part of the Lantern River Festival."
     },
@@ -99,6 +105,7 @@ window.readingData = {
         "To help them find the market",
         "To watch the drum dances"
       ],
+      blockIndex: 2,
       answer: "To keep them away from fireworks",
       explanation: "Fireworks are launched from a fenced zone."
     },
@@ -110,8 +117,57 @@ window.readingData = {
         "Drum dances in the square",
         "Selling handmade snacks"
       ],
+      blockIndex: 0,
       answer: "Writing wishes on ribbons",
       explanation: "Visitors can write wishes and tie them to the bridge."
+    },
+    {
+      question: "Where does the music parade start at the Lantern River Festival?",
+      options: [
+        "The clock tower",
+        "The floating stage",
+        "The river walk",
+        "The craft corner"
+      ],
+      blockIndex: 0,
+      answer: "The clock tower",
+      explanation: "The parade starts at the clock tower."
+    },
+    {
+      question: "How does the Lantern River Festival end?",
+      options: [
+        "With a calm light show on the water",
+        "With a drum contest",
+        "With a morning market",
+        "With a kite race"
+      ],
+      blockIndex: 0,
+      answer: "With a calm light show on the water",
+      explanation: "The description says it ends with a calm light show on the water."
+    },
+    {
+      question: "What do neighbors cook at Harvest Drum Night?",
+      options: [
+        "Simple dishes to share",
+        "Seafood for visitors",
+        "Spicy noodles only",
+        "Festival cakes"
+      ],
+      blockIndex: 1,
+      answer: "Simple dishes to share",
+      explanation: "Neighbors cook simple dishes to share."
+    },
+    {
+      question: "What can children make at Skyfire Parade?",
+      options: [
+        "Paper stars",
+        "Paper lanterns",
+        "Drum masks",
+        "River ribbons"
+      ],
+      blockIndex: 2,
+      answer: "Paper stars",
+      explanation: "The craft corner lets children make paper stars."
     }
   ]
 };

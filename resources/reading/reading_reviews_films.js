@@ -33,6 +33,7 @@ window.readingData = {
         "The secret map",
         "The delivery rider"
       ],
+      blockIndex: 0,
       answer: "The film City Lights Run",
       explanation: "The line is a review of the film, so it describes the film."
     },
@@ -44,6 +45,7 @@ window.readingData = {
         "reviewer",
         "actor"
       ],
+      blockIndex: 1,
       answer: "reviewer",
       explanation: "Silver Frame Review provides the review quote."
     },
@@ -55,6 +57,7 @@ window.readingData = {
         "dangerous and scary",
         "busy and noisy"
       ],
+      blockIndex: 2,
       answer: "empty and left behind",
       explanation: "“Abandoned” means left with no one there."
     },
@@ -66,6 +69,7 @@ window.readingData = {
         "The film is about a storm.",
         "The film is a comedy."
       ],
+      blockIndex: 1,
       answer: "The film feels calm and moving.",
       explanation: "The quote compares it to a quiet snowfall, showing a gentle mood."
     },
@@ -77,6 +81,7 @@ window.readingData = {
         "Priya Nair",
         "Juno"
       ],
+      blockIndex: 0,
       answer: "Irene Cho",
       explanation: "The blurb lists Irene Cho as the director."
     },
@@ -88,6 +93,7 @@ window.readingData = {
         "chase",
         "discover"
       ],
+      blockIndex: 0,
       answer: "solve",
       explanation: "To solve a puzzle means to find and discover the answer."
     },
@@ -99,6 +105,7 @@ window.readingData = {
         "They move to the city.",
         "They cancel the festival and rest."
       ],
+      blockIndex: 1,
       answer: "They work together to save the garden.",
       explanation: "The description says they work side by side to save it."
     },
@@ -110,8 +117,57 @@ window.readingData = {
         "A company blocks the rooftops.",
         "They miss the town festival."
       ],
+      blockIndex: 2,
       answer: "Their exit disappears at night.",
       explanation: "The blurb says the valley closes in and their exit disappears."
+    },
+    {
+      question: "What does Juno discover in City Lights Run?",
+      options: [
+        "A secret map",
+        "A missing ticket",
+        "A broken camera",
+        "A hidden garden"
+      ],
+      blockIndex: 0,
+      answer: "A secret map",
+      explanation: "The blurb says she discovers a secret map hidden in a package."
+    },
+    {
+      question: "Where does the chase take them in City Lights Run?",
+      options: [
+        "Rooftops, tunnels, and the harbor",
+        "Mountain trails and forests",
+        "A desert highway",
+        "A quiet village square"
+      ],
+      blockIndex: 0,
+      answer: "Rooftops, tunnels, and the harbor",
+      explanation: "The description lists rooftops, tunnels, and the harbor."
+    },
+    {
+      question: "What threatens Lina's winter garden?",
+      options: [
+        "A long drought",
+        "A heavy storm",
+        "A city rule change",
+        "A closed festival"
+      ],
+      blockIndex: 1,
+      answer: "A long drought",
+      explanation: "The blurb says a long drought threatens her plans."
+    },
+    {
+      question: "What do the hikers find in Echoes of the Valley?",
+      options: [
+        "An abandoned research station",
+        "A hidden treasure",
+        "A city festival",
+        "A rescue team"
+      ],
+      blockIndex: 2,
+      answer: "An abandoned research station",
+      explanation: "They discover an abandoned research station in the canyon."
     }
   ]
 };
