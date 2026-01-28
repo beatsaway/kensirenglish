@@ -1,176 +1,140 @@
 window.readingData = {
   title: "Reading Practice",
-  subtitle: "Festival Notices and Reviews",
+  subtitle: "Festival Reviews",
   blocks: [
     {
-      title: "Lantern River Festival",
-      author: "Organizer: City Culture Office",
-      description: "The Lantern River Festival is a night celebration held by the old harbor. Families make paper lanterns and place them along the river walk. A music parade starts at the clock tower and ends at the floating stage. Visitors can write wishes on ribbons and tie them to the bridge. The festival ends with a calm light show on the water.",
-      cdescription: "呢個 燈籠 河 節 係 一個 夜晚 慶典 舉行 喺 呢個 舊 港口. 家庭 做 紙 燈籠 同 擺 佢哋 沿住 呢條 河 步道. 一個 音樂 巡遊 開始 喺 呢座 時鐘 塔 同 結束 喺 呢個 浮動 舞台. 旅客 可以 寫 願望 喺 緞帶 同 綁 佢哋 去 呢條 橋. 呢個 節 結束 以 一個 平靜 燈光 表演 喺 呢片 水面.",
-      quote: "It lights up the town and the river in a gentle, unforgettable way.",
-      source: "City Arts Weekly"
+      title: "Oktoberfest",
+      author: "Location: Munich, Germany",
+      description: "Oktoberfest is a large beer festival held in Munich, Germany. It runs from late September to early October and features beer tents, parades, and traditional Bavarian music. Visitors often describe the event as lively and friendly, and local organizers emphasize its long history and family friendly atmosphere during the day.",
+      cdescription: "十月節 係 一個 大型 啤酒 節 喺 德國 慕尼黑 舉行. 佢 由 九月 尾 到 十月 初 舉行 同 有 啤酒 帳篷, 巡遊, 同 傳統 巴伐利亞 音樂. 訪客 通常 形容 呢個 活動 熱鬧 同 友善, 而 主辦 方 強調 佢 歷史 悠久 同 日間 係 親子 友善.",
+      quote: "Often described as the world's largest Volksfest, and a favorite for many visitors.",
+      source: "Visitor guides"
     },
     {
-      title: "Harvest Drum Night",
-      author: "Organizer: Greenfield Village",
-      description: "Harvest Drum Night is a lively festival to thank the farmers after a long season. Students perform drum dances in the square while neighbors cook simple dishes to share. A small market sells handmade snacks and warm tea. The night closes with a community circle where everyone sings together.",
-      cdescription: "收成 鼓 晚 係 一個 熱鬧 節 去 感謝 呢啲 農夫 喺 一個 漫長 季節. 學生 表演 鼓 舞 喺 個 廣場 同時 鄰居 煮 簡單 菜式 去 分享. 一個 細 市集 賣 手作 小食 同 熱 茶. 呢個 晚 結束 以 一個 社區 圈 喺 大家 唱歌 一齊.",
-      quote: "The drums keep the beat of the town.",
-      source: "Community Times"
+      title: "Rio Carnival",
+      author: "Location: Rio de Janeiro, Brazil",
+      description: "Rio Carnival is a major festival in Rio de Janeiro, Brazil. Samba schools parade at the Sambadrome and street parties called blocos fill the city. Fans of the festival often mention the energy of the music and costumes, while travel writers note how different neighborhoods celebrate in their own style.",
+      cdescription: "里約 嘉年華 係 一個 大型 節日 喺 巴西 里約 熱內盧. 森巴 學校 喺 桑巴大道 巡遊 同 名為 blocos 嘅 街頭 派對 充滿 全城. 節日 粉絲 常常 提到 音樂 同 服裝 嘅 熱情 能量, 而 旅遊 作者 指出 唔同 社區 以 自己 方式 慶祝.",
+      quote: "Famous for its samba parades and city wide street parties.",
+      source: "Travel features"
     },
     {
-      title: "Skyfire Parade",
-      author: "Organizer: Harbor District Council",
-      description: "Skyfire Parade is a weekend event with fireworks, street performers, and a giant kite display. Volunteers guide visitors to safe viewing areas while fireworks are launched from a fenced zone by the pier. Food trucks line the main road and a craft corner lets children make paper stars. The final show paints the sky with bright colors.",
-      cdescription: "天火 巡遊 係 一個 週末 活動 有 煙花, 街頭 表演者, 同 一個 巨大 風箏 展示. 義工 引導 訪客 去 安全 觀賞 區域 同時 煙花 被 發射 由 一個 有圍欄 區域 喺 呢個 碼頭. 食物 車 排 呢條 主要 馬路 同 一個 手作 角落 俾 小朋友 做 紙 星星. 呢個 最後 表演 塗滿 呢片 天空 用 鮮艷 顏色.",
-      quote: "A bright parade that turns the night into a moving painting.",
-      source: "North Shore Review"
+      title: "Diwali",
+      author: "Location: India",
+      description: "Diwali is a Hindu festival of lights celebrated across India and other countries. Families light lamps, share sweets, and set off fireworks to mark the holiday. Many people describe it as a time for visits and gifts, and community groups often organize public light displays.",
+      cdescription: "屠妖節 係 一個 印度 教 光明 節 喺 印度 同 其他 國家 慶祝. 家庭 點 燈, 分享 甜品, 同 放 煙花 去 慶祝 呢個 節日. 好多 人 形容 呢段 時間 係 探訪 同 送 禮物, 而 社區 團體 通常 組織 公共 燈光 展示.",
+      quote: "Often called the festival of lights and celebrated by families and communities.",
+      source: "Community summaries"
     }
   ],
   questions: [
     {
-      question: "In the line “It lights up the town and the river,” what does “it” refer to?",
+      question: "Where is Oktoberfest held?",
       options: [
-        "The clock tower",
-        "The Lantern River Festival",
-        "The floating stage",
-        "The bridge ribbons"
+        "Munich, Germany",
+        "Rio de Janeiro, Brazil",
+        "Tokyo, Japan",
+        "Toronto, Canada"
       ],
       blockIndex: 0,
-      answer: "The Lantern River Festival",
-      explanation: "The review is describing the festival."
+      answer: "Munich, Germany",
+      explanation: "The description says Oktoberfest is in Munich, Germany."
     },
     {
-      question: "Community Times is the ____ of Harvest Drum Night.",
+      question: "When does Oktoberfest run?",
       options: [
-        "organizer",
-        "performer",
-        "reviewer",
-        "security team"
+        "Late September to early October",
+        "Late December to early January",
+        "All year",
+        "Only in June"
+      ],
+      blockIndex: 0,
+      answer: "Late September to early October",
+      explanation: "The description gives the date range."
+    },
+    {
+      question: "Which activity is mentioned at Oktoberfest?",
+      options: [
+        "Beer tents",
+        "Samba rehearsals",
+        "Fireworks on the beach",
+        "Lantern parades"
+      ],
+      blockIndex: 0,
+      answer: "Beer tents",
+      explanation: "Beer tents are listed in the description."
+    },
+    {
+      question: "Rio Carnival takes place in ____.",
+      options: [
+        "Rio de Janeiro, Brazil",
+        "Munich, Germany",
+        "Delhi, India",
+        "Seoul, South Korea"
       ],
       blockIndex: 1,
-      answer: "reviewer",
-      explanation: "Community Times provides the review quote."
+      answer: "Rio de Janeiro, Brazil",
+      explanation: "The description names Rio de Janeiro, Brazil."
     },
     {
-      question: "Why do people hold Harvest Drum Night?",
+      question: "Who parades at the Sambadrome?",
       options: [
-        "To train professional drummers",
-        "To thank farmers after the season",
-        "To sell expensive tickets",
-        "To launch fireworks"
+        "Samba schools",
+        "Beer brewers",
+        "Mountain hikers",
+        "Fireworks crews"
       ],
       blockIndex: 1,
-      answer: "To thank farmers after the season",
-      explanation: "The description says it is to thank the farmers."
+      answer: "Samba schools",
+      explanation: "The description says samba schools parade there."
     },
     {
-      question: "What does “fenced zone” mean in Skyfire Parade?",
+      question: "What are the street parties called in Rio Carnival?",
       options: [
-        "A place surrounded by a barrier",
-        "A secret room",
-        "A noisy street",
-        "A closed restaurant"
+        "Blocos",
+        "Parades",
+        "Markets",
+        "Fairs"
+      ],
+      blockIndex: 1,
+      answer: "Blocos",
+      explanation: "The description names the street parties as blocos."
+    },
+    {
+      question: "Diwali is a festival from which religion?",
+      options: [
+        "Hindu",
+        "Buddhist",
+        "Christian",
+        "Islamic"
       ],
       blockIndex: 2,
-      answer: "A place surrounded by a barrier",
-      explanation: "A fenced zone is protected by a fence."
+      answer: "Hindu",
+      explanation: "The description says it is a Hindu festival."
     },
     {
-      question: "What does the quote about Harvest Drum Night suggest?",
+      question: "What do families light during Diwali?",
       options: [
-        "The festival is quiet and empty.",
-        "The festival feels energetic and lively.",
-        "The festival is only for children.",
-        "The festival is a sports event."
-      ],
-      blockIndex: 1,
-      answer: "The festival feels energetic and lively.",
-      explanation: "Keeping the beat suggests energy and rhythm."
-    },
-    {
-      question: "Which festival includes a river walk?",
-      options: [
-        "Lantern River Festival",
-        "Harvest Drum Night",
-        "Skyfire Parade",
-        "All of them"
-      ],
-      blockIndex: 0,
-      answer: "Lantern River Festival",
-      explanation: "The river walk is part of the Lantern River Festival."
-    },
-    {
-      question: "Why are visitors guided to safe viewing areas at Skyfire Parade?",
-      options: [
-        "So they can buy food faster",
-        "To keep them away from fireworks",
-        "To help them find the market",
-        "To watch the drum dances"
+        "Lamps",
+        "Lanterns in the river",
+        "Stage lights",
+        "Street signs"
       ],
       blockIndex: 2,
-      answer: "To keep them away from fireworks",
-      explanation: "Fireworks are launched from a fenced zone."
+      answer: "Lamps",
+      explanation: "The description says families light lamps."
     },
     {
-      question: "Which activity happens at the Lantern River Festival?",
+      question: "Diwali is often called the ____.",
       options: [
-        "Writing wishes on ribbons",
-        "Launching fireworks from the pier",
-        "Drum dances in the square",
-        "Selling handmade snacks"
-      ],
-      blockIndex: 0,
-      answer: "Writing wishes on ribbons",
-      explanation: "Visitors can write wishes and tie them to the bridge."
-    },
-    {
-      question: "Where does the music parade start at the Lantern River Festival?",
-      options: [
-        "The clock tower",
-        "The floating stage",
-        "The river walk",
-        "The craft corner"
-      ],
-      blockIndex: 0,
-      answer: "The clock tower",
-      explanation: "The parade starts at the clock tower."
-    },
-    {
-      question: "How does the Lantern River Festival end?",
-      options: [
-        "With a calm light show on the water",
-        "With a drum contest",
-        "With a morning market",
-        "With a kite race"
-      ],
-      blockIndex: 0,
-      answer: "With a calm light show on the water",
-      explanation: "The description says it ends with a calm light show on the water."
-    },
-    {
-      question: "What do neighbors cook at Harvest Drum Night?",
-      options: [
-        "Simple dishes to share",
-        "Seafood for visitors",
-        "Spicy noodles only",
-        "Festival cakes"
-      ],
-      blockIndex: 1,
-      answer: "Simple dishes to share",
-      explanation: "Neighbors cook simple dishes to share."
-    },
-    {
-      question: "What can children make at Skyfire Parade?",
-      options: [
-        "Paper stars",
-        "Paper lanterns",
-        "Drum masks",
-        "River ribbons"
+        "festival of lights",
+        "festival of drums",
+        "winter garden festival",
+        "harbor parade"
       ],
       blockIndex: 2,
-      answer: "Paper stars",
-      explanation: "The craft corner lets children make paper stars."
+      answer: "festival of lights",
+      explanation: "The quote calls it the festival of lights."
     }
   ]
 };

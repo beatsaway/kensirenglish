@@ -391,9 +391,8 @@
         </div>
         <div class="header-controls">
             <select id="datasetSelect" class="dataset-select"></select>
-            <a href="../booklist/index.html" class="header-button">
-                Booklist
-                <span class="header-button-subtitle">書單</span>
+            <a href="../booklist/index.html" class="header-button" aria-label="Booklist">
+                📚
             </a>
         </div>
     </header>
@@ -422,7 +421,9 @@
 
         const datasets = [
             { label: 'Reviews: Films', src: 'reading_reviews_films.js' },
+            { label: 'Reviews: Games', src: 'reading_reviews_games.js' },
             { label: 'Reviews: Festivals', src: 'reading_reviews_festivals.js' },
+            { label: 'Reviews: Books', src: 'reading_reviews_books.js' },
             { label: 'Figures: Scenery', src: 'reading_figures_scenery.js' },
             { label: 'Figures: Actions', src: 'reading_figures_actions.js' },
             { label: 'Figures: Feelings', src: 'reading_figures_feelings.js' },

@@ -1,176 +1,140 @@
 window.readingData = {
   title: "Reading Practice",
-  subtitle: "Film Blurbs and Reviews",
+  subtitle: "Film Reviews",
   blocks: [
     {
-      title: "City Lights Run",
-      author: "Director: Irene Cho",
-      description: "City Lights Run is a fast-paced action film set in a crowded skyline. A young delivery rider named Juno discovers a secret map hidden in a package. Hunted by a powerful company, she teams up with a retired detective to solve the puzzle and expose the truth. Their chase takes them through rooftops, tunnels, and the harbor. Can they outrun the people who want the map back?",
-      cdescription: "城市 燈光 奔跑 係 一套 快節奏 動作 電影 設定 喺 一個 擠迫 天際線. 一個 年輕 送貨 騎手 叫 朱諾 發現 一張 秘密 地圖 藏 喺 一個 包裹. 被追捕 被 一間 強大 公司, 佢 組隊 起來 同 一位 退休 偵探 去 解開 呢個 謎題 同 揭露 呢個 真相. 佢哋 追逐 帶住 佢哋 穿過 屋頂, 隧道, 同 呢個 港口. 可唔可以 佢哋 走甩 呢啲 人 佢哋 想 攞返 張 地圖?",
-      quote: "This film never slows down. Every scene keeps you on edge.",
-      source: "Metro Screen"
+      title: "Spirited Away",
+      author: "Director: Hayao Miyazaki",
+      description: "Spirited Away is a 2001 animated film by Studio Ghibli. A ten year old girl named Chihiro enters a spirit world and works in a bathhouse to save her parents. Critics often point to its imaginative world building and emotional coming of age story, while many fans remember it as their first introduction to Miyazaki's films.",
+      cdescription: "千與千尋 係 一套 2001 年 動畫 電影 由 吉卜力 工作室 製作. 一位 十歲 女孩 叫 千尋 進入 靈界 同 喺 浴場 工作 去 救 佢 父母. 評論 家 經常 提到 佢 嘅 想像 世界 同 感人 成長 故事, 而 好多 粉絲 覺得 呢套 係 佢哋 第一次 接觸 宮崎 駿 作品.",
+      quote: "Celebrated by critics and fans worldwide.",
+      source: "Film reviews"
     },
     {
-      title: "Garden of Snow",
-      author: "Director: Mateo Ruiz",
-      description: "Garden of Snow is a gentle drama about a florist named Lina who moves to a mountain town. She starts a winter garden that brings the community together, but a long drought threatens her plans. Lina and her neighbors work side by side to save the garden and the town’s festival. Will their friendship be strong enough to keep the garden alive?",
-      cdescription: "雪園 嘅 雪 係 一個 溫柔 劇 關於 一個 花藝師 名叫 莉娜 佢 搬 去 一個 山 小鎮. 佢 開始 一個 冬天 花園 去 帶 呢個 社區 一齊, 但 一場 長 旱災 威脅 佢嘅 計劃. 莉娜 同 佢嘅 鄰居 工作 肩 並 肩 去 救 呢個 花園 同 呢個 小鎮嘅 節日. 會唔會 佢哋嘅 友誼 係 夠強 夠 去 保持 呢個 花園 生存?",
-      quote: "A warm, moving story that feels like a quiet snowfall.",
-      source: "Silver Frame Review"
+      title: "The Martian",
+      author: "Director: Ridley Scott",
+      description: "The Martian is a 2015 science fiction film based on the novel by Andy Weir. Astronaut Mark Watney is stranded on Mars and uses science to survive while NASA plans a rescue. Reviewers often praise the film for its clear explanations and optimistic tone, and audiences tend to enjoy its mix of tension and humor.",
+      cdescription: "火星任務 係 一套 2015 科幻 電影 改編 自 安迪 維爾 小說. 太空人 馬克 沃特尼 被 困 喺 火星 同 用 科學 方式 生存 同時 美國 太空總署 計劃 救援. 評論 家 經常 讚 呢套 既 清楚 解釋 同 樂觀 氣氛, 觀眾 通常 喜歡 佢 嘅 緊張 感 同 幽默.",
+      quote: "Known for its science focused storytelling.",
+      source: "Critical reception"
     },
     {
-      title: "Echoes of the Valley",
-      author: "Director: Priya Nair",
-      description: "Echoes of the Valley is a suspense film about a group of hikers who hear strange sounds in a hidden canyon. They discover an abandoned research station and a recording that hints at a dangerous experiment. As night falls, the valley closes in and their exit disappears. Can they decode the recording before it is too late?",
-      cdescription: "回聲 嘅 呢個 山谷 係 一套 懸疑 電影 關於 一班 嘅 行山 客 佢哋 聽到 奇怪 聲音 喺 一個 隱藏 峽谷. 佢哋 發現 一個 被遺棄 研究 站 同 一段 錄音 去 暗示 到 一個 危險 實驗. 當 夜晚 降臨, 呢個 山谷 收窄 住 同 佢哋 出口 消失. 可唔可以 佢哋 解碼 呢段 錄音 之前 佢 係 太 遲?",
-      quote: "A clever thriller that keeps the mystery rising.",
-      source: "North Shore Cinema"
+      title: "Black Panther",
+      author: "Director: Ryan Coogler",
+      description: "Black Panther is a 2018 Marvel film in which T'Challa returns to Wakanda to rule. He faces Erik Killmonger, who challenges the throne and the country's future. Critics and fans often highlight the film's cultural impact, its music, and its focus on leadership and responsibility.",
+      cdescription: "黑豹 係 一套 2018 漫威 電影 入面 帝查拉 返回 瓦干達 做 國王. 佢 面對 艾力 奇摩格 佢 挑戰 王位 同 國家 未來. 評論 家 同 粉絲 常常 強調 呢套 嘅 文化 影響, 音樂, 同 關於 領導 同 責任 嘅 主題.",
+      quote: "Widely discussed for its cultural impact.",
+      source: "Film critics"
     }
   ],
   questions: [
     {
-      question: "In the line “Every scene keeps you on edge,” what does “every scene” describe?",
+      question: "Who directed Spirited Away?",
       options: [
-        "The city skyline",
-        "The film City Lights Run",
-        "The secret map",
-        "The delivery rider"
+        "Hayao Miyazaki",
+        "Ridley Scott",
+        "Ryan Coogler",
+        "Andy Weir"
       ],
       blockIndex: 0,
-      answer: "The film City Lights Run",
-      explanation: "The line is a review of the film, so it describes the film."
+      answer: "Hayao Miyazaki",
+      explanation: "The author line lists Hayao Miyazaki as the director."
     },
     {
-      question: "Silver Frame Review is the ____ of Garden of Snow.",
+      question: "Where does Chihiro work in Spirited Away?",
       options: [
-        "director",
-        "composer",
-        "reviewer",
-        "actor"
-      ],
-      blockIndex: 1,
-      answer: "reviewer",
-      explanation: "Silver Frame Review provides the review quote."
-    },
-    {
-      question: "What does the word “abandoned” mean in Echoes of the Valley?",
-      options: [
-        "empty and left behind",
-        "new and modern",
-        "dangerous and scary",
-        "busy and noisy"
-      ],
-      blockIndex: 2,
-      answer: "empty and left behind",
-      explanation: "“Abandoned” means left with no one there."
-    },
-    {
-      question: "What does the quote about Garden of Snow suggest?",
-      options: [
-        "The film is loud and fast.",
-        "The film feels calm and moving.",
-        "The film is about a storm.",
-        "The film is a comedy."
-      ],
-      blockIndex: 1,
-      answer: "The film feels calm and moving.",
-      explanation: "The quote compares it to a quiet snowfall, showing a gentle mood."
-    },
-    {
-      question: "Who is the director of City Lights Run?",
-      options: [
-        "Irene Cho",
-        "Mateo Ruiz",
-        "Priya Nair",
-        "Juno"
+        "A bathhouse",
+        "A train station",
+        "A farm",
+        "A research lab"
       ],
       blockIndex: 0,
-      answer: "Irene Cho",
-      explanation: "The blurb lists Irene Cho as the director."
+      answer: "A bathhouse",
+      explanation: "The description says she works in a bathhouse."
     },
     {
-      question: "Which word in City Lights Run means “search for and discover”?",
+      question: "Spirited Away was released in ____.",
       options: [
-        "expose",
-        "solve",
-        "chase",
-        "discover"
+        "2001",
+        "1994",
+        "2010",
+        "2018"
       ],
       blockIndex: 0,
-      answer: "solve",
-      explanation: "To solve a puzzle means to find and discover the answer."
+      answer: "2001",
+      explanation: "The description names 2001."
     },
     {
-      question: "How does the community respond to the drought in Garden of Snow?",
+      question: "Who is stranded on Mars in The Martian?",
       options: [
-        "They give up and leave.",
-        "They work together to save the garden.",
-        "They move to the city.",
-        "They cancel the festival and rest."
+        "Mark Watney",
+        "T'Challa",
+        "Chihiro",
+        "Erik Killmonger"
       ],
       blockIndex: 1,
-      answer: "They work together to save the garden.",
-      explanation: "The description says they work side by side to save it."
+      answer: "Mark Watney",
+      explanation: "The description names Mark Watney."
     },
     {
-      question: "Why do the hikers get trapped in Echoes of the Valley?",
+      question: "The Martian is based on a novel by ____.",
       options: [
-        "Their exit disappears at night.",
-        "They lose their map in the city.",
-        "A company blocks the rooftops.",
-        "They miss the town festival."
+        "Andy Weir",
+        "J. K. Rowling",
+        "Antoine de Saint-Exupery",
+        "George Lucas"
       ],
-      blockIndex: 2,
-      answer: "Their exit disappears at night.",
-      explanation: "The blurb says the valley closes in and their exit disappears."
+      blockIndex: 1,
+      answer: "Andy Weir",
+      explanation: "The description says the novel is by Andy Weir."
     },
     {
-      question: "What does Juno discover in City Lights Run?",
+      question: "What does Mark Watney use to survive?",
       options: [
+        "Science",
+        "Magic",
         "A secret map",
-        "A missing ticket",
-        "A broken camera",
-        "A hidden garden"
-      ],
-      blockIndex: 0,
-      answer: "A secret map",
-      explanation: "The blurb says she discovers a secret map hidden in a package."
-    },
-    {
-      question: "Where does the chase take them in City Lights Run?",
-      options: [
-        "Rooftops, tunnels, and the harbor",
-        "Mountain trails and forests",
-        "A desert highway",
-        "A quiet village square"
-      ],
-      blockIndex: 0,
-      answer: "Rooftops, tunnels, and the harbor",
-      explanation: "The description lists rooftops, tunnels, and the harbor."
-    },
-    {
-      question: "What threatens Lina's winter garden?",
-      options: [
-        "A long drought",
-        "A heavy storm",
-        "A city rule change",
-        "A closed festival"
+        "A parade"
       ],
       blockIndex: 1,
-      answer: "A long drought",
-      explanation: "The blurb says a long drought threatens her plans."
+      answer: "Science",
+      explanation: "The description says he uses science to survive."
     },
     {
-      question: "What do the hikers find in Echoes of the Valley?",
+      question: "Which country does T'Challa rule?",
       options: [
-        "An abandoned research station",
-        "A hidden treasure",
-        "A city festival",
-        "A rescue team"
+        "Wakanda",
+        "Japan",
+        "Brazil",
+        "Canada"
       ],
       blockIndex: 2,
-      answer: "An abandoned research station",
-      explanation: "They discover an abandoned research station in the canyon."
+      answer: "Wakanda",
+      explanation: "The description says he returns to Wakanda to rule."
+    },
+    {
+      question: "Who challenges the throne in Black Panther?",
+      options: [
+        "Erik Killmonger",
+        "Mark Watney",
+        "Chihiro",
+        "Andy Weir"
+      ],
+      blockIndex: 2,
+      answer: "Erik Killmonger",
+      explanation: "The description names Erik Killmonger."
+    },
+    {
+      question: "Black Panther is part of which film series?",
+      options: [
+        "Marvel Cinematic Universe",
+        "Studio Ghibli",
+        "Pixar Short Films",
+        "Harry Potter"
+      ],
+      blockIndex: 2,
+      answer: "Marvel Cinematic Universe",
+      explanation: "The quote states it is part of the Marvel Cinematic Universe."
     }
   ]
 };
