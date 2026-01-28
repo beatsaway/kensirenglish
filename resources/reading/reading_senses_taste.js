@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "Lemonade Stand",
-      description: "The lemonade tasted bright and sour. A spoonful of sugar softened the bite, and the cold drink left a crisp tang on my tongue. The ice melted and made it smoother."
+      description: "The lemonade tasted bright and sour. A spoonful of sugar softened the bite, and the cold drink left a crisp tang on my tongue. The ice melted and made it smoother.",
+      cdescription: "呢 檸檬水 味道 清新 同 酸. 一 匙 嘅 糖 減輕 呢 刺感, 同 呢 冷 飲品 留下 一陣 清脆 酸味 喺 我 舌頭. 呢 冰 融化 同 令 佢 更順滑."
     },
     {
       title: "Family Soup",
-      description: "Grandma's soup tasted warm and savory. The broth was salty and rich, and the noodles felt soft and gentle. A sprinkle of herbs added a fresh bite."
+      description: "Grandma's soup tasted warm and savory. The broth was salty and rich, and the noodles felt soft and gentle. A sprinkle of herbs added a fresh bite.",
+      cdescription: "婆婆 湯 味道 溫暖 同 鮮味. 呢 湯底 係 鹹 同 濃, 同 呢 麵條 感覺 軟 同 柔. 一撮 撒 嘅 香草 加 一陣 清新 口感."
     },
     {
       title: "Market Snack",
-      description: "The snack was sweet at first, then turned a little spicy. The sauce had a smoky flavor, and the roasted nuts left a bitter edge. A squeeze of lime made it sharp and bright."
+      description: "The snack was sweet at first, then turned a little spicy. The sauce had a smoky flavor, and the roasted nuts left a bitter edge. A squeeze of lime made it sharp and bright.",
+      cdescription: "呢 小食 係 甜 喺 最初, 然後 變 有啲 少少 辣. 呢 醬 有 一陣 煙燻 味道, 同 呢 烤 果仁 留下 一點 苦 尾味. 一 擠 嘅 青檸 令 佢 尖 同 清新."
     }
   ],
   questions: [

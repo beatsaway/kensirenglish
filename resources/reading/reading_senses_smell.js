@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "Baker's Morning",
-      description: "The bakery smelled of warm bread and cinnamon. A sugary cloud drifted out the door, and butter melted into the air. Even the wooden shelves carried a sweet, toasty scent."
+      description: "The bakery smelled of warm bread and cinnamon. A sugary cloud drifted out the door, and butter melted into the air. Even the wooden shelves carried a sweet, toasty scent.",
+      cdescription: "呢 麵包店 聞到 有 溫暖 麵包 同 肉桂. 一陣 甜 雲 飄出 出 呢 門口, 同 牛油 融化 入 呢 空氣. 就連 呢 木 架 帶住 一陣 甜, 烘焙 香味."
     },
     {
       title: "Garden Gate",
-      description: "At the garden gate, the roses smelled rich and heavy. Fresh soil carried an earthy scent, and crushed mint released a sharp, clean smell. The air felt full and green."
+      description: "At the garden gate, the roses smelled rich and heavy. Fresh soil carried an earthy scent, and crushed mint released a sharp, clean smell. The air felt full and green.",
+      cdescription: "喺 呢 花園 門口, 呢 玫瑰 聞到 濃 同 厚重. 新鮮 泥土 帶住 一陣 泥土 味, 同 碾碎 薄荷 釋放 一陣 尖銳, 清爽 氣味. 呢 空氣 感覺 充滿 同 青綠."
     },
     {
       title: "Rain on Pavement",
-      description: "When the rain stopped, the street gave off a clean, wet smell. A hint of asphalt rose with the steam, and the trees nearby added a faint leaf scent. The breeze carried it all down the block."
+      description: "When the rain stopped, the street gave off a clean, wet smell. A hint of asphalt rose with the steam, and the trees nearby added a faint leaf scent. The breeze carried it all down the block.",
+      cdescription: "當 呢 雨 停咗, 呢 街道 發出 出 一陣 乾淨, 濕 氣味. 一點 影子 嘅 瀝青 冒起 同 呢 蒸氣, 同 呢 樹 附近 加 一陣 淡 樹葉 香味. 呢 微風 帶住 佢 全部 落 呢 街口."
     }
   ],
   questions: [

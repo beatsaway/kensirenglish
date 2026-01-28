@@ -89,7 +89,7 @@ window.fourPanelBatch1 = {
             { cn: '🚀Bobby Keep住跑跳吠 Amy扮睇唔到', en: '🚀Bobby kept running, jumping, and barking, and Amy pretended not to notice.' },
             { cn: '🚀Bobby兩腳企起身 做恭喜發財手勢 Amy好想笑但係忍住', en: '🚀Bobby stood on his back legs and made a Chinese New Year’s greeting gesture. Amy was holding back her laugh.' },
             { cn: '🚀Bobby入去Amy房咬碎佢啲功課 佢Show比Amy睇一張紙仔寫住Please', en: '🚀Bobby went into her room and shredded her homework, then showed her a piece of paper that said “Please”.' },
-            { cn: '💥Amy好震驚 原來隻狗識英文 話唔定佢可以幫我做功課 於是Amy俾佢任食曲奇餅!', en: '💥Amy was shocked—the dog knew English! Maybe he could do her homework! So she let him eat all the cookies.' },
+            { cn: '💥Amy好震驚 原來隻狗識英文 話唔定佢可以幫我做功課 於是Amy俾佢任食曲奇餅!', en: '💥Amy was shocked—the dog knew English! Maybe he could do homework for her! So she let him eat all the cookies.' },
             { cn: '🧐食完一盒朱古力曲奇唔夠 要食第二盒第三盒 Amy可以同佢今個禮拜啲零用錢講拜拜', en: '🧐One box wasn’t enough. He wanted a second and third. Amy had to say goodbye to her pocket money this week.' },
             { cn: '🙏翌日放學功課都唔克得閒做 Amy要帶Bobby睇獸醫 佢一直肚屙屙到樓下鄰居都聞到', en: '🙏The next day after school, Amy got no time to do her homework. She had to take Bobby to the vet because his tummy trouble was so bad that the neighbours could smell it.' }
         ]

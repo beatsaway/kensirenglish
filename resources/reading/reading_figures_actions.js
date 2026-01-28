@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "Soccer Practice",
-      description: "The practice field buzzed with energy as the whistle blew. Mia ran like a cheetah and cut across the grass. Her feet were drums on the turf, and the ball begged to be kicked. With swift, sliding steps, she sent it flying."
+      description: "The practice field buzzed with energy as the whistle blew. Mia ran like a cheetah and cut across the grass. Her feet were drums on the turf, and the ball begged to be kicked. With swift, sliding steps, she sent it flying.",
+      cdescription: "呢 練習 場地 嗡嗡 滿 活力 當 個 哨子 響. 米婭 跑 好似 一隻 獵豹 同 切 橫過 呢 草地. 佢 雙腳 係 鼓 喺 個 草坪, 同 個 波 求 去 畀 踢. 用 快速, 滑行 步伐, 佢 送 佢 飛起."
     },
     {
       title: "Kitchen Rush",
-      description: "Dinner prep turned the kitchen into a race. We cooked a mountain of noodles, and the stove sizzled and sighed. The spatula danced in my hand while pans clanged, clang, against the burner. Steam swirled like a thin scarf above the pots."
+      description: "Dinner prep turned the kitchen into a race. We cooked a mountain of noodles, and the stove sizzled and sighed. The spatula danced in my hand while pans clanged, clang, against the burner. Steam swirled like a thin scarf above the pots.",
+      cdescription: "晚餐 準備 變成 呢 廚房 做 一場 賽跑. 我哋 煮 一座 山 嘅 麵條, 同 呢 爐 滋滋 同 嘆氣. 呢 鍋鏟 跳舞 喺 我 手 同時 鍋 鏗鏘, 鏗, 撞住 個 爐口. 蒸氣 盤旋 好似 一條 薄 圍巾 喺上面 啲 鍋."
     },
     {
       title: "Classroom Drill",
-      description: "During the fire drill, the line moved in orderly chaos. The timer was a ticking heart, and the bell burst out with a loud ring. Students stepped in single file, steady and serious, even though the hallway felt tight and endless."
+      description: "During the fire drill, the line moved in orderly chaos. The timer was a ticking heart, and the bell burst out with a loud ring. Students stepped in single file, steady and serious, even though the hallway felt tight and endless.",
+      cdescription: "當 呢 火警 演習, 呢 隊伍 移動 喺 有序 混亂. 呢 計時器 係 一個 滴答 心臟, 同 呢 鈴 爆 出 用 一聲 大 鈴聲. 學生 行 喺 單 行, 穩定 同 認真, 就算 雖然 呢 走廊 感覺 擠迫 同 無盡."
     }
   ],
   questions: [

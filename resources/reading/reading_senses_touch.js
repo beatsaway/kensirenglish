@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "Winter Walk",
-      description: "The morning air pinched my cheeks, and my gloves felt stiff with frost. The metal railing was icy and slick. Snow crunched under my boots, and a warm scarf brushed my chin. My fingertips tingled as I pulled them back into my pockets."
+      description: "The morning air pinched my cheeks, and my gloves felt stiff with frost. The metal railing was icy and slick. Snow crunched under my boots, and a warm scarf brushed my chin. My fingertips tingled as I pulled them back into my pockets.",
+      cdescription: "呢 清晨 空氣 刺 我 面頰, 同 我 手套 感覺 硬 有 霜. 呢 金屬 欄杆 係 冰凍 同 滑. 雪 咔嚓 喺 我 靴, 同 一條 溫暖 圍巾 掃過 我 下巴. 我 指尖 麻痺 當 我 拉 佢哋 回 入 我 褲袋."
     },
     {
       title: "Art Class",
-      description: "Clay squished between my fingers and left a cool, damp film. The table was rough with dried paint, and a smooth brush handle slid through my palm. A sticky strip of tape tugged at my skin."
+      description: "Clay squished between my fingers and left a cool, damp film. The table was rough with dried paint, and a smooth brush handle slid through my palm. A sticky strip of tape tugged at my skin.",
+      cdescription: "泥 擠壓 之間 我 手指 同 留下 一層 冰涼, 濕 膜. 呢 桌 係 粗糙 有 乾 油漆, 同 一個 光滑 畫筆 手柄 滑過 穿過 我 手心. 一條 黏 條 嘅 膠紙 扯 住 我 皮膚."
     },
     {
       title: "Summer Lake",
-      description: "The water wrapped around my ankles like silk. Sunlight warmed my shoulders, and the dock boards felt hot and gritty. A breeze cooled the sweat on my neck."
+      description: "The water wrapped around my ankles like silk. Sunlight warmed my shoulders, and the dock boards felt hot and gritty. A breeze cooled the sweat on my neck.",
+      cdescription: "呢 水 包住 圍住 我 腳踝 好似 絲綢. 陽光 溫暖 我 肩膀, 同 呢 碼頭 木板 感覺 熱 同 粗砂. 一陣 微風 冷卻 呢 汗 喺 我 頸."
     }
   ],
   questions: [

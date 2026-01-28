@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "Rainy Street",
-      description: "Rain tapped the windows with a quick pat, pat. The street was a shiny ribbon, and cars whispered past with a whoosh. The gutters gulped the water as if they were thirsty. Even the puddles clapped when shoes splashed through."
+      description: "Rain tapped the windows with a quick pat, pat. The street was a shiny ribbon, and cars whispered past with a whoosh. The gutters gulped the water as if they were thirsty. Even the puddles clapped when shoes splashed through.",
+      cdescription: "雨 拍 呢 窗 用 一聲 快速 拍, 拍. 呢 街道 係 一條 閃亮 緞帶, 同 車 低聲 經過 帶 一陣 呼. 呢 水渠 吞 呢 水 好似 如果 佢哋 係 口渴. 就連 呢 水窪 拍手 當 鞋 濺起 經過."
     },
     {
       title: "Busy Workshop",
-      description: "In the workshop, hammers went bang and metal rang out. The drill buzzed like an angry bee, and the saw sang through the wood. A cloud of dust danced in the light, while the workbench groaned under heavy tools."
+      description: "In the workshop, hammers went bang and metal rang out. The drill buzzed like an angry bee, and the saw sang through the wood. A cloud of dust danced in the light, while the workbench groaned under heavy tools.",
+      cdescription: "喺 呢 工場, 錘 發出 砰 同 金屬 響 出. 呢 電鑽 嗡嗡 好似 一隻 憤怒 蜜蜂, 同 呢 鋸 唱 穿過 呢 木頭. 一團 雲 嘅 灰塵 跳舞 喺 呢 光線, 而 呢 工作枱 呻吟 喺 重 工具."
     },
     {
       title: "Night Forest",
-      description: "At night, the forest held a hushed music. Crickets chirped in short clicks, and leaves rustled with a soft shhh. The moonlight was a quiet drum, steady and slow. It was a lively silence that filled the dark."
+      description: "At night, the forest held a hushed music. Crickets chirped in short clicks, and leaves rustled with a soft shhh. The moonlight was a quiet drum, steady and slow. It was a lively silence that filled the dark.",
+      cdescription: "喺 夜晚, 呢 森林 藏住 一段 安靜 音樂. 蟋蟀 吱吱 喺 短 聲響, 同 樹葉 沙沙 帶 一陣 柔 噓. 呢 月光 係 一面 安靜 鼓, 穩定 同 緩慢. 呢 係 一種 有生氣 靜默 去 填滿 呢 黑暗."
     }
   ],
   questions: [

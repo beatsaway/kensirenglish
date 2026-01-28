@@ -200,6 +200,30 @@
             color: var(--color-text);
         }
 
+        .cdesc-word {
+            cursor: pointer;
+        }
+
+        .cdesc-tooltip {
+            position: absolute;
+            display: none;
+            max-width: 240px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+            font-size: 12px;
+            line-height: 1.2;
+            white-space: nowrap;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .cdesc-word.is-active {
+            background: #ffe8a3;
+            border-radius: 3px;
+        }
+
         .reading-quote {
             font-size: 13px;
             color: var(--color-text-secondary);
@@ -215,17 +239,17 @@
 
         .question-card {
             background: var(--color-bg);
-            padding: var(--space-1);
+            padding: 6px;
             display: flex;
             flex-direction: column;
-            gap: var(--space-1);
+            gap: 6px;
         }
 
         .question-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: var(--space-1);
+            gap: 6px;
         }
 
         .question-progress {
@@ -241,12 +265,12 @@
         .options {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: var(--space-2);
-            margin-bottom: var(--space-1);
+            gap: 10px;
+            margin-bottom: 6px;
         }
 
         .option {
-            padding: 14px var(--space-3);
+            padding: 12px 16px;
             border: 1px solid var(--color-border);
             border-radius: 10px;
             background: #ffffff;
@@ -391,6 +415,10 @@
         const questionList = document.getElementById('questionList');
         const datasetSelect = document.getElementById('datasetSelect');
         let currentQuestionIndex = 0;
+        const cdescTooltip = document.createElement('div');
+        cdescTooltip.className = 'cdesc-tooltip';
+        cdescTooltip.setAttribute('role', 'tooltip');
+        document.body.appendChild(cdescTooltip);
 
         const datasets = [
             { label: 'Reviews: Films', src: 'reading_reviews_films.js' },
@@ -406,6 +434,60 @@
             { label: 'Senses: Taste', src: 'reading_senses_taste.js' }
         ];
 
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function buildDescriptionMarkup(block) {
+            if (!block || !block.description) {
+                return '';
+            }
+            if (!block.cdescription) {
+                return escapeHtml(block.description);
+            }
+            const descriptionWords = block.description.split(' ');
+            const cdescriptionWords = block.cdescription.split(' ');
+            if (descriptionWords.length !== cdescriptionWords.length) {
+                return escapeHtml(block.description);
+            }
+            return descriptionWords.map((word, index) => {
+                const translated = cdescriptionWords[index] || '';
+                return `<span class="cdesc-word" data-cdesc="${escapeHtml(translated)}">${escapeHtml(word)}</span>`;
+            }).join(' ');
+        }
+
+        function hideCdescTooltip() {
+            cdescTooltip.style.display = 'none';
+            cdescTooltip.textContent = '';
+        }
+
+        function showCdescTooltip(target, text) {
+            if (!text) {
+                hideCdescTooltip();
+                return;
+            }
+            cdescTooltip.textContent = text;
+            cdescTooltip.style.display = 'block';
+            const rect = target.getBoundingClientRect();
+            const tooltipRect = cdescTooltip.getBoundingClientRect();
+            const padding = 4;
+            let left = rect.left + rect.width / 2;
+            let top = rect.top - tooltipRect.height - padding;
+            if (top < padding) {
+                top = rect.bottom + padding;
+            }
+            const minLeft = padding + tooltipRect.width / 2;
+            const maxLeft = window.innerWidth - padding - tooltipRect.width / 2;
+            left = Math.min(Math.max(left, minLeft), maxLeft);
+            cdescTooltip.style.left = `${left + window.scrollX}px`;
+            cdescTooltip.style.top = `${top + window.scrollY}px`;
+        }
+
         function renderBlock(blockIndex) {
             if (!window.readingData) {
                 readingBlocks.innerHTML = '<p>Unable to load passages.</p>';
@@ -419,11 +501,12 @@
             const authorMarkup = block.author ? `<div class="reading-author">${block.author}</div>` : '';
             const quoteMarkup = block.quote ? `<div class="reading-quote">"${block.quote}"</div>` : '';
             const sourceMarkup = block.source ? `<div class="reading-source">${block.source}</div>` : '';
+            const descriptionMarkup = buildDescriptionMarkup(block);
             readingBlocks.innerHTML = `
                 <div class="reading-card">
                     <div class="reading-title">${block.title}</div>
                     ${authorMarkup}
-                    <div class="reading-description">${block.description}</div>
+                    <div class="reading-description">${descriptionMarkup}</div>
                     ${quoteMarkup}
                     ${sourceMarkup}
                 </div>
@@ -557,6 +640,33 @@
                 checkAnswer(card);
             }
         });
+
+        readingBlocks.addEventListener('click', (event) => {
+            const word = event.target.closest('.cdesc-word');
+            if (!word) {
+                hideCdescTooltip();
+                return;
+            }
+            const translation = word.dataset.cdesc || '';
+            readingBlocks.querySelectorAll('.cdesc-word.is-active').forEach((node) => {
+                node.classList.remove('is-active');
+            });
+            word.classList.add('is-active');
+            showCdescTooltip(word, translation);
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.cdesc-word')) {
+                hideCdescTooltip();
+                readingBlocks.querySelectorAll('.cdesc-word.is-active').forEach((node) => {
+                    node.classList.remove('is-active');
+                });
+            }
+        });
+
+        window.addEventListener('scroll', hideCdescTooltip, true);
+        window.addEventListener('resize', hideCdescTooltip);
 
         questionList.addEventListener('click', (event) => {
             if (event.target.id === 'prevQuestion') {

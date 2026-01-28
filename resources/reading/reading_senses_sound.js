@@ -4,15 +4,18 @@ window.readingData = {
   blocks: [
     {
       title: "School Hallway",
-      description: "The hallway buzzed with voices before the bell. Lockers clacked shut, and sneakers squeaked on the tile. A whistle tweet cut through the noise, then a sudden hush fell like a curtain."
+      description: "The hallway buzzed with voices before the bell. Lockers clacked shut, and sneakers squeaked on the tile. A whistle tweet cut through the noise, then a sudden hush fell like a curtain.",
+      cdescription: "呢 走廊 嗡嗡 滿 聲音 喺 呢 鈴聲. 置物櫃 啪嗒 關上, 同 波鞋 吱吱 喺 呢 磚地. 一聲 口哨 啾 劈開 穿過 呢 噪音, 然後 一陣 突然 寂靜 落 好似 一幅 布幕."
     },
     {
       title: "Evening Kitchen",
-      description: "In the kitchen, the pot bubbled and the spoon tapped the rim. A timer beeped in short bursts, and the faucet hissed as it filled a cup. The fridge hummed in the background."
+      description: "In the kitchen, the pot bubbled and the spoon tapped the rim. A timer beeped in short bursts, and the faucet hissed as it filled a cup. The fridge hummed in the background.",
+      cdescription: "喺 呢 廚房, 呢 鍋 冒泡 同 呢 匙 叩 呢 邊. 一個 計時器 嗶嗶 以 短 段, 同 呢 水喉 嘶嘶 當 佢 裝滿 一個 杯. 呢 雪櫃 嗡嗡 喺 呢 背景."
     },
     {
       title: "Night Storm",
-      description: "The storm boomed over the rooftops, and rain drummed on the roof. Wind howled through the alley, rattling the gate. Somewhere far away, a dog barked once and then went quiet."
+      description: "The storm boomed over the rooftops, and rain drummed on the roof. Wind howled through the alley, rattling the gate. Somewhere far away, a dog barked once and then went quiet.",
+      cdescription: "呢 風暴 轟隆 越過 呢 屋頂, 同 雨 擂 喺 呢 屋頂. 風 呼嘯 穿過 呢 小巷, 搖響 呢 門. 某處 遠 處, 一隻 狗 吠 一次 同 然後 變得 安靜."
     }
   ],
   questions: [
