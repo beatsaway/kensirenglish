@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Themes & Topics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --color-bg: #ffffff;
+            --color-surface: #f8f8f8;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-border: #e0e0e0;
+            --color-accent: #4a90e2;
+            --max-width: 1200px;
+        }
+
+        body {
+            color: var(--color-text);
+            line-height: 1.4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: stretch;
+            gap: var(--space-2);
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-copyright a:hover {
+            opacity: 0.7;
+        }
+
+        .sub-header {
+            border-bottom: 1px solid var(--color-border);
+            padding: 2px var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .sub-header select {
+            padding: 4px 8px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background: var(--color-bg);
+            font-size: 13px;
+            font-family: inherit;
+            min-width: 200px;
+        }
+
+        .sub-header select + select {
+            margin-left: 4px;
+        }
+
+        .info-button {
+            margin-left: auto;
+            width: 24px;
+            height: 24px;
+            border-radius: 999px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-button:hover {
+            background: rgba(74, 144, 226, 0.08);
+            color: #2a5c99;
+            border-color: rgba(74, 144, 226, 0.4);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: var(--space-3);
+        }
+
+        .modal-overlay.is-open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            max-width: 520px;
+            width: 100%;
+            padding: var(--space-3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .modal h3 {
+            font-size: 18px;
+            margin-bottom: var(--space-2);
+        }
+
+        .modal p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .modal-list {
+            display: grid;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+
+        .modal-card {
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: var(--space-2);
+            background: #ffffff;
+        }
+
+        .modal-card h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .curriculum-link {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 700;
+        }
+
+        .curriculum-link:hover {
+            color: #2a5c99;
+        }
+
+        .modal-card p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-close {
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-3) var(--space-4);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .theme-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-3);
+        }
+
+        .theme-card {
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            padding: var(--space-2);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            border-radius: 8px;
+        }
+
+        .theme-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .theme-card h3:hover {
+            color: #2a5c99;
+        }
+
+        .theme-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .theme-block-title {
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .theme-list {
+            list-style: disc;
+            padding-left: 18px;
+            display: grid;
+            gap: 6px;
+            color: var(--color-text);
+            font-size: 15px;
+        }
+
+        .theme-list span {
+            color: var(--color-text-secondary);
+        }
+
+        .item-focus {
+            margin-top: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .focus-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: rgba(74, 144, 226, 0.12);
+            color: #2a5c99;
+            font-size: 11px;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .focus-tag .cantonese-text {
+            margin-left: 6px;
+            font-size: 0.9em;
+        }
+
+        .cantonese-text {
+            display: none;
+            color: var(--color-text-secondary);
+            font-size: 0.9em;
+        }
+
+        .theme-card.show-cantonese .cantonese-text {
+            display: block;
+        }
+
+        .card-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .callout {
+            border-left: 3px solid var(--color-accent);
+            background: rgba(74, 144, 226, 0.08);
+            padding: var(--space-2);
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: var(--space-2);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="header-label">Curriculum Themes<span class="separator">•</span>🎯課程主題</span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+    </header>
+    <div class="sub-header">
+        <select id="stageSelect"></select>
+        <select id="themeSelect"></select>
+        <button id="curriculumInfo" class="info-button" type="button" aria-label="Curriculum info">?</button>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <section class="theme-section">
+                <div id="stageCallout" class="callout" hidden></div>
+                <div id="themeGrid" class="theme-grid"></div>
+            </section>
+        </div>
+    </div>
+    <div id="curriculumModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="curriculumTitle">
+            <h3 id="curriculumTitle">Curriculum Overview</h3>
+            <p>Quick snapshots of the <a class="curriculum-link" href="https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/curriculum-documents.html" target="_blank" rel="noopener">HK</a> and <a class="curriculum-link" href="https://www.gov.uk/government/publications/national-curriculum-in-england-secondary-curriculum" target="_blank" rel="noopener">UK</a> curricula used in this page.</p>
+            <div class="modal-list">
+                <div class="modal-card">
+                    <h4>HK (S1-S3)</h4>
+                    <p>Foundation language: everyday contexts, core grammar, clear sentence building.</p>
+                </div>
+                <div class="modal-card">
+                    <h4>HK (S4-S6)</h4>
+                    <p>Exam-driven language: formal argumentation, cohesion, and precision.</p>
+                </div>
+                <div class="modal-card">
+                    <h4>UK Key Stage 3</h4>
+                    <p>Genre and literature exposure with grammar for clarity and effect.</p>
+                </div>
+                <div class="modal-card">
+                    <h4>UK Key Stage 4</h4>
+                    <p>Analytical writing, rhetoric, and accuracy for assessed tasks.</p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-close" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="curriculum.js"></script>
+    <script>
+        const stageSelect = document.getElementById('stageSelect');
+        const themeSelect = document.getElementById('themeSelect');
+        const stageCallout = document.getElementById('stageCallout');
+        const themeGrid = document.getElementById('themeGrid');
+        const curriculumInfo = document.getElementById('curriculumInfo');
+        const curriculumModal = document.getElementById('curriculumModal');
+        const modalClose = curriculumModal.querySelector('.modal-close');
+        let activeStageKey = '';
+
+        function renderStageOptions() {
+            const currentValue = stageSelect.value;
+            stageSelect.innerHTML = '';
+            Object.entries(window.curriculumStages).forEach(([key, stage]) => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = stage.title;
+                stageSelect.appendChild(option);
+            });
+            stageSelect.value = currentValue || Object.keys(window.curriculumStages)[0];
+        }
+
+        function renderThemeSelect(stage) {
+            themeSelect.innerHTML = '';
+            if (!stage || !stage.cards.length) {
+                return;
+            }
+            stage.cards.forEach((card, index) => {
+                const option = document.createElement('option');
+                option.value = String(index);
+                option.textContent = card.title;
+                themeSelect.appendChild(option);
+            });
+            themeSelect.value = '0';
+        }
+
+        function renderStage(stageKey) {
+            const stage = window.curriculumStages[stageKey];
+            if (!stage) {
+                return;
+            }
+            activeStageKey = stageKey;
+            themeSelect.value = '0';
+            if (stage.callout) {
+                stageCallout.textContent = stage.callout;
+                stageCallout.hidden = false;
+            } else {
+                stageCallout.hidden = true;
+                stageCallout.textContent = '';
+            }
+            renderThemeSelect(stage);
+            renderSelectedTheme();
+        }
+
+        function renderSelectedTheme() {
+            const stage = window.curriculumStages[activeStageKey];
+            if (!stage) {
+                return;
+            }
+            const selectedIndex = Number(themeSelect.value);
+            const card = stage.cards[selectedIndex];
+            if (!card) {
+                themeGrid.innerHTML = '';
+                return;
+            }
+            const parseTags = (tagText) => {
+                if (!tagText) {
+                    return [];
+                }
+                return tagText
+                    .split(/[;；]/)
+                    .map((token) => token.trim())
+                    .filter(Boolean);
+            };
+            const renderFocusPairs = (focusText, cfocusText) => {
+                const focusTags = parseTags(focusText);
+                const cfocusTags = parseTags(cfocusText);
+                const maxCount = Math.max(focusTags.length, cfocusTags.length);
+                if (maxCount === 0) {
+                    return '';
+                }
+                const tags = Array.from({ length: maxCount }, (_, index) => {
+                    const englishTag = focusTags[index] || '';
+                    const cantoneseTag = cfocusTags[index] || '';
+                    if (!englishTag && !cantoneseTag) {
+                        return '';
+                    }
+                    return `
+                        <span class="focus-tag">
+                            ${englishTag}
+                            ${cantoneseTag ? `<span class="cantonese-text">${cantoneseTag}</span>` : ''}
+                        </span>
+                    `;
+                }).join('');
+                return tags ? `<div class="item-focus">${tags}</div>` : '';
+            };
+            const renderItem = (item) => {
+                if (typeof item === 'string') {
+                    return `<li>${item}</li>`;
+                }
+                if (!item || typeof item !== 'object') {
+                    return '';
+                }
+                const focus = renderFocusPairs(item.focus, item.cfocus);
+                const cantoneseText = item.ctext
+                    ? `<div class="cantonese-text">${item.ctext}</div>`
+                    : '';
+                return `
+                    <li>
+                        <div>${item.text}</div>
+                        ${cantoneseText}
+                        ${focus}
+                    </li>
+                `;
+            };
+            themeGrid.innerHTML = `
+                <article class="theme-card">
+                    <div class="card-title">
+                        <h3>${card.title}</h3>
+                        ${card.ctitle ? `<div class="cantonese-text">${card.ctitle}</div>` : ''}
+                    </div>
+                    ${card.blocks.map((block) => `
+                        <div class="theme-block">
+                            ${block.label ? `<div class="theme-block-title">${block.label}</div>` : ''}
+                            <ul class="theme-list">
+                                ${block.items.map(renderItem).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </article>
+            `;
+            const cardTitle = themeGrid.querySelector('.theme-card h3');
+            const cardElement = themeGrid.querySelector('.theme-card');
+            if (cardTitle && cardElement) {
+                cardTitle.addEventListener('click', () => {
+                    cardElement.classList.toggle('show-cantonese');
+                });
+            }
+        }
+        renderStageOptions();
+
+        stageSelect.addEventListener('change', (event) => {
+            renderStage(event.target.value);
+        });
+
+        themeSelect.addEventListener('change', () => {
+            renderSelectedTheme();
+        });
+
+        function openModal() {
+            curriculumModal.classList.add('is-open');
+            curriculumModal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal() {
+            curriculumModal.classList.remove('is-open');
+            curriculumModal.setAttribute('aria-hidden', 'true');
+        }
+
+        curriculumInfo.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+        curriculumModal.addEventListener('click', (event) => {
+            if (event.target === curriculumModal) {
+                closeModal();
+            }
+        });
+
+        renderStage(stageSelect.value);
+    </script>
+</body>
+</html>

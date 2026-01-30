@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Glossary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-text-secondary: #666666;
+            --color-border: #e0e0e0;
+            --color-accent: #4a90e2;
+            --max-width: 1100px;
+        }
+
+        body {
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        header {
+            background: transparent;
+            color: var(--color-text);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: stretch;
+            gap: var(--space-2);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-right: var(--space-1);
+        }
+
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+
+        .header-copyright {
+            flex: 0 0 auto;
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-3) var(--space-4);
+            width: 100%;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .intro h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .intro p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .intro a {
+            color: #1f4b7a;
+            text-decoration: none;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 6px 10px;
+        }
+
+        .toolbar input {
+            border: none;
+            flex: 1;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .table-wrap {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--color-bg);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+            width: 100%;
+        }
+
+        .term-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .term-table thead {
+            background: #f2f6fb;
+        }
+
+        .term-table th,
+        .term-table td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            font-size: 13px;
+        }
+
+        .term-table th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            background: #f2f6fb;
+        }
+
+        .term-table tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .term-table td:first-child {
+            width: 18%;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: capitalize;
+        }
+
+        .term-table td:nth-child(2) {
+            width: 42%;
+        }
+
+        .term-table td:nth-child(3) {
+            width: 40%;
+        }
+
+        .term-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .term-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(74, 144, 226, 0.5);
+        }
+
+        .term-link:hover {
+            color: #2a5c99;
+            border-bottom-color: #2a5c99;
+        }
+
+        .status {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+    </style>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="header-label">English Glossary<span class="separator">•</span>📘語法術語表</span>
+            <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="intro">
+                <h1>Key Terms & Definitions • 主要術語與定義</h1>
+                <p>Condensed glossary from <a href="https://www.gov.uk/government/publications/national-curriculum-in-england-secondary-curriculum" target="_blank" rel="noreferrer">the UK KS3/KS4 English curriculum</a>.</p>
+            </div>
+
+            <div class="toolbar">
+                <input id="searchInput" type="text" placeholder="Search terms..." />
+                <span id="resultCount" class="status"></span>
+            </div>
+
+            <div id="termGrid"></div>
+            <div id="statusMessage" class="status"></div>
+        </div>
+    </div>
+
+    <script src="terms-data.js"></script>
+    <script>
+        const termGrid = document.getElementById('termGrid');
+        const statusMessage = document.getElementById('statusMessage');
+        const searchInput = document.getElementById('searchInput');
+        const resultCount = document.getElementById('resultCount');
+        let glossaryItems = [];
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function slugify(value) {
+            return String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        }
+
+        function joinLines(lines) {
+            const list = typeof lines === 'string' ? lines.split('\n') : lines;
+            return list.map((line) => line.trim()).filter(Boolean).join('\n');
+        }
+
+        function linkifyTerms(text, termMap) {
+            let result = escapeHtml(text);
+            termMap.forEach((slug, term) => {
+                const safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\b${safeTerm}\\b`, 'gi');
+                result = result.replace(regex, (match) => `<a class="term-link" href="#${slug}">${match}</a>`);
+            });
+            return result.replace(/\n/g, '<br>');
+        }
+
+        function renderGlossary(list) {
+            const termMap = new Map(list.map((item) => [item.term, slugify(item.term)]));
+            termGrid.innerHTML = `
+                <div class="table-wrap">
+                    <table class="term-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Guidance</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${list.map((item) => {
+                                const slug = termMap.get(item.term);
+                                const guidanceText = joinLines(item.guidance || []);
+                                const exampleText = joinLines(item.example || []);
+                                return `
+                                    <tr id="${slug}">
+                                        <td>${escapeHtml(item.term)}</td>
+                                        <td>${linkifyTerms(guidanceText, termMap)}</td>
+                                        <td>${escapeHtml(exampleText).replace(/\n/g, '<br>')}</td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            resultCount.textContent = list.length ? `${list.length} terms` : '';
+        }
+
+        function applyFilter() {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) {
+                renderGlossary(glossaryItems);
+                return;
+            }
+            const filtered = glossaryItems.filter((item) => {
+                if (item.term.toLowerCase().includes(query)) {
+                    return true;
+                }
+                const guidanceMatch = (item.guidance || []).some((part) => part.toLowerCase().includes(query));
+                const exampleMatch = (item.example || []).some((part) => part.toLowerCase().includes(query));
+                return guidanceMatch || exampleMatch;
+            });
+            renderGlossary(filtered);
+        }
+
+        glossaryItems = Array.isArray(window.ukGlossaryItems) ? window.ukGlossaryItems : [];
+        if (!glossaryItems.length) {
+            statusMessage.textContent = 'Glossary content was not found in the data file.';
+        } else {
+            renderGlossary(glossaryItems);
+        }
+
+        searchInput.addEventListener('input', applyFilter);
+    </script>
+</body>
+</html>
