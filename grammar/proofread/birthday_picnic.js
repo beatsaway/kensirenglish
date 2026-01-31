@@ -1,6 +1,6 @@
 window.GeneralProofread = [
     {
-        prompt: "Dear friend, ____ for asking me to join your birthday picnic at the park!",
+        prompt: "____ for asking me to join your birthday picnic at the park!",
         choices: ["Thank you", "Thank", "Thanks you", "Thanking"],
         answer: "Thank you",
         reason: "The natural phrase is 'Thank you for ...'.",
@@ -8,10 +8,10 @@ window.GeneralProofread = [
     },
     {
         prompt: "The part I like the most is ____ the balloon popping game.",
-        choices: ["playing", "play", "to playing", "played"],
-        answer: "playing",
-        reason: "After 'is', use a gerund to name the activity.",
-        creason: "係講活動內容，用動名詞 playing。"
+        choices: [" ", "playing", "play", "to playing"],
+        answer: " ",
+        reason: "No extra verb is needed before the noun phrase.",
+        creason: "名詞片語前唔需要再加動詞。"
     },
     {
         prompt: "It was so ____ when there was only one balloon left!",
@@ -21,18 +21,18 @@ window.GeneralProofread = [
         creason: "形容情況要用 exciting。"
     },
     {
-        prompt: "There was only one balloon left, and I ____ to pop it fastest.",
-        choices: ["needed", "need", "am needing", "needs"],
-        answer: "needed",
-        reason: "The story is in the past, so use past tense.",
-        creason: "成段係過去式，用 needed。"
+        prompt: "There was only one balloon left, and I wanted to pop it ____.",
+        choices: ["first", "at first", "in first", "the first"],
+        answer: "first",
+        reason: "Use the adverb 'first' to show order.",
+        creason: "講先後次序用副詞 first。"
     },
     {
-        prompt: "Although you won the game at the end, I still ____ the process very much.",
-        choices: ["enjoyed", "enjoy", "am enjoying", "will enjoy"],
-        answer: "enjoyed",
-        reason: "Use past tense to match the rest of the story.",
-        creason: "敘事係過去式，用 enjoyed。"
+        prompt: "Although you won the game at the end, I ____ enjoyed the process.",
+        choices: ["still", "yet", "already", "never"],
+        answer: "still",
+        reason: "Use 'still' to show contrast with the result.",
+        creason: "表示雖然但仍然，用 still。"
     },
     {
         prompt: "Besides, I also like your present, which ____ Jennie.",
@@ -63,24 +63,24 @@ window.GeneralProofread = [
         creason: "慣用講法係 treasure it very much。"
     },
     {
-        prompt: "Your ____ cupcakes were very delicious.",
-        choices: ["homemade", "home made", "home-making", "home maker"],
-        answer: "homemade",
-        reason: "Use the compound adjective 'homemade'.",
-        creason: "複合形容詞要寫 homemade。"
+        prompt: "The snacks were ____ than I expected.",
+        choices: ["better", "best", "good", "more better"],
+        answer: "better",
+        reason: "Use the comparative form 'better'.",
+        creason: "比較級要用 better。"
     },
     {
-        prompt: "I couldn't stop ____ them!",
-        choices: ["eating", "eat", "to eat", "ate"],
-        answer: "eating",
-        reason: "After 'couldn't stop', use a gerund.",
-        creason: "couldn't stop 後面要用動名詞 eating。"
+        prompt: "Actually, I want to eat it ____.",
+        choices: ["one more time", "one time more", "once more times", "more one time"],
+        answer: "one more time",
+        reason: "'One more time' is the natural word order.",
+        creason: "慣用語序係 one more time。"
     },
     {
-        prompt: "I'm looking forward to ____ your next letter!",
-        choices: ["seeing", "see", "to see", "seen"],
-        answer: "seeing",
-        reason: "The pattern is 'look forward to + gerund'.",
-        creason: "固定用法係 look forward to + 動名詞。"
+        prompt: "I hope we can meet again ____.",
+        choices: ["sometime", "some time", "some times", "sometimes"],
+        answer: "sometime",
+        reason: "Use 'sometime' for an unspecified time in the future.",
+        creason: "講未指定將來時間用 sometime。"
     }
 ];
