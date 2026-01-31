@@ -49,7 +49,7 @@ window.fourPanelBatch1 = {
         'fox_picnic.jpg': [
             { cn: '🏁我上個禮拜六早餐食得特別少 我好期待約咗Bobby嘅野餐', en: '🏁Last Saturday I ate little breakfast. I looked forward to my picnic with Bobby.' },
             { cn: '🚀我正準備開餐 Bobby話佢冇帶到野食 只係得欖球同埋釣魚竿!', en: '🚀Just as I was about to eat, Bobby said he brought no food, but a rugby ball and a fishing rod!' },
-            { cn: '🚀Bobby話唔好意思 建議一齊釣魚 之後可以去7仔微波爐叮來食', en: '🚀He apologised and invited me to go fishing, then cook the fish up at 7-Eleven.' },
+            { cn: '🚀Bobby話唔好意思 建議一齊釣魚 之後可以去7仔微波爐叮來食', en: '🚀He apologised and invited me to go fishing, then microwave it at 7-Eleven.' },
             { cn: '🚀雖然我好肚餓 但係都跟佢去 因為佢話有機會釣倒美人魚!', en: '🚀I was starving, but I went along because he said we might be able to catch a mermaid!' },
             { cn: '💥同時 有隻狐狸見到成地食物 邀請佢全家嚟開餐', en: '💥Meanwhile, an uninvited fox invited its whole family to feast on our unattended picnic.' },
             { cn: '🧐竟然一條魚都釣唔倒 我哋返到來 但嘢食都冇哂', en: '🧐Blimey! Not a single fish was caught. We returned, but the picnic was no more.' },
