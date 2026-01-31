@@ -73,11 +73,11 @@ window.sixHatSets = [
     vocabex: "Quantum <span class='vocab-blank' data-answer='foam'></span> means tiny <span class='vocab-blank' data-answer='particle'></span> and <span class='vocab-blank' data-answer='antiparticle'></span> pairs appear and disappear. Near the event <span class='vocab-blank' data-answer='horizon'></span>, one can fall in and the other escapes, creating <span class='vocab-blank' data-answer='quantum'></span> effects.",
     questions: [
       { emoji: "📊", text: "What is quantum foam?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "What do you think of quantum foam?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Who would like to learn about quantum foam?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who wouldn't like to learn about quantum foam?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "😊", text: "Do you think nothingness is a thing?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why learn about quantum foam?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why learning about quantum foam is not useful?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do we get Hawking radiation?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "How would you explain this simply?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "How would you make the video better?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
