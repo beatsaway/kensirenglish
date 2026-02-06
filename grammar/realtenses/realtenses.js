@@ -6,6 +6,7 @@ const VERB_FORMS = {
   hold: { base: "hold", past: "held", pastParticiple: "held", ing: "holding", third: "holds" },
   seem: { base: "seem", past: "seemed", pastParticiple: "seemed", ing: "seeming", third: "seems" },
   be: { base: "be", past: "was", pastParticiple: "been", ing: "being", third: "is" },
+  belong: { base: "belong", past: "belonged", pastParticiple: "belonged", ing: "belonging", third: "belongs" },
   like: { base: "like", past: "liked", pastParticiple: "liked", ing: "liking", third: "likes" },
   grab: { base: "grab", past: "grabbed", pastParticiple: "grabbed", ing: "grabbing", third: "grabs" },
   think: { base: "think", past: "thought", pastParticiple: "thought", ing: "thinking", third: "thinks" },
@@ -286,6 +287,40 @@ const exercise5Verbs = [
   { base: "try", subject: "i" }
 ];
 
+const exercise6Verbs = [
+  { base: "find", subject: "i" },
+  { base: "belong", subject: "it" },
+  { base: "look", subject: "the cover" },
+  { base: "think", subject: "i" },
+  { base: "be", subject: "it" },
+  { base: "take", subject: "i" },
+  { base: "say", subject: "the librarian" },
+  { base: "see", subject: "she", negative: true, contraction: false },
+  { base: "ask", subject: "she" },
+  { base: "read", subject: "i" },
+  { base: "say", subject: "the writer" },
+  { base: "come", subject: "they" },
+  { base: "stay", subject: "they" },
+  { base: "wait", subject: "they" },
+  { base: "show", subject: "a friend" },
+  { base: "feel", subject: "i" },
+  { base: "decide", subject: "i" },
+  { base: "go", subject: "they" },
+  { base: "sit", subject: "they" },
+  { base: "draw", subject: "they" },
+  { base: "pass", subject: "they" },
+  { base: "make", subject: "they" },
+  { base: "hold", subject: "they" },
+  { base: "be", subject: "the writer" },
+  { base: "say", subject: "they" },
+  { base: "speak", subject: "the city" },
+  { base: "have", subject: "they" },
+  { base: "hold", subject: "i" },
+  { base: "remember", subject: "i" },
+  { base: "try", subject: "i" },
+  { base: "stay", subject: "it" }
+];
+
 window.realTensesExercises = [
   {
     id: 1,
@@ -408,6 +443,47 @@ window.realTensesExercises = [
       "tried"
     ],
     choices: buildChoices(exercise5Verbs)
+  },
+  {
+    id: 6,
+    title: "Library Notebook",
+    link: "",
+    text:
+      "Last month, I _____ (find) a thin notebook on the top shelf of the library. It _____ (belong) to a student, and it was covered in dust, but the cover _____ (look) new. I _____ (think) it _____ (be) a student's, so I _____ (take) it to the desk. The librarian _____ (say) she _____ (see) it before, but she _____ (ask) me to check inside, so I _____ (read) the first page.\n\nOn that page, the writer _____ (say) they _____ (come) to the city for a short visit but _____ (stay) much longer. They _____ (wait) for a friend who never _____ (show). I _____ (feel) sorry for them and _____ (decide) to keep reading.\n\nLater, the writer _____ (go) to the river each evening. They usually _____ (sit) on the steps and _____ (draw) the boats as they _____ (pass). One night, they _____ (make) a promise to return and _____ (hold) the notebook close.\n\nBy the last entry, the writer _____ (be) ready to leave. They _____ (say) the city _____ (speak) to them, and they _____ (have) more courage than before. I _____ (hold) the notebook for a long time and _____ (remember) my own first trip here. Someday, I _____ (try) to return it, but for now it _____ (stay) with the librarian.",
+    answers: [
+      "found",
+      "belonged",
+      "looked",
+      "thought",
+      "was",
+      "took",
+      "said",
+      "had not seen",
+      "asked",
+      "read",
+      "said",
+      "had come",
+      "had stayed",
+      "had been waiting",
+      "showed",
+      "felt",
+      "decided",
+      "went",
+      "sat",
+      "drew",
+      "passed",
+      "made",
+      "held",
+      "was",
+      "said",
+      "had spoken",
+      "had",
+      "have held",
+      "remember",
+      "will try",
+      "stays"
+    ],
+    choices: buildChoices(exercise6Verbs)
   }
 ];
 /*

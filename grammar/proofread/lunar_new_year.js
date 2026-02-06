@@ -13,13 +13,7 @@ window.GeneralProofread = [
         reason: "Use the plural noun: close relationships.",
         creason: "close relationships 要用複數。"
     },
-    {
-        prompt: "We can return to our homes ____ hometowns.",
-        choices: ["and", "or", "to", "from"],
-        answer: "or",
-        reason: "Use 'or' to show alternatives.",
-        creason: "表示選擇用 or。"
-    },
+
     {
         prompt: "This highlights the importance of family ____.",
         choices: ["reunian", "reunion", "reunite", "reunions"],
@@ -49,7 +43,7 @@ window.GeneralProofread = [
         creason: "固定用法 joy of。"
     },
     {
-        prompt: "Some people think Lunar New Year is ____ start of the year.",
+        prompt: "We celebrate ____ start of the year.",
         choices: ["a", "the", " ", "one"],
         answer: "the",
         reason: "Use 'the' for a specific start.",
