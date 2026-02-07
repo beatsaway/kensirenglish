@@ -30,6 +30,18 @@ class TopicManager {
         introduction: 'Make your sentences sound natural<br>令你嘅句子聽起嚟自然'
       },
       { 
+        id: 'subject-verb-agreement-2', 
+        name: 'Subject-Verb Agreement 2 | 主謂一致2', 
+        file: 'subject-verb-agreement-2.js',
+        introduction: 'One of / some of / most of / all of / none of<br>一個/一啲/大部分/全部/一個都冇'
+      },
+      { 
+        id: 'subject-verb-agreement-3', 
+        name: 'Subject-Verb Agreement 3 | 主謂一致3', 
+        file: 'subject-verb-agreement-3.js',
+        introduction: 'Either of / neither of<br>其中一個 / 兩個都唔係'
+      },
+      { 
         id: 'countable-uncountable', 
         name: 'Countable/Uncountable Nouns | 可數/不可數名詞', 
         file: 'countable-uncountable.js',
@@ -181,6 +193,8 @@ class TopicManager {
       'prepositions': 'prepositionsExercises',
       'tenses': 'tensesExercises',
       'subject-verb-agreement': 'subjectVerbAgreementExercises',
+      'subject-verb-agreement-2': 'subjectVerbAgreement2Exercises',
+      'subject-verb-agreement-3': 'subjectVerbAgreement3Exercises',
       'countable-uncountable': 'countableUncountableExercises',
       'word-order': 'wordOrderExercises',
       'comparatives': 'comparativesExercises',
