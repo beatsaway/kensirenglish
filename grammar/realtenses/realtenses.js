@@ -17,7 +17,17 @@ const VERB_FORMS = {
   grow: { base: "grow", past: "grew", pastParticiple: "grown", ing: "growing", third: "grows" },
   make: { base: "make", past: "made", pastParticiple: "made", ing: "making", third: "makes" },
   draw: { base: "draw", past: "drew", pastParticiple: "drawn", ing: "drawing", third: "draws" },
+  expect: { base: "expect", past: "expected", pastParticiple: "expected", ing: "expecting", third: "expects" },
+  watch: { base: "watch", past: "watched", pastParticiple: "watched", ing: "watching", third: "watches" },
+  hear: { base: "hear", past: "heard", pastParticiple: "heard", ing: "hearing", third: "hears" },
+  love: { base: "love", past: "loved", pastParticiple: "loved", ing: "loving", third: "loves" },
+  dream: { base: "dream", past: "dreamed", pastParticiple: "dreamed", ing: "dreaming", third: "dreams" },
+  dash: { base: "dash", past: "dashed", pastParticiple: "dashed", ing: "dashing", third: "dashes" },
   come: { base: "come", past: "came", pastParticiple: "come", ing: "coming", third: "comes" },
+  fall: { base: "fall", past: "fell", pastParticiple: "fallen", ing: "falling", third: "falls" },
+  hit: { base: "hit", past: "hit", pastParticiple: "hit", ing: "hitting", third: "hits" },
+  break: { base: "break", past: "broke", pastParticiple: "broken", ing: "breaking", third: "breaks" },
+  slash: { base: "slash", past: "slashed", pastParticiple: "slashed", ing: "slashing", third: "slashes" },
   receive: { base: "receive", past: "received", pastParticiple: "received", ing: "receiving", third: "receives" },
   revoke: { base: "revoke", past: "revoked", pastParticiple: "revoked", ing: "revoking", third: "revokes" },
   decide: { base: "decide", past: "decided", pastParticiple: "decided", ing: "deciding", third: "decides" },
@@ -38,6 +48,9 @@ const VERB_FORMS = {
   count: { base: "count", past: "counted", pastParticiple: "counted", ing: "counting", third: "counts" },
   get: { base: "get", past: "got", pastParticiple: "got", ing: "getting", third: "gets" },
   catch: { base: "catch", past: "caught", pastParticiple: "caught", ing: "catching", third: "catches" },
+  sleep: { base: "sleep", past: "slept", pastParticiple: "slept", ing: "sleeping", third: "sleeps" },
+  text: { base: "text", past: "texted", pastParticiple: "texted", ing: "texting", third: "texts" },
+  guess: { base: "guess", past: "guessed", pastParticiple: "guessed", ing: "guessing", third: "guesses" },
   sit: { base: "sit", past: "sat", pastParticiple: "sat", ing: "sitting", third: "sits" },
   find: { base: "find", past: "found", pastParticiple: "found", ing: "finding", third: "finds" },
   clean: { base: "clean", past: "cleaned", pastParticiple: "cleaned", ing: "cleaning", third: "cleans" },
@@ -62,6 +75,10 @@ const VERB_FORMS = {
   finish: { base: "finish", past: "finished", pastParticiple: "finished", ing: "finishing", third: "finishes" },
   tick: { base: "tick", past: "ticked", pastParticiple: "ticked", ing: "ticking", third: "ticks" },
   hang: { base: "hang", past: "hung", pastParticiple: "hung", ing: "hanging", third: "hangs" },
+  send: { base: "send", past: "sent", pastParticiple: "sent", ing: "sending", third: "sends" },
+  frame: { base: "frame", past: "framed", pastParticiple: "framed", ing: "framing", third: "frames" },
+  send: { base: "send", past: "sent", pastParticiple: "sent", ing: "sending", third: "sends" },
+  frame: { base: "frame", past: "framed", pastParticiple: "framed", ing: "framing", third: "frames" },
   remember: { base: "remember", past: "remembered", pastParticiple: "remembered", ing: "remembering", third: "remembers" },
   stay: { base: "stay", past: "stayed", pastParticiple: "stayed", ing: "staying", third: "stays" },
   speak: { base: "speak", past: "spoke", pastParticiple: "spoken", ing: "speaking", third: "speaks" },
@@ -109,26 +126,53 @@ const getNegAux = (aux, contraction) => {
   return map[aux] || `${aux} not`;
 };
 
-const buildTenseOptions = ({ base, subject, negative = false, contraction = false }) => {
+const buildTenseOptions = ({ base, subject, negative = false, contraction = false, adverb }) => {
+  if (base === "can") {
+    const options = [
+      { label: "Present — can", value: "can" },
+      { label: "Past — could", value: "could" },
+      { label: "Past (able to) — was able to", value: "was able to" },
+      { label: "Future (able to) — will be able to", value: "will be able to" }
+    ];
+    if (!adverb) {
+      return options;
+    }
+    const applyAdverb = (phrase) => {
+      const parts = phrase.split(" ");
+      if (parts.length === 1) return `${adverb} ${phrase}`;
+      return `${parts[0]} ${adverb} ${parts.slice(1).join(" ")}`;
+    };
+    return options.map((option) => {
+      const value = applyAdverb(option.value);
+      return { label: `${option.label.split(" — ")[0]} — ${value}`, value };
+    });
+  }
   const forms = VERB_FORMS[base];
   if (!forms) {
     throw new Error(`Missing verb forms for "${base}".`);
   }
+  const applyAdverb = (phrase) => {
+    if (!adverb) return phrase;
+    const parts = phrase.split(" ");
+    if (parts.length === 1) return `${adverb} ${phrase}`;
+    return `${parts[0]} ${adverb} ${parts.slice(1).join(" ")}`;
+  };
   const subjectType = getSubjectType(subject);
   const isBe = base === "be";
-  const presentSimple =
-    isBe ? getBePresent(subjectType) : subjectType === "third" ? forms.third : forms.base;
-  const pastSimple = isBe ? getBePast(subjectType) : forms.past;
-  const futureSimple = `will ${forms.base}`;
-  const presentContinuous = `${getBePresent(subjectType)} ${forms.ing}`;
-  const pastContinuous = `${getBePast(subjectType)} ${forms.ing}`;
-  const futureContinuous = `will be ${forms.ing}`;
-  const presentPerfect = `${getHavePresent(subjectType)} ${forms.pastParticiple}`;
-  const pastPerfect = `had ${forms.pastParticiple}`;
-  const futurePerfect = `will have ${forms.pastParticiple}`;
-  const presentPerfectContinuous = `${getHavePresent(subjectType)} been ${forms.ing}`;
-  const pastPerfectContinuous = `had been ${forms.ing}`;
-  const futurePerfectContinuous = `will have been ${forms.ing}`;
+  const presentSimple = applyAdverb(
+    isBe ? getBePresent(subjectType) : subjectType === "third" ? forms.third : forms.base
+  );
+  const pastSimple = applyAdverb(isBe ? getBePast(subjectType) : forms.past);
+  const futureSimple = applyAdverb(`will ${forms.base}`);
+  const presentContinuous = applyAdverb(`${getBePresent(subjectType)} ${forms.ing}`);
+  const pastContinuous = applyAdverb(`${getBePast(subjectType)} ${forms.ing}`);
+  const futureContinuous = applyAdverb(`will be ${forms.ing}`);
+  const presentPerfect = applyAdverb(`${getHavePresent(subjectType)} ${forms.pastParticiple}`);
+  const pastPerfect = applyAdverb(`had ${forms.pastParticiple}`);
+  const futurePerfect = applyAdverb(`will have ${forms.pastParticiple}`);
+  const presentPerfectContinuous = applyAdverb(`${getHavePresent(subjectType)} been ${forms.ing}`);
+  const pastPerfectContinuous = applyAdverb(`had been ${forms.ing}`);
+  const futurePerfectContinuous = applyAdverb(`will have been ${forms.ing}`);
 
   if (!negative) {
     return [
@@ -156,22 +200,22 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
     ];
   }
 
-  const presentSimpleNeg = isBe
+  const presentSimpleNeg = applyAdverb(isBe
     ? getNegAux(getBePresent(subjectType), contraction)
-    : `${getNegAux(subjectType === "third" ? "does" : "do", contraction)} ${forms.base}`;
-  const pastSimpleNeg = isBe
+    : `${getNegAux(subjectType === "third" ? "does" : "do", contraction)} ${forms.base}`);
+  const pastSimpleNeg = applyAdverb(isBe
     ? getNegAux(getBePast(subjectType), contraction)
-    : `${getNegAux("did", contraction)} ${forms.base}`;
-  const futureSimpleNeg = `${getNegAux("will", contraction)} ${forms.base}`;
-  const presentContinuousNeg = `${getNegAux(getBePresent(subjectType), contraction)} ${forms.ing}`;
-  const pastContinuousNeg = `${getNegAux(getBePast(subjectType), contraction)} ${forms.ing}`;
-  const futureContinuousNeg = `${getNegAux("will", contraction)} be ${forms.ing}`;
-  const presentPerfectNeg = `${getNegAux(getHavePresent(subjectType), contraction)} ${forms.pastParticiple}`;
-  const pastPerfectNeg = `${getNegAux("had", contraction)} ${forms.pastParticiple}`;
-  const futurePerfectNeg = `${getNegAux("will", contraction)} have ${forms.pastParticiple}`;
-  const presentPerfectContinuousNeg = `${getNegAux(getHavePresent(subjectType), contraction)} been ${forms.ing}`;
-  const pastPerfectContinuousNeg = `${getNegAux("had", contraction)} been ${forms.ing}`;
-  const futurePerfectContinuousNeg = `${getNegAux("will", contraction)} have been ${forms.ing}`;
+    : `${getNegAux("did", contraction)} ${forms.base}`);
+  const futureSimpleNeg = applyAdverb(`${getNegAux("will", contraction)} ${forms.base}`);
+  const presentContinuousNeg = applyAdverb(`${getNegAux(getBePresent(subjectType), contraction)} ${forms.ing}`);
+  const pastContinuousNeg = applyAdverb(`${getNegAux(getBePast(subjectType), contraction)} ${forms.ing}`);
+  const futureContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} be ${forms.ing}`);
+  const presentPerfectNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} ${forms.pastParticiple}`);
+  const pastPerfectNeg = applyAdverb(`${getNegAux("had", contraction)} ${forms.pastParticiple}`);
+  const futurePerfectNeg = applyAdverb(`${getNegAux("will", contraction)} have ${forms.pastParticiple}`);
+  const presentPerfectContinuousNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} been ${forms.ing}`);
+  const pastPerfectContinuousNeg = applyAdverb(`${getNegAux("had", contraction)} been ${forms.ing}`);
+  const futurePerfectContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} have been ${forms.ing}`);
 
   return [
     { label: `Present Simple — ${presentSimpleNeg}`, value: presentSimpleNeg },
@@ -257,68 +301,61 @@ const exercise5Verbs = [
   { base: "sit", subject: "it" },
   { base: "find", subject: "i" },
   { base: "clean", subject: "i" },
-  { base: "see", subject: "i" },
+  { base: "see", subject: "i", adverb: "never" },
   { base: "wonder", subject: "i" },
-  { base: "fix", subject: "i" },
+  { base: "can", subject: "i" },
   { base: "take", subject: "i" },
   { base: "run", subject: "he" },
   { base: "peer", subject: "he" },
   { base: "walk", subject: "i" },
   { base: "examine", subject: "he" },
-  { base: "look", subject: "it" },
+  { base: "be", subject: "this" },
   { base: "say", subject: "he" },
   { base: "try", subject: "someone" },
   { base: "do", subject: "they" },
   { base: "ask", subject: "i" },
+  { base: "can", subject: "he" },
   { base: "nod", subject: "he" },
   { base: "tell", subject: "he" },
-  { base: "wait", subject: "i" },
+  { base: "be", subject: "i" },
   { base: "polish", subject: "he" },
   { base: "turn", subject: "they" },
   { base: "finish", subject: "i" },
   { base: "say", subject: "he" },
   { base: "hold", subject: "i" },
   { base: "tick", subject: "it" },
-  { base: "hang", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "frame", subject: "he" },
   { base: "remember", subject: "i" },
-  { base: "stay", subject: "it" },
+  { base: "be", subject: "it" },
   { base: "speak", subject: "it" },
-  { base: "feel", subject: "i" },
+  { base: "be", subject: "i" },
   { base: "try", subject: "i" }
 ];
 
 const exercise6Verbs = [
-  { base: "find", subject: "i" },
-  { base: "belong", subject: "it" },
-  { base: "look", subject: "the cover" },
-  { base: "think", subject: "i" },
+  { base: "see", subject: "i", negative: true, contraction: false },
+  { base: "watch", subject: "i" },
+  { base: "see", subject: "i", negative: true, contraction: false },
+  { base: "have", subject: "i" },
   { base: "be", subject: "it" },
-  { base: "take", subject: "i" },
-  { base: "say", subject: "the librarian" },
-  { base: "see", subject: "she", negative: true, contraction: false },
-  { base: "ask", subject: "she" },
-  { base: "read", subject: "i" },
-  { base: "say", subject: "the writer" },
-  { base: "come", subject: "they" },
-  { base: "stay", subject: "they" },
-  { base: "wait", subject: "they" },
-  { base: "show", subject: "a friend" },
-  { base: "feel", subject: "i" },
-  { base: "decide", subject: "i" },
-  { base: "go", subject: "they" },
-  { base: "sit", subject: "they" },
-  { base: "draw", subject: "they" },
-  { base: "pass", subject: "they" },
-  { base: "make", subject: "they" },
-  { base: "hold", subject: "they" },
-  { base: "be", subject: "the writer" },
-  { base: "say", subject: "they" },
-  { base: "speak", subject: "the city" },
-  { base: "have", subject: "they" },
-  { base: "hold", subject: "i" },
-  { base: "remember", subject: "i" },
-  { base: "try", subject: "i" },
-  { base: "stay", subject: "it" }
+  { base: "love", subject: "i" },
+  { base: "dream", subject: "i" },
+  { base: "be", subject: "i" },
+  { base: "dash", subject: "i" },
+  { base: "slash", subject: "i" },
+  { base: "get", subject: "i" },
+  { base: "fall", subject: "i" },
+  { base: "hit", subject: "i" },
+  { base: "break", subject: "i" },
+  { base: "be", subject: "it" },
+  { base: "be", subject: "i" },
+  { base: "receive", subject: "i" },
+  { base: "seem", subject: "it" },
+  { base: "be", subject: "i", negative: true, contraction: false },
+  { base: "guess", subject: "i" },
+  { base: "stay", subject: "i" },
+  { base: "fall", subject: "i" }
 ];
 
 window.realTensesExercises = [
@@ -409,79 +446,73 @@ window.realTensesExercises = [
     title: "Grandfather's Watch",
     link: "",
     text:
-      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (see) it working before, and I _____ (wonder) how to fix it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (look) like a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him about restoring it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (wait) in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nBy tonight, I _____ (hang) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (stay) silent, but now it _____ (speak) of time, family, and second chances. I _____ (feel) so glad I _____ (try).",
+      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (never see) it working, and I _____ (wonder) if I _____ (can) fix it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (be) a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him if he _____ (can) restore it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (be), waiting in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nI _____ (send) it to my brother. By tonight, he _____ (frame) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (be) silent, but now it _____ (speak) of time, family, and second chances. I _____ (be) so glad I _____ (try).",
     answers: [
       "had been sitting",
       "found",
       "was cleaning",
-      "had seen",
+      "had never seen",
       "wondered",
+      "could",
       "took",
-      "has run",
-      "peered",
+      "has been running",
+      "was peering",
       "walked",
       "examined",
-      "looked",
+      "is",
       "said",
-      "had tried",
-      "had done",
+      "tried",
+      "have done",
       "asked",
+      "could",
       "nodded",
       "told",
-      "am waiting",
+      "am",
       "is polishing",
       "are turning",
       "have finished",
       "says",
       "hold",
-      "ticks",
-      "will hang",
+      "is ticking",
+      "will send",
+      "will have framed",
       "remember",
-      "had stayed",
-      "speaks",
-      "feel",
-      "tried"
+      "had been",
+      "is speaking",
+      "am",
+      "have tried"
     ],
     choices: buildChoices(exercise5Verbs)
   },
   {
     id: 6,
-    title: "Library Notebook",
+    title: "Demon Slayer Dream",
     link: "",
     text:
-      "Last month, I _____ (find) a thin notebook on the top shelf of the library. It _____ (belong) to a student, and it was covered in dust, but the cover _____ (look) new. I _____ (think) it _____ (be) a student's, so I _____ (take) it to the desk. The librarian _____ (say) she _____ (see) it before, but she _____ (ask) me to check inside, so I _____ (read) the first page.\n\nOn that page, the writer _____ (say) they _____ (come) to the city for a short visit but _____ (stay) much longer. They _____ (wait) for a friend who never _____ (show). I _____ (feel) sorry for them and _____ (decide) to keep reading.\n\nLater, the writer _____ (go) to the river each evening. They usually _____ (sit) on the steps and _____ (draw) the boats as they _____ (pass). One night, they _____ (make) a promise to return and _____ (hold) the notebook close.\n\nBy the last entry, the writer _____ (be) ready to leave. They _____ (say) the city _____ (speak) to them, and they _____ (have) more courage than before. I _____ (hold) the notebook for a long time and _____ (remember) my own first trip here. Someday, I _____ (try) to return it, but for now it _____ (stay) with the librarian.",
+      "Hi, how are you doing? I _____ (see) you for a long time! I _____ (watch) this anime show Demon Slayer. Though I _____ (see) anything so full of gore and violence ever, I still enjoyed it. I _____ (have) to admit that their production _____ (be) really top notch.\n\nI _____ (love) the character Zenitsu so much that I _____ (dream) last night that I _____ (be) a demon slayer. I _____ (dash) and _____ (slash) at lightning speed. I _____ (get) so excited that I _____ (fall) off my bed, _____ (hit) my head and _____ (break) my leg. That _____ (be) why I _____ (be) in the hospital writing to you.\n\nI _____ (receive) a message from my doctor just now. It _____ (seem) that I _____ (be) able to walk for at least a week. So I _____ (guess) I _____ (stay) on bed watching TV for days then.\n\nBy the time you read this, I _____ (fall) asleep. Text me back yeah. Cheers!",
     answers: [
-      "found",
-      "belonged",
-      "looked",
-      "thought",
-      "was",
-      "took",
-      "said",
+      "have not seen",
+      "have been watching",
       "had not seen",
-      "asked",
-      "read",
-      "said",
-      "had come",
-      "had stayed",
-      "had been waiting",
-      "showed",
-      "felt",
-      "decided",
-      "went",
-      "sat",
-      "drew",
-      "passed",
-      "made",
-      "held",
+      "have",
+      "is",
+      "love",
+      "dreamed",
       "was",
-      "said",
-      "had spoken",
-      "had",
-      "have held",
-      "remember",
-      "will try",
-      "stays"
+      "was dashing",
+      "was slashing",
+      "had got",
+      "fell",
+      "hit",
+      "broke",
+      "is",
+      "am",
+      "have received",
+      "seems",
+      "will not be",
+      "guess",
+      "will be staying",
+      "will have fallen"
     ],
     choices: buildChoices(exercise6Verbs)
   }
@@ -496,6 +527,7 @@ const VERB_FORMS = {
   seem: { base: "seem", past: "seemed", pastParticiple: "seemed", ing: "seeming", third: "seems" },
   be: { base: "be", past: "was", pastParticiple: "been", ing: "being", third: "is" },
   like: { base: "like", past: "liked", pastParticiple: "liked", ing: "liking", third: "likes" },
+  slash: { base: "slash", past: "slashed", pastParticiple: "slashed", ing: "slashing", third: "slashes" },
   grab: { base: "grab", past: "grabbed", pastParticiple: "grabbed", ing: "grabbing", third: "grabs" },
   think: { base: "think", past: "thought", pastParticiple: "thought", ing: "thinking", third: "thinks" },
   read: { base: "read", past: "read", pastParticiple: "read", ing: "reading", third: "reads" },
@@ -505,7 +537,16 @@ const VERB_FORMS = {
   grow: { base: "grow", past: "grew", pastParticiple: "grown", ing: "growing", third: "grows" },
   make: { base: "make", past: "made", pastParticiple: "made", ing: "making", third: "makes" },
   draw: { base: "draw", past: "drew", pastParticiple: "drawn", ing: "drawing", third: "draws" },
+  watch: { base: "watch", past: "watched", pastParticiple: "watched", ing: "watching", third: "watches" },
+  hear: { base: "hear", past: "heard", pastParticiple: "heard", ing: "hearing", third: "hears" },
+  love: { base: "love", past: "loved", pastParticiple: "loved", ing: "loving", third: "loves" },
+  dream: { base: "dream", past: "dreamed", pastParticiple: "dreamed", ing: "dreaming", third: "dreams" },
+  dash: { base: "dash", past: "dashed", pastParticiple: "dashed", ing: "dashing", third: "dashes" },
+  slash: { base: "slash", past: "slashed", pastParticiple: "slashed", ing: "slashing", third: "slashes" },
   come: { base: "come", past: "came", pastParticiple: "come", ing: "coming", third: "comes" },
+  fall: { base: "fall", past: "fell", pastParticiple: "fallen", ing: "falling", third: "falls" },
+  hit: { base: "hit", past: "hit", pastParticiple: "hit", ing: "hitting", third: "hits" },
+  break: { base: "break", past: "broke", pastParticiple: "broken", ing: "breaking", third: "breaks" },
   receive: { base: "receive", past: "received", pastParticiple: "received", ing: "receiving", third: "receives" },
   revoke: { base: "revoke", past: "revoked", pastParticiple: "revoked", ing: "revoking", third: "revokes" },
   decide: { base: "decide", past: "decided", pastParticiple: "decided", ing: "deciding", third: "decides" },
@@ -526,6 +567,7 @@ const VERB_FORMS = {
   count: { base: "count", past: "counted", pastParticiple: "counted", ing: "counting", third: "counts" },
   get: { base: "get", past: "got", pastParticiple: "got", ing: "getting", third: "gets" },
   catch: { base: "catch", past: "caught", pastParticiple: "caught", ing: "catching", third: "catches" },
+  guess: { base: "guess", past: "guessed", pastParticiple: "guessed", ing: "guessing", third: "guesses" },
   sit: { base: "sit", past: "sat", pastParticiple: "sat", ing: "sitting", third: "sits" },
   find: { base: "find", past: "found", pastParticiple: "found", ing: "finding", third: "finds" },
   clean: { base: "clean", past: "cleaned", pastParticiple: "cleaned", ing: "cleaning", third: "cleans" },
@@ -550,6 +592,8 @@ const VERB_FORMS = {
   finish: { base: "finish", past: "finished", pastParticiple: "finished", ing: "finishing", third: "finishes" },
   tick: { base: "tick", past: "ticked", pastParticiple: "ticked", ing: "ticking", third: "ticks" },
   hang: { base: "hang", past: "hung", pastParticiple: "hung", ing: "hanging", third: "hangs" },
+  send: { base: "send", past: "sent", pastParticiple: "sent", ing: "sending", third: "sends" },
+  frame: { base: "frame", past: "framed", pastParticiple: "framed", ing: "framing", third: "frames" },
   remember: { base: "remember", past: "remembered", pastParticiple: "remembered", ing: "remembering", third: "remembers" },
   stay: { base: "stay", past: "stayed", pastParticiple: "stayed", ing: "staying", third: "stays" },
   speak: { base: "speak", past: "spoke", pastParticiple: "spoken", ing: "speaking", third: "speaks" },
@@ -578,47 +622,140 @@ const getBePast = (subjectType) => {
 const getHavePresent = (subjectType) =>
   subjectType === "third" ? "has" : "have";
 
-const buildTenseOptions = ({ base, subject }) => {
+const getNegAux = (aux, contraction) => {
+  if (!contraction) return `${aux} not`;
+  const map = {
+    "do": "don't",
+    "does": "doesn't",
+    "did": "didn't",
+    "will": "won't",
+    "have": "haven't",
+    "has": "hasn't",
+    "had": "hadn't",
+    "is": "isn't",
+    "are": "aren't",
+    "was": "wasn't",
+    "were": "weren't"
+  };
+  return map[aux] || `${aux} not`;
+};
+
+const buildTenseOptions = ({ base, subject, negative = false, contraction = false, adverb }) => {
+  if (base === "can") {
+    const options = [
+      { label: "Present — can", value: "can" },
+      { label: "Past — could", value: "could" },
+      { label: "Past (able to) — was able to", value: "was able to" },
+      { label: "Future (able to) — will be able to", value: "will be able to" }
+    ];
+    if (!adverb) {
+      return options;
+    }
+    const applyAdverb = (phrase) => {
+      const parts = phrase.split(" ");
+      if (parts.length === 1) return `${adverb} ${phrase}`;
+      return `${parts[0]} ${adverb} ${parts.slice(1).join(" ")}`;
+    };
+    return options.map((option) => {
+      const value = applyAdverb(option.value);
+      return { label: `${option.label.split(" — ")[0]} — ${value}`, value };
+    });
+  }
   const forms = VERB_FORMS[base];
   if (!forms) {
     throw new Error(`Missing verb forms for "${base}".`);
   }
+  const applyAdverb = (phrase) => {
+    if (!adverb) return phrase;
+    const parts = phrase.split(" ");
+    if (parts.length === 1) return `${adverb} ${phrase}`;
+    return `${parts[0]} ${adverb} ${parts.slice(1).join(" ")}`;
+  };
   const subjectType = getSubjectType(subject);
-  const presentSimple =
-    subjectType === "third" ? forms.third : forms.base;
-  const pastSimple = forms.past;
-  const futureSimple = `will ${forms.base}`;
-  const presentContinuous = `${getBePresent(subjectType)} ${forms.ing}`;
-  const pastContinuous = `${getBePast(subjectType)} ${forms.ing}`;
-  const futureContinuous = `will be ${forms.ing}`;
-  const presentPerfect = `${getHavePresent(subjectType)} ${forms.pastParticiple}`;
-  const pastPerfect = `had ${forms.pastParticiple}`;
-  const futurePerfect = `will have ${forms.pastParticiple}`;
-  const presentPerfectContinuous = `${getHavePresent(subjectType)} been ${forms.ing}`;
-  const pastPerfectContinuous = `had been ${forms.ing}`;
-  const futurePerfectContinuous = `will have been ${forms.ing}`;
+  const isBe = base === "be";
+  const presentSimple = applyAdverb(
+    isBe ? getBePresent(subjectType) : subjectType === "third" ? forms.third : forms.base
+  );
+  const pastSimple = applyAdverb(isBe ? getBePast(subjectType) : forms.past);
+  const futureSimple = applyAdverb(`will ${forms.base}`);
+  const presentContinuous = applyAdverb(`${getBePresent(subjectType)} ${forms.ing}`);
+  const pastContinuous = applyAdverb(`${getBePast(subjectType)} ${forms.ing}`);
+  const futureContinuous = applyAdverb(`will be ${forms.ing}`);
+  const presentPerfect = applyAdverb(`${getHavePresent(subjectType)} ${forms.pastParticiple}`);
+  const pastPerfect = applyAdverb(`had ${forms.pastParticiple}`);
+  const futurePerfect = applyAdverb(`will have ${forms.pastParticiple}`);
+  const presentPerfectContinuous = applyAdverb(`${getHavePresent(subjectType)} been ${forms.ing}`);
+  const pastPerfectContinuous = applyAdverb(`had been ${forms.ing}`);
+  const futurePerfectContinuous = applyAdverb(`will have been ${forms.ing}`);
+
+  if (!negative) {
+    return [
+      { label: `Present Simple — ${presentSimple}`, value: presentSimple },
+      { label: `Past Simple — ${pastSimple}`, value: pastSimple },
+      { label: `Future Simple — ${futureSimple}`, value: futureSimple },
+      { label: `Present Continuous — ${presentContinuous}`, value: presentContinuous },
+      { label: `Past Continuous — ${pastContinuous}`, value: pastContinuous },
+      { label: `Future Continuous — ${futureContinuous}`, value: futureContinuous },
+      { label: `Present Perfect — ${presentPerfect}`, value: presentPerfect },
+      { label: `Past Perfect — ${pastPerfect}`, value: pastPerfect },
+      { label: `Future Perfect — ${futurePerfect}`, value: futurePerfect },
+      {
+        label: `Present Perfect Continuous — ${presentPerfectContinuous}`,
+        value: presentPerfectContinuous
+      },
+      {
+        label: `Past Perfect Continuous — ${pastPerfectContinuous}`,
+        value: pastPerfectContinuous
+      },
+      {
+        label: `Future Perfect Continuous — ${futurePerfectContinuous}`,
+        value: futurePerfectContinuous
+      }
+    ];
+  }
+
+  const presentSimpleNeg = applyAdverb(
+    isBe
+      ? getNegAux(getBePresent(subjectType), contraction)
+      : `${getNegAux(subjectType === "third" ? "does" : "do", contraction)} ${forms.base}`
+  );
+  const pastSimpleNeg = applyAdverb(
+    isBe
+      ? getNegAux(getBePast(subjectType), contraction)
+      : `${getNegAux("did", contraction)} ${forms.base}`
+  );
+  const futureSimpleNeg = applyAdverb(`${getNegAux("will", contraction)} ${forms.base}`);
+  const presentContinuousNeg = applyAdverb(`${getNegAux(getBePresent(subjectType), contraction)} ${forms.ing}`);
+  const pastContinuousNeg = applyAdverb(`${getNegAux(getBePast(subjectType), contraction)} ${forms.ing}`);
+  const futureContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} be ${forms.ing}`);
+  const presentPerfectNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} ${forms.pastParticiple}`);
+  const pastPerfectNeg = applyAdverb(`${getNegAux("had", contraction)} ${forms.pastParticiple}`);
+  const futurePerfectNeg = applyAdverb(`${getNegAux("will", contraction)} have ${forms.pastParticiple}`);
+  const presentPerfectContinuousNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} been ${forms.ing}`);
+  const pastPerfectContinuousNeg = applyAdverb(`${getNegAux("had", contraction)} been ${forms.ing}`);
+  const futurePerfectContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} have been ${forms.ing}`);
 
   return [
-    { label: `Present Simple — ${presentSimple}`, value: presentSimple },
-    { label: `Past Simple — ${pastSimple}`, value: pastSimple },
-    { label: `Future Simple — ${futureSimple}`, value: futureSimple },
-    { label: `Present Continuous — ${presentContinuous}`, value: presentContinuous },
-    { label: `Past Continuous — ${pastContinuous}`, value: pastContinuous },
-    { label: `Future Continuous — ${futureContinuous}`, value: futureContinuous },
-    { label: `Present Perfect — ${presentPerfect}`, value: presentPerfect },
-    { label: `Past Perfect — ${pastPerfect}`, value: pastPerfect },
-    { label: `Future Perfect — ${futurePerfect}`, value: futurePerfect },
+    { label: `Present Simple — ${presentSimpleNeg}`, value: presentSimpleNeg },
+    { label: `Past Simple — ${pastSimpleNeg}`, value: pastSimpleNeg },
+    { label: `Future Simple — ${futureSimpleNeg}`, value: futureSimpleNeg },
+    { label: `Present Continuous — ${presentContinuousNeg}`, value: presentContinuousNeg },
+    { label: `Past Continuous — ${pastContinuousNeg}`, value: pastContinuousNeg },
+    { label: `Future Continuous — ${futureContinuousNeg}`, value: futureContinuousNeg },
+    { label: `Present Perfect — ${presentPerfectNeg}`, value: presentPerfectNeg },
+    { label: `Past Perfect — ${pastPerfectNeg}`, value: pastPerfectNeg },
+    { label: `Future Perfect — ${futurePerfectNeg}`, value: futurePerfectNeg },
     {
-      label: `Present Perfect Continuous — ${presentPerfectContinuous}`,
-      value: presentPerfectContinuous
+      label: `Present Perfect Continuous — ${presentPerfectContinuousNeg}`,
+      value: presentPerfectContinuousNeg
     },
     {
-      label: `Past Perfect Continuous — ${pastPerfectContinuous}`,
-      value: pastPerfectContinuous
+      label: `Past Perfect Continuous — ${pastPerfectContinuousNeg}`,
+      value: pastPerfectContinuousNeg
     },
     {
-      label: `Future Perfect Continuous — ${futurePerfectContinuous}`,
-      value: futurePerfectContinuous
+      label: `Future Perfect Continuous — ${futurePerfectContinuousNeg}`,
+      value: futurePerfectContinuousNeg
     }
   ];
 };
@@ -685,6 +822,7 @@ const exercise5Verbs = [
   { base: "clean", subject: "i" },
   { base: "see", subject: "i" },
   { base: "wonder", subject: "i" },
+  { base: "fix", subject: "i" },
   { base: "take", subject: "i" },
   { base: "run", subject: "he" },
   { base: "peer", subject: "he" },
@@ -704,7 +842,8 @@ const exercise5Verbs = [
   { base: "say", subject: "he" },
   { base: "hold", subject: "i" },
   { base: "tick", subject: "it" },
-  { base: "hang", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "frame", subject: "he" },
   { base: "remember", subject: "i" },
   { base: "stay", subject: "it" },
   { base: "speak", subject: "it" },
@@ -750,7 +889,7 @@ window.realTensesExercises = [
     title: "Grandfather's Watch",
     link: "",
     text:
-      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (see) it working before, and I _____ (wonder) how to _____ (fix) it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (look) like a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him about restoring it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (wait) in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nBy tonight, I _____ (hang) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (stay) silent, but now it _____ (speak) of time, family, and second chances. I _____ (feel) so glad I _____ (try).",
+      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (see) it working before, and I _____ (wonder) how to _____ (fix) it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (look) like a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him about restoring it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (wait) in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nI _____ (send) it to my brother. By tonight, he _____ (frame) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (stay) silent, but now it _____ (speak) of time, family, and second chances. I _____ (feel) so glad I _____ (try).",
     answers: [
       "had been sitting",
       "found",
@@ -777,7 +916,8 @@ window.realTensesExercises = [
       "says",
       "hold",
       "ticks",
-      "will hang",
+      "will send",
+      "will have framed",
       "remember",
       "had stayed",
       "speaks",
@@ -785,6 +925,38 @@ window.realTensesExercises = [
       "tried"
     ],
     choices: buildChoices(exercise5Verbs)
+  },
+  {
+    id: 6,
+    title: "Demon Slayer Dream",
+    link: "",
+    text:
+      "Hi, how are you doing? I _____ (see) you for a long time. I _____ (watch) this anime show Demon Slayer. Though I _____ (seen) anything so full of gore and violence, I still enjoyed it. I _____ (have) to admit that their production _____ (be) really top notch.\n\nI _____ (love) the character Zenitsu so much that I _____ (dream) last night that I _____ (be) a demon slayer. I _____ (dash) and _____ (slash) at lightning speed. I _____ (get) so excited that I _____ (fall) off my bed, _____ (hit) my head and _____ (break) my leg. That _____ (be) why I _____ (be) in the hospital writing to you.\n\nI _____ (receive) a message from my doctor. It _____ (seem) that I _____ (be) able to walk for at least a week. So I _____ (guess) I _____ (stay) on bed watching TV for days then.\n\nBy the time you read this, I _____ (fall) asleep. Text me back yeah. Cheers!",
+    answers: [
+      "have not seen",
+      "have been watching",
+      "had never expected",
+      "have",
+      "is",
+      "love",
+      "dreamed",
+      "was",
+      "was dashing",
+      "slashing",
+      "had got",
+      "fell",
+      "hit",
+      "broke",
+      "is",
+      "am",
+      "have received",
+      "seems",
+      "will not be",
+      "guess",
+      "will be staying",
+      "will have fallen"
+    ],
+    choices: buildChoices(exercise6Verbs)
   }
 ];
 window.realTensesExercises = [
@@ -862,7 +1034,7 @@ window.realTensesExercises = [
     title: "Grandfather's Watch",
     link: "",
     text:
-      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (never see) it working, and I _____ (wonder) if I _____ (can) fix it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (be) a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him if he _____ (can) restore it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (be), waiting in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nBy tonight, I _____ (hang) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (be) silent, but now it _____ (speak) of time, family, and second chances. I _____ (be) so glad I _____ (try).",
+      "My grandfather's old watch _____ (sit) on my desk for a week. I _____ (find) it while I _____ (clean) the attic. I _____ (never see) it working, and I _____ (wonder) if I _____ (can) fix it.\n\nYesterday, I _____ (take) it to the old repair shop in town. Mr. Finch, the watchmaker, _____ (run) that shop for fifty years. He _____ (peer) through his eyeglass when I _____ (walk) in. He _____ (examine) the watch carefully. \"This _____ (be) a fine piece,\" he _____ (say). \"Someone _____ (try) to fix it before, but they _____ (do) more harm than good.\"\n\nI _____ (ask) him if he _____ (can) restore it. He _____ (nod) and _____ (tell) me to come back today.\n\nSo here I _____ (be), waiting in his shop. He _____ (polish) the glass face. The tiny gears _____ (turn) perfectly. \"I _____ (finish) the repair,\" he _____ (say), handing it to me. I _____ (hold) it to my ear. It _____ (tick) with a steady, sure rhythm.\n\nI _____ (send) it to my brother. By tonight, he _____ (frame) it on my wall. Every time I look at it, I _____ (remember) my grandfather's stories. For years, it _____ (be) silent, but now it _____ (speak) of time, family, and second chances. I _____ (be) so glad I _____ (try).",
     answers: [
       "had been sitting",
       "found",
@@ -890,7 +1062,8 @@ window.realTensesExercises = [
       "says",
       "hold",
       "ticks",
-      "will hang",
+      "will send",
+      "will have framed",
       "remember",
       "was",
       "speaks",
@@ -924,13 +1097,48 @@ window.realTensesExercises = [
       ["says", "said", "is saying", "has said"],
       ["hold", "held", "am holding", "have held"],
       ["tick", "ticks", "is ticking", "ticked"],
-      ["hang", "will hang", "am hanging", "will have hung"],
+      ["send", "will send", "am sending", "will have sent"],
+      ["frame", "will frame", "am framing", "will have framed"],
       ["remember", "remembered", "am remembering", "will remember"],
       ["was", "has been", "is", "had been"],
       ["speaks", "spoke", "is speaking", "has spoken"],
       ["am", "was", "have been", "will be"],
       ["tried", "have tried", "was trying", "try"]
     ]
+  },
+  {
+    id: 6,
+    title: "Demon Slayer Dream",
+    link: "",
+    text:
+      "Hi, how are you doing? I _____ (see) you for a long time. I _____ (watch) this anime show Demon Slayer. I _____ (hear) that the show _____ (have) a lot of fight scenes. But as I _____ (watch) it, I was still in shock as I _____ (see) anything so full of gore and violence ever. Still, I _____ (have) to say, their story and production _____ (be) really top notch.\n\nI _____ (love) this show so much that I _____ (dream) last night that I _____ (be) a demon slayer. I _____ (dash) and _____ (slash) at the speed of lightning. I _____ (get) so excited that I _____ (fall) off my bed, _____ (hit) my head and _____ (break) my leg. That _____ (be) why I _____ (be) in the hospital writing to you.\n\nI _____ (receive) a message from my doctor. It _____ (seem) that I _____ (be) able to walk for at least a week. So I _____ (guess) I _____ (stay) on bed watching TV for days then.",
+    answers: [
+      "have not seen",
+      "have been watching",
+      "have heard",
+      "had",
+      "was watching",
+      "had not seen",
+      "have",
+      "is",
+      "love",
+      "dreamed",
+      "was",
+      "was dashing",
+      "was slashing",
+      "had got",
+      "fell",
+      "hit",
+      "broke",
+      "is",
+      "am",
+      "have received",
+      "seems",
+      "will not be",
+      "guess",
+      "will be staying"
+    ],
+    choices: buildChoices(exercise6Verbs)
   }
 ];
 */
