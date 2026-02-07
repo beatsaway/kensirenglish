@@ -432,7 +432,10 @@
             { label: 'Senses: Sound', src: 'reading_senses_sound.js' },
             { label: 'Senses: Touch', src: 'reading_senses_touch.js' },
             { label: 'Senses: Smell', src: 'reading_senses_smell.js' },
-            { label: 'Senses: Taste', src: 'reading_senses_taste.js' }
+            { label: 'Senses: Taste', src: 'reading_senses_taste.js' },
+            { label: 'Storywriting: Plot', src: 'reading_storywriting_plot.js' },
+            { label: 'Storywriting: Idea Expansion', src: 'reading_storywriting_ideas.js' },
+            { label: "Storywriting: Show, Don't Tell", src: 'reading_storywriting_show_dont_tell.js' }
         ];
 
         function escapeHtml(value) {
@@ -524,6 +527,13 @@
                 questionList.innerHTML = '<p>No questions available.</p>';
                 return;
             }
+            const shuffledOptions = Array.isArray(question.options) ? [...question.options] : [];
+            for (let i = shuffledOptions.length - 1; i > 0; i -= 1) {
+                const swapIndex = Math.floor(Math.random() * (i + 1));
+                const temp = shuffledOptions[i];
+                shuffledOptions[i] = shuffledOptions[swapIndex];
+                shuffledOptions[swapIndex] = temp;
+            }
             renderBlock(typeof question.blockIndex === 'number' ? question.blockIndex : 0);
             questionList.innerHTML = `
                 <div class="question-card" data-index="${currentQuestionIndex}">
@@ -536,7 +546,7 @@
                     </div>
                     <div class="question-text">${question.question}</div>
                     <div class="options">
-                        ${question.options.map(option => `
+                        ${shuffledOptions.map(option => `
                             <div class="option" data-option="${option}">${option}</div>
                         `).join('')}
                     </div>
