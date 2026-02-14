@@ -8,7 +8,7 @@ window.themeBasedWinter = {
         {
             id: "calendars",
             title: "Calendars",
-            context: "Write an article for a student magazine about calendars and lunisolar systems.",
+            context: "Write an article for a student magazine about different types of calendars.",
             videoUrl: "https://www.youtube.com/watch?v=AJTjCWl3d9E",
             videoId: "AJTjCWl3d9E",
             questions: [
@@ -40,7 +40,7 @@ window.themeBasedWinter = {
         {
             id: "backflip-controversy",
             title: "The Backflip Controversy",
-            context: "Write an article for a student magazine about the backflip ban in figure skating.",
+            context: "Write a    article for a student magazine about the backflip ban in figure skating.",
             videoUrl: "https://www.youtube.com/watch?v=pMYZ_7nUtIQ",
             videoId: "pMYZ_7nUtIQ",
             questions: [
