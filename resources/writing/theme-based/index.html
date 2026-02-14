@@ -52,6 +52,19 @@
         .task-questions-list { padding-left: 1.4rem; }
         .task-questions-list li { margin-bottom: 4px; font-size: 14px; }
         .task-instructions { font-size: 14px; padding: 12px; background: #fff; border-left: 3px solid #2563eb; }
+        .task-vocab-title { font-size: 0.8rem; font-weight: 400; margin-top: 12px; margin-bottom: 8px; }
+        .task-vocab-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .task-vocab-item {
+            padding: 4px 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .task-vocab-item:hover { background: #eee; border-color: var(--color-text-secondary); }
+        .task-vocab-item .vocab-cn { color: var(--color-text-secondary); margin-left: 6px; display: none; }
+        .task-vocab-item.show-cn .vocab-cn { display: inline; }
     </style>
 </head>
 <body>
@@ -101,6 +114,22 @@
                     html += `</ol>`;
                 }
                 card.innerHTML = html;
+                if (task.vocab && task.vocab.length) {
+                    const vocabTitle = document.createElement("div");
+                    vocabTitle.className = "task-vocab-title";
+                    vocabTitle.textContent = "Useful words";
+                    card.appendChild(vocabTitle);
+                    const vocabList = document.createElement("div");
+                    vocabList.className = "task-vocab-list";
+                    task.vocab.forEach((item) => {
+                        const span = document.createElement("span");
+                        span.className = "task-vocab-item";
+                        span.innerHTML = escapeHtml(item.en) + '<span class="vocab-cn">' + escapeHtml(item.cn) + "</span>";
+                        span.addEventListener("click", () => span.classList.toggle("show-cn"));
+                        vocabList.appendChild(span);
+                    });
+                    card.appendChild(vocabList);
+                }
                 taskCards.appendChild(card);
             });
         }
