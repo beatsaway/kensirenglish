@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Participles · 分詞 | Participle clauses</title>
+    <link rel="stylesheet" href="../../main.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--color-bg, #f8fafc);
+        color: var(--color-text, #0f172a);
+        font-size: clamp(16px, 1.2vw + 12px, 20px);
+        line-height: 1.4;
+      }
+      .app {
+        width: 100%;
+        min-height: 100vh;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      #header {
+        background: transparent;
+        color: var(--color-text, #0f172a);
+        padding: 4px var(--space-4, 16px);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--space-2, 12px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--color-border, #e2e8f0);
+        width: 100%;
+      }
+      #header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: var(--progress, 0%);
+        background: #1d4ed8;
+        transition: width 0.2s ease;
+      }
+      .header-left {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-right: 8px;
+      }
+      .header-label {
+        font-size: 14px;
+        color: var(--color-text, #0f172a);
+        font-weight: 500;
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+        padding: 2px 0;
+        line-height: 1.2;
+      }
+      .header-label .separator {
+        color: var(--color-text-secondary, #64748b);
+        margin: 0 2px;
+      }
+      .header-copyright {
+        font-size: 9px;
+        color: var(--color-text-secondary, #64748b);
+        font-weight: 400;
+        white-space: nowrap;
+        line-height: 1.2;
+        margin-top: 1px;
+      }
+      .header-copyright a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .header-copyright a:hover {
+        opacity: 0.7;
+      }
+      #headerTitle {
+        margin-left: auto;
+        font-weight: 600;
+        color: var(--color-text, #0f172a);
+        font-size: clamp(16px, 1.6vw + 10px, 22px);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      #card {
+        border: 0;
+        padding: clamp(16px, 2.6vw, 24px);
+        background: #fff;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: min(1120px, 100%);
+      }
+      #promptText {
+        font-size: clamp(22px, 2.8vw + 12px, 40px);
+        margin: 12px 0 8px;
+        line-height: 1.35;
+      }
+      #blankBox {
+        display: inline-flex;
+        min-width: 8ch;
+        min-height: 1.2em;
+        padding: 0.1em 0.5em;
+        border: 2px solid #cbd5e1;
+        border-radius: 10px;
+        font: inherit;
+        line-height: 1;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        vertical-align: 0;
+        background: #f8fafc;
+      }
+      button {
+        font: inherit;
+        padding: 8px 12px;
+        background: #fff;
+        color: #0f172a;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #answerOptions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+        justify-content: center;
+      }
+      #answerOptions button {
+        border: 2px solid #1d4ed8;
+        border-radius: 10px;
+        color: #1d4ed8;
+        font-weight: 600;
+        font-size: clamp(16px, 1.8vw + 10px, 24px);
+        padding: clamp(12px, 1.8vw, 18px) clamp(18px, 2.4vw, 26px);
+      }
+      #answerOptions button:hover:not(:disabled) {
+        background: #e0edff;
+      }
+      #answerOptions button[data-state="correct"] {
+        background: #dcfce7;
+        border-color: #16a34a;
+        color: #15803d;
+      }
+      #answerOptions button[data-state="wrong"] {
+        background: #fee2e2;
+        border-color: #dc2626;
+        color: #b91c1c;
+      }
+      button:disabled {
+        opacity: 0.85;
+        cursor: default;
+      }
+      #stageTip {
+        margin-top: 16px;
+        padding: clamp(10px, 1.6vw, 16px);
+        border-radius: 12px;
+        background: var(--color-surface, #f8fafc);
+        border: 1px solid var(--color-border, #e2e8f0);
+        font-size: clamp(14px, 1.2vw + 10px, 18px);
+        color: var(--color-text, #334155);
+        align-self: stretch;
+      }
+      #log {
+        margin-top: 16px;
+        min-height: 28px;
+        color: #1d4ed8;
+        cursor: pointer;
+        font-size: clamp(18px, 1.8vw + 10px, 24px);
+        font-weight: 600;
+        text-align: center;
+      }
+      #log:hover {
+        text-decoration: underline;
+      }
+      .completion-message {
+        font-size: clamp(22px, 2.8vw + 12px, 40px);
+        margin: 12px 0 8px;
+        color: #15803d;
+      }
+      .completion-score {
+        font-size: clamp(16px, 1.4vw + 10px, 20px);
+        color: #64748b;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header id="header">
+        <div class="header-left">
+          <span class="header-label">Participles<span class="separator">•</span>分詞</span>
+          <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+        </div>
+        <span id="headerTitle">Loading...</span>
+      </header>
+
+      <section id="card">
+        <div id="promptText">Loading...</div>
+        <div id="answerOptions"></div>
+        <div id="stageTip" hidden></div>
+        <div id="log"></div>
+      </section>
+    </div>
+
+    <script src="participles_data.js"></script>
+    <script>
+      const BLANK_PLACEHOLDER = "_________";
+      const headerEl = document.getElementById("header");
+      const headerTitleEl = document.getElementById("headerTitle");
+      const promptTextEl = document.getElementById("promptText");
+      const answerOptionsEl = document.getElementById("answerOptions");
+      const stageTipEl = document.getElementById("stageTip");
+      const logEl = document.getElementById("log");
+
+      const escapeHtml = (value) =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+
+      const normalizeAnswer = (str) =>
+        String(str || "").trim().toLowerCase().replace(/\s+/g, " ");
+
+      const shuffle = (arr) => {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      };
+
+      let questions = [];
+      let currentIndex = 0;
+      let wrongCount = 0;
+      let hasAnswered = false;
+      let isComplete = false;
+
+      const setProgress = (percent) => {
+        const p = Math.max(0, Math.min(100, percent));
+        headerEl.style.setProperty("--progress", `${p}%`);
+      };
+
+      const buildPromptHtml = (prompt) => {
+        const escaped = escapeHtml(prompt);
+        const blank = '<span id="blankBox">&nbsp;</span>';
+        return escaped.replace(escapeHtml(BLANK_PLACEHOLDER), blank);
+      };
+
+      const showQuestion = () => {
+        if (currentIndex >= questions.length) {
+          showCompletion();
+          return;
+        }
+        const total = questions.length;
+        setProgress((currentIndex / total) * 100);
+        headerTitleEl.textContent = `Question ${currentIndex + 1} of ${total}`;
+
+        const q = questions[currentIndex];
+        promptTextEl.innerHTML = buildPromptHtml(q.prompt);
+        stageTipEl.setAttribute("hidden", "");
+        stageTipEl.textContent = "";
+
+        const options = shuffle(q.options);
+        answerOptionsEl.innerHTML = "";
+        options.forEach((opt) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = opt;
+          btn.addEventListener("click", () => handleAnswer(opt, q));
+          answerOptionsEl.appendChild(btn);
+        });
+
+        logEl.textContent = "";
+        hasAnswered = false;
+        isComplete = false;
+      };
+
+      const showCompletion = () => {
+        setProgress(100);
+        const total = questions.length || 1;
+        const score = Math.max(0, Math.round(((total - wrongCount) / total) * 100));
+        promptTextEl.textContent = "";
+        promptTextEl.innerHTML = '<p class="completion-message">Done!</p><p class="completion-score">Score: ' + score + '%</p>';
+        answerOptionsEl.innerHTML = "";
+        stageTipEl.setAttribute("hidden", "");
+        logEl.textContent = "Start again";
+        isComplete = true;
+      };
+
+      const handleAnswer = (selected, q) => {
+        if (hasAnswered) return;
+        const correct = normalizeAnswer(q.answer);
+        const chosen = normalizeAnswer(selected);
+        const isCorrect = chosen === correct;
+
+        const blankBox = document.getElementById("blankBox");
+        if (blankBox) {
+          blankBox.textContent = selected;
+          blankBox.style.background = isCorrect ? "#dcfce7" : "#fee2e2";
+        }
+
+        answerOptionsEl.querySelectorAll("button").forEach((btn) => {
+          btn.disabled = true;
+          const optNorm = normalizeAnswer(btn.textContent);
+          if (optNorm === correct) btn.dataset.state = "correct";
+          else if (btn.textContent === selected) btn.dataset.state = "wrong";
+        });
+
+        if (!isCorrect) {
+          wrongCount += 1;
+          if (q.hint) {
+            stageTipEl.textContent = q.hint;
+            stageTipEl.removeAttribute("hidden");
+          }
+        }
+
+        hasAnswered = true;
+        logEl.textContent = "Next →";
+      };
+
+      const goNext = () => {
+        if (isComplete) {
+          wrongCount = 0;
+          currentIndex = 0;
+          questions = shuffle(window.PARTICIPLES_QUESTIONS || []);
+          showQuestion();
+          return;
+        }
+        if (!hasAnswered) return;
+        currentIndex += 1;
+        showQuestion();
+      };
+
+      logEl.addEventListener("click", goNext);
+
+      const init = () => {
+        questions = shuffle(window.PARTICIPLES_QUESTIONS || []);
+        if (questions.length === 0) {
+          promptTextEl.textContent = "No questions loaded. Check participles_data.js.";
+          headerTitleEl.textContent = "Participles";
+          return;
+        }
+        currentIndex = 0;
+        wrongCount = 0;
+        showQuestion();
+      };
+
+      init();
+    </script>
+  </body>
+</html>
