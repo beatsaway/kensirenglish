@@ -1252,6 +1252,11 @@
             // Store current topic name
             currentTopicName = topic.name;
 
+            // Update URL with ?topic= for shareable links
+            const url = new URL(location.href);
+            url.searchParams.set('topic', topic.name);
+            history.replaceState(null, '', url);
+
             // Show loading state
             content.innerHTML = '<div class="loading">Loading...</div>';
 
@@ -1682,13 +1687,21 @@
             }
         });
 
-        // Load a random topic on page load
+        // Load topic on page load: use ?topic=xxx if present, otherwise random
         window.addEventListener('DOMContentLoaded', () => {
-            if (topics.length > 0) {
-                const randomIndex = Math.floor(Math.random() * topics.length);
-                const randomTopic = topics[randomIndex];
-                loadTopic(randomTopic);
+            if (topics.length === 0) return;
+            const params = new URLSearchParams(location.search);
+            const topicFromUrl = params.get('topic');
+            if (topicFromUrl) {
+                const decoded = decodeURIComponent(topicFromUrl);
+                const topic = topics.find(t => t.name === decoded);
+                if (topic) {
+                    loadTopic(topic);
+                    return;
+                }
             }
+            const randomIndex = Math.floor(Math.random() * topics.length);
+            loadTopic(topics[randomIndex]);
         });
     </script>
     <script src="xstimer.js"></script>

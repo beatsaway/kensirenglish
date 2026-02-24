@@ -40,7 +40,7 @@ window.themeBasedWinter = {
         {
             id: "backflip-controversy",
             title: "The Backflip Controversy",
-            context: "Write a    article for a student magazine about the backflip ban in figure skating.",
+            context: "Write an article for a student magazine about the backflip ban in figure skating.",
             videoUrl: "https://www.youtube.com/watch?v=pMYZ_7nUtIQ",
             videoId: "pMYZ_7nUtIQ",
             questions: [

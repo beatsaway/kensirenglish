@@ -43,8 +43,6 @@
         }
         .task-title-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
         .task-title { font-size: 1.1rem; font-weight: 600; }
-        .task-title a { color: #111; text-decoration: none; }
-        .task-title a:hover { text-decoration: underline; color: #2563eb; }
         .task-watch { font-size: 0.9rem; }
         .task-watch a { color: var(--color-text-secondary); text-decoration: none; }
         .task-watch a:hover { text-decoration: underline; color: #2563eb; }
@@ -84,17 +82,23 @@
     </main>
 
     <script src="winter.js"></script>
+    <script src="olympics.js"></script>
     <script>
-        const themes = { winter: window.themeBasedWinter };
+        const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics };
         const themeSelect = document.getElementById("themeSelect");
         const taskCards = document.getElementById("taskCards");
 
-        Object.keys(themes).forEach((key) => {
+        const themeKeys = Object.keys(themes);
+        themeKeys.forEach((key) => {
             const opt = document.createElement("option");
             opt.value = key;
             opt.textContent = themes[key].theme;
             themeSelect.appendChild(opt);
         });
+
+        const params = new URLSearchParams(location.search);
+        const themeFromUrl = params.get("theme");
+        themeSelect.value = themeKeys.includes(themeFromUrl) ? themeFromUrl : "olympics";
 
         function render(data) {
             taskCards.innerHTML = "";
@@ -102,8 +106,16 @@
             data.tasks.forEach((task) => {
                 const card = document.createElement("section");
                 card.className = "task-card";
-                const videoUrl = escapeHtml(task.videoUrl);
-                let html = `<div class="task-title-row"><h2 class="task-title"><a href="${videoUrl}" target="_blank" rel="noopener">${escapeHtml(task.title)}</a></h2><span class="task-watch"><a href="${videoUrl}" target="_blank" rel="noopener">watch video</a></span></div>`;
+                const videoUrl = escapeHtml(task.videoUrl || "");
+                let html = `<div class="task-title-row"><h2 class="task-title">${escapeHtml(task.title)}</h2>`;
+                if (task.videoUrl) {
+                    html += `<span class="task-watch"><a href="${videoUrl}" target="_blank" rel="noopener">watch video</a></span>`;
+                }
+                if (task.learnMoreUrl) {
+                    const learnUrl = task.learnMoreUrl.replace(/"/g, "&quot;");
+                    html += `<span class="task-watch"><a href="${learnUrl}" target="_blank" rel="noopener">learn more</a></span>`;
+                }
+                html += `</div>`;
                 if (task.instructions) {
                     if (task.context) html += `<p class="task-context">${escapeHtml(task.context)}</p>`;
                     html += `<div class="task-instructions">${escapeHtml(task.instructions)}</div>`;
@@ -141,7 +153,11 @@
         }
 
         themeSelect.addEventListener("change", () => {
-            render(themes[themeSelect.value]);
+            const theme = themeSelect.value;
+            const url = new URL(location.href);
+            url.searchParams.set("theme", theme);
+            history.replaceState(null, "", url);
+            render(themes[theme]);
         });
         render(themes[themeSelect.value]);
     </script>
