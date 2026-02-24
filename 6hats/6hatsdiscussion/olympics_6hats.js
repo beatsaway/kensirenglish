@@ -18,7 +18,7 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "Why could getting famous as an athlete be uneasy?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do you become a famous athlete?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Which sports would you want to be good at?", hat: "green-hat", hatLabel: "Green Hat" },
-      { emoji: "💡", text: "If you could trade places with another Olympian for a day, who would it be and why?", hat: "green-hat", hatLabel: "Green Hat" }
+      
     ]
   },
   {
@@ -39,7 +39,7 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "What's wrong with adding more sports to the Olympics?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do we decide which sports should be in the Olympics?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "What if robots were allowed to compete in the Olympics?", hat: "green-hat", hatLabel: "Green Hat" },
-      { emoji: "💡", text: "What should be an Olympic sport but isn't?", hat: "green-hat", hatLabel: "Green Hat" }
+      
     ]
   },
   {
