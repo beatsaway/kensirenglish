@@ -14,8 +14,8 @@ window.sixHatSets = [
     questions: [
       { emoji: "📊", text: "Who are the athletes mentioned? What do they do?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you find gymnastics or ice-skating more impressive?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why do people like athletes? Give 3 reasons.", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why could getting famous as an athlete be uneasy?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "🌟", text: "Why do people like watching athletes? Give 3 reasons.", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What might go wrong for athletes to get famous?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do you become a famous athlete?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Which sports would you want to be good at?", hat: "green-hat", hatLabel: "Green Hat" },
       
