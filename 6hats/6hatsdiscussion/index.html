@@ -1137,6 +1137,7 @@
             { name: "2025 Tech Updates", file: "2025techupdate_6hats_questions.js" },
             { name: "Antarctica", file: "antarctica_questions.js" },
             { name: "The Arctic", file: "the_artic.js" },
+            { name: "Astrology", file: "astrology_6hats.js" },
             { name: "Blue Lock", file: "blue_lock_6hats_questions.js" },
             { name: "Calendars", file: "calendars_6hats_questions.js" },
             { name: "Cosmic Weather", file: "cosmicweather_questions.js" },
@@ -1352,7 +1353,8 @@
             
             // Video link
             if (set.link) {
-                html += `<a href="${set.link}" target="_blank" class="video-link-emoji">Watch video</a>`;
+                const linkText = set.linkLabel || "Watch video";
+                html += `<a href="${set.link}" target="_blank" class="video-link-emoji">${linkText}</a>`;
             }
             
             html += `</div>`;
