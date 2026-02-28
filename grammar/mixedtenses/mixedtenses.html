@@ -447,7 +447,7 @@
 
       const selected = document.getElementById("exercise-select")?.value;
       const toRender = selected
-        ? exercises.filter((exercise) => String(exercise.id) === selected)
+        ? exercises.filter((ex) => (ex.slug || String(ex.id)) === selected)
         : exercises;
 
       toRender.forEach((exercise, index) => {
@@ -460,29 +460,47 @@
       return params.get(name);
     }
 
+    function slugOrIdMatch(exercise, value) {
+      if (!value) return false;
+      const v = String(value).trim().toLowerCase();
+      return (exercise.slug && exercise.slug === v) || String(exercise.id) === v;
+    }
+
     function initExerciseSelect() {
       const select = document.getElementById("exercise-select");
       select.innerHTML = "";
       exercises.forEach((exercise) => {
         const option = document.createElement("option");
-        option.value = String(exercise.id);
+        option.value = exercise.slug || String(exercise.id);
         option.textContent = exercise.title || `Exercise ${exercise.id}`;
         select.appendChild(option);
       });
 
       const q = getQueryParam("Q") || getQueryParam("q");
-      const targetId = q ? String(q).trim() : null;
-      const exerciseExists = exercises.some((ex) => String(ex.id) === targetId);
+      const target = q ? String(q).trim().toLowerCase() : null;
+      const matched = exercises.find((ex) => slugOrIdMatch(ex, target));
 
       if (exercises.length > 0) {
-        if (targetId && exerciseExists) {
-          select.value = targetId;
+        if (matched) {
+          const slug = matched.slug || String(matched.id);
+          select.value = slug;
+          if (matched.slug && target !== matched.slug) {
+            const url = new URL(location.href);
+            url.searchParams.set("q", matched.slug);
+            history.replaceState(null, "", url);
+          }
         } else {
-          select.value = String(exercises[0].id);
+          select.value = exercises[0].slug || String(exercises[0].id);
         }
       }
 
-      select.addEventListener("change", renderExercises);
+      select.addEventListener("change", () => {
+        const slug = select.value;
+        const url = new URL(location.href);
+        url.searchParams.set("q", slug);
+        history.replaceState(null, "", url);
+        renderExercises();
+      });
     }
 
     initExerciseSelect();

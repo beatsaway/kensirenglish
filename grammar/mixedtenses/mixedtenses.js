@@ -460,6 +460,7 @@ const exercise16Verbs = [
 window.realTensesExercises = [
   {
     id: 1,
+    slug: "wolf-dogs",
     title: "Wolf Dogs and Mouthy Behavior",
     link: "https://www.youtube.com/shorts/sZTKk5sFQjM",
     text:
@@ -480,6 +481,7 @@ window.realTensesExercises = [
   },
   {
     id: 2,
+    slug: "farewell-joss",
     title: "Farewell Message from Joss",
     link: "https://x.com/josshere/status/2018441365189959913/photo/1",
     text:
@@ -499,6 +501,7 @@ window.realTensesExercises = [
   },
   {
     id: 3,
+    slug: "burger-king",
     title: "Rogue Burger King Story",
     link: "https://www.youtube.com/shorts/IPo3nYBIsSg",
     text:
@@ -521,6 +524,7 @@ window.realTensesExercises = [
   },
   {
     id: 4,
+    slug: "track-false-start",
     title: "Track False Start Rule",
     link: "https://www.youtube.com/shorts/Oo1B902oOy4",
     text:
@@ -542,6 +546,7 @@ window.realTensesExercises = [
   },
   {
     id: 5,
+    slug: "grandfather-watch",
     title: "Grandfather's Watch",
     link: "",
     text:
@@ -585,6 +590,7 @@ window.realTensesExercises = [
   },
   {
     id: 6,
+    slug: "demon-slayer",
     title: "Demon Slayer Dream",
     link: "",
     text:
@@ -617,6 +623,7 @@ window.realTensesExercises = [
   },
   {
     id: 7,
+    slug: "think",
     title: "Think",
     link: "",
     text:
@@ -626,6 +633,7 @@ window.realTensesExercises = [
   },
   {
     id: 8,
+    slug: "do",
     title: "Do",
     link: "",
     text:
@@ -635,6 +643,7 @@ window.realTensesExercises = [
   },
   {
     id: 9,
+    slug: "learn",
     title: "Learn",
     link: "",
     text:
@@ -644,6 +653,7 @@ window.realTensesExercises = [
   },
   {
     id: 10,
+    slug: "feel",
     title: "Feel",
     link: "",
     text:
@@ -653,6 +663,7 @@ window.realTensesExercises = [
   },
   {
     id: 11,
+    slug: "make",
     title: "Make",
     link: "",
     text:
@@ -662,6 +673,7 @@ window.realTensesExercises = [
   },
   {
     id: 12,
+    slug: "change",
     title: "Change",
     link: "",
     text:
@@ -671,6 +683,7 @@ window.realTensesExercises = [
   },
   {
     id: 13,
+    slug: "drive",
     title: "Drive",
     link: "",
     text:
@@ -680,6 +693,7 @@ window.realTensesExercises = [
   },
   {
     id: 14,
+    slug: "cook",
     title: "Cook",
     link: "",
     text:
@@ -689,6 +703,7 @@ window.realTensesExercises = [
   },
   {
     id: 15,
+    slug: "read",
     title: "Read",
     link: "",
     text:
@@ -698,6 +713,7 @@ window.realTensesExercises = [
   },
   {
     id: 16,
+    slug: "wear",
     title: "Wear",
     link: "",
     text:
@@ -1079,6 +1095,7 @@ window.realTensesExercises = [
   },
   {
     id: 5,
+    slug: "grandfather-watch",
     title: "Grandfather's Watch",
     link: "",
     text:
@@ -1224,6 +1241,7 @@ window.realTensesExercises = [
   },
   {
     id: 5,
+    slug: "grandfather-watch",
     title: "Grandfather's Watch",
     link: "",
     text:
