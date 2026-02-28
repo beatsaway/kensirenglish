@@ -52,7 +52,7 @@ window.themeBasedAstrology = {
             title: "Does It Do More Harm Than Good?",
             context: "40% of students at your school read horoscopes weekly. Write to your school magazine explaining why you think that is a good habit. Give 3 reasons.",
             questions: [],
-            instructions: "Give 3 reasons why reading horoscopes weekly can be a good habit.",
+            instructions: "Give 3 reasons why reading horoscopes weekly is a good/bad habit.",
             vocab: [
                 { en: "guidance", cn: "指引" },
                 { en: "reflection", cn: "反思" },
