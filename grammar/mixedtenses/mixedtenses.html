@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real Tenses - Fill in the Blanks</title>
+  <title>Mixed Tenses - Fill in the Blanks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../../main.css">
@@ -268,7 +268,7 @@
 <body>
   <div class="exercise-selector" style="padding: 4px 32px 4px 16px;">
     <div class="header-left">
-      <span class="header-label">Real Tenses<span class="separator">•⏱️</span>真實時式</span>
+      <span class="header-label">Mixed Tenses<span class="separator">•⏱️</span>混合時式</span>
       <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
     </div>
     <div class="header-select-container">
@@ -282,7 +282,7 @@
     </div>
   </main>
 
-  <script src="realtenses.js"></script>
+  <script src="mixedtenses.js"></script>
   <script>
     const exercises = Array.isArray(window.realTensesExercises)
       ? window.realTensesExercises
@@ -455,6 +455,11 @@
       });
     }
 
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
     function initExerciseSelect() {
       const select = document.getElementById("exercise-select");
       select.innerHTML = "";
@@ -465,8 +470,16 @@
         select.appendChild(option);
       });
 
+      const q = getQueryParam("Q") || getQueryParam("q");
+      const targetId = q ? String(q).trim() : null;
+      const exerciseExists = exercises.some((ex) => String(ex.id) === targetId);
+
       if (exercises.length > 0) {
-        select.value = String(exercises[0].id);
+        if (targetId && exerciseExists) {
+          select.value = targetId;
+        } else {
+          select.value = String(exercises[0].id);
+        }
       }
 
       select.addEventListener("change", renderExercises);

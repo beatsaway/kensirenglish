@@ -83,7 +83,12 @@ const VERB_FORMS = {
   stay: { base: "stay", past: "stayed", pastParticiple: "stayed", ing: "staying", third: "stays" },
   speak: { base: "speak", past: "spoke", pastParticiple: "spoken", ing: "speaking", third: "speaks" },
   feel: { base: "feel", past: "felt", pastParticiple: "felt", ing: "feeling", third: "feels" },
-  want: { base: "want", past: "wanted", pastParticiple: "wanted", ing: "wanting", third: "wants" }
+  want: { base: "want", past: "wanted", pastParticiple: "wanted", ing: "wanting", third: "wants" },
+  learn: { base: "learn", past: "learnt", pastParticiple: "learnt", ing: "learning", third: "learns" },
+  change: { base: "change", past: "changed", pastParticiple: "changed", ing: "changing", third: "changes" },
+  drive: { base: "drive", past: "drove", pastParticiple: "driven", ing: "driving", third: "drives" },
+  cook: { base: "cook", past: "cooked", pastParticiple: "cooked", ing: "cooking", third: "cooks" },
+  wear: { base: "wear", past: "wore", pastParticiple: "worn", ing: "wearing", third: "wears" }
 };
 
 const getSubjectType = (subject) => {
@@ -170,6 +175,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
   const presentPerfect = applyAdverb(`${getHavePresent(subjectType)} ${forms.pastParticiple}`);
   const pastPerfect = applyAdverb(`had ${forms.pastParticiple}`);
   const futurePerfect = applyAdverb(`will have ${forms.pastParticiple}`);
+  const conditionalPerfect = applyAdverb(`would have ${forms.pastParticiple}`);
   const presentPerfectContinuous = applyAdverb(`${getHavePresent(subjectType)} been ${forms.ing}`);
   const pastPerfectContinuous = applyAdverb(`had been ${forms.ing}`);
   const futurePerfectContinuous = applyAdverb(`will have been ${forms.ing}`);
@@ -185,6 +191,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
       { label: `Present Perfect — ${presentPerfect}`, value: presentPerfect },
       { label: `Past Perfect — ${pastPerfect}`, value: pastPerfect },
       { label: `Future Perfect — ${futurePerfect}`, value: futurePerfect },
+      { label: `Conditional Perfect — ${conditionalPerfect}`, value: conditionalPerfect },
       {
         label: `Present Perfect Continuous — ${presentPerfectContinuous}`,
         value: presentPerfectContinuous
@@ -213,6 +220,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
   const presentPerfectNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} ${forms.pastParticiple}`);
   const pastPerfectNeg = applyAdverb(`${getNegAux("had", contraction)} ${forms.pastParticiple}`);
   const futurePerfectNeg = applyAdverb(`${getNegAux("will", contraction)} have ${forms.pastParticiple}`);
+  const conditionalPerfectNeg = applyAdverb(`wouldn't have ${forms.pastParticiple}`);
   const presentPerfectContinuousNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} been ${forms.ing}`);
   const pastPerfectContinuousNeg = applyAdverb(`${getNegAux("had", contraction)} been ${forms.ing}`);
   const futurePerfectContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} have been ${forms.ing}`);
@@ -227,6 +235,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
     { label: `Present Perfect — ${presentPerfectNeg}`, value: presentPerfectNeg },
     { label: `Past Perfect — ${pastPerfectNeg}`, value: pastPerfectNeg },
     { label: `Future Perfect — ${futurePerfectNeg}`, value: futurePerfectNeg },
+    { label: `Conditional Perfect — ${conditionalPerfectNeg}`, value: conditionalPerfectNeg },
     {
       label: `Present Perfect Continuous — ${presentPerfectContinuousNeg}`,
       value: presentPerfectContinuousNeg
@@ -356,6 +365,96 @@ const exercise6Verbs = [
   { base: "guess", subject: "i" },
   { base: "stay", subject: "i" },
   { base: "fall", subject: "i" }
+];
+
+const exercise7Verbs = [
+  { base: "think", subject: "i" },
+  { base: "think", subject: "i" },
+  { base: "think", subject: "they" },
+  { base: "think", subject: "i" },
+  { base: "think", subject: "i" },
+  { base: "think", subject: "i" }
+];
+const exercise8Verbs = [
+  { base: "do", subject: "i", negative: true, contraction: false },
+  { base: "do", subject: "i" },
+  { base: "do", subject: "i" },
+  { base: "do", subject: "i" },
+  { base: "do", subject: "i" },
+  { base: "do", subject: "i" },
+  { base: "do", subject: "i" }
+];
+const exercise9Verbs = [
+  { base: "learn", subject: "i" },
+  { base: "learn", subject: "i" },
+  { base: "learn", subject: "i" },
+  { base: "learn", subject: "they" },
+  { base: "learn", subject: "i" },
+  { base: "learn", subject: "i" },
+  { base: "learn", subject: "i" }
+];
+const exercise10Verbs = [
+  { base: "feel", subject: "i" },
+  { base: "feel", subject: "i" },
+  { base: "feel", subject: "i" },
+  { base: "feel", subject: "i", negative: true, contraction: false },
+  { base: "feel", subject: "i" },
+  { base: "feel", subject: "i" },
+  { base: "feel", subject: "i" }
+];
+const exercise11Verbs = [
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" },
+  { base: "make", subject: "i" }
+];
+const exercise12Verbs = [
+  { base: "change", subject: "they" },
+  { base: "change", subject: "i" },
+  { base: "change", subject: "they" },
+  { base: "change", subject: "i" },
+  { base: "change", subject: "i" },
+  { base: "change", subject: "i" },
+  { base: "change", subject: "you" }
+];
+const exercise13Verbs = [
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" },
+  { base: "drive", subject: "i" }
+];
+const exercise14Verbs = [
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" },
+  { base: "cook", subject: "i" }
+];
+const exercise15Verbs = [
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" },
+  { base: "read", subject: "i" }
+];
+const exercise16Verbs = [
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" },
+  { base: "wear", subject: "i" }
 ];
 
 window.realTensesExercises = [
@@ -515,6 +614,96 @@ window.realTensesExercises = [
       "will have fallen"
     ],
     choices: buildChoices(exercise6Verbs)
+  },
+  {
+    id: 7,
+    title: "Think",
+    link: "",
+    text:
+      "When my boss first mentioned it last night, I _____ (think) about how much I would miss my current team.\n\nRight now, I _____ (think) about accepting a new job in another city.\n\nI know my family _____ (think) I'm brave if I take the risk and move.\n\nI _____ (think) about this offer all week, and I still can't decide what to do.\n\nHonestly, I never _____ (think) to see this as a difficult choice, but it really is.\n\nNormally, I _____ (think) very carefully before making a big decision, but this time I feel like I have to act fast.",
+    answers: ["was thinking", "am thinking", "will think", "have been thinking", "would have thought", "think"],
+    choices: buildChoices(exercise7Verbs)
+  },
+  {
+    id: 8,
+    title: "Do",
+    link: "",
+    text:
+      "Looking back, I realized I _____ (do) enough research before buying my first car, and I ended up with a bad model.\n\nDon't worry about the report. I promise I _____ (do) it first thing in the morning.\n\nPlease be quiet for a moment; I _____ (do) my homework and need to concentrate.\n\nWhen you called, I _____ (do) some work in the garden, which is why I sounded out of breath.\n\nI _____ (do) this same puzzle for an hour, and I'm still only half finished.\n\nEvery morning, I _____ (do) a set of stretches before I get in the shower.\n\nIn a perfect world, I _____ (do) more travelling in my twenties, but I had to focus on my career.",
+    answers: ["had not done", "will do", "am doing", "was doing", "have been doing", "do", "would have done"],
+    choices: buildChoices(exercise8Verbs)
+  },
+  {
+    id: 9,
+    title: "Learn",
+    link: "",
+    text:
+      "I thought I _____ (learn) enough, but then you showed me I was wrong.\n\nI _____ (learn) just enough to do this!\n\nOne day, I _____ (learn) enough songs to have my own concert.\n\nChildren usually _____ (learn) faster than grown-ups do.\n\nWithout your help, I never _____ (learn) it.\n\nI am busy right now because I _____ (learn) a new piece for the exam next month.\n\nI _____ (learn) guitar for over two months now. I can finally play this song.",
+    answers: ["had learnt", "have learnt", "will have learnt", "learn", "would have learnt", "am learning", "have been learning"],
+    choices: buildChoices(exercise9Verbs)
+  },
+  {
+    id: 10,
+    title: "Feel",
+    link: "",
+    text:
+      "When you asked me that question, I _____ (feel) quite confident about my answer.\n\nDon't worry about me. I'm sure I _____ (feel) better after I eat something.\n\nPlease give me a sec. I _____ (feel) a bit overwhelmed right now.\n\nI realized I _____ (feel) so happy in years.\n\nI usually _____ (feel) nervous before giving a presentation.\n\nIn a different situation, I _____ (feel) offended, but I knew you meant well.\n\nI _____ (feel) tired all week, so I think I need more sleep.",
+    answers: ["was feeling", "will feel", "am feeling", "had not felt", "feel", "would have felt", "have been feeling"],
+    choices: buildChoices(exercise10Verbs)
+  },
+  {
+    id: 11,
+    title: "Make",
+    link: "",
+    text:
+      "Without your advice, I _____ (make) the wrong decision.\n\nI _____ (make) preparations for this since last week.\n\nI always _____ (make) my own lunch instead of buying it.\n\nI realised I _____ (make) a terrible mistake as soon as I sent the email.\n\nI promise I _____ (make) it up to you somehow.\n\nBe quiet for a minute; I _____ (make) an important phone call.\n\nI _____ (make) a phone call when you interrupted me.",
+    answers: ["would have made", "have been making", "make", "had made", "will make", "am making", "was making"],
+    choices: buildChoices(exercise11Verbs)
+  },
+  {
+    id: 12,
+    title: "Change",
+    link: "",
+    text:
+      "Things _____ (change) but they're changing back.\n\nI am at the salon. I _____ (change) my hairstyle for the wedding next week.\n\nI'm sure things _____ (change) for the better soon.\n\nThe fire broke out when I _____ (change) clothes.\n\nI rarely _____ (change) my hairstyles.\n\nLooking back, I _____ (change) nothing about myself, except my hairstyle.\n\nYou _____ (change) hairstyles so rapidly that it's hard to keep up.",
+    answers: ["had changed", "am changing", "will change", "was changing", "change", "would have changed", "have been changing"],
+    choices: buildChoices(exercise12Verbs)
+  },
+  {
+    id: 13,
+    title: "Drive",
+    link: "",
+    text:
+      "Don't worry, I _____ (drive) you to the airport tomorrow morning.\n\nWhen you sent that message, I _____ (drive) home and didn't see it.\n\nI can't talk right now; I _____ (drive) through the city center.\n\nI realized I _____ (drive) over a nail when I heard a strange noise from the tire.\n\nI usually _____ (drive) to work, but sometimes I take the train.\n\nIn hindsight, I _____ (drive) more slowly on the icy road.\n\nI _____ (drive) for over three hours, so I need to stop for a break.",
+    answers: ["will drive", "was driving", "am driving", "had driven", "drive", "would have driven", "have been driving"],
+    choices: buildChoices(exercise13Verbs)
+  },
+  {
+    id: 14,
+    title: "Cook",
+    link: "",
+    text:
+      "I _____ (cook) all afternoon to get ready for the party.\n\nWithout that recipe book, I never _____ (cook) such a delicious meal.\n\nI usually _____ (cook) dinner on Sunday for the whole family.\n\nI _____ (cook) pasta when the power suddenly went out.\n\nI promise I _____ (cook) your favorite dish for your birthday.\n\nWhen I tasted it, I knew I _____ (cook) it for too long.\n\nYou should try this soup! I _____ (cook) a new recipe tonight.",
+    answers: ["have been cooking", "would have cooked", "cook", "was cooking", "will cook", "had cooked", "am cooking"],
+    choices: buildChoices(exercise14Verbs)
+  },
+  {
+    id: 15,
+    title: "Read",
+    link: "",
+    text:
+      "I realized I _____ (read) that same book years ago, but I forgot the ending.\n\nNo worries! I _____ (read) the instructions carefully before I turn it on.\n\nI _____ (read) this novel for a month, but it's so long!\n\nYou can't borrow this book right now because I _____ (read) it.\n\nI usually _____ (read) a few pages of a book before I go to sleep.\n\nI _____ (read) your report last night, but I was too tired.\n\nI _____ (read) a fascinating article when my train arrived at the station.",
+    answers: ["had read", "will read", "have been reading", "am reading", "read", "would have read", "was reading"],
+    choices: buildChoices(exercise15Verbs)
+  },
+  {
+    id: 16,
+    title: "Wear",
+    link: "",
+    text:
+      "I _____ (wear) something more formal if I had known it was an important meeting.\n\nI _____ (wear) this same old coat for years, and it's still my favorite.\n\nI rarely _____ (wear) green colors because they make me sad.\n\nI think I _____ (wear) my blue dress for the party.\n\nI _____ (wear) my new shoes when it started to rain.\n\nI noticed I _____ (wear) a hole in my favorite sweater.\n\nOf course you can't recognise me. I _____ (wear) a mask.",
+    answers: ["would have worn", "have been wearing", "wear", "will wear", "was wearing", "had worn", "am wearing"],
+    choices: buildChoices(exercise16Verbs)
   }
 ];
 /*
@@ -684,6 +873,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
   const presentPerfect = applyAdverb(`${getHavePresent(subjectType)} ${forms.pastParticiple}`);
   const pastPerfect = applyAdverb(`had ${forms.pastParticiple}`);
   const futurePerfect = applyAdverb(`will have ${forms.pastParticiple}`);
+  const conditionalPerfect = applyAdverb(`would have ${forms.pastParticiple}`);
   const presentPerfectContinuous = applyAdverb(`${getHavePresent(subjectType)} been ${forms.ing}`);
   const pastPerfectContinuous = applyAdverb(`had been ${forms.ing}`);
   const futurePerfectContinuous = applyAdverb(`will have been ${forms.ing}`);
@@ -699,6 +889,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
       { label: `Present Perfect — ${presentPerfect}`, value: presentPerfect },
       { label: `Past Perfect — ${pastPerfect}`, value: pastPerfect },
       { label: `Future Perfect — ${futurePerfect}`, value: futurePerfect },
+      { label: `Conditional Perfect — ${conditionalPerfect}`, value: conditionalPerfect },
       {
         label: `Present Perfect Continuous — ${presentPerfectContinuous}`,
         value: presentPerfectContinuous
@@ -731,6 +922,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
   const presentPerfectNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} ${forms.pastParticiple}`);
   const pastPerfectNeg = applyAdverb(`${getNegAux("had", contraction)} ${forms.pastParticiple}`);
   const futurePerfectNeg = applyAdverb(`${getNegAux("will", contraction)} have ${forms.pastParticiple}`);
+  const conditionalPerfectNeg = applyAdverb(`wouldn't have ${forms.pastParticiple}`);
   const presentPerfectContinuousNeg = applyAdverb(`${getNegAux(getHavePresent(subjectType), contraction)} been ${forms.ing}`);
   const pastPerfectContinuousNeg = applyAdverb(`${getNegAux("had", contraction)} been ${forms.ing}`);
   const futurePerfectContinuousNeg = applyAdverb(`${getNegAux("will", contraction)} have been ${forms.ing}`);
@@ -745,6 +937,7 @@ const buildTenseOptions = ({ base, subject, negative = false, contraction = fals
     { label: `Present Perfect — ${presentPerfectNeg}`, value: presentPerfectNeg },
     { label: `Past Perfect — ${pastPerfectNeg}`, value: pastPerfectNeg },
     { label: `Future Perfect — ${futurePerfectNeg}`, value: futurePerfectNeg },
+    { label: `Conditional Perfect — ${conditionalPerfectNeg}`, value: conditionalPerfectNeg },
     {
       label: `Present Perfect Continuous — ${presentPerfectContinuousNeg}`,
       value: presentPerfectContinuousNeg
