@@ -596,6 +596,9 @@
     <script src="js/topics/collocations-adjective-noun.js"></script>
     <script src="js/topics/collocations-verb-preposition.js"></script>
     <script src="js/topics/collocations-adverb-adjective.js"></script>
+    <script src="js/topics/participles1.js"></script>
+    <script src="js/topics/participles2.js"></script>
+    <script src="js/topics/participles3.js"></script>
     <script src="js/topic-manager.js"></script>
     <script>
         let currentExercise = null;
@@ -608,6 +611,23 @@
             // Show welcome screen instead of auto-loading
             showWelcomeScreen();
         });
+
+        // Read ?topic=xxx from URL for shareable links
+        function getTopicFromUrl() {
+            const params = new URLSearchParams(location.search);
+            return params.get('topic') || params.get('Topic') || null;
+        }
+
+        // Update URL with ?topic=xxx when a topic is selected (for easy link sharing)
+        function setTopicInUrl(topicId) {
+            const url = new URL(location.href);
+            if (topicId) {
+                url.searchParams.set('topic', topicId);
+            } else {
+                url.searchParams.delete('topic');
+            }
+            history.replaceState(null, '', url);
+        }
 
         // Load topic list into select dropdown
         function loadTopicList() {
@@ -625,15 +645,23 @@
                 topicSelect.appendChild(option);
             });
             
-            // Add change event listener
+            // Add change event listener (updates URL when user picks a topic)
             topicSelect.addEventListener('change', function() {
                 const selectedTopicId = this.value;
                 if (selectedTopicId) {
                     loadTopic(selectedTopicId);
                 } else {
+                    setTopicInUrl(null);
                     showWelcomeScreen();
                 }
             });
+            
+            // If URL has ?topic=xxx, open that topic for shareable links
+            const topicFromUrl = getTopicFromUrl();
+            if (topicFromUrl && topics.some(t => t.id === topicFromUrl)) {
+                topicSelect.value = topicFromUrl;
+                loadTopic(topicFromUrl);
+            }
         }
 
         // Show welcome screen
@@ -669,6 +697,9 @@
         // Load a specific topic
         async function loadTopic(topicId) {
             try {
+                // Update URL for easy link sharing
+                setTopicInUrl(topicId);
+                
                 // Update select dropdown
                 const topicSelect = document.getElementById('topic-select');
                 if (topicSelect) {
@@ -737,7 +768,10 @@
             'collocations-verb-noun': '<strong>💡 Tips:</strong> Verb + noun collocations are very common (take a risk, make progress). Learn them as chunks.',
             'collocations-adjective-noun': '<strong>💡 Tips:</strong> Adjective + noun collocations sound natural (heavy traffic, strict rules).',
             'collocations-verb-preposition': '<strong>💡 Tips:</strong> Many verbs need a specific preposition (depend on, insist on).',
-            'collocations-adverb-adjective': '<strong>💡 Tips:</strong> Adverbs often go with specific adjectives (highly recommended, deeply sorry).'
+            'collocations-adverb-adjective': '<strong>💡 Tips:</strong> Adverbs often go with specific adjectives (highly recommended, deeply sorry).',
+            'participles-1': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).',
+            'participles-2': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).',
+            'participles-3': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).'
         };
 
         // Load all exercises for current topic

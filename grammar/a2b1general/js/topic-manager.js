@@ -148,6 +148,24 @@ class TopicManager {
         name: 'Collocations: Adverb + Adjective | 副詞+形容詞', 
         file: 'collocations-adverb-adjective.js',
         introduction: 'Adverb + adjective pairs<br>副詞+形容詞搭配'
+      },
+      { 
+        id: 'participles-1', 
+        name: 'Part of Speech: Participles 1 | 分詞詞性1', 
+        file: 'participles1.js',
+        introduction: 'Is it a verb (V), noun (N), clause (C), or adjective (A)?<br>分清楚係動詞、名詞、從句定形容詞'
+      },
+      { 
+        id: 'participles-2', 
+        name: 'Part of Speech: Participles 2 | 分詞詞性2', 
+        file: 'participles2.js',
+        introduction: 'Is it a verb (V), noun (N), clause (C), or adjective (A)?<br>分清楚係動詞、名詞、從句定形容詞'
+      },
+      { 
+        id: 'participles-3', 
+        name: 'Part of Speech: Participles 3 | 分詞詞性3', 
+        file: 'participles3.js',
+        introduction: 'Is it a verb (V), noun (N), clause (C), or adjective (A)?<br>分清楚係動詞、名詞、從句定形容詞'
       }
     ];
   }
@@ -212,7 +230,10 @@ class TopicManager {
       'collocations-verb-noun': 'collocationsVerbNounExercises',
       'collocations-adjective-noun': 'collocationsAdjectiveNounExercises',
       'collocations-verb-preposition': 'collocationsVerbPrepositionExercises',
-      'collocations-adverb-adjective': 'collocationsAdverbAdjectiveExercises'
+      'collocations-adverb-adjective': 'collocationsAdverbAdjectiveExercises',
+      'participles-1': 'participles1Exercises',
+      'participles-2': 'participles2Exercises',
+      'participles-3': 'participles3Exercises'
     };
     return mapping[topicId];
   }
