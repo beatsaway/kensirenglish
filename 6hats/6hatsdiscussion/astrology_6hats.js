@@ -83,6 +83,28 @@ window.sixHatSets = [
       { emoji: "📋", text: "How did ancient people use the sky to tell time at night?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Would astrology make sense on a different planet?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "🌌 Mayan Astrology",
+    link: "https://www.history.com/topics/ancient-americas/mayan-scientific-achievements",
+    linkLabel: "Read more",
+    vocablist: [
+      { word: "calendar", translation: "曆法", emoji: "📅" },
+      { word: "glyph", translation: "象形符號", emoji: "🪶" },
+      { word: "cycle", translation: "循環", emoji: "🔄" },
+      { word: "prophecy", translation: "預言", emoji: "🔮" },
+      { word: "civilization", translation: "文明", emoji: "🏛️" },
+      { word: "sacred", translation: "神聖的", emoji: "✨" }
+    ],
+    vocabex: "The Maya <span class='vocab-blank' data-answer='civilization'></span> created a complex <span class='vocab-blank' data-answer='calendar'></span> based on the movements of the sun, moon, and stars. Each day had a <span class='vocab-blank' data-answer='glyph'></span>, or symbol, and time moved in repeating <span class='vocab-blank' data-answer='cycle'></span>s. Mayan priests used the sky for <span class='vocab-blank' data-answer='prophecy'></span> and to plan <span class='vocab-blank' data-answer='sacred'></span> rituals. Today people still study Mayan astrology.",
+    questions: [
+      { emoji: "📊", text: "What is Mayan astrology? What did the Maya use the sky for?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does Mayan astrology interest you more or less than Western zodiac? Why?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might Mayan calendar and astrology be worth studying today?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What problems or limits does Mayan astrology have?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did the Maya link their calendar to the stars? How is it different from Western astrology?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How would you teach Mayan astrology to others in one lesson?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
 
