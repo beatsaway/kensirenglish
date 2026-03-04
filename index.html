@@ -213,17 +213,16 @@
             max-width: var(--max-width);
             margin: 0 auto;
             width: 100%;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: var(--space-2);
-            align-items: stretch;
             padding: 0;
         }
 
         .sub-nav-option {
             display: inline-flex;
             flex-direction: column;
-            width: 100%;
+            min-width: 0;
             padding: 10px 12px;
             text-decoration: none;
             color: var(--color-text);
@@ -241,21 +240,25 @@
         }
 
         .sub-nav-option-top {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            display: block;
             font-weight: 500;
             color: var(--color-text);
+            writing-mode: horizontal-tb;
         }
 
         .sub-nav-option-emoji {
+            display: inline;
             font-size: 1rem;
         }
 
         .sub-nav-option-cantonese {
+            display: inline;
             font-family: "LXGW WenKai TC", sans-serif;
             font-weight: 500;
             color: #395E7D;
+            writing-mode: horizontal-tb;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .sub-nav-option-english {
@@ -934,6 +937,10 @@
             .sub-navbar.active {
                 padding: var(--space-2);
                 max-height: 300px;
+                overflow-y: auto;
+            }
+            .sub-navbar-content {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
             .philosophy { padding: var(--space-3); font-size: 0.9375rem; }
         }
@@ -1332,6 +1339,13 @@
                                     <span class="nav-select-option-cantonese">綜合文法</span>
                                 </span><br>
                                 <span class="nav-select-option-subtitle">General Grammar</span>
+                            </a>
+                            <a href="grammar/worksheets/index.html" class="nav-select-option">
+                                <span class="nav-select-option-title">
+                                    <span class="nav-select-option-emoji">📄</span>
+                                    <span class="nav-select-option-cantonese">工作紙</span>
+                                </span><br>
+                                <span class="nav-select-option-subtitle">Worksheets</span>
                             </a>
                             <a href="grammar/irregular/irregular-verbs.html" class="nav-select-option">
                                 <span class="nav-select-option-title">

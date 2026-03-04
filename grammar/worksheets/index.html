@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar worksheets | 文法工作紙</title>
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --color-bg: #fffffc;
+            --color-surface: #fff;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-border: #e0e0e0;
+            --color-accent: #4a90e2;
+            --max-width: 800px;
+        }
+        body {
+            color: var(--color-text);
+            line-height: 1.3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+        }
+        /* Header matches grammar/a2b1general: gradient from main.css, same size/layout */
+        header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 4px var(--space-4) 4px var(--space-2);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .header-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: var(--space-1);
+        }
+        .header-label {
+            font-size: 14px;
+            color: var(--color-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+        .header-label .separator {
+            color: var(--color-text-secondary);
+            margin: 0 2px;
+        }
+        .header-copyright {
+            font-size: 9px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin-top: 1px;
+        }
+        .header-copyright a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .header-copyright a:hover { opacity: 0.7; }
+        .header-label-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .header-label-link:hover { opacity: 0.8; }
+        .header-wrap { position: relative; }
+        .worksheet-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            padding: 4px var(--space-3) 6px;
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-surface);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            z-index: 9;
+        }
+        .worksheet-list[hidden] { display: none !important; }
+        .worksheet-list ul { list-style: none; }
+        .worksheet-list a {
+            display: block;
+            padding: 2px 0;
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.9375rem;
+        }
+        .worksheet-list a:hover { color: var(--color-text-secondary); }
+        main {
+            flex: 1;
+            padding: var(--space-3) var(--space-4);
+            overflow-y: auto;
+        }
+        .worksheet-view {
+            width: 100%;
+        }
+        .worksheet-view h2.ws-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+            padding-bottom: var(--space-1);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .worksheet-view section {
+            margin-bottom: var(--space-3);
+            padding: var(--space-3);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-bg);
+        }
+        .worksheet-view section:last-child { margin-bottom: 0; }
+        .worksheet-view section > h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+        }
+        .worksheet-view section > .section-note {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+            line-height: 1.5;
+        }
+        .worksheet-view .item {
+            margin-bottom: var(--space-3);
+        }
+        .worksheet-view .item > p {
+            font-size: 0.9375rem;
+            margin-bottom: 4px;
+        }
+        .worksheet-view .item > p:last-child { margin-bottom: 0; }
+        .worksheet-view .item .zh {
+            color: var(--color-text-secondary);
+            font-family: "LXGW WenKai TC", "Microsoft JhengHei", sans-serif;
+        }
+        .worksheet-view .item .inst {
+            font-size: 0.8125rem;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+        .worksheet-view .item .blank {
+            margin-top: 8px;
+            font-family: ui-monospace, monospace;
+            letter-spacing: 0.02em;
+        }
+        .worksheet-view h3 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin: var(--space-2) 0 var(--space-1);
+        }
+        .empty-state {
+            text-align: center;
+            color: var(--color-text-secondary);
+            padding: var(--space-4);
+            font-size: 0.9375rem;
+        }
+        .empty-state[hidden],
+        .worksheet-view[hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="header-wrap">
+        <header>
+            <div class="header-left">
+                <a href="#" class="header-label-link" id="headerLabelLink" aria-expanded="false" aria-controls="worksheetList">
+                    <span class="header-label">Worksheets<span class="separator">•📄</span>工作紙</span>
+                </a>
+                <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+            </div>
+        </header>
+        <div class="worksheet-list" id="worksheetList" hidden>
+            <ul id="worksheetListUl"></ul>
+        </div>
+    </div>
+    <main>
+        <p class="empty-state" id="emptyState">Click Worksheets•📄工作紙 above to see available worksheets.</p>
+        <article class="worksheet-view" id="worksheetView" hidden></article>
+    </main>
+
+    <script src="participles_clauses_fill.js"></script>
+    <script>
+        (function() {
+            const headerLabelLink = document.getElementById('headerLabelLink');
+            const worksheetList = document.getElementById('worksheetList');
+            const worksheetListUl = document.getElementById('worksheetListUl');
+            const emptyState = document.getElementById('emptyState');
+            const view = document.getElementById('worksheetView');
+
+            const worksheets = [
+                { value: 'participles_clauses_fill', label: 'Participle clauses | 分詞子句（填空）', dataKey: 'WORKSHEET_PARTICIPLES_CLAUSES_FILL' }
+            ];
+
+            function renderWorksheet(data) {
+                if (!data || !data.sections) return;
+                var html = '<h2 class="ws-title">' + escapeHtml(data.title) + ' | ' + escapeHtml(data.titleZh || '') + '</h2>';
+                data.sections.forEach(function(section) {
+                    html += '<section><h2>' + escapeHtml(section.title) + '</h2>';
+                    if (section.note) html += '<p class="section-note">' + escapeHtml(section.note) + '</p>';
+                    if (section.items) {
+                        section.items.forEach(function(item) { html += renderItem(item); });
+                    }
+                    if (section.subsections) {
+                        section.subsections.forEach(function(sub) {
+                            html += '<h3>' + escapeHtml(sub.title) + '</h3>';
+                            (sub.items || []).forEach(function(item) { html += renderItem(item); });
+                        });
+                    }
+                    html += '</section>';
+                });
+                view.innerHTML = html;
+                view.hidden = false;
+                emptyState.hidden = true;
+            }
+
+            function renderItem(item) {
+                var buf = '<div class="item">';
+                if (item.emoji) buf += '<p>' + escapeHtml(item.emoji) + '</p>';
+                if (item.en) buf += '<p>' + escapeHtml(item.en) + '</p>';
+                if (item.zh) buf += '<p class="zh">' + escapeHtml(item.zh) + '</p>';
+                if (item.instruction) buf += '<p class="inst">' + escapeHtml(item.instruction) + '</p>';
+                if (item.blank) buf += '<p class="blank">➡️ ' + escapeHtml(item.blank) + '</p>';
+                buf += '</div>';
+                return buf;
+            }
+
+            function escapeHtml(s) {
+                if (s == null) return '';
+                var div = document.createElement('div');
+                div.textContent = s;
+                return div.innerHTML;
+            }
+
+            function loadWorksheet(value) {
+                var config = worksheets.find(function(w) { return w.value === value; });
+                if (!config) return;
+                var data = window[config.dataKey];
+                if (data) {
+                    renderWorksheet(data);
+                    worksheetList.hidden = true;
+                    headerLabelLink.setAttribute('aria-expanded', 'false');
+                } else {
+                    emptyState.textContent = 'Worksheet data not loaded.';
+                    emptyState.hidden = false;
+                    view.hidden = true;
+                }
+            }
+
+            // Populate worksheet list as no-decoration links
+            worksheets.forEach(function(w) {
+                var li = document.createElement('li');
+                var a = document.createElement('a');
+                a.href = '#';
+                a.textContent = w.label;
+                a.dataset.value = w.value;
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadWorksheet(this.dataset.value);
+                });
+                li.appendChild(a);
+                worksheetListUl.appendChild(li);
+            });
+
+            // Click header label to toggle list below header
+            headerLabelLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                var open = worksheetList.hidden;
+                worksheetList.hidden = !open;
+                headerLabelLink.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            // If URL has ?worksheet=xxx, open that worksheet and show list briefly then hide
+            var params = new URLSearchParams(window.location.search);
+            var q = params.get('worksheet');
+            if (q && worksheets.some(function(w) { return w.value === q; })) {
+                loadWorksheet(q);
+            }
+        })();
+    </script>
+</body>
+</html>
