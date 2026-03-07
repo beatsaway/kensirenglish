@@ -63,6 +63,11 @@
         .task-vocab-item:hover { background: #eee; border-color: var(--color-text-secondary); }
         .task-vocab-item .vocab-cn { color: var(--color-text-secondary); margin-left: 6px; display: none; }
         .task-vocab-item.show-cn .vocab-cn { display: inline; }
+        .reference-links { margin-bottom: 20px; padding: 12px; background: #f0f4f8; border: 1px solid var(--color-border); }
+        .reference-links-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: #444; }
+        .reference-links-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .reference-links-list a { font-size: 0.9rem; color: #2563eb; text-decoration: none; padding: 4px 0; }
+        .reference-links-list a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -84,8 +89,9 @@
     <script src="winter.js"></script>
     <script src="olympics.js"></script>
     <script src="astrology.js"></script>
+    <script src="monalisa.js"></script>
     <script>
-        const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics, astrology: window.themeBasedAstrology };
+        const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics, astrology: window.themeBasedAstrology, monalisa: window.themeBasedMonalisa };
         const themeSelect = document.getElementById("themeSelect");
         const taskCards = document.getElementById("taskCards");
 
@@ -104,6 +110,23 @@
         function render(data) {
             taskCards.innerHTML = "";
             if (!data || !data.tasks || !data.tasks.length) return;
+            if (data.referenceLinks && data.referenceLinks.length > 0) {
+                const refBlock = document.createElement("div");
+                refBlock.className = "reference-links";
+                refBlock.innerHTML = "<div class=\"reference-links-title\">Reference (optional)</div>";
+                const list = document.createElement("div");
+                list.className = "reference-links-list";
+                data.referenceLinks.forEach((item) => {
+                    const a = document.createElement("a");
+                    a.href = item.url;
+                    a.target = "_blank";
+                    a.rel = "noopener";
+                    a.textContent = item.label;
+                    list.appendChild(a);
+                });
+                refBlock.appendChild(list);
+                taskCards.appendChild(refBlock);
+            }
             data.tasks.forEach((task) => {
                 const card = document.createElement("section");
                 card.className = "task-card";
