@@ -194,7 +194,8 @@
             { label: 'Night Market', src: 'night_market.js' },
             { label: 'Hiking Story', src: 'hiking_story.js' },
             { label: 'Lunar New Year', src: 'lunar_new_year.js' },
-            { label: 'Milky Way', src: 'milky_way.js' }
+            { label: 'Milky Way', src: 'milky_way.js' },
+            { label: 'Camping', src: 'camping_spelling_words.js' }
         ];
 
         function renderExercises() {
@@ -283,11 +284,19 @@
         });
 
         datasetSelect.addEventListener('change', (event) => {
-            refreshExercises(event.target.value);
+            const src = event.target.value;
+            refreshExercises(src);
+            const url = new URL(location.href);
+            url.searchParams.set('exercise', src);
+            history.replaceState(null, '', url);
         });
 
-        datasetSelect.value = datasets[0].src;
-        refreshExercises(datasets[0].src);
+        const params = new URLSearchParams(location.search);
+        const exerciseFromUrl = params.get('exercise');
+        const matched = datasets.find((d) => d.src === exerciseFromUrl);
+        const initialSrc = matched ? matched.src : datasets[0].src;
+        datasetSelect.value = initialSrc;
+        refreshExercises(initialSrc);
     </script>
 </body>
 </html>
