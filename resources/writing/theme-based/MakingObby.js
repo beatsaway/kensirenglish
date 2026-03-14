@@ -7,7 +7,7 @@ window.themeBasedMakingObby = {
     tasks: [
         {
             id: "obby-blog",
-            title: "Blog: How to make an obby on Roblox",
+            title: "How to make an obby on Roblox",
             context: "You're writing a blog post to teach young learners how to make an obby game on Roblox by simply answering all the following questions. For each question, do your best to keep your answer short and precise in no more than 3 sentences. This requires you to filter, summarise and communicate useful information to your readers. ",
             questions: [
                 { text: "Who should read your blog post? (e.g. If you're …, this post is for you!)" },
