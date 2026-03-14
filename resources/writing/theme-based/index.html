@@ -51,7 +51,7 @@
         .task-questions-list li { margin-bottom: 8px; font-size: 14px; }
         .question-video-link { margin-left: 6px; color: #2563eb; text-decoration: none; font-size: 13px; }
         .question-video-link:hover { text-decoration: underline; }
-        .task-instructions { font-size: 14px; padding: 12px; background: #fff; border-left: 3px solid #2563eb; }
+        .task-instructions { font-size: 14px; padding: 12px; background: #fff; border-left: 3px solid #2563eb; white-space: pre-line; }
         .task-vocab-title { font-size: 0.8rem; font-weight: 400; margin-top: 12px; margin-bottom: 8px; }
         .task-vocab-list { display: flex; flex-wrap: wrap; gap: 8px; }
         .task-vocab-item {
@@ -92,7 +92,7 @@
     <script src="olympics.js"></script>
     <script src="astrology.js"></script>
     <script src="monalisa.js"></script>
-    <script src="MakingObby.js"></script>
+    <script src="gamedesign.js"></script>
     <script>
         const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics, astrology: window.themeBasedAstrology, monalisa: window.themeBasedMonalisa, makingObby: window.themeBasedMakingObby };
         const themeSelect = document.getElementById("themeSelect");
@@ -163,6 +163,16 @@
                         html += li;
                     });
                     html += `</ol>`;
+                }
+                if (task.referenceLinks && task.referenceLinks.length) {
+                    const refTitle = escapeHtml(task.referenceLinksTitle || "Reference (optional)");
+                    html += `<div class="reference-links"><div class="reference-links-title">${refTitle}</div><div class="reference-links-list">`;
+                    task.referenceLinks.forEach((item) => {
+                        const url = (item.url || "").replace(/"/g, "&quot;");
+                        const label = escapeHtml(item.label || "Link");
+                        html += `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+                    });
+                    html += `</div></div>`;
                 }
                 card.innerHTML = html;
                 if (task.vocab && task.vocab.length) {

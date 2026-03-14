@@ -1,9 +1,9 @@
 /**
- * Theme-based writing: Making an Obby on Roblox
- * One task — blog post answering 6 questions with video references.
+ * Theme-based writing: Game Design
+ * Tasks: Obby blog (Roblox) + Multiplayer Wordle design essay.
  */
 window.themeBasedMakingObby = {
-    theme: "Making an obby",
+    theme: "Game Design",
     tasks: [
         {
             id: "obby-blog",
@@ -46,6 +46,47 @@ window.themeBasedMakingObby = {
                 { en: "instruction", cn: "指示" },
                 { en: "deliver", cn: "傳達" },
                 { en: "useful", cn: "有用的" }
+            ]
+        },
+        {
+            id: "wordle-multiplayer",
+            title: "Multiplayer Wordle: Design Essay",
+            context: "Writing assignment (400 to 600 words).",
+            referenceLinksTitle: "Ideas for reference",
+            referenceLinks: [
+                { url: "https://www.youtube.com/shorts/XDmEbl7bf5o", label: "3D blocks" },
+                { url: "https://youtu.be/xYSJ67izzTo?si=4Fm0rHO2AWA3UXhQ&t=6", label: "Time based" },
+                { url: "https://www.youtube.com/shorts/FOiiEWsm4PM", label: "Try not to win" },
+                { url: "https://www.youtube.com/shorts/xOXOM_PITV4", label: "Turn based" }
+            ],
+            instructions: "You are a game designer who wants to make an online multiplayer Wordle game.\n\nYour essay should include:\n• 6 important design features you want for your game\n• Who your target players are (target audience)\n• Why they would want or need those features\n\nAlso mention briefly:\n• Any potential technical difficulties to implement or realise the features in a prototype\n• Possible solutions to overcome them.",
+            questions: [],
+            vocab: [
+                { en: "multiplayer", cn: "多人遊戲" },
+                { en: "feature", cn: "功能" },
+                { en: "target players", cn: "目標玩家" },
+                { en: "prototype", cn: "原型" },
+                { en: "design", cn: "設計" },
+                { en: "implement", cn: "實現" },
+                { en: "real-time", cn: "即時" },
+                { en: "sync", cn: "同步" },
+                { en: "server", cn: "伺服器" },
+                { en: "latency", cn: "延遲" },
+                { en: "audience", cn: "受眾" },
+                { en: "difficulty", cn: "難度" },
+                { en: "feedback", cn: "反饋" },
+                { en: "turn-based", cn: "回合制" },
+                { en: "guess", cn: "猜測" },
+                { en: "interface", cn: "介面" },
+                { en: "usability", cn: "可用性" },
+                { en: "challenge", cn: "挑戰" },
+                { en: "solution", cn: "解決方案" },
+                { en: "overcome", cn: "克服" },
+                { en: "network", cn: "網絡" },
+                { en: "connection", cn: "連線" },
+                { en: "scale", cn: "擴展／規模" },
+                { en: "user experience", cn: "用戶體驗" },
+                { en: "accessibility", cn: "無障礙" }
             ]
         }
     ]
