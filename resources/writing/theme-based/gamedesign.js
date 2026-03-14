@@ -52,7 +52,7 @@ window.themeBasedMakingObby = {
             id: "wordle-multiplayer",
             title: "Multiplayer Wordle: Design Essay",
             context: "Writing assignment (400 to 600 words).",
-            referenceLinksTitle: "Ideas for reference",
+            referenceLinksTitle: "Reference ideas:",
             referenceLinks: [
                 { url: "https://www.youtube.com/shorts/XDmEbl7bf5o", label: "3D blocks" },
                 { url: "https://youtu.be/xYSJ67izzTo?si=4Fm0rHO2AWA3UXhQ&t=6", label: "Time based" },
