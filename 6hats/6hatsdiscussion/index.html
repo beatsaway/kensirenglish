@@ -1135,6 +1135,7 @@
         // Topic mapping: display name -> JS filename
         const topics = [
             { name: "2025 Tech Updates", file: "2025techupdate_6hats_questions.js" },
+            { name: "2025 Meme Culture", file: "2025meme_culture.js" },
             { name: "Antarctica", file: "antarctica_questions.js" },
             { name: "The Arctic", file: "the_artic.js" },
             { name: "Astrology", file: "astrology_6hats.js" },
@@ -1352,10 +1353,16 @@
                 html += `<span class="article-toggle" onclick="toggleArticle('${setId}')" data-set-index="${sessionIndex}">Read text</span>`;
             }
             
-            // Video link
-            if (set.link) {
+            // Video/link(s): support multiple links per item (set.links) or single (set.link)
+            if (set.links && set.links.length > 0) {
+                set.links.forEach((link) => {
+                    const url = (link.url || '').replace(/"/g, '&quot;');
+                    const label = (link.label || 'Link').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    html += `<a href="${url}" target="_blank" rel="noopener" class="video-link-emoji">${label}</a>`;
+                });
+            } else if (set.link) {
                 const linkText = set.linkLabel || "Watch video";
-                html += `<a href="${set.link}" target="_blank" class="video-link-emoji">${linkText}</a>`;
+                html += `<a href="${set.link}" target="_blank" rel="noopener" class="video-link-emoji">${linkText}</a>`;
             }
             
             html += `</div>`;
