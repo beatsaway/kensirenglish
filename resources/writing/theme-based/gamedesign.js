@@ -2,7 +2,7 @@
  * Theme-based writing: Game Design
  * Tasks: Obby blog (Roblox) + Multiplayer Wordle design essay.
  */
-window.themeBasedMakingObby = {
+window.themeBasedGamedesign = {
     theme: "Game Design",
     tasks: [
         {
