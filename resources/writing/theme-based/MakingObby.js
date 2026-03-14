@@ -8,7 +8,7 @@ window.themeBasedMakingObby = {
         {
             id: "obby-blog",
             title: "Blog: How to make an obby on Roblox",
-            context: "This is a writing task that requires you to filter, summarise and deliver useful information to your readers. You're writing a blog post to teach your classmates how to make an obby game on Roblox by simply answering all the following questions. For each question, keep your answer short and precise in no more than 3 sentences.",
+            context: "You're writing a blog post to teach young learners how to make an obby game on Roblox by simply answering all the following questions. For each question, do your best to keep your answer short and precise in no more than 3 sentences. This requires you to filter, summarise and communicate useful information to your readers. ",
             questions: [
                 { text: "Who should read your blog post? (e.g. If you're …, this post is for you!)" },
                 { text: "How do you download Roblox Studio? (Give a simplified answer in no more than 3 steps.)", link: "https://www.youtube.com/watch?v=15gp131gljM", linkLabel: "Watch video" },
