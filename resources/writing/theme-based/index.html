@@ -48,7 +48,9 @@
         .task-watch a:hover { text-decoration: underline; color: #2563eb; }
         .task-context { font-size: 14px; color: #444; margin-bottom: 10px; }
         .task-questions-list { padding-left: 1.4rem; }
-        .task-questions-list li { margin-bottom: 4px; font-size: 14px; }
+        .task-questions-list li { margin-bottom: 8px; font-size: 14px; }
+        .question-video-link { margin-left: 6px; color: #2563eb; text-decoration: none; font-size: 13px; }
+        .question-video-link:hover { text-decoration: underline; }
         .task-instructions { font-size: 14px; padding: 12px; background: #fff; border-left: 3px solid #2563eb; }
         .task-vocab-title { font-size: 0.8rem; font-weight: 400; margin-top: 12px; margin-bottom: 8px; }
         .task-vocab-list { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -90,8 +92,9 @@
     <script src="olympics.js"></script>
     <script src="astrology.js"></script>
     <script src="monalisa.js"></script>
+    <script src="MakingObby.js"></script>
     <script>
-        const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics, astrology: window.themeBasedAstrology, monalisa: window.themeBasedMonalisa };
+        const themes = { winter: window.themeBasedWinter, olympics: window.themeBasedOlympics, astrology: window.themeBasedAstrology, monalisa: window.themeBasedMonalisa, makingObby: window.themeBasedMakingObby };
         const themeSelect = document.getElementById("themeSelect");
         const taskCards = document.getElementById("taskCards");
 
@@ -146,7 +149,19 @@
                 } else if (task.questions && task.questions.length) {
                     if (task.context) html += `<p class="task-context">${escapeHtml(task.context)}</p>`;
                     html += `<ol class="task-questions-list">`;
-                    task.questions.forEach((q) => { html += `<li>${escapeHtml(q)}</li>`; });
+                    task.questions.forEach((q) => {
+                        const questionText = typeof q === "string" ? q : (q.text || "");
+                        const link = typeof q === "object" && q && q.link;
+                        const linkLabel = (typeof q === "object" && q && q.linkLabel) ? q.linkLabel : "Watch video";
+                        let li = "<li><span class=\"question-text\">" + escapeHtml(questionText) + "</span>";
+                        if (link) {
+                            const safeUrl = (link + "").replace(/"/g, "&quot;");
+                            const safeLabel = escapeHtml(linkLabel);
+                            li += " <a href=\"" + safeUrl + "\" target=\"_blank\" rel=\"noopener\" class=\"question-video-link\">" + safeLabel + "</a>";
+                        }
+                        li += "</li>";
+                        html += li;
+                    });
                     html += `</ol>`;
                 }
                 card.innerHTML = html;
