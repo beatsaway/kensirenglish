@@ -56,7 +56,7 @@ window.themeBasedMemeculture = {
             id: "judge-meme-by-origin",
             title: "Can You Judge a Meme by Where It Came From?",
             context: "By definition, a meme is like a 'cultural gene': it can be copied and changed. Some people argue that just as children are different from their parents, you cannot judge a meme by where it came from. Do you agree?",
-            instructions: "State whether you agree or disagree. Give 3 examples to support your view (e.g. sounds, images, or trends that changed meaning or spread in new ways).",
+            instructions: "State whether you agree or disagree. Give 3 examples to support your view (where the meme came from, and if that has anything to do with the meme's meaning or impact, which could be positive or negative).",
             questions: [],
             vocab: [
                 { en: "meme", cn: "迷因" },
