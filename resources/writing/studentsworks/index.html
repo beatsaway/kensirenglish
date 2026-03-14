@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase | 作品分享</title>
+    <link rel="stylesheet" href="../../../main.css">
+    <style>
+        :root {
+            --space-2: 16px;
+            --space-4: 32px;
+            --color-bg: #ffffff;
+            --color-text: #111111;
+            --color-text-secondary: #666666;
+            --color-border: #dddddd;
+            --color-comment: #1565c0;
+            --color-comment-bg: #e3f2fd;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: inherit; background: var(--color-bg); color: var(--color-text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 6px var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+        .header-left { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+        .header-label { font-size: 14px; font-weight: 600; }
+        .header-copyright { font-size: 10px; color: var(--color-text-secondary); }
+        .header-copyright a { color: inherit; text-decoration: none; }
+        main { padding: 24px; max-width: 720px; margin: 0 auto; width: 100%; }
+        .work-row { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+        .work-row select { padding: 6px 10px; border: 1px solid var(--color-border); font-size: 14px; }
+        .work-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+        .work-subtitle { font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 20px; }
+        .block-heading {
+            font-size: 1rem; font-weight: 600; color: var(--color-text-secondary);
+            margin-top: 24px; margin-bottom: 8px;
+            padding-bottom: 4px; border-bottom: 1px solid var(--color-border);
+        }
+        .block-student { margin-bottom: 12px; }
+        .block-student p { margin-bottom: 10px; }
+        .block-student p:last-child { margin-bottom: 0; }
+        .block-comment {
+            margin: 12px 0 16px 0;
+            padding: 10px 14px;
+            background: var(--color-comment-bg);
+            border-left: 4px solid var(--color-comment);
+            color: var(--color-comment);
+            font-size: 0.95rem;
+        }
+        .block-comment .comment-label { font-weight: 700; margin-right: 4px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="header-label">Showcase | 作品分享</div>
+            <div class="header-copyright"><a href="../../../index.html">©kensirenglish.com</a></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="work-row">
+            <select id="workSelect"></select>
+        </div>
+        <div id="workContent"></div>
+    </main>
+
+    <script src="lifehack_kari_260314.js"></script>
+    <script>
+        const works = window.studentWorks || {};
+        const workSelect = document.getElementById("workSelect");
+        const workContent = document.getElementById("workContent");
+
+        const workIds = Object.keys(works);
+        workIds.forEach((id) => {
+            const opt = document.createElement("option");
+            opt.value = id;
+            opt.textContent = works[id].title || id;
+            workSelect.appendChild(opt);
+        });
+
+        const params = new URLSearchParams(location.search);
+        const workFromUrl = params.get("work");
+        workSelect.value = workIds.includes(workFromUrl) ? workFromUrl : workIds[0] || "";
+
+        function escapeHtml(text) {
+            if (!text) return "";
+            const div = document.createElement("div");
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function render(data) {
+            workContent.innerHTML = "";
+            if (!data || !data.blocks || !data.blocks.length) return;
+
+            const titleEl = document.createElement("h1");
+            titleEl.className = "work-title";
+            titleEl.textContent = data.title || "";
+            workContent.appendChild(titleEl);
+
+            if (data.subtitle) {
+                const subEl = document.createElement("p");
+                subEl.className = "work-subtitle";
+                subEl.textContent = data.subtitle;
+                workContent.appendChild(subEl);
+            }
+
+            const container = document.createElement("div");
+            data.blocks.forEach((block) => {
+                if (block.type === "heading") {
+                    const h = document.createElement("div");
+                    h.className = "block-heading";
+                    h.textContent = block.text;
+                    container.appendChild(h);
+                } else if (block.type === "student") {
+                    const wrap = document.createElement("div");
+                    wrap.className = "block-student";
+                    const paras = block.text.split(/\n\n+/);
+                    paras.forEach((p) => {
+                        const el = document.createElement("p");
+                        el.textContent = p;
+                        wrap.appendChild(el);
+                    });
+                    container.appendChild(wrap);
+                } else if (block.type === "comment") {
+                    const div = document.createElement("div");
+                    div.className = "block-comment";
+                    div.innerHTML = "<span class=\"comment-label\">K:</span>" + escapeHtml(block.text);
+                    container.appendChild(div);
+                }
+            });
+            workContent.appendChild(container);
+        }
+
+        workSelect.addEventListener("change", () => {
+            const id = workSelect.value;
+            const url = new URL(location.href);
+            url.searchParams.set("work", id);
+            history.replaceState(null, "", url);
+            render(works[id]);
+        });
+
+        render(works[workSelect.value]);
+    </script>
+</body>
+</html>
