@@ -1,10 +1,37 @@
 /**
  * Theme-based writing: Game Design
- * Tasks: Obby blog (Roblox) + Multiplayer Wordle design essay.
+ * Tasks: Obby blog (Roblox) + Multiplayer Wordle design essay + Easter newsletter (Roblox with friends).
  */
 window.themeBasedGamedesign = {
     theme: "Game Design",
     tasks: [
+        
+        {
+            id: "easter-roblox-newsletter",
+            title: "Roblox Games to Play with Friends",
+            context: "To have fun socialising while not being in school this Easter, many students want to stay in touch with their friends on Roblox. Write an article to recommend 2 such Roblox games for your school newsletter.",
+            instructions: "Give at least 3 reasons for each. You could mention the gameplay, visuals, sounds, characters, scenes, actions, items, tasks, special events, etc.",
+            questions: [],
+            vocab: [
+                { en: "recommend", cn: "推薦" },
+                { en: "newsletter", cn: "通訊／校刊" },
+                { en: "hang out", cn: "聚會／一起玩" },
+                { en: "socialise", cn: "社交" },
+                { en: "gameplay", cn: "玩法" },
+                { en: "vivid", cn: "生動" },
+                { en: "character", cn: "角色" },
+                { en: "scene", cn: "場景" },
+                { en: "sound effect", cn: "音效" },
+                { en: "task", cn: "任務" },
+                { en: "special event", cn: "特別活動" },
+                { en: "multiplayer", cn: "多人遊戲" },
+                { en: "co-op", cn: "合作模式" },
+                { en: "avatar", cn: "虛擬角色" },
+                { en: "reason", cn: "原因／理由" },
+                { en: "audience", cn: "讀者" },
+                { en: "holiday", cn: "假期" }
+            ]
+        },
         {
             id: "obby-blog",
             title: "How to make an obby on Roblox",
