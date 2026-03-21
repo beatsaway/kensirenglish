@@ -20,9 +20,9 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What would you tell a friend before they try this game?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "In what order would you build your first park — rides, paths, prices — and why?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What one ride, guest type, or park rule would you add that the game does not have?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -44,9 +44,9 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What would you tell a friend before they try this game?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How would you run a fair vote round — who judges, how long, what counts as spam?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How could the game celebrate good outfits without pushing everyone to buy VIP?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -67,9 +67,9 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How would you explain a participle clause using this game as an example?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "What new role, cooldown, or report button would reduce troll sheriffs?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -90,9 +90,9 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How could you write a sentence with a participle clause about beating an obby?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "What would you add — practice mode, easier checkpoints, or anti-troll tools — for new runners?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -112,9 +112,9 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What would you tell a friend before they try this game?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What age rating or content warning would you put on the store page, and what would it say?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How would you redesign the grandma or the house so it stays funny but less nightmare-friendly for little kids?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -135,11 +135,11 @@ window.sixHatSets = [
       { emoji: "📊", text: "What is this game about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about this game?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might be left out or treated unfairly in this kind of game?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How would you write a participle clause about escaping a disaster in-game?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What could go wrong?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How would you write a participle clause about escaping a disaster in this game?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What rule would you add so VIPs cannot spam-buy disasters and wipe the whole server every round?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   }
 ];
 
-// Keep question order fixed so White / Yellow / Green stay the same trio on every game.
+// Fixed order: White → Red → Yellow → Black → Blue → Green.
