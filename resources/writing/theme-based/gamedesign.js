@@ -9,7 +9,7 @@ window.themeBasedGamedesign = {
         {
             id: "easter-roblox-newsletter",
             title: "Roblox Games to Play with Friends",
-            context: "To have fun socialising while not being in school this Easter, many students want to stay in touch with their friends on Roblox. Write an article to recommend at least 2 such Roblox games for your school newsletter.",
+            context: "To have fun socialising while not being in school this Easter, many students want to stay in touch with their friends on Roblox. Write an article to recommend at least 2 such games for your school newsletter.",
             instructions: "Give at least 3 reasons for each. You could mention the gameplay, visuals, sounds, characters, scenes, actions, items, tasks, special events, etc.",
             questions: [],
             vocab: [
