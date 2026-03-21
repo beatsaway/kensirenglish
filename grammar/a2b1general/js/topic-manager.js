@@ -114,6 +114,12 @@ class TopicManager {
         introduction: 'Active, passive, and -ed/-ing adjectives<br>主動被動同形容詞'
       },
       { 
+        id: 'confusable-verbs', 
+        name: 'Confusable Verbs & Word Forms | 易混淆動詞與詞形', 
+        file: 'confusable-verbs.js',
+        introduction: 'Irregular participles, lie/lay, hang, and more<br>過去分詞同易混淆動詞'
+      },
+      { 
         id: 'reported-speech', 
         name: 'Reported Speech | 間接引語', 
         file: 'reported-speech.js',
@@ -225,6 +231,7 @@ class TopicManager {
       'conditionals': 'conditionalsExercises',
       'passive-voice': 'passiveVoiceExercises',
       'passive-voice-2': 'passiveVoice2Exercises',
+      'confusable-verbs': 'confusableVerbsExercises',
       'reported-speech': 'reportedSpeechExercises',
       'phrasal-verbs': 'phrasalVerbsExercises',
       'collocations-verb-noun': 'collocationsVerbNounExercises',

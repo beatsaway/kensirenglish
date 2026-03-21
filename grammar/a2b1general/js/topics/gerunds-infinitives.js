@@ -89,5 +89,23 @@ window.gerundsInfinitivesExercises = [
     options: ["to learn", "learning", "learn", "learned"],
     correctAnswers: ["to learn"],
     explanation: "After 'decide', use the infinitive (to + verb), not the gerund (-ing form)."
+  },
+  {
+    id: 11,
+    category: "Gerunds vs Infinitives",
+    question: "✉️ Would you mind _____ this letter for me?",
+    chineseTranslation: "可唔可以幫我寄呢封信？",
+    options: ["posting", "to post", "posted", "post"],
+    correctAnswers: ["posting"],
+    explanation: "After 'Would you mind', use the gerund (-ing), not the infinitive. 'Would you mind posting…?' = a polite request."
+  },
+  {
+    id: 12,
+    category: "Gerunds vs Infinitives",
+    question: "🚪 Would you mind _____ the window? It's cold in here.",
+    chineseTranslation: "可唔可以關閉窗？入面好凍。",
+    options: ["closing", "to close", "closed", "close"],
+    correctAnswers: ["closing"],
+    explanation: "Same pattern: 'Would you mind' + gerund (-ing form)."
   }
 ];
