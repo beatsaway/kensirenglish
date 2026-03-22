@@ -52,6 +52,27 @@
             font-size: 0.95rem;
         }
         .block-comment .comment-label { font-weight: 700; margin-right: 4px; }
+        .block-bilingual--immersive { margin-bottom: 4px; }
+        .bilingual-para {
+            margin: 0 0 12px 0;
+            line-height: 1.65;
+        }
+        .bilingual-sentence {
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.12s ease, box-shadow 0.12s ease;
+        }
+        .bilingual-sentence:hover {
+            background: rgba(21, 101, 192, 0.06);
+            box-shadow: 0 1px 0 0 rgba(21, 101, 192, 0.25);
+        }
+        .bilingual-sentence:focus-visible {
+            outline: 2px solid #1565c0;
+            outline-offset: 2px;
+        }
+        .bilingual-sentence.is-yue {
+            background: rgba(21, 101, 192, 0.05);
+        }
     </style>
 </head>
 <body>
@@ -70,6 +91,7 @@
     </main>
 
     <script src="lifehack_kari_260314.js"></script>
+    <script src="barbecue_sophie_260314.js"></script>
     <script>
         const works = window.studentWorks || {};
         const workSelect = document.getElementById("workSelect");
@@ -92,6 +114,14 @@
             const div = document.createElement("div");
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        function toggleBilingualSentence(span) {
+            const b = span._bilingual;
+            if (!b) return;
+            span._showingEn = !span._showingEn;
+            span.textContent = span._showingEn ? b.en : b.yue;
+            span.classList.toggle("is-yue", !span._showingEn);
         }
 
         function render(data) {
@@ -132,6 +162,44 @@
                     div.className = "block-comment";
                     div.innerHTML = "<span class=\"comment-label\">K:</span>" + escapeHtml(block.text);
                     container.appendChild(div);
+                } else if (block.type === "bilingual") {
+                    const groups =
+                        block.paragraphs && block.paragraphs.length
+                            ? block.paragraphs
+                            : block.pairs && block.pairs.length
+                              ? [block.pairs]
+                              : [];
+                    if (!groups.length) return;
+                    const wrap = document.createElement("div");
+                    wrap.className = "block-bilingual block-bilingual--immersive";
+                    groups.forEach((sentencePairs) => {
+                        if (!sentencePairs || !sentencePairs.length) return;
+                        const pEl = document.createElement("p");
+                        pEl.className = "bilingual-para";
+                        sentencePairs.forEach((pair, i) => {
+                            const span = document.createElement("span");
+                            span.className = "bilingual-sentence";
+                            span.setAttribute("role", "button");
+                            span.setAttribute("tabindex", "0");
+                            span.setAttribute("aria-label", "Toggle sentence");
+                            span._bilingual = { en: pair.en || "", yue: pair.yue || "" };
+                            span._showingEn = true;
+                            span.textContent = span._bilingual.en;
+                            span.addEventListener("click", () => toggleBilingualSentence(span));
+                            span.addEventListener("keydown", (e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    toggleBilingualSentence(span);
+                                }
+                            });
+                            pEl.appendChild(span);
+                            if (i < sentencePairs.length - 1) {
+                                pEl.appendChild(document.createTextNode(" "));
+                            }
+                        });
+                        wrap.appendChild(pEl);
+                    });
+                    container.appendChild(wrap);
                 }
             });
             workContent.appendChild(container);
