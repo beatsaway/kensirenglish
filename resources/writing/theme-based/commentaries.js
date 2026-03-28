@@ -7,30 +7,30 @@ window.themeBasedCommentaries = {
     tasks: [
         {
             id: "y7-commentary-reaction-explained",
-            title: "School blog: commentary and reaction",
-            context: "Write a short post for your school blog.",
-            instructions: "Explain in your own words what a commentary video is and what a reaction video is.\n\nFor each one, give a simple made-up example (what the video could be about).\n\nKeep sentences short. Aim for about half a page.",
+            title: "Geography club: video ideas for the channel",
+            context: "Write a short post for your school blog. You are in the geography club. The club wants to grow its YouTube or social channel.",
+            instructions: "In a few sentences, say what a commentary video is and what a reaction video is.\n\nThen give two ideas for the club’s channel:\n• one commentary video (what it would be about)\n• one reaction video (what it would be about)\n\nFor each idea, say why it could help the channel grow and what the appeal would be for viewers.",
             questions: [],
             vocab: [
                 { en: "commentary", cn: "評論／解說" },
                 { en: "reaction", cn: "反應影片" },
-                { en: "explain", cn: "解釋" },
-                { en: "example", cn: "例子" },
-                { en: "clip", cn: "片段" },
+                { en: "geography", cn: "地理" },
+                { en: "club", cn: "學會／社" },
+                { en: "channel", cn: "頻道" },
+                { en: "growth", cn: "增長" },
+                { en: "appeal", cn: "吸引力" },
                 { en: "audience", cn: "觀眾" },
-                { en: "creator", cn: "創作者" },
+                { en: "viewer", cn: "觀看者" },
                 { en: "content", cn: "內容" },
                 { en: "blog", cn: "網誌" },
-                { en: "simple", cn: "簡單" },
-                { en: "difference", cn: "分別" },
-                { en: "viewer", cn: "觀看者" }
+                { en: "idea", cn: "主意" }
             ]
         },
         {
             id: "y7-commentary-trends-platforms",
             title: "Commentary videos: concerns and platforms",
             context: "Write a short piece for your school newsletter or letters page.",
-            instructions: "Many people make commentary videos online. Two common concerns:\n\n• \"Content farming\": reusing other people’s clips with very little new material for the audience.\n• Not always based on facts: some exaggerate or misread the original on purpose to get more views.\n\nSay how serious you think these concerns are, and why. Then suggest two things platforms like YouTube or Instagram could do (e.g. clearer rules, where to draw the line, demonetising, bans).",
+            instructions: "Many people make commentary videos online. Two common concerns:\n\n• \"Content farming\": reusing other people’s clips with very little new material for the audience.\n• Not always based on facts: some exaggerate or misread the original on purpose to get more views.\n\nSay how serious you think these concerns are, and why. Then suggest two things platforms like YouTube or Instagram could do (e.g. clearer rules, where to draw the line, demonetising, bans).\n\nWrite in full sentences.",
             questions: [],
             vocab: [
                 { en: "concern", cn: "顧慮" },
@@ -51,7 +51,7 @@ window.themeBasedCommentaries = {
             id: "y7-reaction-vs-commentary-debate",
             title: "Debate: reactions taking over?",
             context: "Write a short opinion piece for your school’s student magazine.",
-            instructions: "On TikTok and YouTube, reaction videos are often more popular than commentary videos.\n\nIs it necessarily a bad thing that reactions are taking over as the more popular form?\n\nGive your opinion and two clear reasons that support your view.",
+            instructions: "On TikTok and YouTube, reaction videos are becoming more popular than commentary videos.\n\nWhat would be the cause? Is it necessarily a bad thing?\n\nGive your opinion and two reasons that support your view.",
             questions: [],
             vocab: [
                 { en: "debate", cn: "辯論" },
@@ -64,7 +64,7 @@ window.themeBasedCommentaries = {
                 { en: "support", cn: "支持" },
                 { en: "claim", cn: "主張" },
                 { en: "necessarily", cn: "必然" },
-                { en: "trend", cn: "趨勢" },
+                { en: "cause", cn: "原因" },
                 { en: "bad thing", cn: "壞事" }
             ]
         }
