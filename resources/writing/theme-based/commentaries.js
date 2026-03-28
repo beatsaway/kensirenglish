@@ -7,21 +7,21 @@ window.themeBasedCommentaries = {
     tasks: [
         {
             id: "y7-commentary-reaction-explained",
-            title: "Geography club: video ideas for the channel",
-            context: "Write a short post for your school blog. You are in the geography club. The club wants to grow its YouTube or social channel.",
-            instructions: "In a few sentences, say what a commentary video is and what a reaction video is.\n\nThen give two ideas for the club’s channel:\n• one commentary video (what it would be about)\n• one reaction video (what it would be about)\n\nFor each idea, say why it could help the channel grow and what the appeal would be for viewers.",
+            title: "Geography club: videos to recruit members?",
+            context: "Write a short post for your school blog.",
+            instructions: "The geography club chairperson wants to make commentary or reaction videos on YouTube or social media to promote the club and get more students to join.\n\nDo you agree or disagree that this is a good idea? Say why.\n\nThen give two video ideas anyway — for example one commentary and one reaction — and say briefly what each would be about.",
             questions: [],
             vocab: [
                 { en: "commentary", cn: "評論／解說" },
                 { en: "reaction", cn: "反應影片" },
                 { en: "geography", cn: "地理" },
                 { en: "club", cn: "學會／社" },
+                { en: "chairperson", cn: "主席／幹事" },
+                { en: "promote", cn: "宣傳" },
+                { en: "join", cn: "加入" },
+                { en: "agree", cn: "同意" },
+                { en: "disagree", cn: "不同意" },
                 { en: "channel", cn: "頻道" },
-                { en: "growth", cn: "增長" },
-                { en: "appeal", cn: "吸引力" },
-                { en: "audience", cn: "觀眾" },
-                { en: "viewer", cn: "觀看者" },
-                { en: "content", cn: "內容" },
                 { en: "blog", cn: "網誌" },
                 { en: "idea", cn: "主意" }
             ]
