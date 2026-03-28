@@ -7,9 +7,9 @@ window.themeBasedCommentaries = {
     tasks: [
         {
             id: "y7-commentary-reaction-explained",
-            title: "Geography club: videos to recruit members?",
-            context: "Write a short post for your school blog.",
-            instructions: "The geography club chairperson wants to make commentary or reaction videos on YouTube or social media to promote the club and get more students to join.\n\nDo you agree or disagree that this is a good idea? Say why.\n\nThen give two video ideas anyway — for example one commentary and one reaction — and say briefly what each would be about.",
+            title: "Geography club: Amy's YouTube plan",
+            context: "Write a short piece for your school blog.",
+            instructions: "The chairperson of your school's geography club, Amy, wants to post some commentary and reaction videos on the club's YouTube channel. She wants to engage more students and encourage them to join the club.\n\nWrite to Amy to agree or disagree with her suggested video formats. Then propose two specific video ideas to film. Give reasons to justify your ideas.",
             questions: [],
             vocab: [
                 { en: "commentary", cn: "評論／解說" },
@@ -17,20 +17,20 @@ window.themeBasedCommentaries = {
                 { en: "geography", cn: "地理" },
                 { en: "club", cn: "學會／社" },
                 { en: "chairperson", cn: "主席／幹事" },
-                { en: "promote", cn: "宣傳" },
                 { en: "join", cn: "加入" },
                 { en: "agree", cn: "同意" },
                 { en: "disagree", cn: "不同意" },
-                { en: "channel", cn: "頻道" },
-                { en: "blog", cn: "網誌" },
-                { en: "idea", cn: "主意" }
+                { en: "format", cn: "形式" },
+                { en: "propose", cn: "提出／建議" },
+                { en: "justify", cn: "說明理由" },
+                { en: "reason", cn: "理由" }
             ]
         },
         {
             id: "y7-commentary-trends-platforms",
             title: "Commentary videos: concerns and platforms",
             context: "Write a short piece for your school newsletter or letters page.",
-            instructions: "Many people make commentary videos online. Two common concerns:\n\n• \"Content farming\": reusing other people’s clips with very little new material for the audience.\n• Not always based on facts: some exaggerate or misread the original on purpose to get more views.\n\nSay how serious you think these concerns are, and why. Then suggest two things platforms like YouTube or Instagram could do (e.g. clearer rules, where to draw the line, demonetising, bans).\n\nWrite in full sentences.",
+            instructions: "Commentary videos are becoming more popular on YouTube, but not without concerns:\n\n• \"Content farming\": reusing other people’s clips with very little new material for the audience.\n• Not always based on facts: some exaggerate or misread the original on purpose to get more views.\n\nHow serious do you think these concerns are, and why? Suggest two improvements YouTube could make (e.g. reporting rules, censoring, demonetising, bans, etc.).\n\n",
             questions: [],
             vocab: [
                 { en: "concern", cn: "顧慮" },
@@ -51,7 +51,7 @@ window.themeBasedCommentaries = {
             id: "y7-reaction-vs-commentary-debate",
             title: "Debate: reactions taking over?",
             context: "Write a short opinion piece for your school’s student magazine.",
-            instructions: "On TikTok and YouTube, reaction videos are becoming more popular than commentary videos.\n\nWhat would be the cause? Is it necessarily a bad thing?\n\nGive your opinion and two reasons that support your view.",
+            instructions: "On TikTok and YouTube, reaction videos are becoming more popular than commentary videos.\n\nWhat might be the cause? Is it necessarily a bad thing?\n\nGive your opinion and two reasons that support your view.",
             questions: [],
             vocab: [
                 { en: "debate", cn: "辯論" },
