@@ -156,6 +156,30 @@ class TopicManager {
         introduction: 'Adverb + adjective pairs<br>副詞+形容詞搭配'
       },
       { 
+        id: 'relative-clauses-1', 
+        name: 'Relative Clauses 1: Who vs Whose | 關係從句1', 
+        file: 'relative-clauses-1.js',
+        introduction: 'Warm-up: possession (whose) vs subject (who)<br>熱身：whose（佢嘅⋯）同 who（主語）'
+      },
+      { 
+        id: 'relative-clauses-2', 
+        name: 'Relative Clauses 2: Defining vs non-defining | 關係從句2', 
+        file: 'relative-clauses-2.js',
+        introduction: 'Commas: essential info (which one?) vs extra info<br>逗號：限定（邊個？）同非限定（附加資料）'
+      },
+      { 
+        id: 'relative-clauses-3', 
+        name: 'Relative Clauses 3: Who, which, where, whose | 關係從句3', 
+        file: 'relative-clauses-3.js',
+        introduction: 'Pick the right relative pronoun for people, things, places, possession<br>人、物、地方、擁有關係點揀代詞'
+      },
+      { 
+        id: 'relative-clauses-4', 
+        name: 'Relative Clauses 4: + prepositions | 關係從句4', 
+        file: 'relative-clauses-4.js',
+        introduction: 'Formal: preposition before which/whom; spot stranded or wrong prep<br>正式寫法：介詞放關係代詞前；分辨尾置／錯介詞'
+      },
+      { 
         id: 'participles-1', 
         name: 'Part of Speech: Participles 1 | 分詞詞性1', 
         file: 'participles1.js',
@@ -238,6 +262,10 @@ class TopicManager {
       'collocations-adjective-noun': 'collocationsAdjectiveNounExercises',
       'collocations-verb-preposition': 'collocationsVerbPrepositionExercises',
       'collocations-adverb-adjective': 'collocationsAdverbAdjectiveExercises',
+      'relative-clauses-1': 'relativeClauses1Exercises',
+      'relative-clauses-2': 'relativeClauses2Exercises',
+      'relative-clauses-3': 'relativeClauses3Exercises',
+      'relative-clauses-4': 'relativeClauses4Exercises',
       'participles-1': 'participles1Exercises',
       'participles-2': 'participles2Exercises',
       'participles-3': 'participles3Exercises'

@@ -241,13 +241,11 @@
             padding: var(--space-2) var(--space-3);
             cursor: pointer;
             transition: background 0.15s ease;
-            text-align: center;
+            text-align: left;
             font-size: 14px;
             font-weight: 400;
             color: var(--color-text);
-        }
-
-        .mc-option {
+            line-height: 1.45;
             min-height: var(--touch-target);
             touch-action: manipulation;
         }
@@ -600,6 +598,10 @@
     <script src="js/topics/participles1.js"></script>
     <script src="js/topics/participles2.js"></script>
     <script src="js/topics/participles3.js"></script>
+    <script src="js/topics/relative-clauses-1.js"></script>
+    <script src="js/topics/relative-clauses-2.js"></script>
+    <script src="js/topics/relative-clauses-3.js"></script>
+    <script src="js/topics/relative-clauses-4.js"></script>
     <script src="js/topic-manager.js"></script>
     <script>
         let currentExercise = null;
@@ -773,7 +775,11 @@
             'collocations-adverb-adjective': '<strong>💡 Tips:</strong> Adverbs often go with specific adjectives (highly recommended, deeply sorry).',
             'participles-1': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).',
             'participles-2': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).',
-            'participles-3': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).'
+            'participles-3': '<strong>💡 Tips:</strong> Verb = part of tense (was doing, have done). Noun = subject/object (Swimming is fun). Adjective = describes noun (a broken cup). Clause = adds detail (Seeing her, I waved).',
+            'relative-clauses-1': '<strong>💡 Tips:</strong> <strong>Whose</strong> + noun = possession (like <em>his/her/their</em>…). <strong>Who</strong> + verb = the subject of the clause (like <em>he/she/they</em>…).',
+            'relative-clauses-2': '<strong>💡 Tips:</strong> <strong>Defining</strong> — no commas: the clause tells you <em>which</em> noun you mean. <strong>Non-defining</strong> — commas: the clause is only extra information. After a comma, use <strong>who</strong> (people) or <strong>which</strong> (things), not <em>that</em>.',
+            'relative-clauses-3': '<strong>💡 Tips:</strong> <strong>Who</strong> (people/animals, subject) · <strong>Which</strong> (things) · <strong>Where</strong> (place) · <strong>Whose</strong> + noun (possession).',
+            'relative-clauses-4': '<strong>💡 Tips:</strong> In formal writing, put the <strong>preposition before</strong> <em>which</em> or <em>whom</em> (<em>in which</em>, <em>to which</em>, <em>for whom</em>, <em>at which</em>, <em>with whom</em>). Leaving the preposition <strong>at the end</strong> (<em>which … in</em>) is normal in conversation. Watch for the <strong>wrong preposition</strong> or <strong>no preposition</strong> when one is required.'
         };
 
         // Load all exercises for current topic
@@ -787,7 +793,7 @@
             const exerciseArea = document.getElementById('exerciseArea');
             const exercises = topicInfo.exercises;
             
-            const tips = grammarTips[topicInfo.id] || '<strong>💡 Tips:</strong> Read each question carefully and think about the grammar rules!';
+            const tips = grammarTips[topicInfo.id] || '<strong>💡 Tips:</strong> Read the sentence and gap, then pick the option that fits the grammar pattern. Check the explanation after each answer to revise.';
             
             let exercisesHTML = `
                 <div class="topic-summary">
