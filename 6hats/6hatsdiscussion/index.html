@@ -1175,7 +1175,8 @@
             { name: "Taiwan", file: "taiwan_questions.js" },
             { name: "Video Games", file: "videogames_questions.js" },
             { name: "Video Games 2", file: "video_games_2.js" },
-            { name: "Weather", file: "weather_questions.js" }
+            { name: "Weather", file: "weather_questions.js" },
+            { name: "Weather 2", file: "weather_discussion_6hats.js" }
         ];
 
         const headerSearch = document.getElementById('headerSearch');
@@ -1708,7 +1709,9 @@
             const topicFromUrl = params.get('topic');
             if (topicFromUrl) {
                 const decoded = decodeURIComponent(topicFromUrl);
-                const topic = topics.find(t => t.name === decoded);
+                const legacyTopicNames = { "Weather Discussion": "Weather 2" };
+                const resolvedName = legacyTopicNames[decoded] || decoded;
+                const topic = topics.find(t => t.name === resolvedName);
                 if (topic) {
                     loadTopic(topic);
                     return;
