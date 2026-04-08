@@ -196,6 +196,12 @@ class TopicManager {
         name: 'Part of Speech: Participles 3 | 分詞詞性3', 
         file: 'participles3.js',
         introduction: 'Is it a verb (V), noun (N), clause (C), or adjective (A)?<br>分清楚係動詞、名詞、從句定形容詞'
+      },
+      {
+        id: 'word-form-families',
+        name: 'Word Form Families | 同根詞詞形',
+        file: 'word-form-families.js',
+        introduction: 'Same root, different jobs: noun, verb, -ing, -ed — pick the right form in context<br>同一字根：名詞、動詞、-ing、過去分詞——睇語境揀啱'
       }
     ];
   }
@@ -268,7 +274,8 @@ class TopicManager {
       'relative-clauses-4': 'relativeClauses4Exercises',
       'participles-1': 'participles1Exercises',
       'participles-2': 'participles2Exercises',
-      'participles-3': 'participles3Exercises'
+      'participles-3': 'participles3Exercises',
+      'word-form-families': 'wordFormFamiliesExercises'
     };
     return mapping[topicId];
   }

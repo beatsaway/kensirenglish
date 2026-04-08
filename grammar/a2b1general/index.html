@@ -276,6 +276,61 @@
             color: var(--color-text);
         }
 
+        .word-form-passage {
+            font-size: 15px;
+            line-height: 1.65;
+            margin-bottom: var(--space-2);
+        }
+
+        .word-form-passage p {
+            margin: 0 0 var(--space-2) 0;
+        }
+
+        .word-bank-note {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+            padding: var(--space-1) var(--space-2);
+            background: var(--color-surface);
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .blank-select {
+            font-size: inherit;
+            font-family: inherit;
+            padding: 4px 8px;
+            margin: 0 2px 4px;
+            min-width: 7.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            cursor: pointer;
+            vertical-align: baseline;
+        }
+
+        .blank-select:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 1px;
+        }
+
+        .blank-select.correct {
+            background: var(--color-success-light);
+            border-color: var(--color-success);
+            color: var(--color-text);
+        }
+
+        .blank-select.incorrect {
+            background: var(--color-error-light);
+            border-color: var(--color-error);
+            color: var(--color-text);
+        }
+
+        .blank-select:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
         .btn {
             margin-bottom: var(--space-2);
             padding: var(--space-1) var(--space-2);
@@ -602,6 +657,7 @@
     <script src="js/topics/relative-clauses-2.js"></script>
     <script src="js/topics/relative-clauses-3.js"></script>
     <script src="js/topics/relative-clauses-4.js"></script>
+    <script src="js/topics/word-form-families.js"></script>
     <script src="js/topic-manager.js"></script>
     <script>
         let currentExercise = null;
@@ -779,7 +835,8 @@
             'relative-clauses-1': '<strong>💡 Tips:</strong> <strong>Whose</strong> + noun = possession (like <em>his/her/their</em>…). <strong>Who</strong> + verb = the subject of the clause (like <em>he/she/they</em>…).',
             'relative-clauses-2': '<strong>💡 Tips:</strong> <strong>Defining</strong> — no commas: the clause tells you <em>which</em> noun you mean. <strong>Non-defining</strong> — commas: the clause is only extra information. After a comma, use <strong>who</strong> (people) or <strong>which</strong> (things), not <em>that</em>.',
             'relative-clauses-3': '<strong>💡 Tips:</strong> <strong>Who</strong> (people/animals, subject) · <strong>Which</strong> (things) · <strong>Where</strong> (place) · <strong>Whose</strong> + noun (possession).',
-            'relative-clauses-4': '<strong>💡 Tips:</strong> In formal writing, put the <strong>preposition before</strong> <em>which</em> or <em>whom</em> (<em>in which</em>, <em>to which</em>, <em>for whom</em>, <em>at which</em>, <em>with whom</em>). Leaving the preposition <strong>at the end</strong> (<em>which … in</em>) is normal in conversation. Watch for the <strong>wrong preposition</strong> or <strong>no preposition</strong> when one is required.'
+            'relative-clauses-4': '<strong>💡 Tips:</strong> In formal writing, put the <strong>preposition before</strong> <em>which</em> or <em>whom</em> (<em>in which</em>, <em>to which</em>, <em>for whom</em>, <em>at which</em>, <em>with whom</em>). Leaving the preposition <strong>at the end</strong> (<em>which … in</em>) is normal in conversation. Watch for the <strong>wrong preposition</strong> or <strong>no preposition</strong> when one is required.',
+            'word-form-families': '<strong>💡 Tips:</strong> Ask: do you need a <strong>thing</strong> (noun), an <strong>action</strong> (verb), an <strong>-ing</strong> form after prepositions like <em>after / before / without</em>, or an <strong>-ed</strong> form in phrases like <em>with … done</em>? Each menu is shuffled — pick, then press <strong>Check answers</strong>.'
         };
 
         // Load all exercises for current topic
@@ -802,6 +859,10 @@
             `;
 
             exercises.forEach((exercise, index) => {
+                if (exercise.type === 'dropdownBlanks') {
+                    exercisesHTML += buildDropdownBlanksCard(exercise, index);
+                    return;
+                }
                 const shuffledOptions = shuffleArray([...exercise.options]);
                 exercisesHTML += `
                     <div class="exercise-card" id="exercise-${index}">
@@ -842,6 +903,103 @@
                 [items[i], items[j]] = [items[j], items[i]];
             }
             return items;
+        }
+
+        function getBlankCorrectsForExercise(exercise) {
+            const out = [];
+            exercise.paragraphs.forEach(p => {
+                p.parts.forEach(part => {
+                    if (part && typeof part === 'object' && part.correct !== undefined) {
+                        out.push(part.correct);
+                    }
+                });
+            });
+            return out;
+        }
+
+        function escapeHtmlAttr(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;');
+        }
+
+        function buildDropdownBlanksCard(exercise, index) {
+            let passage = '';
+            if (exercise.wordBank && exercise.wordBank.length) {
+                passage += `<div class="word-bank-note"><strong>Word bank:</strong> ${exercise.wordBank.map(w => escapeHtmlAttr(w)).join(' · ')}</div>`;
+            }
+            passage += `<div class="sentence word-form-passage">`;
+            if (exercise.category) {
+                passage += `<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 8px 0;font-weight:500;">${exercise.category}</p>`;
+            }
+            exercise.paragraphs.forEach(para => {
+                passage += '<p>';
+                para.parts.forEach(part => {
+                    if (typeof part === 'string') {
+                        passage += part;
+                    } else {
+                        const opts = shuffleArray([...part.options]);
+                        passage += `<select class="blank-select" aria-label="Blank"><option value="">—</option>`;
+                        opts.forEach(o => {
+                            passage += `<option value="${escapeHtmlAttr(o)}">${o}</option>`;
+                        });
+                        passage += `</select>`;
+                    }
+                });
+                passage += '</p>';
+            });
+            passage += '</div>';
+            return `
+                <div class="exercise-card dropdown-blanks-card" id="exercise-${index}">
+                    ${passage}
+                    <button type="button" class="btn btn-primary" onclick="checkDropdownBlanks(${index})" id="checkBtn-${index}">
+                        Check answers
+                    </button>
+                    <div class="explanation" id="explanation-${index}">
+                        <h4>Explanation:</h4>
+                        <p>${exercise.explanation}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkDropdownBlanks(exerciseIndex) {
+            const topicInfo = window.topicManager.getCurrentTopicInfo();
+            if (!topicInfo || !topicInfo.exercises[exerciseIndex]) return;
+            const exercise = topicInfo.exercises[exerciseIndex];
+            const card = document.getElementById(`exercise-${exerciseIndex}`);
+            const checkBtn = document.getElementById(`checkBtn-${exerciseIndex}`);
+            const explanation = document.getElementById(`explanation-${exerciseIndex}`);
+            if (!card || !checkBtn || checkBtn.disabled) return;
+
+            const selects = card.querySelectorAll('.blank-select');
+            const expected = getBlankCorrectsForExercise(exercise);
+            if (selects.length !== expected.length) {
+                console.warn('Blank count mismatch');
+            }
+            let allOk = true;
+            selects.forEach((sel, i) => {
+                sel.classList.remove('correct', 'incorrect');
+                const v = sel.value;
+                if (!v) {
+                    sel.classList.add('incorrect');
+                    allOk = false;
+                    return;
+                }
+                if (v === expected[i]) {
+                    sel.classList.add('correct');
+                } else {
+                    sel.classList.add('incorrect');
+                    allOk = false;
+                }
+            });
+
+            checkBtn.disabled = true;
+            checkBtn.textContent = allOk ? 'All correct ✓' : 'Checked — see red blanks';
+            checkBtn.className = allOk ? 'btn btn-success' : 'btn btn-secondary';
+            selects.forEach(s => { s.disabled = true; });
+            if (explanation) explanation.classList.add('show');
         }
 
         // Select an option
