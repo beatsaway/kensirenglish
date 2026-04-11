@@ -4,7 +4,6 @@ window.relativeClausesKaitak3Exercises = [
   {
     type: "dropdownBlanks",
     id: "kt-p3-year",
-    category: "Year",
     contextLines: ["1998 was the year.", "Kai Tak closed in that year."],
     wordBank: ["in which", "when", "where", "which", "that"],
     paragraphs: [
@@ -24,7 +23,6 @@ window.relativeClausesKaitak3Exercises = [
   {
     type: "dropdownBlanks",
     id: "kt-p3-deck",
-    category: "Rooftop deck",
     contextLines: [
       "It had a rooftop observation deck.",
       "Visitors could watch planes and take pictures from that deck."
@@ -47,7 +45,6 @@ window.relativeClausesKaitak3Exercises = [
   {
     type: "dropdownBlanks",
     id: "kt-p3e",
-    category: "Checkerboard hill",
     contextLines: [
       "The checkerboard hill was a crucial visual reference.",
       "Pilots aimed at it before the final turn."
