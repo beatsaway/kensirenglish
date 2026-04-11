@@ -286,15 +286,6 @@
             margin: 0 0 var(--space-2) 0;
         }
 
-        .word-bank-note {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-2);
-            padding: var(--space-1) var(--space-2);
-            background: var(--color-surface);
-            border-left: 3px solid var(--color-accent);
-        }
-
         .blank-select {
             font-size: inherit;
             font-family: inherit;
@@ -657,6 +648,9 @@
     <script src="js/topics/relative-clauses-2.js"></script>
     <script src="js/topics/relative-clauses-3.js"></script>
     <script src="js/topics/relative-clauses-4.js"></script>
+    <script src="js/topics/relative-clauses-kaitak1.js"></script>
+    <script src="js/topics/relative-clauses-kaitak2.js"></script>
+    <script src="js/topics/relative-clauses-kaitak3.js"></script>
     <script src="js/topics/word-form-families.js"></script>
     <script src="js/topics/word-form-families-2.js"></script>
     <script src="js/topic-manager.js"></script>
@@ -837,6 +831,9 @@
             'relative-clauses-2': '<strong>💡 Tips:</strong> <strong>Defining</strong> — no commas: the clause tells you <em>which</em> noun you mean. <strong>Non-defining</strong> — commas: the clause is only extra information. After a comma, use <strong>who</strong> (people) or <strong>which</strong> (things), not <em>that</em>.',
             'relative-clauses-3': '<strong>💡 Tips:</strong> <strong>Who</strong> (people/animals, subject) · <strong>Which</strong> (things) · <strong>Where</strong> (place) · <strong>Whose</strong> + noun (possession).',
             'relative-clauses-4': '<strong>💡 Tips:</strong> Formal style: preposition + <em>which</em>/<em>whom</em>. For places, <strong>where</strong> is often fine instead of <em>in which</em> / <em>at which</em> (both may be correct here). Do not put an extra preposition after <em>where</em> (e.g. not *where … in*).',
+            'relative-clauses-kaitak-1': '<strong>💡 Tips:</strong> <strong>who</strong> (subject, people), <strong>whom</strong> (object / after <em>of</em>), <strong>which</strong> (things), <strong>where</strong> (place), <strong>when</strong> (time), <strong>whose</strong> (possession).',
+            'relative-clauses-kaitak-2': '<strong>💡 Tips:</strong> Non-defining: two commas around the clause, usually <em>which</em> — not <em>that</em>. Defining: no commas; <em>that</em> is common to pick out which one.',
+            'relative-clauses-kaitak-3': '<strong>💡 Tips:</strong> Read the two simple sentences, then complete the merged line. Formal style: preposition + <em>which</em> (<em>in which</em>, <em>from which</em>, <em>at which</em>). <strong>When</strong> / <strong>where</strong> are often acceptable too after <em>year</em> / place.',
             'word-form-families': '<strong>💡 Tips:</strong> Ask: do you need a <strong>thing</strong> (noun), an <strong>action</strong> (verb), an <strong>-ing</strong> form after prepositions like <em>after / before / without</em>, or an <strong>-ed</strong> form in phrases like <em>with … done</em>? Each menu is shuffled — pick, then press <strong>Check answers</strong>.',
             'word-form-families-2': '<strong>💡 Tips:</strong> Four related words from one root (e.g. <em>protect · protection · protective · protected</em>) — not always noun/verb/-ing/-ed in that order. Read the gap: need a noun, verb, adjective, <em>-ing</em>, or participle? Shuffled menus — press <strong>Check answers</strong> when ready.'
         };
@@ -928,8 +925,11 @@
 
         function buildDropdownBlanksCard(exercise, index) {
             let passage = '';
-            if (exercise.wordBank && exercise.wordBank.length) {
-                passage += `<div class="word-bank-note"><strong>Word bank:</strong> ${exercise.wordBank.map(w => escapeHtmlAttr(w)).join(' · ')}</div>`;
+            if (exercise.contextLines && exercise.contextLines.length) {
+                const safeLines = exercise.contextLines.map(function (line) {
+                    return String(line).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                });
+                passage += `<div class="task-context" style="margin-bottom:12px;font-size:14px;color:#444;line-height:1.55;">${safeLines.join('<br>')}</div>`;
             }
             passage += `<div class="sentence word-form-passage">`;
             if (exercise.category) {
@@ -989,7 +989,9 @@
                     allOk = false;
                     return;
                 }
-                if (v === expected[i]) {
+                const exp = expected[i];
+                const ok = Array.isArray(exp) ? exp.includes(v) : v === exp;
+                if (ok) {
                     sel.classList.add('correct');
                 } else {
                     sel.classList.add('incorrect');

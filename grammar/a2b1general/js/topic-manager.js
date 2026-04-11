@@ -179,6 +179,24 @@ class TopicManager {
         file: 'relative-clauses-4.js',
         introduction: 'Formal: preposition before which/whom; spot stranded or wrong prep<br>正式寫法：介詞放關係代詞前；分辨尾置／錯介詞'
       },
+      {
+        id: 'relative-clauses-kaitak-1',
+        name: 'Relative Clauses · Kai Tak 1 | 關係從句·啟德1',
+        file: 'relative-clauses-kaitak1.js',
+        introduction: 'Kai Tak: who / whom / which / where / when / whose<br>啟德：關係代詞填空'
+      },
+      {
+        id: 'relative-clauses-kaitak-2',
+        name: 'Relative Clauses · Kai Tak 2 | 關係從句·啟德2',
+        file: 'relative-clauses-kaitak2.js',
+        introduction: 'Kai Tak: defining vs non-defining (commas)<br>啟德：限定與非限定逗號'
+      },
+      {
+        id: 'relative-clauses-kaitak-3',
+        name: 'Relative Clauses · Kai Tak 3 | 關係從句·啟德3',
+        file: 'relative-clauses-kaitak3.js',
+        introduction: 'Kai Tak: in which / when / from which / at which<br>啟德：正式介詞+which'
+      },
       { 
         id: 'participles-1', 
         name: 'Part of Speech: Participles 1 | 分詞詞性1', 
@@ -278,6 +296,9 @@ class TopicManager {
       'relative-clauses-2': 'relativeClauses2Exercises',
       'relative-clauses-3': 'relativeClauses3Exercises',
       'relative-clauses-4': 'relativeClauses4Exercises',
+      'relative-clauses-kaitak-1': 'relativeClausesKaitak1Exercises',
+      'relative-clauses-kaitak-2': 'relativeClausesKaitak2Exercises',
+      'relative-clauses-kaitak-3': 'relativeClausesKaitak3Exercises',
       'participles-1': 'participles1Exercises',
       'participles-2': 'participles2Exercises',
       'participles-3': 'participles3Exercises',
