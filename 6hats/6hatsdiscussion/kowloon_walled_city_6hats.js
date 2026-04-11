@@ -188,6 +188,45 @@ window.sixHatSets = [
       { emoji: "📋", text: "How should cities remember places after demolition?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "How could we preserve the memory of the Walled City for new generations?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "🎬 Kowloon Walled City 10 · Video: WW2, demolition & memory",
+    link: "https://www.youtube.com/watch?v=HgfLmiW0liE",
+    linkLabel: "Watch video",
+    questions: [
+      { emoji: "📊", text: "What happened to Kowloon Walled City during WW2?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do you think it would have been better if we didn’t demolish it?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What’s cool about Kowloon Walled City?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "When was it demolished? Why?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did they maintain order without police?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Is it possible to recreate a Walled City experience for tourists?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🎬 Kowloon Walled City 11 · Video: work, shops & clinics (short)",
+    link: "https://www.youtube.com/shorts/HR63ym2Y93k",
+    linkLabel: "Watch video",
+    questions: [
+      { emoji: "📊", text: "What kind of businesses do people do for a living?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you want to go shopping in the walled city?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why were there so many clinics and factories?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why would it be a bad idea to go see the doctors there?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did people travel inside the walled city?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What would you teach the kids if you were a teacher there?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🏟️ Hong Kong · Video: new sports complex (Kai Tak area)",
+    link: "https://youtu.be/9HRKI-XCmCE?t=257",
+    linkLabel: "Watch video",
+    questions: [
+      { emoji: "📊", text: "What can the seats do?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "What do you think of the appearance of the building?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why build this new sports complex for Hong Kong?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What would be the criticisms for this project?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do they clean the panels on the building?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What events would you want to run if you owned the stadium?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
 

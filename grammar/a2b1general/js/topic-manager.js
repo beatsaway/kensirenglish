@@ -202,6 +202,12 @@ class TopicManager {
         name: 'Word Form Families | 同根詞詞形',
         file: 'word-form-families.js',
         introduction: 'Same root, different jobs: noun, verb, -ing, -ed — pick the right form in context<br>同一字根：名詞、動詞、-ing、過去分詞——睇語境揀啱'
+      },
+      {
+        id: 'word-form-families-2',
+        name: 'Word Form Families 2 | 同根詞詞形2',
+        file: 'word-form-families-2.js',
+        introduction: 'Study, safety, and tech: same four-word bank per passage — pick noun, verb, -ing, or -ed forms<br>讀書、安全、科技語境——每段四個同根詞揀啱詞性'
       }
     ];
   }
@@ -275,7 +281,8 @@ class TopicManager {
       'participles-1': 'participles1Exercises',
       'participles-2': 'participles2Exercises',
       'participles-3': 'participles3Exercises',
-      'word-form-families': 'wordFormFamiliesExercises'
+      'word-form-families': 'wordFormFamiliesExercises',
+      'word-form-families-2': 'wordFormFamilies2Exercises'
     };
     return mapping[topicId];
   }
