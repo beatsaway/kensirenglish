@@ -35,8 +35,8 @@ window.themeBasedKowloonWalledCity = {
         {
             id: "kwc-letter-amy-convince-not",
             title: "Letter to Amy — convince her not to go",
-            context: "Your classmate Amy has recently acquired a mysterious magic crystal that can time travel to the late 1980s for just one day. She wants to interview local residents about the history of the Kowloon Walled City, recording their stories with her phone camera. She also wants to find a cheap dentist there to fix a broken tooth. She is considering trying out the local food and snacks there.",
-            instructions: "Write her a short letter and try to convince her not to go. Give at least three clear reasons. You can sound worried or serious, but stay polite.",
+            context: "Your classmate Amy has a mysterious magic crystal: she can time travel to the late 1980s for just one day, inside the Kowloon Walled City only. She cannot leave until she returns to the present. She can use her phone offline (camera / recording).\n\nShe plans to:\n• interview local residents about the Walled City’s history and record their stories on her phone\n• find a cheap dentist there to remove her aching wisdom tooth \n• try the local food and snacks",
+            instructions: "Write her a short letter and try to convince her not to go. Give at least three clear reasons — you can talk about why each plan above is a bad idea.",
             questions: [],
             vocab: [
                 { en: "fire hazard", cn: "火災危險" },
