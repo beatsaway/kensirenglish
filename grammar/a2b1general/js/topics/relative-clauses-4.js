@@ -7,12 +7,15 @@ window.relativeClauses4Exercises = [
     chineseTranslation: "大家鍾意去Georgie，入面有好多可愛動物",
     options: [
       "People loved visiting Georgie, in which they could find many cute animals.",
+      "People loved visiting Georgie, where they could find many cute animals.",
       "People loved visiting Georgie, on which they could find many cute animals.",
-      "People loved visiting Georgie, where they could find many cute animals in.",
       "People loved visiting Georgie, in who they could find many cute animals."
     ],
-    correctAnswers: ["People loved visiting Georgie, in which they could find many cute animals."],
-    explanation: "**In which** matches *in the park*. **On which** is the wrong preposition for *find animals in the park*. Do not put *in* after *where*. **In who** is wrong — *who* does not follow *in* here; use *which*."
+    correctAnswers: [
+      "People loved visiting Georgie, in which they could find many cute animals.",
+      "People loved visiting Georgie, where they could find many cute animals."
+    ],
+    explanation: "**In which** matches *in the park*; **where** is also natural for a place. **On which** is the wrong preposition. **In who** is wrong — use *which* after *in* here, not *who*."
   },
   {
     id: 2,
@@ -21,12 +24,15 @@ window.relativeClauses4Exercises = [
     chineseTranslation: "Georgie係個熱門公園，遊客可以喺入面休息",
     options: [
       "Georgie was a popular park in which visitors could relax.",
+      "Georgie was a popular park where visitors could relax.",
       "Georgie was a popular park on which visitors could relax.",
-      "Georgie was a popular park in who visitors could relax.",
-      "Georgie was a popular park which visitors could relax."
+      "Georgie was a popular park in who visitors could relax."
     ],
-    correctAnswers: ["Georgie was a popular park in which visitors could relax."],
-    explanation: "**In which** matches *relax **in** the park*. You do not relax **on** a park in this sense. **In who** is wrong (use *which* for *park*). *Which visitors could relax* is incomplete — the preposition *in* is missing."
+    correctAnswers: [
+      "Georgie was a popular park in which visitors could relax.",
+      "Georgie was a popular park where visitors could relax."
+    ],
+    explanation: "**In which** matches *relax in the park*; **where** is also natural for *park*. **On which** is the wrong preposition. **In who** is wrong — use *which* for *park*."
   },
   {
     id: 3,
@@ -44,31 +50,31 @@ window.relativeClauses4Exercises = [
   },
   {
     id: 4,
-    category: "To which (preposition front)",
-    question: "📮 Many people donated to the charity. It received an award.",
-    chineseTranslation: "好多人捐錢俾間慈善機構，佢攞咗獎",
+    category: "Non-restrictive which (the park)",
+    question: "🔬 Many scientists worked at the park. It has received lots of funding.",
+    chineseTranslation: "好多科學家喺公園做嘢，個公園攞咗好多資助",
     options: [
-      "The charity, to which many people donated, received an award.",
-      "The charity, by which many people donated, received an award.",
-      "The charity, which many people donated at, received an award.",
-      "The charity, to who many people donated, received an award."
+      "Many scientists worked at the park, which has received lots of funding.",
+      "Many scientists worked at the park, at which has received lots of funding.",
+      "Many scientists worked at the park, in which has received lots of funding.",
+      "Many scientists worked at the park, for which has received lots of funding."
     ],
-    correctAnswers: ["The charity, to which many people donated, received an award."],
-    explanation: "You donate **to** a charity, not **by** which or **at** which in this sense. **To who** is ungrammatical — after *to* in this pattern you need **which** (the charity as antecedent) or formal *whom* for people, not *who*."
+    correctAnswers: ["Many scientists worked at the park, which has received lots of funding."],
+    explanation: "**Which** is the subject of *has received* (= the park). *At which has received* is broken: after *at which* you still need a subject (*at which the city sent money…*). Here, just use **which has received**."
   },
   {
     id: 5,
     category: "For whom (preposition front)",
-    question: "📖 This park had many smart animals. Learning English was easy for them.",
-    chineseTranslation: "呢個公園有好多叻動物，學英文對佢哋零難度",
+    question: "📖 This park had many skilled trainers. Taming beasts was an easy task for them.",
+    chineseTranslation: "呢個公園有好多熟練訓練員，馴獸對佢哋嚟講係輕鬆嘅任務",
     options: [
-      "This park had many smart animals, for whom learning English was easy.",
-      "This park had many smart animals, at whom learning English was easy.",
-      "This park had many smart animals, for who learning English was easy.",
-      "This park had many smart animals, by whom learning English was easy."
+      "This park had many skilled trainers, for whom taming beasts was an easy task.",
+      "This park had many skilled trainers, at whom taming beasts was an easy task.",
+      "This park had many skilled trainers, for who taming beasts was an easy task.",
+      "This park had many skilled trainers, by whom taming beasts was an easy task."
     ],
-    correctAnswers: ["This park had many smart animals, for whom learning English was easy."],
-    explanation: "The meaning is *easy **for** them* → formal **for whom**. **At whom** and **by whom** do not fit *easy for*. **For who** is wrong — use **for whom** in this formal pattern."
+    correctAnswers: ["This park had many skilled trainers, for whom taming beasts was an easy task."],
+    explanation: "The meaning is *an easy task **for** them (the trainers)* → formal **for whom**. **At whom** and **by whom** do not fit *for them* here. **For who** is wrong — use **for whom** in this formal pattern."
   },
   {
     id: 6,
@@ -77,26 +83,29 @@ window.relativeClauses4Exercises = [
     chineseTranslation: "Georgie Park係秘密生物研究設施，動物喺度俾人加咗人類基因",
     options: [
       "Georgie Park was a secret bio research facility, at which animals were enhanced with human genes.",
+      "Georgie Park was a secret bio research facility, where animals were enhanced with human genes.",
       "Georgie Park was a secret bio research facility, on which animals were enhanced with human genes.",
-      "Georgie Park was a secret bio research facility, where animals were enhanced with human genes at.",
       "Georgie Park was a secret bio research facility, at who animals were enhanced with human genes."
     ],
-    correctAnswers: ["Georgie Park was a secret bio research facility, at which animals were enhanced with human genes."],
-    explanation: "**At which** matches *at the facility*. **On which** is the wrong preposition here. Do not use *at* after *where*. **At who** is wrong — use **at which** for the place."
+    correctAnswers: [
+      "Georgie Park was a secret bio research facility, at which animals were enhanced with human genes.",
+      "Georgie Park was a secret bio research facility, where animals were enhanced with human genes."
+    ],
+    explanation: "**At which** matches *at the facility*; **where** is also natural here. **On which** is the wrong preposition. **At who** is wrong — use *which* for the place."
   },
   {
     id: 7,
-    category: "At which + who (two relatives)",
-    question: "🌍 Animals loved visiting Georgie. Many humans there were interested in them.",
-    chineseTranslation: "動物鍾意去Georgie，園入面好多人對佢哋好好奇",
+    category: "Which (identifying the dog)",
+    question: "🐕 The dog jumped onto the kids. The kids threw rocks at the dog.",
+    chineseTranslation: "隻狗扑向啲細路，啲細路向隻狗掟石",
     options: [
-      "Animals loved visiting Georgie, at which many humans who were interested in them could be seen every day.",
-      "Animals loved visiting Georgie, on which many humans who were interested in them could be seen every day.",
-      "Animals loved visiting Georgie, at where many humans who were interested in them could be seen every day.",
-      "Animals loved visiting Georgie, which at many humans who were interested in them could be seen every day."
+      "The kids threw rocks at the dog which jumped onto them.",
+      "The dog jumped onto the kids, who threw rocks at it.",
+      "The kids threw rocks at the dog onto which the dog jumped.",
+      "The dog jumped onto the kids, at which they threw rocks."
     ],
-    correctAnswers: ["Animals loved visiting Georgie, at which many humans who were interested in them could be seen every day."],
-    explanation: "**At which** — preposition before *which*. Inner clause: **humans who were interested in them**. **On which** is wrong for visiting a place like Georgie here. Do not mix **at** with *where*. *Which at* is broken word order."
+    correctAnswers: ["The kids threw rocks at the dog which jumped onto them."],
+    explanation: "Put the kids’ action first, then **which** = *that dog* (the one that jumped onto them). That order shows cause then reaction. The other sentence is OK grammar, but it hides the reason for the rocks."
   },
   {
     id: 8,
