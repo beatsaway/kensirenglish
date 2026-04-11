@@ -5,7 +5,6 @@
 window.themeBasedKowloonWalledCity = {
     theme: "Kowloon Walled City",
     referenceLinks: [
-        { label: "Wikipedia: Kowloon Walled City", url: "https://en.wikipedia.org/wiki/Kowloon_Walled_City" },
         { label: "Six Hats discussion (topic)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Kowloon+Walled+City" }
     ],
     tasks: [
