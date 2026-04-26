@@ -1,29 +1,9 @@
-// Telepathy, silent communication, ancient signals & neural tech — vocab blanks + Six Thinking Hats
+// Communication — silent signals, history & tech — vocab blanks + Six Thinking Hats
 window.sixHatSets = [
-  {
-    title: "🧠 Telepathy test (short)",
-    link: "https://www.youtube.com/shorts/gO6zCoFk_o8",
-    linkLabel: "Watch video · telepathy test",
-    vocablist: [
-      { word: "telepathy", translation: "心靈感應", emoji: "🧠" },
-      { word: "mindreading", translation: "讀心", emoji: "👁️" },
-      { word: "coincidence", translation: "巧合", emoji: "🎲" },
-      { word: "cue", translation: "暗示／線索", emoji: "👉" },
-      { word: "convincing", translation: "有說服力", emoji: "✨" }
-    ],
-    vocabex: "People sometimes call direct mind‑to‑mind contact <span class='vocab-blank' data-answer='telepathy'></span>. Stage acts can look like <span class='vocab-blank' data-answer='mindreading'></span> when the performer picks up a tiny <span class='vocab-blank' data-answer='cue'></span> you did not notice. Skeptics often explain hits as lucky <span class='vocab-blank' data-answer='coincidence'></span>. Still, a smooth show can feel very <span class='vocab-blank' data-answer='convincing'></span> in the moment.",
-    questions: [
-      { emoji: "📊", text: "What is telepathy?", hat: "white-hat" },
-      { emoji: "😊", text: "Do you think telepathy is real?", hat: "red-hat" },
-      { emoji: "🌟", text: "Why would one want to be able to do telepathy?", hat: "yellow-hat" },
-      { emoji: "⚠️", text: "What could go wrong with telepathy?", hat: "black-hat" },
-      { emoji: "📋", text: "What makes telepathy look convincing?", hat: "blue-hat" },
-      { emoji: "💡", text: "What would you do if your friend can do telepathy?", hat: "green-hat" }
-    ]
-  },
+  
   {
     title: "🎬 Mr Bean at the cinema (silent cues)",
-    link: "https://www.youtube.com/shorts/VV1qiBij2Nc",
+    link: "https://www.youtube.com/shorts/RePJRs3508I",
     linkLabel: "Watch video · Mr Bean at the cinema",
     vocablist: [
       { word: "gesture", translation: "手勢", emoji: "👋" },
@@ -83,6 +63,27 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "How is this worse than sending messengers by horses?", hat: "black-hat" },
       { emoji: "📋", text: "How would you attack the Great Wall then?", hat: "blue-hat" },
       { emoji: "💡", text: "How would you know if the other watch tower is down if they sent no signal?", hat: "green-hat" }
+    ]
+  },
+  {
+    title: "🧠 Telepathy test (short)",
+    link: "https://www.youtube.com/shorts/gO6zCoFk_o8",
+    linkLabel: "Watch video · telepathy test",
+    vocablist: [
+      { word: "telepathy", translation: "心靈感應", emoji: "🧠" },
+      { word: "mindreading", translation: "讀心", emoji: "👁️" },
+      { word: "coincidence", translation: "巧合", emoji: "🎲" },
+      { word: "cue", translation: "暗示／線索", emoji: "👉" },
+      { word: "convincing", translation: "有說服力", emoji: "✨" }
+    ],
+    vocabex: "People sometimes call direct mind‑to‑mind contact <span class='vocab-blank' data-answer='telepathy'></span>. Stage acts can look like <span class='vocab-blank' data-answer='mindreading'></span> when the performer picks up a tiny <span class='vocab-blank' data-answer='cue'></span> you did not notice. Skeptics often explain hits as lucky <span class='vocab-blank' data-answer='coincidence'></span>. Still, a smooth show can feel very <span class='vocab-blank' data-answer='convincing'></span> in the moment.",
+    questions: [
+      { emoji: "📊", text: "What is telepathy?", hat: "white-hat" },
+      { emoji: "😊", text: "Do you think telepathy is real?", hat: "red-hat" },
+      { emoji: "🌟", text: "Why would one want to be able to do telepathy?", hat: "yellow-hat" },
+      { emoji: "⚠️", text: "What could go wrong with telepathy?", hat: "black-hat" },
+      { emoji: "📋", text: "What makes telepathy look convincing?", hat: "blue-hat" },
+      { emoji: "💡", text: "What would you do if your friend can do telepathy?", hat: "green-hat" }
     ]
   },
   {
