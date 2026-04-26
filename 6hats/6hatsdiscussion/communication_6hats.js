@@ -108,9 +108,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🎛️ Brain‑computer tech (short)",
-    link: "https://www.youtube.com/shorts/u4FfY8HsRZw",
-    linkLabel: "Watch video · BCI / control clip",
+    title: "🌙 Visualising dreams with AI (short)",
+    links: [
+      { url: "https://www.youtube.com/watch?v=nsjDnYxJ0bo", label: "Watch video · visualise dreams" },
+      { url: "https://www.youtube.com/shorts/RH67CUW-GoI", label: "Watch short · visualise dreams" }
+    ],
     vocablist: [
       { word: "decode", translation: "解碼", emoji: "🔓" },
       { word: "accuracy", translation: "準確度", emoji: "🎯" },
