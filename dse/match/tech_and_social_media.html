@@ -141,6 +141,8 @@
       color: var(--text);
     }
     .word-bank .pick {
+      font-size: 0.86rem;
+      line-height: 1.22;
       color: var(--accent);
       font-weight: 600;
     }
@@ -300,6 +302,17 @@
       color: var(--accent);
       font-weight: 700;
     }
+    .guide-bar-hint .hint-purple-tip {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .guide-bar-hint .hint-purple-swatch {
+      color: #5b21b6;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: #c4b5fd;
+      text-underline-offset: 2px;
+    }
     .btn-gloss-all {
       font: inherit;
       font-size: 0.78rem;
@@ -451,7 +464,7 @@
   </header>
   <div class="wrap" id="practice-wrap">
     <div class="guide-bar">
-      <p class="guide-bar-hint" lang="zh-HK">練習目標：用英文寫每題，盡量用上詞庫入面大部分<span class="hint-blue-kw">關鍵詞</span>；下面中文配對可供參考。</p>
+      <p class="guide-bar-hint" lang="zh-HK">練習目標：用英文寫每題，盡量用上詞庫大部分<span class="hint-blue-kw">關鍵詞</span>；下面中文配對可供參考。<span class="hint-purple-tip">按「EN」睇模型答案時，<span class="hint-purple-swatch">紫色</span>字係有用字。</span></p>
       <button type="button" class="btn-gloss-all" id="btn-gloss-all" data-gloss-step="off" aria-pressed="false" aria-controls="practice-wrap" lang="zh-HK" title="Cycle: show English in brackets for all purple → English only → restore Cantonese">顯示全部紫色英文</button>
     </div>
     <!-- Task 1 -->
