@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Match practice — key terms</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #fff;
+      --text: #1a1a1a;
+      --muted: #5c5c5c;
+      --border: #e5e5e5;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --ok: #15803d;
+      --ok-bg: #dcfce7;
+      --bad: #b91c1c;
+      --bad-bg: #fee2e2;
+      --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      font-size: 1rem;
+    }
+    .wrap {
+      /* Use almost full viewport width on large screens (was 40rem, far too narrow). */
+      max-width: min(78rem, calc(100% - 0.75rem));
+      width: 100%;
+      margin-inline: auto;
+      /* Offset fixed header + room for fixed keyword dock */
+      padding: calc(2.75rem + env(safe-area-inset-top, 0px)) clamp(0.25rem, 1.2vw, 0.5rem) calc(9.5rem + env(safe-area-inset-bottom, 0px));
+    }
+    .task-line {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0 0 0.3rem;
+      padding: 0.28rem 0.45rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      line-height: 1.35;
+    }
+    h2.task-heading {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.55rem 0 0.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.5rem;
+      justify-content: space-between;
+    }
+    .task-heading-title {
+      flex: 1 1 12rem;
+      min-width: 0;
+      line-height: 1.35;
+    }
+    .btn-model-en {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      color: #475569;
+      cursor: pointer;
+      line-height: 0;
+    }
+    .btn-model-en:hover {
+      background: #f1f5f9;
+      color: var(--accent);
+      border-color: #cbd5e1;
+    }
+    .btn-model-en:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .btn-model-en svg {
+      display: block;
+    }
+    section.task:first-of-type .task-heading { margin-top: 0; }
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      row-gap: 0.1rem;
+      column-gap: 0.26rem;
+      margin: 0;
+      padding: 0.38rem 0.5rem calc(0.42rem + env(safe-area-inset-bottom, 0px));
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -10px 32px rgba(15, 23, 42, 0.12);
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(78rem, calc(100% - 0.35rem));
+      max-height: min(42vh, 15.5rem);
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 45;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+    }
+    body[data-active-task="1"] #bank-1,
+    body[data-active-task="2"] #bank-2,
+    body[data-active-task="3"] #bank-3,
+    body[data-active-task="4"] #bank-4,
+    body[data-active-task="5"] #bank-5,
+    body[data-active-task="6"] #bank-6,
+    body[data-active-task="7"] #bank-7,
+    body[data-active-task="8"] #bank-8 {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 50;
+    }
+    .pick {
+      font: inherit;
+      font-size: 0.72rem;
+      padding: 0.12rem 0.36rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      line-height: 1.12;
+      color: var(--text);
+    }
+    .word-bank .pick {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .word-bank .pick:hover {
+      border-color: #93c5fd;
+      background: #eff6ff;
+      color: #1e40af;
+    }
+    .pick:hover { border-color: #cbd5e1; background: #f8fafc; }
+    .pick.is-selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #1e40af;
+      font-weight: 600;
+    }
+    .pick.pick--distractor { border-style: dotted; }
+    .compact {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.45rem 0.55rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .compact p.zh {
+      font-size: 0.98rem;
+      margin: 0.28rem 0;
+      line-height: 1.58;
+    }
+    .compact p.zh:not(:first-of-type) {
+      text-indent: 1.5em;
+    }
+    .compact p.zh:first-child { margin-top: 0; }
+    .compact p.zh:last-child { margin-bottom: 0; }
+    .zh { font-size: 0.98rem; }
+    .zh .latin { font-style: italic; color: #4b5563; }
+    .slot {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      text-decoration-color: #93c5fd;
+      padding: 0 1px;
+      border-radius: 2px;
+    }
+    .slot:hover:not([data-locked="true"]) {
+      background: var(--accent-soft);
+      text-decoration-color: var(--accent);
+    }
+    .slot[data-locked="true"] { cursor: default; text-decoration: none; }
+    .slot.slot--ok {
+      color: var(--ok);
+      background: var(--ok-bg);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .slot.slot--ok .slot-en {
+      font-weight: 500;
+      font-style: italic;
+      color: #166534;
+      margin-left: 0.2em;
+    }
+    .slot.slot--bad {
+      color: var(--bad);
+      background: var(--bad-bg);
+      text-decoration: none;
+    }
+    section.task {
+      margin-bottom: 0.15rem;
+      scroll-margin-top: calc(2.85rem + env(safe-area-inset-top, 0px));
+      display: none;
+    }
+    body[data-active-task="1"] section.task[data-task="1"],
+    body[data-active-task="2"] section.task[data-task="2"],
+    body[data-active-task="3"] section.task[data-task="3"],
+    body[data-active-task="4"] section.task[data-task="4"],
+    body[data-active-task="5"] section.task[data-task="5"],
+    body[data-active-task="6"] section.task[data-task="6"],
+    body[data-active-task="7"] section.task[data-task="7"],
+    body[data-active-task="8"] section.task[data-task="8"] {
+      display: block;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .theme-strip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #475569;
+      background: linear-gradient(#f8fafc, #f1f5f9);
+      border-bottom: 1px solid var(--border);
+      padding: max(0.28rem, env(safe-area-inset-top, 0px)) clamp(0.35rem, 2vw, 0.75rem) 0.28rem;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    }
+    .theme-strip-title {
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: #334155;
+      letter-spacing: 0.03em;
+    }
+    .task-select {
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 500;
+      max-width: min(70vw, 20rem);
+      padding: 0.28rem 0.45rem;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+    .task-select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .guide-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem 0.55rem;
+      margin: 0 0 0.28rem;
+    }
+    .guide-bar-hint {
+      flex: 1 1 14rem;
+      min-width: 0;
+      margin: 0;
+      padding-right: 0.35rem;
+      font-size: 0.78rem;
+      line-height: 1.38;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .guide-bar-hint .hint-blue-kw {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .btn-gloss-all {
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #7c3aed;
+      background: linear-gradient(#faf5ff, #ede9fe);
+      color: #5b21b6;
+      cursor: pointer;
+      line-height: 1.25;
+      white-space: nowrap;
+      align-self: center;
+      box-shadow: 0 1px 2px rgba(91, 33, 182, 0.12);
+    }
+    .btn-gloss-all:hover {
+      background: linear-gradient(#f5f3ff, #ddd6fe);
+      border-color: #6d28d9;
+    }
+    .btn-gloss-all:focus-visible {
+      outline: 2px solid #7c3aed;
+      outline-offset: 2px;
+    }
+    .btn-gloss-all[aria-pressed="true"] {
+      background: linear-gradient(#7c3aed, #6d28d9);
+      color: #faf5ff;
+      border-color: #5b21b6;
+    }
+    .btn-gloss-all[data-gloss-step="en-only"] {
+      background: linear-gradient(#5b21b6, #4c1d95);
+      color: #faf5ff;
+      border-color: #4c1d95;
+    }
+    /* Optional gloss: Cantonese not in word bank — tap for English in brackets */
+    .cn-gloss {
+      cursor: pointer;
+      color: #5b21b6;
+      padding: 0 2px;
+      border-radius: 3px;
+      white-space: nowrap;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .cn-gloss:hover {
+      background: #ede9fe;
+    }
+    .cn-gloss.is-open {
+      background: #f5f3ff;
+    }
+    .cn-gloss .cn-gloss-en {
+      font-style: italic;
+      font-weight: 500;
+      color: #4c1d95;
+      white-space: nowrap;
+    }
+    body[data-cn-gloss-mode="en-only"] .cn-gloss {
+      cursor: default;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .model-en-dialog {
+      max-width: min(42rem, calc(100vw - 2rem));
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+    .model-en-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.45);
+    }
+    .model-en-dialog-inner {
+      padding: 0.75rem 1rem 1rem;
+    }
+    .model-en-dialog-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .model-en-dialog h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .model-en-dialog .model-en-sub {
+      margin: 0.2rem 0 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .model-en-close {
+      font: inherit;
+      font-size: 0.78rem;
+      padding: 0.28rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .model-en-close:hover {
+      background: #f8fafc;
+    }
+    .model-en-prose {
+      font-size: 0.88rem;
+      line-height: 1.58;
+      color: var(--text);
+      max-height: min(70vh, 32rem);
+      overflow-y: auto;
+    }
+    .model-en-prose p {
+      margin: 0.55rem 0;
+      text-indent: 1.25em;
+    }
+    .model-en-prose p:first-child {
+      margin-top: 0;
+      text-indent: 0;
+    }
+    .model-en-prose p:last-child {
+      margin-bottom: 0;
+    }
+    .model-en-prose .model-kw {
+      background: linear-gradient(transparent 65%, #ddd6fe 0);
+      color: #4c1d95;
+      font-weight: 600;
+      padding: 0 0.08em;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body data-active-task="1">
+  <header class="theme-strip" lang="zh-HK">
+    <span class="theme-strip-title">科技與社交媒體</span>
+    <label class="visually-hidden" for="task-select">跳轉題目</label>
+    <select id="task-select" class="task-select" autocomplete="off">
+      <option value="1">第1題 — 書信（Wi‑Fi）</option>
+      <option value="2">第2題 — 演講（演算法）</option>
+      <option value="3">第3題 — 校刊</option>
+      <option value="4">第4題 — 班級論壇</option>
+      <option value="5">第5題 — 家長通訊</option>
+      <option value="6">第6題 — 校園電台</option>
+      <option value="7">第7題 — 學生議會</option>
+      <option value="8">第8題 — 社際辯論</option>
+    </select>
+  </header>
+  <div class="wrap" id="practice-wrap">
+    <div class="guide-bar">
+      <p class="guide-bar-hint" lang="zh-HK">練習目標：用英文寫每題，盡量用上詞庫入面大部分<span class="hint-blue-kw">關鍵詞</span>；下面中文配對可供參考。</p>
+      <button type="button" class="btn-gloss-all" id="btn-gloss-all" data-gloss-step="off" aria-pressed="false" aria-controls="practice-wrap" lang="zh-HK" title="Cycle: show English in brackets for all purple → English only → restore Cantonese">顯示全部紫色英文</button>
+    </div>
+    <!-- Task 1 -->
+    <section class="task" data-task="1">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 1 — Letter (Wi‑Fi ban)</span>
+        <button type="button" class="btn-model-en" data-model-task="1" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Your school may ban social media on campus Wi‑Fi. As Student Union President, write to the Principal to oppose the plan; briefly concede risks and recommend digital literacy instead.</p>
+
+      <div class="word-bank" id="bank-1" aria-label="Task 1 English bank">
+        <!-- answers -->
+        <button type="button" class="pick" data-en="a double-edged sword">a double-edged sword</button>
+        <button type="button" class="pick" data-en="at the expense of mental well-being">at the expense of mental well-being</button>
+        <button type="button" class="pick" data-en="circumvent">circumvent</button>
+        <button type="button" class="pick" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick" data-en="democratise">democratise</button>
+        <!-- distractors -->
+        <button type="button" class="pick pick--distractor" data-en="censorship">censorship</button>
+        <button type="button" class="pick pick--distractor" data-en="prohibition">prohibition</button>
+        <button type="button" class="pick pick--distractor" data-en="abstinence">abstinence</button>
+        <button type="button" class="pick pick--distractor" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick pick--distractor" data-en="amplify">amplify</button>
+        <button type="button" class="pick pick--distractor" data-en="algorithmic curation">algorithmic curation</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          <span class="cn-gloss" data-en="Dear Principal">校長</span>，我<span class="cn-gloss" data-en="am writing to discuss">寫信係想討論</span>校園<span class="cn-gloss" data-en="prohibition">一刀切禁用社交媒體</span>嘅建議。老實講，社交媒體毫無疑問係一把<span class="slot" tabindex="0" role="button" data-answer="a double-edged sword" data-task="1">雙面刃</span>：若果同學<span class="cn-gloss" data-en="stay up late scrolling on their phones">成日碌到深夜</span>，<span class="cn-gloss" data-en="overuse">過度使用</span>確實可能<span class="slot" tabindex="0" role="button" data-answer="at the expense of mental well-being" data-task="1">犧牲心理健康</span>。然而只要學校善用平台推廣閱讀同<span class="cn-gloss" data-en="civic discussion">公民討論</span>，其實亦可以幫手<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="1">普及化</span><span class="cn-gloss" data-en="public information">公共資訊</span>，令我哋<span class="cn-gloss" data-en="hear different viewpoints">接觸唔同觀點</span>；因此我哋更需要<span class="cn-gloss" data-en="self-discipline">自律</span>同<span class="cn-gloss" data-en="guidance on online behaviour">行為引導</span>，而唔係<span class="cn-gloss" data-en="a blanket ban">一刀切禁止</span>。若果政策變相<span class="cn-gloss" data-en="censorship">刪走多元聲音</span>，亦會<span class="cn-gloss" data-en="amplify">激化對立</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          再者，<span class="cn-gloss" data-en="a campus ban">禁令</span>往往<span class="cn-gloss" data-en="treating symptoms rather than root causes">治標不治本</span>，因為熟練嘅學生好容易就<span class="slot" tabindex="0" role="button" data-answer="circumvent" data-task="1">繞過</span><span class="cn-gloss" data-en="Wi‑Fi restrictions">Wi‑Fi限制</span>。與其將精神放喺<span class="cn-gloss" data-en="catching people who break the rules">捉違規</span>，倒不如<span class="cn-gloss" data-en="set up courses">開設課程</span>教我哋點樣<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="1">減輕</span><span class="cn-gloss" data-en="problematic internet use">網癮</span>同<span class="cn-gloss" data-en="rumours">流言</span>嘅傷害。通訊群如果淨係<span class="cn-gloss" data-en="only people who already agree">同聲同氣</span>、<span class="cn-gloss" data-en="one-sided comments">留言一邊倒</span>，好快就會淪為<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="1">回音谷</span>，呢點好多同學都有同感。亦要留意，要求學生<span class="cn-gloss" data-en="abstinence">完全唔碰機</span>喺現實好難執行。
+        </p>
+        <p class="zh" lang="zh-HK">
+          我哋亦想指出，真正令我哋分心嘅往往係<span class="slot" tabindex="0" role="button" data-answer="cognitive load" data-task="1">認知負荷</span><span class="cn-gloss" data-en="poor time management">管理唔畀</span>，而唔係平台本身<span class="cn-gloss" data-en="seen as inherently to blame">有原罪</span>。學校亦應該透過<span class="cn-gloss" data-en="counselling">輔導</span>教我哋點樣<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="1">減輕</span><span class="cn-gloss" data-en="cyberbullying">網絡霸凌</span>帶嚟嘅影響。<span class="cn-gloss" data-en="classroom debate on current affairs">課堂論政</span>如果淨係引用<span class="cn-gloss" data-en="one-sided sources">單邊渠道</span>，長遠落嚟一樣會跌入<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="1">回音谷</span>，<span class="cn-gloss" data-en="arguments lose balance">推論失去對照</span>，永遠聽唔到反對意見。為咗打破呢個<span class="cn-gloss" data-en="vicious circle">惡性循環</span>，學校反而可以透過<span class="cn-gloss" data-en="open classes and work-study schemes">開放課堂同工讀計劃</span>，幫學生<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="1">普及化</span><span class="cn-gloss" data-en="high-quality learning materials">優質學習資源</span>，用<span class="cn-gloss" data-en="education instead of crude blocking">教育代替粗暴封鎖</span>。亦要認清，大廠背後往往係<span class="cn-gloss" data-en="surveillance capitalism">靠監控數據牟利嘅邏輯</span>，時間線其實係<span class="cn-gloss" data-en="algorithmic curation">系統幫你篩選內容</span>，唔係<span class="cn-gloss" data-en="a neutral feed">中立列表</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 2 -->
+    <section class="task" data-task="2">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 2 — Speech (algorithms &amp; regulation)</span>
+        <button type="button" class="btn-model-en" data-model-task="2" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">You will speak at the Youth Digital Rights Forum. Write a speech agreeing or disagreeing that regulation alone can fix algorithm harm to democracy and mental health.</p>
+
+      <div class="word-bank" id="bank-2" aria-label="Task 2 English bank">
+        <button type="button" class="pick" data-en="amplify">amplify</button>
+        <button type="button" class="pick" data-en="perpetuate">perpetuate</button>
+        <button type="button" class="pick" data-en="algorithmic curation">algorithmic curation</button>
+        <button type="button" class="pick" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick" data-en="exploit">exploit</button>
+        <button type="button" class="pick" data-en="weaponisation of attention">weaponisation of attention</button>
+        <button type="button" class="pick" data-en="regulatory vacuum">regulatory vacuum</button>
+        <button type="button" class="pick" data-en="filter bubble">filter bubble</button>
+        <button type="button" class="pick pick--distractor" data-en="transparency">transparency</button>
+        <button type="button" class="pick pick--distractor" data-en="moderation">moderation</button>
+        <button type="button" class="pick pick--distractor" data-en="free speech">free speech</button>
+        <button type="button" class="pick pick--distractor" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick pick--distractor" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick pick--distractor" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick pick--distractor" data-en="clickbait">clickbait</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          <span class="cn-gloss" data-en="at the Youth Digital Rights Forum">喺青年數碼權利論壇上</span>，我哋首先要指出，現今<span class="cn-gloss" data-en="social platforms">社交平台</span>嘅<span class="cn-gloss" data-en="algorithm design">演算法設計</span>往往會<span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="2">放大</span>最能<span class="cn-gloss" data-en="stoke strong emotions">撩起情緒</span>嘅內容。至於<span class="cn-gloss" data-en="fake news and hate speech">假新聞同仇恨言論</span>，演算法一樣會<span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="2">放大</span>佢哋嘅<span class="cn-gloss" data-en="reach / spread">傳播面</span>；更重要嘅係，演算法仲會<span class="slot" tabindex="0" role="button" data-answer="perpetuate" data-task="2">延續</span>社會入面嘅<span class="cn-gloss" data-en="prejudice and polarisation">偏見同撕裂</span>，因此我哋每日面對嘅<span class="slot" tabindex="0" role="button" data-answer="algorithmic curation" data-task="2">演算法篩選</span>絕對唔係真正中立，而係深深影響我哋對<span class="cn-gloss" data-en="public issues">公共議題</span>嘅判斷。<span class="cn-gloss" data-en="clickbait">聳動標題呃流量</span>亦會加重青少年<span class="cn-gloss" data-en="cognitive load">腦力負擔</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          從<span class="cn-gloss" data-en="from an economic angle">經濟角度</span>睇，我哋面對緊<span class="slot" tabindex="0" role="button" data-answer="surveillance capitalism" data-task="2">監控資本主義</span>嘅邏輯：<span class="cn-gloss" data-en="platforms">平台</span>透過<span class="cn-gloss" data-en="user interfaces">介面</span>同<span class="cn-gloss" data-en="built-in reward mechanisms">獎勵機制</span><span class="slot" tabindex="0" role="button" data-answer="exploit" data-task="2">搾取</span>用戶嘅<span class="cn-gloss" data-en="data and browsing habits">數據同行為習慣</span>，其本質就係將<span class="cn-gloss" data-en="attention as a commodity">專注力變成可以賣嘅商品</span>；換句話講，呢種商業模式搞嘅就係<span class="slot" tabindex="0" role="button" data-answer="weaponisation of attention" data-task="2">注意力武器化</span>，直接衝擊青少年嘅<span class="cn-gloss" data-en="mental health">精神健康</span>同<span class="cn-gloss" data-en="trust in civil society">公民社會嘅互信</span>。政策討論亦要講<span class="cn-gloss" data-en="transparency">演算法透明</span>、內容<span class="cn-gloss" data-en="moderation">審核尺度</span>同<span class="cn-gloss" data-en="free speech">言論自由邊界</span>，唔可以淨係講<span class="cn-gloss" data-en="blanket blocking">封殺</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          面對咁嘅<span class="cn-gloss" data-en="this kind of structure">結構</span>，如果法律仍然<span class="cn-gloss" data-en="a legal void">一片空白</span>，社會就好容易跌入危險嘅<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="2">監管真空</span>。喺真空之下，<span class="cn-gloss" data-en="global tech giants">跨國科技巨頭</span>自然會<span class="cn-gloss" data-en="exploit legal loopholes">鑽法律罅</span>，繼續利用<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="2">監管真空</span>去<span class="cn-gloss" data-en="avoid taking responsibility">推卸責任</span>。結果係一般市民各自困喺自己嘅<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="2">過濾氣泡</span>；<span class="cn-gloss" data-en="recommendation algorithms">推薦演算法</span>再將政見相近嘅用戶砌埋同一個<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="2">過濾氣泡</span>入面，變相聽唔到<span class="cn-gloss" data-en="diverse views">多元意見</span>，所以我哋要認真諗清楚：單靠立法係咪就夠？公民社會亦要想辦法<span class="cn-gloss" data-en="mitigate">減低傷害</span>，唔好俾討論淪為<span class="cn-gloss" data-en="echo chamber">一言堂式輿論</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 3 — same word bank as Task 1 -->
+    <section class="task" data-task="3">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 3 — School magazine</span>
+        <button type="button" class="btn-model-en" data-model-task="3" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Write an article for the school magazine against a campus social‑media ban; mention overuse risks and argue for digital‑literacy lessons.</p>
+
+      <div class="word-bank" id="bank-3" aria-label="Task 3 English bank (same set as Task 1)">
+        <button type="button" class="pick" data-en="a double-edged sword">a double-edged sword</button>
+        <button type="button" class="pick" data-en="at the expense of mental well-being">at the expense of mental well-being</button>
+        <button type="button" class="pick" data-en="circumvent">circumvent</button>
+        <button type="button" class="pick" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick" data-en="democratise">democratise</button>
+        <button type="button" class="pick pick--distractor" data-en="censorship">censorship</button>
+        <button type="button" class="pick pick--distractor" data-en="prohibition">prohibition</button>
+        <button type="button" class="pick pick--distractor" data-en="abstinence">abstinence</button>
+        <button type="button" class="pick pick--distractor" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick pick--distractor" data-en="amplify">amplify</button>
+        <button type="button" class="pick pick--distractor" data-en="algorithmic curation">algorithmic curation</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          好多同學以為<span class="cn-gloss" data-en="digital life">數碼生活</span>淨係<span class="cn-gloss" data-en="just for fun">娛樂</span>，但從<span class="cn-gloss" data-en="a learning perspective">學習角度</span>睇，佢對我哋嚟講其實係一把<span class="slot" tabindex="0" role="button" data-answer="a double-edged sword" data-task="3">雙面刃</span>：晚晚熬夜<span class="cn-gloss" data-en="doom-scrolling on a phone">碌機</span>固然可能<span class="slot" tabindex="0" role="button" data-answer="at the expense of mental well-being" data-task="3">犧牲心理健康</span>，然而只要<span class="cn-gloss" data-en="well coordinated">統籌得當</span>，<span class="cn-gloss" data-en="the school network">校園網絡</span>同樣可以<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="3">普及化</span>老師準備嘅<span class="cn-gloss" data-en="teaching materials">教材</span>同<span class="cn-gloss" data-en="literacy activities">素養活動</span>，令資訊唔再只屬於少數人。<span class="cn-gloss" data-en="the school magazine">校刊</span>亦要討論<span class="cn-gloss" data-en="prohibition">全面禁令</span>同<span class="cn-gloss" data-en="censorship">內容審查</span>會點影響<span class="cn-gloss" data-en="freedom to learn">學習自由</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          相反，如果以<span class="cn-gloss" data-en="an authoritative mindset">「權威式」</span>心態一味<span class="cn-gloss" data-en="blocking the web on campus">封網</span>，只會逼學生<span class="cn-gloss" data-en="find another way">另覓門路</span>去<span class="slot" tabindex="0" role="button" data-answer="circumvent" data-task="3">繞過</span>校園網絡。我哋更希望見到老師喺課堂<span class="cn-gloss" data-en="lead by example">以身作則</span>，示範點樣<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="3">減輕</span><span class="cn-gloss" data-en="malicious labelling">惡意標籤</span>對人身嘅傷害，令同學學識點樣<span class="cn-gloss" data-en="protect themselves online">保護自己</span>。亦要提醒，課餘<span class="cn-gloss" data-en="abstinence">完全戒機</span>唔切實際；平台<span class="cn-gloss" data-en="amplify">推波助瀾</span>嘅流言先係要<span class="cn-gloss" data-en="what we must guard against">防嘅位</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          我哋亦要相信，<span class="cn-gloss" data-en="exams and contests">考試同比賽</span>本身已經推高<span class="slot" tabindex="0" role="button" data-answer="cognitive load" data-task="3">認知負荷</span>；朋輩之間亦要學識<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="3">減輕</span><span class="cn-gloss" data-en="bullying and anxiety">欺凌同焦慮</span>帶嚟嘅壓力。同學如果只喺網上<span class="cn-gloss" data-en="chase political hot topics">追逐政治熱話</span>，好易就跌入<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="3">回音谷</span>。<span class="cn-gloss" data-en="in other words">換言之</span>，學校與其<span class="cn-gloss" data-en="block platforms">封鎖平台</span>，倒不如透過<span class="cn-gloss" data-en="a varied curriculum">多元課程</span><span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="3">普及化</span><span class="cn-gloss" data-en="expert talks">專業講座</span>，<span class="cn-gloss" data-en="broaden our horizons">擴濶</span>我哋嘅視野；就連<span class="cn-gloss" data-en="parents’ WhatsApp groups">家長通訊群組</span>，<span class="cn-gloss" data-en="when everyone leans one way">立場一面倒</span>嘅時候一樣會變成<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="3">回音谷</span>，唔可以輕視。寫稿時亦要識分<span class="cn-gloss" data-en="surveillance capitalism">監控牟利嘅商業邏輯</span>同<span class="cn-gloss" data-en="algorithmic curation">系統幫你篩選內容</span>兩個層次。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 4 — same word bank as Task 2 -->
+    <section class="task" data-task="4">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 4 — Class forum</span>
+        <button type="button" class="btn-model-en" data-model-task="4" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">For a class forum on online platforms, write an opening statement agreeing or disagreeing that legislation alone can stop algorithms harming democracy and mental health.</p>
+
+      <div class="word-bank" id="bank-4" aria-label="Task 4 English bank (same set as Task 2)">
+        <button type="button" class="pick" data-en="amplify">amplify</button>
+        <button type="button" class="pick" data-en="perpetuate">perpetuate</button>
+        <button type="button" class="pick" data-en="algorithmic curation">algorithmic curation</button>
+        <button type="button" class="pick" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick" data-en="exploit">exploit</button>
+        <button type="button" class="pick" data-en="weaponisation of attention">weaponisation of attention</button>
+        <button type="button" class="pick" data-en="regulatory vacuum">regulatory vacuum</button>
+        <button type="button" class="pick" data-en="filter bubble">filter bubble</button>
+        <button type="button" class="pick pick--distractor" data-en="transparency">transparency</button>
+        <button type="button" class="pick pick--distractor" data-en="moderation">moderation</button>
+        <button type="button" class="pick pick--distractor" data-en="free speech">free speech</button>
+        <button type="button" class="pick pick--distractor" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick pick--distractor" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick pick--distractor" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick pick--distractor" data-en="clickbait">clickbait</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          各位朋友，今日論壇要處理演算法對<span class="cn-gloss" data-en="democracy">民主</span>同<span class="cn-gloss" data-en="mental health">精神健康</span>嘅影響，我哋先要<span class="cn-gloss" data-en="see clearly what is going on">睇清現實</span>：演算法總係傾向<span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="4">放大</span>最<span class="cn-gloss" data-en="sensationalist">聳動</span>嘅標題。<span class="cn-gloss" data-en="conspiracy clips">陰謀論短片</span><span class="cn-gloss" data-en="riding on a topic to stir things up">借題發揮</span>，一樣會俾<span class="cn-gloss" data-en="the system / the mechanism">機制</span><span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="4">放大</span><span class="cn-gloss" data-en="panic">恐慌</span>；更嚴重嘅係，<span class="cn-gloss" data-en="biased reporting">偏頗報道</span>會<span class="slot" tabindex="0" role="button" data-answer="perpetuate" data-task="4">延續</span>對<span class="cn-gloss" data-en="marginalised communities">弱勢社群</span>嘅標籤，我哋每日瀏覽嘅其實係一場唔透明嘅<span class="slot" tabindex="0" role="button" data-answer="algorithmic curation" data-task="4">演算法篩選</span>，而唔係真正多元嘅<span class="cn-gloss" data-en="a genuine public forum">輿論場</span>。<span class="cn-gloss" data-en="clickbait">呃 like 式標題</span>仲會推高大家<span class="cn-gloss" data-en="cognitive load">腦力壓力</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          背後嘅<span class="cn-gloss" data-en="economic logic">經濟邏輯</span>好清晰：我哋面對緊<span class="slot" tabindex="0" role="button" data-answer="surveillance capitalism" data-task="4">監控資本主義</span>，<span class="cn-gloss" data-en="interface design">介面設計</span>就係要<span class="slot" tabindex="0" role="button" data-answer="exploit" data-task="4">搾取</span>我哋嘅<span class="cn-gloss" data-en="digital footprints">行蹤</span>同<span class="cn-gloss" data-en="psychological vulnerabilities">心理弱點</span>，並將專注力當成<span class="cn-gloss" data-en="a live asset">活生生嘅資產</span>；<span class="cn-gloss" data-en="to put it plainly">講白啲</span>，呢種做法正正係<span class="slot" tabindex="0" role="button" data-answer="weaponisation of attention" data-task="4">注意力武器化</span>，絕對唔係<span class="cn-gloss" data-en="a quick patch">小修小補</span>就可以了事。論壇亦要處理<span class="cn-gloss" data-en="transparency">資訊透明</span>、<span class="cn-gloss" data-en="moderation">內容審核</span>同<span class="cn-gloss" data-en="free speech">言論自由</span>三者<span class="cn-gloss" data-en="how to balance them">點樣平衡</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          更值得正視嘅係，<span class="cn-gloss" data-en="the courts and regulators">司法同監管</span>往往<span class="cn-gloss" data-en="cannot keep pace with tech">追唔上科技</span>，於是社會出現長期嘅<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="4">監管真空</span>。<span class="cn-gloss" data-en="firms">企業</span>喺<span class="cn-gloss" data-en="grey zones">灰色地帶</span>入面，往往會利用<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="4">監管真空</span>去<span class="cn-gloss" data-en="put off being held accountable">延後負責</span>。喺呢個前提下，<span class="cn-gloss" data-en="personalised recommendations">個人化推薦</span>只會令少數聲音<span class="cn-gloss" data-en="remain trapped for good">永恒困喺</span><span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="4">過濾氣泡</span>入面，令<span class="cn-gloss" data-en="policy debate">政策討論</span>失去<span class="cn-gloss" data-en="genuine debate between opposing views">辯證</span>；政見相近嘅用戶再俾演算法塞入同一個<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="4">過濾氣泡</span>，所以我哋必須問：淨係立法係咪就能<span class="cn-gloss" data-en="untangle the deadlock">拆開死結</span>？學校同<span class="cn-gloss" data-en="civil-society groups">公民團體</span>亦要想點樣<span class="cn-gloss" data-en="mitigate">減低傷害</span>，唔好俾討論變<span class="cn-gloss" data-en="echo chamber">一言堂式輿論</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 5 — word bank set A (same as Task 1) -->
+    <section class="task" data-task="5">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 5 — Parents’ newsletter</span>
+        <button type="button" class="btn-model-en" data-model-task="5" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Write for the parents’ newsletter, as a student rep, against harsh home‑screen rules tied to the campus ban; note wellbeing risks and recommend digital literacy.</p>
+
+      <div class="word-bank" id="bank-5" aria-label="Task 5 English bank (set A)">
+        <button type="button" class="pick" data-en="a double-edged sword">a double-edged sword</button>
+        <button type="button" class="pick" data-en="at the expense of mental well-being">at the expense of mental well-being</button>
+        <button type="button" class="pick" data-en="circumvent">circumvent</button>
+        <button type="button" class="pick" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick" data-en="democratise">democratise</button>
+        <button type="button" class="pick pick--distractor" data-en="censorship">censorship</button>
+        <button type="button" class="pick pick--distractor" data-en="prohibition">prohibition</button>
+        <button type="button" class="pick pick--distractor" data-en="abstinence">abstinence</button>
+        <button type="button" class="pick pick--distractor" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick pick--distractor" data-en="amplify">amplify</button>
+        <button type="button" class="pick pick--distractor" data-en="algorithmic curation">algorithmic curation</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          各位家長，大家好。隨住校園可能禁用社交媒體 Wi‑Fi，若然屋企再加一套苛烈嘅螢幕規則，我哋擔心會變相雙重加壓。談到子女嘅<span class="cn-gloss" data-en="phone rules at home">手機安排</span>，首先要承認<span class="cn-gloss" data-en="life with smartphones">手機生活</span>係一把<span class="slot" tabindex="0" role="button" data-answer="a double-edged sword" data-task="5">雙面刃</span>：<span class="cn-gloss" data-en="during adolescence">青春期</span>時<span class="cn-gloss" data-en="always looking down at a phone">成日低頭碌機</span>，確實可能<span class="slot" tabindex="0" role="button" data-answer="at the expense of mental well-being" data-task="5">犧牲心理健康</span>；可是我哋唔可以因此<span class="cn-gloss" data-en="reject technology outright">否定科技</span>，因為善用<span class="cn-gloss" data-en="parent–child apps and groups">親子平台</span>，其實亦能夠<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="5">普及化</span><span class="cn-gloss" data-en="parents’ talks">家長講座</span>同<span class="cn-gloss" data-en="peer support">朋輩支援</span>，令資源更易<span class="cn-gloss" data-en="share resources">分享</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          事實上，<span class="cn-gloss" data-en="crude and heavy-handed">硬生生的</span><span class="cn-gloss" data-en="screen-time locks">鎖機</span>唔會令孩子自然學懂<span class="cn-gloss" data-en="self-regulation">自律</span>，佢哋反而會<span class="cn-gloss" data-en="find a workaround">想辦法</span><span class="slot" tabindex="0" role="button" data-answer="circumvent" data-task="5">繞過</span><span class="cn-gloss" data-en="parental controls">家長設定</span>。與其靠<span class="cn-gloss" data-en="punishment">懲罰</span>，不如<span class="cn-gloss" data-en="work with the school">同學校合作</span>，由<span class="cn-gloss" data-en="teachers and social workers">老師同社工</span>示範如何<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="5">減輕</span><span class="cn-gloss" data-en="cyberbullying">網暴</span>造成嘅<span class="cn-gloss" data-en="trauma">創傷</span>，呢個方向先至最<span class="cn-gloss" data-en="practical and down to earth">貼地</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          另外，<span class="cn-gloss" data-en="exam season">測驗季</span>同比賽本身經已拉高<span class="slot" tabindex="0" role="button" data-answer="cognitive load" data-task="5">認知負荷</span>；<span class="cn-gloss" data-en="class group chats">班群</span>討論一有<span class="cn-gloss" data-en="positions decided in advance">立場先行</span>，就好易變成<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="5">回音谷</span>。因此我哋<span class="cn-gloss" data-en="formally call for">倡議</span>學校透過<span class="cn-gloss" data-en="open courses">開放式課程</span><span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="5">普及化</span>STEM短片同<span class="cn-gloss" data-en="online workshops">線上工作坊</span>，同家長一齊陪孩子建立健康嘅<span class="cn-gloss" data-en="healthy screen habits">上網節奏</span>；亦教識同學<span class="cn-gloss" data-en="mutual support">互相扶持</span>，幫身邊人<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="5">減輕</span>壓力。<span class="cn-gloss" data-en="the parents’ comment section">家長留言區</span>有時一樣會淪為<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="5">回音谷</span>，唔好輕視。與其靠<span class="cn-gloss" data-en="prohibition">一刀切禁令</span>或變相<span class="cn-gloss" data-en="censorship">壓低多元聲音</span>，不如認清背後係<span class="cn-gloss" data-en="surveillance capitalism">監控牟利商業模式</span>，時間線其實係<span class="cn-gloss" data-en="algorithmic curation">系統幫你揀內容</span>；謠言仍可俾機制<span class="cn-gloss" data-en="amplify">放大傳播</span>，亦唔好將<span class="cn-gloss" data-en="abstinence">完全唔碰機</span>當成<span class="cn-gloss" data-en="the only virtue">唯一美德</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 6 — word bank set B (same as Task 2) -->
+    <section class="task" data-task="6">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 6 — Campus radio</span>
+        <button type="button" class="btn-model-en" data-model-task="6" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Write a short radio script for the school station agreeing or disagreeing that legislation alone can curb algorithm harm to democracy and wellbeing.</p>
+
+      <div class="word-bank" id="bank-6" aria-label="Task 6 English bank (set B)">
+        <button type="button" class="pick" data-en="amplify">amplify</button>
+        <button type="button" class="pick" data-en="perpetuate">perpetuate</button>
+        <button type="button" class="pick" data-en="algorithmic curation">algorithmic curation</button>
+        <button type="button" class="pick" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick" data-en="exploit">exploit</button>
+        <button type="button" class="pick" data-en="weaponisation of attention">weaponisation of attention</button>
+        <button type="button" class="pick" data-en="regulatory vacuum">regulatory vacuum</button>
+        <button type="button" class="pick" data-en="filter bubble">filter bubble</button>
+        <button type="button" class="pick pick--distractor" data-en="transparency">transparency</button>
+        <button type="button" class="pick pick--distractor" data-en="moderation">moderation</button>
+        <button type="button" class="pick pick--distractor" data-en="free speech">free speech</button>
+        <button type="button" class="pick pick--distractor" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick pick--distractor" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick pick--distractor" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick pick--distractor" data-en="clickbait">clickbait</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          各位聽眾早晨。承接今日題目——立法係咪足以單獨遏制演算法對<span class="cn-gloss" data-en="democracy">民主</span>同<span class="cn-gloss" data-en="wellbeing">大眾福祉</span>嘅傷害——講到<span class="cn-gloss" data-en="algorithms">演算法</span>，好易發現<span class="cn-gloss" data-en="automated ranking">自動排序</span>往往會<span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="6">放大</span><span class="cn-gloss" data-en="hateful comments">仇恨留言</span>。<span class="cn-gloss" data-en="long chains of reshares">社交鏈</span>嘅<span class="cn-gloss" data-en="reshares">轉載</span>一開波，<span class="cn-gloss" data-en="rumour spread">謠言擴散</span>同樣會俾<span class="cn-gloss" data-en="page layout / feed design">版面設計</span><span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="6">放大</span>；更重要嘅係，演算法仲會<span class="slot" tabindex="0" role="button" data-answer="perpetuate" data-task="6">延續</span><span class="cn-gloss" data-en="in everyday public discussion">坊間</span>嘅<span class="cn-gloss" data-en="bias">偏見</span>，因此我哋每日瀏覽嘅<span class="cn-gloss" data-en="timeline">時間軸</span>其實已經係一套<span class="slot" tabindex="0" role="button" data-answer="algorithmic curation" data-task="6">演算法篩選</span>，並唔係<span class="cn-gloss" data-en="a neutral news window">中立嘅新聞窗口</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          更廣泛嘅問題係，目前嘅<span class="cn-gloss" data-en="industry business model">行業模式</span>本身就係一種<span class="slot" tabindex="0" role="button" data-answer="surveillance capitalism" data-task="6">監控資本主義</span>：<span class="cn-gloss" data-en="the back end / server side">後台</span>透過<span class="cn-gloss" data-en="rewards and streaks">獎勵</span>不停<span class="slot" tabindex="0" role="button" data-answer="exploit" data-task="6">搾取</span><span class="cn-gloss" data-en="clicks and behavioural data">點擊同行為數據</span>，亦即係將我哋嘅<span class="cn-gloss" data-en="attention">專注力</span>當成<span class="cn-gloss" data-en="a product for sale">商品咁販賣</span>；講白啲，呢種做法正正係<span class="slot" tabindex="0" role="button" data-answer="weaponisation of attention" data-task="6">注意力武器化</span>，直接衝擊<span class="cn-gloss" data-en="voters’ judgement">選民判斷</span>同<span class="cn-gloss" data-en="wellbeing outside paid work">工餘生活質素</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          再睇<span class="cn-gloss" data-en="the institutional level">制度層面</span>，<span class="cn-gloss" data-en="cross-border enforcement gaps">跨境執法不足</span>就係典型嘅<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="6">監管真空</span>。<span class="cn-gloss" data-en="dominant market players">龍頭企業</span>喺<span class="cn-gloss" data-en="before rules catch up">法規未到位</span>之前，往往會藉住<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="6">監管真空</span>繼續<span class="cn-gloss" data-en="expand their power">擴張勢力</span>。喺<span class="cn-gloss" data-en="how information is supplied">資訊供應</span>上，市民幾乎都困喺自己嘅<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="6">過濾氣泡</span>入面；<span class="cn-gloss" data-en="small parties">小政黨</span>想突破<span class="cn-gloss" data-en="the algorithmic wall">演算法圍牆</span>，一樣會撞正<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="6">過濾氣泡</span>嘅<span class="cn-gloss" data-en="a hard boundary">硬邊界</span>。所以我今日想問大家：單靠立法，又真係足以<span class="cn-gloss" data-en="turn the tide">扭轉大局</span>嗎？政策亦要講<span class="cn-gloss" data-en="transparency">演算法透明</span>、<span class="cn-gloss" data-en="moderation">內容審核</span>同<span class="cn-gloss" data-en="free speech">言論自由</span>點樣平衡；<span class="cn-gloss" data-en="clickbait">呃流量標題</span>仲會推高<span class="cn-gloss" data-en="cognitive load">腦力負擔</span>。學校同公民團體亦要想點<span class="cn-gloss" data-en="mitigate">減低傷害</span>，唔好討論變<span class="cn-gloss" data-en="echo chamber">回音谷式一言堂</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 7 — word bank set A -->
+    <section class="task" data-task="7">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 7 — Student Congress</span>
+        <button type="button" class="btn-model-en" data-model-task="7" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Write a Student Congress motion opposing a broad social‑media block on campus Wi‑Fi; concede risks; propose digital‑literacy modules.</p>
+
+      <div class="word-bank" id="bank-7" aria-label="Task 7 English bank (set A)">
+        <button type="button" class="pick" data-en="a double-edged sword">a double-edged sword</button>
+        <button type="button" class="pick" data-en="at the expense of mental well-being">at the expense of mental well-being</button>
+        <button type="button" class="pick" data-en="circumvent">circumvent</button>
+        <button type="button" class="pick" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick" data-en="democratise">democratise</button>
+        <button type="button" class="pick pick--distractor" data-en="censorship">censorship</button>
+        <button type="button" class="pick pick--distractor" data-en="prohibition">prohibition</button>
+        <button type="button" class="pick pick--distractor" data-en="abstinence">abstinence</button>
+        <button type="button" class="pick pick--distractor" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick pick--distractor" data-en="amplify">amplify</button>
+        <button type="button" class="pick pick--distractor" data-en="algorithmic curation">algorithmic curation</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          各位同學，我哋認為<span class="cn-gloss" data-en="the student council">學生議會</span>應該誠實面對<span class="cn-gloss" data-en="screen culture">螢幕文化</span>，因為佢係一把<span class="slot" tabindex="0" role="button" data-answer="a double-edged sword" data-task="7">雙面刃</span>：長時間對住<span class="cn-gloss" data-en="screens">螢光幕</span>確實可能<span class="slot" tabindex="0" role="button" data-answer="at the expense of mental well-being" data-task="7">犧牲心理健康</span>，但只要善用<span class="cn-gloss" data-en="online collaboration">線上協作</span>，一樣可以<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="7">普及化</span><span class="cn-gloss" data-en="inter-school exchange">跨校交流</span>同<span class="cn-gloss" data-en="study resources">修學資源</span>，所以唔應<span class="cn-gloss" data-en="banning whole platforms outright">一刀切式封殺平台</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          再者，<span class="cn-gloss" data-en="a heavily filtered school network">高牆式校網</span>只會迫使同學<span class="cn-gloss" data-en="find a workaround">諗計</span><span class="slot" tabindex="0" role="button" data-answer="circumvent" data-task="7">繞過</span><span class="cn-gloss" data-en="the rules">規定</span>去<span class="cn-gloss" data-en="hand in homework">交功課</span>，根本無助建立<span class="cn-gloss" data-en="character">品格</span>。我哋<span class="cn-gloss" data-en="urge the school">促請校方</span><span class="cn-gloss" data-en="set up courses">設立課程</span>，由老師教曉同學點樣<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="7">減輕</span><span class="cn-gloss" data-en="humiliation online">網絡羞辱</span>嘅傷害，先至係真正<span class="cn-gloss" data-en="practical and grounded">貼地</span>嘅<span class="cn-gloss" data-en="follow-up">跟進</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          最後，<span class="cn-gloss" data-en="tight report deadlines">報告期限密集</span>本身已經推高<span class="slot" tabindex="0" role="button" data-answer="cognitive load" data-task="7">認知負荷</span>；同學如果只喺群組<span class="cn-gloss" data-en="pile on without thinking">盲目附和</span>，討論好容易變成<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="7">回音谷</span>。我哋唯有透過老師分享<span class="cn-gloss" data-en="diverse teaching materials">多元教材</span>，<span class="cn-gloss" data-en="blending online and offline">線上線下結合</span>，先可以幫大家<span class="slot" tabindex="0" role="button" data-answer="democratise" data-task="7">普及化</span><span class="cn-gloss" data-en="news literacy with an international outlook">國際新聞素養</span>，取代粗暴嘅<span class="cn-gloss" data-en="school-wide internet blocking">封網令</span>；亦<span class="cn-gloss" data-en="counselling">輔導</span>大家學會<span class="slot" tabindex="0" role="button" data-answer="mitigate" data-task="7">減輕</span><span class="cn-gloss" data-en="guilt and anxiety">內疚同焦慮</span>。<span class="cn-gloss" data-en="elective group chats">選修群</span>有時一樣會跌入<span class="slot" tabindex="0" role="button" data-answer="echo chamber" data-task="7">回音谷</span>，唔可以掉以輕心。議案反對用<span class="cn-gloss" data-en="prohibition">一刀切禁令</span>同變相<span class="cn-gloss" data-en="censorship">壓低多元聲音</span>；亦唔好用<span class="cn-gloss" data-en="abstinence">完全唔碰機</span>當唯一標準。動議草擬時亦要識分<span class="cn-gloss" data-en="surveillance capitalism">監控牟利商業模式</span>同<span class="cn-gloss" data-en="algorithmic curation">系統幫你揀內容</span>，留意流言仍可俾機制<span class="cn-gloss" data-en="amplify">放大</span>。
+        </p>
+      </div>
+    </section>
+
+    <!-- Task 8 — word bank set B -->
+    <section class="task" data-task="8">
+      <h2 class="task-heading">
+        <span class="task-heading-title">Task 8 — Inter‑house debate</span>
+        <button type="button" class="btn-model-en" data-model-task="8" title="Model answer (UK English)" aria-haspopup="dialog" aria-controls="model-en-dialog" aria-expanded="false" aria-label="Model answer: UK English for this task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </h2>
+      <p class="task-line">Write your side’s opening for the inter‑house debate on whether legislation alone suffices to fix algorithmic harm.</p>
+
+      <div class="word-bank" id="bank-8" aria-label="Task 8 English bank (set B)">
+        <button type="button" class="pick" data-en="amplify">amplify</button>
+        <button type="button" class="pick" data-en="perpetuate">perpetuate</button>
+        <button type="button" class="pick" data-en="algorithmic curation">algorithmic curation</button>
+        <button type="button" class="pick" data-en="surveillance capitalism">surveillance capitalism</button>
+        <button type="button" class="pick" data-en="exploit">exploit</button>
+        <button type="button" class="pick" data-en="weaponisation of attention">weaponisation of attention</button>
+        <button type="button" class="pick" data-en="regulatory vacuum">regulatory vacuum</button>
+        <button type="button" class="pick" data-en="filter bubble">filter bubble</button>
+        <button type="button" class="pick pick--distractor" data-en="transparency">transparency</button>
+        <button type="button" class="pick pick--distractor" data-en="moderation">moderation</button>
+        <button type="button" class="pick pick--distractor" data-en="free speech">free speech</button>
+        <button type="button" class="pick pick--distractor" data-en="mitigate">mitigate</button>
+        <button type="button" class="pick pick--distractor" data-en="echo chamber">echo chamber</button>
+        <button type="button" class="pick pick--distractor" data-en="cognitive load">cognitive load</button>
+        <button type="button" class="pick pick--distractor" data-en="clickbait">clickbait</button>
+      </div>
+
+      <div class="compact">
+        <p class="zh" lang="zh-HK">
+          <span class="cn-gloss" data-en="Madam/Mr Chair">主席</span>、<span class="cn-gloss" data-en="judges">評判</span>、在座各位，我方要先指出<span class="cn-gloss" data-en="personalised algorithm feeds (e.g. &quot;For you&quot;)">趨勢頁面</span>其實不斷<span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="8">放大</span><span class="cn-gloss" data-en="sensationalist headlines">聳動標題</span>。<span class="cn-gloss" data-en="between school clubs">社團之間</span>嘅<span class="cn-gloss" data-en="forwarding chains">轉發</span>一旦<span class="cn-gloss" data-en="out of control">失控</span>，<span class="cn-gloss" data-en="unverified posts">未經核實嘅消息</span>一樣會俾<span class="cn-gloss" data-en="traffic-hungry mechanics">流量機制</span><span class="slot" tabindex="0" role="button" data-answer="amplify" data-task="8">放大</span>；更令人擔憂嘅係，偏頗報道會<span class="slot" tabindex="0" role="button" data-answer="perpetuate" data-task="8">延續</span><span class="cn-gloss" data-en="harmful stereotypes">刻板印象</span>，因此每一條<span class="cn-gloss" data-en="short videos">短片</span>背後都有唔透明嘅<span class="slot" tabindex="0" role="button" data-answer="algorithmic curation" data-task="8">演算法篩選</span>，直接左右市民點樣理解<span class="cn-gloss" data-en="current affairs">時局</span>。
+        </p>
+        <p class="zh" lang="zh-HK">
+          從<span class="cn-gloss" data-en="the industry angle">產業角度</span>睇，我哋面對嘅係一整個<span class="slot" tabindex="0" role="button" data-answer="surveillance capitalism" data-task="8">監控資本主義</span><span class="cn-gloss" data-en="system">體系</span>：介面設計就係要<span class="slot" tabindex="0" role="button" data-answer="exploit" data-task="8">搾取</span><span class="cn-gloss" data-en="data">資料</span>同<span class="cn-gloss" data-en="behavioural weak spots">行為弱點</span>，並不斷<span class="cn-gloss" data-en="stack up layers">堆疊出</span><span class="slot" tabindex="0" role="button" data-answer="weaponisation of attention" data-task="8">注意力武器化</span>嘅<span class="cn-gloss" data-en="a vicious cycle">循環</span>；如果只靠<span class="cn-gloss" data-en="self-regulation by industry">企業自律</span>而冇<span class="cn-gloss" data-en="external checks">外部制衡</span>，<span class="cn-gloss" data-en="public trust">公民社會嘅信任</span>只會愈洗愈薄。
+        </p>
+        <p class="zh" lang="zh-HK">
+          立法亦唔係萬能：<span class="cn-gloss" data-en="limits of jurisdiction">司法域外</span>嘅<span class="cn-gloss" data-en="gaps">缺口</span>造就咗<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="8">監管真空</span>。<span class="cn-gloss" data-en="big tech">科技巨頭</span>喺<span class="cn-gloss" data-en="when laws lag behind">法規追唔切</span>嘅時候，自然會利用<span class="slot" tabindex="0" role="button" data-answer="regulatory vacuum" data-task="8">監管真空</span>去<span class="cn-gloss" data-en="accountability only when it suits them">選擇性負責</span>。結果係選民同政黨各自困喺<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="8">過濾氣泡</span>入面；<span class="cn-gloss" data-en="extreme positions">極端立場</span>想<span class="cn-gloss" data-en="break through">突圍</span>，一樣會撞正<span class="slot" tabindex="0" role="button" data-answer="filter bubble" data-task="8">過濾氣泡</span>嘅<span class="cn-gloss" data-en="the algorithmic wall">演算法圍牆</span>。所以我方要問在座一句：立法<span class="cn-gloss" data-en="as the only tool">單一工具</span>，又點可以承擔咁沉重嘅<span class="cn-gloss" data-en="burden of repair">修補責任</span>？辯論亦要處理<span class="cn-gloss" data-en="transparency">演算法透明</span>、<span class="cn-gloss" data-en="moderation">內容審核</span>同<span class="cn-gloss" data-en="free speech">言論自由</span>三者<span class="cn-gloss" data-en="tension">張力</span>；<span class="cn-gloss" data-en="clickbait">呃流量標題</span>會加重<span class="cn-gloss" data-en="cognitive load">腦力負擔</span>。公民社會要想點<span class="cn-gloss" data-en="mitigate">減低傷害</span>，唔好<span class="cn-gloss" data-en="public debate">公共討論</span>淪為<span class="cn-gloss" data-en="echo chamber">回音谷式一言堂</span>。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="model-en-dialog" class="model-en-dialog" aria-labelledby="model-en-dialog-title">
+    <div class="model-en-dialog-inner">
+      <div class="model-en-dialog-top">
+        <div>
+          <h3 id="model-en-dialog-title">Model answer (UK English)</h3>
+          <p class="model-en-sub" id="model-en-dialog-tasklabel"></p>
+        </div>
+        <button type="button" class="model-en-close" id="model-en-close" value="close">Close</button>
+      </div>
+      <div id="model-en-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <template id="model-en-1">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Dear Principal, I am writing to discuss the proposal for a <span class="model-kw">prohibition</span> of social media on school Wi‑Fi. Social media is, without question, <span class="model-kw">a double-edged sword</span>: when pupils stay up late scrolling on their phones, overuse can come <span class="model-kw">at the expense of mental well-being</span>. Yet if the school uses platforms thoughtfully to promote reading and civic discussion, it can <span class="model-kw">democratise</span> access to public information and help us hear different viewpoints. What we need is self-discipline and clear guidance on online behaviour, not a blanket ban that looks like <span class="model-kw">censorship</span> and may only <span class="model-kw">amplify</span> hostility.</p>
+      <p>Furthermore, campus bans often amount to treating symptoms rather than root causes, because pupils who know their way around devices can <span class="model-kw">circumvent</span> Wi‑Fi restrictions with little difficulty. Rather than pouring energy into catching rule-breakers, we would prefer structured lessons that teach us how to <span class="model-kw">mitigate</span> the harm from problematic internet use and from rumours. When class chats contain only people who already agree, and comments become one-sided, they quickly turn into an <span class="model-kw">echo chamber</span>—something many of us recognise. Expecting total <span class="model-kw">abstinence</span> from phones is simply unrealistic.</p>
+      <p>We would also stress that distraction often reflects poor management of <span class="model-kw">cognitive load</span> rather than platforms being inherently to blame. Counselling should help us <span class="model-kw">mitigate</span> the impact of cyberbullying. If classroom debate draws on one-sided sources, we still end up in an <span class="model-kw">echo chamber</span>, with arguments that lose balance and never hear the other side. Breaking that vicious circle means using open lessons and work-study schemes to <span class="model-kw">democratise</span> access to high-quality materials—education instead of crude blocking. Finally, we should recognise <span class="model-kw">surveillance capitalism</span> for what it is: our feeds are shaped by <span class="model-kw">algorithmic curation</span>, not a neutral list of posts.</p>
+    </div>
+  </template>
+  <template id="model-en-2">
+    <div class="model-en-prose" lang="en-GB">
+      <p>At the Youth Digital Rights Forum, we must begin with a hard truth: today’s social platforms are engineered so that their algorithms <span class="model-kw">amplify</span> content that stokes strong emotions. Fake news and hate speech <span class="model-kw">amplify</span> harm in the same way, widening their reach; worse still, algorithms <span class="model-kw">perpetuate</span> prejudice and polarisation in wider society. What we scroll through each day is therefore a form of <span class="model-kw">algorithmic curation</span>—not a neutral window onto the world—and it shapes how we judge public issues. <span class="model-kw">Clickbait</span> headlines add to young people’s <span class="model-kw">cognitive load</span>.</p>
+      <p>From an economic perspective, we are dealing with the logic of <span class="model-kw">surveillance capitalism</span>. Platforms use interfaces and built-in reward mechanisms to <span class="model-kw">exploit</span> our data and browsing habits, turning attention into a commodity. In plain terms, that is the <span class="model-kw">weaponisation of attention</span>, with serious consequences for young people’s mental health and for trust in civil society. Policy debates must also address <span class="model-kw">transparency</span>, the limits of <span class="model-kw">moderation</span>, and the boundaries of <span class="model-kw">free speech</span>—not only talk of blanket blocking.</p>
+      <p>Against that structure, if the law remains a blank sheet, society slips into a dangerous <span class="model-kw">regulatory vacuum</span>. Global tech giants will <span class="model-kw">exploit</span> legal loopholes and continue to use that <span class="model-kw">regulatory vacuum</span> to avoid taking responsibility. Ordinary citizens then find themselves trapped in a <span class="model-kw">filter bubble</span>; recommendation systems herd like-minded users into the same <span class="model-kw">filter bubble</span>, so diverse views never surface. We must ask whether legislation alone is enough—and civil society must find ways to <span class="model-kw">mitigate</span> harm so that public discussion does not collapse into an <span class="model-kw">echo chamber</span>.</p>
+    </div>
+  </template>
+  <template id="model-en-3">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Many pupils treat digital life as mere entertainment, but from a learning perspective it is <span class="model-kw">a double-edged sword</span>. Doom-scrolling late into the night can come <span class="model-kw">at the expense of mental well-being</span>; yet if the timetable is well coordinated, the school network can <span class="model-kw">democratise</span> teachers’ materials and literacy activities so that information is no longer the preserve of a few. The magazine should also ask how outright <span class="model-kw">prohibition</span> and forms of <span class="model-kw">censorship</span> might narrow freedom to learn.</p>
+      <p>By contrast, if the school adopts an authoritative mindset and simply blocks the web on campus, pupils will find another way to <span class="model-kw">circumvent</span> the network. We would rather see teachers lead by example in class, showing how to <span class="model-kw">mitigate</span> the harm from malicious labelling and helping everyone learn to protect themselves online. Total <span class="model-kw">abstinence</span> from phones outside lessons is not credible; what we must guard against are rumours that platforms <span class="model-kw">amplify</span>.</p>
+      <p>We should also recognise that exams and contests already raise <span class="model-kw">cognitive load</span>; peers need to learn how to <span class="model-kw">mitigate</span> the pressure linked to bullying and anxiety. If pupils only chase political hot topics online, they easily fall into an <span class="model-kw">echo chamber</span>. In other words, instead of blocking platforms, the school should use a varied curriculum to <span class="model-kw">democratise</span> access to expert talks and broaden our horizons. Even parents’ WhatsApp groups can become an <span class="model-kw">echo chamber</span> when everyone leans one way—so we should not underestimate the risk. When drafting, distinguish <span class="model-kw">surveillance capitalism</span> from <span class="model-kw">algorithmic curation</span>: two different layers of the same problem.</p>
+    </div>
+  </template>
+  <template id="model-en-4">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Everyone, today’s forum is about how algorithms affect democracy and mental health—and we need to see clearly what is going on. Algorithms systematically <span class="model-kw">amplify</span> sensationalist headlines. Conspiracy clips that ride on controversy <span class="model-kw">amplify</span> panic through the same mechanics and spread fear; biased reporting can <span class="model-kw">perpetuate</span> stigma against marginalised communities. What we browse each day is opaque <span class="model-kw">algorithmic curation</span>, not a genuine public forum. <span class="model-kw">Clickbait</span> pushes up everyone’s <span class="model-kw">cognitive load</span>.</p>
+      <p>The economic logic is straightforward: we are living with <span class="model-kw">surveillance capitalism</span>. Interface design is built to <span class="model-kw">exploit</span> our digital footprints and psychological vulnerabilities, treating attention as a live asset. Put bluntly, this is the <span class="model-kw">weaponisation of attention</span>, and it cannot be fixed with a quick patch. The forum must also weigh <span class="model-kw">transparency</span>, content <span class="model-kw">moderation</span>, and <span class="model-kw">free speech</span>—and how to balance them.</p>
+      <p>More importantly, courts and regulators often cannot keep pace with technology, leaving a long-term <span class="model-kw">regulatory vacuum</span>. Firms operate in grey zones and use that <span class="model-kw">regulatory vacuum</span> to put off being held accountable. Personalised recommendations can leave minority voices trapped inside a <span class="model-kw">filter bubble</span>, draining policy debate of genuine disagreement between opposing views. Users with similar politics are pushed into the same <span class="model-kw">filter bubble</span>, so we must ask whether legislation alone can untangle the deadlock. Schools and civil society groups need to think seriously about how to <span class="model-kw">mitigate</span> harm and stop discussion turning into an <span class="model-kw">echo chamber</span>.</p>
+    </div>
+  </template>
+  <template id="model-en-5">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Dear parents, with the campus Wi‑Fi ban on social media in view, we need to talk about harsh screen rules at home as well. Life with smartphones is <span class="model-kw">a double-edged sword</span>: during adolescence, always looking down at a phone can come <span class="model-kw">at the expense of mental well-being</span>; but we should not reject technology outright. Used well, parent–child apps and groups can <span class="model-kw">democratise</span> access to parents’ talks and peer support, making it easier to share resources.</p>
+      <p>In practice, crude screen-time locks do not teach self-regulation; children will find a workaround and <span class="model-kw">circumvent</span> parental controls. Punishment is a poor substitute for working with the school so that teachers and social workers can model how to <span class="model-kw">mitigate</span> the trauma caused by cyberbullying. That approach is far more practical and down to earth.</p>
+      <p>Exam season and competitions already raise <span class="model-kw">cognitive load</span>; class group chats can become an <span class="model-kw">echo chamber</span> the moment positions are decided in advance. We therefore call on the school to use open courses to <span class="model-kw">democratise</span> access to STEM clips and online workshops, and to help families build healthy screen habits alongside mutual support so pupils can <span class="model-kw">mitigate</span> stress for one another. Parents’ comment sections can become an <span class="model-kw">echo chamber</span> too, so we should not dismiss the risk. Blanket <span class="model-kw">prohibition</span> or <span class="model-kw">censorship</span> of diverse voices is no substitute for recognising <span class="model-kw">surveillance capitalism</span>: our timelines reflect <span class="model-kw">algorithmic curation</span>, and feed design can still <span class="model-kw">amplify</span> rumours. Nor should total <span class="model-kw">abstinence</span> from phones be treated as the only virtue.</p>
+    </div>
+  </template>
+  <template id="model-en-6">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Good morning. On whether legislation alone can curb algorithm harm to democracy and wellbeing, it is obvious that automated ranking can <span class="model-kw">amplify</span> hateful comments. Long chains of reshares <span class="model-kw">amplify</span> rumours through feed design; more importantly, algorithms <span class="model-kw">perpetuate</span> everyday bias, so the timeline we scroll through is already a form of <span class="model-kw">algorithmic curation</span>—not a neutral news window.</p>
+      <p>The wider issue is that the industry’s business model is a species of <span class="model-kw">surveillance capitalism</span>. The back end uses rewards to <span class="model-kw">exploit</span> clicks and behavioural data, selling our attention as a product. Plainly, that is the <span class="model-kw">weaponisation of attention</span>, hitting voters’ judgement and wellbeing outside paid work.</p>
+      <p>At the institutional level, cross-border enforcement gaps are a textbook <span class="model-kw">regulatory vacuum</span>. Dominant players expand their power while rules catch up, using the same <span class="model-kw">regulatory vacuum</span>. In how information is supplied, most citizens are trapped in a <span class="model-kw">filter bubble</span>; smaller parties hit the algorithmic wall and run into the hard boundary of the same <span class="model-kw">filter bubble</span>. So can legislation alone turn the tide? Policy must still balance <span class="model-kw">transparency</span>, <span class="model-kw">moderation</span>, and <span class="model-kw">free speech</span>; <span class="model-kw">clickbait</span> continues to raise <span class="model-kw">cognitive load</span>. Schools and civil society must <span class="model-kw">mitigate</span> harm and stop debate turning into an <span class="model-kw">echo chamber</span>.</p>
+    </div>
+  </template>
+  <template id="model-en-7">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Fellow students, the student council should be honest about screen culture: it is <span class="model-kw">a double-edged sword</span>. Long hours in front of screens can come <span class="model-kw">at the expense of mental well-being</span>, yet thoughtful online collaboration can <span class="model-kw">democratise</span> inter-school exchange and study resources. We should not respond by banning whole platforms outright.</p>
+      <p>A heavily filtered school network only pushes pupils to find a workaround and <span class="model-kw">circumvent</span> the rules to hand in homework, which does little for character. We urge the school to set up courses in which teachers show how to <span class="model-kw">mitigate</span> the harm from online humiliation—that is a practical, grounded follow-up.</p>
+      <p>Tight report deadlines already raise <span class="model-kw">cognitive load</span>; if pupils pile on without thinking in group chats, discussion becomes an <span class="model-kw">echo chamber</span>. Sharing diverse teaching materials, blending online and offline work, can <span class="model-kw">democratise</span> news literacy with an international outlook instead of relying on school-wide internet blocking. Counselling should help us <span class="model-kw">mitigate</span> guilt and anxiety. Elective group chats can fall into an <span class="model-kw">echo chamber</span> too, so we must stay alert. The motion rejects blanket <span class="model-kw">prohibition</span> and <span class="model-kw">censorship</span> of diverse voices, and refuses to treat total <span class="model-kw">abstinence</span> from phones as the only standard. In drafting this motion, separate <span class="model-kw">surveillance capitalism</span> from <span class="model-kw">algorithmic curation</span>, and remember that feeds can still <span class="model-kw">amplify</span> rumours.</p>
+    </div>
+  </template>
+  <template id="model-en-8">
+    <div class="model-en-prose" lang="en-GB">
+      <p>Madam Chair, judges, members of the house: personalised “For you” feeds constantly <span class="model-kw">amplify</span> sensationalist headlines. When forwarding chains between clubs spiral out of control, traffic-hungry mechanics <span class="model-kw">amplify</span> unverified posts; biased reporting <span class="model-kw">perpetuate</span>s harmful stereotypes. Behind every short clip lies opaque <span class="model-kw">algorithmic curation</span> that shapes how the public reads current affairs.</p>
+      <p>From an industry perspective, we face an entire system of <span class="model-kw">surveillance capitalism</span>. Interface design is built to <span class="model-kw">exploit</span> data and behavioural weak points, stacking up the <span class="model-kw">weaponisation of attention</span> in a vicious cycle. If we rely on self-regulation by industry without external checks, public trust in civil society will keep eroding.</p>
+      <p>Legislation is not a cure-all: limits of jurisdiction leave gaps that create a <span class="model-kw">regulatory vacuum</span>. Big tech will use that <span class="model-kw">regulatory vacuum</span> for selective accountability when laws lag behind. Voters and parties sit in separate <span class="model-kw">filter bubble</span>s; extreme positions that try to break through still hit the algorithmic wall of the same <span class="model-kw">filter bubble</span>. Can legislation, as the only tool, shoulder the burden of repair? Debates must handle <span class="model-kw">transparency</span>, <span class="model-kw">moderation</span>, and the tension with <span class="model-kw">free speech</span>; <span class="model-kw">clickbait</span> adds to <span class="model-kw">cognitive load</span>. Civil society must <span class="model-kw">mitigate</span> harm and stop public debate collapsing into an <span class="model-kw">echo chamber</span>.</p>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      function norm(s) {
+        return (s || "").trim().toLowerCase();
+      }
+
+      function bankForTask(taskId) {
+        return document.getElementById("bank-" + taskId);
+      }
+
+      function selectedEn(taskId) {
+        var bank = bankForTask(taskId);
+        if (!bank) return null;
+        var sel = bank.querySelector(".pick.is-selected");
+        return sel ? sel.getAttribute("data-en") : null;
+      }
+
+      document.querySelectorAll(".word-bank .pick").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var bank = btn.closest(".word-bank");
+          bank.querySelectorAll(".pick").forEach(function (b) {
+            b.classList.remove("is-selected");
+            b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("is-selected");
+          btn.setAttribute("aria-pressed", "true");
+        });
+        btn.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      var btnGlossAll = document.getElementById("btn-gloss-all");
+
+      function glossGlobalMode() {
+        return document.body.getAttribute("data-cn-gloss-mode") || "off";
+      }
+
+      function setGlossGlobalMode(mode) {
+        document.body.setAttribute("data-cn-gloss-mode", mode);
+      }
+
+      function captureGlossZh(gloss) {
+        if (gloss.hasAttribute("data-zh")) return;
+        var sub = gloss.querySelector(".cn-gloss-en");
+        if (sub) sub.remove();
+        gloss.classList.remove("is-open");
+        var zh = gloss.textContent.replace(/\s+/g, " ").trim();
+        gloss.setAttribute("data-zh", zh);
+      }
+
+      function openOneGloss(gloss) {
+        if (gloss.querySelector(".cn-gloss-en")) return;
+        var en = gloss.getAttribute("data-en") || "";
+        var span = document.createElement("span");
+        span.className = "cn-gloss-en";
+        span.setAttribute("lang", "en");
+        span.textContent = " (" + en + ")";
+        gloss.appendChild(span);
+        gloss.classList.add("is-open");
+        gloss.setAttribute("aria-expanded", "true");
+      }
+
+      function closeOneGloss(gloss) {
+        var sub = gloss.querySelector(".cn-gloss-en");
+        if (sub) sub.remove();
+        gloss.classList.remove("is-open");
+        gloss.setAttribute("aria-expanded", "false");
+      }
+
+      function applyGlossGlobalMode(mode) {
+        document.querySelectorAll(".cn-gloss").forEach(function (gloss) {
+          captureGlossZh(gloss);
+          var zh = gloss.getAttribute("data-zh") || "";
+          var en = gloss.getAttribute("data-en") || "";
+          closeOneGloss(gloss);
+          if (mode === "off") {
+            gloss.textContent = zh;
+            gloss.setAttribute("lang", "zh-HK");
+          } else if (mode === "brackets") {
+            gloss.textContent = zh;
+            gloss.setAttribute("lang", "zh-HK");
+            openOneGloss(gloss);
+          } else if (mode === "en-only") {
+            gloss.textContent = en;
+            gloss.setAttribute("lang", "en");
+            gloss.setAttribute("aria-expanded", "true");
+          }
+        });
+        setGlossGlobalMode(mode);
+        syncGlossAllButton();
+      }
+
+      function syncGlossAllButton() {
+        if (!btnGlossAll) return;
+        var mode = glossGlobalMode();
+        btnGlossAll.setAttribute("data-gloss-step", mode);
+        if (mode === "off") {
+          btnGlossAll.textContent = "顯示全部紫色英文";
+          btnGlossAll.setAttribute("aria-pressed", "false");
+        } else if (mode === "brackets") {
+          btnGlossAll.textContent = "改為淨顯示英文";
+          btnGlossAll.setAttribute("aria-pressed", "true");
+        } else {
+          btnGlossAll.textContent = "還原粵文（紫色）";
+          btnGlossAll.setAttribute("aria-pressed", "true");
+        }
+      }
+
+      function cycleGlossGlobalMode() {
+        var cur = glossGlobalMode();
+        var next = cur === "off" ? "brackets" : cur === "brackets" ? "en-only" : "off";
+        applyGlossGlobalMode(next);
+      }
+
+      document.querySelectorAll(".cn-gloss").forEach(function (gloss) {
+        captureGlossZh(gloss);
+        if (!gloss.hasAttribute("tabindex")) gloss.setAttribute("tabindex", "0");
+        if (!gloss.getAttribute("role")) gloss.setAttribute("role", "button");
+        if (!gloss.hasAttribute("aria-expanded")) gloss.setAttribute("aria-expanded", "false");
+        function toggleGloss(ev) {
+          if (ev) ev.preventDefault();
+          if (glossGlobalMode() === "en-only") return;
+          if (gloss.querySelector(".cn-gloss-en")) {
+            if (glossGlobalMode() === "brackets") {
+              applyGlossGlobalMode("off");
+              return;
+            }
+            closeOneGloss(gloss);
+          } else {
+            openOneGloss(gloss);
+          }
+          syncGlossAllButton();
+        }
+        gloss.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleGloss(e);
+        });
+        gloss.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            toggleGloss(e);
+          }
+        });
+      });
+
+      if (btnGlossAll) {
+        btnGlossAll.addEventListener("click", function () {
+          cycleGlossGlobalMode();
+        });
+        btnGlossAll.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            btnGlossAll.click();
+          }
+        });
+      }
+
+      var modelDialog = document.getElementById("model-en-dialog");
+      var modelContent = document.getElementById("model-en-dialog-content");
+      var modelTaskLabel = document.getElementById("model-en-dialog-tasklabel");
+      var modelClose = document.getElementById("model-en-close");
+      var modelTitles = {
+        "1": "Task 1 — Letter (Wi‑Fi ban)",
+        "2": "Task 2 — Speech (algorithms & regulation)",
+        "3": "Task 3 — School magazine",
+        "4": "Task 4 — Class forum",
+        "5": "Task 5 — Parents’ newsletter",
+        "6": "Task 6 — Campus radio",
+        "7": "Task 7 — Student Congress",
+        "8": "Task 8 — Inter‑house debate"
+      };
+
+      function setModelButtonsExpanded(openedTaskId) {
+        document.querySelectorAll(".btn-model-en").forEach(function (btn) {
+          var t = btn.getAttribute("data-model-task");
+          btn.setAttribute("aria-expanded", openedTaskId && t === openedTaskId ? "true" : "false");
+        });
+      }
+
+      function openModelDialog(taskId) {
+        var tpl = document.getElementById("model-en-" + taskId);
+        if (!tpl || !modelDialog || !modelContent) return;
+        modelContent.innerHTML = "";
+        var frag = tpl.content.cloneNode(true);
+        var wrap = frag.querySelector(".model-en-prose");
+        if (wrap) modelContent.appendChild(wrap);
+        else modelContent.appendChild(frag);
+        if (modelTaskLabel) modelTaskLabel.textContent = modelTitles[taskId] || "";
+        modelDialog.showModal();
+        setModelButtonsExpanded(taskId);
+      }
+
+      function closeModelDialog() {
+        if (modelDialog && modelDialog.open) modelDialog.close();
+        setModelButtonsExpanded(null);
+      }
+
+      var modelOpenConfirmMsg = "View the English model answer?";
+
+      document.querySelectorAll(".btn-model-en").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (!window.confirm(modelOpenConfirmMsg)) return;
+          var tid = btn.getAttribute("data-model-task");
+          if (tid) setActiveTask(tid, { scroll: false });
+          openModelDialog(tid);
+        });
+      });
+
+      if (modelClose) {
+        modelClose.addEventListener("click", closeModelDialog);
+      }
+
+      if (modelDialog) {
+        modelDialog.addEventListener("click", function (e) {
+          if (e.target === modelDialog) closeModelDialog();
+        });
+        modelDialog.addEventListener("close", function () {
+          setModelButtonsExpanded(null);
+          if (modelContent) modelContent.innerHTML = "";
+        });
+      }
+
+      var taskSelect = document.getElementById("task-select");
+
+      function setActiveTask(taskId, opts) {
+        opts = opts || {};
+        if (!taskId) return;
+        document.body.setAttribute("data-active-task", taskId);
+        if (taskSelect && taskSelect.value !== taskId) taskSelect.value = taskId;
+        if (opts.scroll) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      if (taskSelect) {
+        taskSelect.addEventListener("change", function () {
+          setActiveTask(taskSelect.value, { scroll: true });
+        });
+      }
+
+      document.querySelectorAll(".slot").forEach(function (slot) {
+        slot.addEventListener("click", function () {
+          if (slot.getAttribute("data-locked") === "true") return;
+
+          var taskId = slot.getAttribute("data-task");
+          var picked = selectedEn(taskId);
+          if (!picked) {
+            return;
+          }
+
+          var answer = slot.getAttribute("data-answer");
+          if (norm(picked) === norm(answer)) {
+            slot.classList.remove("slot--bad");
+            slot.classList.add("slot--ok");
+            slot.setAttribute("data-locked", "true");
+            var zh = slot.getAttribute("data-zh");
+            if (!zh) {
+              zh = slot.textContent.replace(/\s+/g, " ").trim();
+              slot.setAttribute("data-zh", zh);
+            }
+            while (slot.firstChild) slot.removeChild(slot.firstChild);
+            slot.appendChild(document.createTextNode(zh));
+            slot.appendChild(document.createTextNode(" "));
+            var enSpan = document.createElement("span");
+            enSpan.className = "slot-en";
+            enSpan.setAttribute("lang", "en");
+            enSpan.textContent = "(" + answer + ")";
+            slot.appendChild(enSpan);
+            slot.setAttribute("aria-label", zh + " (" + answer + ")");
+            slot.removeAttribute("role");
+            slot.removeAttribute("tabindex");
+          } else {
+            slot.classList.remove("slot--ok");
+            slot.classList.add("slot--bad");
+            window.clearTimeout(slot._badT);
+            slot._badT = window.setTimeout(function () {
+              slot.classList.remove("slot--bad");
+            }, 900);
+          }
+        });
+
+        slot.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            slot.click();
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
