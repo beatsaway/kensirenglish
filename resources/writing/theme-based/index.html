@@ -33,8 +33,61 @@
         .header-copyright { font-size: 10px; color: var(--color-text-secondary); }
         .header-copyright a { color: inherit; text-decoration: none; }
         main { padding: 24px; max-width: 720px; margin: 0 auto; }
-        .theme-row { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
-        .theme-row select { padding: 6px 10px; border: 1px solid #ddd; font-size: 14px; }
+        .theme-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .theme-row > label { padding-top: 8px; flex-shrink: 0; }
+        .theme-combobox { position: relative; flex: 1; min-width: 200px; max-width: 420px; }
+        .theme-combobox input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--color-border);
+            font-size: 14px;
+            background: var(--color-bg);
+        }
+        .theme-combobox input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+        }
+        .theme-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% + 2px);
+            max-height: min(320px, 70vh);
+            overflow-y: auto;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        .theme-dropdown.is-open { display: block; }
+        .theme-option {
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: left;
+            width: 100%;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+        }
+        .theme-option:last-child { border-bottom: none; }
+        .theme-option:hover,
+        .theme-option:focus {
+            background: #f0f4f8;
+            outline: none;
+        }
+        .theme-option.is-selected {
+            font-weight: 600;
+            background: #eef4ff;
+        }
+        .theme-dropdown-empty {
+            padding: 12px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
         .task-card {
             border: 1px solid #ddd;
             background: #f8f8f8;
@@ -82,8 +135,20 @@
 
     <main>
         <div class="theme-row">
-            <label for="themeSelect">Theme</label>
-            <select id="themeSelect"></select>
+            <label for="themeSearchInput">Theme</label>
+            <div class="theme-combobox" id="themeCombobox">
+                <input
+                    type="text"
+                    id="themeSearchInput"
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-autocomplete="list"
+                    aria-controls="themeDropdown"
+                    aria-expanded="false"
+                    placeholder=""
+                />
+                <div class="theme-dropdown" id="themeDropdown" role="listbox" aria-label="Themes A–Z"></div>
+            </div>
         </div>
         <div id="taskCards"></div>
     </main>
@@ -103,6 +168,7 @@
     <script src="titanic.js"></script>
     <script src="homelessness.js"></script>
     <script src="dse_personal_family.js"></script>
+    <script src="blackdeath.js"></script>
     <script>
         const themes = {
             winter: window.themeBasedWinter,
@@ -119,22 +185,107 @@
             kowloonwalledcity: window.themeBasedKowloonWalledCity,
             titanic: window.themeBasedTitanic,
             homelessness: window.themeBasedHomelessness,
-            personalfamily: window.themeBasedPersonalFamily
+            personalfamily: window.themeBasedPersonalFamily,
+            blackdeath: window.themeBasedBlackDeath
         };
-        const themeSelect = document.getElementById("themeSelect");
+        const themeSearchInput = document.getElementById("themeSearchInput");
+        const themeDropdown = document.getElementById("themeDropdown");
         const taskCards = document.getElementById("taskCards");
 
         const themeKeys = Object.keys(themes);
-        themeKeys.forEach((key) => {
-            const opt = document.createElement("option");
-            opt.value = key;
-            opt.textContent = themes[key].theme;
-            themeSelect.appendChild(opt);
-        });
+        const themesSorted = themeKeys
+            .map((key) => ({ key, label: themes[key].theme || key }))
+            .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
 
         const params = new URLSearchParams(location.search);
         const themeFromUrl = params.get("theme");
-        themeSelect.value = themeKeys.includes(themeFromUrl) ? themeFromUrl : "olympics";
+        let selectedKey = themeKeys.includes(themeFromUrl) ? themeFromUrl : "olympics";
+
+        function setInputClosedLabel() {
+            themeSearchInput.value = themes[selectedKey] ? themes[selectedKey].theme : "";
+            themeSearchInput.placeholder = "Click to search themes (A–Z)…";
+        }
+
+        function openDropdown() {
+            themeDropdown.classList.add("is-open");
+            themeSearchInput.setAttribute("aria-expanded", "true");
+            themeSearchInput.value = "";
+            themeSearchInput.placeholder = "Type to filter…";
+            renderDropdownOptions(themeSearchInput.value);
+        }
+
+        function closeDropdown() {
+            themeDropdown.classList.remove("is-open");
+            themeSearchInput.setAttribute("aria-expanded", "false");
+            setInputClosedLabel();
+        }
+
+        function renderDropdownOptions(filterText) {
+            themeDropdown.innerHTML = "";
+            const q = (filterText || "").trim().toLowerCase();
+            const filtered = q
+                ? themesSorted.filter((t) => t.label.toLowerCase().includes(q))
+                : themesSorted;
+
+            if (filtered.length === 0) {
+                const empty = document.createElement("div");
+                empty.className = "theme-dropdown-empty";
+                empty.textContent = "No themes match your search.";
+                themeDropdown.appendChild(empty);
+                return;
+            }
+
+            filtered.forEach((t) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "theme-option" + (t.key === selectedKey ? " is-selected" : "");
+                btn.setAttribute("role", "option");
+                btn.setAttribute("aria-selected", t.key === selectedKey ? "true" : "false");
+                btn.textContent = t.label;
+                btn.dataset.key = t.key;
+                btn.addEventListener("mousedown", (e) => {
+                    e.preventDefault();
+                    selectTheme(t.key);
+                });
+                themeDropdown.appendChild(btn);
+            });
+        }
+
+        function selectTheme(key) {
+            if (!themes[key]) return;
+            selectedKey = key;
+            const url = new URL(location.href);
+            url.searchParams.set("theme", key);
+            history.replaceState(null, "", url);
+            render(themes[key]);
+            closeDropdown();
+            themeSearchInput.blur();
+        }
+
+        themeSearchInput.addEventListener("focus", () => {
+            openDropdown();
+        });
+
+        themeSearchInput.addEventListener("input", () => {
+            if (themeDropdown.classList.contains("is-open")) {
+                renderDropdownOptions(themeSearchInput.value);
+            }
+        });
+
+        themeSearchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                closeDropdown();
+                themeSearchInput.blur();
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            const combo = document.getElementById("themeCombobox");
+            if (combo && !combo.contains(e.target)) {
+                closeDropdown();
+            }
+        });
 
         function render(data) {
             taskCards.innerHTML = "";
@@ -227,14 +378,8 @@
             return div.innerHTML;
         }
 
-        themeSelect.addEventListener("change", () => {
-            const theme = themeSelect.value;
-            const url = new URL(location.href);
-            url.searchParams.set("theme", theme);
-            history.replaceState(null, "", url);
-            render(themes[theme]);
-        });
-        render(themes[themeSelect.value]);
+        setInputClosedLabel();
+        render(themes[selectedKey]);
     </script>
 </body>
 </html>
