@@ -159,6 +159,29 @@
             font-family: ui-monospace, monospace;
             letter-spacing: 0.02em;
         }
+        .worksheet-view .item .ws-blank-wrap {
+            display: inline-block;
+            vertical-align: baseline;
+            margin: 0 2px;
+        }
+        .worksheet-view .item .ws-blank-select {
+            font: inherit;
+            font-size: 0.9em;
+            padding: 2px 6px;
+            min-width: 5.5rem;
+            max-width: 7rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            cursor: pointer;
+            vertical-align: baseline;
+        }
+        .worksheet-view .item .ws-blank-select:hover,
+        .worksheet-view .item .ws-blank-select:focus {
+            border-color: var(--color-accent);
+            outline: none;
+        }
         .worksheet-view h3 {
             font-size: 0.9375rem;
             font-weight: 600;
@@ -172,6 +195,77 @@
         }
         .empty-state[hidden],
         .worksheet-view[hidden] { display: none !important; }
+        .ws-glossary-actions { margin-bottom: var(--space-2); }
+        .ws-glossary-btn {
+            font: inherit;
+            font-size: 0.875rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            color: var(--color-accent);
+            cursor: pointer;
+        }
+        .ws-glossary-btn:hover { border-color: var(--color-accent); }
+        .ws-glossary-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3);
+            background: rgba(0,0,0,0.35);
+        }
+        .ws-glossary-modal[hidden] { display: none !important; }
+        .ws-glossary-modal-panel {
+            max-width: 420px;
+            width: 100%;
+            max-height: min(85vh, 520px);
+            overflow: auto;
+            background: var(--color-surface);
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        .ws-glossary-modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background: var(--color-surface);
+        }
+        .ws-glossary-modal-head h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .ws-glossary-close {
+            font: inherit;
+            font-size: 1.25rem;
+            line-height: 1;
+            padding: 4px 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            border-radius: 4px;
+        }
+        .ws-glossary-close:hover { background: var(--color-bg); color: var(--color-text); }
+        .ws-glossary-modal-body { padding: var(--space-2) var(--space-3) var(--space-3); }
+        .ws-gloss-item { margin-bottom: var(--space-2); padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border); }
+        .ws-gloss-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .ws-gloss-en { font-size: 0.9375rem; margin-bottom: 4px; }
+        .ws-gloss-zh {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            line-height: 1.55;
+            font-family: "LXGW WenKai TC", "Microsoft JhengHei", sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -194,6 +288,7 @@
     </main>
 
     <script src="participles_clauses_fill.js"></script>
+    <script src="either_neither_or_nor_fill.js"></script>
     <script>
         (function() {
             const headerLabelLink = document.getElementById('headerLabelLink');
@@ -202,23 +297,115 @@
             const emptyState = document.getElementById('emptyState');
             const view = document.getElementById('worksheetView');
 
+            view.addEventListener('click', function(e) {
+                var t = e.target;
+                if (!(t instanceof Element)) return;
+                if (t.id === 'wsGlossaryOpen') {
+                    var modal = view.querySelector('#wsGlossaryModal');
+                    if (modal) {
+                        modal.hidden = false;
+                        var closeBtn = view.querySelector('#wsGlossaryClose');
+                        if (closeBtn) closeBtn.focus();
+                    }
+                } else if (t.id === 'wsGlossaryClose') {
+                    var modalClose = view.querySelector('#wsGlossaryModal');
+                    if (modalClose) modalClose.hidden = true;
+                } else if (t.classList.contains('ws-glossary-modal')) {
+                    t.hidden = true;
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key !== 'Escape') return;
+                var modal = view.querySelector('#wsGlossaryModal');
+                if (modal && !modal.hidden) modal.hidden = true;
+            });
+
             const worksheets = [
-                { value: 'participles_clauses_fill', label: 'Participle clauses | 分詞子句（填空）', dataKey: 'WORKSHEET_PARTICIPLES_CLAUSES_FILL' }
+                { value: 'participles_clauses_fill', label: 'Participle clauses | 分詞子句（填空）', dataKey: 'WORKSHEET_PARTICIPLES_CLAUSES_FILL' },
+                { value: 'either_neither_or_nor_fill', label: 'Either / neither / or / nor / too | 關聯詞填空', dataKey: 'WORKSHEET_EITHER_NEITHER_OR_NOR_FILL' }
             ];
+
+            var PICKLIST_DEFAULT = ['either', 'neither', 'or', 'nor', 'too'];
+
+            function escapeHtml(s) {
+                if (s == null) return '';
+                var div = document.createElement('div');
+                div.textContent = s;
+                return div.innerHTML;
+            }
+
+            function buildPicklistSelect(words) {
+                var opts = '<option value="">—</option>';
+                words.forEach(function(w) {
+                    opts += '<option value="' + escapeHtml(w) + '">' + escapeHtml(w) + '</option>';
+                });
+                return '<span class="ws-blank-wrap"><select class="ws-blank-select" aria-label="Choose word">' + opts + '</select></span>';
+            }
+
+            function injectWordPickers(line, words) {
+                var sep = '_____';
+                var parts = String(line).split(sep);
+                if (parts.length === 1) return escapeHtml(line);
+                var selectHtml = buildPicklistSelect(words);
+                var out = '';
+                for (var i = 0; i < parts.length; i++) {
+                    out += escapeHtml(parts[i]);
+                    if (i < parts.length - 1) out += selectHtml;
+                }
+                return out;
+            }
+
+            function renderItem(item, sheet) {
+                var usePicklist = sheet && sheet.blankMode === 'picklist';
+                var words = (sheet && sheet.picklistWords && sheet.picklistWords.length) ? sheet.picklistWords : PICKLIST_DEFAULT;
+                var buf = '<div class="item">';
+                if (item.emoji) buf += '<p>' + escapeHtml(item.emoji) + '</p>';
+                if (item.en) {
+                    String(item.en).split('\n').forEach(function(line) {
+                        buf += '<p>' + (usePicklist ? injectWordPickers(line, words) : escapeHtml(line)) + '</p>';
+                    });
+                }
+                if (item.zh) {
+                    String(item.zh).split('\n').forEach(function(line) {
+                        buf += '<p class="zh">' + escapeHtml(line) + '</p>';
+                    });
+                }
+                if (item.instruction) buf += '<p class="inst">' + escapeHtml(item.instruction) + '</p>';
+                if (item.blank && !usePicklist) buf += '<p class="blank">➡️ ' + escapeHtml(item.blank) + '</p>';
+                buf += '</div>';
+                return buf;
+            }
+
+            function renderGlossaryModal(data) {
+                if (!data.glossary || !data.glossary.length) return '';
+                var h = '<p class="ws-glossary-actions"><button type="button" class="ws-glossary-btn" id="wsGlossaryOpen">Bilingual notes | 中英文提示</button></p>';
+                h += '<div class="ws-glossary-modal" id="wsGlossaryModal" role="dialog" aria-modal="true" aria-labelledby="wsGlossaryTitle" hidden>';
+                h += '<div class="ws-glossary-modal-panel">';
+                h += '<div class="ws-glossary-modal-head"><h3 id="wsGlossaryTitle">Word meanings | 詞語意思</h3>';
+                h += '<button type="button" class="ws-glossary-close" id="wsGlossaryClose" aria-label="Close">×</button></div>';
+                h += '<div class="ws-glossary-modal-body">';
+                data.glossary.forEach(function(g) {
+                    h += '<div class="ws-gloss-item"><p class="ws-gloss-en"><strong>' + escapeHtml(g.term) + '</strong></p>';
+                    h += '<p class="ws-gloss-zh">' + escapeHtml(g.zh) + '</p></div>';
+                });
+                h += '</div></div></div>';
+                return h;
+            }
 
             function renderWorksheet(data) {
                 if (!data || !data.sections) return;
                 var html = '<h2 class="ws-title">' + escapeHtml(data.title) + ' | ' + escapeHtml(data.titleZh || '') + '</h2>';
+                html += renderGlossaryModal(data);
                 data.sections.forEach(function(section) {
                     html += '<section><h2>' + escapeHtml(section.title) + '</h2>';
                     if (section.note) html += '<p class="section-note">' + escapeHtml(section.note) + '</p>';
                     if (section.items) {
-                        section.items.forEach(function(item) { html += renderItem(item); });
+                        section.items.forEach(function(item) { html += renderItem(item, data); });
                     }
                     if (section.subsections) {
                         section.subsections.forEach(function(sub) {
                             html += '<h3>' + escapeHtml(sub.title) + '</h3>';
-                            (sub.items || []).forEach(function(item) { html += renderItem(item); });
+                            (sub.items || []).forEach(function(item) { html += renderItem(item, data); });
                         });
                     }
                     html += '</section>';
@@ -226,24 +413,6 @@
                 view.innerHTML = html;
                 view.hidden = false;
                 emptyState.hidden = true;
-            }
-
-            function renderItem(item) {
-                var buf = '<div class="item">';
-                if (item.emoji) buf += '<p>' + escapeHtml(item.emoji) + '</p>';
-                if (item.en) buf += '<p>' + escapeHtml(item.en) + '</p>';
-                if (item.zh) buf += '<p class="zh">' + escapeHtml(item.zh) + '</p>';
-                if (item.instruction) buf += '<p class="inst">' + escapeHtml(item.instruction) + '</p>';
-                if (item.blank) buf += '<p class="blank">➡️ ' + escapeHtml(item.blank) + '</p>';
-                buf += '</div>';
-                return buf;
-            }
-
-            function escapeHtml(s) {
-                if (s == null) return '';
-                var div = document.createElement('div');
-                div.textContent = s;
-                return div.innerHTML;
             }
 
             function loadWorksheet(value) {
