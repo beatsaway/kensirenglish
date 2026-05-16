@@ -54,8 +54,8 @@ window.WORKSHEET_EITHER_NEITHER_OR_NOR_FILL = {
         },
         {
           emoji: '😤',
-          en: '👩‍🏫 _____ of you knows how to use it—and _____ does this sharpener!',
-          zh: '👩‍🏫 你兩個都唔識……部刨刨機都唔掂！'
+          en: '👩‍🏫 _____ of you _____ this sharpener are useful!',
+          zh: '👩‍🏫 你哋兩個同呢部刨刨機都冇用！'
         }
       ]
     },
