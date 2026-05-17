@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEFR Vocabulary | 詞彙</title>
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+        header { padding: 6px 24px; border-bottom: 1px solid #e0e0e0; }
+        .header-label { font-size: 14px; font-weight: 600; }
+        .header-copyright { font-size: 10px; color: #666; }
+        .header-copyright a { color: inherit; text-decoration: none; }
+        main { padding: 24px; max-width: 720px; margin: 0 auto; width: 100%; }
+        .controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; align-items: flex-end; }
+        .controls label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #444; }
+        .controls select { font: inherit; padding: 6px 10px; border: 1px solid #ddd; min-width: 8rem; }
+        .meta-note { font-size: 13px; color: #666; margin-bottom: 16px; }
+        .week-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
+        .word-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .word-chip {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 14px;
+        }
+        .word-chip .theme { display: block; font-size: 10px; color: #888; margin-top: 2px; }
+        .empty { color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">CEFR Vocabulary • 詞彙</div>
+        <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+    </header>
+    <main>
+        <p class="meta-note" id="metaNote"></p>
+        <div class="controls">
+            <label>Level
+                <select id="levelSelect"></select>
+            </label>
+            <label>Week
+                <select id="weekSelect"></select>
+            </label>
+        </div>
+        <h2 class="week-title" id="weekTitle"></h2>
+        <div class="word-grid" id="wordGrid"></div>
+    </main>
+    <script src="vocab_bank.js"></script>
+    <script>
+        (function () {
+            const bank = window.VOCAB_BANK;
+            if (!bank) return;
+
+            const levelSelect = document.getElementById("levelSelect");
+            const weekSelect = document.getElementById("weekSelect");
+            const metaNote = document.getElementById("metaNote");
+            const weekTitle = document.getElementById("weekTitle");
+            const wordGrid = document.getElementById("wordGrid");
+            const m = bank.meta;
+
+            metaNote.textContent =
+                "Learn about " + m.wordsPerWeek.min + "–" + m.wordsPerWeek.max + " words per week (" +
+                m.counts.A1 + " A1, " + m.counts.A2 + " A2, " + m.counts.B1 + " B1, " +
+                m.counts.B2 + " B2, " + m.counts.C1 + " C1, " + m.counts.C2 + " C2).";
+
+            m.levels.forEach(function (lv) {
+                const opt = document.createElement("option");
+                opt.value = lv;
+                opt.textContent = lv;
+                levelSelect.appendChild(opt);
+            });
+
+            function wordsForLevel(level) {
+                return bank.levels[level] || [];
+            }
+
+            function maxWeek(level) {
+                return wordsForLevel(level).reduce(function (max, w) {
+                    return Math.max(max, w.week);
+                }, 1);
+            }
+
+            function fillWeeks() {
+                const level = levelSelect.value;
+                const max = maxWeek(level);
+                weekSelect.innerHTML = "";
+                for (var w = 1; w <= max; w++) {
+                    var opt = document.createElement("option");
+                    opt.value = String(w);
+                    opt.textContent = "Week " + w;
+                    weekSelect.appendChild(opt);
+                }
+            }
+
+            function render() {
+                const level = levelSelect.value;
+                const week = parseInt(weekSelect.value, 10) || 1;
+                const list = wordsForLevel(level).filter(function (w) {
+                    return w.week === week;
+                });
+                weekTitle.textContent = level + " — Week " + week + " (" + list.length + " words)";
+                wordGrid.innerHTML = "";
+                if (!list.length) {
+                    wordGrid.innerHTML = '<p class="empty">No words for this week.</p>';
+                    return;
+                }
+                list.forEach(function (item) {
+                    const chip = document.createElement("span");
+                    chip.className = "word-chip";
+                    chip.innerHTML =
+                        item.word +
+                        '<span class="theme">' +
+                        item.theme.replace(/_/g, " ") +
+                        "</span>";
+                    wordGrid.appendChild(chip);
+                });
+            }
+
+            levelSelect.addEventListener("change", function () {
+                fillWeeks();
+                render();
+            });
+            weekSelect.addEventListener("change", render);
+
+            const params = new URLSearchParams(location.search);
+            if (params.get("level") && bank.levels[params.get("level")]) {
+                levelSelect.value = params.get("level");
+            }
+            fillWeeks();
+            if (params.get("week")) {
+                weekSelect.value = params.get("week");
+            }
+            render();
+        })();
+    </script>
+</body>
+</html>
