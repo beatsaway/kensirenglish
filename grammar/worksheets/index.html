@@ -140,6 +140,23 @@
         .worksheet-view .item {
             margin-bottom: var(--space-3);
         }
+        .worksheet-view .item .item-speaker {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--color-accent);
+            margin-bottom: 6px;
+        }
+        .worksheet-view .item .item-speaker-zh {
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            font-family: "LXGW WenKai TC", "Microsoft JhengHei", sans-serif;
+        }
+        .worksheet-view .item .item-speaker-zh::before {
+            content: " · ";
+            color: var(--color-border);
+            font-weight: 400;
+        }
         .worksheet-view .item > p {
             font-size: 0.9375rem;
             margin-bottom: 4px;
@@ -181,6 +198,14 @@
         .worksheet-view .item .ws-blank-select:focus {
             border-color: var(--color-accent);
             outline: none;
+        }
+        .worksheet-view .item .ws-blank-select.correct {
+            background: #d4edda;
+            border-color: #9fd4a5;
+        }
+        .worksheet-view .item .ws-blank-select.incorrect {
+            background: #f8d7da;
+            border-color: #e8a0a8;
         }
         .worksheet-view h3 {
             font-size: 0.9375rem;
@@ -320,6 +345,20 @@
                 if (modal && !modal.hidden) modal.hidden = true;
             });
 
+            view.addEventListener('change', function(e) {
+                var sel = e.target;
+                if (!(sel instanceof HTMLSelectElement) || !sel.classList.contains('ws-blank-select')) return;
+                var expected = sel.getAttribute('data-answer');
+                sel.classList.remove('correct', 'incorrect');
+                if (!sel.value) return;
+                if (!expected) return;
+                if (sel.value.toLowerCase() === expected.toLowerCase()) {
+                    sel.classList.add('correct');
+                } else {
+                    sel.classList.add('incorrect');
+                }
+            });
+
             const worksheets = [
                 { value: 'participles_clauses_fill', label: 'Participle clauses | 分詞子句（填空）', dataKey: 'WORKSHEET_PARTICIPLES_CLAUSES_FILL' },
                 { value: 'either_neither_or_nor_fill', label: 'Either / neither / or / nor / too | 關聯詞填空', dataKey: 'WORKSHEET_EITHER_NEITHER_OR_NOR_FILL' }
@@ -334,39 +373,61 @@
                 return div.innerHTML;
             }
 
-            function buildPicklistSelect(words) {
+            function buildPicklistSelect(words, answer) {
                 var opts = '<option value="">—</option>';
                 words.forEach(function(w) {
                     opts += '<option value="' + escapeHtml(w) + '">' + escapeHtml(w) + '</option>';
                 });
-                return '<span class="ws-blank-wrap"><select class="ws-blank-select" aria-label="Choose word">' + opts + '</select></span>';
+                var dataAns = answer ? ' data-answer="' + escapeHtml(answer) + '"' : '';
+                return '<span class="ws-blank-wrap"><select class="ws-blank-select" aria-label="Choose word"' + dataAns + '>' + opts + '</select></span>';
             }
 
-            function injectWordPickers(line, words) {
+            function injectWordPickers(line, words, answers, blankIdx) {
                 var sep = '_____';
                 var parts = String(line).split(sep);
                 if (parts.length === 1) return escapeHtml(line);
-                var selectHtml = buildPicklistSelect(words);
                 var out = '';
                 for (var i = 0; i < parts.length; i++) {
                     out += escapeHtml(parts[i]);
-                    if (i < parts.length - 1) out += selectHtml;
+                    if (i < parts.length - 1) {
+                        var ans = answers && answers[blankIdx.n] != null ? answers[blankIdx.n] : '';
+                        blankIdx.n += 1;
+                        out += buildPicklistSelect(words, ans);
+                    }
                 }
                 return out;
+            }
+
+            function stripInlineSpeaker(text, speaker) {
+                if (!text || !speaker) return text;
+                var re = new RegExp('^\\s*' + speaker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*:\\s*', 'i');
+                return String(text).replace(re, '');
             }
 
             function renderItem(item, sheet) {
                 var usePicklist = sheet && sheet.blankMode === 'picklist';
                 var words = (sheet && sheet.picklistWords && sheet.picklistWords.length) ? sheet.picklistWords : PICKLIST_DEFAULT;
+                var answers = item.answers || null;
+                var blankIdx = { n: 0 };
+                var speaker = item.speaker || '';
+                var speakerZh = item.speakerZh || '';
                 var buf = '<div class="item">';
                 if (item.emoji) buf += '<p>' + escapeHtml(item.emoji) + '</p>';
+                if (speaker || speakerZh) {
+                    buf += '<p class="item-speaker" aria-label="Speaker">';
+                    if (speaker) buf += '<span class="item-speaker-en">' + escapeHtml(speaker) + '</span>';
+                    if (speakerZh) buf += '<span class="item-speaker-zh">' + escapeHtml(speakerZh) + '</span>';
+                    buf += '</p>';
+                }
                 if (item.en) {
                     String(item.en).split('\n').forEach(function(line) {
-                        buf += '<p>' + (usePicklist ? injectWordPickers(line, words) : escapeHtml(line)) + '</p>';
+                        line = stripInlineSpeaker(line, speaker);
+                        buf += '<p>' + (usePicklist ? injectWordPickers(line, words, answers, blankIdx) : escapeHtml(line)) + '</p>';
                     });
                 }
                 if (item.zh) {
                     String(item.zh).split('\n').forEach(function(line) {
+                        line = stripInlineSpeaker(line, speakerZh);
                         buf += '<p class="zh">' + escapeHtml(line) + '</p>';
                     });
                 }
@@ -415,7 +476,7 @@
                 emptyState.hidden = true;
             }
 
-            function loadWorksheet(value) {
+            function loadWorksheet(value, updateUrl) {
                 var config = worksheets.find(function(w) { return w.value === value; });
                 if (!config) return;
                 var data = window[config.dataKey];
@@ -423,6 +484,11 @@
                     renderWorksheet(data);
                     worksheetList.hidden = true;
                     headerLabelLink.setAttribute('aria-expanded', 'false');
+                    if (updateUrl !== false) {
+                        var url = new URL(window.location.href);
+                        url.searchParams.set('worksheet', value);
+                        history.replaceState(null, '', url.pathname + url.search);
+                    }
                 } else {
                     emptyState.textContent = 'Worksheet data not loaded.';
                     emptyState.hidden = false;
@@ -434,7 +500,7 @@
             worksheets.forEach(function(w) {
                 var li = document.createElement('li');
                 var a = document.createElement('a');
-                a.href = '#';
+                a.href = '?worksheet=' + encodeURIComponent(w.value);
                 a.textContent = w.label;
                 a.dataset.value = w.value;
                 a.addEventListener('click', function(e) {
