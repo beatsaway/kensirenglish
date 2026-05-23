@@ -646,12 +646,26 @@
     <script>
         // Topic mapping: display name -> JS filename
         const topics = [
-            { name: "Hair Styling", file: "HairStyling.js", varName: "HairStyling" },
-            { name: "Animals", file: "Animals.js", varName: "Animals" },
-            { name: "Birthday Gifts", file: "BirthdayGifts.js", varName: "BirthdayGifts" },
-            { name: "Weather (HK)", file: "Weather.js", varName: "Weather" },
-            { name: "Games (Roblox)", file: "Games.js", varName: "Games" }
+            { name: "Hair Styling", file: "HairStyling.js", varName: "HairStyling", slug: "hair-styling" },
+            { name: "Animals", file: "Animals.js", varName: "Animals", slug: "animals" },
+            { name: "Birthday Gifts", file: "BirthdayGifts.js", varName: "BirthdayGifts", slug: "birthday-gifts" },
+            { name: "Weather (HK)", file: "Weather.js", varName: "Weather", slug: "weather-hk" },
+            { name: "Games (Roblox)", file: "Games.js", varName: "Games", slug: "games-roblox" },
+            { name: "After School", file: "AfterSchool.js", varName: "AfterSchool", slug: "after-school" }
         ];
+
+        function getTopicSlug(topic) {
+            if (topic.slug) return topic.slug;
+            return topic.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        }
+
+        function findTopicByParam(param) {
+            if (!param) return null;
+            const decoded = decodeURIComponent(param);
+            return topics.find(function(t) {
+                return getTopicSlug(t) === decoded || t.name === decoded;
+            }) || null;
+        }
 
         // Initialize with first item
         let currentIndex = 0;
@@ -692,12 +706,11 @@
             });
         }
 
-        function loadTopic(topic) {
+        function loadTopic(topic, updateUrl) {
+            if (!topic) return;
             // Remove previous script if exists
             if (currentScript) {
                 currentScript.remove();
-                // Clear the global variable name - we'll need to know the variable name from the topic
-                // For now, HairStyling.js uses 'HairStyling', but in future we might have different names
             }
 
             // Load new script
@@ -718,6 +731,11 @@
                     }
                     initializeItemDropdown(data);
                     selectItem(0); // This will update dropdown title and content
+                    if (updateUrl !== false) {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('topic', getTopicSlug(topic));
+                        history.replaceState(null, '', url.pathname + url.search);
+                    }
                 } else {
                     console.error('Error loading topic data');
                 }
@@ -1387,9 +1405,11 @@
         // Initialize
         // Add click handler to card title
         document.getElementById('cardTitle').addEventListener('click', toggleLanguage);
-        // Load first topic
+        // Load topic from ?topic= or default to first
         if (topics.length > 0) {
-            loadTopic(topics[0]);
+            const params = new URLSearchParams(location.search);
+            const topicFromUrl = findTopicByParam(params.get('topic'));
+            loadTopic(topicFromUrl || topics[0]);
         }
     </script>
 </body>
