@@ -8,6 +8,30 @@ window.themeBasedDarkHumour = {
     ],
     tasks: [
         {
+            id: "darkhumour-three-memes-stop-sending",
+            title: "Three memes we should stop sending",
+            context: "Your school asks students to suggest three memes that should stop being shared in group chats — and explain why.",
+            instructions: "Write a short magazine piece naming three memes (sounds, clips, or formats) your school should ask students to stop sending. For each, say what it is and one reason why.",
+            questions: [],
+            vocab: [
+                { en: "meme", cn: "迷因" },
+                { en: "stop sending", cn: "停止轉發" },
+                { en: "group chat", cn: "群組聊天" },
+                { en: "share", cn: "分享" },
+                { en: "annoying", cn: "煩" },
+                { en: "offensive", cn: "冒犯" },
+                { en: "mean", cn: "刻薄" },
+                { en: "bullying", cn: "欺凌" },
+                { en: "respect", cn: "尊重" },
+                { en: "overused", cn: "用爛咗" },
+                { en: "spam", cn: "洗版" },
+                { en: "reason", cn: "原因" },
+                { en: "suggest", cn: "建議" },
+                { en: "school rule", cn: "校規" },
+                { en: "in my view", cn: "我認為" }
+            ]
+        },
+        {
             id: "darkhumour-disabled-lgbtq-memes",
             title: "Should students share dark humour memes?",
             context: "Some students send dark humour memes in group chats — skits or edits that joke about disabled or LGBTQ people. Staff and parents disagree on whether this should be allowed.",
