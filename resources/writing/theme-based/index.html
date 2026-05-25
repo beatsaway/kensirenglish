@@ -105,6 +105,9 @@
         .question-video-link { margin-left: 6px; color: #2563eb; text-decoration: none; font-size: 13px; }
         .question-video-link:hover { text-decoration: underline; }
         .task-instructions { font-size: 14px; padding: 12px; background: #fff; border-left: 3px solid #2563eb; white-space: pre-line; }
+        .task-success-title { font-size: 0.85rem; font-weight: 600; margin-top: 12px; margin-bottom: 6px; color: #444; }
+        .task-success-list { padding-left: 1.4rem; margin-bottom: 4px; }
+        .task-success-list li { font-size: 14px; margin-bottom: 4px; color: #444; }
         .task-vocab-title { font-size: 0.8rem; font-weight: 400; margin-top: 12px; margin-bottom: 8px; }
         .task-vocab-list { display: flex; flex-wrap: wrap; gap: 8px; }
         .task-vocab-item {
@@ -171,6 +174,7 @@
     <script src="blackdeath.js"></script>
     <script src="parasites.js"></script>
     <script src="darkhumour.js"></script>
+    <script src="letters_of_advice.js"></script>
     <script>
         const themes = {
             winter: window.themeBasedWinter,
@@ -190,7 +194,8 @@
             personalfamily: window.themeBasedPersonalFamily,
             blackdeath: window.themeBasedBlackDeath,
             parasites: window.themeBasedParasites,
-            darkhumour: window.themeBasedDarkHumour
+            darkhumour: window.themeBasedDarkHumour,
+            lettersofadvice: window.themeBasedLettersOfAdvice
         };
         const themeSearchInput = document.getElementById("themeSearchInput");
         const themeDropdown = document.getElementById("themeDropdown");
@@ -327,6 +332,13 @@
                 if (task.instructions) {
                     if (task.context) html += `<p class="task-context">${escapeHtml(task.context)}</p>`;
                     html += `<div class="task-instructions">${escapeHtml(task.instructions)}</div>`;
+                    if (task.successCriteria && task.successCriteria.length) {
+                        html += `<div class="task-success-title">Success criteria</div><ul class="task-success-list">`;
+                        task.successCriteria.forEach((item) => {
+                            html += `<li>${escapeHtml(item)}</li>`;
+                        });
+                        html += `</ul>`;
+                    }
                 } else if (task.questions && task.questions.length) {
                     if (task.context) html += `<p class="task-context">${escapeHtml(task.context)}</p>`;
                     html += `<ol class="task-questions-list">`;
