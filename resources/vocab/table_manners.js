@@ -328,9 +328,9 @@ window.TABLE_MANNERS_PASSAGE = {
 
       text:
 
-        "In conclusion, dining customs around the world _____ (offer) a fascinating glimpse into the rich tapestry of global cultures. While some table manners may seem strange or unfamiliar to outsiders, they _____ (play) an essential role in shaping social interactions and reinforcing cultural values. So, the next time you find yourself dining in a foreign land, keep an open mind and embrace the opportunity to experience new customs and traditions. Who knows, you might just discover a new favourite way to enjoy a meal!",
+        "In conclusion, _____ (dine) customs around the world _____ (offer) a _____ (fascinate) glimpse into the rich tapestry of global cultures. While some table manners may seem strange or unfamiliar to outsiders, they _____ (play) an essential role in _____ (shape) social interactions and _____ (reinforce) cultural values. So, the next time you find yourself _____ (dine) in a foreign land, keep an open mind and embrace the opportunity to experience new customs and traditions. Who knows, you might just discover a new favourite way to enjoy a meal!",
 
-      answers: ["offer", "play"],
+      answers: ["dining", "offer", "fascinating", "play", "shaping", "reinforcing", "dining"],
 
       questions: [
 
