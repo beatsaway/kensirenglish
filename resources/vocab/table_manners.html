@@ -83,6 +83,14 @@
         }
         .discuss-list li { margin-bottom: 6px; }
         .hint-note { font-size: 12px; color: #888; margin-bottom: 16px; }
+        .hint-note kbd {
+            font: inherit;
+            font-size: 0.9em;
+            padding: 1px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background: #f5f5f5;
+        }
     </style>
 </head>
 <body>
@@ -279,11 +287,33 @@
                 }
             }
 
+            function showAllAnswers() {
+                document.querySelectorAll(".blank-select").forEach(function (sel) {
+                    const expected = sel.getAttribute("data-answer") || "";
+                    if (!expected) return;
+                    let hasOption = false;
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (normalize(sel.options[i].value) === normalize(expected)) {
+                            hasOption = true;
+                            break;
+                        }
+                    }
+                    if (!hasOption) {
+                        const opt = document.createElement("option");
+                        opt.value = expected;
+                        opt.textContent = expected;
+                        sel.appendChild(opt);
+                    }
+                    sel.value = expected;
+                    gradeSelect(sel);
+                });
+            }
+
             let html =
                 "<h1 style=\"font-size:1.25rem;margin-bottom:8px;\">" + escapeHtml(data.title) +
                 " <span style=\"font-weight:400;color:#666;\">" + escapeHtml(data.titleZh || "") + "</span></h1>" +
                 "<p class=\"intro\">" + escapeHtml(data.instructions) + "</p>" +
-                "<p class=\"hint-note\">The word in (brackets) is the base verb. Each dropdown shows active and passive forms of that verb only.</p>" +
+                "<p class=\"hint-note\">The word in (brackets) is the base verb. Each dropdown shows active and passive forms of that verb only. Press <kbd>Space</kbd> to show all answers.</p>" +
                 "<div class=\"source-links\">";
             if (data.source) {
                 html += "<a href=\"" + escapeHtml(data.source.url) + "\" target=\"_blank\" rel=\"noopener\">" +
@@ -316,6 +346,14 @@
                 sel.addEventListener("change", function () {
                     gradeSelect(sel);
                 });
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.code !== "Space" || e.ctrlKey || e.metaKey || e.altKey) return;
+                const tag = e.target && e.target.tagName;
+                if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+                e.preventDefault();
+                showAllAnswers();
             });
         })();
     </script>
