@@ -76,6 +76,80 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "🔪 British Cutlery, Wine & When to Eat",
+    link: "https://www.youtube.com/watch?v=5qRr9ZWBhb8",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>At a formal British meal, the <strong>butter knife</strong> is the one piece of <strong>cutlery</strong> worth remembering — the rest follows a simple rule: start from the <strong>outside</strong> and work your way <strong>in</strong> with each <strong>course</strong>.</p><p>Never let anyone describe you as <strong>HLKP</strong> — <strong>hold knife like pen</strong>. Some people think it looks upper-class; it is quite the opposite and marks bad table manners.</p><p>Glass order often runs: white wine, pudding wine, red wine, water, and pop — or whatever <strong>tipple</strong> you fancy. Must you wait for everyone before eating? Only if the dish is <strong>cold</strong>, or if the <strong>Queen</strong> is present. Otherwise, <strong>tuck in</strong>.</p>",
+    vocablist: [
+      { word: "butter knife", translation: "抹牛油刀", emoji: "🧈" },
+      { word: "cutlery", translation: "餐具", emoji: "🍴" },
+      { word: "course", translation: "一道菜／一輪", emoji: "🍽️" },
+      { word: "erroneously", translation: "錯誤地", emoji: "❌" },
+      { word: "tuck in", translation: "開始吃", emoji: "😋" },
+      { word: "tipple", translation: "（口語）酒／飲品", emoji: "🍷" }
+    ],
+    vocabex:
+      "Remember the <span class='vocab-blank' data-answer='butter knife'></span>. Use <span class='vocab-blank' data-answer='cutlery'></span> from the outside in each <span class='vocab-blank' data-answer='course'></span>. Holding a knife like a pen is <span class='vocab-blank' data-answer='erroneously'></span> seen as posh — when food is hot and no royalty is there, just <span class='vocab-blank' data-answer='tuck in'></span> with whatever <span class='vocab-blank' data-answer='tipple'></span> you like.",
+    questions: [
+      { emoji: "📊", text: "Which cutlery rule should you remember first?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do you hold your knife like a pen (HLKP)?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it useful to work from the outside in with cutlery?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why is HLKP seen as bad manners, not upper-class?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "When must you wait before you start eating?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What three tips would you give a friend at their first formal British dinner?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🍽️ Fancy Dinner at Your Rich Friend's House",
+    link: "https://www.youtube.com/shorts/mxJLUbDBxv4",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>Your rich friend's parents invite you to a <strong>fancy dinner</strong>. Remember the basics: silence your <strong>phone</strong>, put your <strong>napkin</strong> on your lap, and wait for everyone to be served before eating.</p><p><strong>Cutlery:</strong> work from the <strong>outside in</strong>. Use the salad fork and knife for the first course; use the dinner fork and knife for the main. For soup, face the spoon away from you and <strong>scoop outwards</strong>.</p><p>To <strong>share food</strong>, pass dishes <strong>counterclockwise</strong>. When you finish a course, place your fork and knife in the resting position. (Follow @gohar for more — the clip's creator.)</p>",
+    vocablist: [
+      { word: "napkin", translation: "餐巾", emoji: "🧻" },
+      { word: "utensils", translation: "餐具", emoji: "🍴" },
+      { word: "counterclockwise", translation: "逆時針", emoji: "🔄" },
+      { word: "course", translation: "一道菜", emoji: "🍽️" },
+      { word: "scoop", translation: "舀", emoji: "🥄" },
+      { word: "served", translation: "上菜", emoji: "👨‍🍳" }
+    ],
+    vocabex:
+      "Put your <span class='vocab-blank' data-answer='napkin'></span> on your lap. Use outside <span class='vocab-blank' data-answer='utensils'></span> first. Pass shared dishes <span class='vocab-blank' data-answer='counterclockwise'></span>. Each <span class='vocab-blank' data-answer='course'></span> has its own fork and knife; <span class='vocab-blank' data-answer='scoop'></span> soup outwards until everyone is <span class='vocab-blank' data-answer='served'></span>.",
+    questions: [
+      { emoji: "📊", text: "What should you do with your phone and napkin at a fancy dinner?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you feel nervous at a rich friend's formal dinner?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why pass shared food counterclockwise?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if you scoop soup towards yourself?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do you know which fork and knife to use first?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What is one rule you would actually use at a school banquet?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🍴 Fork & Knife Signals",
+    link: "https://www.youtube.com/shorts/i5z5qa5H59o",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>In fine dining, how you place your fork and knife sends a message to the waiter.</p><p><strong>On the side</strong> — you are about to start.<br><strong>Upside-down V, not touching</strong> — ready for the next plate.<br><strong>Cross shape</strong> — the food is excellent.<br><strong>Both horizontal</strong> — paused; not finished yet.<br><strong>Upside-down V, touching</strong> — you do not like the food.<br><strong>Side by side vertical (like 11)</strong> — finished eating.</p><p>These silent signals help staff know when to clear plates or bring the next course.</p>",
+    vocablist: [
+      { word: "signal", translation: "信號", emoji: "✋" },
+      { word: "waiter", translation: "侍應", emoji: "🤵" },
+      { word: "pause", translation: "暫停", emoji: "⏸️" },
+      { word: "finished", translation: "吃完了", emoji: "✅" },
+      { word: "excellent", translation: "極好", emoji: "⭐" }
+    ],
+    vocabex:
+      "Fork-and-knife placement is a <span class='vocab-blank' data-answer='signal'></span> to the <span class='vocab-blank' data-answer='waiter'></span>. A cross means the food is <span class='vocab-blank' data-answer='excellent'></span>. Horizontal means a <span class='vocab-blank' data-answer='pause'></span>; vertical \"11\" means <span class='vocab-blank' data-answer='finished'></span>.",
+    questions: [
+      { emoji: "📊", text: "What does an upside-down V (not touching) mean?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do you think these fork signals are useful or too fussy?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might a cross shape praise the chef without words?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if you use the wrong signal by mistake?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How does a waiter know you have finished eating?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What simple hand signal would work in a Hong Kong café?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "🇫🇷 French Dinner Party Etiquette",
     link: "https://www.youtube.com/watch?v=ca4HLjCKyD4&t=57",
     linkLabel: "Watch video",
