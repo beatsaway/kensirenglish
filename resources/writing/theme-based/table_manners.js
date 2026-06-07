@@ -20,6 +20,58 @@ window.themeBasedTableManners = {
 
         {
 
+            id: "letter-amy-hk-dining",
+
+            title: "Letter to Amy: dining in Hong Kong",
+
+            context: "Amy is your UK pen pal. She is visiting Hong Kong and has read three table-manner tips online. She wants to know whether she should follow them.",
+
+            instructions: "Write a letter to Amy. In her last email she mentioned these three tips she found online:\n• don't stick chopsticks upright in a rice bowl;\n• use serving chopsticks when taking food from shared dishes;\n• don't start eating until the eldest or host begins;\n\nFor each tip, say whether you think she should follow it in Hong Kong, in what situation, and why. Give brief dos and don'ts where helpful. Also, reassure her that she need not worry too much.",
+
+            successCriteria: [
+
+                "Friendly opening (Dear Amy)",
+
+                "Advice on all three tips — situation and reasons",
+
+                "Reassuring closing — why she need not worry"
+
+            ],
+
+            questions: [],
+
+            vocab: [
+
+                { en: "pen pal", cn: "筆友" },
+
+                { en: "tip", cn: "貼士" },
+
+                { en: "dos and don'ts", cn: "宜與不宜" },
+
+                { en: "chopsticks", cn: "筷子" },
+
+                { en: "shared dishes", cn: "共食菜式" },
+
+                { en: "reassure", cn: "令…安心" },
+
+                { en: "visiting", cn: "來訪" },
+
+                { en: "casual", cn: "隨便／輕鬆" },
+
+                { en: "Dear Amy", cn: "親愛的 Amy" },
+
+                { en: "Yours", cn: "你的" },
+
+                { en: "worried", cn: "擔心" },
+
+                { en: "welcome", cn: "歡迎" }
+
+            ]
+
+        },
+
+        {
+
             id: "slurp-or-burp-magazine",
 
             title: "To slurp or to burp?",
@@ -133,58 +185,6 @@ window.themeBasedTableManners = {
                 { en: "respect", cn: "尊重" },
 
                 { en: "avoid", cn: "避免" }
-
-            ]
-
-        },
-
-        {
-
-            id: "letter-amy-hk-dining",
-
-            title: "Letter to Amy: dining in Hong Kong",
-
-            context: "Your UK pen pal Amy is visiting Hong Kong. She has asked about table manners and wants your advice before her trip.",
-
-            instructions: "Write a letter to Amy. Give three tips for dining in Hong Kong. Include some dos and don'ts with brief reasons. Also, reassure her that she need not worry too much.",
-
-            successCriteria: [
-
-                "Friendly opening (Dear Amy)",
-
-                "Three clear tips with reasons",
-
-                "Reassuring closing — why she need not worry"
-
-            ],
-
-            questions: [],
-
-            vocab: [
-
-                { en: "pen pal", cn: "筆友" },
-
-                { en: "tip", cn: "貼士" },
-
-                { en: "dos and don'ts", cn: "宜與不宜" },
-
-                { en: "chopsticks", cn: "筷子" },
-
-                { en: "shared dishes", cn: "共食菜式" },
-
-                { en: "reassure", cn: "令…安心" },
-
-                { en: "visiting", cn: "來訪" },
-
-                { en: "casual", cn: "隨便／輕鬆" },
-
-                { en: "Dear Amy", cn: "親愛的 Amy" },
-
-                { en: "Yours", cn: "你的" },
-
-                { en: "worried", cn: "擔心" },
-
-                { en: "welcome", cn: "歡迎" }
 
             ]
 
