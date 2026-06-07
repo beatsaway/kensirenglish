@@ -12,7 +12,7 @@ window.themeBasedTableManners = {
 
         { label: "Six Hats discussion (Table Manners)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Table%20Manners" },
 
-        { label: "Table manners reading (verb practice)", url: "../../../resources/vocab/table_manners.html" }
+        { label: "Table manners reading (part of speech)", url: "../../../resources/vocab/table_manners.html" }
 
     ],
 
