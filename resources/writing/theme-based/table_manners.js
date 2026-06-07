@@ -42,29 +42,29 @@ window.themeBasedTableManners = {
 
             vocab: [
 
-                { en: "pen pal", cn: "筆友" },
+                { en: "correspondence", cn: "書信往來" },
 
-                { en: "tip", cn: "貼士" },
+                { en: "etiquette", cn: "禮儀" },
 
-                { en: "dos and don'ts", cn: "宜與不宜" },
+                { en: "customary", cn: "習俗上的／慣常的" },
 
-                { en: "chopsticks", cn: "筷子" },
+                { en: "communal dining", cn: "共食／分餐共桌" },
 
-                { en: "shared dishes", cn: "共食菜式" },
+                { en: "put at ease", cn: "令…安心" },
 
-                { en: "reassure", cn: "令…安心" },
+                { en: "apprehensive", cn: "忐忑／擔憂" },
 
-                { en: "visiting", cn: "來訪" },
+                { en: "taboo", cn: "禁忌" },
 
-                { en: "casual", cn: "隨便／輕鬆" },
+                { en: "symbolic", cn: "具象徵意義的" },
 
-                { en: "Dear Amy", cn: "親愛的 Amy" },
+                { en: "guest of honour", cn: "主賓／貴客" },
 
-                { en: "Yours", cn: "你的" },
+                { en: "informal setting", cn: "非正式場合" },
 
-                { en: "worried", cn: "擔心" },
+                { en: "adaptability", cn: "適應力" },
 
-                { en: "welcome", cn: "歡迎" }
+                { en: "hospitality", cn: "好客／款待" }
 
             ]
 
@@ -88,23 +88,25 @@ window.themeBasedTableManners = {
 
                 { en: "burp / belch", cn: "打嗝" },
 
-                { en: "appreciation", cn: "欣賞／讚賞" },
+                { en: "cultural norm", cn: "文化規範" },
 
-                { en: "chef", cn: "廚師" },
+                { en: "gastronomic appreciation", cn: "對美食的讚賞" },
 
-                { en: "tasty", cn: "美味" },
+                { en: "culinary professional", cn: "廚師／廚藝從業者" },
 
-                { en: "comfortable", cn: "自在／接受" },
+                { en: "palatable", cn: "可口／可接受的" },
 
-                { en: "situation", cn: "情況" },
+                { en: "at ease", cn: "自在／不介懷" },
 
-                { en: "justify", cn: "說明理由" },
+                { en: "dining context", cn: "用餐情境" },
 
-                { en: "polite", cn: "有禮貌" },
+                { en: "justify", cn: "論證／說明理由" },
 
-                { en: "introduction", cn: "引言" },
+                { en: "decorum", cn: "得體舉止" },
 
-                { en: "conclusion", cn: "結論" }
+                { en: "discretion", cn: "分寸／審慎" },
+
+                { en: "generation gap", cn: "代溝" }
 
             ]
 
@@ -124,29 +126,29 @@ window.themeBasedTableManners = {
 
             vocab: [
 
-                { en: "agree / disagree", cn: "同意／不同意" },
+                { en: "contend", cn: "主張／辯稱" },
 
-                { en: "utensils", cn: "餐具" },
+                { en: "cutlery", cn: "刀叉餐具" },
 
-                { en: "chopsticks", cn: "筷子" },
+                { en: "elaborate place setting", cn: "繁複餐位擺設" },
 
-                { en: "wine glass", cn: "酒杯" },
+                { en: "wine pairing", cn: "餐酒搭配" },
 
-                { en: "hands on lap", cn: "手放在膝上" },
+                { en: "postural decorum", cn: "坐姿禮儀" },
 
-                { en: "scoop", cn: "舀" },
+                { en: "soup spoon etiquette", cn: "舀湯禮儀" },
 
                 { en: "fine dining", cn: "高級正式餐飲" },
 
-                { en: "British", cn: "英國的" },
+                { en: "formal banquet", cn: "正式宴會" },
 
-                { en: "formal dinner", cn: "正式晚宴" },
+                { en: "dining context", cn: "用餐情境" },
 
-                { en: "situation", cn: "情況" },
+                { en: "illustrate", cn: "舉例說明" },
 
-                { en: "example", cn: "例子" },
+                { en: "conventional", cn: "傳統／慣常的" },
 
-                { en: "casual", cn: "隨便／非正式" }
+                { en: "relaxed dining", cn: "輕鬆用餐" }
 
             ]
 
@@ -166,25 +168,29 @@ window.themeBasedTableManners = {
 
             vocab: [
 
-                { en: "recommend", cn: "建議" },
+                { en: "advocate", cn: "倡議／力陳" },
 
-                { en: "classmate", cn: "同學" },
+                { en: "fellow travellers", cn: "同行同學／旅伴" },
 
-                { en: "presentation", cn: "簡報／演講" },
+                { en: "public address", cn: "公開演講" },
 
-                { en: "etiquette", cn: "禮儀" },
+                { en: "dining etiquette", cn: "餐桌禮儀" },
 
-                { en: "beneficial", cn: "有益" },
+                { en: "pragmatic", cn: "務實的" },
 
-                { en: "host", cn: "主人" },
+                { en: "restaurateur", cn: "餐廳東主" },
 
                 { en: "baguette", cn: "法式長棍麵包" },
 
-                { en: "manner", cn: "禮儀／舉止" },
+                { en: "protocol", cn: "規矩／禮節" },
 
-                { en: "respect", cn: "尊重" },
+                { en: "cultural sensitivity", cn: "文化敏感度" },
 
-                { en: "avoid", cn: "避免" }
+                { en: "refrain from", cn: "避免／克制不做" },
+
+                { en: "culinary faux pas", cn: "飲食失禮之舉" },
+
+                { en: "convivial atmosphere", cn: "歡愉用餐氣氛" }
 
             ]
 
