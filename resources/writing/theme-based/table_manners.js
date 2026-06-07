@@ -26,7 +26,7 @@ window.themeBasedTableManners = {
 
             context: "In Japan, loud slurping can show the food is tasty. In China, a burp after a meal can mean the same — a compliment to the chef.",
 
-            instructions: "Write an article for your school magazine.\n\nSome people see loud slurping in Japan and burping or belching in China as a sign that the food is good — a compliment to the chef. For slurping and for burping, say:\n• whether you would do it yourself;\n• whether you are happy for others to do it.\n\nGive at least two reasons to justify each answer (e.g. generation gap, hygiene, who you dine with, the dining venue).\n\nUse a short introduction and conclusion.",
+            instructions: "Write an article for your school magazine.\n\nSome people see loud slurping in Japan and burping or belching in China as a sign that the food is good — a compliment to the chef. For slurping and for burping, say:\n• whether you would do it yourself;\n• whether you are happy for others to do it.\n\nGive one reason to justify each answer (e.g. generation gap, hygiene, who you dine with, the dining venue).\n\nUse a short introduction and conclusion.",
 
             questions: [],
 
