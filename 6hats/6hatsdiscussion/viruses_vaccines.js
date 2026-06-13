@@ -155,5 +155,57 @@ window.sixHatSets = [
       { emoji: "📋", text: "What should companies do after a new vaccine is released?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Design one simple rule for how schools should talk about leaked lab videos.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "🍽️ Undercover clips & \"mutating viruses\"",
+    link: "https://www.youtube.com/watch?v=u5n7RRKgDog",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>Activists filmed a man in a restaurant, claiming he worked for Pfizer and admitted the company was secretly <strong>mutating COVID viruses</strong>. The scene became chaotic — he called the police, staff locked doors, and the clip spread online.</p>" +
+      "<p>Later the man said he was <strong>not a scientist</strong> and had <strong>lied to impress someone on a date</strong>. Pfizer said real lab work on viruses is done for research and safety testing — not to create outbreaks — but edited clips can still frighten people.</p>" +
+      "<p>The episode shows why we should check <strong>full context</strong>, the speaker's role, and official responses before sharing scary health claims.</p>",
+    vocablist: [
+      { word: "undercover", translation: "暗中拍攝的", emoji: "🎥" },
+      { word: "context", translation: "背景／全貌", emoji: "🧩" },
+      { word: "directed evolution", translation: "定向演化（實驗用語）", emoji: "🧬" },
+      { word: "verify", translation: "核實", emoji: "✅" },
+      { word: "consent", translation: "同意", emoji: "🤝" }
+    ],
+    vocabex:
+      "An <span class='vocab-blank' data-answer='undercover'></span> video about <span class='vocab-blank' data-answer='directed evolution'></span> spread fast. Without full <span class='vocab-blank' data-answer='context'></span>, viewers may panic. Always <span class='vocab-blank' data-answer='verify'></span> claims — and think about <span class='vocab-blank' data-answer='consent'></span> when filming strangers.",
+    questions: [
+      { emoji: "📊", text: "What did the man later say about why he talked about mutating viruses?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How would you feel if strangers filmed you in a restaurant and accused your employer?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it good that companies explain what lab virus research is actually for?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why can a short viral clip be worse than a full interview or report?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Before you repost, name two facts you would check (who filmed it, what was cut out, etc.).", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How could a class debate a health topic without ambushing people on camera?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🦠 Making antibodies with E. coli",
+    link: "https://www.youtube.com/shorts/eq6ZSDuU3Fo",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>Scientists start with <strong>patient cells</strong> stored in a very cold freezer. They break the cells open and take out <strong>DNA</strong>, then copy it — like a photocopier — to get the tip of an <strong>antibody</strong>.</p>" +
+      "<p>They join that segment to the rest of the antibody code and use <strong>E. coli</strong> bacteria to multiply the full DNA quickly. Next they put the DNA into <strong>human cells</strong> in an incubator; the cells grow and produce antibodies.</p>" +
+      "<p>After about a week, machines <strong>spin and purify</strong> the mixture so scientists can test whether the antibodies kill harmful bacteria.</p>",
+    vocablist: [
+      { word: "DNA", translation: "脫氧核糖核酸", emoji: "🧬" },
+      { word: "antibody", translation: "抗體", emoji: "🛡️" },
+      { word: "E. coli", translation: "大腸桿菌", emoji: "🦠" },
+      { word: "incubator", translation: "培養箱", emoji: "🌡️" },
+      { word: "purify", translation: "純化", emoji: "🧪" }
+    ],
+    vocabex:
+      "Lab workers copy <span class='vocab-blank' data-answer='DNA'></span> from patient cells to build an <span class='vocab-blank' data-answer='antibody'></span>. <span class='vocab-blank' data-answer='E. coli'></span> helps multiply the genetic code. Human cells in an <span class='vocab-blank' data-answer='incubator'></span> produce the protein, then scientists <span class='vocab-blank' data-answer='purify'></span> it for testing.",
+    questions: [
+      { emoji: "📊", text: "What do E. coli bacteria help scientists do in this process?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does using bacteria in a lab feel clever, strange, or both to you?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it useful that we can copy a patient's own antibody DNA?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why must labs keep samples in a minus-80°C freezer and work carefully?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Put in order: copy DNA → E. coli multiplies code → human cells make antibodies → purify → test.", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What illness or infection might custom antibodies one day help treat?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
