@@ -18,12 +18,12 @@ window.sixHatSets = [
     vocabex:
       "Fast <span class='vocab-blank' data-answer='replication'></span> leads to <span class='vocab-blank' data-answer='mutation'></span>. Through <span class='vocab-blank' data-answer='recombination'></span>, viruses gain new traits. Our <span class='vocab-blank' data-answer='immune system'></span> must keep learning. That is one reason we may need a new <span class='vocab-blank' data-answer='vaccine'></span> each flu season.",
     questions: [
-      { emoji: "📊", text: "According to the clip, why does each virus copy introduce errors?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does the idea of viruses \"outsmarting\" us feel scary, interesting, or both?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is it useful that scientists track mutations?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why might a mutated virus be harder to treat or prevent?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Put in order: virus copies itself → errors appear → behaviour may change.", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Name one everyday habit that helps slow the spread of coughs and colds.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "Why do viruses copy themselves so fast?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do changing viruses scare you?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why do we sometimes need a new flu vaccine?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if a virus changes a lot?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What is a mutation?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Name one habit that helps stop coughs and colds spreading.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -44,12 +44,12 @@ window.sixHatSets = [
     vocabex:
       "Your <span class='vocab-blank' data-answer='immune system'></span> protects the body like knights in a castle. A <span class='vocab-blank' data-answer='vaccine'></span> helps <span class='vocab-blank' data-answer='train'></span> cells before a <span class='vocab-blank' data-answer='germ'></span> arrives. They make <span class='vocab-blank' data-answer='antibodies'></span> to block it.",
     questions: [
-      { emoji: "📊", text: "In the castle story, what do the knights represent?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does the castle story make vaccines easier or harder to understand?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What is one benefit of training the body before a real infection?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why might a vaccine not work if the germ has changed a lot?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Put in order: vaccine → body practises → antibodies form → real germ blocked.", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "How would you explain vaccines to a younger student in one sentence?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "In the castle story, who are the knights?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Is the castle story easy to understand?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What do antibodies do?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What if your body has never seen a germ before?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Does a vaccine train your body first, or fight the germ straight away?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Explain a vaccine in one short sentence.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -70,12 +70,12 @@ window.sixHatSets = [
     vocabex:
       "A large <span class='vocab-blank' data-answer='outbreak'></span> spread Zika in Brazil. Many people had no <span class='vocab-blank' data-answer='symptoms'></span>. Officials worry about <span class='vocab-blank' data-answer='microcephaly'></span> in babies. The <span class='vocab-blank' data-answer='mosquito'></span> is the main carrier — a <span class='vocab-blank' data-answer='public health'></span> issue for travellers and families.",
     questions: [
-      { emoji: "📊", text: "What is microcephaly, according to the video?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How would you feel if health officials warned pregnant women not to travel to certain countries?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is it helpful that 80% of people have no symptoms?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why is \"no symptoms\" still dangerous for public health?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Name two ways people can try to protect themselves from Zika.", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What message would you put on a poster at an airport about Zika?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "How does Zika mainly spread?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you worry about Zika when travelling?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it good that most people feel fine?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why is Zika still dangerous for some babies?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Name one way to avoid mosquito bites.", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What would you write on a travel warning poster?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -96,12 +96,12 @@ window.sixHatSets = [
     vocabex:
       "In a <span class='vocab-blank' data-answer='pandemic'></span>, some leaders asked firms to <span class='vocab-blank' data-answer='waive'></span> <span class='vocab-blank' data-answer='patent'></span> rights so more countries could <span class='vocab-blank' data-answer='manufacture'></span> vaccines and improve <span class='vocab-blank' data-answer='access'></span> for all.",
     questions: [
-      { emoji: "📊", text: "What did the WHO want companies to waive during the pandemic?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you feel more sympathy for patients waiting for doses or for drug companies? Why?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "How could a patent waiver help low-income countries?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why might companies argue that waivers could hurt future vaccine research?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What is COVAX trying to do in simple words?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Suggest one fair rule for sharing medicines in the next global emergency.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What did the WHO ask drug companies to waive?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Who do you feel more sorry for — sick people or drug companies?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "How could more countries get vaccines faster?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why might drug companies say no to a patent waiver?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What is COVAX trying to do?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Suggest one fair rule for sharing medicine in an emergency.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -122,12 +122,12 @@ window.sixHatSets = [
     vocabex:
       "An <span class='vocab-blank' data-answer='edited'></span> video caused alarm about the <span class='vocab-blank' data-answer='menstrual cycle'></span>. A proper <span class='vocab-blank' data-answer='study'></span> found small, temporary changes. Doctors link this to the <span class='vocab-blank' data-answer='immune system'></span>. Ongoing <span class='vocab-blank' data-answer='monitoring'></span> checks long-term safety.",
     questions: [
-      { emoji: "📊", text: "What did the NIH-funded study find about menstrual cycles after vaccination?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How do you feel when scary health clips go viral before you read the full facts?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is long-term monitoring of vaccines a good thing?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why can an edited undercover video be misleading?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Before sharing a health video, what two checks would you do?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "How could schools help students spot unreliable medical claims online?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "Did the study find big or small changes to menstrual cycles?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel when scary health videos go viral?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it good to check vaccines over many years?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why can a short edited clip fool people?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should you check before you share a health video?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How can school help you spot fake health news?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -148,12 +148,12 @@ window.sixHatSets = [
     vocabex:
       "<span class='vocab-blank' data-answer='mRNA'></span> tools may fight flu, COVID, and even <span class='vocab-blank' data-answer='oncology'></span> research. Teams <span class='vocab-blank' data-answer='monitor'></span> virus <span class='vocab-blank' data-answer='mutation'></span> and watch for <span class='vocab-blank' data-answer='long-term'></span> side effects.",
     questions: [
-      { emoji: "📊", text: "Besides COVID, what other areas might mRNA research target?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does fast vaccine development make you feel grateful, nervous, or both?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What is one possible benefit if mRNA helps treat cancer one day?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why is rushing science without follow-up monitoring risky?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What should companies do after a new vaccine is released?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Design one simple rule for how schools should talk about leaked lab videos.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "Name one illness mRNA might help besides COVID.", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do fast new vaccines make you nervous?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "How could mRNA help cancer patients one day?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What goes wrong if we skip long-term safety checks?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What should companies do after a new vaccine goes on sale?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Suggest one class rule for talking about leaked lab videos.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -174,12 +174,12 @@ window.sixHatSets = [
     vocabex:
       "An <span class='vocab-blank' data-answer='undercover'></span> video about <span class='vocab-blank' data-answer='directed evolution'></span> spread fast. Without full <span class='vocab-blank' data-answer='context'></span>, viewers may panic. Always <span class='vocab-blank' data-answer='verify'></span> claims — and think about <span class='vocab-blank' data-answer='consent'></span> when filming strangers.",
     questions: [
-      { emoji: "📊", text: "What did the man later say about why he talked about mutating viruses?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How would you feel if strangers filmed you in a restaurant and accused your employer?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is it good that companies explain what lab virus research is actually for?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why can a short viral clip be worse than a full interview or report?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Before you repost, name two facts you would check (who filmed it, what was cut out, etc.).", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "How could a class debate a health topic without ambushing people on camera?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What did the man say about why he talked about mutating viruses?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How would you feel if someone filmed you in a restaurant?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why should companies explain what lab virus work is for?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why can a 30-second clip be misleading?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What two things would you check before reposting a video?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How can you discuss health without tricking people on camera?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -200,12 +200,38 @@ window.sixHatSets = [
     vocabex:
       "Lab workers copy <span class='vocab-blank' data-answer='DNA'></span> from patient cells to build an <span class='vocab-blank' data-answer='antibody'></span>. <span class='vocab-blank' data-answer='E. coli'></span> helps multiply the genetic code. Human cells in an <span class='vocab-blank' data-answer='incubator'></span> produce the protein, then scientists <span class='vocab-blank' data-answer='purify'></span> it for testing.",
     questions: [
-      { emoji: "📊", text: "What do E. coli bacteria help scientists do in this process?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does using bacteria in a lab feel clever, strange, or both to you?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is it useful that we can copy a patient's own antibody DNA?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Why must labs keep samples in a minus-80°C freezer and work carefully?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Put in order: copy DNA → E. coli multiplies code → human cells make antibodies → purify → test.", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What illness or infection might custom antibodies one day help treat?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What job do E. coli do in the lab?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Is using bacteria in a lab weird or cool?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why copy a patient's own antibodies?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why keep cells in a very cold freezer?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What happens after human cells make antibodies?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Name one disease antibodies might help treat.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "💷 Lockdown & UK government borrowing",
+    link: "https://www.youtube.com/watch?v=AcXAKYi7Fik",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>During the COVID outbreak, UK <strong>government borrowing</strong> spiked to about <strong>£62 billion in one month</strong> — far above earlier peaks after the 2008 financial crisis.</p>" +
+      "<p>Two main causes: <strong>support schemes</strong> (such as the furlough programme paying millions of workers' wages) and a fall in <strong>tax receipts</strong> because the economy slowed. VAT collections even went negative in April as firms deferred payments and rebates exceeded what was collected.</p>" +
+      "<p><strong>Retail sales</strong> fell sharply — clothing and household goods dropped most — while alcohol and tobacco rose slightly. Public debt reached a peacetime high, yet analysts said the spending showed lockdown support was working; restarting the economy became the next challenge.</p>",
+    vocablist: [
+      { word: "borrowing", translation: "借款／舉債", emoji: "📈" },
+      { word: "furlough", translation: "休假補貼計劃", emoji: "💼" },
+      { word: "tax receipts", translation: "稅收", emoji: "💷" },
+      { word: "deficit", translation: "赤字", emoji: "📉" },
+      { word: "retail sales", translation: "零售銷售", emoji: "🛍️" }
+    ],
+    vocabex:
+      "High <span class='vocab-blank' data-answer='borrowing'></span> paid for schemes like <span class='vocab-blank' data-answer='furlough'></span>. Lower <span class='vocab-blank' data-answer='tax receipts'></span> widened the <span class='vocab-blank' data-answer='deficit'></span>. Falling <span class='vocab-blank' data-answer='retail sales'></span> showed how lockdown changed spending.",
+    questions: [
+      { emoji: "📊", text: "Name two reasons UK borrowing went up.", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How would you feel if the government paid part of your family's wages?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is furlough better than millions losing jobs at once?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why is huge government debt a problem later?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Why did shops sell less clothing during lockdown?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Suggest one idea to help shops after lockdown.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   }
 ];
