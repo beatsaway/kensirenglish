@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebola emergency | 伊波拉疫情</title>
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { line-height: 1.55; min-height: 100vh; display: flex; flex-direction: column; font-size: 16px; }
+        header {
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px 16px;
+        }
+        .header-label { font-size: 14px; font-weight: 600; }
+        .header-nav { font-size: 13px; }
+        .header-nav a { color: #2563eb; text-decoration: none; }
+        .header-nav a:hover { text-decoration: underline; }
+        .header-copyright { font-size: 10px; color: #666; margin-left: auto; }
+        .header-copyright a { color: inherit; text-decoration: none; }
+        main { padding: 20px 24px 40px; max-width: 760px; margin: 0 auto; width: 100%; }
+        .source-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 20px; font-size: 13px; }
+        .source-links a { color: #2563eb; }
+        .section {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #eee;
+        }
+        .section:last-child { border-bottom: none; }
+        .section-head {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .passage {
+            font-size: 15px;
+            margin-bottom: 14px;
+            line-height: 1.85;
+        }
+        .blank-wrap { display: inline-block; vertical-align: baseline; margin: 0 2px; }
+        .blank-select {
+            font: inherit;
+            font-size: 14px;
+            max-width: 13em;
+            padding: 2px 4px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            background: #fafafa;
+            vertical-align: baseline;
+        }
+        .blank-select:hover,
+        .blank-select:focus {
+            border-color: #2563eb;
+            outline: none;
+            background: #fff;
+        }
+        .blank-select.correct {
+            border-color: #2e7d32;
+            background: #f1f8f4;
+        }
+        .blank-select.incorrect {
+            border-color: #c62828;
+            background: #fff5f5;
+        }
+        .discuss-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .discuss-list {
+            padding-left: 1.25rem;
+            font-size: 14px;
+            color: #333;
+        }
+        .discuss-list li { margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">Ebola emergency • 伊波拉疫情</div>
+        <div class="header-nav"><a href="index.html">← CEFR vocabulary</a></div>
+        <div class="header-copyright"><a href="../../index.html">©kensirenglish.com</a></div>
+    </header>
+    <main id="main"></main>
+    <script src="ebola_emergency.js"></script>
+    <script>
+        (function () {
+            const data = window.EBOLA_EMERGENCY_PASSAGE;
+            const main = document.getElementById("main");
+            if (!data) {
+                main.innerHTML = "<p>Data not loaded.</p>";
+                return;
+            }
+
+            const IRREG = {
+                declare: { pp: "declared", ing: "declaring" },
+                report: { pp: "reported", ing: "reporting" },
+                increase: { pp: "increased", ing: "increasing" },
+                last: { pp: "lasted", ing: "lasting" },
+                witness: { pp: "witnessed", ing: "witnessing" },
+                suffer: { pp: "suffered", ing: "suffering" },
+                face: { pp: "faced", ing: "facing" },
+                endure: { pp: "endured", ing: "enduring" },
+                drive: { pp: "driven", ing: "driving" },
+                believe: { pp: "believed", ing: "believing" },
+                circulate: { pp: "circulated", ing: "circulating" },
+                limit: { pp: "limited", ing: "limiting" },
+                complicate: { pp: "complicated", ing: "complicating" },
+                approve: { pp: "approved", ing: "approving" },
+                improve: { pp: "improved", ing: "improving" },
+                understand: { pp: "understood", ing: "understanding" },
+                transmit: { pp: "transmitted", ing: "transmitting" },
+                handwash: { pp: "handwashed", ing: "handwashing" },
+                screen: { pp: "screened", ing: "screening" },
+                draw: { pp: "drawn", ing: "drawing" },
+                affect: { pp: "affected", ing: "affecting" },
+                transfer: { pp: "transferred", ing: "transferring" },
+                agree: { pp: "agreed", ing: "agreeing" },
+                organise: { pp: "organised", ing: "organising" }
+            };
+
+            const EXTRA = {
+                declare: ["has declared", "declared", "declares", "declare", "is declared"],
+                report: ["have been reported", "are reported", "reported", "reporting", "reports", "have reported"],
+                increase: ["increasing", "increase", "increased", "increases", "are increasing"],
+                last: ["lasting", "last", "lasted", "lasts"],
+                witness: ["witnessing", "witness", "witnessed", "witnesses"],
+                suffer: ["suffering", "suffer", "suffered", "suffers"],
+                face: ["facing", "face", "faced", "faces"],
+                endure: ["enduring", "endure", "endured", "endures"],
+                drive: ["is being driven", "is driven", "drives", "drove", "driven", "driving"],
+                believe: ["is believed", "believed", "believes", "believe", "believing"],
+                circulate: ["circulating", "circulate", "circulated", "circulates"],
+                limit: ["limited", "limit", "limiting", "limits", "are limited"],
+                complicate: ["complicate", "complicates", "complicated", "complicating"],
+                approve: ["approved", "approve", "approving", "approves"],
+                improve: ["improves", "improve", "improved", "improving", "is improved"],
+                understand: ["understand", "understands", "understood", "understanding"],
+                transmit: ["is transmitted", "transmitted", "transmits", "transmit", "transmitting", "are transmitted"],
+                handwash: ["handwashing", "handwash", "hand-washing"],
+                screen: ["screenings", "screening", "screen", "screened", "screens"],
+                draw: ["Drawing", "Draw", "drawing", "draw", "drawn", "draws"],
+                affect: ["affected", "affect", "affecting", "affects"],
+                transfer: ["transferring", "transfer", "transferred", "transfers"],
+                agree: ["agreeing", "agree", "agreed", "agrees"],
+                organise: ["organising", "organize", "organizing", "organized", "organised"]
+            };
+
+            function escapeHtml(s) {
+                const d = document.createElement("div");
+                d.textContent = s;
+                return d.innerHTML;
+            }
+
+            function normalize(s) {
+                return String(s || "").trim().replace(/\s+/g, " ").toLowerCase();
+            }
+
+            function shuffle(arr) {
+                const a = arr.slice();
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const t = a[i];
+                    a[i] = a[j];
+                    a[j] = t;
+                }
+                return a;
+            }
+
+            function verbForms(base) {
+                const b = base.toLowerCase();
+                if (IRREG[b]) return IRREG[b];
+                if (b.endsWith("e")) {
+                    return { pp: b + "d", ing: b.slice(0, -1) + "ing" };
+                }
+                return { pp: b + "ed", ing: b + "ing" };
+            }
+
+            function optionsFromHint(hint, answer) {
+                const base = hint.replace(/\*/g, "").trim().toLowerCase();
+                const f = verbForms(base);
+                const ans = String(answer).trim();
+                const out = [];
+                const seen = {};
+
+                function add(form) {
+                    if (!form) return;
+                    const key = normalize(form);
+                    if (seen[key]) return;
+                    seen[key] = true;
+                    out.push(form);
+                }
+
+                add(ans);
+
+                if (EXTRA[base]) {
+                    EXTRA[base].forEach(add);
+                } else {
+                    add(base);
+                    add(base + "s");
+                    add(f.ing);
+                    add(f.pp);
+                    add("is " + f.pp);
+                    add("are " + f.pp);
+                    add("has " + f.pp);
+                    add("have " + f.pp);
+                }
+
+                return shuffle(out);
+            }
+
+            function buildSelect(hint, correct, sectionIdx, blankIdx) {
+                const options = optionsFromHint(hint, correct);
+                let html = '<span class="blank-wrap"><select class="blank-select" aria-label="Choose word form"' +
+                    ' data-answer="' + escapeHtml(correct) + '"' +
+                    ' data-section="' + sectionIdx + '" data-index="' + blankIdx + '">';
+                html += '<option value="">—</option>';
+                options.forEach(function (opt) {
+                    html += '<option value="' + escapeHtml(opt) + '">' + escapeHtml(opt) + "</option>";
+                });
+                html += "</select></span>";
+                return html;
+            }
+
+            function renderPassage(text, answers, sectionIdx) {
+                let html = "";
+                let remaining = text;
+                let blankIdx = 0;
+
+                while (remaining.length) {
+                    const gap = remaining.indexOf("_____");
+                    if (gap === -1) {
+                        html += escapeHtml(remaining);
+                        break;
+                    }
+                    html += escapeHtml(remaining.slice(0, gap));
+                    remaining = remaining.slice(gap + 5);
+
+                    const hintMatch = remaining.match(/^\s*\(([^)]+)\)/);
+                    const hint = hintMatch ? hintMatch[1] : "";
+                    if (hintMatch) remaining = remaining.slice(hintMatch[0].length);
+
+                    html += buildSelect(hint, answers[blankIdx] || "", sectionIdx, blankIdx);
+                    if (hint) {
+                        html += escapeHtml(" (" + hint.replace(/\*/g, "") + ")");
+                    }
+                    blankIdx += 1;
+                }
+                return html;
+            }
+
+            function gradeSelect(sel) {
+                sel.classList.remove("correct", "incorrect");
+                if (!sel.value) return;
+                const expected = sel.getAttribute("data-answer") || "";
+                if (normalize(sel.value) === normalize(expected)) {
+                    sel.classList.add("correct");
+                } else {
+                    sel.classList.add("incorrect");
+                }
+            }
+
+            function showAllAnswers() {
+                document.querySelectorAll(".blank-select").forEach(function (sel) {
+                    const expected = sel.getAttribute("data-answer") || "";
+                    if (!expected) return;
+                    let hasOption = false;
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (normalize(sel.options[i].value) === normalize(expected)) {
+                            hasOption = true;
+                            break;
+                        }
+                    }
+                    if (!hasOption) {
+                        const opt = document.createElement("option");
+                        opt.value = expected;
+                        opt.textContent = expected;
+                        sel.appendChild(opt);
+                    }
+                    sel.value = expected;
+                    gradeSelect(sel);
+                });
+            }
+
+            let html =
+                "<h1 style=\"font-size:1.25rem;margin-bottom:8px;\">" + escapeHtml(data.title) +
+                " <span style=\"font-weight:400;color:#666;\">" + escapeHtml(data.titleZh || "") + "</span></h1>" +
+                "<div class=\"source-links\">";
+            if (data.source) {
+                html += "<a href=\"" + escapeHtml(data.source.url) + "\" target=\"_blank\" rel=\"noopener\">" +
+                    escapeHtml(data.source.label) + "</a>";
+            }
+            html += "</div>";
+
+            data.sections.forEach(function (sec, si) {
+                html += "<section class=\"section\">";
+                html += "<h2 class=\"section-head\">" + (sec.emoji ? sec.emoji + " " : "") +
+                    escapeHtml(sec.title || sec.country || "") + "</h2>";
+                html += "<p class=\"passage\">" + renderPassage(sec.text, sec.answers || [], si) + "</p>";
+                if (sec.questions && sec.questions.length) {
+                    html += "<div class=\"discuss-title\">Discuss</div><ol class=\"discuss-list\">";
+                    sec.questions.forEach(function (q) {
+                        html += "<li>" + escapeHtml(q) + "</li>";
+                    });
+                    html += "</ol>";
+                }
+                html += "</section>";
+            });
+
+            main.innerHTML = html;
+
+            document.querySelectorAll(".blank-select").forEach(function (sel) {
+                sel.addEventListener("change", function () {
+                    gradeSelect(sel);
+                });
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.code !== "Space" || e.ctrlKey || e.metaKey || e.altKey) return;
+                const tag = e.target && e.target.tagName;
+                if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+                e.preventDefault();
+                showAllAnswers();
+            });
+        })();
+    </script>
+</body>
+</html>
