@@ -329,12 +329,20 @@
                 card.className = "task-card";
                 const videoUrl = escapeHtml(task.videoUrl || "");
                 let html = `<div class="task-title-row"><h2 class="task-title">${escapeHtml(task.title)}</h2>`;
-                if (task.videoUrl) {
-                    html += `<span class="task-watch"><a href="${videoUrl}" target="_blank" rel="noopener">watch video</a></span>`;
-                }
-                if (task.learnMoreUrl) {
-                    const learnUrl = task.learnMoreUrl.replace(/"/g, "&quot;");
-                    html += `<span class="task-watch"><a href="${learnUrl}" target="_blank" rel="noopener">learn more</a></span>`;
+                if (task.watchLinks && task.watchLinks.length) {
+                    task.watchLinks.forEach((item) => {
+                        const url = (item.url || "").replace(/"/g, "&quot;");
+                        const label = escapeHtml(item.label || "Link");
+                        html += `<span class="task-watch"><a href="${url}" target="_blank" rel="noopener">${label}</a></span>`;
+                    });
+                } else {
+                    if (task.videoUrl) {
+                        html += `<span class="task-watch"><a href="${videoUrl}" target="_blank" rel="noopener">watch video</a></span>`;
+                    }
+                    if (task.learnMoreUrl) {
+                        const learnUrl = task.learnMoreUrl.replace(/"/g, "&quot;");
+                        html += `<span class="task-watch"><a href="${learnUrl}" target="_blank" rel="noopener">learn more</a></span>`;
+                    }
                 }
                 html += `</div>`;
                 if (task.instructions) {
