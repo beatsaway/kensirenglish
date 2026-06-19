@@ -3,9 +3,6 @@
  */
 window.themeBasedPrivacyData = {
     theme: "Privacy & data",
-    referenceLinks: [
-        { label: "Six Hats discussion (Online Safety)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Online%20Safety" }
-    ],
     tasks: [
         {
             id: "opinion-uk-social-media-ban",
