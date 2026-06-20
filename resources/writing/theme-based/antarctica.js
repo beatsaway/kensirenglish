@@ -36,9 +36,6 @@ window.themeBasedAntarctica = {
         {
             id: "article-antarctica-global-warming",
             title: "Article — Antarctica and global warming",
-            watchLinks: [
-                { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4&t=1413" }
-            ],
             context: "Antarctica is changing as the planet gets warmer. The effects are not only about the ice.",
             instructions: "Write a short article (100–130 words).\n\nMention four things that could happen to Antarctica because of global warming.",
             successCriteria: [
@@ -64,9 +61,6 @@ window.themeBasedAntarctica = {
         {
             id: "proposal-antarctica-school-trip",
             title: "Proposal — school science trip to Antarctica",
-            watchLinks: [
-                { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4" }
-            ],
             context: "You are a science teacher. Your school is planning a science trip to Antarctica this summer.",
             instructions: "Write a short proposal (100–130 words).\n\nSuggest three fun and educational activities for the trip.\n\nMention at least two things the students can learn about.",
             successCriteria: [
