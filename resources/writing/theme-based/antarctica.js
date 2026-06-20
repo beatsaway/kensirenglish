@@ -1,32 +1,9 @@
 /**
- * Theme-based writing — Antarctica (4 tasks).
+ * Theme-based writing — Antarctica (3 tasks).
  */
 window.themeBasedAntarctica = {
     theme: "Antarctica",
     tasks: [
-        {
-            id: "article-inner-earth-implications",
-            title: "Article — if the inner-Earth claim is true",
-            context: "In class you heard Admiral Richard E. Byrd's claim: an advanced civilization may live inside the Earth. For this task, suppose the claim is true.",
-            instructions: "Write a short article (100–130 words).\n\nGive two negative implications for people living on the surface.\n\nGive two ways to ease the situation.",
-            successCriteria: [
-                "Two negative implications for surface dwellers",
-                "Two ways to ease the situation"
-            ],
-            questions: [],
-            vocab: [
-                { en: "implication", cn: "影響／後果" },
-                { en: "civilization", cn: "文明" },
-                { en: "surface", cn: "地表" },
-                { en: "conflict", cn: "衝突" },
-                { en: "fear", cn: "恐懼" },
-                { en: "diplomacy", cn: "外交" },
-                { en: "co-operation", cn: "合作" },
-                { en: "trust", cn: "信任" },
-                { en: "communication", cn: "溝通" },
-                { en: "ease the situation", cn: "緩和局勢" }
-            ]
-        },
         {
             id: "article-coexist-inner-civilization",
             title: "Article — living alongside an inner civilization",
