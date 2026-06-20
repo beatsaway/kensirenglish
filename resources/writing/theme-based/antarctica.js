@@ -57,7 +57,7 @@ window.themeBasedAntarctica = {
                 { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4&t=1413" }
             ],
             context: "Antarctica is changing as the planet warms. The effects reach beyond the ice itself.",
-            instructions: "Write a short article (100–130 words).\n\nGive four things that could happen to Antarctica because of global warming:\n• one political effect;\n• one ecological effect;\n• one economic effect;\n• one scientific effect.",
+            instructions: "Write a short article (100–130 words).\n\nGive four things that could happen to Antarctica because of global warming.",
             successCriteria: [
                 "One political effect",
                 "One ecological effect",
@@ -85,10 +85,10 @@ window.themeBasedAntarctica = {
                 { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4" }
             ],
             context: "You are a science teacher. Your school is planning a science trip to Antarctica this summer.",
-            instructions: "Write a short proposal (100–130 words).\n\nSuggest three fun and educational activities for the trip.\n\nFor each activity, say what topic students can learn about.",
+            instructions: "Write a short proposal (100–130 words).\n\nSuggest three fun and educational activities for the trip.\n\nMention at least two things students can learn about.",
             successCriteria: [
                 "Three activities suggested",
-                "Each activity linked to a clear learning topic"
+                "At least two things students can learn about"
             ],
             questions: [],
             vocab: [
