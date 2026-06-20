@@ -10,7 +10,10 @@ window.themeBasedAntarctica = {
         {
             id: "article-coexist-inner-civilization",
             title: "Article — living alongside an inner civilization",
-            context: "Imagine an advanced civilization of a different species lives inside the Earth, and people on the surface know they are there.",
+            watchLinks: [
+                { label: "Match headlines", url: "https://kenote.netlify.app/matching/headlines?set=antarctica-byrd" }
+            ],
+            context: "In class you read about Admiral Richard E. Byrd's flight over Antarctica. Some stories claim he found an advanced civilization living inside the Earth. For this task, imagine that civilization is real and people on the surface know they are there.",
             instructions: "Write a short article (100–130 words).\n\nMention at least two benefits of living alongside them.\n\nMention at least two concerns.",
             successCriteria: [
                 "At least two benefits",
