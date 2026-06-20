@@ -3,15 +3,18 @@
  */
 window.themeBasedAntarctica = {
     theme: "Antarctica",
+    referenceLinks: [
+        { label: "Six Hats discussion (Antarctica Secrets)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Antarctica%20Secrets" }
+    ],
     tasks: [
         {
             id: "article-coexist-inner-civilization",
             title: "Article — living alongside an inner civilization",
             context: "Imagine an advanced civilization of a different species lives inside the Earth, and people on the surface know they are there.",
-            instructions: "Write a short article (100–130 words).\n\nGive at least two potential benefits of co-existing with them.\n\nGive at least two potential concerns.",
+            instructions: "Write a short article (100–130 words).\n\nMention at least two benefits of living alongside them.\n\nMention at least two concerns.",
             successCriteria: [
-                "At least two benefits of co-existence",
-                "At least two concerns about co-existence"
+                "At least two benefits",
+                "At least two concerns"
             ],
             questions: [],
             vocab: [
@@ -33,8 +36,8 @@ window.themeBasedAntarctica = {
             watchLinks: [
                 { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4&t=1413" }
             ],
-            context: "Antarctica is changing as the planet warms. The effects reach beyond the ice itself.",
-            instructions: "Write a short article (100–130 words).\n\nGive four things that could happen to Antarctica because of global warming.",
+            context: "Antarctica is changing as the planet gets warmer. The effects are not only about the ice.",
+            instructions: "Write a short article (100–130 words).\n\nMention four things that could happen to Antarctica because of global warming.",
             successCriteria: [
                 "One political effect",
                 "One ecological effect",
@@ -62,7 +65,7 @@ window.themeBasedAntarctica = {
                 { label: "Video", url: "https://www.youtube.com/watch?v=5WGSa1e2qo4" }
             ],
             context: "You are a science teacher. Your school is planning a science trip to Antarctica this summer.",
-            instructions: "Write a short proposal (100–130 words).\n\nSuggest three fun and educational activities for the trip.\n\nMention at least two things students can learn about.",
+            instructions: "Write a short proposal (100–130 words).\n\nSuggest three fun and educational activities for the trip.\n\nMention at least two things the students can learn about.",
             successCriteria: [
                 "Three activities suggested",
                 "At least two things students can learn about"
