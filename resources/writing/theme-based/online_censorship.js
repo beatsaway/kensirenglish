@@ -120,6 +120,64 @@ window.themeBasedOnlineCensorship = {
                 { en: "helpline", cn: "求助熱線" },
                 { en: "cyberbullying", cn: "網絡欺凌" }
             ]
+        },
+        {
+            id: "letter-parents-no-social-media-until-18",
+            title: "Letter — social media before 18",
+            context: "Some parents do not allow their children to use any social media until they turn 18. They believe it keeps children safe and helps them stay focused. You think this rule goes too far.",
+            instructions: "Write a letter to your parents (about 180 words).\n\nTry to persuade them that stopping children from using social media until they are 18 is a bad idea.\n\nMention three reasons.\n\nUse a polite, respectful tone.",
+            successCriteria: [
+                "Clear letter format (Dear …, Yours …)",
+                "Polite and respectful tone",
+                "Three reasons why a ban until 18 is a bad idea"
+            ],
+            questions: [],
+            vocab: [
+                { en: "persuade", cn: "說服" },
+                { en: "left out", cn: "被排除在外" },
+                { en: "isolated", cn: "孤立" },
+                { en: "contact friends", cn: "聯絡朋友" },
+                { en: "navigate", cn: "應對／使用" },
+                { en: "digital world", cn: "數碼世界" },
+                { en: "homework", cn: "功課" },
+                { en: "community", cn: "社群" },
+                { en: "learn safely", cn: "安全地學習" },
+                { en: "trust", cn: "信任" },
+                { en: "restrict", cn: "限制" },
+                { en: "monitor", cn: "監察" },
+                { en: "age-appropriate", cn: "合年齡的" },
+                { en: "Dear Mum and Dad", cn: "親愛的爸爸媽媽" },
+                { en: "Yours", cn: "你的" }
+            ]
+        },
+        {
+            id: "article-great-firewall-china",
+            title: "Article — China's Great Firewall",
+            context: "China uses a system called the Great Firewall to block many foreign websites and control what people can see and say online. Some people criticise it, but others say it has benefits for the country.",
+            instructions: "Write an article for your school magazine (about 200 words).\n\nExplain what the Great Firewall is.\n\nMention three reasons why some people think it is a good thing.\n\nInclude an introduction and a conclusion.",
+            successCriteria: [
+                "Brief explanation of the Great Firewall",
+                "Introduction and conclusion",
+                "Three reasons why it could be seen as a good thing"
+            ],
+            questions: [],
+            vocab: [
+                { en: "Great Firewall", cn: "防火長城" },
+                { en: "firewall", cn: "防火牆" },
+                { en: "censor", cn: "審查" },
+                { en: "block", cn: "封鎖" },
+                { en: "control", cn: "控制" },
+                { en: "harmful content", cn: "有害內容" },
+                { en: "surveillance", cn: "監控" },
+                { en: "stability", cn: "穩定" },
+                { en: "protect", cn: "保護" },
+                { en: "foreign websites", cn: "外國網站" },
+                { en: "national security", cn: "國家安全" },
+                { en: "misinformation", cn: "錯誤資訊" },
+                { en: "culture", cn: "文化" },
+                { en: "online safety", cn: "網上安全" },
+                { en: "government", cn: "政府" }
+            ]
         }
     ]
 };
