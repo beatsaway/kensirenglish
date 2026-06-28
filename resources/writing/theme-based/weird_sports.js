@@ -11,7 +11,7 @@ window.themeBasedWeirdSports = {
             id: "proposal-three-pe-sports",
             title: "Proposal — three new sports for PE",
             context: "Your PE teacher wants fresh ideas for next term. Normal football and basketball are getting boring. You have been learning about weird sports from around the world.",
-            instructions: "Write a short proposal to your PE teacher (100–130 words).\n\nSuggest three new kinds of sports to try in PE lessons.\n\nFor each sport, mention one main rule and one reason it would be fun or useful for students.",
+            instructions: "Write a short proposal to your PE teacher.\n\nSuggest three new kinds of sports to try in PE lessons.\n\nFor each sport, mention one main rule and one reason it would be fun or useful for students.",
             successCriteria: [
                 "Three new sports suggested",
                 "One main rule for each sport",
@@ -40,7 +40,7 @@ window.themeBasedWeirdSports = {
             id: "article-invent-weird-sport",
             title: "Article — invent your own weird sport",
             context: "Your school magazine is running a competition: invent a brand-new sport that no one has heard of before. The best idea will be tried at the end-of-term sports day.",
-            instructions: "Write an article for the school magazine (about 150 words).\n\nDescribe your new sport.\n\nMention its name, the equipment needed, the main rules, and how you win.\n\nExplain why students would enjoy it.",
+            instructions: "Write an article for the school magazine.\n\nDescribe your new sport.\n\nMention its name, the equipment needed, the main rules, and how you win.\n\nExplain why students would enjoy it.",
             successCriteria: [
                 "Name of the sport",
                 "Equipment needed",
@@ -69,7 +69,7 @@ window.themeBasedWeirdSports = {
             id: "article-would-you-try-weird-sport",
             title: "Article — would you try this weird sport?",
             context: "You watched videos about unusual sports such as chess boxing, cycle ball, office chair racing and HADO. Your class is debating whether weird sports are worth trying.",
-            instructions: "Write an article for your school magazine (about 150 words).\n\nChoose one weird sport from the discussion.\n\nSay whether you would try it, watch it, or avoid it.\n\nMention three reasons for your choice.",
+            instructions: "Write an article for your school magazine.\n\nChoose one weird sport from the discussion.\n\nSay whether you would try it, watch it, or avoid it.\n\nMention three reasons for your choice.",
             successCriteria: [
                 "One weird sport chosen",
                 "Clear choice: try, watch, or avoid",
@@ -97,7 +97,7 @@ window.themeBasedWeirdSports = {
             id: "letter-pe-teacher-sports-day",
             title: "Letter — one sport for sports day",
             context: "Sports day is coming up. Your PE teacher has asked each class to recommend one unusual sport for the programme — something safe, fun and different from the usual races.",
-            instructions: "Write a letter to your PE teacher (about 120 words).\n\nRecommend one weird sport for sports day.\n\nIt can be a real sport from the discussion or one you invent yourself.\n\nMention three reasons why it would work well at your school.",
+            instructions: "Write a letter to your PE teacher.\n\nRecommend one weird sport for sports day.\n\nIt can be a real sport from the discussion or one you invent yourself.\n\nMention three reasons why it would work well at your school.",
             successCriteria: [
                 "Clear letter format (Dear …, Yours …)",
                 "One sport recommended",
