@@ -349,6 +349,106 @@ window.sixHatSets = [
       { emoji: "📋", text: "How is this sport linked to Mongolian history?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "What traditional sport from your country deserves a revival?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "💡 New sport idea — Silent football",
+    vocablist: [
+      { word: "communicate", translation: "溝通", emoji: "🤐" },
+      { word: "gesture", translation: "手勢", emoji: "👋" },
+      { word: "strategy", translation: "策略", emoji: "♟️" },
+      { word: "referee", translation: "裁判", emoji: "🧑‍⚖️" },
+      { word: "teamwork", translation: "團隊合作", emoji: "🤝" }
+    ],
+    articleText:
+      "<p><strong>Proposal: Silent football</strong></p>" +
+      "<p>Normal football rules — but every player must stay completely <strong>silent</strong> from kick-off to full time. No shouting, no calling for the ball, no arguing with the <strong>referee</strong>. If you speak, the other team gets a free kick.</p>" +
+      "<p>Teams must <strong>communicate</strong> using <strong>gesture</strong>s, eye contact and pre-planned signals. This turns a loud, fast game into a test of <strong>teamwork</strong> and clever <strong>strategy</strong>.</p>" +
+      "<p><strong>Why try it?</strong> It is funny to watch, forces players to think ahead, and could work in school halls where noise is a problem.</p>" +
+      "<p><strong>Safety:</strong> Use a soft ball. A silent referee holds up coloured cards instead of blowing a whistle.</p>",
+    vocabex: "In silent football, players cannot speak — they must <span class='vocab-blank' data-answer='communicate'></span> with <span class='vocab-blank' data-answer='gesture'></span>s and eye contact. Good <span class='vocab-blank' data-answer='teamwork'></span> and <span class='vocab-blank' data-answer='strategy'></span> matter more than shouting. The <span class='vocab-blank' data-answer='referee'></span> uses hand signals instead of a whistle.",
+    questions: [
+      { emoji: "📊", text: "What is the one main rule of silent football?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would playing in silence feel tense or hilarious?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might this work well as a school sport?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if players cannot call warnings?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How would teams share tactics without words?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Change one rule to make silent football even weirder.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "💡 New sport idea — Sponge helmet relay",
+    vocablist: [
+      { word: "relay", translation: "接力賽", emoji: "🏃" },
+      { word: "sponge", translation: "海綿", emoji: "🧽" },
+      { word: "balance", translation: "平衡", emoji: "⚖️" },
+      { word: "obstacle", translation: "障礙", emoji: "🚧" },
+      { word: "transfer", translation: "傳遞", emoji: "🔄" }
+    ],
+    articleText:
+      "<p><strong>Proposal: Sponge helmet relay</strong></p>" +
+      "<p>Teams of four race through an <strong>obstacle</strong> course. Each runner wears a plastic bowl as a helmet, filled with water-soaked <strong>sponge</strong>s. They must <strong>balance</strong> the sponges without using their hands — only head movements allowed.</p>" +
+      "<p>At the end of each lap, the runner must <strong>transfer</strong> the wet sponges into a bucket. The team with the most water in the bucket after four laps wins. Dropped sponges stay on the ground — no picking them up.</p>" +
+      "<p><strong>Why try it?</strong> It looks ridiculous, tests balance under pressure, and is perfect for summer sports day.</p>" +
+      "<p><strong>Safety:</strong> Soft obstacles only. Non-slip mats on the course. Helmets must be padded.</p>",
+    vocabex: "In the sponge helmet <span class='vocab-blank' data-answer='relay'></span>, runners <span class='vocab-blank' data-answer='balance'></span> wet <span class='vocab-blank' data-answer='sponge'></span>s on their heads through an <span class='vocab-blank' data-answer='obstacle'></span> course. At each changeover they <span class='vocab-blank' data-answer='transfer'></span> the sponges into a team bucket.",
+    questions: [
+      { emoji: "📊", text: "How does a team win the sponge helmet relay?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you volunteer to wear the sponge helmet?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is this a good sport for a school sports day?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong on a slippery obstacle course?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What skills does this relay test?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Add one obstacle that would make this sport even sillier.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "💡 New sport idea — Homework hurdles",
+    vocablist: [
+      { word: "hurdle", translation: "跨欄", emoji: "🏃" },
+      { word: "sprint", translation: "短跑", emoji: "💨" },
+      { word: "quiz", translation: "小測", emoji: "📝" },
+      { word: "penalty", translation: "罰時", emoji: "⏱️" },
+      { word: "concentrate", translation: "集中", emoji: "🧠" }
+    ],
+    articleText:
+      "<p><strong>Proposal: Homework hurdles</strong></p>" +
+      "<p>Athletes <strong>sprint</strong> 80 metres, then stop at a desk and answer one quick <strong>quiz</strong> question (spelling, maths or general knowledge). Only when the answer is correct can they jump the next <strong>hurdle</strong> and run again.</p>" +
+      "<p>Wrong answers add a 10-second <strong>penalty</strong>. The race mixes physical speed with the ability to <strong>concentrate</strong> under pressure — like a PE lesson and a test at the same time.</p>" +
+      "<p><strong>Why try it?</strong> Teachers love it. Students who are fast but careless lose. Students who are slow but accurate can still win.</p>" +
+      "<p><strong>Safety:</strong> Hurdles set low. Quiz desks placed well away from the track.</p>",
+    vocabex: "In homework <span class='vocab-blank' data-answer='hurdle'></span>s, runners <span class='vocab-blank' data-answer='sprint'></span> between desks and must pass a <span class='vocab-blank' data-answer='quiz'></span> before the next jump. A wrong answer means a time <span class='vocab-blank' data-answer='penalty'></span>. You must <span class='vocab-blank' data-answer='concentrate'></span> while exhausted.",
+    questions: [
+      { emoji: "📊", text: "What must runners do at each desk?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would mixing sport and quizzes feel fair or unfair?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might slower but clever runners still win?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What problems could happen if runners rush their answers?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What two skills does this sport combine?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What subject would you pick for the quiz questions?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "💡 New sport idea — Backwards penalty",
+    vocablist: [
+      { word: "backwards", translation: "向後", emoji: "🔙" },
+      { word: "penalty", translation: "十二碼", emoji: "⚽" },
+      { word: "goalkeeper", translation: "守門員", emoji: "🧤" },
+      { word: "aim", translation: "瞄準", emoji: "🎯" },
+      { word: "accuracy", translation: "準確度", emoji: "📐" }
+    ],
+    articleText:
+      "<p><strong>Proposal: Backwards penalty</strong></p>" +
+      "<p>A twist on the classic <strong>penalty</strong> shootout: the kicker must run up and strike the ball while facing <strong>backwards</strong> — looking over their shoulder at the goal. The <strong>goalkeeper</strong> faces the normal way and can move along the line.</p>" +
+      "<p>Each player gets three attempts. Most goals wins. The sport tests bizarre <strong>aim</strong> and <strong>accuracy</strong> rather than raw power.</p>" +
+      "<p><strong>Why try it?</strong> Penalties are normally serious and tense. This version is almost impossible to take seriously — perfect for charity matches and end-of-term fun.</p>" +
+      "<p><strong>Safety:</strong> Use a soft ball. Kickers must not turn around fully before striking — that would be cheating.</p>",
+    vocabex: "In backwards <span class='vocab-blank' data-answer='penalty'></span>, the kicker runs up facing <span class='vocab-blank' data-answer='backwards'></span> and tries to beat the <span class='vocab-blank' data-answer='goalkeeper'></span>. Success needs strange <span class='vocab-blank' data-answer='aim'></span> and perfect <span class='vocab-blank' data-answer='accuracy'></span>.",
+    questions: [
+      { emoji: "📊", text: "What is the main rule for the kicker?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you feel confident taking a backwards penalty?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is this good for a charity or fun match?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What injuries could happen if kickers lose their balance?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is this different from a normal penalty shootout?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Invent another football rule that works only backwards.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
 
