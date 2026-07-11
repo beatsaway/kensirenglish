@@ -42,10 +42,10 @@ window.themeBasedAtlantisOceans = {
             id: "article-advanced-ancient-civilisations",
             title: "Article — were ancient civilisations more advanced?",
             context: "Some people claim that civilisations existed long before us with technology far more advanced than ours — from lost cities such as Atlantis to mysterious ancient structures. Others say this is exaggeration or myth.",
-            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that ancient civilisations were more advanced than us today? Mention three reasons.",
+            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that ancient civilisations were more advanced than us today? Give three pieces of evidence.",
             successCriteria: [
                 "Clear agree or disagree",
-                "Three reasons with an example each",
+                "Three pieces of evidence with an example each",
                 "In conclusion or To summarise"
             ],
             questions: [],
@@ -72,10 +72,10 @@ window.themeBasedAtlantisOceans = {
                 { label: "Meltwater pulse 1B", url: "https://www.youtube.com/shorts/o4yMDMK9NmQ" }
             ],
             context: "Stories from Greek mythology, the Bible, ancient China and many other cultures describe gods or divine beings punishing people by flooding the world. In Greece, Zeus sank Atlantis. In the Bible, Noah built an ark. In China, the battle between Gong Gong and Nüwa brought devastating floods.",
-            instructions: "Write an article for your school magazine.\n\nWas there a real global flood in the past? Was it divine punishment? Mention three reasons for your views.",
+            instructions: "Write an article for your school magazine.\n\nWas there a real global flood in the past? Was it divine punishment? Give three pieces of evidence for your views.",
             successCriteria: [
                 "Answers both questions",
-                "Three reasons with examples (myth or science)",
+                "Three pieces of evidence with examples (myth or science)",
                 "In conclusion or In summary"
             ],
             questions: [],
