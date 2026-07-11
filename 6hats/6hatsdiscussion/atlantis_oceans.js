@@ -167,6 +167,132 @@ window.sixHatSets = [
       { emoji: "📋", text: "Where do official maps say the Tasman Sea meets the Pacific?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "How is this like myths about Atlantis — story vs evidence?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "📐 Plato's blueprint — could it work?",
+    link: "https://youtu.be/ndtHxw6qgc4?t=0",
+    linkLabel: "Watch from 0:00",
+    articleText:
+      "<p>Plato gave Atlantis detailed <strong>dimensions</strong> — not just a story, but a spec sheet. The city has three concentric rings of land and water. The central island is five <strong>stadia</strong> across (about the size of Midtown Manhattan).</p>" +
+      "<p>A <strong>canal</strong> to the ocean is one plethron deep — deeper than a ten-storey building — and stretches 50 stadia. Together with the water rings, Plato's design needs over <strong>300 million m³</strong> of excavation.</p>" +
+      "<p>For comparison, the <strong>Panama Canal</strong> moved about 205 million m³ using dynamite and steam shovels over ten years. Thousands of workers died. Plato's water system alone is one and a half Panama Canals — plus tunnels big enough for ancient warships.</p>",
+    vocablist: [
+      { word: "blueprint", translation: "藍圖", emoji: "📐" },
+      { word: "excavation", translation: "挖掘", emoji: "⛏️" },
+      { word: "canal", translation: "運河", emoji: "🚢" },
+      { word: "concentric", translation: "同心的", emoji: "⭕" },
+      { word: "specification", translation: "規格", emoji: "📋" }
+    ],
+    vocabex: "Plato wrote detailed <span class='vocab-blank' data-answer='specification'></span>s for Atlantis — a real <span class='vocab-blank' data-answer='blueprint'></span>. The <span class='vocab-blank' data-answer='concentric'></span> rings and sea <span class='vocab-blank' data-answer='canal'></span> need over 300 million m³ of <span class='vocab-blank' data-answer='excavation'></span> — more than the Panama Canal.",
+    questions: [
+      { emoji: "📊", text: "How does Plato's excavation compare to the Panama Canal?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does the side view of Atlantis change how you picture it?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it useful to take Plato's numbers seriously?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What makes building at sea level with ocean pressure so hard?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What shape is Atlantis in most documentaries vs in section?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Could any ancient civilisation have built this?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "💧 Three water systems — why it fails",
+    link: "https://youtu.be/ndtHxw6qgc4?t=296",
+    linkLabel: "Watch from 4:56",
+    articleText:
+      "<p>Plato describes <strong>three separate water systems</strong> in Atlantis: salt water from the sea moving inward, irrigation water from the plain, and fresh water from hot and cold <strong>springs</strong> on the central island flowing outward through aqueducts.</p>" +
+      "<p>On the coast, fresh groundwater forms a fragile <strong>freshwater lens</strong> — drinkable water floating above heavier salt water. The <strong>Ghyben-Herzberg</strong> principle means that for every metre you lower the water table, you lose about 40 metres of fresh water below.</p>" +
+      "<p>Atlantis built three artificial coastlines around its only fresh water source. Every bath and cistern draws water down — and salt water rises to replace it. This is the same problem coastal cities face today when they pump too much groundwater.</p>",
+    vocablist: [
+      { word: "aqueduct", translation: "引水道", emoji: "🏛️" },
+      { word: "spring", translation: "泉水", emoji: "💧" },
+      { word: "salt water", translation: "鹹水", emoji: "🌊" },
+      { word: "groundwater", translation: "地下水", emoji: "⬇️" },
+      { word: "irrigation", translation: "灌溉", emoji: "🌾" }
+    ],
+    vocabex: "Three systems ran through Atlantis: <span class='vocab-blank' data-answer='salt water'></span> from the sea, <span class='vocab-blank' data-answer='irrigation'></span> from the plain, and fresh water from <span class='vocab-blank' data-answer='spring'></span>s through <span class='vocab-blank' data-answer='aqueduct'></span>s. Pumping too much <span class='vocab-blank' data-answer='groundwater'></span> lets salt water rise — the same problem coastal cities face today.",
+    questions: [
+      { emoji: "📊", text: "Name the three water systems Plato describes.", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does the elegant plan worry you once you see it in section?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might hot springs have seemed divine to the Atlanteans?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why would salt water ruin Atlantis's fresh springs?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What is a freshwater lens?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What modern city faces the same groundwater problem?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🏛️ Was Plato literal or metaphorical?",
+    link: "https://youtu.be/ndtHxw6qgc4?t=844",
+    linkLabel: "Watch from 14:04",
+    articleText:
+      "<p>Real <strong>circular cities</strong> like Palmanova, Firuzabad and Baghdad often failed: hard to expand, rigid geometry, hierarchy built into the shape. Baghdad's famous Round City grew rich — then merchants moved outside the walls and the circle was swallowed by sprawl. Archaeologists have found almost no trace of those circular walls.</p>" +
+      "<p>Plato's other works discuss justice and truth — not building specs. Yet Atlantis gets obsessive physical detail. His <strong>Theory of Forms</strong> says perfect ideas can only exist as ideas; the moment you build them in the real world, they break because reality always adds compromise.</p>" +
+      "<p>Perhaps Plato designed a city that <strong>could not work on purpose</strong> — and the fact that we still chase Atlantis proves his point: the idea of a perfect civilisation is more attractive than messy reality.</p>",
+    vocablist: [
+      { word: "literal", translation: "字面意义上的", emoji: "📖" },
+      { word: "metaphorical", translation: "比喻性的", emoji: "💭" },
+      { word: "Theory of Forms", translation: "理型論", emoji: "🔷" },
+      { word: "perfect", translation: "完美的", emoji: "✨" },
+      { word: "compromise", translation: "妥協", emoji: "⚖️" }
+    ],
+    vocabex: "Was Plato being <span class='vocab-blank' data-answer='literal'></span> or <span class='vocab-blank' data-answer='metaphorical'></span>? His <span class='vocab-blank' data-answer='Theory of Forms'></span> says <span class='vocab-blank' data-answer='perfect'></span> ideas break in the real world because reality always needs <span class='vocab-blank' data-answer='compromise'></span>.",
+    questions: [
+      { emoji: "📊", text: "What is Plato's Theory of Forms?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do you want Atlantis to be real — or is the idea enough?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might Plato describe a city that cannot work?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why do circular cities often stop growing?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is Baghdad's Round City similar to what we do with Atlantis?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Was Plato being literal or metaphorical — what do you think?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🚢 Ship tunnels under the rings",
+    link: "https://youtu.be/ndtHxw6qgc4?t=168",
+    linkLabel: "Watch from 2:48",
+    articleText:
+      "<p>Plato says bridges crossed the water rings — and crews cut <strong>channels</strong> through the land zones, then <strong>roofed them over</strong> to make subterranean passages big enough for a single ship.</p>" +
+      "<p>A standard ancient <strong>trireme</strong> was about 37 m long and 6 m wide, with the hull roughly 2 m above the waterline. The mast (~9 m) could be lowered to pass through.</p>" +
+      "<p>That means tunnel openings of at least 7×9 m, excavated through every land ring — roughly 185 m for the first tunnel and 370 m for the second. All of this at <strong>sea level</strong>, with about 30 m of ocean pressing from both sides.</p>",
+    vocablist: [
+      { word: "trireme", translation: "三列槳戰船", emoji: "🚢" },
+      { word: "subterranean", translation: "地下的", emoji: "🕳️" },
+      { word: "tunnel", translation: "隧道", emoji: "🚇" },
+      { word: "excavate", translation: "開挖", emoji: "⛏️" },
+      { word: "water level", translation: "海平面", emoji: "🌊" }
+    ],
+    vocabex: "Atlanteans built <span class='vocab-blank' data-answer='subterranean'></span> <span class='vocab-blank' data-answer='tunnel'></span>s so a <span class='vocab-blank' data-answer='trireme'></span> could pass between the rings. Workers had to <span class='vocab-blank' data-answer='excavate'></span> at <span class='vocab-blank' data-answer='water level'></span> while the ocean pressed in from both sides.",
+    questions: [
+      { emoji: "📊", text: "How big did the ship tunnels need to be?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does imagining ships underground change how real Atlantis feels?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why would a maritime city want tunnels between rings?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong digging tunnels at sea level?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Why do most Atlantis pictures leave out the tunnels?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What simpler design could replace the tunnels?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "⭕ Why circular cities fail",
+    link: "https://youtu.be/ndtHxw6qgc4?t=518",
+    linkLabel: "Watch from 8:38",
+    articleText:
+      "<p><strong>Palmanova</strong> (Italy) was a perfect circle built for defence — but it had no port, no trade route, and no economic reason to exist. The Republic pardoned criminals just to fill it.</p>" +
+      "<p>In <em>Attack on Titan</em>, humanity lives inside three concentric walls. The king sits at the centre; the poorest live at the outer gates. The geometry decides who is most at risk.</p>" +
+      "<p><strong>Firuzabad</strong> (Iran, 224 AD) was a 2 km circle with 20 radial avenues and a fire temple at the centre — a miniature Zoroastrian cosmos. His son moved the capital as soon as he took power. <strong>You cannot expand a circle.</strong></p>" +
+      "<p>The failure mode repeats: hierarchy is built into the shape, growth hits a hard limit, and what makes a city defensible also makes it rigid. These cities follow an idea, not the rivers or coastline.</p>",
+    vocablist: [
+      { word: "circular", translation: "圓形的", emoji: "⭕" },
+      { word: "hierarchy", translation: "階級", emoji: "📊" },
+      { word: "rigid", translation: "僵硬的", emoji: "🧱" },
+      { word: "expand", translation: "擴展", emoji: "📈" },
+      { word: "geometry", translation: "幾何", emoji: "📐" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Circular'></span> cities embed <span class='vocab-blank' data-answer='hierarchy'></span> into their <span class='vocab-blank' data-answer='geometry'></span>. They are hard to <span class='vocab-blank' data-answer='expand'></span> and become <span class='vocab-blank' data-answer='rigid'></span> — what protects them also traps them.",
+    questions: [
+      { emoji: "📊", text: "Name two real or fictional circular cities from the video.", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you prefer to live at the centre or the outer ring?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why did Firuzabad's son move the capital?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What problem did Palmanova have besides its shape?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What is the same failure mode in all these circular cities?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How is Atlantis like a diagram dropped onto a site?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
 
