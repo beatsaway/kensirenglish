@@ -227,7 +227,7 @@ window.sixHatSets = [
       "<p>Plato's other works discuss justice and truth — not building specs. Yet Atlantis gets obsessive physical detail. His <strong>Theory of Forms</strong> says perfect ideas can only exist as ideas; the moment you build them in the real world, they break because reality always adds compromise.</p>" +
       "<p>Perhaps Plato designed a city that <strong>could not work on purpose</strong> — and the fact that we still chase Atlantis proves his point: the idea of a perfect civilisation is more attractive than messy reality.</p>",
     vocablist: [
-      { word: "literal", translation: "字面意义上的", emoji: "📖" },
+      { word: "literal", translation: "字面意義上的", emoji: "📖" },
       { word: "metaphorical", translation: "比喻性的", emoji: "💭" },
       { word: "Theory of Forms", translation: "理型論", emoji: "🔷" },
       { word: "perfect", translation: "完美的", emoji: "✨" },

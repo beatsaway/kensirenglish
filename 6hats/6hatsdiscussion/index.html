@@ -1193,7 +1193,7 @@
             { name: "Atlantis and oceans", file: "atlantis_oceans.js" },
             { name: "Weather", file: "weather_questions.js" },
             { name: "Weather 2", file: "weather_discussion_6hats.js" }
-        ];
+        ].sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
 
         const headerSearch = document.getElementById('headerSearch');
         const headerSearchDropdown = document.getElementById('headerSearchDropdown');
