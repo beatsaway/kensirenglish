@@ -52,7 +52,7 @@ window.sixHatSets = [
     vocablist: [
       { word: "hoax", translation: "騙局", emoji: "🎭" },
       { word: "ice core", translation: "冰芯", emoji: "🧊" },
-      { word: "cycle", translation: "周期", emoji: "🔄" },
+      { word: "cycle", translation: "週期", emoji: "🔄" },
       { word: "natural", translation: "自然的", emoji: "🌿" },
       { word: "warming", translation: "暖化", emoji: "🌡️" }
     ],
