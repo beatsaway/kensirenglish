@@ -121,7 +121,8 @@ window.sixHatSets = [
     links: [
       { url: "https://www.youtube.com/shorts/LQqKasJ4Jx4", label: "Watch slang video 1" },
       { url: "https://www.youtube.com/shorts/Vb3jcxNt92o", label: "Watch slang video 2" },
-      { url: "https://youtu.be/9QCgqQdmr0M", label: "Watch accent video" }
+      { url: "https://youtu.be/9QCgqQdmr0M", label: "Watch accent video" },
+      { url: "https://www.youtube.com/shorts/sKXGJx9Aov4", label: "How to say 'no' (Aussie accent)" }
     ],
     vocablist: [
       { word: "slang", translation: "俚語", emoji: "💬" },
@@ -130,14 +131,14 @@ window.sixHatSets = [
       { word: "barbie", translation: "燒烤（barbecue）", emoji: "🍖" },
       { word: "arvo", translation: "下午（afternoon）", emoji: "🌅" }
     ],
-    vocabex: "Australian <span class='vocab-blank' data-answer='slang'></span> shortens words: barbecue becomes <span class='vocab-blank' data-answer='barbie'></span>, afternoon becomes <span class='vocab-blank' data-answer='arvo'></span>, and a friend is your <span class='vocab-blank' data-answer='mate'></span>. The Aussie <span class='vocab-blank' data-answer='accent'></span> has its own sound too — crikey!",
+    vocabex: "Australian <span class='vocab-blank' data-answer='slang'></span> shortens words: barbecue becomes <span class='vocab-blank' data-answer='barbie'></span>, afternoon becomes <span class='vocab-blank' data-answer='arvo'></span>, and a friend is your <span class='vocab-blank' data-answer='mate'></span>. The Aussie <span class='vocab-blank' data-answer='accent'></span> has its own sound too — even a simple 'no'!",
     questions: [
       { emoji: "📊", text: "Name three Australian slang words from the videos.", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "What do you think of Aussie slang?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "😊", text: "What do you think of Aussie slang and the way Aussies say 'no'?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What are the features of the Aussie accent?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "When might slang confuse a visitor?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How did the guy help his mate's mum?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent one shortened slang word for Hong Kong English.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "Try saying 'no' in an Aussie accent — then invent one shortened slang word for Hong Kong English.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
