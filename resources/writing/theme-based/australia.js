@@ -13,7 +13,7 @@ window.themeBasedAustralia = {
             watchLinks: [
                 { label: "Watch video", url: "https://www.youtube.com/shorts/2JFg1dLdufY" }
             ],
-            context: "Australia is famous for venomous wildlife, and some people think it is a dangerous place to live. A video says animal deaths are rare and most people live in coastal cities. Australia is also a developed country with medical care, social welfare and modern infrastructure. Others worry about extreme heatwaves, bushfires, ocean risks and crime in some areas. Sense of community can make life feel safer — but is that enough?",
+            context: "Australia is known for venomous wildlife, but it is also a developed country with medical care, social welfare and modern infrastructure. Some people worry about heatwaves, bushfires and crime; others say a sense of community and low animal-death statistics make it safe to live there.",
             instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that Australia is a dangerous place to live? Give three reasons.",
             successCriteria: [
                 "Clear agree or disagree",
