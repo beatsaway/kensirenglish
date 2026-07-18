@@ -451,6 +451,7 @@
         <option value="questions5a">Living Places | 居住地方</option>
         <option value="questions2">Daily Life | 日常生活</option>
         <option value="questions6a">Conversations | 對話</option>
+        <option value="questions7a">FC Mobile | 打機足球</option>
       </select>
     </div>
   </div>
@@ -475,6 +476,7 @@
   <script src="living_places.js"></script>
   <script src="daily_life.js"></script>
   <script src="conversations.js"></script>
+  <script src="fc_mobile.js"></script>
   
   <!-- Ensure variables are accessible globally -->
   <script>
@@ -489,6 +491,7 @@
     if (typeof questions5a !== 'undefined') window.questions5a = questions5a;
     if (typeof questions2 !== 'undefined') window.questions2 = questions2;
     if (typeof questions6a !== 'undefined') window.questions6a = questions6a;
+    if (typeof questions7a !== 'undefined') window.questions7a = questions7a;
   </script>
 
   <script>
@@ -583,6 +586,16 @@
         context: 'Library, KFC, Promises, School | 圖書館、KFC、承諾、學校',
         questionsVar: 'questions6a',
         script: 'conversations.js'
+      },
+      {
+        id: 'questions7a',
+        name: 'FC Mobile | 打機足球',
+        description: 'Mixed tenses: habits, progress, results and future plans | 混合時式：習慣、進行中、結果同將來計劃',
+        tenses: 'Present Simple/Continuous, Present Perfect, Past Simple, Future (will keep)',
+        tensesCantonese: '現在簡單式／進行式、現在完成式、過去簡單式、將來（will keep）',
+        context: 'FC Mobile, school football, skills transfer | FC Mobile、校隊足球、技巧轉移',
+        questionsVar: 'questions7a',
+        script: 'fc_mobile.js'
       }
     ];
 
@@ -611,7 +624,11 @@
       daily_life: 'questions2',
       questions2: 'questions2',
       conversations: 'questions6a',
-      questions6a: 'questions6a'
+      questions6a: 'questions6a',
+      fc: 'questions7a',
+      fc_mobile: 'questions7a',
+      football: 'questions7a',
+      questions7a: 'questions7a'
     };
 
     const exerciseShareSlugs = {
@@ -624,7 +641,8 @@
       questions4c: 'daily',
       questions5a: 'living',
       questions2: 'daily_life',
-      questions6a: 'conversations'
+      questions6a: 'conversations',
+      questions7a: 'fc_mobile'
     };
 
     function updateExerciseUrl(exerciseId) {
@@ -824,6 +842,24 @@
       content.innerHTML = html;
     }
 
+    function shuffleOptions(options) {
+      const shuffled = [...options];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
+    function getOptionsForBlank(question, blankIndex) {
+      if (!question.options) return [];
+      // Per-blank options: options is an array of arrays
+      if (Array.isArray(question.options[0])) {
+        return question.options[blankIndex] || [];
+      }
+      return question.options;
+    }
+
     function generateQuestionHTML(question) {
       const questionId = `q${question.originalIndex}`;
       let html = `<div class="sentence">`;
@@ -842,15 +878,14 @@
         // Create dropdown for each blank
         const blankId = `${questionId}_${i}`;
         const answer = isMultipleAnswers ? question.answer[i] : question.answer;
+        const blankOptions = shuffleOptions(getOptionsForBlank(question, i));
         
         html += `<select class="answer-dropdown" data-question-id="${blankId}" data-answer="${answer}">`;
         html += `<option value="">...</option>`;
         
-        if (question.options) {
-          question.options.forEach(option => {
-            html += `<option value="${option}">${option}</option>`;
-          });
-        }
+        blankOptions.forEach(option => {
+          html += `<option value="${option}">${option}</option>`;
+        });
         
         html += `</select>`;
       }
