@@ -37,12 +37,13 @@ window.themeBasedHitlerNazi = {
         },
         {
             id: "article-compare-to-hitler",
-            title: "Article — should we compare modern speeches to Hitler?",
+            title: "Article — should we compare this speech to Hitler?",
             watchLinks: [
-                { label: "Watch video", url: "https://www.youtube.com/shorts/u4gHCboTBQo" }
+                { label: "Nepal student leader speech", url: "https://www.youtube.com/shorts/u4gHCboTBQo" },
+                { label: "Nepal Gen Z revolution (CNN)", url: "https://www.youtube.com/shorts/1BhTlKOk6oU" }
             ],
-            context: "Some online videos say a modern speech 'sounds like Hitler' because it uses strong emotion, national pride and calls to young people. Emotional rhetoric can appear in many speeches — good or bad. Calling someone 'the new Hitler' should be rare and careful.",
-            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that we should casually compare modern speeches to Hitler? Give three reasons.",
+            context: "In 2025, Gen Z students in Nepal protested against corruption and a social media ban. The first video is a speech by a Nepal student leader in that revolution. Some people say the speech 'sounds like Hitler' because it is emotional and talks about the nation and youth. Watch both videos. Think about the similarities and differences between this student leader and Hitler.",
+            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that we should compare this Nepal student speech to Hitler? Give three reasons.\n\nMention similarities and differences between the Nepal case and Hitler.",
             successCriteria: [
                 "Clear agree or disagree",
                 "3 reasons",
@@ -50,14 +51,16 @@ window.themeBasedHitlerNazi = {
             ],
             questions: [],
             vocab: [
-                { en: "rhetoric", cn: "修辭／說話技巧" },
+                { en: "student leader", cn: "學生領袖" },
+                { en: "revolution", cn: "革命／運動" },
+                { en: "protest", cn: "抗議" },
+                { en: "corruption", cn: "貪污" },
                 { en: "emotion", cn: "情緒" },
-                { en: "nationalism", cn: "民族主義" },
-                { en: "persuade", cn: "說服" },
                 { en: "compare", cn: "比較" },
-                { en: "propaganda", cn: "宣傳／洗腦" },
-                { en: "context", cn: "背景／語境" },
-                { en: "facts", cn: "事實" },
+                { en: "difference", cn: "分別" },
+                { en: "similarity", cn: "相似之處" },
+                { en: "dictator", cn: "獨裁者" },
+                { en: "youth", cn: "青年" },
                 { en: "agree", cn: "同意" },
                 { en: "disagree", cn: "不同意" },
                 { en: "for example", cn: "例如" },

@@ -29,27 +29,28 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🗣️ Does this speech style resemble Hitler's?",
+    title: "🗣️ Does this Nepal speech resemble Hitler's?",
     link: "https://www.youtube.com/shorts/u4gHCboTBQo",
-    linkLabel: "Watch video",
+    linkLabel: "Student leader speech",
     articleText:
-      "<p>This short shows a passionate speaker using big emotional lines: ancestors’ blood, saving the nation, youth changing history, and a choice between despair and hope. Hitler’s speeches also used <strong>emotion</strong>, <strong>national pride</strong> and calls to young people — but that does <strong>not</strong> mean every strong speech is the same as Nazi propaganda.</p>" +
-      "<p>Good media skills: spot the techniques (us vs them, destiny, sacrifice) and ask for <strong>facts</strong>. Comparing someone to Hitler should be careful and rare — overusing the comparison can hide real differences and make history feel cheap.</p>",
+      "<p>The first video is a speech by a <strong>Nepal student leader</strong> during the 2025 Gen Z revolution against corruption and a social media ban. The speaker uses strong <strong>emotion</strong>, talks about the nation and calls on young people.</p>" +
+      "<p>Some online comments say this 'sounds like Hitler'. Emotional speeches can look similar on the surface — but check both <strong>similarities</strong> and <strong>differences</strong>. A student protest is not the same as a racist dictatorship that started a world war and the Holocaust.</p>" +
+      "<p>Also watch: <a href='https://www.youtube.com/shorts/1BhTlKOk6oU' target='_blank' rel='noopener'>CNN — Nepal Gen Z protests</a>.</p>",
     vocablist: [
       { word: "rhetoric", translation: "修辭／說話技巧", emoji: "🎤" },
       { word: "emotion", translation: "情緒", emoji: "❤️" },
-      { word: "nationalism", translation: "民族主義", emoji: "🏳️" },
-      { word: "persuade", translation: "說服", emoji: "🤝" },
-      { word: "compare", translation: "比較", emoji: "⚖️" }
+      { word: "similarity", translation: "相似之處", emoji: "🔗" },
+      { word: "difference", translation: "分別", emoji: "⚖️" },
+      { word: "compare", translation: "比較", emoji: "🔍" }
     ],
-    vocabex: "Strong <span class='vocab-blank' data-answer='rhetoric'></span> can stir <span class='vocab-blank' data-answer='emotion'></span> and <span class='vocab-blank' data-answer='persuade'></span> a crowd. Speakers may use <span class='vocab-blank' data-answer='nationalism'></span> to unite listeners. Before you <span class='vocab-blank' data-answer='compare'></span> anyone to Hitler, check facts and context.",
+    vocabex: "Strong <span class='vocab-blank' data-answer='rhetoric'></span> and <span class='vocab-blank' data-answer='emotion'></span> can create a <span class='vocab-blank' data-answer='similarity'></span>. Before you <span class='vocab-blank' data-answer='compare'></span> anyone to Hitler, also list the real <span class='vocab-blank' data-answer='difference'></span>s.",
     questions: [
-      { emoji: "📊", text: "Which words or images in the short try to stir strong feelings?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Did the speech make you feel excited, uneasy, or both — and why?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "When can emotional speaking help a good cause?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What is risky about casually calling someone 'the new Hitler'?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What techniques are similar to historical propaganda — and what might be different?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent three questions a critical listener should ask after any political speech.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What was the Nepal student leader speaking about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How did the speech make you feel — and why?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "When can emotional speaking help a fair cause?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What is risky about casually calling this speaker 'like Hitler'?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Name similarities and differences between this Nepal case and Hitler's regime.", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What questions should you ask before comparing any speaker to Hitler?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
