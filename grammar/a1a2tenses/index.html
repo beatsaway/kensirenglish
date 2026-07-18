@@ -590,6 +590,57 @@
     let currentQuestions = [];
     let answersShown = false;
 
+    // Friendly share slugs → exercise ids (also accepts the raw ids)
+    const exerciseShareAliases = {
+      intro: 'intro',
+      kfc: 'questions3a',
+      questions3a: 'questions3a',
+      morning: 'questions4a',
+      questions4a: 'questions4a',
+      home: 'questions5b',
+      questions5b: 'questions5b',
+      school: 'questions3b',
+      questions3b: 'questions3b',
+      driving: 'questions4b',
+      questions4b: 'questions4b',
+      daily: 'questions4c',
+      daily_activities: 'questions4c',
+      questions4c: 'questions4c',
+      living: 'questions5a',
+      questions5a: 'questions5a',
+      daily_life: 'questions2',
+      questions2: 'questions2',
+      conversations: 'questions6a',
+      questions6a: 'questions6a'
+    };
+
+    const exerciseShareSlugs = {
+      intro: 'intro',
+      questions3a: 'kfc',
+      questions4a: 'morning',
+      questions5b: 'home',
+      questions3b: 'school',
+      questions4b: 'driving',
+      questions4c: 'daily',
+      questions5a: 'living',
+      questions2: 'daily_life',
+      questions6a: 'conversations'
+    };
+
+    function updateExerciseUrl(exerciseId) {
+      const slug = exerciseShareSlugs[exerciseId] || exerciseId;
+      const url = new URL(location.href);
+      url.searchParams.set('exercise', slug);
+      history.replaceState(null, '', url);
+    }
+
+    function resolveExerciseFromUrl() {
+      const params = new URLSearchParams(location.search);
+      const raw = (params.get('exercise') || '').trim().toLowerCase();
+      if (!raw) return null;
+      return exerciseShareAliases[raw] || null;
+    }
+
     // Check if all question arrays are loaded
     function checkAllLoaded() {
       return exerciseSequence.every(ex => {
@@ -623,8 +674,18 @@
             }
           });
 
-          // Load intro by default
-          showIntro();
+          // Open shared exercise from ?exercise=slug, otherwise intro
+          const fromUrl = resolveExerciseFromUrl();
+          if (fromUrl === 'intro' || !fromUrl) {
+            showIntro();
+          } else {
+            const index = exerciseSequence.findIndex(ex => ex.id === fromUrl);
+            if (index !== -1) {
+              loadExercise(index);
+            } else {
+              showIntro();
+            }
+          }
         } else if (attempts < maxAttempts) {
           // Not all loaded yet, wait a bit more
           setTimeout(tryInitialize, 100);
@@ -660,6 +721,7 @@
       
       // Update selector
       document.getElementById('exercise-select').value = exercise.id;
+      updateExerciseUrl(exercise.id);
       
       // Show toggle answers button
       const toggleBtn = document.getElementById('toggle-answers-btn');
@@ -962,6 +1024,7 @@
     function showIntro() {
       // Update selector
       document.getElementById('exercise-select').value = 'intro';
+      updateExerciseUrl('intro');
       
       // Hide exercise info div for intro
       const infoPanel = document.getElementById('exercise-info');
