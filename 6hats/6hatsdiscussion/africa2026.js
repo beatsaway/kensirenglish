@@ -1,5 +1,5 @@
 /**
- * Six Hats: Africa 2026 — stereotypes, charity, corruption, history, maps, China loans
+ * Six Hats: Africa 2026 — stereotypes, charity, corruption, history, maps, borders, China loans
  * KS3 vocab blanks + discussion questions (繁體中文 glosses)
  */
 window.sixHatSets = [
@@ -126,6 +126,32 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "What is wrong with our usual map?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do people make this kind of map?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "How would you improve the map design?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🗺️ Africa's borders — language maps vs straight lines",
+    links: [
+      { url: "https://www.youtube.com/shorts/t45bhmku6Og", label: "Africa's new borders" },
+      { url: "https://www.youtube.com/shorts/t47pyqMq0lY", label: "Africa never had borders" }
+    ],
+    articleText:
+      "<p>Many African country <strong>borders</strong> look like straight lines. They were often drawn by European powers in the colonial era, not by local communities. Those lines sometimes split the same language group — or force different groups into one state.</p>" +
+      "<p>Some viral maps redraw Africa by <strong>language</strong> or culture instead. Other shorts say Africa ‘never had borders’ before colonialism. Discuss whether today’s borders make sense, who likes a language map, and what could go wrong if borders were redrawn.</p>",
+    vocablist: [
+      { word: "border", translation: "邊界", emoji: "🗺️" },
+      { word: "colonial", translation: "殖民的", emoji: "🏴" },
+      { word: "language", translation: "語言", emoji: "🗣️" },
+      { word: "redraw", translation: "重劃", emoji: "✏️" },
+      { word: "conflict", translation: "衝突", emoji: "💥" }
+    ],
+    vocabex: "Straight-line <span class='vocab-blank' data-answer='border'></span>s often come from <span class='vocab-blank' data-answer='colonial'></span> times. A map by <span class='vocab-blank' data-answer='language'></span> can look fairer — but to <span class='vocab-blank' data-answer='redraw'></span> nations could also cause <span class='vocab-blank' data-answer='conflict'></span>.",
+    questions: [
+      { emoji: "📊", text: "What is this video about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "What do you think of the existing borders?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Who would like the language borders more?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Who finds the existing borders annoying — and why?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did we get those straight-line borders?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What if you could redraw the borders in Africa?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {

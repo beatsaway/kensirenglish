@@ -12,6 +12,7 @@ window.themeBasedAfrica2026 = {
             title: "Article — is Africa doing better after colonialism?",
             watchLinks: [
                 { label: "Poverty / history short", url: "https://www.youtube.com/shorts/yVjUnLeKhZc" },
+                { label: "Africa's borders", url: "https://www.youtube.com/shorts/t45bhmku6Og" },
                 { label: "Wi-Fi short", url: "https://www.youtube.com/shorts/Z0J0OuzMCZU" }
             ],
             context: "",
@@ -33,6 +34,7 @@ window.themeBasedAfrica2026 = {
                 { en: "infrastructure", cn: "基建" },
                 { en: "poverty", cn: "貧窮" },
                 { en: "corruption", cn: "貪污" },
+                { en: "border", cn: "邊界" },
                 { en: "foreign company", cn: "外國公司" },
                 { en: "modern slavery", cn: "現代奴隸制" },
                 { en: "fair trade", cn: "公平貿易" },
