@@ -24,8 +24,8 @@ window.sixHatSets = [
     questions: [
       { emoji: "📊", text: "What are these videos really about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you think most Africans are poor? Why or why not?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Who would want Wi-Fi and air conditioning — and why?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "Who might not care much about Wi-Fi or air conditioning — and why?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "🌟", text: "Who would find this funny?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Who wouldn't find this funny at all?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "Why was Africa so poor in the past, according to what you know?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "How is Africa doing recently — what signs of change do you notice?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
