@@ -12,7 +12,7 @@ window.themeBasedAfrica2026 = {
             title: "Article — is Africa doing better after colonialism?",
             watchLinks: [
                 { label: "Poverty / history short", url: "https://www.youtube.com/shorts/yVjUnLeKhZc" },
-                { label: "Africa's borders", url: "https://www.youtube.com/shorts/t45bhmku6Og" },
+                { label: "Africa's borders", url: "https://www.youtube.com/shorts/t47pyqMq0lY" },
                 { label: "Wi-Fi short", url: "https://www.youtube.com/shorts/Z0J0OuzMCZU" }
             ],
             context: "",
