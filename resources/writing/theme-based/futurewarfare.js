@@ -10,11 +10,6 @@ window.themeBasedFutureWarfare = {
         {
             id: "article-drones-vs-robot-dogs-hk",
             title: "Article — drones or robot dogs for survival in Hong Kong?",
-            watchLinks: [
-                { label: "AI drones", url: "https://www.youtube.com/shorts/8PiWcga8jbA" },
-                { label: "Armed robot dogs", url: "https://www.youtube.com/shorts/WTu9d5abQFI" },
-                { label: "Drone vs robot dog", url: "https://www.youtube.com/shorts/hbx-PWfgomk" }
-            ],
             context: "",
             instructions: "Write an article for your school magazine.\n\nIn a wartime situation in Hong Kong, do you think drones are more useful or less useful than robot dogs for your own survival?\n\nGive three reasons.",
             successCriteria: [
@@ -45,11 +40,6 @@ window.themeBasedFutureWarfare = {
         {
             id: "article-three-future-weapons",
             title: "Article — three weapons that will dominate future warfare",
-            watchLinks: [
-                { label: "Micro drone", url: "https://www.youtube.com/shorts/BOV7F9kBNaY" },
-                { label: "GPS jamming", url: "https://www.youtube.com/shorts/8zJblh-bQCg" },
-                { label: "Spy balloon", url: "https://youtu.be/gqfU2iri8Yw" }
-            ],
             context: "",
             instructions: "Write an article for your school magazine.\n\nIntroduce three potential weapons that will dominate future warfare.\n\nGive a reason for each.",
             successCriteria: [
@@ -79,11 +69,6 @@ window.themeBasedFutureWarfare = {
         {
             id: "article-ban-future-weapons-un",
             title: "Article — three future weapons the UN should ban",
-            watchLinks: [
-                { label: "Weather claim short", url: "https://www.youtube.com/shorts/oQZ2IoxD2bY" },
-                { label: "Tectonic claim", url: "https://www.youtube.com/watch?v=dBTtsFdVTuk" },
-                { label: "Bioweapon claim short", url: "https://www.youtube.com/shorts/1IH4tbtx8Z8" }
-            ],
             context: "",
             instructions: "Write an article for your school magazine.\n\nMention three kinds of new weapons for future warfare that you think should be banned by the UN.\n\nGive a reason for each.",
             successCriteria: [
@@ -113,11 +98,6 @@ window.themeBasedFutureWarfare = {
         {
             id: "article-stop-funding-military",
             title: "Article — should governments stop funding militaries and arms dealers?",
-            watchLinks: [
-                { label: "Weather claim", url: "https://www.youtube.com/shorts/oQZ2IoxD2bY" },
-                { label: "Drones", url: "https://www.youtube.com/shorts/8PiWcga8jbA" },
-                { label: "GPS jamming news", url: "https://www.youtube.com/watch?v=nJ22MDjvm6c" }
-            ],
             context: "",
             instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that governments should stop funding their militaries and arms dealers?\n\nGive three reasons.",
             successCriteria: [
