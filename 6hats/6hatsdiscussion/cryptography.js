@@ -1,8 +1,77 @@
 /**
- * Six Hats: Cryptography — keys, ciphers, quantum crypto, SSH, Caesar & frequency analysis
+ * Six Hats: Cryptography — passwords, steganography, ciphers, quantum crypto, SSH
  * KS3 vocab blanks + discussion questions (繁體中文 glosses)
  */
 window.sixHatSets = [
+  {
+    title: "🔑 What's my password?",
+    link: "https://www.youtube.com/shorts/riuEVPBg4ZU",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>This short jokes about forgetting a password, getting a code by email, and being asked 'Are you a robot?' Real life uses passwords plus extra checks (codes, CAPTCHAs) to prove you are you — but weak habits still leak accounts.</p>",
+    vocablist: [
+      { word: "password", translation: "密碼", emoji: "🔑" },
+      { word: "code", translation: "驗證碼", emoji: "📱" },
+      { word: "email", translation: "電郵", emoji: "📧" },
+      { word: "verify", translation: "驗證", emoji: "✅" },
+      { word: "robot", translation: "機械人", emoji: "🤖" }
+    ],
+    vocabex: "You forget your <span class='vocab-blank' data-answer='password'></span>, check your <span class='vocab-blank' data-answer='email'></span> for a <span class='vocab-blank' data-answer='code'></span>, then <span class='vocab-blank' data-answer='verify'></span> you are not a <span class='vocab-blank' data-answer='robot'></span>.",
+    questions: [
+      { emoji: "📊", text: "What happens in the short?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Have you ever forgotten a password? How did it feel?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why do we need email passwords?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What can go wrong if someone else gets your email code?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do websites check you are not a robot?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What three habits make passwords safer?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🔊 Hide a message in sound — spectrograms",
+    link: "https://www.youtube.com/shorts/9r8Tlti1gpU",
+    linkLabel: "Watch video",
+    articleText:
+      "<p><strong>Steganography</strong> hides a secret inside something that looks normal. This short turns secret text into an audio file. You only see the hidden writing if you look at the sound’s <strong>spectrogram</strong> (a picture of the frequencies) — a bit like Morse code in sound.</p>",
+    vocablist: [
+      { word: "steganography", translation: "隱寫術", emoji: "🕵️" },
+      { word: "spectrogram", translation: "頻譜圖", emoji: "📊" },
+      { word: "audio", translation: "音訊", emoji: "🔊" },
+      { word: "hide", translation: "隱藏", emoji: "🙈" },
+      { word: "secret", translation: "秘密", emoji: "🤫" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Steganography'></span> can <span class='vocab-blank' data-answer='hide'></span> a <span class='vocab-blank' data-answer='secret'></span> in <span class='vocab-blank' data-answer='audio'></span>. A <span class='vocab-blank' data-answer='spectrogram'></span> shows the hidden text as a picture.",
+    questions: [
+      { emoji: "📊", text: "What is this video about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does hiding a message in sound feel clever or creepy?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might spectrogram secrets be useful?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if the wrong person finds the spectrogram?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is this different from normal encryption?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Where else could you hide a secret in everyday media?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🖼️ Hide a message inside an image",
+    link: "https://www.youtube.com/shorts/fqO9NcO8scg",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>Another steganography trick: tuck a secret message into an ordinary photo. The picture still looks normal to the eye, but software can pull the hidden text out. Spies and privacy tools both use ideas like this.</p>",
+    vocablist: [
+      { word: "image", translation: "圖片", emoji: "🖼️" },
+      { word: "hide", translation: "隱藏", emoji: "🙈" },
+      { word: "message", translation: "訊息", emoji: "💬" },
+      { word: "normal", translation: "普通的", emoji: "😐" },
+      { word: "detect", translation: "偵測", emoji: "🔍" }
+    ],
+    vocabex: "You can <span class='vocab-blank' data-answer='hide'></span> a <span class='vocab-blank' data-answer='message'></span> in an <span class='vocab-blank' data-answer='image'></span> that still looks <span class='vocab-blank' data-answer='normal'></span>. Tools may still <span class='vocab-blank' data-answer='detect'></span> it.",
+    questions: [
+      { emoji: "📊", text: "What is this video about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you try hiding a note in a photo for a friend?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it useful if the picture still looks normal?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What problems can hidden image messages cause?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is hiding in an image similar to hiding in a spectrogram?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Invent a safe classroom use for image steganography.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
   {
     title: "🔐 Why encryption matters — and why secrets may expire",
     link: "https://www.youtube.com/watch?v=uiiaAJ3c6dM",
@@ -49,29 +118,6 @@ window.sixHatSets = [
       { emoji: "⚠️", text: "What problem does Bob have at the start — and what could still go wrong in real life?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do Alice and Bob build a shared key after sending the photons?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Where in Hong Kong life would quantum cryptography be most useful first?", hat: "green-hat", hatLabel: "Green Hat" }
-    ]
-  },
-  {
-    title: "🔑 What's my password?",
-    link: "https://www.youtube.com/shorts/riuEVPBg4ZU",
-    linkLabel: "Watch video",
-    articleText:
-      "<p>This short jokes about forgetting a password, getting a code by email, and being asked 'Are you a robot?' Real life uses passwords plus extra checks (codes, CAPTCHAs) to prove you are you — but weak habits still leak accounts.</p>",
-    vocablist: [
-      { word: "password", translation: "密碼", emoji: "🔑" },
-      { word: "code", translation: "驗證碼", emoji: "📱" },
-      { word: "email", translation: "電郵", emoji: "📧" },
-      { word: "verify", translation: "驗證", emoji: "✅" },
-      { word: "robot", translation: "機械人", emoji: "🤖" }
-    ],
-    vocabex: "You forget your <span class='vocab-blank' data-answer='password'></span>, check your <span class='vocab-blank' data-answer='email'></span> for a <span class='vocab-blank' data-answer='code'></span>, then <span class='vocab-blank' data-answer='verify'></span> you are not a <span class='vocab-blank' data-answer='robot'></span>.",
-    questions: [
-      { emoji: "📊", text: "What happens in the short?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Have you ever forgotten a password? How did it feel?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is sending a code to your email useful?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What can go wrong if someone else gets your email code?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How do websites check you are not a robot?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What three habits make passwords safer?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
