@@ -244,5 +244,29 @@ window.sixHatSets = [
       { emoji: "📋", text: "What is the 'fingerprint' of English in this video?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Encode a short class message with shift 3 — can a friend break it without the key?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "🦗 Cicada 3301 — who is behind it?",
+    link: "https://www.youtube.com/shorts/rQZyioC9yuI",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>On 4 January 2012, an anonymous post on 4chan said they were looking for highly intelligent people. The image hid a cipher that led to more puzzles — websites, books, phone calls, and even 14 QR codes across five countries.</p>" +
+      "<p>Some thought it was a prank; others said it was too big for one person. A few solvers reached a final stage but were told not to share. Later posts said recruitment was complete. Puzzles returned in later years; the third is still unsolved, and 3301 went quiet. Nobody knows for sure who ran it.</p>",
+    vocablist: [
+      { word: "anonymous", translation: "匿名的", emoji: "🎭" },
+      { word: "puzzle", translation: "謎題", emoji: "🧩" },
+      { word: "cipher", translation: "密碼", emoji: "🔐" },
+      { word: "recruitment", translation: "招募", emoji: "📢" },
+      { word: "mystery", translation: "謎團", emoji: "❓" }
+    ],
+    vocabex: "An <span class='vocab-blank' data-answer='anonymous'></span> group posted a <span class='vocab-blank' data-answer='cipher'></span> and a hard <span class='vocab-blank' data-answer='puzzle'></span> trail for <span class='vocab-blank' data-answer='recruitment'></span>. Cicada 3301 is still an internet <span class='vocab-blank' data-answer='mystery'></span>.",
+    questions: [
+      { emoji: "📊", text: "What is Cicada 3301?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you try to solve a puzzle like this?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why might a group use hard puzzles to find smart people?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if you chase an anonymous online puzzle?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did the puzzles become more elaborate over time?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Who do you think was behind Cicada 3301 — and why?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
