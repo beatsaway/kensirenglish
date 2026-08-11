@@ -31,8 +31,10 @@ window.sixHatSets = [
   },
   {
     title: "🌍 What does the world eat for breakfast?",
-    link: "https://www.youtube.com/watch?v=ry1E1uzPSU0",
-    linkLabel: "Watch video",
+    links: [
+      { url: "https://www.youtube.com/watch?v=ry1E1uzPSU0", label: "What the world eats for breakfast" },
+      { url: "https://www.youtube.com/shorts/LS1rYqGFcMg", label: "Top 5 savoury breakfasts" }
+    ],
     articleText:
       "<p>Breakfast looks different around the world — rice, bread, soup, fruit, eggs or leftovers. Culture and climate shape the morning plate.</p>",
     vocablist: [
