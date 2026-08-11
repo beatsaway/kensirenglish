@@ -130,6 +130,29 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "🥗 Carbohydrates, proteins and fats",
+    link: "https://www.youtube.com/watch?v=Xiiou51ySXM",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>Food gives your body three main nutrient groups. <strong>Carbohydrates</strong> are the main energy source (complex starch or simple sugar). <strong>Proteins</strong> are made of amino acids and help the body grow and repair. <strong>Fats</strong> keep you warm, protect organs and help absorb some vitamins.</p>",
+    vocablist: [
+      { word: "carbohydrate", translation: "碳水化合物", emoji: "🍞" },
+      { word: "protein", translation: "蛋白質", emoji: "💪" },
+      { word: "fat", translation: "脂肪", emoji: "🥑" },
+      { word: "energy", translation: "能量", emoji: "⚡" },
+      { word: "repair", translation: "修復", emoji: "🔧" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Carbohydrate'></span>s give <span class='vocab-blank' data-answer='energy'></span>. <span class='vocab-blank' data-answer='Protein'></span>s help the body grow and <span class='vocab-blank' data-answer='repair'></span>. <span class='vocab-blank' data-answer='Fat'></span>s keep you warm and protect organs.",
+    questions: [
+      { emoji: "📊", text: "What are carbohydrates, proteins and fats for?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Which nutrient group do you care about most in breakfast?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about knowing these three nutrient groups?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong if a breakfast has too much of only one group?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do carbs, proteins and fats work differently in the body?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Design a breakfast plate with all three nutrient groups.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "❓ Should you eat breakfast?",
     link: "https://www.youtube.com/shorts/hA0_NyzrIt4",
     linkLabel: "Watch video",
