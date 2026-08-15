@@ -15,11 +15,12 @@ window.sixHatSets = [
     vocablist: [
       { word: "celebrity", translation: "名人", emoji: "🌟" },
       { word: "performance", translation: "表演", emoji: "🎤" },
+      { word: "press", translation: "傳媒／記者會", emoji: "📰" },
+      { word: "viral", translation: "病毒式傳播的", emoji: "🔥" },
       { word: "meme", translation: "迷因", emoji: "😂" },
-      { word: "gossip", translation: "八卦", emoji: "🗣️" },
-      { word: "viral", translation: "病毒式傳播的", emoji: "🔥" }
+      { word: "gossip", translation: "八卦", emoji: "🗣️" }
     ],
-    vocabex: "A <span class='vocab-blank' data-answer='celebrity'></span> <span class='vocab-blank' data-answer='performance'></span> can go <span class='vocab-blank' data-answer='viral'></span>. Fans make a <span class='vocab-blank' data-answer='meme'></span>, and <span class='vocab-blank' data-answer='gossip'></span> follows.",
+    vocabex: "When two <span class='vocab-blank' data-answer='celebrity'></span> stars give a live <span class='vocab-blank' data-answer='performance'></span> on a late-night show, the <span class='vocab-blank' data-answer='press'></span> and fans share the clip until it goes <span class='vocab-blank' data-answer='viral'></span>. Online creators then turn a sincere moment into a <span class='vocab-blank' data-answer='meme'></span>, and the mix of jokes and <span class='vocab-blank' data-answer='gossip'></span> can help the film — or distract from the actors' real work.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about the performance and the memes?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -40,12 +41,13 @@ window.sixHatSets = [
       "<p>Fans comment on Jenna Ortega's appearance; Adele answers rude weight-loss gossip; Zoey Deutch jokes that a face trick can look like a facelift. Online, celebrities' bodies and faces become public topics — sometimes funny, often unfair. Privacy and respect still matter.</p>",
     vocablist: [
       { word: "appearance", translation: "外表", emoji: "👀" },
-      { word: "privacy", translation: "私隱", emoji: "🔒" },
       { word: "gossip", translation: "八卦", emoji: "🗣️" },
+      { word: "pressure", translation: "壓力", emoji: "😰" },
+      { word: "comment", translation: "評論", emoji: "💬" },
       { word: "respect", translation: "尊重", emoji: "🙏" },
-      { word: "pressure", translation: "壓力", emoji: "😰" }
+      { word: "privacy", translation: "私隱", emoji: "🔒" }
     ],
-    vocabex: "Online <span class='vocab-blank' data-answer='gossip'></span> about a star's <span class='vocab-blank' data-answer='appearance'></span> adds <span class='vocab-blank' data-answer='pressure'></span>. Show <span class='vocab-blank' data-answer='respect'></span> and protect <span class='vocab-blank' data-answer='privacy'></span>.",
+    vocabex: "Strangers often leave a rude <span class='vocab-blank' data-answer='comment'></span> about a star's <span class='vocab-blank' data-answer='appearance'></span>, as if a famous body belongs to the public. That kind of <span class='vocab-blank' data-answer='gossip'></span> creates unfair <span class='vocab-blank' data-answer='pressure'></span> on young fans too. A better online habit is to show <span class='vocab-blank' data-answer='respect'></span> and protect other people's <span class='vocab-blank' data-answer='privacy'></span> — even if they are famous.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about these clips?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -67,11 +69,12 @@ window.sixHatSets = [
     vocablist: [
       { word: "diet", translation: "飲食／節食", emoji: "🥗" },
       { word: "advice", translation: "建議", emoji: "💬" },
-      { word: "eating disorder", translation: "飲食失調", emoji: "🦋" },
+      { word: "extreme", translation: "極端的", emoji: "⚠️" },
       { word: "healthy", translation: "健康的", emoji: "💚" },
+      { word: "eating disorder", translation: "飲食失調", emoji: "🦋" },
       { word: "support", translation: "支持", emoji: "🤝" }
     ],
-    vocabex: "Idol <span class='vocab-blank' data-answer='diet'></span>s and celebrity <span class='vocab-blank' data-answer='advice'></span> are not always <span class='vocab-blank' data-answer='healthy'></span>. An <span class='vocab-blank' data-answer='eating disorder'></span> needs <span class='vocab-blank' data-answer='support'></span>, not jokes.",
+    vocabex: "Shorts love to show an idol <span class='vocab-blank' data-answer='diet'></span> or a simple celebrity weight-loss tip, but that <span class='vocab-blank' data-answer='advice'></span> is not always <span class='vocab-blank' data-answer='healthy'></span> for students. Some routines look <span class='vocab-blank' data-answer='extreme'></span> and should not be copied. When a star talks about an <span class='vocab-blank' data-answer='eating disorder'></span>, listeners should offer <span class='vocab-blank' data-answer='support'></span> and kindness — not jokes or clickbait.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about these stories?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -93,10 +96,11 @@ window.sixHatSets = [
       { word: "rumour", translation: "謠言", emoji: "👂" },
       { word: "misinformation", translation: "錯誤資訊", emoji: "❌" },
       { word: "conspiracy", translation: "陰謀論", emoji: "🕵️" },
+      { word: "evidence", translation: "證據", emoji: "🔬" },
       { word: "coincidence", translation: "巧合", emoji: "🎲" },
       { word: "sceptical", translation: "存疑的", emoji: "🤨" }
     ],
-    vocabex: "A fake <span class='vocab-blank' data-answer='rumour'></span> is <span class='vocab-blank' data-answer='misinformation'></span>. A <span class='vocab-blank' data-answer='conspiracy'></span> may use a <span class='vocab-blank' data-answer='coincidence'></span> — stay <span class='vocab-blank' data-answer='sceptical'></span>.",
+    vocabex: "A shocking celebrity <span class='vocab-blank' data-answer='rumour'></span> can spread for years even when it is pure <span class='vocab-blank' data-answer='misinformation'></span>. A playful <span class='vocab-blank' data-answer='conspiracy'></span> about reincarnation may use a name match or birthday <span class='vocab-blank' data-answer='coincidence'></span>, but that is not strong <span class='vocab-blank' data-answer='evidence'></span>. Stay <span class='vocab-blank' data-answer='sceptical'></span>: ask who posted it, what proof they give, and whether sharing it could harm a real person.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about these theories?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -117,11 +121,12 @@ window.sixHatSets = [
     vocablist: [
       { word: "claim", translation: "聲稱", emoji: "📢" },
       { word: "clickbait", translation: "標題黨", emoji: "🖱️" },
+      { word: "source", translation: "來源", emoji: "📎" },
       { word: "trend", translation: "潮流／熱話", emoji: "📈" },
       { word: "influence", translation: "影響力", emoji: "✨" },
-      { word: "source", translation: "來源", emoji: "📎" }
+      { word: "award", translation: "獎項", emoji: "🏆" }
     ],
-    vocabex: "A shocking <span class='vocab-blank' data-answer='claim'></span> may be <span class='vocab-blank' data-answer='clickbait'></span>. Check the <span class='vocab-blank' data-answer='source'></span>. A thank-you <span class='vocab-blank' data-answer='trend'></span> shows her <span class='vocab-blank' data-answer='influence'></span>.",
+    vocabex: "Creators often push a shocking <span class='vocab-blank' data-answer='claim'></span> about Beyoncé because <span class='vocab-blank' data-answer='clickbait'></span> titles get easy views. A careful viewer checks the <span class='vocab-blank' data-answer='source'></span> before believing it. Meanwhile, thanking her in an <span class='vocab-blank' data-answer='award'></span> speech became an online <span class='vocab-blank' data-answer='trend'></span> — half joke, half proof of her lasting <span class='vocab-blank' data-answer='influence'></span> in the music industry.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about these clips?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -141,10 +146,11 @@ window.sixHatSets = [
       { word: "headline", translation: "標題", emoji: "📰" },
       { word: "confession", translation: "坦白／供認", emoji: "🗣️" },
       { word: "case", translation: "案件", emoji: "📁" },
+      { word: "rumour", translation: "謠言", emoji: "👂" },
       { word: "victim", translation: "受害者", emoji: "💔" },
       { word: "responsible", translation: "負責任的", emoji: "✅" }
     ],
-    vocabex: "A dramatic <span class='vocab-blank' data-answer='headline'></span> about a <span class='vocab-blank' data-answer='confession'></span> may not tell the full <span class='vocab-blank' data-answer='case'></span>. Be <span class='vocab-blank' data-answer='responsible'></span> — remember there may be a real <span class='vocab-blank' data-answer='victim'></span>.",
+    vocabex: "A dramatic <span class='vocab-blank' data-answer='headline'></span> about a star's <span class='vocab-blank' data-answer='confession'></span> can make an unfinished <span class='vocab-blank' data-answer='case'></span> look like settled fact. Soft gossip and crime news travel on the same apps, so a false <span class='vocab-blank' data-answer='rumour'></span> spreads just as fast as soft entertainment. Be <span class='vocab-blank' data-answer='responsible'></span>: do not reshare claims that could hurt a real <span class='vocab-blank' data-answer='victim'></span> or their family.",
     questions: [
       { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do you feel about crime gossip?", hat: "red-hat", hatLabel: "Red Hat" },
