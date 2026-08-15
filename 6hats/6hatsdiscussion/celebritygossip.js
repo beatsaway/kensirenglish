@@ -9,7 +9,7 @@ window.sixHatSets = [
     link: "https://www.youtube.com/watch?v=DJQqWbvwpPg",
     linkLabel: "Watch video",
     articleText:
-      "<p>Ariana Grande and Cynthia Erivo star in the film <em>Wicked</em>. On a late-night show they perform a song about the movie. Celebrity interviews and performances often go viral — fans celebrate, while online jokes and gossip grow around the same moments.</p>",
+      "<p>Ariana Grande and Cynthia Erivo star in the film <em>Wicked</em>. On a late-night show they perform a song about the film. Celebrity interviews and performances often go viral — fans celebrate, while online jokes and gossip grow around the same moments.</p>",
     vocablist: [
       { word: "celebrity", translation: "名人", emoji: "🌟" },
       { word: "performance", translation: "表演", emoji: "🎤" },
@@ -19,12 +19,12 @@ window.sixHatSets = [
     ],
     vocabex: "A <span class='vocab-blank' data-answer='celebrity'></span> <span class='vocab-blank' data-answer='performance'></span> can go <span class='vocab-blank' data-answer='viral'></span>. <span class='vocab-blank' data-answer='Fan'></span>s share it, and the <span class='vocab-blank' data-answer='press'></span> talks about it for days.",
     questions: [
-      { emoji: "📊", text: "What do Ariana and Cynthia do in the video?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How do you feel watching celebrity performances like this?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's good about stars promoting a film together?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What can go wrong when every interview becomes online gossip?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How do press shows help a movie become famous?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "If you were a star, how would you promote a film without too much gossip?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about the performance?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about the gossip around it?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How does the press help the film?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How else could they promote the film?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -32,7 +32,7 @@ window.sixHatSets = [
     link: "https://www.youtube.com/watch?v=Lzu9pu2X-mY",
     linkLabel: "Watch video",
     articleText:
-      "<p>The film <em>Wicked</em> became a huge online topic. Emotional press-tour moments were sincere — then the internet turned some of them into memes (like \"holding space\"). Fans, jokes and gossip mixed together. This video looks at what that meme culture did to the conversation around the movie and its stars.</p>",
+      "<p>The film <em>Wicked</em> became a huge online topic. Emotional press-tour moments were sincere — then the internet turned some of them into memes (like \"holding space\"). Fans, jokes and gossip mixed together. This video looks at what that meme culture did to the conversation around the film and its stars.</p>",
     vocablist: [
       { word: "meme", translation: "迷因", emoji: "😂" },
       { word: "gossip", translation: "八卦", emoji: "🗣️" },
@@ -42,12 +42,12 @@ window.sixHatSets = [
     ],
     vocabex: "A <span class='vocab-blank' data-answer='sincere'></span> interview can become a <span class='vocab-blank' data-answer='meme'></span>. People may <span class='vocab-blank' data-answer='mock'></span> it, and the <span class='vocab-blank' data-answer='gossip'></span> becomes a <span class='vocab-blank' data-answer='trend'></span>.",
     questions: [
-      { emoji: "📊", text: "What does the video say happened to Wicked online?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you enjoy celebrity memes, or do they annoy you?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's good about fans turning a film into memes?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What's unfair about mocking sincere celebrity moments?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How can gossip and meme culture change a movie's story online?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent a kinder meme format that still celebrates a film.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about the memes?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about the memes?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about mocking the stars?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did gossip change the story online?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "How would you make a kinder meme?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -65,12 +65,12 @@ window.sixHatSets = [
     ],
     vocabex: "Online <span class='vocab-blank' data-answer='comment'></span>s about a star's <span class='vocab-blank' data-answer='appearance'></span> can add <span class='vocab-blank' data-answer='pressure'></span>. Show <span class='vocab-blank' data-answer='respect'></span> and protect <span class='vocab-blank' data-answer='privacy'></span>.",
     questions: [
-      { emoji: "📊", text: "What happened with Jenna Ortega and the online comments?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How would you feel if strangers commented on your body online?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's good about family or fans defending someone's privacy?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What's harmful about guessing a celebrity's health from photos?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Why do people talk about celebrities' bodies so much?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What rule would you make for commenting on famous people?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about the comments?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about defending her privacy?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about body gossip?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Why do people talk about stars' bodies?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What rule would you make for online comments?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -88,12 +88,12 @@ window.sixHatSets = [
     ],
     vocabex: "After <span class='vocab-blank' data-answer='weight loss'></span>, Adele faced <span class='vocab-blank' data-answer='negative'></span> <span class='vocab-blank' data-answer='reaction'></span>s. People still <span class='vocab-blank' data-answer='judge'></span> celebrities — she chose to <span class='vocab-blank' data-answer='reply'></span>.",
     questions: [
-      { emoji: "📊", text: "What is Adele responding to?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you think celebrities should have to explain their bodies?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's brave about answering rude gossip in public?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What damage can body gossip do to fans who copy celebrities?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Why does the media care so much about famous people's weight?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write a kinder headline about a celebrity's health change.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about Adele's reply?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about her reply?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about body gossip?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Why does the media talk about weight?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What kinder headline would you write?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -111,12 +111,12 @@ window.sixHatSets = [
     ],
     vocabex: "An <span class='vocab-blank' data-answer='idol'></span> <span class='vocab-blank' data-answer='diet'></span> can look <span class='vocab-blank' data-answer='extreme'></span>. The music <span class='vocab-blank' data-answer='industry'></span> wants a certain look — but is it <span class='vocab-blank' data-answer='healthy'></span>?",
     questions: [
-      { emoji: "📊", text: "What diets does the video describe for BLACKPINK members?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Would you try an idol diet? Why or why not?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's useful about learning how hard idol work can be?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What risks come from copying a celebrity diet from a short?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Why might entertainment companies push strict diets?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Design a healthier morning routine for a busy student (not an extreme diet).", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about idol diets?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about knowing idols work hard?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about copying these diets?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "Why do companies push strict diets?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What healthier habit would you suggest instead?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -134,12 +134,12 @@ window.sixHatSets = [
     ],
     vocabex: "Being <span class='vocab-blank' data-answer='honest'></span> about an <span class='vocab-blank' data-answer='eating disorder'></span> can reduce <span class='vocab-blank' data-answer='stigma'></span>. Fans should offer <span class='vocab-blank' data-answer='support'></span>, not mock the <span class='vocab-blank' data-answer='struggle'></span>.",
     questions: [
-      { emoji: "📊", text: "What does Taylor talk about in the video?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How do you feel when celebrities share mental-health struggles?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "How can honest stories help young fans?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What goes wrong if gossip pages turn this into a joke or clickbait?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What's the difference between sharing to help and sharing to gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "What supportive message would you write under a post like this?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about her story?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about being honest?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about turning this into gossip?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is sharing to help different from gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What supportive message would you write?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -157,12 +157,12 @@ window.sixHatSets = [
     ],
     vocabex: "A celebrity <span class='vocab-blank' data-answer='tip'></span> is only one kind of <span class='vocab-blank' data-answer='advice'></span>. Keep a healthy <span class='vocab-blank' data-answer='lifestyle'></span> and <span class='vocab-blank' data-answer='balance'></span> — always <span class='vocab-blank' data-answer='check'></span> before copying.",
     questions: [
-      { emoji: "📊", text: "What tip does Ed Sheeran give?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you trust celebrity health tips on Shorts?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "When can a simple tip be helpful?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "When is celebrity advice dangerous to copy?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How can you check if a health tip is sensible?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Rewrite the tip as advice for Hong Kong secondary students.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about the tip?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about the tip?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about copying celebrity tips?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How can you check if advice is sensible?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What tip would you give students instead?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -180,12 +180,12 @@ window.sixHatSets = [
     ],
     vocabex: "A fake <span class='vocab-blank' data-answer='rumour'></span> can go <span class='vocab-blank' data-answer='viral'></span>. Stay <span class='vocab-blank' data-answer='sceptical'></span> and look for <span class='vocab-blank' data-answer='credible'></span> sources — watch out for <span class='vocab-blank' data-answer='misinformation'></span>.",
     questions: [
-      { emoji: "📊", text: "What rumour does the video talk about, and how did it start?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Have you ever shared a celebrity story before checking it?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about this rumour?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What's good about calling out fake gossip?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What harm can a false rumour do to a real person?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How can you tell celebrity gossip from real news?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Design a 3-step checklist before you reshare a celebrity story.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "⚠️", text: "What's bad about false rumours?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How can you tell gossip from real news?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What checklist would you use before resharing?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -203,12 +203,12 @@ window.sixHatSets = [
     ],
     vocabex: "A <span class='vocab-blank' data-answer='conspiracy'></span> <span class='vocab-blank' data-answer='theory'></span> may be <span class='vocab-blank' data-answer='entertaining'></span>, but a <span class='vocab-blank' data-answer='coincidence'></span> is not strong <span class='vocab-blank' data-answer='evidence'></span>.",
     questions: [
-      { emoji: "📊", text: "What \"evidence\" does the conspiracy use?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you find celebrity conspiracy theories fun or silly?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's enjoyable about playful celebrity theories?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "When do conspiracy theories become harmful?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about this theory?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's fun about it?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about believing it?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How is a coincidence different from proof?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent a funny (but clearly fake) conspiracy about a Hong Kong celebrity — then explain why it is not true.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "What funny fake theory would you invent?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -226,12 +226,12 @@ window.sixHatSets = [
     ],
     vocabex: "A <span class='vocab-blank' data-answer='shocking'></span> <span class='vocab-blank' data-answer='claim'></span> may be <span class='vocab-blank' data-answer='clickbait'></span>. Be <span class='vocab-blank' data-answer='critical'></span> and check the <span class='vocab-blank' data-answer='source'></span>.",
     questions: [
-      { emoji: "📊", text: "What theory does the clip talk about?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Why do people enjoy shocking celebrity theories?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Can conspiracy content be harmless entertainment? When?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What problems appear when fans treat every theory as fact?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How do creators make ordinary details look like \"proof\"?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write a comment that questions the theory politely.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about this theory?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's fun about conspiracy clips?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about treating them as fact?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do creators make clues look like proof?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What polite comment would you write?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -249,12 +249,12 @@ window.sixHatSets = [
     ],
     vocabex: "In an <span class='vocab-blank' data-answer='award'></span> <span class='vocab-blank' data-answer='speech'></span>, stars show <span class='vocab-blank' data-answer='influence'></span>. Fans turn it into a <span class='vocab-blank' data-answer='joke'></span> about the music <span class='vocab-blank' data-answer='industry'></span>.",
     questions: [
-      { emoji: "📊", text: "What is the \"Thank you, Beyoncé\" trend?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Do you think thanking another star is sincere or just for show?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's positive about publicly respecting another artist?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What's odd about turning respect into a survival meme?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How did a speech habit become online gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Who would you thank in a school award speech — and why?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about this trend?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about thanking another artist?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's odd about the meme?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How did a speech habit become gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Who would you thank in a school speech?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -272,12 +272,12 @@ window.sixHatSets = [
     ],
     vocabex: "A dramatic <span class='vocab-blank' data-answer='headline'></span> about a <span class='vocab-blank' data-answer='confession'></span> may not tell the full <span class='vocab-blank' data-answer='case'></span>. Be <span class='vocab-blank' data-answer='responsible'></span> — remember there may be a real <span class='vocab-blank' data-answer='victim'></span>.",
     questions: [
-      { emoji: "📊", text: "What kind of story is this Short selling with its title?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How do you feel when gossip channels cover crime?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What's good about the public following important court cases carefully?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What can go wrong if students reshare unfinished crime gossip?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How is crime reporting different from celebrity entertainment gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write three rules for sharing serious celebrity news at school.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "What is this about?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "How do you feel about crime gossip?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about careful reporting?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What's bad about resharing crime rumours?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is crime news different from soft gossip?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What three rules would you make for sharing news?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   }
 ];
