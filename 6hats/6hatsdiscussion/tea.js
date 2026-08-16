@@ -130,7 +130,8 @@ window.sixHatSets = [
     title: "🥛 Masala chai — spice, milk and resistance",
     links: [
       { url: "https://www.youtube.com/shorts/SiU787PxarE", label: "History behind masala chai" },
-      { url: "https://www.youtube.com/watch?v=zYofYpAcJTw", label: "What is a \"masala\"?" }
+      { url: "https://www.youtube.com/watch?v=zYofYpAcJTw", label: "What is a \"masala\"?" },
+      { url: "https://www.youtube.com/shorts/GJAygEgdInY", label: "Spider-Verse — \"I love chai tea\"" }
     ],
     articleText:
       "<p>Under British rule, tea in India was first linked to the colonial elite. Indians later remade the drink with more milk, sugar and <strong>masala</strong> (a spice mix) — creating masala chai. The British elite disliked the style; Indians loved it, and the drink travelled worldwide. \"Masala\" itself means a blend of spices, not one single flavour.</p>",
