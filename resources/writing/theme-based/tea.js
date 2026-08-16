@@ -9,43 +9,37 @@ window.themeBasedTea = {
     ],
     tasks: [
         {
-            id: "article-yumcha-and-milk-tea-for-tourists",
-            title: "Article — yum cha and milk tea for tourists",
+            id: "article-chinese-tea-or-milk-tea",
+            title: "Article — Chinese tea or Hong Kong milk tea for tourists?",
             watchLinks: [
                 { label: "Hong Kong milk tea", url: "https://www.youtube.com/shorts/0DcvNvTVRwU" },
                 { label: "Washing utensils with tea (yum cha)", url: "https://www.youtube.com/shorts/jsqmXVhjSdI" }
             ],
-            context: "Hong Kong's history has created a diverse tea culture. People drink Chinese tea at yum cha in Chinese restaurants, and milk tea in cha chaan tengs.",
-            instructions: "Write an article for your school magazine.\n\nRecommend one place for yum cha and one place for milk tea so tourists can enjoy Hong Kong's local culture.\n\nGive clear reasons for each place. You may think about location, price, food and drink, atmosphere, service and how local the experience feels.",
+            context: "Hong Kong's history has created a diverse tea culture. At yum cha, people drink Chinese tea such as pu-erh or jasmine. In cha chaan tengs, people drink silk stocking milk tea.",
+            instructions: "Write an article for your school magazine.\n\nWhich tea experience should tourists try first to enjoy Hong Kong's local culture — Chinese tea at yum cha, or Hong Kong milk tea?\n\nChoose one and give three reasons. You may think about taste, price, atmosphere, how local it feels, and who the drink suits.",
             successCriteria: [
-                "One yum cha place + one milk tea place",
-                "Reasons for each",
+                "Clear choice",
+                "3 reasons",
                 "Introduction and conclusion"
             ],
             questions: [],
             vocab: [
+                { en: "Chinese tea", cn: "中國茶" },
                 { en: "yum cha", cn: "飲茶" },
-                { en: "dim sum", cn: "點心" },
-                { en: "har gow", cn: "蝦餃" },
-                { en: "siu mai", cn: "燒賣" },
-                { en: "char siu bao", cn: "叉燒包" },
-                { en: "cheung fun", cn: "腸粉" },
-                { en: "pu-erh / jasmine tea", cn: "普洱／茉莉茶" },
+                { en: "pu-erh", cn: "普洱" },
+                { en: "jasmine tea", cn: "茉莉茶" },
+                { en: "oolong", cn: "烏龍茶" },
                 { en: "milk tea", cn: "奶茶" },
                 { en: "silk stocking milk tea", cn: "絲襪奶茶" },
-                { en: "toast / pineapple bun", cn: "多士／菠蘿包" },
                 { en: "cha chaan teng", cn: "茶餐廳" },
-                { en: "dai pai dong", cn: "大排檔" },
-                { en: "Michelin / hidden gem", cn: "米芝蓮／隱世小店" },
-                { en: "location", cn: "地點" },
+                { en: "strong / smooth", cn: "濃烈／順滑" },
+                { en: "bitter / sweet", cn: "苦／甜" },
+                { en: "refill", cn: "添茶／續杯" },
+                { en: "taste", cn: "味道" },
                 { en: "price", cn: "價格" },
                 { en: "atmosphere", cn: "氣氛" },
-                { en: "service", cn: "服務" },
-                { en: "authentic", cn: "地道的" },
-                { en: "recommend", cn: "推薦" },
-                { en: "for example", cn: "例如" },
-                { en: "First of all", cn: "首先" },
-                { en: "Last but not least", cn: "最後" }
+                { en: "local culture", cn: "本地文化" },
+                { en: "tourist", cn: "旅客" }
             ]
         },
         {
@@ -79,10 +73,7 @@ window.themeBasedTea = {
                 { en: "health / healthy", cn: "健康／健康的" },
                 { en: "student budget", cn: "學生預算" },
                 { en: "special occasion", cn: "特別場合" },
-                { en: "casual meet-up", cn: "輕鬆聚會" },
-                { en: "for example", cn: "例如" },
-                { en: "First of all", cn: "首先" },
-                { en: "Last but not least", cn: "最後" }
+                { en: "casual meet-up", cn: "輕鬆聚會" }
             ]
         },
         {
@@ -115,10 +106,7 @@ window.themeBasedTea = {
                 { en: "legal trade (tea / silk)", cn: "合法貿易（茶／絲綢）" },
                 { en: "harbour control", cn: "港口管制" },
                 { en: "public health", cn: "公共衛生" },
-                { en: "compromise", cn: "妥協" },
-                { en: "for example", cn: "例如" },
-                { en: "First of all", cn: "首先" },
-                { en: "Last but not least", cn: "最後" }
+                { en: "compromise", cn: "妥協" }
             ]
         }
     ]
