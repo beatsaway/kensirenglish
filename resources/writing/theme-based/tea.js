@@ -9,17 +9,17 @@ window.themeBasedTea = {
     ],
     tasks: [
         {
-            id: "article-chinese-tea-or-milk-tea",
-            title: "Article — Chinese tea or Hong Kong milk tea for tourists?",
+            id: "article-chinese-tea-and-milk-tea",
+            title: "Article — Chinese tea and Hong Kong milk tea for tourists",
             watchLinks: [
                 { label: "Hong Kong milk tea", url: "https://www.youtube.com/shorts/0DcvNvTVRwU" },
                 { label: "Washing utensils with tea (yum cha)", url: "https://www.youtube.com/shorts/jsqmXVhjSdI" }
             ],
             context: "Hong Kong's history has created a diverse tea culture. At yum cha, people drink Chinese tea such as pu-erh or jasmine. In cha chaan tengs, people drink silk stocking milk tea.",
-            instructions: "Write an article for your school magazine.\n\nWhich tea experience should tourists try first to enjoy Hong Kong's local culture — Chinese tea at yum cha, or Hong Kong milk tea?\n\nChoose one and give three reasons. You may think about taste, price, atmosphere, how local it feels, and who the drink suits.",
+            instructions: "Write an article for your school magazine.\n\nIntroduce both tea experiences for tourists who want to enjoy Hong Kong's local culture — Chinese tea at yum cha, and Hong Kong milk tea at a cha chaan teng.\n\nHighlight the unique charm of each. You may think about taste, price, atmosphere, how local it feels, and who each drink suits.",
             successCriteria: [
-                "Clear choice",
-                "3 reasons",
+                "Both tea experiences covered",
+                "Unique charm of each highlighted",
                 "Introduction and conclusion"
             ],
             questions: [],
@@ -35,6 +35,7 @@ window.themeBasedTea = {
                 { en: "strong / smooth", cn: "濃烈／順滑" },
                 { en: "bitter / sweet", cn: "苦／甜" },
                 { en: "refill", cn: "添茶／續杯" },
+                { en: "charm", cn: "魅力" },
                 { en: "taste", cn: "味道" },
                 { en: "price", cn: "價格" },
                 { en: "atmosphere", cn: "氣氛" },
