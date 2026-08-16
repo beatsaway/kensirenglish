@@ -16,7 +16,7 @@ window.themeBasedTea = {
                 { label: "Washing utensils with tea (yum cha)", url: "https://www.youtube.com/shorts/jsqmXVhjSdI" }
             ],
             context: "Hong Kong's history has created a diverse tea culture. People drink Chinese tea at yum cha in Chinese restaurants, and milk tea in cha chaan tengs.",
-            instructions: "Write an article for your school magazine.\n\nRecommend one place for yum cha and one place for milk tea so tourists can enjoy Hong Kong.\n\nGive clear reasons for each place. You may think about location, price, food and drink, atmosphere, service and how local the experience feels.",
+            instructions: "Write an article for your school magazine.\n\nRecommend one place for yum cha and one place for milk tea so tourists can enjoy Hong Kong's local culture.\n\nGive clear reasons for each place. You may think about location, price, food and drink, atmosphere, service and how local the experience feels.",
             successCriteria: [
                 "One yum cha place + one milk tea place",
                 "Reasons for each",
