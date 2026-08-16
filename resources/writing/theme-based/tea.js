@@ -52,7 +52,7 @@ window.themeBasedTea = {
             id: "article-school-tea-spot",
             title: "Article — afternoon tea café or bubble tea shop for school?",
             context: "Your school plans to open a tea spot for students. The choice is a British afternoon tea café (high tea style) or a bubble tea shop.",
-            instructions: "Write an article for your school magazine as the Student Union chairperson.\n\nWhich tea spot should the school open — an afternoon tea café or a bubble tea shop?\n\nShare your view and give three reasons. You may think about price, service, environment, taste, culture and social setting.",
+            instructions: "Write an article for your school magazine as the Student Union chairperson.\n\nWhich tea spot should the school open — an afternoon tea café or a bubble tea shop?\n\nShare your view and give three reasons. You may think about price, service, environment, taste, food, health, culture and social setting.",
             successCriteria: [
                 "Clear choice",
                 "3 reasons",
@@ -75,6 +75,8 @@ window.themeBasedTea = {
                 { en: "price", cn: "價格" },
                 { en: "service", cn: "服務" },
                 { en: "environment / atmosphere", cn: "環境／氣氛" },
+                { en: "food", cn: "食物" },
+                { en: "health / healthy", cn: "健康／健康的" },
                 { en: "student budget", cn: "學生預算" },
                 { en: "special occasion", cn: "特別場合" },
                 { en: "casual meet-up", cn: "輕鬆聚會" },
