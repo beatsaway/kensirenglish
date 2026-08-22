@@ -8,6 +8,33 @@ window.themeBasedBreakfast = {
     ],
     tasks: [
         {
+            id: "article-breakfast-good-habit",
+            title: "Article — is eating breakfast a good habit?",
+            watchLinks: [
+                { label: "Fact or crap: should you eat breakfast?", url: "https://www.youtube.com/shorts/hA0_NyzrIt4" }
+            ],
+            context: "Some people eat breakfast every day. Others skip it and feel fine.",
+            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that eating breakfast is a good habit?\n\nGive three reasons.",
+            successCriteria: [
+                "Clear agree or disagree",
+                "3 reasons",
+                "Introduction and conclusion"
+            ],
+            questions: [],
+            vocab: [
+                { en: "breakfast", cn: "早餐" },
+                { en: "habit", cn: "習慣" },
+                { en: "skip", cn: "跳過" },
+                { en: "energy", cn: "能量" },
+                { en: "healthy", cn: "健康的" },
+                { en: "concentrate", cn: "集中精神" },
+                { en: "hungry", cn: "飢餓的" },
+                { en: "school morning", cn: "上學的早上" },
+                { en: "agree", cn: "同意" },
+                { en: "disagree", cn: "不同意" }
+            ]
+        },
+        {
             id: "article-three-breakfasts",
             title: "Article — three breakfasts for schoolmates",
             watchLinks: [
@@ -97,38 +124,6 @@ window.themeBasedBreakfast = {
                 { en: "serve", cn: "上菜／奉上" },
                 { en: "prefer", cn: "較喜歡" },
                 { en: "compare", cn: "比較" },
-                { en: "agree", cn: "同意" },
-                { en: "disagree", cn: "不同意" },
-                { en: "for example", cn: "例如" },
-                { en: "First of all", cn: "首先" },
-                { en: "Last but not least", cn: "最後" }
-            ]
-        },
-        {
-            id: "article-breakfast-propaganda",
-            title: "Article — is breakfast advice just propaganda?",
-            watchLinks: [
-                { label: "Is breakfast propaganda?", url: "https://www.youtube.com/shorts/-5XusYbqSwI" }
-            ],
-            context: "Some people say 'breakfast is the most important meal' is marketing, not pure science — a kind of food propaganda. Others say the advice still helps many students and workers.",
-            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that 'breakfast is the most important meal' is mainly propaganda?\n\nGive three reasons.",
-            successCriteria: [
-                "Clear agree or disagree",
-                "Have an introduction",
-                "3 reasons",
-                "Have a conclusion"
-            ],
-            questions: [],
-            vocab: [
-                { en: "propaganda", cn: "宣傳／洗腦" },
-                { en: "marketing", cn: "市場推廣" },
-                { en: "claim", cn: "聲稱" },
-                { en: "science", cn: "科學" },
-                { en: "sceptical", cn: "存疑的" },
-                { en: "advertisement", cn: "廣告" },
-                { en: "cereal", cn: "穀物早餐" },
-                { en: "evidence", cn: "證據" },
-                { en: "myth", cn: "迷思" },
                 { en: "agree", cn: "同意" },
                 { en: "disagree", cn: "不同意" },
                 { en: "for example", cn: "例如" },
