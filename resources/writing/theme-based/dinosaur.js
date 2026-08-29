@@ -102,21 +102,23 @@ window.themeBasedDinosaurs = {
         },
         {
             id: "article-dinosaur-mistakes",
-            title: "Article — three things we got wrong about dinosaurs",
+            title: "Article — three things we might have got wrong about dinosaurs",
             watchLinks: [
                 { label: "What have they discovered?", url: "https://www.youtube.com/watch?v=njq8cEzQgS4&t=43s" },
                 { label: "How wrong were we?", url: "https://youtu.be/1AlvvnG1Lgs?t=249" },
                 { label: "The sound of a T-rex", url: "https://www.youtube.com/shorts/QJm0dAVN328" }
             ],
-            context: "Older books and films often showed slow, grey, lizard-like dinosaurs. New fossils suggest many ideas were wrong — about feathers, posture, colour, speed or sounds.",
-            instructions: "Write an article for your school science magazine about dinosaurs.\n\nMention three things scientists now believe we could have got wrong about them in the past.\n\nGive a short explanation for each.",
+            context: "Older books and films often showed slow, grey, lizard-like dinosaurs. New fossils suggest many ideas might have been wrong — about feathers, posture, colour, speed or sounds.",
+            instructions: "Write an article for your school science magazine about dinosaurs.\n\nMention three things scientists believe we might have got wrong about them in the past.\n\nGive a short explanation for each. Use modal verbs (e.g. might have, could have, may have) to show possibility, not certainty.",
             successCriteria: [
-                "3 past mistakes / old ideas",
+                "3 ideas we might have got wrong",
                 "A short explanation for each",
+                "Modal verbs (might / could / may have)",
                 "Introduction and conclusion"
             ],
             questions: [],
             vocab: [
+                { en: "might have / could have / may have", cn: "可能曾經／也許曾經" },
                 { en: "scientist", cn: "科學家" },
                 { en: "fossil", cn: "化石" },
                 { en: "outdated", cn: "過時的" },
@@ -126,9 +128,9 @@ window.themeBasedDinosaurs = {
                 { en: "active", cn: "活躍的" },
                 { en: "roar / sound", cn: "吼叫／聲音" },
                 { en: "evidence", cn: "證據" },
+                { en: "suggest", cn: "顯示／暗示" },
                 { en: "reconstruct", cn: "重建" },
-                { en: "update", cn: "更新" },
-                { en: "mistake", cn: "錯誤" }
+                { en: "possibility", cn: "可能性" }
             ]
         },
         {
