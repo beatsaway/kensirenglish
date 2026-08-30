@@ -162,6 +162,68 @@ window.themeBasedDinosaurs = {
                 { en: "agree", cn: "同意" },
                 { en: "disagree", cn: "不同意" }
             ]
+        },
+        {
+            id: "article-dragons-vs-dinosaurs",
+            title: "Article — dragons and dinosaurs: the same or different?",
+            watchLinks: [
+                { label: "Were dragons real?", url: "https://youtu.be/x-qsWTPul9Y?t=204" },
+                { label: "Why have we all imagined dragons?", url: "https://youtu.be/29eUoeWi7Bw?t=116" },
+                { label: "Dragons and imagination (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Dinosaurs" }
+            ],
+            context: "People often mix up dragons and dinosaurs. Dinosaurs were real animals known from fossils. Dragons appear in legends and stories. Some say they are the same thing.",
+            instructions: "Write an article for your school magazine.\n\nWhat is the difference between dragons and dinosaurs?\n\nSome people say they are the same. Do you agree or disagree? Why?\n\nGive three reasons.",
+            successCriteria: [
+                "Clear difference explained",
+                "Clear agree or disagree",
+                "3 reasons",
+                "Introduction and conclusion"
+            ],
+            questions: [],
+            vocab: [
+                { en: "dragon", cn: "龍" },
+                { en: "dinosaur", cn: "恐龍" },
+                { en: "difference", cn: "分別" },
+                { en: "same / different", cn: "相同／不同" },
+                { en: "fossil / evidence", cn: "化石／證據" },
+                { en: "legend / myth", cn: "傳說／神話" },
+                { en: "science", cn: "科學" },
+                { en: "imagination", cn: "想像力" },
+                { en: "species", cn: "物種" },
+                { en: "confuse / mix up", cn: "混淆" },
+                { en: "agree", cn: "同意" },
+                { en: "disagree", cn: "不同意" }
+            ]
+        },
+        {
+            id: "article-bring-back-dinosaurs",
+            title: "Article — should we bring dinosaurs back?",
+            watchLinks: [
+                { label: "Dinosaurs (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Dinosaurs" },
+                { label: "Gene editing (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Gene%20editing" }
+            ],
+            context: "Some scientists want to bring dinosaurs back through genetic engineering — using DNA and lab tools to recreate extinct animals. Films make it look exciting, but safety, ethics and the environment matter too.",
+            instructions: "Write an article for your school magazine.\n\nSome scientists want to bring dinosaurs back through genetic engineering.\n\nDo you think it is a good idea or a bad idea?\n\nGive three reasons.",
+            successCriteria: [
+                "Clear good or bad idea",
+                "3 reasons",
+                "Introduction and conclusion"
+            ],
+            questions: [],
+            vocab: [
+                { en: "genetic engineering", cn: "基因工程" },
+                { en: "bring back / recreate", cn: "帶回／重造" },
+                { en: "extinct", cn: "絕種的" },
+                { en: "DNA", cn: "脫氧核糖核酸" },
+                { en: "scientist", cn: "科學家" },
+                { en: "risk / danger", cn: "風險／危險" },
+                { en: "ethics", cn: "倫理" },
+                { en: "habitat / ecosystem", cn: "棲息地／生態系" },
+                { en: "cost", cn: "費用" },
+                { en: "research", cn: "研究" },
+                { en: "benefit", cn: "好處" },
+                { en: "responsible", cn: "負責任的" }
+            ]
         }
     ]
 };
