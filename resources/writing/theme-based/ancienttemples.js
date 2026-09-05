@@ -47,7 +47,7 @@ window.themeBasedAncientTemples = {
             watchLinks: [
                 { label: "Angkor Wat", url: "https://www.youtube.com/shorts/lgt2r6tWF_E" },
                 { label: "Chichen Itza", url: "https://www.youtube.com/shorts/Hgy7fCwqWYg" },
-                { label: "Kalissa", url: "https://www.youtube.com/shorts/wB_SQ0Ka8t8" },
+                { label: "Kailasa Temple", url: "https://www.youtube.com/shorts/wB_SQ0Ka8t8" },
                 { label: "Ancient Temples (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Ancient%20Temples" }
             ],
             context: "Popular temples and monuments need money from tourism — but crowds, touching stone and litter can damage sacred and historic places. Local communities also want respect.",
