@@ -197,5 +197,29 @@ window.sixHatSets = [
       { emoji: "📋", text: "How does modern precision tech help us rethink ancient engineering?", hat: "blue-hat", hatLabel: "Blue Hat" },
       { emoji: "💡", text: "Write two rules for using new tech on a UNESCO heritage site.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
+  },
+  {
+    title: "🛕 Hoysala temple — peak stone carving?",
+    link: "https://www.youtube.com/watch?v=n4dNaPwX1uc",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>In southern India, <strong>Hoysala</strong> temples are famous for extremely detailed stone carving — walls crowded with figures, animals and patterns. One viral clip calls this the peak of Indian architecture and even claims a carved figure looks like someone using a telescope centuries early. Amazing craft is clear; bold history claims still need careful evidence. Discuss wonder and proof together.</p>",
+    vocablist: [
+      { word: "carving", translation: "雕刻", emoji: "🪨" },
+      { word: "detail", translation: "細節", emoji: "🔎" },
+      { word: "architecture", translation: "建築", emoji: "🏛️" },
+      { word: "claim", translation: "聲稱", emoji: "📢" },
+      { word: "evidence", translation: "證據", emoji: "🔬" },
+      { word: "craftsmanship", translation: "工藝", emoji: "🛠️" }
+    ],
+    vocabex: "Hoysala <span class='vocab-blank' data-answer='architecture'></span> shows rich stone <span class='vocab-blank' data-answer='carving'></span> and fine <span class='vocab-blank' data-answer='detail'></span>. Great <span class='vocab-blank' data-answer='craftsmanship'></span> is real — but every surprising <span class='vocab-blank' data-answer='claim'></span> still needs <span class='vocab-blank' data-answer='evidence'></span>.",
+    questions: [
+      { emoji: "📊", text: "What does the video show about Hoysala temple carvings — and what big claim does it make?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Which carving detail surprises you most?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's impressive about carving so much detail into hard stone?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What can go wrong if we accept every viral history claim without checking?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How should we separate amazing craftsmanship from unproven invention stories?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Write two fair questions a historian would ask after watching this clip.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
   }
 ];
