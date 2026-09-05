@@ -525,6 +525,31 @@
             width: 100vw;
             box-sizing: border-box;
             cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .main-topic-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -6px;
+            height: 3px;
+            width: calc(var(--hold-progress, 0) * min(240px, 55vw));
+            transform: translateX(-50%);
+            background: var(--color-text-secondary);
+            border-radius: 2px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .main-topic-title.holding-random::after {
+            opacity: 1;
+        }
+
+        .main-topic-title.holding-random .topic-prefix {
+            color: var(--color-text);
         }
 
         .main-topic-title .topic-prefix {
@@ -1354,7 +1379,7 @@
             // Main topic name (centered)
             if (currentTopicName) {
                 html += `<div style="position: relative;">`;
-                html += `<h1 class="main-topic-title" id="mainTopicTitle"><span class="topic-prefix">Let's talk about </span><span id="topicNameDisplay">${currentTopicName}</span></h1>`;
+                html += `<h1 class="main-topic-title" id="mainTopicTitle" title="Hold for 3 seconds for a random topic"><span class="topic-prefix">Let's talk about </span><span id="topicNameDisplay">${currentTopicName}</span></h1>`;
                 html += `</div>`;
             }
             
@@ -1445,10 +1470,10 @@
 
             content.innerHTML = html;
 
-            // Add click handler for main topic title
+            // Hold 3s on main topic title to pick a random topic (tap alone does nothing)
             const mainTopicTitle = document.getElementById('mainTopicTitle');
             if (mainTopicTitle) {
-                mainTopicTitle.addEventListener('click', cycleThroughTopics);
+                bindRandomTopicHold(mainTopicTitle);
             }
 
             // Add click handlers for questions
@@ -1565,6 +1590,58 @@
             currentSessionIndex = index;
             renderContent(currentSets, index);
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const RANDOM_TOPIC_HOLD_MS = 3000;
+        let randomTopicHoldTimer = null;
+        let randomTopicHoldRaf = null;
+
+        function clearRandomTopicHold(titleEl) {
+            if (randomTopicHoldTimer) {
+                clearTimeout(randomTopicHoldTimer);
+                randomTopicHoldTimer = null;
+            }
+            if (randomTopicHoldRaf) {
+                cancelAnimationFrame(randomTopicHoldRaf);
+                randomTopicHoldRaf = null;
+            }
+            if (titleEl) {
+                titleEl.classList.remove('holding-random');
+                titleEl.style.removeProperty('--hold-progress');
+            }
+        }
+
+        function bindRandomTopicHold(titleEl) {
+            const startHold = (e) => {
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+                if (isCyclingTopics) return;
+                e.preventDefault();
+                clearRandomTopicHold(titleEl);
+                titleEl.classList.add('holding-random');
+                titleEl.setPointerCapture?.(e.pointerId);
+                const holdStart = performance.now();
+                const tick = (now) => {
+                    const progress = Math.min(1, (now - holdStart) / RANDOM_TOPIC_HOLD_MS);
+                    titleEl.style.setProperty('--hold-progress', String(progress));
+                    if (progress < 1) {
+                        randomTopicHoldRaf = requestAnimationFrame(tick);
+                    }
+                };
+                randomTopicHoldRaf = requestAnimationFrame(tick);
+                randomTopicHoldTimer = setTimeout(() => {
+                    clearRandomTopicHold(titleEl);
+                    cycleThroughTopics();
+                }, RANDOM_TOPIC_HOLD_MS);
+            };
+
+            const endHold = () => clearRandomTopicHold(titleEl);
+
+            titleEl.addEventListener('pointerdown', startHold);
+            titleEl.addEventListener('pointerup', endHold);
+            titleEl.addEventListener('pointerleave', endHold);
+            titleEl.addEventListener('pointercancel', endHold);
+            titleEl.addEventListener('lostpointercapture', endHold);
+            titleEl.addEventListener('contextmenu', (e) => e.preventDefault());
         }
 
         function cycleThroughTopics() {
