@@ -1,15 +1,15 @@
 /**
- * Six Hats: The Great Flood — evidence inquiry → myths → Sumerian history & Anunnaki theories
+ * Six Hats: The Great Flood — science inquiry, then myths by culture, then Mesopotamia & theories
  * KS3 vocab blanks + discussion questions (繁體中文 glosses)
  * UK English — simple, direct questions for younger learners
  */
 window.sixHatSets = [
   {
-    title: "🔍 Is there evidence of a great flood?",
+    title: "🔬 Science — is there evidence of a great flood?",
     link: "https://www.youtube.com/shorts/oiJV-ET-J0E",
     linkLabel: "Watch video",
     articleText:
-      "<p>Some speakers ask whether a real <strong>great flood</strong> left clues in the ground or in old stories. Start with inquiry: what counts as <strong>evidence</strong>? What is only a guess or a viral claim?</p>",
+      "<p><strong>Science</strong> starts with inquiry. Some speakers ask whether a real great flood left clues. What counts as <strong>evidence</strong>? What is only a guess or a viral claim?</p>",
     vocablist: [
       { word: "evidence", translation: "證據", emoji: "🔬" },
       { word: "flood", translation: "洪水", emoji: "🌊" },
@@ -29,11 +29,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🏝️ Atlantis — a convincing detail?",
+    title: "🔬 Science — Atlantis and \"convincing\" details",
     link: "https://www.youtube.com/shorts/xo-lOfBYYbQ",
     linkLabel: "Watch video",
     articleText:
-      "<p>Clips about <strong>Atlantis</strong> often point to one \"convincing\" detail. Lost-city stories are exciting, but one detail is not full proof. Keep asking: what else would we need to know?</p>",
+      "<p>Clips about <strong>Atlantis</strong> often point to one \"convincing\" detail. Lost-city stories are exciting, but one detail is not full scientific proof. Keep asking what else we would need to know.</p>",
     vocablist: [
       { word: "Atlantis", translation: "亞特蘭提斯", emoji: "🏝️" },
       { word: "detail", translation: "細節", emoji: "🔎" },
@@ -53,37 +53,59 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🌱 Creation myths — China and Hindu ideas",
-    links: [
-      { url: "https://www.youtube.com/shorts/g42-4erKuec", label: "How were humans created? (Nuwa)" },
-      { url: "https://www.youtube.com/watch?v=bW_awN9uV6w", label: "Hindu interpretation of creation" }
-    ],
+    title: "🔬 Science — comparing flood myths",
+    link: "https://www.youtube.com/shorts/A37nXQTBlBw",
+    linkLabel: "Watch video",
     articleText:
-      "<p>Before more flood tales, look at <strong>creation</strong> stories. In Chinese myth, <strong>Nuwa</strong> helps create humans. Hindu traditions also teach how the world and life begin. These are beliefs and literature — discuss with respect.</p>",
+      "<p>Many cultures tell a great flood story. <strong>Comparing</strong> myths is useful science thinking: look for shared ideas and differences. Similar stories do not automatically prove one global flood.</p>",
     vocablist: [
+      { word: "compare", translation: "比較", emoji: "⚖️" },
+      { word: "myth", translation: "神話／迷思", emoji: "✨" },
+      { word: "culture", translation: "文化", emoji: "🌏" },
+      { word: "similar", translation: "相似的", emoji: "🔗" },
+      { word: "prove", translation: "證明", emoji: "🧾" },
+      { word: "lesson", translation: "教訓", emoji: "📘" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Compare'></span> flood <span class='vocab-blank' data-answer='myth'></span>s across each <span class='vocab-blank' data-answer='culture'></span>. Stories may be <span class='vocab-blank' data-answer='similar'></span>. Similar tales do not always <span class='vocab-blank' data-answer='prove'></span> one event — they can still teach a <span class='vocab-blank' data-answer='lesson'></span>.",
+    questions: [
+      { emoji: "📊", text: "What does the video say about flood myths?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does a flood story feel scary or exciting?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is comparing myths useful?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why don't similar stories automatically prove one flood?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What ideas appear again and again?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Write one lesson a flood myth might teach.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🐉 Chinese — Nuwa and creation",
+    link: "https://www.youtube.com/shorts/g42-4erKuec",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>In <strong>Chinese</strong> mythology, <strong>Nuwa</strong> helps create humans. This is a cultural and religious story about beginnings — discuss with respect, not as a lab report.</p>",
+    vocablist: [
+      { word: "Chinese", translation: "中國的", emoji: "🇨🇳" },
       { word: "creation", translation: "創造", emoji: "🌱" },
       { word: "human", translation: "人類", emoji: "🧑" },
       { word: "myth", translation: "神話／迷思", emoji: "✨" },
       { word: "belief", translation: "信念", emoji: "🙏" },
-      { word: "tradition", translation: "傳統", emoji: "📿" },
       { word: "respect", translation: "尊重", emoji: "🤝" }
     ],
-    vocabex: "A <span class='vocab-blank' data-answer='creation'></span> <span class='vocab-blank' data-answer='myth'></span> may explain how <span class='vocab-blank' data-answer='human'></span>s began. Each <span class='vocab-blank' data-answer='tradition'></span> holds a <span class='vocab-blank' data-answer='belief'></span> — talk with <span class='vocab-blank' data-answer='respect'></span>.",
+    vocabex: "A <span class='vocab-blank' data-answer='Chinese'></span> <span class='vocab-blank' data-answer='myth'></span> may tell a <span class='vocab-blank' data-answer='creation'></span> story about <span class='vocab-blank' data-answer='human'></span>s. Treat the <span class='vocab-blank' data-answer='belief'></span> with <span class='vocab-blank' data-answer='respect'></span>.",
     questions: [
-      { emoji: "📊", text: "How do these clips say humans or the world began?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Which creation idea interests you more?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What is valuable about many creation stories?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What can go wrong if we joke about someone's belief?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How are the Chinese and Hindu ideas similar or different?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write three new words from these clips.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📊", text: "How does Nuwa create humans in the story?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Do you like this creation story? Why?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What is kind about Nuwa's story?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why not mix this myth with science class facts?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What does this story try to explain?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Retell Nuwa's story in five short sentences.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
-    title: "🐉 Chinese flood — Fuxi and Nuwa",
+    title: "🐉 Chinese — Fuxi, Nuwa and the flood",
     link: "https://www.youtube.com/shorts/DZrIwtp1WJ0",
     linkLabel: "Watch video",
     articleText:
-      "<p>In Chinese myth, <strong>Fuxi</strong> and <strong>Nuwa</strong> face a great flood and a journey linked to the heavens. The tale mixes danger, rescue and care for people.</p>",
+      "<p>In Chinese myth, <strong>Fuxi</strong> and <strong>Nuwa</strong> also face a great flood and a journey linked to the heavens. Creation and flood often sit side by side in the same tradition.</p>",
     vocablist: [
       { word: "flood", translation: "洪水", emoji: "🌊" },
       { word: "rescue", translation: "拯救", emoji: "🛟" },
@@ -99,15 +121,39 @@ window.sixHatSets = [
       { emoji: "🌟", text: "What is brave about this flood story?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "Why not treat this myth as a science report?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How does this link to Nuwa's creation story?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Retell the story in five short sentences.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "Write three key events in order.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
-    title: "🌽 Maya flood myth",
+    title: "🕉️ Hindu — ideas of creation",
+    link: "https://www.youtube.com/watch?v=bW_awN9uV6w",
+    linkLabel: "Watch video",
+    articleText:
+      "<p><strong>Hindu</strong> traditions have rich ideas about how the world and life begin. Different teachings describe creation in different ways. Many people live by these beliefs today — listen with respect.</p>",
+    vocablist: [
+      { word: "Hindu", translation: "印度教的", emoji: "🕉️" },
+      { word: "creation", translation: "創造", emoji: "🌱" },
+      { word: "tradition", translation: "傳統", emoji: "📿" },
+      { word: "belief", translation: "信念", emoji: "🙏" },
+      { word: "universe", translation: "宇宙", emoji: "🌌" },
+      { word: "respect", translation: "尊重", emoji: "🤝" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Hindu'></span> <span class='vocab-blank' data-answer='tradition'></span>s offer stories of <span class='vocab-blank' data-answer='creation'></span>. Some speak about the whole <span class='vocab-blank' data-answer='universe'></span>. Discuss each <span class='vocab-blank' data-answer='belief'></span> with <span class='vocab-blank' data-answer='respect'></span>.",
+    questions: [
+      { emoji: "📊", text: "What does the video say about creation?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "What image or idea sticks in your mind?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What is valuable about many creation stories?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What can go wrong if we joke about someone's belief?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is this different from the Chinese Nuwa story?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Write three new words from the clip.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🌽 Maya — flood myth",
     link: "https://www.youtube.com/shorts/qpraFy8-Si0",
     linkLabel: "Watch video",
     articleText:
-      "<p>Maya myth also tells of a goddess who heals the world — and later of a great <strong>flood</strong>. Like Chinese and other flood tales, it mixes care, power and destruction. Read it as culture and story; check bold claims with care.</p>",
+      "<p><strong>Maya</strong> myth tells of a goddess who heals the world — and later of a great flood. Like Chinese and other flood tales, it mixes care, power and destruction.</p>",
     vocablist: [
       { word: "Maya", translation: "瑪雅", emoji: "🌽" },
       { word: "goddess", translation: "女神", emoji: "✨" },
@@ -127,44 +173,20 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🌊 Flood myths around the world",
-    link: "https://www.youtube.com/shorts/A37nXQTBlBw",
-    linkLabel: "Watch video",
-    articleText:
-      "<p>Many cultures tell a <strong>great flood</strong> story. Comparing myths helps us see shared ideas — water, warning, survival — and local differences. Myths can teach lessons even when they are not science papers.</p>",
-    vocablist: [
-      { word: "myth", translation: "神話／迷思", emoji: "✨" },
-      { word: "culture", translation: "文化", emoji: "🌏" },
-      { word: "compare", translation: "比較", emoji: "⚖️" },
-      { word: "survive", translation: "存活", emoji: "🌱" },
-      { word: "lesson", translation: "教訓", emoji: "📘" },
-      { word: "similar", translation: "相似的", emoji: "🔗" }
-    ],
-    vocabex: "<span class='vocab-blank' data-answer='Compare'></span> flood <span class='vocab-blank' data-answer='myth'></span>s across each <span class='vocab-blank' data-answer='culture'></span>. Stories may be <span class='vocab-blank' data-answer='similar'></span>: people try to <span class='vocab-blank' data-answer='survive'></span> and learn a <span class='vocab-blank' data-answer='lesson'></span>.",
-    questions: [
-      { emoji: "📊", text: "What does the video say about flood myths?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does a flood story feel scary or exciting?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why might many cultures share similar stories?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What is the risk of mixing myth and proof?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What ideas appear again and again in flood myths?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write one lesson a flood myth might teach.", hat: "green-hat", hatLabel: "Green Hat" }
-    ]
-  },
-  {
-    title: "🔥 Prometheus",
+    title: "🔥 Greek — Prometheus",
     link: "https://youtu.be/U_u91SjrEOE",
     linkLabel: "Watch video",
     articleText:
-      "<p>In Greek myth, <strong>Prometheus</strong> steals fire for humans. The story is about gifts, risk and punishment — not a flood, but another famous \"how humans got help\" tale.</p>",
+      "<p>In <strong>Greek</strong> myth, <strong>Prometheus</strong> steals fire for humans. The story is about gifts, risk and punishment — a famous \"how humans got help\" tale.</p>",
     vocablist: [
+      { word: "Greek", translation: "希臘的", emoji: "🏛️" },
       { word: "steal", translation: "偷", emoji: "🥷" },
       { word: "fire", translation: "火", emoji: "🔥" },
       { word: "gift", translation: "禮物", emoji: "🎁" },
       { word: "punishment", translation: "懲罰", emoji: "⛓️" },
-      { word: "risk", translation: "風險", emoji: "⚠️" },
-      { word: "human", translation: "人類", emoji: "🧑" }
+      { word: "risk", translation: "風險", emoji: "⚠️" }
     ],
-    vocabex: "Prometheus may <span class='vocab-blank' data-answer='steal'></span> <span class='vocab-blank' data-answer='fire'></span> as a <span class='vocab-blank' data-answer='gift'></span> for <span class='vocab-blank' data-answer='human'></span>s. The act brings <span class='vocab-blank' data-answer='risk'></span> and <span class='vocab-blank' data-answer='punishment'></span>.",
+    vocabex: "In a <span class='vocab-blank' data-answer='Greek'></span> myth, Prometheus may <span class='vocab-blank' data-answer='steal'></span> <span class='vocab-blank' data-answer='fire'></span> as a <span class='vocab-blank' data-answer='gift'></span>. The act brings <span class='vocab-blank' data-answer='risk'></span> and <span class='vocab-blank' data-answer='punishment'></span>.",
     questions: [
       { emoji: "📊", text: "What does Prometheus do?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you side with Prometheus? Why?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -175,11 +197,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🗿 Nephilim",
+    title: "📕 Biblical — Nephilim legends",
     link: "https://www.youtube.com/shorts/JMVfM90TYe0",
     linkLabel: "Watch video",
     articleText:
-      "<p>Some Bible readers talk about the <strong>Nephilim</strong> — often described as giants linked to angels and old legends. Clips mix scripture, legend and theory. Be careful: faith texts and viral explanations are not the same.</p>",
+      "<p>Some <strong>Bible</strong> readers talk about the <strong>Nephilim</strong> — often described as giants linked to angels and old legends. Clips mix scripture, legend and theory. Faith texts and viral explanations are not the same.</p>",
     vocablist: [
       { word: "giant", translation: "巨人", emoji: "🗿" },
       { word: "angel", translation: "天使", emoji: "👼" },
@@ -199,11 +221,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🚢 Nuh (Noah) and the flood",
+    title: "🕌 Islamic — Nuh (Noah) and the flood",
     link: "https://www.youtube.com/shorts/AdrHx1quN-0",
     linkLabel: "Watch video",
     articleText:
-      "<p>In Islamic tradition, <strong>Nuh</strong> (Noah) warns people about a coming flood. The story is about faith, listening and hard choices — including his son. Discuss with respect for religious belief.</p>",
+      "<p>In <strong>Islamic</strong> tradition, <strong>Nuh</strong> (Noah) warns people about a coming flood. The story is about faith, listening and hard choices — including his son. Discuss with respect for religious belief.</p>",
     vocablist: [
       { word: "prophet", translation: "先知", emoji: "🕊️" },
       { word: "warn", translation: "警告", emoji: "⚠️" },
@@ -223,11 +245,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "📜 Reading Sumerian tablets",
+    title: "📜 Mesopotamian — reading Sumerian tablets",
     link: "https://www.youtube.com/shorts/7L-oD6oraKA",
     linkLabel: "Watch video",
     articleText:
-      "<p>Now turn to <strong>Sumerian</strong> history. People wrote on clay <strong>tablets</strong>. Reading those tablets is how historians learn about Mesopotamian cities, gods and flood stories — step by step, with evidence.</p>",
+      "<p><strong>Mesopotamian / Sumerian</strong> history: people wrote on clay tablets. Reading those tablets is how historians learn about cities, gods and flood stories — step by step, with evidence.</p>",
     vocablist: [
       { word: "Sumerian", translation: "蘇美爾的", emoji: "🏛️" },
       { word: "tablet", translation: "泥板", emoji: "🧱" },
@@ -247,11 +269,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🌊 Atrahasis — Mesopotamia's old flood myth",
+    title: "📜 Mesopotamian — Atrahasis flood myth",
     link: "https://www.youtube.com/watch?v=G4Fr1-Q45oM",
     linkLabel: "Watch video",
     articleText:
-      "<p><strong>Atrahasis</strong> is a Mesopotamian flood story — often called one of the oldest. Gods, hard labour and a great flood appear in the tale. This is literature from Sumerian / Akkadian tradition, and a bridge to later Anunnaki theories online.</p>",
+      "<p><strong>Atrahasis</strong> is a Mesopotamian flood story — often called one of the oldest. Gods, hard labour and a great flood appear in the tale. Read it as literature first; later online theories come after.</p>",
     vocablist: [
       { word: "Atrahasis", translation: "阿特拉哈西斯", emoji: "🛶" },
       { word: "oldest", translation: "最古老的", emoji: "⏳" },
@@ -271,11 +293,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "✊ The Igigi Revolt",
+    title: "📜 Mesopotamian — the Igigi revolt",
     link: "https://www.youtube.com/shorts/i4g1kYOCXCw",
     linkLabel: "Watch video",
     articleText:
-      "<p>In one Mesopotamian tale, the <strong>Igigi</strong> — lesser gods — revolt against hard labour. Some versions say this leads to the creation of humans. Online \"Anunnaki origin\" clips retell this — discuss it as story first, theory second.</p>",
+      "<p>In one Mesopotamian tale, the <strong>Igigi</strong> — lesser gods — revolt against hard labour. Some versions say this leads to the creation of humans. Online Anunnaki clips retell this — story first, theory second.</p>",
     vocablist: [
       { word: "revolt", translation: "起義／反抗", emoji: "✊" },
       { word: "labour", translation: "勞動", emoji: "💪" },
@@ -295,11 +317,11 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🌌 Anunnaki theories — check the claims",
+    title: "🌌 Theories — Anunnaki claims (check carefully)",
     link: "https://www.youtube.com/shorts/yYp21if1AGc",
     linkLabel: "Watch video",
     articleText:
-      "<p>Modern clips push <strong>Anunnaki</strong> theories — often far beyond what Sumerian tablets clearly say. End with critical thinking: what comes from ancient literature, and what is a new online claim? Myth and archaeology are not the same.</p>",
+      "<p>Modern clips push <strong>Anunnaki</strong> theories — often far beyond what Sumerian tablets clearly say. End with critical thinking: what comes from ancient literature, and what is a new online claim?</p>",
     vocablist: [
       { word: "theory", translation: "理論／說法", emoji: "💭" },
       { word: "claim", translation: "聲稱", emoji: "📢" },
