@@ -18,7 +18,7 @@ window.sixHatSets = [
       { word: "make", translation: "製作", emoji: "🛠️" },
       { word: "festival", translation: "節日", emoji: "🌕" }
     ],
-    vocabex: "At the Mid-Autumn <span class='vocab-blank' data-answer='festival'></span>, people <span class='vocab-blank' data-answer='make'></span> a <span class='vocab-blank' data-answer='lantern'></span>. <span class='vocab-blank' data-answer='Red'></span> can mean <span class='vocab-blank' data-answer='lucky'></span>. We use lanterns to <span class='vocab-blank' data-answer='celebrate'></span>.",
+    vocabex: "At the Mid-Autumn <span class='vocab-blank' data-answer='festival'></span>, people <span class='vocab-blank' data-answer='make'></span> a <span class='vocab-blank' data-answer='lantern'></span>. The colour <span class='vocab-blank' data-answer='red'></span> is <span class='vocab-blank' data-answer='lucky'></span>. We use lanterns to <span class='vocab-blank' data-answer='celebrate'></span>.",
     questions: [
       { emoji: "📊", text: "What is she making? What is it for?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Have you made a lantern before? Did you like it?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -44,7 +44,7 @@ window.sixHatSets = [
       { word: "family", translation: "家人", emoji: "👨‍👩‍👧‍👦" },
       { word: "tradition", translation: "傳統", emoji: "📿" }
     ],
-    vocabex: "A <span class='vocab-blank' data-answer='mooncake'></span> is a Mid-Autumn <span class='vocab-blank' data-answer='tradition'></span>. People <span class='vocab-blank' data-answer='share'></span> it with <span class='vocab-blank' data-answer='family'></span>. Some like a <span class='vocab-blank' data-answer='sweet'></span> <span class='vocab-blank' data-answer='flavour'></span>; some do not.",
+    vocabex: "A <span class='vocab-blank' data-answer='mooncake'></span> is a Mid-Autumn <span class='vocab-blank' data-answer='tradition'></span>. People <span class='vocab-blank' data-answer='share'></span> it with their <span class='vocab-blank' data-answer='family'></span>. Some people like a <span class='vocab-blank' data-answer='sweet'></span> <span class='vocab-blank' data-answer='flavour'></span>. Some do not.",
     questions: [
       { emoji: "📊", text: "What are mooncakes? Who eats them?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you like mooncakes? Why / why not?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -68,7 +68,7 @@ window.sixHatSets = [
       { word: "story", translation: "故事", emoji: "🗣️" },
       { word: "remember", translation: "記得", emoji: "🧠" }
     ],
-    vocabex: "This <span class='vocab-blank' data-answer='legend'></span> is a Mid-Autumn <span class='vocab-blank' data-answer='story'></span>. Hou Yi was an <span class='vocab-blank' data-answer='archer'></span>. Chang'e went to the <span class='vocab-blank' data-answer='moon'></span>. People <span class='vocab-blank' data-answer='remember'></span> her as an <span class='vocab-blank' data-answer='immortal'></span> figure in myth.",
+    vocabex: "This <span class='vocab-blank' data-answer='story'></span> is a <span class='vocab-blank' data-answer='legend'></span>. Hou Yi was an <span class='vocab-blank' data-answer='archer'></span>. Chang'e went to the <span class='vocab-blank' data-answer='moon'></span>. People <span class='vocab-blank' data-answer='remember'></span> her as an <span class='vocab-blank' data-answer='immortal'></span>.",
     questions: [
       { emoji: "📊", text: "What is this story about? Who is Hou Yi? Who is Chang'e?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Which character do you feel for more? Why?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -92,7 +92,7 @@ window.sixHatSets = [
       { word: "similar", translation: "相似的", emoji: "🔗" },
       { word: "different", translation: "不同的", emoji: "🔀" }
     ],
-    vocabex: "More than one <span class='vocab-blank' data-answer='country'></span> can <span class='vocab-blank' data-answer='celebrate'></span> Mid-Autumn. <span class='vocab-blank' data-answer='Vietnam'></span> has its own <span class='vocab-blank' data-answer='custom'></span>s. Festivals can be <span class='vocab-blank' data-answer='similar'></span> and <span class='vocab-blank' data-answer='different'></span> at the same time.",
+    vocabex: "More than one <span class='vocab-blank' data-answer='country'></span> can <span class='vocab-blank' data-answer='celebrate'></span> Mid-Autumn. <span class='vocab-blank' data-answer='Vietnam'></span> has its own <span class='vocab-blank' data-answer='custom'></span>s. Some festivals look <span class='vocab-blank' data-answer='similar'></span>. Others look <span class='vocab-blank' data-answer='different'></span>.",
     questions: [
       { emoji: "📊", text: "What countries celebrate Mid-Autumn?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Which country's style would you like to try?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -116,7 +116,7 @@ window.sixHatSets = [
       { word: "company", translation: "公司", emoji: "🏢" },
       { word: "problem", translation: "問題", emoji: "❗" }
     ],
-    vocabex: "A mooncake <span class='vocab-blank' data-answer='voucher'></span> from a <span class='vocab-blank' data-answer='company'></span> can be a gift. Sometimes it creates a <span class='vocab-blank' data-answer='problem'></span>: <span class='vocab-blank' data-answer='waste'></span>, high <span class='vocab-blank' data-answer='cost'></span>, or a change in eating <span class='vocab-blank' data-answer='habit'></span>s.",
+    vocabex: "A mooncake <span class='vocab-blank' data-answer='voucher'></span> from a <span class='vocab-blank' data-answer='company'></span> can be a gift. Sometimes it creates a <span class='vocab-blank' data-answer='problem'></span>. It can cause <span class='vocab-blank' data-answer='waste'></span> and a high <span class='vocab-blank' data-answer='cost'></span>. It can also change eating <span class='vocab-blank' data-answer='habit'></span>s.",
     questions: [
       { emoji: "📊", text: "What went wrong with the mooncake vouchers?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Would you rather get a cake or a voucher? Why?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -142,7 +142,7 @@ window.sixHatSets = [
       { word: "litter", translation: "垃圾／亂拋垃圾", emoji: "🗑️" },
       { word: "safe", translation: "安全的", emoji: "✅" }
     ],
-    vocabex: "Wax-burning means pouring hot <span class='vocab-blank' data-answer='wax'></span> into a fire. It can <span class='vocab-blank' data-answer='burn'></span> people and is a real <span class='vocab-blank' data-answer='danger'></span>. It may be an <span class='vocab-blank' data-answer='offence'></span>. Do not <span class='vocab-blank' data-answer='litter'></span> — stay <span class='vocab-blank' data-answer='safe'></span>.",
+    vocabex: "Wax-burning means pouring hot <span class='vocab-blank' data-answer='wax'></span> into a fire. It can <span class='vocab-blank' data-answer='burn'></span> people. It is a real <span class='vocab-blank' data-answer='danger'></span>. It may be an <span class='vocab-blank' data-answer='offence'></span>. Do not <span class='vocab-blank' data-answer='litter'></span>. Stay <span class='vocab-blank' data-answer='safe'></span>.",
     questions: [
       { emoji: "📊", text: "What is wax-burning?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "What do you think of wax-burning?", hat: "red-hat", hatLabel: "Red Hat" },
@@ -169,7 +169,7 @@ window.sixHatSets = [
       { word: "explode", translation: "爆炸", emoji: "💥" },
       { word: "careful", translation: "小心的", emoji: "🧐" }
     ],
-    vocabex: "<span class='vocab-blank' data-answer='Heat'></span> can turn <span class='vocab-blank' data-answer='paraffin'></span> wax into <span class='vocab-blank' data-answer='vapour'></span>. The vapour may <span class='vocab-blank' data-answer='ignite'></span> or even <span class='vocab-blank' data-answer='explode'></span>. Be <span class='vocab-blank' data-answer='careful'></span> with festival candles.",
+    vocabex: "Adding <span class='vocab-blank' data-answer='heat'></span> can turn <span class='vocab-blank' data-answer='paraffin'></span> wax into <span class='vocab-blank' data-answer='vapour'></span>. The vapour may <span class='vocab-blank' data-answer='ignite'></span>. It may even <span class='vocab-blank' data-answer='explode'></span>. Be <span class='vocab-blank' data-answer='careful'></span> with festival candles.",
     questions: [
       { emoji: "📊", text: "What is wax burning in science terms? How does it work?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you think candles are safe to use?", hat: "red-hat", hatLabel: "Red Hat" },
