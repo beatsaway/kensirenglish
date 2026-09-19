@@ -24,8 +24,8 @@ window.sixHatSets = [
       { emoji: "😊", text: "Have you made a lantern before? Did you like it?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "Why is red a good colour for Mid-Autumn?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "What can go wrong with real candles in a lantern?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Why do people carry lanterns at this festival?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Design a simple lantern. What colour and shape?", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📋", text: "How do you make a paper lantern?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What kind of paper lantern would you make?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -48,10 +48,10 @@ window.sixHatSets = [
     questions: [
       { emoji: "📊", text: "What are mooncakes? Who eats them?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Do you like mooncakes? Why / why not?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What is good about sharing food with family?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "🌟", text: "What's cool about mooncakes?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "Why might some people not want to eat many mooncakes?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "How do mooncakes link to the full moon?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent a new mooncake flavour for school.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📋", text: "How are mooncakes made?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What if you were to invent a new mooncake flavour?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -74,8 +74,8 @@ window.sixHatSets = [
       { emoji: "😊", text: "Which character do you feel for more? Why?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is beautiful about looking at the moon with family?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "What is sad or unfair in the story?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Why do people tell this story at Mid-Autumn?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Retell the story in six short sentences.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📋", text: "How is this story related to how people celebrate Mid-Autumn Festival?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What would you do if you were Chang'e?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -94,12 +94,12 @@ window.sixHatSets = [
     ],
     vocabex: "More than one <span class='vocab-blank' data-answer='country'></span> can <span class='vocab-blank' data-answer='celebrate'></span> Mid-Autumn. <span class='vocab-blank' data-answer='Vietnam'></span> has its own <span class='vocab-blank' data-answer='custom'></span>s. Festivals can be <span class='vocab-blank' data-answer='similar'></span> and <span class='vocab-blank' data-answer='different'></span> at the same time.",
     questions: [
-      { emoji: "📊", text: "What countries celebrate Mid-Autumn? How do Vietnamese celebrate it?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "📊", text: "What countries celebrate Mid-Autumn?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Which country's style would you like to try?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "What is good about many places sharing a festival?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What can go wrong if we say Mid-Autumn is \"only Chinese\"?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "What is similar and what is different across countries?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write two festival tips for a visitor to Vietnam.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "🌟", text: "What's good about the Vietnamese way of celebration?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What problems can big festival crowds cause?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do other countries celebrate Mid-Autumn?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What tips would you give a visitor to Vietnam?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -123,7 +123,7 @@ window.sixHatSets = [
       { emoji: "🌟", text: "When can a voucher still be a useful gift?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "How can festival gifts create waste?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "Why might fewer people want traditional mooncakes?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Invent a better Mid-Autumn gift idea for a company.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "What better Mid-Autumn gift could a company give?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -144,12 +144,12 @@ window.sixHatSets = [
     ],
     vocabex: "Wax-burning means pouring hot <span class='vocab-blank' data-answer='wax'></span> into a fire. It can <span class='vocab-blank' data-answer='burn'></span> people and is a real <span class='vocab-blank' data-answer='danger'></span>. It may be an <span class='vocab-blank' data-answer='offence'></span>. Do not <span class='vocab-blank' data-answer='litter'></span> — stay <span class='vocab-blank' data-answer='safe'></span>.",
     questions: [
-      { emoji: "📊", text: "What is wax-burning? What do the videos warn about?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "How do these safety ads make you feel?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "📊", text: "What is wax-burning?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "What do you think of wax-burning?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is a safer way to enjoy Mid-Autumn at night?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "What can go wrong with wax-burning or sky lanterns?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "Why do governments make rules about festival fires?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Write two safety rules for a school Mid-Autumn night.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "What safety rules would you make for a school Mid-Autumn night?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
@@ -172,11 +172,11 @@ window.sixHatSets = [
     vocabex: "<span class='vocab-blank' data-answer='Heat'></span> can turn <span class='vocab-blank' data-answer='paraffin'></span> wax into <span class='vocab-blank' data-answer='vapour'></span>. The vapour may <span class='vocab-blank' data-answer='ignite'></span> or even <span class='vocab-blank' data-answer='explode'></span>. Be <span class='vocab-blank' data-answer='careful'></span> with festival candles.",
     questions: [
       { emoji: "📊", text: "What is wax burning in science terms? How does it work?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does candle science feel cool or scary to you?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "How can science help people stay safer at festivals?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
-      { emoji: "⚠️", text: "What happens if hot wax meets the wrong heat or fire?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "😊", text: "Do you think candles are safe to use?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why's it good to learn about this?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What could go wrong?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "How do these clips explain Mid-Autumn fire danger?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Make a 4-box comic: candle → heat → vapour → fire.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "How would you show candle, heat, vapour and fire?", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   }
 ];
