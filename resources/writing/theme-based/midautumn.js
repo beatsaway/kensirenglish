@@ -66,6 +66,34 @@ window.themeBasedMidAutumn = {
             ]
         },
         {
+            id: "article-mooncake-vouchers",
+            title: "Article — are mooncake vouchers a good idea?",
+            watchLinks: [
+                { label: "Mooncake vouchers — what went wrong?", url: "https://www.youtube.com/shorts/gmg5rgm6QPs" },
+                { label: "Hong Kong people talk about mooncakes", url: "https://youtu.be/JEu08MlWyHU?t=44" },
+                { label: "Mid-Autumn Festival (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Mid-Autumn%20Festival" }
+            ],
+            context: "Some companies give mooncake vouchers instead of real cakes. Some people like this. Others say it causes waste or spoils the festival.",
+            instructions: "Write an article for your school magazine.\n\nDo you agree or disagree that mooncake vouchers are a good thing?\n\nGive 3 reasons.",
+            successCriteria: [
+                "Clear agree or disagree",
+                "3 reasons"
+            ],
+            questions: [],
+            vocab: [
+                { en: "voucher", cn: "禮券" },
+                { en: "mooncake", cn: "月餅" },
+                { en: "agree", cn: "同意" },
+                { en: "disagree", cn: "不同意" },
+                { en: "gift", cn: "禮物" },
+                { en: "waste", cn: "浪費" },
+                { en: "company", cn: "公司" },
+                { en: "useful", cn: "有用的" },
+                { en: "tradition", cn: "傳統" },
+                { en: "reason", cn: "理由" }
+            ]
+        },
+        {
             id: "article-ban-wax-burning",
             title: "Article — three reasons to ban wax-burning",
             watchLinks: [
