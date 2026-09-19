@@ -103,6 +103,54 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "🇰🇷 Chuseok — Korea's Mid-Autumn",
+    link: "https://www.youtube.com/watch?v=QvUKBuyw5x0",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>In Korea, the Mid-Autumn time is called <strong>Chuseok</strong>. Families travel home, honour ancestors, eat special food such as songpyeon, and share the harvest. It is similar to Mid-Autumn in China and Vietnam, but Korean customs and meaning are their own.</p>",
+    vocablist: [
+      { word: "Chuseok", translation: "秋夕（韓國中秋）", emoji: "🇰🇷" },
+      { word: "ancestor", translation: "祖先", emoji: "🙏" },
+      { word: "harvest", translation: "收成", emoji: "🌾" },
+      { word: "family", translation: "家人", emoji: "👨‍👩‍👧‍👦" },
+      { word: "custom", translation: "習俗", emoji: "🎎" },
+      { word: "honour", translation: "致敬／紀念", emoji: "🕯️" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Chuseok'></span> is Korea's Mid-Autumn festival. Many people go home to see their <span class='vocab-blank' data-answer='family'></span> and <span class='vocab-blank' data-answer='honour'></span> their <span class='vocab-blank' data-answer='ancestor'></span>s. They give thanks for the <span class='vocab-blank' data-answer='harvest'></span> and follow Korean <span class='vocab-blank' data-answer='custom'></span>s.",
+    questions: [
+      { emoji: "📊", text: "What is Chuseok? What do people do?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you like to join a Chuseok meal? Why?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about going home for a festival?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What can be hard about travelling home for Chuseok?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is Chuseok similar to or different from Chinese Mid-Autumn?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What Chuseok custom would you try first?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🇯🇵 Otsukimi — Japan's harvest moon",
+    link: "https://www.youtube.com/watch?v=kmwJQq91h-o",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>In Japan, people mark the harvest moon with <strong>Otsukimi</strong>, or moon-viewing. They look at the moon, eat rice dumplings called dango, and set out pampas grass as an offering. It is often quieter than a lantern parade or a big family feast.</p>",
+    vocablist: [
+      { word: "Otsukimi", translation: "月見（日本賞月）", emoji: "🇯🇵" },
+      { word: "moon", translation: "月亮", emoji: "🌕" },
+      { word: "dango", translation: "糰子", emoji: "🍡" },
+      { word: "offer", translation: "供奉", emoji: "🙇" },
+      { word: "grass", translation: "草", emoji: "🌾" },
+      { word: "quiet", translation: "安靜的", emoji: "🤫" }
+    ],
+    vocabex: "<span class='vocab-blank' data-answer='Otsukimi'></span> is Japan's way of viewing the <span class='vocab-blank' data-answer='moon'></span>. People eat rice <span class='vocab-blank' data-answer='dango'></span> and <span class='vocab-blank' data-answer='offer'></span> pampas <span class='vocab-blank' data-answer='grass'></span>. The festival is often <span class='vocab-blank' data-answer='quiet'></span> rather than noisy.",
+    questions: [
+      { emoji: "📊", text: "What is Otsukimi? What do people do?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you rather watch the moon quietly or join a big party?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What's good about a quiet moon-viewing night?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What can people miss if they only look at the moon and forget the meaning?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is Otsukimi different from Chinese Mid-Autumn?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "What would you put on an Otsukimi table?", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "💸 Mooncake vouchers — what went wrong?",
     link: "https://www.youtube.com/shorts/gmg5rgm6QPs",
     linkLabel: "Watch video",

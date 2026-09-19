@@ -9,32 +9,34 @@ window.themeBasedMidAutumn = {
     ],
     tasks: [
         {
-            id: "article-three-midautumn-stories",
-            title: "Article — three Mid-Autumn stories",
+            id: "article-midautumn-perspectives",
+            title: "Article — Mid-Autumn in China, Korea, Vietnam and Japan",
             watchLinks: [
-                { label: "Hou Yi and Chang'e", url: "https://youtu.be/-MMk9Jyl-eU?t=22" },
                 { label: "Who celebrates Mid-Autumn?", url: "https://www.youtube.com/shorts/TdiXmbqih70" },
+                { label: "Celebrate Chuseok", url: "https://www.youtube.com/watch?v=QvUKBuyw5x0" },
+                { label: "Otsukimi — Japan's harvest moon", url: "https://www.youtube.com/watch?v=kmwJQq91h-o" },
                 { label: "Mid-Autumn Festival (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Mid-Autumn%20Festival" }
             ],
-            context: "Chinese, Korean and Vietnamese people all mark the Mid-Autumn Festival, but their stories are not the same.",
-            instructions: "Write an article for your school magazine.\n\nTell three Mid-Autumn stories: one from Chinese culture, one from Korean culture and one from Vietnamese culture.\n\nFor each story, say who it is about and what happens.",
+            context: "Chinese, Korean, Vietnamese and Japanese people all mark the harvest moon, but the focus is not the same. Food, family customs and what people value can differ. In Japan this time is called Otsukimi.",
+            instructions: "Write an article for your school magazine.\n\nHow is the festival different from a Chinese, Korean, Vietnamese and Japanese perspective?\n\nWrite about all four. For each one, say what people focus on.",
             successCriteria: [
-                "One Chinese story",
-                "One Korean story",
-                "One Vietnamese story"
+                "Chinese perspective",
+                "Korean perspective",
+                "Vietnamese perspective",
+                "Japanese perspective"
             ],
             questions: [],
             vocab: [
-                { en: "story / legend", cn: "故事／傳說" },
+                { en: "perspective", cn: "角度／觀點" },
                 { en: "Chinese", cn: "中國的" },
-                { en: "Korean", cn: "韓國的" },
+                { en: "Korean / Chuseok", cn: "韓國的／秋夕" },
                 { en: "Vietnamese", cn: "越南的" },
-                { en: "culture", cn: "文化" },
+                { en: "Japanese / Otsukimi", cn: "日本的／月見" },
+                { en: "focus", cn: "重點" },
+                { en: "custom", cn: "習俗" },
+                { en: "family", cn: "家人" },
                 { en: "moon", cn: "月亮" },
-                { en: "festival", cn: "節日" },
-                { en: "character", cn: "角色" },
-                { en: "happen", cn: "發生" },
-                { en: "celebrate", cn: "慶祝" }
+                { en: "different", cn: "不同的" }
             ]
         },
         {
