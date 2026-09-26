@@ -304,7 +304,8 @@
     <script src="category_exercises_data.js"></script>
     <script>
         let selectedKeyword = null;
-        let currentExercise = null;
+        /** Shareable exercise name, e.g. "my-garden" */
+        let currentExerciseSlug = null;
 
         function shuffleArray(array) {
             const shuffled = [...array];
@@ -315,36 +316,60 @@
             return shuffled;
         }
 
+        /** Stable shareable name from title, e.g. "🌅 My Garden" → "my-garden" */
+        function exerciseSlug(exercise) {
+            return String(exercise.title || '')
+                .replace(/[^a-zA-Z0-9\s-]+/g, ' ')
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        function getExerciseBySlug(slug) {
+            if (!slug) return null;
+            const key = String(slug).toLowerCase();
+            return categoryExercises.find((ex) => exerciseSlug(ex) === key) || null;
+        }
+
+        function updateExerciseUrl(slug) {
+            if (!slug) return;
+            const url = new URL(location.href);
+            url.searchParams.set('exercise', slug);
+            history.replaceState(null, '', url);
+        }
+
         function init() {
-            // Randomly select an exercise on page load
-            const randomIndex = Math.floor(Math.random() * categoryExercises.length);
-            currentExercise = randomIndex.toString();
-            
+            const params = new URLSearchParams(location.search);
+            const fromUrl = getExerciseBySlug(params.get('exercise'));
+            const exercise = fromUrl || categoryExercises[Math.floor(Math.random() * categoryExercises.length)];
+            currentExerciseSlug = exerciseSlug(exercise);
+
             setupExerciseFilter();
             renderExercises();
+            updateExerciseUrl(currentExerciseSlug);
         }
 
         function setupExerciseFilter() {
             const exerciseSelect = document.getElementById('exerciseSelect');
-            
-            // Create array with index and title, then sort alphabetically
-            const exercisesWithIndex = categoryExercises.map((exercise, index) => ({
-                index: index,
+
+            const options = categoryExercises.map((exercise) => ({
+                slug: exerciseSlug(exercise),
                 title: exercise.title + ' - ' + exercise.theme
             })).sort((a, b) => a.title.localeCompare(b.title));
-            
-            exercisesWithIndex.forEach(({ index, title }) => {
+
+            options.forEach(({ slug, title }) => {
                 const option = document.createElement('option');
-                option.value = index.toString();
+                option.value = slug;
                 option.textContent = title;
                 exerciseSelect.appendChild(option);
             });
 
-            // Set the selected option to the current exercise
-            exerciseSelect.value = currentExercise;
+            exerciseSelect.value = currentExerciseSlug;
 
             exerciseSelect.addEventListener('change', (e) => {
-                currentExercise = e.target.value;
+                currentExerciseSlug = e.target.value;
+                updateExerciseUrl(currentExerciseSlug);
                 renderExercises();
             });
         }
@@ -357,7 +382,8 @@
             content.innerHTML = '';
             fixedKeywordsContainer.innerHTML = '';
 
-            const filteredExercises = categoryExercises[parseInt(currentExercise)] ? [categoryExercises[parseInt(currentExercise)]] : [];
+            const exercise = getExerciseBySlug(currentExerciseSlug);
+            const filteredExercises = exercise ? [exercise] : [];
 
             if (filteredExercises.length > 0) {
                 const exercise = filteredExercises[0];
