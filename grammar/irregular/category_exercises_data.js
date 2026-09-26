@@ -517,5 +517,83 @@ const categoryExercises = [
             }
         ]
     }
+    ,
+    {
+        theme: "🌱",
+        type: "Past Tense",
+        title: "🌲 My Garden",
+        keywords: [
+            {present: "blow", past: "blew"},
+            {present: "put", past: "put"},
+            {present: "think", past: "thought"},
+            {present: "grow", past: "grew"},
+            {present: "find", past: "found"},
+            {present: "take", past: "took"},
+            {present: "show", past: "showed"}
+        ],
+        paragraphs: [
+            {
+                chinese: "啲風吹得好勁吹咗一陣。",
+                english: "The wind <span class='blank' data-answer='blew'></span> hard for a moment."
+            },
+            {
+                chinese: "我爸爸好小心咁將啲種子放入泥土。",
+                english: "My dad carefully <span class='blank' data-answer='put'></span> the seeds into the soil."
+            },
+            {
+                chinese: "我估風暴好快會開始。",
+                english: "I <span class='blank' data-answer='thought'></span> the storm would start soon."
+            },
+            {
+                chinese: "我哋每天下午都會淋花。我哋啲植物一日一日咁長高。",
+                english: "Every afternoon we watered the plants. Our plants <span class='blank' data-answer='grew'></span> taller day by day."
+            },
+            {
+                chinese: "我發現呢個位置影相一流。",
+                english: "I <span class='blank' data-answer='found'></span> a spot that was perfect for photos, so I <span class='blank' data-answer='took'></span> many pictures."
+            },
+            {
+                chinese: "我將花園嘅相俾班同學睇。",
+                english: "I <span class='blank' data-answer='showed'></span> the garden photos to my class."
+            }
+        ]
+    },
+    {
+        theme: "🎉",
+        type: "Past Tense",
+        title: "🎂 My Birthday",
+        keywords: [
+            {present: "wake", past: "woke"},
+            {present: "go", past: "went"},
+            {present: "break", past: "broke"},
+            {present: "get", past: "got"},
+            {present: "bring", past: "brought"},
+            {present: "sing", past: "sang"},
+            {present: "eat", past: "ate"},
+            {present: "fly", past: "flew"},
+            {present: "run", past: "ran"}
+        ],
+        paragraphs: [
+            {
+                chinese: "朝早我一早起身，行去廚房，原來阿媽開始整蛋糕。",
+                english: "I <span class='blank' data-answer='woke'></span> up early and <span class='blank' data-answer='went'></span> to the kitchen. Mum had started baking the cake."
+            },
+            {
+                chinese: "我唔小心整爛咗隻玻璃杯，但好彩冇人受傷。",
+                english: "I accidentally <span class='blank' data-answer='broke'></span> a glass mug, but luckily nobody <span class='blank' data-answer='got'></span> hurt."
+            },
+            {
+                chinese: "放學之後朋友嚟我屋企，仲帶咗好多禮物俾我。",
+                english: "After school, my friends <span class='blank' data-answer='went'></span> to my house and <span class='blank' data-answer='brought'></span> me lots of presents."
+            },
+            {
+                chinese: "我哋一齊唱歌，我食咗兩大塊Pizza。",
+                english: "We <span class='blank' data-answer='sang'></span> songs together, and I <span class='blank' data-answer='ate'></span> two big pizza slices."
+            },
+            {
+                chinese: "玩遊戲嗰陣個Switch手掣飛出窗口。我跑出去拾。",
+                english: "While we were playing, the Switch controller <span class='blank' data-answer='flew'></span> out of the window. I <span class='blank' data-answer='ran'></span> outside to get it."
+            }
+        ]
+    }
 ];
-
