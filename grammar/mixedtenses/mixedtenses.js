@@ -457,6 +457,43 @@ const exercise16Verbs = [
   { base: "wear", subject: "i" }
 ];
 
+
+const exercise17Verbs = [
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" },
+  { base: "find", subject: "i" }
+];
+const exercise18Verbs = [
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" },
+  { base: "send", subject: "i" }
+];
+const exercise19Verbs = [
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" },
+  { base: "speak", subject: "i" }
+];
+const exercise20Verbs = [
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "i" },
+  { base: "sleep", subject: "he" }
+];
 window.realTensesExercises = [
   {
     id: 1,
@@ -720,6 +757,46 @@ window.realTensesExercises = [
       "I _____ (wear) something more formal if I had known it was an important meeting.\n\nI _____ (wear) this same old coat for years, and it's still my favorite.\n\nI rarely _____ (wear) green colors because they make me sad.\n\nI think I _____ (wear) my blue dress for the party.\n\nI _____ (wear) my new shoes when it started to rain.\n\nI noticed I _____ (wear) a hole in my favorite sweater.\n\nOf course you can't recognise me. I _____ (wear) a mask.",
     answers: ["would have worn", "have been wearing", "wear", "will wear", "was wearing", "had worn", "am wearing"],
     choices: buildChoices(exercise16Verbs)
+  },
+  {
+    id: 17,
+    slug: "find",
+    title: "Find",
+    link: "",
+    text:
+      "Without your map, I never _____ (find) the museum.\n\nI _____ (find) it hard to wake up early all week.\n\nI usually _____ (find) a quiet place to revise after school.\n\nDon't worry — I'm sure you _____ (find) your keys soon.\n\nI _____ (find) the maths homework difficult when you texted me.\n\nWhen I opened my bag, I realised I _____ (find) someone else's notebook by mistake.\n\nBe quiet for a minute; I _____ (find) a good website for our project.",
+    answers: ["would have found", "have been finding", "find", "will find", "was finding", "had found", "am finding"],
+    choices: buildChoices(exercise17Verbs)
+  },
+  {
+    id: 18,
+    slug: "send",
+    title: "Send",
+    link: "",
+    text:
+      "Looking back, I _____ (send) that angry email if I had waited five minutes.\n\nI _____ (send) messages to my group chat since this morning.\n\nI usually _____ (send) my homework on Friday night.\n\nI promise I _____ (send) you the photos after dinner.\n\nI _____ (send) a text when the teacher walked in.\n\nBy the time she replied, I _____ (send) three more messages.\n\nPlease wait — I _____ (send) an important email right now.",
+    answers: ["would have sent", "have been sending", "send", "will send", "was sending", "had sent", "am sending"],
+    choices: buildChoices(exercise18Verbs)
+  },
+  {
+    id: 19,
+    slug: "speak",
+    title: "Speak",
+    link: "",
+    text:
+      "Without so much practice, I never _____ (speak) so clearly in the assembly.\n\nI _____ (speak) English with my cousin every evening this week.\n\nI rarely _____ (speak) in front of a big class, but I try my best.\n\nTomorrow I _____ (speak) to the teacher about the project.\n\nI _____ (speak) to Mum on the phone when the doorbell rang.\n\nI knew I _____ (speak) too quickly in the interview as soon as I sat down.\n\nShh — I _____ (speak) to the librarian about our late books.",
+    answers: ["would have spoken", "have been speaking", "speak", "will speak", "was speaking", "had spoken", "am speaking"],
+    choices: buildChoices(exercise19Verbs)
+  },
+  {
+    id: 20,
+    slug: "sleep",
+    title: "Sleep",
+    link: "",
+    text:
+      "Without that noisy party next door, I _____ (sleep) much better last night.\n\nI _____ (sleep) badly for days because of the exams.\n\nI usually _____ (sleep) at about ten o'clock on school nights.\n\nDon't call me early tomorrow — I _____ (sleep) until nine.\n\nI _____ (sleep) when Dad came home from work.\n\nWhen the alarm rang, I realised I _____ (sleep) through half the morning.\n\nPlease be quiet; my little brother _____ (sleep) in the next room.",
+    answers: ["would have slept", "have been sleeping", "sleep", "will sleep", "was sleeping", "had slept", "is sleeping"],
+    choices: buildChoices(exercise20Verbs)
   }
 ];
 /*
