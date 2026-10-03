@@ -44,7 +44,7 @@ window.sixHatSets = [
     ],
     vocabex: "This old <span class='vocab-blank' data-answer='mental'></span> <span class='vocab-blank' data-answer='hospital'></span> looks <span class='vocab-blank' data-answer='abandoned'></span>. Online <span class='vocab-blank' data-answer='rumour'></span>s make it famous, but night visits can be <span class='vocab-blank' data-answer='unsafe'></span>. Show <span class='vocab-blank' data-answer='respect'></span> for the place and its past.",
     questions: [
-      { emoji: "📊", text: "What was this building used for? Why do people call it a ghost house?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "📊", text: "What happened in 1892, 1939, 1961, 1971, and 1998?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "How do ghost stories about hospitals make you feel?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "Why might learning the real history of a hospital matter?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "Why is it a bad idea to sneak in at night?", hat: "black-hat", hatLabel: "Black Hat" },
