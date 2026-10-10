@@ -318,6 +318,30 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "🎤 Jo Koy — telling Asians apart by accent",
+    link: "https://www.youtube.com/watch?v=673PjkcBG00&t=30s",
+    linkLabel: "Watch video (from 0:30)",
+    articleText:
+      "<p>Comedian <strong>Jo Koy</strong> jokes that you can tell Asian people apart by their accents. Stand-up can be sharp and funny — but comedy about accents can also slide into stereotypes. Watch from 0:30 and ask what is humour, and what is unfair.</p>",
+    vocablist: [
+      { word: "comedy", translation: "喜劇", emoji: "😂" },
+      { word: "stereotype", translation: "刻板印象", emoji: "📦" },
+      { word: "accent", translation: "口音", emoji: "🗣️" },
+      { word: "joke", translation: "玩笑", emoji: "😆" },
+      { word: "unfair", translation: "不公平的", emoji: "⚠️" },
+      { word: "group", translation: "群體", emoji: "👥" }
+    ],
+    vocabex: "This <span class='vocab-blank' data-answer='comedy'></span> <span class='vocab-blank' data-answer='joke'></span> is about Asian <span class='vocab-blank' data-answer='accent'></span>s. A funny line can still use a <span class='vocab-blank' data-answer='stereotype'></span> about a <span class='vocab-blank' data-answer='group'></span> — and that can feel <span class='vocab-blank' data-answer='unfair'></span>.",
+    questions: [
+      { emoji: "📊", text: "What does Jo Koy say about accents in this bit?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Did you find it funny, awkward, or both?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "When can accent comedy help people notice real differences kindly?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "When does joking about accents become stereotyping?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How is this stand-up different from the UK street interview about a Hong Kong accent?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Rewrite one joke idea as a kind classroom tip about accents.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "📖 Reading — Add oil! & Long time no see",
     articleText:
       "<p><strong>Add oil!</strong> (加油) is a Hong Kong favourite. People say it to cheer someone on — exams, sports, hard work. It is a direct translation that became real English in local life.</p><p><strong>Long time no see!</strong> also comes from Chinese word order. Many English speakers worldwide now use it as a friendly hello after a gap.</p><p>These are Hong Kong–style (and wider Chinese-influenced) English phrases: clear meaning, local flavour, and often proud identity.</p>",
