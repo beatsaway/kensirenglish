@@ -34,26 +34,26 @@ window.themeBasedHongKongAccent = {
             ]
         },
         {
-            id: "article-accent-pride",
-            title: "Article — should we be proud of a Hong Kong accent?",
+            id: "article-uk-street-hk-accent",
+            title: "Article — will foreigners laugh at a Hong Kong accent?",
             watchLinks: [
-                { label: "How to speak Chinglish (short)", url: "https://www.youtube.com/shorts/T5DPwmYILxo" },
-                { label: "HK vs Singapore vs Malaysia (4:41)", url: "https://www.youtube.com/watch?v=NlQhQjla17g&t=281s" },
+                { label: "UK street chat — HK accent (from 3:49)", url: "https://youtu.be/zmUYA5QqY3w?t=229" },
+                { label: "Jo Koy — accents comedy (from 0:30)", url: "https://youtu.be/673PjkcBG00?t=30" },
                 { label: "Hong Kong Accent (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Hong%20Kong%20Accent" }
             ],
-            context: "Some people laugh at Chinglish. Others say a Hong Kong accent shows identity and real local English. Schools still teach clearer sounds for exams and travel.",
-            instructions: "Write an article for your school magazine.\n\nShould students be proud of a Hong Kong accent?\n\nSay yes, no, or it depends.\n\nGive 3 reasons.",
+            context: "A Hong Kong team asks people in the UK whether a Hong Kong accent will get laughed at. Some answers focus on clarity. Others focus on kindness and confidence. Comedy clips also joke about Asian accents — funny for some, unfair for others.",
+            instructions: "Write an article for your school magazine.\n\nAfter watching the UK street interview (and optionally the Jo Koy clip), answer: will foreigners laugh at a Hong Kong accent?\n\nSay yes, no, or it depends.\n\nGive 3 reasons. Use ideas from the video(s) where you can.",
             questions: [],
             vocab: [
-                { en: "proud", cn: "自豪" },
-                { en: "identity", cn: "身份認同" },
-                { en: "mock", cn: "嘲笑" },
+                { en: "interview", cn: "訪問" },
+                { en: "foreigner", cn: "外國人" },
+                { en: "laugh at", cn: "取笑" },
                 { en: "accent", cn: "口音" },
-                { en: "clear", cn: "清晰的" },
-                { en: "exam", cn: "考試" },
+                { en: "confidence", cn: "自信" },
+                { en: "clarity", cn: "清晰度" },
+                { en: "kindness", cn: "善意" },
+                { en: "nervous", cn: "緊張的" },
                 { en: "respect", cn: "尊重" },
-                { en: "local", cn: "本地的" },
-                { en: "Chinglish", cn: "中式英語" },
                 { en: "reason", cn: "理由" }
             ]
         },

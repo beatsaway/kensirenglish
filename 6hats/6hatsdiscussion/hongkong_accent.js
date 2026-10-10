@@ -270,6 +270,54 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "✈️ Jet2 holiday — one line, many accents",
+    link: "https://www.youtube.com/shorts/KGo9Pm1LRQQ",
+    linkLabel: "Watch video",
+    articleText:
+      "<p>This short ranks the same Jet2 holiday catchphrase in <strong>different accents</strong>. Same words, different music of speech — stress, vowels and rhythm change how \"fancy\" or funny a line feels.</p>",
+    vocablist: [
+      { word: "catchphrase", translation: "口號／金句", emoji: "📢" },
+      { word: "rank", translation: "排名", emoji: "🏆" },
+      { word: "accent", translation: "口音", emoji: "🗣️" },
+      { word: "same", translation: "相同的", emoji: "🟰" },
+      { word: "rhythm", translation: "節奏", emoji: "🥁" },
+      { word: "funny", translation: "好笑的", emoji: "😂" }
+    ],
+    vocabex: "The short can <span class='vocab-blank' data-answer='rank'></span> one holiday <span class='vocab-blank' data-answer='catchphrase'></span> in more than one <span class='vocab-blank' data-answer='accent'></span>. The words stay the <span class='vocab-blank' data-answer='same'></span>, but the <span class='vocab-blank' data-answer='rhythm'></span> can sound <span class='vocab-blank' data-answer='funny'></span>.",
+    questions: [
+      { emoji: "📊", text: "Which accents appear in the Jet2 holiday ranking?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Which accent version did you like or laugh at most?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What can we learn by hearing the same line in many accents?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "When does ranking accents become unkind stereotyping?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "How do stress and rhythm change the same catchphrase?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Say the Jet2 line in your normal voice, then try one other accent kindly.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
+    title: "🇬🇧 UK street chat — will people laugh at a HK accent?",
+    link: "https://youtu.be/zmUYA5QqY3w?t=229",
+    linkLabel: "Watch video (from 3:49)",
+    articleText:
+      "<p>A Hong Kong street interview in the UK asks foreigners: will they <strong>laugh at</strong> a Hong Kong accent? Real answers may surprise you — some people care about clarity; many care more about kindness and confidence.</p>",
+    vocablist: [
+      { word: "interview", translation: "訪問", emoji: "🎤" },
+      { word: "foreigner", translation: "外國人", emoji: "🌍" },
+      { word: "laugh", translation: "取笑／大笑", emoji: "😆" },
+      { word: "confidence", translation: "自信", emoji: "💪" },
+      { word: "clarity", translation: "清晰度", emoji: "✨" },
+      { word: "kindness", translation: "善意", emoji: "💛" }
+    ],
+    vocabex: "In this street <span class='vocab-blank' data-answer='interview'></span>, a <span class='vocab-blank' data-answer='foreigner'></span> may or may not <span class='vocab-blank' data-answer='laugh'></span>. <span class='vocab-blank' data-answer='Clarity'></span> helps, but <span class='vocab-blank' data-answer='confidence'></span> and <span class='vocab-blank' data-answer='kindness'></span> matter too.",
+    questions: [
+      { emoji: "📊", text: "What do people in the UK clip say about a Hong Kong accent?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Would you feel nervous speaking English to strangers abroad?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "What answers in the video feel encouraging?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "Why is it unfair to laugh at someone's accent?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "What matters more in real talk: a perfect accent, or clear and confident speech?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Write one sentence you would say to cheer up a friend worried about their accent.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "📖 Reading — Add oil! & Long time no see",
     articleText:
       "<p><strong>Add oil!</strong> (加油) is a Hong Kong favourite. People say it to cheer someone on — exams, sports, hard work. It is a direct translation that became real English in local life.</p><p><strong>Long time no see!</strong> also comes from Chinese word order. Many English speakers worldwide now use it as a friendly hello after a gap.</p><p>These are Hong Kong–style (and wider Chinese-influenced) English phrases: clear meaning, local flavour, and often proud identity.</p>",
