@@ -61,6 +61,32 @@ window.sixHatSets = [
     ]
   },
   {
+    title: "😶 The uncanny valley — almost human, oddly creepy",
+    links: [
+      { url: "https://www.youtube.com/shorts/jrmBK3d-OA4", label: "The Uncanny Valley" },
+      { url: "https://www.youtube.com/shorts/-epu2xkwzi4", label: "Susan Dell pledged billions — internet focused on her face" }
+    ],
+    articleText:
+      "<p>The <strong>uncanny valley</strong> is that uneasy feeling when something looks almost human — a mask, a robot, heavy makeup — but not quite right. Online, people also judge real faces harshly. Creepy looks sell on Halloween; kindness still matters offline.</p>",
+    vocablist: [
+      { word: "uncanny", translation: "詭異的／怪異的", emoji: "😶" },
+      { word: "valley", translation: "谷（此指「恐怖谷」）", emoji: "📉" },
+      { word: "creepy", translation: "令人毛骨悚然的", emoji: "🕷️" },
+      { word: "human", translation: "人類的", emoji: "🧑" },
+      { word: "judge", translation: "批評／評斷", emoji: "⚖️" },
+      { word: "face", translation: "面孔", emoji: "🙂" }
+    ],
+    vocabex: "The <span class='vocab-blank' data-answer='uncanny'></span> <span class='vocab-blank' data-answer='valley'></span> makes almost-<span class='vocab-blank' data-answer='human'></span> things feel <span class='vocab-blank' data-answer='creepy'></span>. Online, people may <span class='vocab-blank' data-answer='judge'></span> someone's <span class='vocab-blank' data-answer='face'></span> instead of their words.",
+    questions: [
+      { emoji: "📊", text: "What is the uncanny valley? What does the Susan Dell clip show about online comments?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Have you ever felt uneasy looking at a mask, doll or filtered face? Why?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why do filmmakers and Halloween makeup artists use the uncanny valley on purpose?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "⚠️", text: "What is unfair about focusing on someone's face instead of their actions?", hat: "black-hat", hatLabel: "Black Hat" },
+      { emoji: "📋", text: "When is a creepy look okay (costume) and when is commenting on a real face unkind?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Design a Halloween mask idea that uses the uncanny valley — without mocking real people.", hat: "green-hat", hatLabel: "Green Hat" }
+    ]
+  },
+  {
     title: "🏡 Fairview Park — trick or treat in Yuen Long",
     link: "https://youtu.be/mDibCPuqMn4",
     linkLabel: "Watch video",
