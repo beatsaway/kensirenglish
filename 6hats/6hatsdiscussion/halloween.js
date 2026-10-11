@@ -183,14 +183,15 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "🇬🇧 vs 🇺🇸 UK and US Halloween",
+    title: "🇬🇧 vs 🇺🇸 vs 🇩🇪 Halloween across countries",
     links: [
       { url: "https://www.youtube.com/shorts/drETp0d_K70", label: "UK vs US Halloween (Teacher Tommy T)" },
       { url: "https://www.youtube.com/shorts/RpZq9-DMcOw", label: "Halloween in the US vs the UK" },
-      { url: "https://www.youtube.com/shorts/eMe6qMjoahI", label: "American Halloween vs British Halloween" }
+      { url: "https://www.youtube.com/shorts/eMe6qMjoahI", label: "American Halloween vs British Halloween" },
+      { url: "https://www.youtube.com/shorts/_bFtlf3QCis", label: "Halloween in Germany vs USA" }
     ],
     articleText:
-      "<p>Clips often joke that <strong>US Halloween</strong> is huge — costumes, candy, full streets — while <strong>UK Halloween</strong> can feel smaller or newer. Stereotypes are funny; real towns differ. How would Hong Kong sit between the two?</p>",
+      "<p>Clips often joke that <strong>US Halloween</strong> is huge — costumes, candy, full streets — while the <strong>UK</strong> or <strong>Germany</strong> can feel quieter or different. Stereotypes are funny; real towns differ. How would Hong Kong sit among them?</p>",
     vocablist: [
       { word: "compare", translation: "比較", emoji: "⚖️" },
       { word: "tradition", translation: "傳統", emoji: "📿" },
@@ -201,12 +202,12 @@ window.sixHatSets = [
     ],
     vocabex: "Clips <span class='vocab-blank' data-answer='compare'></span> <span class='vocab-blank' data-answer='American'></span> and <span class='vocab-blank' data-answer='British'></span> Halloween. A funny <span class='vocab-blank' data-answer='stereotype'></span> is not always true. The festival is more <span class='vocab-blank' data-answer='popular'></span> in some places; <span class='vocab-blank' data-answer='tradition'></span>s change.",
     questions: [
-      { emoji: "📊", text: "What differences do these clips claim between UK and US Halloween?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "📊", text: "What differences do these clips claim between UK, US and German Halloween?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Which style of Halloween appeals to you more — and why?", hat: "red-hat", hatLabel: "Red Hat" },
       { emoji: "🌟", text: "What is fun about comparing festivals across countries?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "How can a short oversimplify a whole country's tradition?", hat: "black-hat", hatLabel: "Black Hat" },
-      { emoji: "📋", text: "Where does Hong Kong Halloween fit — more US, more UK, or its own mix?", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Make a two-column list: UK vs US (3 points each) from the clips.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "📋", text: "Where does Hong Kong Halloween fit — more US, UK, Germany, or its own mix?", hat: "blue-hat", hatLabel: "Blue Hat" },
+      { emoji: "💡", text: "Make a three-column list: UK / US / Germany (2 points each) from the clips.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   },
   {
