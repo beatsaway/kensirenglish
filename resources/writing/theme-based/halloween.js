@@ -9,38 +9,69 @@ window.themeBasedHalloween = {
     ],
     tasks: [
         {
-            id: "article-uk-vs-us-halloween",
-            title: "Article — UK vs US Halloween",
+            id: "article-uk-us-germany-halloween",
+            title: "Article — Halloween in the UK, US and Germany",
             watchLinks: [
                 { label: "UK vs US Halloween (Teacher Tommy T)", url: "https://www.youtube.com/shorts/drETp0d_K70" },
                 { label: "Halloween in the US vs the UK", url: "https://www.youtube.com/shorts/RpZq9-DMcOw" },
                 { label: "American Halloween vs British Halloween", url: "https://www.youtube.com/shorts/eMe6qMjoahI" },
+                { label: "Halloween in Germany vs USA", url: "https://www.youtube.com/shorts/_bFtlf3QCis" },
                 { label: "Halloween (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Halloween" }
             ],
-            context: "Shorts often joke that American Halloween is huge and British Halloween is quieter. Stereotypes are fun, but they are not always fair.",
-            instructions: "Write an article for your school magazine.\n\nCompare Halloween in the UK and the US.\n\nInclude:\n• 2 differences the clips mention\n• 1 thing that might be similar\n• where you think Hong Kong Halloween fits (more US, more UK, or its own mix) — and why",
+            context: "Halloween looks different in different countries. Shorts often compare big American celebrations with quieter or newer traditions in the UK and Germany.",
+            instructions: "Write an article for your school magazine.\n\nExplain how people celebrate Halloween in the UK, the US and Germany.\n\nFor each country, say how people celebrate and what they focus on.",
             successCriteria: [
-                "2 UK–US differences",
-                "1 similarity",
-                "Clear view on Hong Kong"
+                "UK, US and Germany",
+                "How each country celebrates",
+                "What each country focuses on"
             ],
             questions: [],
             vocab: [
-                { en: "compare", cn: "比較" },
-                { en: "difference", cn: "分別" },
-                { en: "similar", cn: "相似的" },
-                { en: "stereotype", cn: "刻板印象" },
+                { en: "celebrate", cn: "慶祝" },
                 { en: "tradition", cn: "傳統" },
                 { en: "costume", cn: "戲服" },
                 { en: "trick or treat", cn: "不給糖就搗蛋" },
                 { en: "popular", cn: "受歡迎的" },
-                { en: "mix", cn: "混合" },
-                { en: "fair", cn: "公平的／合理的" }
+                { en: "quiet", cn: "安靜的／低調的" },
+                { en: "custom", cn: "習俗" },
+                { en: "compare", cn: "比較" },
+                { en: "focus", cn: "重點" },
+                { en: "different", cn: "不同的" }
             ]
         },
         {
-            id: "blog-hk-halloween-night",
-            title: "Tourism blog — one Halloween night in Hong Kong",
+            id: "article-school-hall-halloween-event",
+            title: "Article — should we run a Halloween event in the school hall?",
+            watchLinks: [
+                { label: "Halloween party costumes", url: "https://www.youtube.com/shorts/WbntPSweUXY" },
+                { label: "Taking Halloween back?", url: "https://www.youtube.com/shorts/2xSVHSNc7Kc" },
+                { label: "Is Halloween demonic?", url: "https://www.youtube.com/shorts/8E4m1LqofGY" },
+                { label: "Halloween (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Halloween" }
+            ],
+            context: "Some students want a Halloween event in the school hall to practise English — costumes, games and speaking tasks. Others worry about noise, cost, beliefs or classroom time.",
+            instructions: "Write an article for your school magazine.\n\nShould our school run a Halloween event in the school hall for English learning?\n\nSay yes or no.\n\nGive 3 reasons.",
+            successCriteria: [
+                "Clear yes or no",
+                "3 reasons",
+                "Link to English learning"
+            ],
+            questions: [],
+            vocab: [
+                { en: "event", cn: "活動" },
+                { en: "school hall", cn: "禮堂" },
+                { en: "English learning", cn: "英語學習" },
+                { en: "costume", cn: "戲服" },
+                { en: "debate", cn: "辯論" },
+                { en: "belief", cn: "信念" },
+                { en: "opt out", cn: "選擇不參加" },
+                { en: "respect", cn: "尊重" },
+                { en: "practise", cn: "練習" },
+                { en: "reason", cn: "理由" }
+            ]
+        },
+        {
+            id: "article-three-halloween-recommendations",
+            title: "Article — three things to do / places to go for Halloween",
             watchLinks: [
                 { label: "Fairview Park — trick or treat", url: "https://youtu.be/mDibCPuqMn4" },
                 { label: "Lan Kwai Fong on Halloween", url: "https://www.youtube.com/shorts/mw0hj1YeEek" },
@@ -48,85 +79,55 @@ window.themeBasedHalloween = {
                 { label: "Fright Fest Extreme opening", url: "https://www.youtube.com/shorts/XdeGU1utK2I" },
                 { label: "Halloween (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Halloween" }
             ],
-            context: "Hong Kong Halloween can mean estate trick or treat, a packed street party, a family park day, or a scary theme-park haunt. Visitors need a clear plan that matches age and comfort.",
-            instructions: "Write a post for a tourism blog.\n\nPlan one Halloween night in Hong Kong for a family with a Primary 4 child and a Secondary 3 teen.\n\nChoose 2 places from: Fairview Park, Lan Kwai Fong, Hong Kong Disneyland, Fright Fest (or a similar haunt).\n\nFor each place, say who it suits and one safety tip.",
+            context: "Hong Kong Halloween can mean estate trick or treat, a street night out, a family park day or a scary theme-park haunt. Students need clear, suitable recommendations.",
+            instructions: "Write an article for your school magazine.\n\nRecommend 3 things for students to do, or 3 places for them to go, at Halloween.\n\nFor each one, say what it is and why you recommend it.",
             successCriteria: [
-                "2 places",
-                "Who each place suits",
-                "1 safety tip per place"
+                "3 things or places",
+                "What each one is",
+                "Why you recommend it"
             ],
             questions: [],
             vocab: [
-                { en: "plan", cn: "計劃" },
-                { en: "neighbourhood", cn: "社區／鄰里" },
-                { en: "crowd", cn: "人群" },
+                { en: "recommend", cn: "推薦" },
+                { en: "place", cn: "地方" },
+                { en: "activity", cn: "活動" },
                 { en: "family-friendly", cn: "適合家庭的" },
-                { en: "nightlife", cn: "夜生活" },
+                { en: "crowd", cn: "人群" },
                 { en: "scare", cn: "驚嚇／嚇人" },
-                { en: "suit", cn: "適合" },
+                { en: "suitable", cn: "合適的" },
                 { en: "safety", cn: "安全" },
-                { en: "limit", cn: "限度" },
-                { en: "recommend", cn: "推薦" }
+                { en: "student", cn: "學生" },
+                { en: "tip", cn: "貼士" }
             ]
         },
         {
-            id: "letter-costume-advice",
-            title: "Letter — how far for the dress-up?",
+            id: "proposal-ultimate-classroom-decoration",
+            title: "Proposal — the ultimate Halloween classroom decoration",
             watchLinks: [
-                { label: "Halloween party costumes", url: "https://www.youtube.com/shorts/WbntPSweUXY" },
-                { label: "Scariest Halloween costumes", url: "https://www.youtube.com/shorts/e2HIlqd4ESM" },
+                { label: "The Uncanny Valley", url: "https://www.youtube.com/shorts/jrmBK3d-OA4" },
                 { label: "Halloween makeup hack", url: "https://www.youtube.com/shorts/mNFgt8g1pwU" },
+                { label: "Halloween party looks", url: "https://www.youtube.com/shorts/lpla3dNAMnk" },
                 { label: "Halloween (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Halloween" }
             ],
-            context: "A classmate wants a Halloween costume for a school party. They have little money and little time. Online clips show extreme makeup and scary looks.",
-            instructions: "Write a letter to your classmate.\n\nGive advice on how far to go for the dress-up.\n\nInclude:\n• 1 costume idea that is simple and cheap\n• 1 tip about comfort or safety\n• 1 tip about being respectful (not offensive)\n\nKeep a kind, clear tone.",
+            context: "Your English class can decorate the classroom for Halloween. The design should feel fun and spooky, but still safe for lessons and kind to classmates who do not want a scary room.",
+            instructions: "Write a short proposal for your English teacher.\n\nDescribe your idea for the ultimate Halloween classroom decoration.\n\nInclude:\n• what the room will look like (2–3 clear ideas)\n• how it helps English learning\n• 1 safety or respect rule",
             successCriteria: [
-                "Simple cheap idea",
-                "Comfort or safety tip",
-                "Respect tip"
+                "2–3 decoration ideas",
+                "Link to English learning",
+                "1 safety or respect rule"
             ],
             questions: [],
             vocab: [
-                { en: "costume", cn: "戲服" },
-                { en: "makeup", cn: "化妝" },
-                { en: "effort", cn: "工夫／努力" },
-                { en: "simple", cn: "簡單的" },
-                { en: "cheap", cn: "便宜的" },
-                { en: "comfortable", cn: "舒適的" },
-                { en: "scary", cn: "可怕的" },
-                { en: "respectful", cn: "有禮貌的／尊重的" },
-                { en: "advice", cn: "建議" },
-                { en: "party", cn: "派對" }
-            ]
-        },
-        {
-            id: "article-halloween-meaning",
-            title: "Article — what should Halloween mean at school?",
-            watchLinks: [
-                { label: "Celtic Samhain — birthplace?", url: "https://www.youtube.com/shorts/xBdPtwB7O6Q" },
-                { label: "Taking Halloween back?", url: "https://www.youtube.com/shorts/2xSVHSNc7Kc" },
-                { label: "Is Halloween demonic?", url: "https://www.youtube.com/shorts/8E4m1LqofGY" },
-                { label: "Halloween (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Halloween" }
-            ],
-            context: "Some people link Halloween to Celtic Samhain. Some say it is All Hallows' Eve. Some worry it is demonic. Others say costumes and candy are just play. Schools need a fair approach for mixed beliefs.",
-            instructions: "Write an article for your school magazine.\n\nWhat should Halloween mean at your school — fun costumes, history learning, faith respect, or a mix?\n\nGive 3 reasons.\n\nEnd with one clear rule that lets classmates join in or opt out kindly.",
-            successCriteria: [
-                "Clear main view",
-                "3 reasons",
-                "1 join-in / opt-out rule"
-            ],
-            questions: [],
-            vocab: [
-                { en: "origin", cn: "起源" },
-                { en: "Samhain", cn: "薩溫節" },
-                { en: "All Hallows' Eve", cn: "萬聖節前夕" },
-                { en: "belief", cn: "信念" },
+                { en: "decoration", cn: "裝飾" },
+                { en: "classroom", cn: "課室" },
+                { en: "spooky", cn: "幽靈般的／有點恐怖的" },
+                { en: "atmosphere", cn: "氣氛" },
+                { en: "display", cn: "展示" },
+                { en: "safe", cn: "安全的" },
                 { en: "respect", cn: "尊重" },
-                { en: "play", cn: "玩耍" },
-                { en: "demonic", cn: "邪靈的／惡魔的" },
-                { en: "opt out", cn: "選擇不參加" },
-                { en: "fair", cn: "公平的" },
-                { en: "meaning", cn: "意義" }
+                { en: "creative", cn: "有創意的" },
+                { en: "proposal", cn: "建議書" },
+                { en: "ultimate", cn: "終極的／最棒的" }
             ]
         }
     ]
