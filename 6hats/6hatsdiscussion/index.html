@@ -562,6 +562,26 @@
             display: inline-block;
         }
 
+        /* Pen emoji linking to the matching theme-based writing tasks */
+        .topic-pen {
+            display: inline-block;
+            margin-left: var(--space-1);
+            font-size: 0.68em;
+            line-height: 1;
+            vertical-align: middle;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.15s ease, transform 0.15s ease;
+        }
+
+        .topic-pen:hover,
+        .topic-pen:focus-visible {
+            opacity: 1;
+            transform: scale(1.15) rotate(-8deg);
+            outline: none;
+        }
+
         .loading-dots {
             display: inline-block;
             font-size: 32px;
@@ -1241,6 +1261,50 @@
             { name: "Weather 2", file: "weather_discussion_6hats.js" }
         ].sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
 
+        // Topics that also have a theme-based writing task page in resources/writing/theme-based.
+        // Key = topic name here, value = ?theme= key on that page.
+        const writingThemeByTopic = {
+            "Africa 2026": "africa2026",
+            "Ancient Temples": "ancienttemples",
+            "Antarctica Secrets": "antarctica",
+            "Astrology": "astrology",
+            "Atlantis and oceans": "atlantisoceans",
+            "Australia": "australia",
+            "Black Death": "blackdeath",
+            "Breakfast": "breakfast",
+            "Celebrity Gossip": "celebritygossip",
+            "Commentaries": "commentaries",
+            "Communication": "communication",
+            "Cryptography": "cryptography",
+            "Dinosaurs": "dinosaurs",
+            "Dreams": "dreams",
+            "Future warfare": "futurewarfare",
+            "Gene editing": "geneediting",
+            "Global warming": "globalwarming",
+            "Halloween": "halloween",
+            "Hitler & Nazi Germany": "hitlernazi",
+            "Homelessness": "homelessness",
+            "Hong Kong Accent": "hongkongaccent",
+            "Hong Kong Haunted Places": "hongkonghaunted",
+            "Hong Kong Takes": "hongkongtakes",
+            "Kowloon Walled City": "kowloonwalledcity",
+            "Memes & Virality": "darkhumour",
+            "Mid-Autumn Festival": "midautumn",
+            "Mona Lisa": "monalisa",
+            "Olympics": "olympics",
+            "Online censorship": "onlinecensorship",
+            "Parasites": "parasites",
+            "School Rules": "schoolrules",
+            "Table Manners": "tablemanners",
+            "Tea": "tea",
+            "The Great Flood": "thegreatflood",
+            "Titanic": "titanic",
+            "Types of Teachers": "typesofteachers",
+            "Viruses & Vaccines": "virusesvaccines",
+            "Weird Names and Minibus": "weirdnamesminibus",
+            "Weird sports": "weirdsports"
+        };
+
         const headerSearch = document.getElementById('headerSearch');
         const headerSearchDropdown = document.getElementById('headerSearchDropdown');
         const content = document.getElementById('content');
@@ -1248,6 +1312,7 @@
         let currentSets = null;
         let currentSessionIndex = 0;
         let currentTopicName = null;
+        let currentWritingTheme = null;
         let isCyclingTopics = false;
 
         // Header search functionality
@@ -1321,6 +1386,7 @@
         function loadTopic(topic) {
             // Store current topic name
             currentTopicName = topic.name;
+            currentWritingTheme = writingThemeByTopic[topic.name] || null;
 
             // Update URL with ?topic= for shareable links
             const url = new URL(location.href);
@@ -1386,8 +1452,13 @@
             
             // Main topic name (centered)
             if (currentTopicName) {
+                let penLink = '';
+                if (currentWritingTheme) {
+                    const writingUrl = `../../resources/writing/theme-based/index.html?theme=${encodeURIComponent(currentWritingTheme)}`;
+                    penLink = ` <a class="topic-pen" href="${writingUrl}" title="Open the writing tasks for this topic" aria-label="Open the writing tasks for this topic">✏️</a>`;
+                }
                 html += `<div style="position: relative;">`;
-                html += `<h1 class="main-topic-title" id="mainTopicTitle" title="Hold for 3 seconds for a random topic"><span class="topic-prefix">Let's talk about </span><span id="topicNameDisplay">${currentTopicName}</span></h1>`;
+                html += `<h1 class="main-topic-title" id="mainTopicTitle" title="Hold for 3 seconds for a random topic"><span class="topic-prefix">Let's talk about </span><span id="topicNameDisplay">${currentTopicName}</span>${penLink}</h1>`;
                 html += `</div>`;
             }
             
@@ -1482,6 +1553,14 @@
             const mainTopicTitle = document.getElementById('mainTopicTitle');
             if (mainTopicTitle) {
                 bindRandomTopicHold(mainTopicTitle);
+
+                // The pen emoji must not start the 3-second random-topic hold
+                const penLink = mainTopicTitle.querySelector('.topic-pen');
+                if (penLink) {
+                    ['pointerdown', 'pointerup', 'pointerleave', 'pointercancel', 'contextmenu'].forEach((evt) => {
+                        penLink.addEventListener(evt, (e) => e.stopPropagation());
+                    });
+                }
             }
 
             // Add click handlers for questions
