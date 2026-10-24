@@ -137,7 +137,7 @@ window.themeBasedTypesOfTeachers = {
                 { label: "Are teachers stupid? (podcast)", url: "https://www.youtube.com/shorts/yfavr0i39F4" },
                 { label: "Worst teacher crashouts", url: "https://www.youtube.com/shorts/Rin2aoRudzY" },
                 { label: "Teacher calls a student stupid", url: "https://www.youtube.com/shorts/tQIoQlelCgA" },
-                { label: "Teachers in Asia vs the rest of the world", url: "https://www.youtube.com/shorts/BAeqd1o8Rw" },
+                { label: "Teachers in Asia vs the rest of the world", url: "https://www.youtube.com/shorts/BAeqd1oO8Rw" },
                 { label: "Types of Teachers (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Types%20of%20Teachers" }
             ],
             context: "Online clips often mock teachers. Some students film a bad moment and post it. Others say teachers in Asia are shown more respect than teachers elsewhere.",

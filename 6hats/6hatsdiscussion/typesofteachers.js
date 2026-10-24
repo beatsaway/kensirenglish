@@ -34,7 +34,7 @@ window.sixHatSets = [
   },
   {
     title: "🌏 Teachers in Asia vs the rest of the world",
-    link: "https://www.youtube.com/shorts/BAeqd1o8Rw",
+    link: "https://www.youtube.com/shorts/BAeqd1oO8Rw",
     linkLabel: "Watch video",
     articleText:
       "<p>This clip <strong>compares</strong> teachers in <strong>Asia</strong> with teachers in other places. You can see a <strong>difference</strong> in <strong>classroom</strong> style, volume and body language. <strong>Culture</strong> shapes how students show <strong>respect</strong> — but no style is perfect.</p>",
