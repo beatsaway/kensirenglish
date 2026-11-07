@@ -420,23 +420,27 @@
         document.body.appendChild(cdescTooltip);
 
         const datasets = [
-            { label: 'Reviews: Films', src: 'reading_reviews_films.js' },
-            { label: 'Reviews: Games', src: 'reading_reviews_games.js' },
-            { label: 'Reviews: Festivals', src: 'reading_reviews_festivals.js' },
-            { label: 'Reviews: Books', src: 'reading_reviews_books.js' },
-            { label: 'Figures: Scenery', src: 'reading_figures_scenery.js' },
-            { label: 'Figures: Actions', src: 'reading_figures_actions.js' },
-            { label: 'Figures: Feelings', src: 'reading_figures_feelings.js' },
-            { label: 'Figures: Sounds', src: 'reading_figures_sounds.js' },
-            { label: 'Senses: Sight', src: 'reading_senses_sight.js' },
-            { label: 'Senses: Sound', src: 'reading_senses_sound.js' },
-            { label: 'Senses: Touch', src: 'reading_senses_touch.js' },
-            { label: 'Senses: Smell', src: 'reading_senses_smell.js' },
-            { label: 'Senses: Taste', src: 'reading_senses_taste.js' },
-            { label: 'Storywriting: Plot', src: 'reading_storywriting_plot.js' },
-            { label: 'Storywriting: Idea Expansion', src: 'reading_storywriting_ideas.js' },
-            { label: "Storywriting: Show, Don't Tell", src: 'reading_storywriting_show_dont_tell.js' },
-            { label: 'Grammar: Participles', src: 'reading_participles.js' }
+            { topic: 'reviews-films', label: 'Reviews: Films', src: 'reading_reviews_films.js' },
+            { topic: 'reviews-games', label: 'Reviews: Games', src: 'reading_reviews_games.js' },
+            { topic: 'reviews-festivals', label: 'Reviews: Festivals', src: 'reading_reviews_festivals.js' },
+            { topic: 'reviews-books', label: 'Reviews: Books', src: 'reading_reviews_books.js' },
+            { topic: 'figures-scenery', label: 'Figures: Scenery', src: 'reading_figures_scenery.js' },
+            { topic: 'figures-actions', label: 'Figures: Actions', src: 'reading_figures_actions.js' },
+            { topic: 'figures-feelings', label: 'Figures: Feelings', src: 'reading_figures_feelings.js' },
+            { topic: 'figures-sounds', label: 'Figures: Sounds', src: 'reading_figures_sounds.js' },
+            { topic: 'senses-sight', label: 'Senses: Sight', src: 'reading_senses_sight.js' },
+            { topic: 'senses-sound', label: 'Senses: Sound', src: 'reading_senses_sound.js' },
+            { topic: 'senses-touch', label: 'Senses: Touch', src: 'reading_senses_touch.js' },
+            { topic: 'senses-smell', label: 'Senses: Smell', src: 'reading_senses_smell.js' },
+            { topic: 'senses-taste', label: 'Senses: Taste', src: 'reading_senses_taste.js' },
+            { topic: 'storywriting-plot', label: 'Storywriting: Plot', src: 'reading_storywriting_plot.js' },
+            { topic: 'storywriting-ideas', label: 'Storywriting: Idea Expansion', src: 'reading_storywriting_ideas.js' },
+            { topic: 'storywriting-show-dont-tell', label: "Storywriting: Show, Don't Tell", src: 'reading_storywriting_show_dont_tell.js' },
+            { topic: 'participles', label: 'Grammar: Participles', src: 'reading_participles.js' },
+            { topic: 'simple-vs-perfect', label: 'Grammar: Simple vs Perfect', src: 'reading_simple_vs_perfect.js' },
+            { topic: 'defining-nondefining', label: 'Grammar: Defining or non-defining', src: 'reading_defining_nondefining.js' },
+            { topic: 'the-or-no-the', label: 'Grammar: The or no the', src: 'reading_the_or_no_the.js' },
+            { topic: 'conditionals', label: 'Grammar: Conditionals', src: 'reading_conditionals.js' }
         ];
 
         function escapeHtml(value) {
@@ -690,6 +694,28 @@
             }
         });
 
+        function findDataset(topic) {
+            if (!topic) {
+                return null;
+            }
+            const key = topic.trim().toLowerCase();
+            return datasets.find((dataset) =>
+                dataset.topic.toLowerCase() === key ||
+                dataset.label.toLowerCase() === key ||
+                dataset.src.toLowerCase() === key
+            ) || null;
+        }
+
+        function setTopicInUrl(topic) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('topic', topic);
+            history.replaceState(null, '', url);
+        }
+
+        function datasetFromSrc(src) {
+            return datasets.find((dataset) => dataset.src === src) || null;
+        }
+
         datasets.forEach((dataset) => {
             const option = document.createElement('option');
             option.value = dataset.src;
@@ -698,11 +724,17 @@
         });
 
         datasetSelect.addEventListener('change', (event) => {
+            const dataset = datasetFromSrc(event.target.value);
+            if (dataset) {
+                setTopicInUrl(dataset.topic);
+            }
             refreshExercises(event.target.value);
         });
 
-        datasetSelect.value = datasets[0].src;
-        refreshExercises(datasets[0].src);
+        const initialDataset = findDataset(new URLSearchParams(window.location.search).get('topic')) || datasets[0];
+        datasetSelect.value = initialDataset.src;
+        setTopicInUrl(initialDataset.topic);
+        refreshExercises(initialDataset.src);
     </script>
 </body>
 </html>
