@@ -14,7 +14,6 @@ window.themeBasedSchoolTrips = {
             watchLinks: [
                 { label: "Ma Shi Chau — island explorations", url: "https://www.youtube.com/watch?v=N7mLh4N_Qt8" },
                 { label: "300-year-old village in Hong Kong", url: "https://www.youtube.com/shorts/WZwDlT3m_p8" },
-                { label: "Thai Cave Rescue — 3D reconstruction", url: "https://www.youtube.com/watch?v=bCmgZ8nMyKo" },
                 { label: "School Trips (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=School%20Trips" }
             ],
             context: "Ma Shi Chau can look exciting, but parts may go under water at high tide. A historic Hakka village can offer food, culture and a safer day for a large class. Schools must choose places carefully.",
