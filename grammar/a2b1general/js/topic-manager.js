@@ -17,6 +17,18 @@ class TopicManager {
         file: 'the-or-no-the.js',
         introduction: 'A whole group, one species, or a named thing<br>泛指、某一種、定係指定嗰樣'
       },
+      {
+        id: 'articles-3',
+        name: 'Articles 3 | 冠詞3',
+        file: 'articles3.js',
+        introduction: 'Exam cloze: a, an, the, or no article in a short text<br>考試完形：一段短文入面揀 a、an、the，或者唔加'
+      },
+      {
+        id: 'articles-4',
+        name: 'Articles 4 | 冠詞4',
+        file: 'articles4.js',
+        introduction: 'Proofreading: the underlined article is wrong<br>改錯：底線嘅冠詞係錯嘅'
+      },
       { 
         id: 'prepositions', 
         name: 'Prepositions | 介詞', 
@@ -203,11 +215,35 @@ class TopicManager {
         file: 'collocations-verb-noun.js',
         introduction: 'Common verb + noun pairs<br>常見動詞+名詞搭配'
       },
+      {
+        id: 'collocations-verb-noun-2',
+        name: 'Collocations: Verb + Noun 2 | 動詞+名詞2',
+        file: 'collocations-verb-noun-2.js',
+        introduction: 'Make, do, take or have: homework, a mistake, a photo, a shower<br>做功課、犯錯、拍照、沖涼，動詞唔可以亂揀'
+      },
+      {
+        id: 'collocations-verb-noun-3',
+        name: 'Collocations: Verb + Noun 3 | 動詞+名詞3',
+        file: 'collocations-verb-noun-3.js',
+        introduction: 'The same chunks inside a short school note<br>同一啲搭配放喺一段校園短文入面'
+      },
       { 
         id: 'collocations-adjective-noun', 
         name: 'Collocations: Adjective + Noun | 形容詞+名詞', 
         file: 'collocations-adjective-noun.js',
         introduction: 'Natural adjective + noun pairs<br>自然嘅形容詞+名詞搭配'
+      },
+      {
+        id: 'collocations-adjective-noun-2',
+        name: 'Collocations: Adjective + Noun 2 | 形容詞+名詞2',
+        file: 'collocations-adjective-noun-2.js',
+        introduction: 'Heavy rain, strong wind, a sore throat: the adjective is fixed<br>大雨、強風、喉嚨痛，形容詞係固定嘅'
+      },
+      {
+        id: 'collocations-adjective-noun-3',
+        name: 'Collocations: Adjective + Noun 3 | 形容詞+名詞3',
+        file: 'collocations-adjective-noun-3.js',
+        introduction: 'The same pairs inside a wet morning and a school rule<br>同一啲配對放喺落雨朝早同校規入面'
       },
       { 
         id: 'collocations-verb-preposition', 
@@ -215,11 +251,35 @@ class TopicManager {
         file: 'collocations-verb-preposition.js',
         introduction: 'Verb + preposition patterns<br>動詞+介詞固定搭配'
       },
+      {
+        id: 'collocations-verb-preposition-2',
+        name: 'Collocations: Verb + Preposition 2 | 動詞+介詞2',
+        file: 'collocations-verb-preposition-2.js',
+        introduction: 'Apologise for, belong to, consist of, rely on<br>道歉、屬於、由……組成、依靠'
+      },
+      {
+        id: 'collocations-verb-preposition-3',
+        name: 'Collocations: Verb + Preposition 3 | 動詞+介詞3',
+        file: 'collocations-verb-preposition-3.js',
+        introduction: 'The same prepositions inside an email and a club note<br>同一啲介詞放喺電郵同社團短文入面'
+      },
       { 
         id: 'collocations-adverb-adjective', 
         name: 'Collocations: Adverb + Adjective | 副詞+形容詞', 
         file: 'collocations-adverb-adjective.js',
         introduction: 'Adverb + adjective pairs<br>副詞+形容詞搭配'
+      },
+      {
+        id: 'collocations-adverb-adjective-2',
+        name: 'Collocations: Adverb + Adjective 2 | 副詞+形容詞2',
+        file: 'collocations-adverb-adjective-2.js',
+        introduction: 'Fast asleep, bitterly cold, vitally important<br>熟睡、寒冷、極之重要'
+      },
+      {
+        id: 'collocations-adverb-adjective-3',
+        name: 'Collocations: Adverb + Adjective 3 | 副詞+形容詞3',
+        file: 'collocations-adverb-adjective-3.js',
+        introduction: 'The same pairs inside a camp night and a harbour note<br>同一啲配對放喺營夜同海港短文入面'
       },
       { 
         id: 'relative-clauses-1', 
@@ -356,6 +416,8 @@ class TopicManager {
       'tenses-4': 'tenses4Exercises',
       'tenses-5': 'tenses5Exercises',
       'articles-2': 'theOrNoTheExercises',
+      'articles-3': 'articles3Exercises',
+      'articles-4': 'articles4Exercises',
       'subject-verb-agreement': 'subjectVerbAgreementExercises',
       'subject-verb-agreement-2': 'subjectVerbAgreement2Exercises',
       'subject-verb-agreement-3': 'subjectVerbAgreement3Exercises',
@@ -378,9 +440,17 @@ class TopicManager {
       'reported-speech': 'reportedSpeechExercises',
       'phrasal-verbs': 'phrasalVerbsExercises',
       'collocations-verb-noun': 'collocationsVerbNounExercises',
+      'collocations-verb-noun-2': 'collocationsVerbNoun2Exercises',
+      'collocations-verb-noun-3': 'collocationsVerbNoun3Exercises',
       'collocations-adjective-noun': 'collocationsAdjectiveNounExercises',
+      'collocations-adjective-noun-2': 'collocationsAdjectiveNoun2Exercises',
+      'collocations-adjective-noun-3': 'collocationsAdjectiveNoun3Exercises',
       'collocations-verb-preposition': 'collocationsVerbPrepositionExercises',
+      'collocations-verb-preposition-2': 'collocationsVerbPreposition2Exercises',
+      'collocations-verb-preposition-3': 'collocationsVerbPreposition3Exercises',
       'collocations-adverb-adjective': 'collocationsAdverbAdjectiveExercises',
+      'collocations-adverb-adjective-2': 'collocationsAdverbAdjective2Exercises',
+      'collocations-adverb-adjective-3': 'collocationsAdverbAdjective3Exercises',
       'relative-clauses-1': 'relativeClauses1Exercises',
       'relative-clauses-2': 'relativeClauses2Exercises',
       'relative-clauses-3': 'relativeClauses3Exercises',
