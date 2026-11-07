@@ -89,6 +89,12 @@ class TopicManager {
         file: 'tenses6.js',
         introduction: 'When and while: which action is still going, which one is the short moment<br>When 同 while：邊個仲進行緊，邊個係短動作'
       },
+      {
+        id: 'tenses-7',
+        name: 'Tenses 7 | 時態7',
+        file: 'tenses7.js',
+        introduction: 'Same two-gap choice, with before, by the time, since, as soon as and after<br>同樣兩個空，但係 before、by the time、since、as soon as、after'
+      },
       { 
         id: 'subject-verb-agreement', 
         name: 'Subject-Verb Agreement | 主謂一致', 
@@ -422,6 +428,7 @@ class TopicManager {
       'tenses-4': 'tenses4Exercises',
       'tenses-5': 'tenses5Exercises',
       'tenses-6': 'tenses6Exercises',
+      'tenses-7': 'tenses7Exercises',
       'articles-2': 'theOrNoTheExercises',
       'articles-3': 'articles3Exercises',
       'articles-4': 'articles4Exercises',

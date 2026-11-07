@@ -59,6 +59,15 @@ window.tenses6Exercises = [
   {
     id: 7,
     category: "Tenses 6",
+    question: "✅ Before the teacher _____ us to, we _____ our answers already.",
+    chineseTranslation: "老師叫我哋之前，我哋已經核對咗答案",
+    options: ["asked, had checked", "asked, have checked", "was asking, have checked", "asks, checked"],
+    correctAnswers: ["asked, had checked"],
+    explanation: "The teacher asking is a finished past moment, so <strong>asked</strong>. Checking happened earlier than that moment, so <strong>had checked</strong>. Have checked reaches up to now, and it cannot sit in front of a past asked."
+  },
+  {
+    id: 8,
+    category: "Tenses 6",
     question: "🔔 While we _____ lunch, the fire alarm _____.",
     chineseTranslation: "我哋食緊午餐嗰陣火警響咗",
     options: ["were having, rang", "had, was ringing", "were having, was ringing", "had, rang"],
@@ -66,7 +75,7 @@ window.tenses6Exercises = [
     explanation: "Lunch was still going: <strong>were having</strong>. The alarm is one short sound, so <strong>rang</strong>."
   },
   {
-    id: 8,
+    id: 9,
     category: "Tenses 6",
     question: "🐦 She _____ a photo when the bird _____ away.",
     chineseTranslation: "佢影緊相嗰陣隻雀飛走咗",
