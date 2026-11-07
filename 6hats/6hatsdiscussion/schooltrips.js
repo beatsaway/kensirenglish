@@ -118,7 +118,7 @@ window.sixHatSets = [
       { word: "duty", translation: "職責", emoji: "📌" },
       { word: "policy", translation: "政策／規定", emoji: "📄" }
     ],
-    vocabex: "If a <span class='vocab-blank' data-answer='teacher'></span> brings a <span class='vocab-blank' data-answer='child'></span>, the class may feel it is not <span class='vocab-blank' data-answer='fair'></span>. Care for students is the main <span class='vocab-blank' data-answer='duty'></span>. A clear <span class='vocab-blank' data-answer='policy'></span> stops people getting <span class='vocab-blank' data-answer='distracted'></span>."
+    vocabex: "If a <span class='vocab-blank' data-answer='teacher'></span> brings a <span class='vocab-blank' data-answer='child'></span>, the class may feel it is not <span class='vocab-blank' data-answer='fair'></span>. Care for students is the main <span class='vocab-blank' data-answer='duty'></span>. A clear <span class='vocab-blank' data-answer='policy'></span> stops people getting <span class='vocab-blank' data-answer='distracted'></span>.",
     questions: [
       { emoji: "📊", text: "What does the clip show about teachers and kids on a field trip?", hat: "white-hat", hatLabel: "White Hat" },
       { emoji: "😊", text: "Is it a good idea for teachers to bring along their kids? How do you feel?", hat: "red-hat", hatLabel: "Red Hat" },
