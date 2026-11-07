@@ -11,17 +11,65 @@ class TopicManager {
         file: 'articles.js',
         introduction: 'Talk about specific things vs general things<br>講特定嘢同一般嘢嘅分別'
       },
+      {
+        id: 'articles-2',
+        name: 'Articles 2 | 冠詞2',
+        file: 'the-or-no-the.js',
+        introduction: 'A whole group, one species, or a named thing<br>泛指、某一種、定係指定嗰樣'
+      },
       { 
         id: 'prepositions', 
         name: 'Prepositions | 介詞', 
         file: 'prepositions.js',
         introduction: 'Describe where, when, and how things happen<br>描述事情發生嘅地方、時間同方式'
       },
+      {
+        id: 'prepositions-2',
+        name: 'Prepositions 2 | 介詞2',
+        file: 'prepositions2.js',
+        introduction: 'The preposition is stuck to the word: interested in, afraid of, reason for<br>介詞跟住個字：interested in、afraid of、reason for'
+      },
+      {
+        id: 'prepositions-3',
+        name: 'Prepositions 3 | 介詞3',
+        file: 'prepositions3.js',
+        introduction: 'Exam cloze: a short passage, one preposition in each gap<br>考試完形：一段短文，每個空一個介詞'
+      },
+      {
+        id: 'prepositions-4',
+        name: 'Prepositions 4 | 介詞4',
+        file: 'prepositions4.js',
+        introduction: 'Pairs that look alike: on time / in time, beside / besides, despite / in spite of<br>望落似但唔同：準時／趕得切、隔離／除此之外、despite／in spite of'
+      },
       { 
         id: 'tenses', 
         name: 'Tenses | 時態', 
         file: 'tenses.js',
         introduction: 'Express time in your conversations<br>喺對話中表達時間'
+      },
+      {
+        id: 'tenses-2',
+        name: 'Tenses 2 | 時態2',
+        file: 'simple-vs-perfect.js',
+        introduction: 'Have you watched it? Walking when the sky went dark<br>睇過未？行緊嗰陣個天變黑'
+      },
+      {
+        id: 'tenses-3',
+        name: 'Tenses 3 | 時態3',
+        file: 'tenses3.js',
+        introduction: 'Exam cloze: a short story, one verb form in each gap<br>考試完形：一段短文，每個空一個動詞形式'
+      },
+      {
+        id: 'tenses-4',
+        name: 'Tenses 4 | 時態4',
+        file: 'tenses4.js',
+        introduction: 'Proofreading: the underlined verb is wrong. Choose the form that should replace it<br>改錯：底線動詞係錯嘅。揀應該換上嘅形式'
+      },
+      {
+        id: 'tenses-5',
+        name: 'Tenses 5 | 時態5',
+        file: 'tenses5.js',
+        introduction: 'The verb is given in brackets. Choose its correct form<br>括號裡有動詞原形。揀正確形式'
       },
       { 
         id: 'subject-verb-agreement', 
@@ -226,6 +274,18 @@ class TopicManager {
         name: 'Word Form Families 2 | 同根詞詞形2',
         file: 'word-form-families-2.js',
         introduction: 'Study, safety, and tech: same four-word bank per passage — pick noun, verb, -ing, or -ed forms<br>讀書、安全、科技語境——每段四個同根詞揀啱詞性'
+      },
+      {
+        id: 'word-form-families-3',
+        name: 'Word Form Families 3 | 同根詞詞形3',
+        file: 'word-form-families-3.js',
+        introduction: 'School life: organise, discuss, improve, invite, succeed, pollute<br>校園：組織、討論、進步、邀請、成功、污染'
+      },
+      {
+        id: 'word-form-families-4',
+        name: 'Word Form Families 4 | 同根詞詞形4',
+        file: 'word-form-families-4.js',
+        introduction: 'Feelings and news: exciting or excited, disappointing or disappointed<br>感覺同新聞：-ing 形容事物，-ed 形容人'
       }
     ];
   }
@@ -269,7 +329,15 @@ class TopicManager {
     const mapping = {
       'articles': 'articlesExercises',
       'prepositions': 'prepositionsExercises',
+      'prepositions-2': 'prepositions2Exercises',
+      'prepositions-3': 'prepositions3Exercises',
+      'prepositions-4': 'prepositions4Exercises',
       'tenses': 'tensesExercises',
+      'tenses-2': 'simpleVsPerfectExercises',
+      'tenses-3': 'tenses3Exercises',
+      'tenses-4': 'tenses4Exercises',
+      'tenses-5': 'tenses5Exercises',
+      'articles-2': 'theOrNoTheExercises',
       'subject-verb-agreement': 'subjectVerbAgreementExercises',
       'subject-verb-agreement-2': 'subjectVerbAgreement2Exercises',
       'subject-verb-agreement-3': 'subjectVerbAgreement3Exercises',
@@ -303,7 +371,9 @@ class TopicManager {
       'participles-2': 'participles2Exercises',
       'participles-3': 'participles3Exercises',
       'word-form-families': 'wordFormFamiliesExercises',
-      'word-form-families-2': 'wordFormFamilies2Exercises'
+      'word-form-families-2': 'wordFormFamilies2Exercises',
+      'word-form-families-3': 'wordFormFamilies3Exercises',
+      'word-form-families-4': 'wordFormFamilies4Exercises'
     };
     return mapping[topicId];
   }

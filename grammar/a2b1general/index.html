@@ -618,7 +618,15 @@
 
     <script src="js/topics/articles.js"></script>
     <script src="js/topics/prepositions.js"></script>
+    <script src="js/topics/prepositions2.js"></script>
+    <script src="js/topics/prepositions3.js"></script>
+    <script src="js/topics/prepositions4.js"></script>
     <script src="js/topics/tenses.js"></script>
+    <script src="js/topics/simple-vs-perfect.js"></script>
+    <script src="js/topics/tenses3.js"></script>
+    <script src="js/topics/tenses4.js"></script>
+    <script src="js/topics/tenses5.js"></script>
+    <script src="js/topics/the-or-no-the.js"></script>
     <script src="js/topics/subject-verb-agreement.js"></script>
     <script src="js/topics/subject-verb-agreement-2.js"></script>
     <script src="js/topics/subject-verb-agreement-3.js"></script>
@@ -653,6 +661,8 @@
     <script src="js/topics/relative-clauses-kaitak3.js"></script>
     <script src="js/topics/word-form-families.js"></script>
     <script src="js/topics/word-form-families-2.js"></script>
+    <script src="js/topics/word-form-families-3.js"></script>
+    <script src="js/topics/word-form-families-4.js"></script>
     <script src="js/topic-manager.js"></script>
     <script>
         let currentExercise = null;
@@ -801,8 +811,16 @@
         const grammarTips = {
             'articles': '<strong>💡 Tips:</strong> Use "a/an" for general things (第一次提到). Use "the" for specific things (已經知道係邊個). Remember: "an" before vowels (a, e, i, o, u).',
             'prepositions': '<strong>💡 Tips:</strong> "in" = 入面/月份/年份, "on" = 上面/日期/星期, "at" = 地點/時間點. "for" = 目的/時間長度, "with" = 同/用.',
+            'prepositions-2': '<strong>💡 Tips:</strong> 呢組係固定搭配，介詞跟住前面個字，唔係跟住地方或者時間。interested <em>in</em>，afraid <em>of</em>，keen <em>on</em>，worried <em>about</em>，listen <em>to</em>，wait <em>for</em>，look <em>after</em>，reason <em>for</em>，solution <em>to</em>。',
+            'prepositions-3': '<strong>💡 Tips:</strong> 考試完形。at + 鐘數，on + 星期，by + 交通工具（by MTR，唔加 the），on the train / in a taxi。arrive <em>at</em> 門口，arrive <em>in</em> 城市。by Friday = 限期。since + 起點，for + 一段時間。',
+            'prepositions-4': '<strong>💡 Tips:</strong> 兩句望落似，意思唔同。<em>on time</em> 準時，<em>in time</em> 趕得切。<em>In the end</em> 最後，<em>at the end of</em> 某樣嘢嘅結尾。<em>beside</em> 隔離，<em>besides</em> 除此之外。<em>between</em> 兩個，<em>among</em> 一群。<em>Despite</em> 後面唔加 of；<em>in spite of</em> 先要 of。',
             'tenses': '<strong>💡 Tips:</strong> Present = 現在/習慣, Past = 過去完成咗, Future = 將來會發生. Continuous = 進行緊, Perfect = 完成咗.',
-            'subject-verb-agreement': '<strong>💡 Tips:</strong> Singular subject (he/she/it) → singular verb (is/has/goes). Plural subject (they/we) → plural verb (are/have/go).',
+            'tenses-2': '<strong>💡 Tips:</strong> 唔肯定就倒轉問：問題會唔會用 Have / Has 開頭？會 → 完成式（Have you watched it?）。有 yesterday / last Sunday → 簡單過去式。句入面有「緊」→ was/were + -ing。Have been 後面要有地方或者 -ing，唔好單獨用。',
+            'tenses-3': '<strong>💡 Tips:</strong> 睇訊號字。since / for / several times → have。yesterday / last summer / in Primary 1 → 過去式。when / while 加「緊」→ was/were + -ing。have been to 去過返咗嚟；have gone to 去咗仲未返。',
+            'tenses-4': '<strong>💡 Tips:</strong> 底線嗰舊係錯嘅，揀正確形式換走佢。yesterday 唔可以 have watched。since / for 要用 have。行緊要用 was/were + -ing。have been 自己一個係錯。去過好多次係 have been，唔係 have gone。',
+            'tenses-5': '<strong>💡 Tips:</strong> 括號係動詞原形，你要變時態。usually → 現在式。at the moment / Listen → is/are + -ing。so far / yet / since → have。yesterday / in September → 過去式。另一件過去之前已經做完 → had + 過去分詞。',
+            'articles-2': '<strong>💡 Tips:</strong> The = 指定嗰個嗰樣嗰種。泛指一堆（Blue whales are huge / Giant pandas are cute）唔加 the。指明一種物種（The blue whale is endangered）先加 the。考試：play the piano / the guitar。',
+            'subject-verb-agreement': '<strong>💡 Tips:</strong> These sentences are about now, so choose <em>is</em> or <em>are</em> only. <em>Am</em> is only for I. <em>Be</em> is not a finished verb. Singular (he/she/it, the student, the news) → is. Plural (friends, children, three cups, people) → are.',
             'subject-verb-agreement-2': '<strong>💡 Tips:</strong> "one of + plural noun" uses a singular verb. "Some/most/all of + plural noun" uses a plural verb. Uncountable nouns take singular verbs.',
             'subject-verb-agreement-3': '<strong>💡 Tips:</strong> "Either of" and "neither of" are usually singular in formal English, so use singular verbs (is/has/makes).',
             'countable-uncountable': '<strong>💡 Tips:</strong> Countable = 可以數 (book/books), use "many/few". Uncountable = 唔可以數 (water/money), use "much/little".',
@@ -835,7 +853,9 @@
             'relative-clauses-kaitak-2': '<strong>💡 Tips:</strong> Non-defining: two commas around the clause, usually <em>which</em> — not <em>that</em>. Defining: no commas; <em>that</em> is common to pick out which one.',
             'relative-clauses-kaitak-3': '<strong>💡 Tips:</strong> Read the two simple sentences, then complete the merged line. Formal style: preposition + <em>which</em> (<em>in which</em>, <em>from which</em>, <em>at which</em>). <strong>When</strong> / <strong>where</strong> are often acceptable too after <em>year</em> / place.',
             'word-form-families': '<strong>💡 Tips:</strong> Ask: do you need a <strong>thing</strong> (noun), an <strong>action</strong> (verb), an <strong>-ing</strong> form after prepositions like <em>after / before / without</em>, or an <strong>-ed</strong> form in phrases like <em>with … done</em>? Each menu is shuffled — pick, then press <strong>Check answers</strong>.',
-            'word-form-families-2': '<strong>💡 Tips:</strong> Four related words from one root (e.g. <em>protect · protection · protective · protected</em>) — not always noun/verb/-ing/-ed in that order. Read the gap: need a noun, verb, adjective, <em>-ing</em>, or participle? Shuffled menus — press <strong>Check answers</strong> when ready.'
+            'word-form-families-2': '<strong>💡 Tips:</strong> Four related words from one root (e.g. <em>protect · protection · protective · protected</em>) — not always noun/verb/-ing/-ed in that order. Read the gap: need a noun, verb, adjective, <em>-ing</em>, or participle? Shuffled menus — press <strong>Check answers</strong> when ready.',
+            'word-form-families-3': '<strong>💡 Tips:</strong> 每段四個同根詞。will / to / did 後面係動詞。the 後面多數係名詞。After 後面係 -ing。with the chairs organised 呢種係過去分詞。',
+            'word-form-families-4': '<strong>💡 Tips:</strong> -ing 形容事物（an exciting match）。-ed 形容人（I felt excited）。名詞通常係 excitement / disappointment。動詞跟 will 或者 to。'
         };
 
         // Load all exercises for current topic
