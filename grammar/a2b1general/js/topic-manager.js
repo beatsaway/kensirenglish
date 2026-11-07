@@ -83,6 +83,12 @@ class TopicManager {
         file: 'tenses5.js',
         introduction: 'The verb is given in brackets. Choose its correct form<br>括號裡有動詞原形。揀正確形式'
       },
+      {
+        id: 'tenses-6',
+        name: 'Tenses 6 | 時態6',
+        file: 'tenses6.js',
+        introduction: 'When and while: which action is still going, which one is the short moment<br>When 同 while：邊個仲進行緊，邊個係短動作'
+      },
       { 
         id: 'subject-verb-agreement', 
         name: 'Subject-Verb Agreement | 主謂一致', 
@@ -415,6 +421,7 @@ class TopicManager {
       'tenses-3': 'tenses3Exercises',
       'tenses-4': 'tenses4Exercises',
       'tenses-5': 'tenses5Exercises',
+      'tenses-6': 'tenses6Exercises',
       'articles-2': 'theOrNoTheExercises',
       'articles-3': 'articles3Exercises',
       'articles-4': 'articles4Exercises',
