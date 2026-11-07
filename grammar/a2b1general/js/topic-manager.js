@@ -149,6 +149,24 @@ class TopicManager {
         file: 'conditionals.js',
         introduction: 'Talk about possibilities and dreams<br>講可能同夢想'
       },
+      {
+        id: 'conditionals-2',
+        name: 'Conditionals 2 | 條件句2',
+        file: 'conditionals2.js',
+        introduction: 'The result clause, unless, and if or when<br>結果子句、unless、if 定 when'
+      },
+      {
+        id: 'conditionals-3',
+        name: 'Conditionals 3 | 條件句3',
+        file: 'conditionals3.js',
+        introduction: 'Exam cloze: a real plan, some advice, a past regret<br>考試完形：一個計劃、一句忠告、一啲後悔'
+      },
+      {
+        id: 'conditionals-4',
+        name: 'Conditionals 4 | 條件句4',
+        file: 'conditionals4.js',
+        introduction: 'Proofreading: the underlined conditional is wrong<br>改錯：底線嘅條件句係錯嘅'
+      },
       { 
         id: 'passive-voice', 
         name: 'Active/Passive Voice | 主動/被動語態', 
@@ -351,6 +369,9 @@ class TopicManager {
       'modal-verbs-3': 'modalVerbs3Exercises',
       'gerunds-infinitives': 'gerundsInfinitivesExercises',
       'conditionals': 'conditionalsExercises',
+      'conditionals-2': 'conditionals2Exercises',
+      'conditionals-3': 'conditionals3Exercises',
+      'conditionals-4': 'conditionals4Exercises',
       'passive-voice': 'passiveVoiceExercises',
       'passive-voice-2': 'passiveVoice2Exercises',
       'confusable-verbs': 'confusableVerbsExercises',
