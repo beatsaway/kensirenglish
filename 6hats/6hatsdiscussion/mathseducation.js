@@ -62,7 +62,8 @@ window.sixHatSets = [
       { url: "https://www.youtube.com/shorts/WDeS3uEK_zM", label: "POV: you went to Kumon growing up" },
       { url: "https://www.youtube.com/shorts/9bJPnmsbFJA", label: "Why Kumon instructors don’t give the answer right away" },
       { url: "https://www.youtube.com/shorts/WD9c7M23idw", label: "Kumon is scary" },
-      { url: "https://www.youtube.com/watch?v=AfGRfRwFIGY", label: "How Kumon works" }
+      { url: "https://www.youtube.com/watch?v=AfGRfRwFIGY", label: "How Kumon works" },
+      { url: "https://www.youtube.com/watch?v=9tzpDZOJhtI", label: "What is Kumon Math?" }
     ],
     articleText:
       "<p><strong>Kumon</strong> is a famous after-school programme with daily worksheets and step-by-step levels. Fans say it builds habit and confidence; critics say it feels boring or stressful. Comedy shorts often show both sides.</p>",
