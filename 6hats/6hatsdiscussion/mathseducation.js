@@ -59,7 +59,9 @@ window.sixHatSets = [
     links: [
       { url: "https://www.youtube.com/shorts/iLqbFVpOZSA", label: "Doing maths in Kumon be like" },
       { url: "https://www.youtube.com/shorts/u1sNnx0Cv6I", label: "Every kid from Kumon knows this story" },
-      { url: "https://www.youtube.com/shorts/wsbuXiLNOhw", label: "My thoughts on Kumon" },
+      { url: "https://www.youtube.com/shorts/WDeS3uEK_zM", label: "POV: you went to Kumon growing up" },
+      { url: "https://www.youtube.com/shorts/9bJPnmsbFJA", label: "Why Kumon instructors don’t give the answer right away" },
+      { url: "https://www.youtube.com/shorts/WD9c7M23idw", label: "Kumon is scary" },
       { url: "https://www.youtube.com/watch?v=AfGRfRwFIGY", label: "How Kumon works" }
     ],
     articleText:
