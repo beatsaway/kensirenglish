@@ -230,14 +230,15 @@ window.sixHatSets = [
     ]
   },
   {
-    title: "📈 Zipf's law — maths behind language",
+    title: "📈 Zipf's law — language and paper clips",
     links: [
       { url: "https://www.youtube.com/shorts/mZoVHNOnYwE", label: "Unveiling Zipf's law" },
       { url: "https://www.youtube.com/shorts/SQnjktQVhyU", label: "Unraveling Zipf's law" },
-      { url: "https://youtu.be/_dPJTQyFrVk?t=34", label: "Zipf's law — maths behind every sentence (from 0:34)" }
+      { url: "https://youtu.be/_dPJTQyFrVk?t=34", label: "Zipf's law — maths behind every sentence (from 0:34)" },
+      { url: "https://youtu.be/fCn8zs912OE?t=828", label: "Vsauce — Zipf paper-clip experiment (from 13:48)" }
     ],
     articleText:
-      "<p><strong>Zipf's law</strong> says a few words appear very often (\"the\", \"a\") while most words are rare. The same kind of pattern shows up in cities, websites and more — maths hiding inside everyday language.</p>",
+      "<p><strong>Zipf's law</strong> says a few words appear very often (\"the\", \"a\") while most words are rare. Vsauce also shows a <strong>paper-clip</strong> experiment with the same kind of rank pattern — maths hiding in language and simple classroom demos.</p>",
     vocablist: [
       { word: "language", translation: "語言", emoji: "🗣️" },
       { word: "word", translation: "單詞", emoji: "🔤" },
@@ -248,12 +249,12 @@ window.sixHatSets = [
     ],
     vocabex: "In <span class='vocab-blank' data-answer='language'></span>, a few <span class='vocab-blank' data-answer='word'></span>s are very <span class='vocab-blank' data-answer='common'></span> and many are <span class='vocab-blank' data-answer='rare'></span>. Zipf's law is a <span class='vocab-blank' data-answer='pattern'></span> you can see when you <span class='vocab-blank' data-answer='rank'></span> word frequency.",
     questions: [
-      { emoji: "📊", text: "What is Zipf's law, according to these clips?", hat: "white-hat", hatLabel: "White Hat" },
-      { emoji: "😊", text: "Does linking maths to language make maths more interesting for you?", hat: "red-hat", hatLabel: "Red Hat" },
-      { emoji: "🌟", text: "Why is it useful to notice which words appear most often?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
+      { emoji: "📊", text: "What is Zipf's law? What happens in the paper-clip experiment?", hat: "white-hat", hatLabel: "White Hat" },
+      { emoji: "😊", text: "Does linking maths to language (or paper clips) make maths more interesting for you?", hat: "red-hat", hatLabel: "Red Hat" },
+      { emoji: "🌟", text: "Why is it useful to notice which words — or items — appear most often?", hat: "yellow-hat", hatLabel: "Yellow Hat" },
       { emoji: "⚠️", text: "What can go wrong if we treat every language pattern as a strict \"law\"?", hat: "black-hat", hatLabel: "Black Hat" },
       { emoji: "📋", text: "Is Zipf's law more about maths, English, or both? Give one reason.", hat: "blue-hat", hatLabel: "Blue Hat" },
-      { emoji: "💡", text: "Count the top 5 words in a short paragraph from your textbook and list them by rank.", hat: "green-hat", hatLabel: "Green Hat" }
+      { emoji: "💡", text: "Try a mini Zipf demo: rank words in a paragraph, or plan a paper-clip chain experiment in class.", hat: "green-hat", hatLabel: "Green Hat" }
     ]
   }
 ];
