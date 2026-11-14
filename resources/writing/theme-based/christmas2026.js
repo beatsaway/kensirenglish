@@ -45,12 +45,14 @@ window.themeBasedChristmas2026 = {
             watchLinks: [
                 { label: "Chinese Christmas", url: "https://www.youtube.com/shorts/2Yx3QLikmns" },
                 { label: "KFC Christmas in Japan", url: "https://www.youtube.com/watch?v=46JaN2NZoks" },
+                { label: "Korean Christmas donuts", url: "https://www.youtube.com/shorts/6JlCjiI5QpA" },
+                { label: "Australian Christmas lights", url: "https://www.youtube.com/shorts/rlMNOLgBxFc" },
                 { label: "Mongolian Christmas", url: "https://www.youtube.com/shorts/fNv-AV3ypsA" },
                 { label: "American vs African Christmas traditions", url: "https://www.youtube.com/shorts/VPyoC9sEYHg" },
                 { label: "Where to go for Christmas in Hong Kong", url: "https://www.youtube.com/shorts/8ZUhhp5QWTI" },
                 { label: "2026 Christmas (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=2026%20Christmas" }
             ],
-            context: "Christmas looks different in China, Japan, Mongolia, Africa, America and Hong Kong — food, lights, church and shopping are not the same everywhere.",
+            context: "Christmas looks different in China, Japan, Korea, Australia, Mongolia, Africa, America and Hong Kong — food, lights, church and shopping are not the same everywhere.",
             instructions: "Write an article for your school magazine.\n\nIntroduce Christmas in 3 different places from the clips.\n\nFor each place, say how people celebrate and what makes it special.",
             successCriteria: [
                 "3 places",
