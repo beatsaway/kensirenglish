@@ -9,6 +9,96 @@ window.themeBasedThanksgiving = {
     ],
     tasks: [
         {
+            id: "guide-three-ways-to-cook-a-turkey",
+            title: "Guide — three ways to cook a turkey",
+            watchLinks: [
+                { label: "Fish sauce on the turkey", url: "https://www.youtube.com/shorts/wGnS33ml39o" },
+                { label: "Thanksgiving dinner plate", url: "https://www.youtube.com/shorts/sQluBLQ462M" },
+                { label: "Italian American Thanksgiving", url: "https://www.youtube.com/shorts/e0zN2X6z7dk" },
+                { label: "Thanksgiving (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Thanksgiving" }
+            ],
+            context: "A whole turkey is tricky: the breast can dry out before the legs are cooked. Cooks solve this in different ways. Oven-roasting is the classic method, deep-frying is fast and crisp, and spatchcocking cuts the cooking time in half.",
+            instructions: "Write a guide for your school cooking club.\n\nExplain three ways to cook a turkey.\n\nInclude:\n• how each method works, step by step\n• the time and equipment each one needs\n• one safety rule for the method with the most risk",
+            successCriteria: [
+                "3 methods explained in order",
+                "Time, equipment and 1 safety rule",
+                "A clear reason to choose each one"
+            ],
+            questions: [],
+            vocab: [
+                { en: "oven", cn: "焗爐" },
+                { en: "roast", cn: "烤" },
+                { en: "deep-fry", cn: "油炸" },
+                { en: "spatchcock", cn: "開邊壓平" },
+                { en: "crisp", cn: "脆的" },
+                { en: "juicy", cn: "多汁的" },
+                { en: "temperature", cn: "溫度" },
+                { en: "equipment", cn: "用具" },
+                { en: "method", cn: "方法" },
+                { en: "safety", cn: "安全" }
+            ]
+        },
+        {
+            id: "essay-three-reasons-not-to-celebrate",
+            title: "Essay — three reasons not to celebrate Thanksgiving",
+            watchLinks: [
+                { label: "The real history behind Thanksgiving — AJ+", url: "https://www.youtube.com/shorts/wcJzBvKPd74" },
+                { label: "What really happened — Uncivil History", url: "https://www.youtube.com/watch?v=ociHVDWxDaY" },
+                { label: "Wednesday Addams' Thanksgiving speech", url: "https://www.youtube.com/shorts/i0bgzo5pXkY" },
+                { label: "Thanksgiving (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Thanksgiving" }
+            ],
+            context: "For many Wampanoag people, Thanksgiving is a National Day of Mourning. They remember the land, the lives and the language lost after 1621, and they argue that a happy story hides that damage.",
+            instructions: "Write an opinion essay for your school magazine.\n\nArgue that we should not celebrate Thanksgiving.\n\nInclude:\n• three reasons, one paragraph each\n• one fact or example to support each reason\n• one sentence answering someone who disagrees",
+            successCriteria: [
+                "3 reasons, one paragraph each",
+                "Evidence for every reason",
+                "One disagreement answered"
+            ],
+            questions: [],
+            vocab: [
+                { en: "argue", cn: "主張／爭論" },
+                { en: "reason", cn: "理由" },
+                { en: "evidence", cn: "證據" },
+                { en: "mourning", cn: "哀悼" },
+                { en: "colony", cn: "殖民地" },
+                { en: "land", cn: "土地" },
+                { en: "harm", cn: "傷害" },
+                { en: "tradition", cn: "傳統" },
+                { en: "respect", cn: "尊重" },
+                { en: "counter-argument", cn: "反駁" }
+            ]
+        },
+        {
+            id: "essay-three-reasons-to-celebrate",
+            title: "Essay — three reasons to celebrate Thanksgiving",
+            watchLinks: [
+                { label: "The history of the first Thanksgiving", url: "https://www.youtube.com/watch?v=XC1hVm1y01o" },
+                { label: "A Thanksgiving miracle — SNL", url: "https://youtu.be/e2zyjbH9zzA?t=24" },
+                { label: "Italian American Thanksgiving", url: "https://www.youtube.com/shorts/e0zN2X6z7dk" },
+                { label: "Thanksgiving (Six Hats)", url: "../../../6hats/6hatsdiscussion/index.html?topic=Thanksgiving" }
+            ],
+            context: "Supporters say the day still does real good. It asks busy families to stop and say thank you, it brings people to one table, and it changes with every culture that adopts it — fish sauce on the turkey, pasta next to the bird.",
+            instructions: "Write an opinion essay for your school magazine.\n\nArgue that we should celebrate Thanksgiving.\n\nInclude:\n• three reasons, one paragraph each\n• one fact or example to support each reason\n• one sentence answering someone who disagrees",
+            successCriteria: [
+                "3 reasons, one paragraph each",
+                "Evidence for every reason",
+                "One disagreement answered"
+            ],
+            questions: [],
+            vocab: [
+                { en: "gratitude", cn: "感恩" },
+                { en: "gather", cn: "聚在一起" },
+                { en: "generation", cn: "一代人" },
+                { en: "harvest", cn: "收成" },
+                { en: "tradition", cn: "傳統" },
+                { en: "belong", cn: "有歸屬感" },
+                { en: "share", cn: "分享" },
+                { en: "custom", cn: "習俗" },
+                { en: "community", cn: "社群" },
+                { en: "thankful", cn: "感激的" }
+            ]
+        },
+        {
             id: "article-what-really-happened-1621",
             title: "Article — what really happened in 1621?",
             watchLinks: [
